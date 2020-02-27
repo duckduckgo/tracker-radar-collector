@@ -1,0 +1,111 @@
+# DuckDuckGo Tracker Radar Collector
+🕸Modular, multithreaded, [puppeteer](https://github.com/GoogleChrome/puppeteer)-based crawler used to generate third party request data for the [Tracker Radar](https://github.com/duckduckgo/tracker-radar).
+
+## How do I use it?
+
+### Use it from the command line
+
+1. Clone this project locally (`git clone git@github.com:duckduckgo/tracker-radar-collector.git`)
+2. Install all dependencies (`npm i`)
+3. Run the command line tool:
+
+```sh
+npm run crawl -- -u "https://example.com" -o ./data/ -v
+```
+
+Available options:
+
+- `-o, --output <path>` - (required) output folder where output files will be created
+- `-u, --url <url>` - single URL to crawl
+- `-i, --input-list <path>` - path to a text file with list of URLs to crawl (each in a separate line)
+- `-d, --data-collectors <list>` - comma separated list (e.g `-d 'requests,cookies'`) of data collectors that should be used (all by default)
+- `-c, --crawlers <number>` - override the default number of concurent crawlers (default number is picked based on the number of CPU cores)
+- `-v, --verbose` - log additional information on screen (progress bar will not be shown when verbose logging is enabled)
+- `-l, --log-file <path>` - save log data to a file
+- `-f, --force-overwrite` - overwrite existing output files (by default entries with existing output files are skipped)
+- `-3, --only-3p` - don't save any first-party data (e.g. requests, API calls for same eTLD-1 as the main document)
+
+### Use it as a module
+
+1. Install this project as a dependency (`npm i git+https://github.com:duckduckgo/tracker-radar-collector.git`).
+
+2. Import it:
+
+```js
+// you can either import a "crawlerConductor" that runs multiple crawlers for you
+const {crawlerConductor} = require('tds-crawler');
+// or a single crawler
+const {crawler} = require('tds-crawler');
+```
+
+3. Use it:
+
+```js
+crawlerConductor({
+    // required ↓
+    urls: ['https://example.com', 'https://duck.com', …],
+    dataCallback: (url, result) => {…},
+    // optional ↓
+    dataCollectors: ['requests', 'cookies'],
+    failureCallback: (url, error) => {…},
+    numberOfCrawlers: 12,// custom number of crawlers (there is a hard limit of 38 though)
+    logFunction: (...msg) => {…},// custom logging function
+    filterOutFirstParty: true// don't save any frist-party data (false by default)
+});
+```
+
+**OR**
+
+```js
+const {RequestCollector} = require('tds-crawler');
+
+// crawler will throw an exception if crawl fails
+const data = await crawler(new URL('https://example.com'), {
+    // all settings below are optional
+    // but w/o the collectors output data will be very limited
+    collectors: [
+        new RequestCollector()
+    ],
+    log: (...msg) => {…},
+    rank: 1,
+    filterOutFirstParty: true
+});
+```
+
+ℹ️Hint: check out `crawl-cli.js` and `crawlerConductor.js` to see how `crawlerConductor` and `crawler` are used in the wild.
+
+## Output format
+
+Each successfully crawled website will create a separate file named after the website (when using CLI tool). Output data format is specified in `crawler.js` (see `CollectResult` type definition).
+Additionally, for each crawl metadata.json file will be created containing crawl configuration, system configuration and some high-level stats. 
+
+## Data post-processing
+
+Example post-processing script, that can be used as a template, can be found in `post-processing/summary.js`. Execute it from the command line like this:
+
+```sh
+node ./post-processing/summary.js -i ./collected-data/ -o ./result.json
+```
+
+ℹ️Hint: When dealing with huge amounts of data you may need to increase nodejs's memory limit e.g. `node --max_old_space_size=4096`.
+
+## Creating new collectors
+
+Each collector needs to extend the `BaseCollector` and has to override following methods:
+
+- `id()` which returns name of the collector (e.g. 'cookies')
+- `getData(options)` which should return collected data. `options` have following properties:
+    - `finalUrl` - final URL of the main document (after all redirects) that you may want to use,
+    - `filterFunction` which, if provided, takes an URL and returns a boolean telling you if given piece of data should be returned or filtered out based on its origin.
+
+Additionally, each collector can override following methods:
+
+- `init(options)` which is called before the crawl begins
+- `addTarget(targetInfo)` which is called whenever new target is created (main page, iframe, web worker etc.)
+
+There are couple of build in collectors in the `collectors/` folder. `CookieCollector` is the simplest one and can be used as a template.
+
+Each new collector has to be added in two places to be discoverable:
+- `crawlerConductor.js` - so that `crawlerConductor` knows about it (and it can be used in the CLI tool)
+- `main.js` - so that the new collector can be imported by other projects
+ 

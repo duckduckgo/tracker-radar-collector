@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es2016",
+        "moduleResolution": "node",
+        "lib": ["es2015", "es2016", "dom"],
+        "allowJs": true,
+        "checkJs": true,
+        "resolveJsonModule": true,
+        "noEmit": true,
+        "noImplicitAny": true
+    },
+    "include": [
+        "cli/",
+        "collectors/",
+        "helpers/",
+        "post-processing/",
+        "tests/",
+        "./*.js"
+    ],
+    "exclude": [
+        "./node_modules/chalk/types/index.d.ts"
+    ]
+}

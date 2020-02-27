@@ -1,0 +1,43 @@
+{
+  "name": "tracker-radar-collector",
+  "author": "DuckDuckGo",
+  "license": "Apache 2.0",
+  "version": "1.0.0",
+  "description": "Modular, multithreaded, puppeteer-based crawler.",
+  "main": "main.js",
+  "scripts": {
+    "crawl": "node ./cli/crawl-cli",
+    "test": "npm run lint && tsc && npm run unit",
+    "unit": "find . -name \"*.test.js\" -not -path \"./node_modules/*\" -exec node {} \\;",
+    "lint": "eslint *.js cli/ collectors/ helpers/ post-processing/ tests/",
+    "lint-fix": "npm run lint -- --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:duckduckgo/tracker-radar-crawler.git"
+  },
+  "pre-push": [
+    "test"
+  ],
+  "engines": {
+    "node": ">=10.0"
+  },
+  "devDependencies": {
+    "@types/async": "^2.4.1",
+    "@types/node": "^10.12.15",
+    "@types/puppeteer": "^1.11.0",
+    "@types/progress": "^2.0.3",
+    "@types/stack-utils": "^1.0.1",
+    "eslint": "^5.12.1",
+    "pre-push": "^0.1.1",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "async": "^2.6.1",
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0",
+    "progress": "^2.0.3",
+    "puppeteer": "^1.20.0",
+    "tldts": "^4.0.3"
+  }
+}
