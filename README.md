@@ -24,6 +24,7 @@ Available options:
 - `-l, --log-file <path>` - save log data to a file
 - `-f, --force-overwrite` - overwrite existing output files (by default entries with existing output files are skipped)
 - `-3, --only-3p` - don't save any first-party data (e.g. requests, API calls for same eTLD-1 as the main document)
+- `-m, --mobile` - emulate a mobile device when crawling
 
 ### Use it as a module
 
