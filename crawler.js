@@ -128,10 +128,6 @@ async function getSiteData(browser, url, {
         viewport: emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT
     });
 
-    if (emulateMobile) {
-        await page.touchscreen.tap(5, 5);
-    }
-
     // if any prompts open on page load, they'll make the page hang unless closed
     page.on('dialog', dialog => dialog.dismiss());
 
