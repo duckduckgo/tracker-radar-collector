@@ -25,9 +25,9 @@ const MAX_NUMBER_OF_RETRIES = 2;
  * @param {function} log 
  * @param {boolean} filterOutFirstParty
  * @param {function(URL, object): void} dataCallback 
- * @param {boolean} emmulateMobile
+ * @param {boolean} emulateMobile
  */
-async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFirstParty, dataCallback, emmulateMobile) {
+async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFirstParty, dataCallback, emulateMobile) {
     const url = new URL(urlString);
     /**
      * @type {function(...any):void} 
@@ -39,7 +39,7 @@ async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFi
         collectors: dataCollectors.map(CollectorClass => (new CollectorClass())),
         rank: idx + 1,
         filterOutFirstParty,
-        emmulateMobile
+        emulateMobile
     });
 
     dataCallback(url, data);
@@ -67,7 +67,7 @@ function collectorNamesToClasses(names) {
 }
 
 /**
- * @param {{urls: string[], dataCallback: function(URL, object): void, dataCollectors?: string[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emmulateMobile: boolean}} options
+ * @param {{urls: string[], dataCallback: function(URL, object): void, dataCollectors?: string[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean}} options
  */
 module.exports = options => {
     const deferred = createDeferred();
@@ -88,7 +88,7 @@ module.exports = options => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(null, urlString, dataCollectors, idx, log, options.filterOutFirstParty, options.dataCallback, options.emmulateMobile);
+        const task = crawlAndSaveData.bind(null, urlString, dataCollectors, idx, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile);
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {

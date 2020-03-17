@@ -49,7 +49,7 @@ async function closeBrowser(browser) {
 /**
  * @param {puppeteer.Browser} browser 
  * @param {URL} url 
- * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, rank?: number, urlFilter: function(string, string):boolean, emmulateMobile: boolean}} data
+ * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, rank?: number, urlFilter: function(string, string):boolean, emulateMobile: boolean}} data
  * 
  * @returns {Promise<CollectResult>}
  */
@@ -58,7 +58,7 @@ async function getSiteData(browser, url, {
     log,
     rank,
     urlFilter,
-    emmulateMobile
+    emulateMobile
 }) {
     const testStarted = Date.now();
 
@@ -124,11 +124,11 @@ async function getSiteData(browser, url, {
 
     await page.emulate({
         // just in case some sites block headless visits
-        userAgent: emmulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT,
-        viewport: emmulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT
+        userAgent: emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT,
+        viewport: emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT
     });
 
-    if (emmulateMobile) {
+    if (emulateMobile) {
         await page.touchscreen.tap(5, 5);
     }
 
@@ -217,7 +217,7 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emmulateMobile: boolean}} options
+ * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile: boolean}} options
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
@@ -230,7 +230,7 @@ module.exports = async (url, options) => {
             log: options.log || (() => {}),
             rank: options.rank,
             urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null,
-            emmulateMobile: options.emmulateMobile
+            emulateMobile: options.emulateMobile
         }), MAX_TOTAL_TIME);
     } catch(e) {
         options.log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));
