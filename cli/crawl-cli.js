@@ -17,6 +17,7 @@ program
     .option('-c, --crawlers <number>', 'overwrite the default number of concurent crawlers')
     .option('-f, --force-overwrite', 'overwrite existing output files')
     .option('-3, --only-3p', 'don\'t save any first-party data')
+    .option('-m, --mobile', 'emulate a mobile device')
     .parse(process.argv);
 
 /**
@@ -28,8 +29,9 @@ program
  * @param {string[]} dataCollectors
  * @param {boolean} forceOverwrite
  * @param {boolean} filterOutFirstParty
+ * @param {boolean} emulateMobile
  */
-async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty) {
+async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile) {
     const logFile = logPath ? fs.createWriteStream(logPath, {flags: 'w'}) : null;
     
     /**
@@ -130,7 +132,8 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
             numberOfCrawlers,
             failureCallback,
             dataCallback,
-            filterOutFirstParty
+            filterOutFirstParty,
+            emulateMobile
         });
         log(chalk.green('\n✅ Finished successfully.'));
     } catch(e) {
@@ -161,6 +164,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 const verbose = Boolean(program.verbose);
 const forceOverwrite = Boolean(program.forceOverwrite);
 const filterOutFirstParty = Boolean(program.only3p);
+const emulateMobile = Boolean(program.mobile);
 let dataCollectors = null;
 let urls = null;
 
@@ -195,5 +199,5 @@ if (!urls || !program.output) {
         fs.mkdirSync(program.output);
     }
 
-    run(urls, program.output, verbose, program.logFile, program.crawlers || null, dataCollectors, forceOverwrite, filterOutFirstParty);
+    run(urls, program.output, verbose, program.logFile, program.crawlers || null, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile);
 }

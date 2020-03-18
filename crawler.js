@@ -7,9 +7,20 @@ const tldts = require('tldts');
 const MAX_LOAD_TIME = 30000;//ms
 const MAX_TOTAL_TIME = MAX_LOAD_TIME * 2;//ms
 const EXECUTION_WAIT_TIME = 2500;//ms
-const VIEWPORT = {
+
+const DEFAULT_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36';
+const MOBILE_USER_AGENT = 'Mozilla/5.0 (Linux; Android 10; Pixel 2 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.117 Mobile Safari/537.36';
+
+const DEFAULT_VIEWPORT = {
     width: 1440,//px
     height: 812//px
+};
+const MOBILE_VIEWPORT = {
+    width: 412,
+    height: 691,
+    deviceScaleFactor: 2,
+    isMobile: true,
+    hasTouch: true
 };
 
 // for debugging: will lunch in window mode instad of headless, open devtools and don't close windows after process finishes
@@ -38,7 +49,7 @@ async function closeBrowser(browser) {
 /**
  * @param {puppeteer.Browser} browser 
  * @param {URL} url 
- * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, rank?: number, urlFilter: function(string, string):boolean}} data
+ * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, rank?: number, urlFilter: function(string, string):boolean, emulateMobile: boolean}} data
  * 
  * @returns {Promise<CollectResult>}
  */
@@ -46,7 +57,8 @@ async function getSiteData(browser, url, {
     collectors,
     log,
     rank,
-    urlFilter
+    urlFilter,
+    emulateMobile
 }) {
     const testStarted = Date.now();
 
@@ -112,8 +124,8 @@ async function getSiteData(browser, url, {
 
     await page.emulate({
         // just in case some sites block headless visits
-        userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36',
-        viewport: VIEWPORT
+        userAgent: emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT,
+        viewport: emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT
     });
 
     // if any prompts open on page load, they'll make the page hang unless closed
@@ -201,7 +213,7 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean}} options
+ * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile: boolean}} options
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
@@ -213,7 +225,8 @@ module.exports = async (url, options) => {
             collectors: options.collectors || [],
             log: options.log || (() => {}),
             rank: options.rank,
-            urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null
+            urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null,
+            emulateMobile: options.emulateMobile
         }), MAX_TOTAL_TIME);
     } catch(e) {
         options.log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));
