@@ -144,8 +144,8 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
     const endTime = new Date();
 
     log(chalk.cyan(`Finish time: ${endTime.toUTCString()}`));
-    log(chalk.cyan(`Sucessful crawls: ${successes}/${urls.length}`));
-    log(chalk.cyan(`Failed crawls: ${failures}/${urls.length}`));
+    log(chalk.cyan(`Sucessful crawls: ${successes}/${urls.length} (${(successes / urls.length * 100).toFixed(2)}%)`));
+    log(chalk.cyan(`Failed crawls: ${failures}/${urls.length} (${(failures / urls.length * 100).toFixed(2)}%)`));
 
     createMetadataFile(outputPath, {
         startTime,
