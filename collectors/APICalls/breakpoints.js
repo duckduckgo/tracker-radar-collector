@@ -11,7 +11,6 @@ const breakpoints = [
             {name: 'sessionStorage'},
             {name: 'indexedDB'},
             {name: 'name'}, // can pottentially be used to link two tabs
-            {name: 'chrome'},
             // {name: 'ActiveXObject'}// not available in Chrome
         ],
         methods: [
