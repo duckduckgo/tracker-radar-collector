@@ -11,8 +11,6 @@ const breakpoints = [
             {name: 'sessionStorage'},
             {name: 'indexedDB'},
             {name: 'name'}, // can pottentially be used to link two tabs
-            {name: 'navigator.xr'},
-            {name: 'navigator'},
             {name: 'chrome'},
             // {name: 'ActiveXObject'}// not available in Chrome
         ],
@@ -122,7 +120,6 @@ const breakpoints = [
             {name: 'deviceMemory'}, // memory in Gb
             {name: 'connection'}, // changes over time
             {name: 'onLine'},
-            {name: 'oscpu'},
             {name: 'keyboard'},
             {name: 'permissions'},
             {name: 'presentation'}, //TODO nees double checking
@@ -133,9 +130,7 @@ const breakpoints = [
             {name: 'vendorSub'},
             {name: 'webkitPersistentStorage'},
             {name: 'webkitTemporaryStorage'},
-            {name: 'cpuClass'},
             {name: 'xr'},   //VR access
-            {name: 'webdriver'},    //tells if agent is selenium
         ],
         methods: [
             {name: 'getBattery'},
@@ -286,27 +281,6 @@ const breakpoints = [
             {
                 name: 'getContextAttributes',
                 test: 'var c = document.createElement("canvas"); c.getContext("webgl").getContextAttributes()'
-            },
-            //Same as above, but with experimental webgl
-            {
-                name: 'getSupportedExtensions(experimental)',
-                test: 'var c = document.createElement("canvas"); c.getContext("experimental-webgl").getSupportedExtensions()'
-            },
-            {
-                name: 'getExtension(experimental)',
-                test: 'var c = document.createElement("canvas"); c.getContext("experimental-webgl").getExtension("")'
-            },
-            {
-                name: 'getParameter(experimental)',
-                test: 'var c = document.createElement("canvas"); c.getContext("experimental-webgl").getParameter("")'
-            },
-            {
-                name: 'getShaderPrecisionFormat(experimental)',
-                test: 'var c = document.createElement("canvas"); c.getContext("experimental-webgl").getShaderPrecisionFormat(WebGLRenderingContext.FRAGMENT_SHADER, WebGLRenderingContext.LOW_FLOAT)'
-            },
-            {
-                name: 'getContextAttributes(experimental)',
-                test: 'var c = document.createElement("canvas"); c.getContext("experimental-webgl").getContextAttributes()'
             },
         ]
     },
