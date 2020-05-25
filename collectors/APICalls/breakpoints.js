@@ -89,7 +89,8 @@ const breakpoints = [
         proto: 'Document',
         props: [
             {name: 'cookie', description: 'Document.cookie getter'},
-            {name: 'cookie', description: 'Document.cookie setter', setter: true, saveArguments: true}
+            {name: 'cookie', description: 'Document.cookie setter', setter: true, saveArguments: true},
+            {name: 'timeline'},
         ],
         methods: [
         ]
@@ -112,6 +113,7 @@ const breakpoints = [
             {name: 'doNotTrack'},
             {name: 'hardwareConcurrency'},// number of cpu cores
             {name: 'maxTouchPoints'},// capability of the trackpad/touchscreen
+            //{name: 'msMaxTouchPoints'}, Microsoft only
             {name: 'mediaCapabilities'}, // codecs, mime types, display
             {name: 'mediaDevices'}, // screens, cameras, microphones
             {name: 'deviceMemory'}, // memory in Gb
@@ -127,7 +129,7 @@ const breakpoints = [
             {name: 'vendorSub'},
             {name: 'webkitPersistentStorage'},
             {name: 'webkitTemporaryStorage'},
-            // {name: 'cpuClass'},
+            {name: 'xr'},   //VR access
         ],
         methods: [
             {name: 'getBattery'},
@@ -200,6 +202,11 @@ const breakpoints = [
             {
                 name: 'getImageData',
                 test: 'var c = document.createElement("canvas"); var ctx = c.getContext("2d"); ctx.getImageData();'
+            },
+            //used to detect canvas winding
+            {
+                name: 'isPointInPath',
+                test: 'var c = document.createElement("canvas"); var ctx = c.getContext("2d"); ctx.rect(10, 10, 100, 100); ctx.fill(); ctx.isPointInPath(30, 70);'
             }
         ]
     },
@@ -476,6 +483,33 @@ const breakpoints = [
             {name: 'acceleration'},
             {name: 'accelerationIncludingGravity'},
             {name: 'rotationRate'}
+        ],
+        methods: []
+    },
+    {
+        proto: 'Animation',
+        props: [
+            {name: 'currentTime'},
+            {name: 'startTime'},
+            {name: 'timeline'},
+        ],
+        methods: []
+    },
+    {
+        global: 'eval',
+        props: [
+        ],
+        methods: [
+            {
+                name: 'toString',
+                test: 'eval.toString()'
+            },  //Can be used to determine browser vendor/version in some cases.
+        ]
+    },
+    {
+        proto: 'Notification',
+        props: [
+            {name: 'permission'},
         ],
         methods: []
     },
