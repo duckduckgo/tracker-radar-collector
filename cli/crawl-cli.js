@@ -5,6 +5,8 @@ const runCrawlers = require('../crawlerConductor');
 const program = require('commander');
 const ProgressBar = require('progress');
 const URL = require('url').URL;
+const crypto = require('crypto');
+
 const {metadataFileExists, createMetadataFile} = require('./metadataFile');
 
 program
@@ -33,7 +35,7 @@ program
  */
 async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile) {
     const logFile = logPath ? fs.createWriteStream(logPath, {flags: 'w'}) : null;
-    
+
     /**
      * @type {function(...any):void}
      */
@@ -47,6 +49,16 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
             logFile.write(msg.join(' ') + '\n');
         }
     };
+
+    /**
+     * @type {function(...any):string}
+     * @param {URL} url
+     */
+    const createOutputPath = (url => {
+        let hash = crypto.createHash('sha1').update(url.toString()).digest('hex');
+        hash = hash.substring(0, 4); // truncate to length 4
+        return path.join(outputPath, `${url.hostname}_${hash}.json`);
+    });
 
     const urls = inputUrls.filter(urlString => {
         /**
@@ -63,7 +75,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
         if (forceOverwrite !== true) {
             // filter out entries for which result file already exists
-            const outputFile = path.join(outputPath, `${url.hostname}.json`);
+            const outputFile = createOutputPath(url);
             if (fs.existsSync(outputFile)) {
                 log(chalk.yellow(`Skipping "${urlString}" because output file already exists.`));
                 return false;
@@ -94,19 +106,19 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
     };
 
     /**
-     * @param {URL} url 
-     * @param {object} data 
+     * @param {URL} url
+     * @param {object} data
      */
     const dataCallback = (url, data) => {
         successes++;
         updateProgress(url.toString());
 
-        const outputFile = path.join(outputPath, `${url.hostname}.json`);
+        const outputFile = createOutputPath(url);
         fs.writeFileSync(outputFile, JSON.stringify(data, null, 2));
     };
 
     /**
-     * @param {string} url 
+     * @param {string} url
      */
     const failureCallback = url => {
         failures++;
