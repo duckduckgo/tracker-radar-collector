@@ -54,7 +54,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
      * @type {function(...any):string}
      * @param {URL} url
      */
-    const getPath = (url => {
+    const createOutputPath = (url => {
         let hash = crypto.createHash('sha1').update(url.toString()).digest('hex');
         hash = hash.substring(0, 4); // truncate to length 4
         return path.join(outputPath, `${url.hostname}_${hash}.json`);
@@ -75,7 +75,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
         if (forceOverwrite !== true) {
             // filter out entries for which result file already exists
-            const outputFile = getPath(url);
+            const outputFile = createOutputPath(url);
             if (fs.existsSync(outputFile)) {
                 log(chalk.yellow(`Skipping "${urlString}" because output file already exists.`));
                 return false;
@@ -113,7 +113,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
         successes++;
         updateProgress(url.toString());
 
-        const outputFile = getPath(url);
+        const outputFile = createOutputPath(url);
         fs.writeFileSync(outputFile, JSON.stringify(data, null, 2));
     };
 
