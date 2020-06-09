@@ -97,6 +97,7 @@ module.exports = options => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
+        // @ts-ignore
         const task = crawlAndSaveData.bind(null, urlString, dataCollectors, idx, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, proxyConfig);
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
