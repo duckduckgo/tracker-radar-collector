@@ -33,10 +33,10 @@ async function openBrowser(proxyConfig) {
     let args = {};
     if (VISUAL_DEBUG) {
         args.headless = false;
-        args.devtools = true
+        args.devtools = true;
     }
     if (proxyConfig) {
-        args.args = [ `--proxy-server=${proxyConfig.host}` ];
+        args.args = [`--proxy-server=${proxyConfig.host}`];
     }
 
     // for debugging: use different version of Chromium/Chrome
