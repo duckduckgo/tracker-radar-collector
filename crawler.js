@@ -26,13 +26,23 @@ const MOBILE_VIEWPORT = {
 // for debugging: will lunch in window mode instad of headless, open devtools and don't close windows after process finishes
 const VISUAL_DEBUG = false;
 
-async function openBrowser() {
-    const browser = await puppeteer.launch(VISUAL_DEBUG ? {
-        headless: false,
-        devtools: true,
-        // for debugging: use different version of Chromium/Chrome
-        // executablePath: "/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
-    } : {});
+/**
+ * @param {any} proxyConfig
+ */
+async function openBrowser(proxyConfig) {
+    let args = {};
+    if (VISUAL_DEBUG) {
+        args.headless = false;
+        args.devtools = true
+    }
+    if (proxyConfig) {
+        args.args = [ `--proxy-server=${proxyConfig.host}` ];
+    }
+
+    // for debugging: use different version of Chromium/Chrome
+    // executablePath: "/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
+
+    const browser = await puppeteer.launch(args);
 
     return browser;
 }
@@ -213,11 +223,11 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile: boolean}} options
+ * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile: boolean, proxyConfig: any}} options
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
-    const browser = await openBrowser();
+    const browser = await openBrowser(options.proxyConfig);
     let data = null;
     
     try {
