@@ -32,15 +32,15 @@ const breakpoints = [
             }
         ]
     },
-    {
-        global: 'chrome',
-        props: [
-        ],
-        methods: [
-            // {name: 'csi'}, // doesn't work
-            // {name: 'loadTimes'}, // doesn't work
-        ]
-    },
+    // {
+    //     global: 'chrome',
+    //     props: [
+    //     ],
+    //     methods: [
+    //         // {name: 'csi'}, // doesn't work
+    //         // {name: 'loadTimes'}, // doesn't work
+    //     ]
+    // },
     {
         global: 'console',
         props: [
@@ -90,7 +90,7 @@ const breakpoints = [
         props: [
             {name: 'cookie', description: 'Document.cookie getter'},
             {name: 'cookie', description: 'Document.cookie setter', setter: true, saveArguments: true},
-            {name: 'timeline'},
+            // {name: 'timeline'}, - not in Chromium
         ],
         methods: [
         ]
@@ -129,23 +129,13 @@ const breakpoints = [
             {name: 'vendorSub'},
             {name: 'webkitPersistentStorage'},
             {name: 'webkitTemporaryStorage'},
-            {name: 'xr'},   //VR access
+            // {name: 'xr'},   //VR access - not in Chromium
         ],
         methods: [
             {name: 'getBattery'},
             {name: 'getGamepads'},
             // {name: 'getUserMedia'},
             {name: 'javaEnabled'},
-        ]
-    },
-    {
-        global: 'Reflect.getPrototypeOf(navigator)',
-        props: [],
-        methods: [
-            // {name: 'nfc'},//TODO nees double checking
-            // {name: 'getVRDisplays'}, // not in Chromium
-            // {name: 'getInstalledRelatedApps'},// detect if connected native app is installed - not in Chromium
-            // {name: 'xr'}, // not in Chroumium
         ]
     },
     {
@@ -166,13 +156,13 @@ const breakpoints = [
         methods: [
         ]
     },
-    {
-        global: 'screen.__proto__',
-        props: [
-            // {name: 'keepAwake'},// not in Chromium
-        ],
-        methods: []
-    },
+    // {
+    //     global: 'screen.__proto__',
+    //     props: [
+    //         // {name: 'keepAwake'},// not in Chromium
+    //     ],
+    //     methods: []
+    // },
     {
         proto: 'HTMLCanvasElement',
         props: [
@@ -395,8 +385,18 @@ const breakpoints = [
             } // codecs
         ]
     },
+    // { not in chromium
+    //     global: 'Bluetooth',
+    //     props: [],
+    //     methods: [
+    //         {
+    //             name: 'getAvailability',
+    //             test: 'navigator.bluetooth.getAvailability()'
+    //         }
+    //     ]
+    // },
     {
-        global: 'speechSynthesis.__proto__',// both .prototype and getting method from global object dont' work here 
+        global: 'speechSynthesis.__proto__',// both .prototype and getting method from global object don't work here 
         props: [],
         methods: [
             {
@@ -491,23 +491,23 @@ const breakpoints = [
         props: [
             {name: 'currentTime'},
             {name: 'startTime'},
-            {name: 'timeline'},
+            // {name: 'timeline'}, //not in Chromium
         ],
         methods: []
     },
+    // { - eval is a function, we need an object here
+    //     global: 'eval',
+    //     props: [
+    //     ],
+    //     methods: [
+    //         {
+    //             name: 'toString',
+    //             test: 'eval.toString()'
+    //         },  //Can be used to determine browser vendor/version in some cases.
+    //     ]
+    // },
     {
-        global: 'eval',
-        props: [
-        ],
-        methods: [
-            {
-                name: 'toString',
-                test: 'eval.toString()'
-            },  //Can be used to determine browser vendor/version in some cases.
-        ]
-    },
-    {
-        proto: 'Notification',
+        global: 'Notification',//it's a global because it's a static method
         props: [
             {name: 'permission'},
         ],
@@ -522,17 +522,17 @@ const breakpoints = [
     //         {name: 'start'}
     //     ]
     // },
-    // {// not in Chromium
-    //     proto: 'Gyroscope',
-    //     props: [
-    //         {name: 'x'},
-    //         {name: 'y'},
-    //         {name: 'z'}
-    //     ],
-    //     methods: [
-    //         {name: 'start'}
-    //     ]
-    // },
+    {
+        proto: 'Gyroscope',
+        props: [
+            {name: 'x'},
+            {name: 'y'},
+            {name: 'z'}
+        ],
+        methods: [
+            {name: 'constructor'}
+        ]
+    },
     // {// not in Chromium
     //     proto: 'Magnetometer',
     //     props: [

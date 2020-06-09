@@ -29,17 +29,17 @@ class APICallCollector extends BaseCollector {
     async addTarget({cdpClient, url}) {
         const trackerTracker = new TrackerTracker(cdpClient.send.bind(cdpClient));
         trackerTracker.setMainURL(url.toString());
-    
+
+        cdpClient.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, trackerTracker));
+        await cdpClient.send('Runtime.addBinding', {name: 'registerAPICall'});
+        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCrated.bind(this, trackerTracker));
+
         try {
             await trackerTracker.init({log: this._log});
         } catch(e) {
             this._log('TrackerTracker init failed.');
             throw e;
         }
-
-        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCrated.bind(this, trackerTracker));
-        cdpClient.send('Runtime.addBinding', {name: 'registerAPICall'});
-        cdpClient.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, trackerTracker));
     }
 
     /**
@@ -48,7 +48,7 @@ class APICallCollector extends BaseCollector {
      */
     async onExecutionContextCrated(trackerTracker, params) {
         // ignore context created by puppeteer / our crawler
-        if (!params.context.origin && params.context.auxData.type === 'isolated') {
+        if ((!params.context.origin || params.context.origin === '://') && params.context.auxData.type === 'isolated') {
             return;
         }
         await trackerTracker.setupContextTracking(params.context.id);
