@@ -3,4 +3,3 @@ node_modules
 .vscode/
 data/
 summary.json
-proxy-config.json
