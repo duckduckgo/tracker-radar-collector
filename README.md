@@ -25,7 +25,7 @@ Available options:
 - `-f, --force-overwrite` - overwrite existing output files (by default entries with existing output files are skipped)
 - `-3, --only-3p` - don't save any first-party data (e.g. requests, API calls for same eTLD-1 as the main document)
 - `-m, --mobile` - emulate a mobile device when crawling
-- `-p, --proxy-config` - configuration file to run the crawler through a SOCKS proxy
+- `-p, --proxy-config <host>` - optional SOCKS proxy host
 
 ### Use it as a module
 
