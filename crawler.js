@@ -27,16 +27,16 @@ const MOBILE_VIEWPORT = {
 const VISUAL_DEBUG = false;
 
 /**
- * @param {any} proxyConfig
+ * @param {string} proxyHost
  */
-async function openBrowser(proxyConfig) {
+async function openBrowser(proxyHost) {
     let args = {};
     if (VISUAL_DEBUG) {
         args.headless = false;
         args.devtools = true;
     }
-    if (proxyConfig) {
-        args.args = [`--proxy-server=${proxyConfig.host}`];
+    if (proxyHost) {
+        args.args = [`--proxy-server=${proxyHost}`];
     }
 
     // for debugging: use different version of Chromium/Chrome
@@ -223,11 +223,11 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile: boolean, proxyConfig: any}} options
+ * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile: boolean, proxyHost: string}} options
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
-    const browser = await openBrowser(options.proxyConfig);
+    const browser = await openBrowser(options.proxyHost);
     let data = null;
     
     try {

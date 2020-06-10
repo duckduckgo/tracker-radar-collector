@@ -20,7 +20,7 @@ program
     .option('-f, --force-overwrite', 'overwrite existing output files')
     .option('-3, --only-3p', 'don\'t save any first-party data')
     .option('-m, --mobile', 'emulate a mobile device')
-    .option('-p, --proxy-config <path>', 'use an optional proxy configuration')
+    .option('-p, --proxy-config <host>', 'use an optional proxy configuration')
     .parse(process.argv);
 
 /**
@@ -33,9 +33,9 @@ program
  * @param {boolean} forceOverwrite
  * @param {boolean} filterOutFirstParty
  * @param {boolean} emulateMobile
- * @param {string} proxyConfigPath
+ * @param {string} proxyHost
  */
-async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, proxyConfigPath) {
+async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost) {
     const logFile = logPath ? fs.createWriteStream(logPath, {flags: 'w'}) : null;
 
     /**
@@ -148,7 +148,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
             dataCallback,
             filterOutFirstParty,
             emulateMobile,
-            proxyConfigPath
+            proxyHost
         });
         log(chalk.green('\n✅ Finished successfully.'));
     } catch(e) {

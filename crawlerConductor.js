@@ -27,9 +27,9 @@ const MAX_NUMBER_OF_RETRIES = 2;
  * @param {boolean} filterOutFirstParty
  * @param {function(URL, object): void} dataCallback 
  * @param {boolean} emulateMobile
- * @param {any} proxyConfig
+ * @param {string} proxyHost
  */
-async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFirstParty, dataCallback, emulateMobile, proxyConfig) {
+async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost) {
     const url = new URL(urlString);
     /**
      * @type {function(...any):void} 
@@ -42,7 +42,7 @@ async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFi
         rank: idx + 1,
         filterOutFirstParty,
         emulateMobile,
-        proxyConfig
+        proxyHost
     });
 
     dataCallback(url, data);
@@ -70,7 +70,7 @@ function collectorNamesToClasses(names) {
 }
 
 /**
- * @param {{urls: string[], dataCallback: function(URL, object): void, dataCollectors?: string[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyConfigPath: string}} options
+ * @param {{urls: string[], dataCallback: function(URL, object): void, dataCollectors?: string[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string}} options
  */
 module.exports = options => {
     const deferred = createDeferred();
@@ -80,12 +80,6 @@ module.exports = options => {
 
     let numberOfCrawlers = options.numberOfCrawlers || Math.floor(cores * 0.8);
     numberOfCrawlers = Math.min(MAX_NUMBER_OF_CRAWLERS, numberOfCrawlers, options.urls.length);
-
-    // @ts-ignore
-    let proxyConfig;
-    if (options.proxyConfigPath) {
-        proxyConfig = JSON.parse(fs.readFileSync(options.proxyConfigPath).toString());
-    }
 
     // Increase number of listeners so we have at least one listener for each async process
     if (numberOfCrawlers > process.getMaxListeners()) {
@@ -97,8 +91,7 @@ module.exports = options => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        // @ts-ignore
-        const task = crawlAndSaveData.bind(null, urlString, dataCollectors, idx, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, proxyConfig);
+        const task = crawlAndSaveData.bind(null, urlString, dataCollectors, idx, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost);
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {
