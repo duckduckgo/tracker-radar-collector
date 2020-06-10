@@ -1,5 +1,4 @@
 const os = require('os');
-const fs = require('fs');
 const cores = os.cpus().length;
 const chalk = require('chalk').default;
 const async = require('async');
