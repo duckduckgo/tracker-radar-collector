@@ -26,8 +26,9 @@ const MAX_NUMBER_OF_RETRIES = 2;
  * @param {boolean} filterOutFirstParty
  * @param {function(URL, object): void} dataCallback 
  * @param {boolean} emulateMobile
+ * @param {string} proxyHost
  */
-async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFirstParty, dataCallback, emulateMobile) {
+async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost) {
     const url = new URL(urlString);
     /**
      * @type {function(...any):void} 
@@ -39,7 +40,8 @@ async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFi
         collectors: dataCollectors.map(CollectorClass => (new CollectorClass())),
         rank: idx + 1,
         filterOutFirstParty,
-        emulateMobile
+        emulateMobile,
+        proxyHost
     });
 
     dataCallback(url, data);
@@ -67,7 +69,7 @@ function collectorNamesToClasses(names) {
 }
 
 /**
- * @param {{urls: string[], dataCallback: function(URL, object): void, dataCollectors?: string[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean}} options
+ * @param {{urls: string[], dataCallback: function(URL, object): void, dataCollectors?: string[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string}} options
  */
 module.exports = options => {
     const deferred = createDeferred();
@@ -88,7 +90,7 @@ module.exports = options => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(null, urlString, dataCollectors, idx, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile);
+        const task = crawlAndSaveData.bind(null, urlString, dataCollectors, idx, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost);
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {
