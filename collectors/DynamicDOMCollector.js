@@ -66,6 +66,7 @@ class DynamicDOMCollector extends BaseCollector {
 
         try {
             const result = await this._cdpClient.send('DOM.getNodeStackTraces', {nodeId: node.nodeId});
+            // @ts-ignore
             creation = result.creation;
         } catch (e) {
             this._log('Error while looking for a node', e);
@@ -74,7 +75,8 @@ class DynamicDOMCollector extends BaseCollector {
 
         if (creation) {
             if (creation.callFrames && creation.callFrames.length > 0) {
-                const frame = creation.callFrames.find(f => f.url.length > 0);//reverse()
+                // eslint-disable-next-line arrow-parens
+                const frame = creation.callFrames.find((/** @type {{url:string}} **/f) => f.url.length > 0);//reverse()
                 const script = frame ? frame.url : '';
                 
                 return {url: script, nodeName: node.localName};
