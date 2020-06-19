@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Helper that provides IDs of all available collectors (based on the main.js file) and helps creating instances of collectors
+ */
 const allExports = require('../main');
 // eslint-disable-next-line no-unused-vars
 const BaseCollector = require('../collectors/BaseCollector');
