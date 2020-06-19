@@ -6,21 +6,15 @@ const crawl = require('./crawler');
 const URL = require('url').URL;
 const {createTimer} = require('./helpers/timer');
 const createDeferred = require('./helpers/deferred');
-
-const RequestCollector = require('./collectors/RequestCollector');
-const APICallCollector = require('./collectors/APICallCollector');
-const CookieCollector = require('./collectors/CookieCollector');
-const TargetCollector = require('./collectors/TargetCollector');
-const TraceCollector = require('./collectors/TraceCollector');
-
-const DATA_COLLECTORS = [RequestCollector, APICallCollector, CookieCollector, TargetCollector, TraceCollector];
+// eslint-disable-next-line no-unused-vars
+const BaseCollector = require('./collectors/BaseCollector');
 
 const MAX_NUMBER_OF_CRAWLERS = 38;// by trial and error there seems to be network bandwidth issues with more than 38 browsers. 
 const MAX_NUMBER_OF_RETRIES = 2;
 
 /**
  * @param {string} urlString 
- * @param {object[]} dataCollectors
+ * @param {BaseCollector[]} dataCollectors
  * @param {number} idx 
  * @param {function} log 
  * @param {boolean} filterOutFirstParty
@@ -37,7 +31,7 @@ async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFi
 
     const data = await crawl(url, {
         log: prefixedLog,
-        collectors: dataCollectors.map(CollectorClass => (new CollectorClass())),
+        collectors: dataCollectors,
         rank: idx + 1,
         filterOutFirstParty,
         emulateMobile,
@@ -48,34 +42,12 @@ async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFi
 }
 
 /**
- * @param {string[]} names
- * @returns {object[]}
- */
-function collectorNamesToClasses(names) {
-    // default to all collectors
-    if (!names) {
-        return DATA_COLLECTORS;
-    }
-
-    return names.map(name => {
-        const match = DATA_COLLECTORS.find(CollectorClass => (new CollectorClass()).id() === name);
-
-        if (!match) {
-            throw new Error(`Unknown collector "${name}".`);
-        }
-
-        return match;
-    });
-}
-
-/**
- * @param {{urls: string[], dataCallback: function(URL, object): void, dataCollectors?: string[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string}} options
+ * @param {{urls: string[], dataCallback: function(URL, object): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string}} options
  */
 module.exports = options => {
     const deferred = createDeferred();
     const log = options.logFunction || (() => {});
     const failureCallback = options.failureCallback || (() => {});
-    const dataCollectors = collectorNamesToClasses(options.dataCollectors) || DATA_COLLECTORS;
 
     let numberOfCrawlers = options.numberOfCrawlers || Math.floor(cores * 0.8);
     numberOfCrawlers = Math.min(MAX_NUMBER_OF_CRAWLERS, numberOfCrawlers, options.urls.length);
@@ -90,7 +62,7 @@ module.exports = options => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(null, urlString, dataCollectors, idx, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost);
+        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, idx, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost);
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {

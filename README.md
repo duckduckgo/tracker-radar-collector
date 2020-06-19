@@ -48,7 +48,7 @@ crawlerConductor({
     urls: ['https://example.com', 'https://duck.com', …],
     dataCallback: (url, result) => {…},
     // optional ↓
-    dataCollectors: ['requests', 'cookies'],
+    dataCollectors: [new RequestCollector(), new CookieCollector()],
     failureCallback: (url, error) => {…},
     numberOfCrawlers: 12,// custom number of crawlers (there is a hard limit of 38 though)
     logFunction: (...msg) => {…},// custom logging function
@@ -65,11 +65,8 @@ const {RequestCollector} = require('tds-crawler');
 
 // crawler will throw an exception if crawl fails
 const data = await crawler(new URL('https://example.com'), {
-    // all settings below are optional
-    // but w/o the collectors output data will be very limited
-    collectors: [
-        new RequestCollector()
-    ],
+    // optional ↓
+    collectors: [new RequestCollector(), new CookieCollector(), …],
     log: (...msg) => {…},
     rank: 1,
     urlFilter: (url) => {…},// function that, for each request URL, decides if its data should be stored or not
