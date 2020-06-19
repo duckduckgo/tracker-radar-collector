@@ -1,5 +1,5 @@
 # DuckDuckGo Tracker Radar Collector
-🕸Modular, multithreaded, [puppeteer](https://github.com/GoogleChrome/puppeteer)-based crawler used to generate third party request data for the [Tracker Radar](https://github.com/duckduckgo/tracker-radar).
+🕸 Modular, multithreaded, [puppeteer](https://github.com/GoogleChrome/puppeteer)-based crawler used to generate third party request data for the [Tracker Radar](https://github.com/duckduckgo/tracker-radar).
 
 ## How do I use it?
 
@@ -23,7 +23,7 @@ Available options:
 - `-v, --verbose` - log additional information on screen (progress bar will not be shown when verbose logging is enabled)
 - `-l, --log-file <path>` - save log data to a file
 - `-f, --force-overwrite` - overwrite existing output files (by default entries with existing output files are skipped)
-- `-3, --only-3p` - don't save any first-party data (e.g. requests, API calls for same eTLD+1 as the main document)
+- `-3, --only-3p` - don't save any first-party data (e.g. requests, API calls for the same eTLD+1 as the main document)
 - `-m, --mobile` - emulate a mobile device when crawling
 - `-p, --proxy-config <host>` - optional SOCKS proxy host
 
@@ -53,11 +53,12 @@ crawlerConductor({
     numberOfCrawlers: 12,// custom number of crawlers (there is a hard limit of 38 though)
     logFunction: (...msg) => {…},// custom logging function
     filterOutFirstParty: true,// don't save any frist-party data (false by default)
-    emulateMobile: true// emulate a mobile device (false by default)
+    emulateMobile: true,// emulate a mobile device (false by default)
+    proxyHost: 'socks5://myproxy:8080'// SOCKS proxy host (none by default)
 });
 ```
 
-**OR**
+**OR** (if you prefer to run a single crawler)
 
 ```js
 const {RequestCollector} = require('tds-crawler');
@@ -72,16 +73,17 @@ const data = await crawler(new URL('https://example.com'), {
     log: (...msg) => {…},
     rank: 1,
     urlFilter: (url) => {…},// function that, for each request URL, decides if its data should be stored or not
-    emulateMobile: false
+    emulateMobile: false,
+    proxyHost: 'socks5://myproxy:8080'
 });
 ```
 
-ℹ️Hint: check out `crawl-cli.js` and `crawlerConductor.js` to see how `crawlerConductor` and `crawler` are used in the wild.
+ℹ️ Hint: check out `crawl-cli.js` and `crawlerConductor.js` to see how `crawlerConductor` and `crawler` are used in the wild.
 
 ## Output format
 
-Each successfully crawled website will create a separate file named after the website (when using CLI tool). Output data format is specified in `crawler.js` (see `CollectResult` type definition).
-Additionally, for each crawl metadata.json file will be created containing crawl configuration, system configuration and some high-level stats. 
+Each successfully crawled website will create a separate file named after the website (when using the CLI tool). Output data format is specified in `crawler.js` (see `CollectResult` type definition).
+Additionally, for each crawl `metadata.json` file will be created containing crawl configuration, system configuration and some high-level stats. 
 
 ## Data post-processing
 
@@ -91,7 +93,7 @@ Example post-processing script, that can be used as a template, can be found in 
 node ./post-processing/summary.js -i ./collected-data/ -o ./result.json
 ```
 
-ℹ️Hint: When dealing with huge amounts of data you may need to increase nodejs's memory limit e.g. `node --max_old_space_size=4096`.
+ℹ️ Hint: When dealing with huge amounts of data you may need to increase nodejs's memory limit e.g. `node --max_old_space_size=4096`.
 
 ## Creating new collectors
 
@@ -112,4 +114,3 @@ There are couple of build in collectors in the `collectors/` folder. `CookieColl
 Each new collector has to be added in two places to be discoverable:
 - `crawlerConductor.js` - so that `crawlerConductor` knows about it (and it can be used in the CLI tool)
 - `main.js` - so that the new collector can be imported by other projects
- 
