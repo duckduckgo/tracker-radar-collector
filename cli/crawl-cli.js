@@ -168,6 +168,8 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
         fatalError,
         numberOfCrawlers,
         filterOutFirstParty,
+        emulateMobile,
+        proxyHost,
         dataCollectors,
         successes,
         failures,

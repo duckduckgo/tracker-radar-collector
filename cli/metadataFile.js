@@ -16,9 +16,9 @@ function metadataFileExists(outputPath) {
 
 /**
  * @param {string} outputPath
- * @param {{startTime: Date, endTime: Date, urls: number, successes: number, failures: number, skipped: number, numberOfCrawlers: number, filterOutFirstParty: boolean, dataCollectors: string[], fatalError: Error}} data
+ * @param {{startTime: Date, endTime: Date, urls: number, successes: number, failures: number, skipped: number, numberOfCrawlers: number, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, dataCollectors: string[], fatalError: Error}} data
  */
-function createMetadataFile(outputPath, {startTime, endTime, urls, successes, failures, skipped, numberOfCrawlers, filterOutFirstParty, dataCollectors, fatalError}) {
+function createMetadataFile(outputPath, {startTime, endTime, urls, successes, failures, skipped, numberOfCrawlers, filterOutFirstParty, dataCollectors, fatalError, emulateMobile, proxyHost}) {
     const filePath = path.join(outputPath, METADATA_FILE_NAME);
 
     fs.writeFileSync(filePath, JSON.stringify({
@@ -34,7 +34,9 @@ function createMetadataFile(outputPath, {startTime, endTime, urls, successes, fa
         config: {
             numberOfCrawlers: numberOfCrawlers || undefined,
             dataCollectors: dataCollectors || undefined,
-            filterOutFirstParty: filterOutFirstParty || undefined
+            filterOutFirstParty: filterOutFirstParty || undefined,
+            proxyHost: proxyHost || undefined,
+            emulateMobile: emulateMobile || undefined
         },
         environment: {
             projectVersion: package.version,
