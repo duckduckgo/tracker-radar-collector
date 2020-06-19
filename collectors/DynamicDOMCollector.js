@@ -28,13 +28,10 @@ class DynamicDOMCollector extends BaseCollector {
             await cdpClient.send('DOM.enable');
             await cdpClient.send('DOM.setNodeStackTracesEnabled', {enable: true});
 
-            // does nothing really
-            cdpClient.on('DOM.childNodeInserted', data => this._log('DOM.childNodeInserted'));
-            cdpClient.on('DOM.childNodeRemoved', data => this._log('DOM.childNodeRemoved'));
-            cdpClient.on('DOM.setChildNodes', data => this._log('DOM.setChildNodes'));
-            cdpClient.on('DOM.childNodeCountUpdated', data => this._log('DOM.childNodeCountUpdated'));
-            cdpClient.on('DOM.documentUpdated', data => this._log('DOM.documentUpdated'));
-            cdpClient.on('DOM.distributedNodesUpdated', data => this._log('DOM.distributedNodesUpdated'));
+            // alternative solution (might be more performant)
+            // await cdpClient.send('DOM.getDocument', {depth: -1});
+            // cdpClient.on('DOM.childNodeInserted', data => this._log('DOM.childNodeInserted'));
+            // cdpClient.on('DOM.documentUpdated', async data => {this._log('DOM.documentUpdated'); await cdpClient.send('DOM.getDocument', {depth: -1})});
         }
     }
 
@@ -58,7 +55,7 @@ class DynamicDOMCollector extends BaseCollector {
 
     /**
      * @param {DOMNode} node 
-     * @returns {Promise<string|null>} 
+     * @returns {Promise<{url: string, nodeName: string}|null>} 
      */
     async getNodeCreatorUrl(node) {
         let creation;
@@ -80,7 +77,7 @@ class DynamicDOMCollector extends BaseCollector {
                 const frame = creation.callFrames.find(f => f.url.length > 0);//reverse()
                 const script = frame ? frame.url : '';
                 
-                return script;
+                return {url: script, nodeName: node.localName};
             }
         }
 
@@ -94,19 +91,26 @@ class DynamicDOMCollector extends BaseCollector {
         // @ts-ignore
         const result = await this._cdpClient.send('DOM.getDocument', {depth: -1});
 
-        const urls = new Set();
+        const urls = new Map();
 
         // eslint-disable-next-line arrow-parens
         await this.walkDOM(result.root, async (/** @type {DOMNode} **/ node) => {
-            const url = await this.getNodeCreatorUrl(node);
+            const creator = await this.getNodeCreatorUrl(node);
 
-            if (url) {
-                urls.add(url);
+            if (creator) {
+                const item = urls.get(creator.url) || {url: creator.url, nodeNames: new Set()};
+
+                item.nodeNames.add(creator.nodeName);
+
+                urls.set(creator.url, item);
             }
 
         });
 
-        return Array.from(urls);
+        return Array.from(urls.values()).map(item => ({
+            url: item.url,
+            nodeNames: Array.from(item.nodeNames)
+        }));
     }
 }
 
@@ -117,4 +121,5 @@ module.exports = DynamicDOMCollector;
  * @property {number} nodeId
  * @property {number} nodeType
  * @property {DOMNode[]} children
+ * @property {string} localName
  */
