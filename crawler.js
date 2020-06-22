@@ -36,7 +36,10 @@ async function openBrowser(proxyHost) {
         args.devtools = true;
     }
     if (proxyHost) {
-        args.args = [`--proxy-server=${proxyHost}`];
+        args.args = [
+            `--proxy-server=${proxyHost}`,
+            `--host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE ${proxyHost.split(":")[0].replace("socks5://", "")}"`
+        ];
     }
 
     // for debugging: use different version of Chromium/Chrome
@@ -48,7 +51,7 @@ async function openBrowser(proxyHost) {
 }
 
 /**
- * @param {puppeteer.Browser} browser 
+ * @param {puppeteer.Browser} browser
  */
 async function closeBrowser(browser) {
     if (!VISUAL_DEBUG) {
@@ -57,10 +60,10 @@ async function closeBrowser(browser) {
 }
 
 /**
- * @param {puppeteer.Browser} browser 
- * @param {URL} url 
+ * @param {puppeteer.Browser} browser
+ * @param {URL} url
  * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, rank?: number, urlFilter: function(string, string):boolean, emulateMobile: boolean}} data
- * 
+ *
  * @returns {Promise<CollectResult>}
  */
 async function getSiteData(browser, url, {
@@ -211,8 +214,8 @@ async function getSiteData(browser, url, {
 }
 
 /**
- * @param {string} documentUrl 
- * @param {string} requestUrl 
+ * @param {string} documentUrl
+ * @param {string} requestUrl
  * @returns {boolean}
  */
 function isThirdPartyRequest(documentUrl, requestUrl) {
@@ -229,7 +232,7 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 module.exports = async (url, options) => {
     const browser = await openBrowser(options.proxyHost);
     let data = null;
-    
+
     try {
         data = await wait(getSiteData(browser, url, {
             collectors: options.collectors || [],
