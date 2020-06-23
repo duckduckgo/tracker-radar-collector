@@ -23,7 +23,7 @@ Available options:
 - `-v, --verbose` - log additional information on screen (progress bar will not be shown when verbose logging is enabled)
 - `-l, --log-file <path>` - save log data to a file
 - `-f, --force-overwrite` - overwrite existing output files (by default entries with existing output files are skipped)
-- `-3, --only-3p` - don't save any first-party data (e.g. requests, API calls for same eTLD-1 as the main document)
+- `-3, --only-3p` - don't save any first-party data (e.g. requests, API calls for same eTLD+1 as the main document)
 - `-m, --mobile` - emulate a mobile device when crawling
 - `-p, --proxy-config <host>` - optional SOCKS proxy host
 
@@ -52,7 +52,8 @@ crawlerConductor({
     failureCallback: (url, error) => {…},
     numberOfCrawlers: 12,// custom number of crawlers (there is a hard limit of 38 though)
     logFunction: (...msg) => {…},// custom logging function
-    filterOutFirstParty: true// don't save any frist-party data (false by default)
+    filterOutFirstParty: true,// don't save any frist-party data (false by default)
+    emulateMobile: true// emulate a mobile device (false by default)
 });
 ```
 
@@ -70,7 +71,8 @@ const data = await crawler(new URL('https://example.com'), {
     ],
     log: (...msg) => {…},
     rank: 1,
-    filterOutFirstParty: true
+    urlFilter: (url) => {…},// function that, for each request URL, decides if its data should be stored or not
+    emulateMobile: false
 });
 ```
 
