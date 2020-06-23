@@ -27,15 +27,23 @@ const MOBILE_VIEWPORT = {
 const VISUAL_DEBUG = false;
 
 /**
+ * @param {function(...any):void} log
  * @param {string} proxyHost
  */
-async function openBrowser(proxyHost) {
+async function openBrowser(log, proxyHost) {
     let args = {};
     if (VISUAL_DEBUG) {
         args.headless = false;
         args.devtools = true;
     }
     if (proxyHost) {
+        let url;
+        try {
+            url = new URL(proxyHost);
+        } catch(e) {
+            log('Invalid proxy URL');
+        }
+
         args.args = [
             `--proxy-server=${proxyHost}`,
             `--host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE ${proxyHost.split(":")[0].replace("socks5://", "")}"`
@@ -230,7 +238,7 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
-    const browser = await openBrowser(options.proxyHost);
+    const browser = await openBrowser(options.log, options.proxyHost);
     let data = null;
 
     try {
