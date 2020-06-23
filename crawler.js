@@ -46,7 +46,7 @@ async function openBrowser(log, proxyHost) {
 
         args.args = [
             `--proxy-server=${proxyHost}`,
-            `--host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE ${proxyHost.split(":")[0].replace("socks5://", "")}"`
+            `--host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE ${url.hostname}"`
         ];
     }
 
