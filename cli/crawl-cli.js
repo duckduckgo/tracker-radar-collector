@@ -6,14 +6,16 @@ const program = require('commander');
 const ProgressBar = require('progress');
 const URL = require('url').URL;
 const crypto = require('crypto');
-
+const {getCollectorIds, createCollector} = require('../helpers/collectorsList');
 const {metadataFileExists, createMetadataFile} = require('./metadataFile');
+// eslint-disable-next-line no-unused-vars
+const BaseCollector = require('../collectors/BaseCollector');
 
 program
     .option('-o, --output <path>', '(required) output folder')
     .option('-u, --url <url>', 'single URL')
     .option('-i, --input-list <path>', 'path to list of URLs')
-    .option('-d, --data-collectors <list>', 'comma separated list of data collectors that should be used (all by default)')
+    .option('-d, --data-collectors <list>', `comma separated list of data collectors: ${getCollectorIds().join(', ')} (all by default)`)
     .option('-l, --log-file <path>', 'save log data to a file')
     .option('-v, --verbose', 'print log data to the screen')
     .option('-c, --crawlers <number>', 'overwrite the default number of concurent crawlers')
@@ -29,7 +31,7 @@ program
  * @param {boolean} verbose
  * @param {string} logPath
  * @param {number} numberOfCrawlers
- * @param {string[]} dataCollectors
+ * @param {BaseCollector[]} dataCollectors
  * @param {boolean} forceOverwrite
  * @param {boolean} filterOutFirstParty
  * @param {boolean} emulateMobile
@@ -168,7 +170,9 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
         fatalError,
         numberOfCrawlers,
         filterOutFirstParty,
-        dataCollectors,
+        emulateMobile,
+        proxyHost,
+        dataCollectors: dataCollectors.map(c => c.id()),
         successes,
         failures,
         urls: inputUrls.length,
@@ -180,11 +184,28 @@ const verbose = Boolean(program.verbose);
 const forceOverwrite = Boolean(program.forceOverwrite);
 const filterOutFirstParty = Boolean(program.only3p);
 const emulateMobile = Boolean(program.mobile);
+/**
+ * @type {BaseCollector[]}
+ */
 let dataCollectors = null;
 let urls = null;
 
 if (typeof program.dataCollectors === 'string') {
-    dataCollectors = program.dataCollectors.split(',').map(n => n.trim());
+    const dataCollectorsIds = program.dataCollectors.split(',').map(n => n.trim()).filter(n => n.length > 0);
+
+    dataCollectors = [];
+
+    dataCollectorsIds.forEach(id => {
+        if (!getCollectorIds().includes(id)) {
+            // eslint-disable-next-line no-console
+            console.log(chalk.red(`Unknown collector "${id}".`), `Valid collector names are: ${getCollectorIds().join(', ')}.`);
+            process.exit(1);
+        }
+
+        dataCollectors.push(createCollector(id));
+    });
+} else {
+    dataCollectors = getCollectorIds().map(id => createCollector(id));
 }
 
 if (program.url) {
