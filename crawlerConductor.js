@@ -28,7 +28,7 @@ async function getBrowser(proxyHost) {
 
     if (availableBrowser) {
         availableBrowser.contexts++;
-        console.log('♻️ Reusing browser', availableBrowser.used, 'time. (context #', availableBrowser.contexts, ')');
+        // console.log('♻️ Reusing browser', availableBrowser.used, 'time. (context #', availableBrowser.contexts, ')');
         return availableBrowser.browser;
     }
 
@@ -48,7 +48,7 @@ async function getBrowser(proxyHost) {
         contexts: 1
     });
 
-    console.log('🍼 Creating new browser', allBrowsers.size);
+    // console.log('🍼 Creating new browser', allBrowsers.size);
 
     return browser;
 }
@@ -63,9 +63,9 @@ async function returnBrowser(browser) {
 
     if (entry.used >= BROWSER_MAX_REUSE && entry.contexts === 0) {
         await browser.close();
-        console.log('💀 Browser killed. Used', entry.used, 'times.');
+        // console.log('💀 Browser killed. Used', entry.used, 'times.');
         allBrowsers.delete(entry);
-        console.log('All browsers:', allBrowsers.size);
+        // console.log('All browsers:', allBrowsers.size);
     }
 }
 
