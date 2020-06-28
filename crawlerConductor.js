@@ -1,5 +1,6 @@
 const os = require('os');
 const cores = os.cpus().length;
+const puppeteer = require('puppeteer');
 const chalk = require('chalk').default;
 const async = require('async');
 const crawl = require('./crawler');
@@ -11,6 +12,67 @@ const BaseCollector = require('./collectors/BaseCollector');
 
 const MAX_NUMBER_OF_CRAWLERS = 38;// by trial and error there seems to be network bandwidth issues with more than 38 browsers. 
 const MAX_NUMBER_OF_RETRIES = 2;
+const BROWSER_MAX_REUSE = 10;
+const BROWSER_MAX_CONTEXTS = 2;
+
+/**
+ * @type {Set<{browser: import('puppeteer').Browser, used: number, contexts: number}>}
+ */
+const allBrowsers = new Set();
+
+/**
+ * @param {string} proxyHost
+ */
+async function getBrowser(proxyHost) {
+    const availableBrowser = Array.from(allBrowsers.values()).find(e => e.used < BROWSER_MAX_REUSE && e.contexts < BROWSER_MAX_CONTEXTS);
+
+    if (availableBrowser) {
+        availableBrowser.contexts++;
+        console.log('♻️ Reusing browser', availableBrowser.used, 'time. (context #', availableBrowser.contexts, ')');
+        return availableBrowser.browser;
+    }
+
+    const args = {};
+    if (proxyHost) {
+        args.args = [`--proxy-server=${proxyHost}`];
+    }
+
+    // for debugging: use different version of Chromium/Chrome
+    // executablePath: "/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
+
+    const browser = await puppeteer.launch(args);
+
+    allBrowsers.add({
+        browser,
+        used: 0,
+        contexts: 1
+    });
+
+    console.log('🍼 Creating new browser', allBrowsers.size);
+
+    return browser;
+}
+
+/**
+ * @param {puppeteer.Browser} browser 
+ */
+async function returnBrowser(browser) {
+    const entry = Array.from(allBrowsers.values()).find(e => e.browser === browser);
+    entry.used++;
+    entry.contexts--;
+
+    if (entry.used >= BROWSER_MAX_REUSE && entry.contexts === 0) {
+        await browser.close();
+        console.log('💀 Browser killed. Used', entry.used, 'times.');
+        allBrowsers.delete(entry);
+        console.log('All browsers:', allBrowsers.size);
+    }
+}
+
+function closeAllBrowsers() {
+    return Promise.all(Array.from(allBrowsers.values())
+        .map(({browser}) => browser.close()));
+}
 
 /**
  * @param {string} urlString 
@@ -29,7 +91,10 @@ async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFi
      */
     const prefixedLog = (...msg) => log(chalk.gray(`${url.hostname}:`), ...msg);
 
+    const browser = await getBrowser(proxyHost);
+
     const data = await crawl(url, {
+        browser,
         log: prefixedLog,
         collectors: dataCollectors,
         rank: idx + 1,
@@ -37,6 +102,8 @@ async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFi
         emulateMobile,
         proxyHost
     });
+
+    await returnBrowser(browser);
 
     dataCallback(url, data);
 }
@@ -81,6 +148,8 @@ module.exports = options => {
             deferred.resolve();
         }
     });
+
+    closeAllBrowsers();
 
     return deferred.promise;
 };

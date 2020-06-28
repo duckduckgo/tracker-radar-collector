@@ -232,11 +232,11 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile: boolean, proxyHost: string}} options
+ * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile: boolean, proxyHost: string, browser?: puppeteer.Browser}} options
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
-    const browser = await openBrowser(options.log, options.proxyHost);
+    const browser = options.browser || await openBrowser(options.log, options.proxyHost);
     let data = null;
 
     try {
