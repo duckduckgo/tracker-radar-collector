@@ -26,11 +26,27 @@ const MOBILE_VIEWPORT = {
 // for debugging: will lunch in window mode instad of headless, open devtools and don't close windows after process finishes
 const VISUAL_DEBUG = false;
 
+const BROWSER_MAX_REUSE = 10;
+const BROWSER_MAX_CONTEXTS = 1;
+
+/**
+ * @type {Set<{browser: import('puppeteer').Browser, used: number, contexts: number}>}
+ */
+const allBrowsers = new Set();
+
 /**
  * @param {function(...any):void} log
  * @param {string} proxyHost
  */
 async function openBrowser(log, proxyHost) {
+    const availableBrowser = Array.from(allBrowsers.values()).find(e => e.used < BROWSER_MAX_REUSE && e.contexts < BROWSER_MAX_CONTEXTS);
+
+    if (availableBrowser) {
+        availableBrowser.contexts++;
+        console.log('♻️ Reusing browser', availableBrowser.used, 'time. (context #', availableBrowser.contexts, ')');
+        return availableBrowser.browser;
+    }
+
     let args = {};
     if (VISUAL_DEBUG) {
         args.headless = false;
@@ -55,6 +71,14 @@ async function openBrowser(log, proxyHost) {
 
     const browser = await puppeteer.launch(args);
 
+    allBrowsers.add({
+        browser,
+        used: 0,
+        contexts: 1
+    });
+
+    console.log('🍼 Creating new browser', allBrowsers.size);
+
     return browser;
 }
 
@@ -63,7 +87,16 @@ async function openBrowser(log, proxyHost) {
  */
 async function closeBrowser(browser) {
     if (!VISUAL_DEBUG) {
-        await browser.close();
+        const entry = Array.from(allBrowsers.values()).find(e => e.browser === browser);
+        entry.used++;
+        entry.contexts--;
+
+        if (entry.used >= BROWSER_MAX_REUSE && entry.contexts === 0) {
+            await browser.close();
+            console.log('💀 Browser killed. Used', entry.used, 'times.');
+            allBrowsers.delete(entry);
+            console.log('All browsers:', allBrowsers.size);
+        }
     }
 }
 
