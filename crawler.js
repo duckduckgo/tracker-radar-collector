@@ -251,7 +251,10 @@ module.exports = async (url, options) => {
         options.log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));
         throw e;
     } finally {
-        await closeBrowser(browser);
+        // only close the browser if it was created here and not passed as a param
+        if (!options.browser) {
+            await closeBrowser(browser);
+        }
     }
 
     return data;
