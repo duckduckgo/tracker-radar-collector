@@ -125,6 +125,8 @@ module.exports = options => {
     }
     log(chalk.cyan(`Number of crawlers: ${numberOfCrawlers}\n`));
 
+    // console.time('Crawling');
+
     async.eachOfLimit(options.urls, numberOfCrawlers, (urlString, idx, callback) => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
@@ -147,9 +149,10 @@ module.exports = options => {
         } else {
             deferred.resolve();
         }
-    });
 
-    closeAllBrowsers();
+        closeAllBrowsers();
+        // console.timeEnd('Crawling');
+    });
 
     return deferred.promise;
 };
