@@ -23,6 +23,7 @@ program
     .option('-3, --only-3p', 'don\'t save any first-party data')
     .option('-m, --mobile', 'emulate a mobile device')
     .option('-p, --proxy-config <host>', 'use an optional proxy configuration')
+    .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
     .parse(process.argv);
 
 /**
@@ -36,8 +37,9 @@ program
  * @param {boolean} filterOutFirstParty
  * @param {boolean} emulateMobile
  * @param {string} proxyHost
+ * @param {string} regionCode
  */
-async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost) {
+async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost, regionCode) {
     const logFile = logPath ? fs.createWriteStream(logPath, {flags: 'w'}) : null;
 
     /**
@@ -172,6 +174,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
         filterOutFirstParty,
         emulateMobile,
         proxyHost,
+        regionCode,
         dataCollectors: dataCollectors.map(c => c.id()),
         successes,
         failures,
@@ -235,5 +238,5 @@ if (!urls || !program.output) {
         fs.mkdirSync(program.output);
     }
 
-    run(urls, program.output, verbose, program.logFile, program.crawlers || null, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, program.proxyConfig);
+    run(urls, program.output, verbose, program.logFile, program.crawlers || null, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, program.proxyConfig, program.regionCode);
 }
