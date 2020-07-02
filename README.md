@@ -26,6 +26,7 @@ Available options:
 - `-3, --only-3p` - don't save any first-party data (e.g. requests, API calls for the same eTLD+1 as the main document)
 - `-m, --mobile` - emulate a mobile device when crawling
 - `-p, --proxy-config <host>` - optional SOCKS proxy host
+- `-r, --region-code <region>` - optional 2 letter region code. For metadata only
 
 ### Use it as a module
 
