@@ -23,7 +23,7 @@ program
     .option('-3, --only-3p', 'don\'t save any first-party data')
     .option('-m, --mobile', 'emulate a mobile device')
     .option('-p, --proxy-config <host>', 'use an optional proxy configuration')
-    .option('-r, --region-code', 'optional 2 letter region code. Used for metadata only.')
+    .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
     .parse(process.argv);
 
 /**
