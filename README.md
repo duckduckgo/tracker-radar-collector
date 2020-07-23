@@ -36,9 +36,12 @@ Available options:
 
 ```js
 // you can either import a "crawlerConductor" that runs multiple crawlers for you
-const {crawlerConductor} = require('tds-crawler');
+const {crawlerConductor} = require('tracker-radar-collector');
 // or a single crawler
-const {crawler} = require('tds-crawler');
+const {crawler} = require('tracker-radar-collector');
+
+// you will also need some data collectors (/collectors/ folder contains all build-in collectors)
+const {RequestCollector, CookieCollector, …} = require('tracker-radar-collector');
 ```
 
 3. Use it:
@@ -62,8 +65,6 @@ crawlerConductor({
 **OR** (if you prefer to run a single crawler)
 
 ```js
-const {RequestCollector} = require('tds-crawler');
-
 // crawler will throw an exception if crawl fails
 const data = await crawler(new URL('https://example.com'), {
     // optional ↓
