@@ -117,7 +117,6 @@ class RequestCollector extends BaseCollector {
 
         // for CORS requests initiator is set incorrectly to 'parser', thankfully we can get proper initiator
         // from the corresponding OPTIONS request
-        // @ts-ignore
         if (method !== 'OPTIONS' && initiator.type === 'parser') {
             for (let i = this._requests.length - 1; i >= 0; i--) {
                 const oldRequest = this._requests[i];
@@ -168,6 +167,8 @@ class RequestCollector extends BaseCollector {
         if (this._unmatched.has(id)) {
             const info = this._unmatched.get(id);
             this._unmatched.delete(id);
+
+            this._log('Additional info matched for', url);
 
             Object.keys(info).forEach(key => {
                 // eslint-disable-next-line no-prototype-builtins
@@ -221,7 +222,6 @@ class RequestCollector extends BaseCollector {
         // prioritize raw headers received via handleResponseExtraInfo over response.headers received here
         // response.headers might be filtered (e.g. missing set-cookie header)
         if (!request.responseHeaders) {
-            // @ts-ignore
             request.responseHeaders = normalizeHeaders(response.headers);
         }
     }
@@ -249,7 +249,6 @@ class RequestCollector extends BaseCollector {
 
         // always override headers that may already exist here
         // handleResponseExtraInfo provides most details
-        // @ts-ignore
         request.responseHeaders = normalizeHeaders(headers);
     }
 
@@ -341,7 +340,6 @@ class RequestCollector extends BaseCollector {
                 failureReason: request.failureReason,
                 redirectedTo: request.redirectedTo,
                 redirectedFrom: request.redirectedFrom,
-                // @ts-ignore
                 initiators: Array.from(getAllInitiators(request.initiator)),
                 time: (request.startTime && request.endTime) ? (request.endTime - request.startTime) : undefined
             }));
