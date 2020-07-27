@@ -38,6 +38,10 @@ class RequestCollector extends BaseCollector {
          * @type {InternalRequestData[]}
          */
         this._requests = [];
+        /**
+         * @type {Map<string, InternalRequestData>}
+         */
+        this._unmatched = new Map();
         this._log = log;
     }
 
@@ -158,6 +162,21 @@ class RequestCollector extends BaseCollector {
             }
         }
 
+        // even thought this is 'requestWillBeSent' event some other events (e.g. 'responseReceivedExtraInfo')
+        // can arrive before it. We may already have some info about this request that we merge here.
+        if (this._unmatched.has(id)) {
+            const info = this._unmatched.get(id);
+            this._unmatched.delete(id);
+
+            Object.keys(info).forEach(key => {
+                // eslint-disable-next-line no-prototype-builtins
+                if (!requestData.hasOwnProperty(key)) {
+                    // @ts-ignore
+                    requestData[key] = info[key];
+                }
+            });
+        }
+
         this._requests.push(requestData);
     }
 
@@ -182,19 +201,24 @@ class RequestCollector extends BaseCollector {
             type,
             response
         } = data;
-        const request = this.findLastRequestWithId(id);
+        let request = this.findLastRequestWithId(id);
 
         if (!request) {
             this._log('⚠️ unmatched response', id, response.url);
-            return;
+            request = {
+                id,
+                url: response.url,
+                type
+            };
+            this._unmatched.set(id, request);
         }
 
         request.type = type || request.type;
         request.status = response.status;
         request.remoteIPAddress = response.remoteIPAddress;
 
-        // prioritize raw headers received via handleResponseExtraInfo as response.headers available here
-        // might be filtered (e.g. missing set-cookie header)
+        // prioritize raw headers received via handleResponseExtraInfo over response.headers received here
+        // response.headers might be filtered (e.g. missing set-cookie header)
         if (!request.responseHeaders) {
             request.responseHeaders = normalizeHeaders(response.headers);
         }
@@ -209,13 +233,20 @@ class RequestCollector extends BaseCollector {
             requestId: id,
             headers
         } = data;
-        const request = this.findLastRequestWithId(id);
+        let request = this.findLastRequestWithId(id);
 
         if (!request) {
-            this._log('⚠️ unmatched extra info', id);
-            return;
+            // this happens often so we don't issue a warning here
+            request = {
+                id,
+                url: '<unknown>',
+                type: 'Other'
+            };
+            this._unmatched.set(id, request);
         }
 
+        // always override headers that may already exist here
+        // handleResponseExtraInfo provides most details
         request.responseHeaders = normalizeHeaders(headers);
     }
 
@@ -224,11 +255,16 @@ class RequestCollector extends BaseCollector {
      * @param {import('puppeteer').CDPSession} cdp
      */
     async handleFailedRequest(data, cdp) {
-        const request = this.findLastRequestWithId(data.requestId);
+        let request = this.findLastRequestWithId(data.requestId);
 
         if (!request) {
             this._log('⚠️ unmatched failed response', data);
-            return;
+            request = {
+                id: data.requestId,
+                url: '<unknown>',
+                type: data.type
+            };
+            this._unmatched.set(data.requestId, request);
         }
 
         request.endTime = data.timestamp;
@@ -244,11 +280,16 @@ class RequestCollector extends BaseCollector {
      * @param {import('puppeteer').CDPSession} cdp
      */
     async handleFinishedRequest(data, cdp) {
-        const request = this.findLastRequestWithId(data.requestId);
+        let request = this.findLastRequestWithId(data.requestId);
 
         if (!request) {
             this._log('⚠️ unmatched finished response', data);
-            return;
+            request = {
+                id: data.requestId,
+                url: '<unknown>',
+                type: 'Other'
+            };
+            this._unmatched.set(data.requestId, request);
         }
 
         request.endTime = data.timestamp;
@@ -264,6 +305,10 @@ class RequestCollector extends BaseCollector {
      * @returns {RequestData[]}
      */
     getData({urlFilter}) {
+        if (this._unmatched.size > 0) {
+            this._log(`⚠️ failed to match ${this._unmatched.size} events`);
+        }
+
         return this._requests
             .filter(request => {
                 let url;
