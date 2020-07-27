@@ -168,8 +168,6 @@ class RequestCollector extends BaseCollector {
             const info = this._unmatched.get(id);
             this._unmatched.delete(id);
 
-            this._log('Additional info matched for', url);
-
             Object.keys(info).forEach(key => {
                 // eslint-disable-next-line no-prototype-builtins
                 if (!requestData.hasOwnProperty(key)) {
