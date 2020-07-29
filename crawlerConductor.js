@@ -31,7 +31,8 @@ async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFi
 
     const data = await crawl(url, {
         log: prefixedLog,
-        collectors: dataCollectors,
+        // @ts-ignore
+        collectors: dataCollectors.map(collector => new collector.constructor()),
         rank: idx + 1,
         filterOutFirstParty,
         emulateMobile,
