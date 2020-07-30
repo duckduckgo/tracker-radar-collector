@@ -107,7 +107,7 @@ async function main() {
     assert(fingerprintjsThirdPartyRequsts.length > 2, `fingerprintjs.com loads multiple third parties`);
 
     const apis = fingerprintjs.data.apis.callStats['https://fingerprintjs.com/dist/demo.js'];
-    assert(Object.keys(apis).length > 15, 'fingerprintjs.com demo script touches over 15 APIs');
+    assert(Object.keys(apis).length > 115, 'fingerprintjs.com demo script touches over 15 APIs');
     assert(apis['HTMLCanvasElement.prototype.toDataURL'] > 0, 'fingerprintjs.com demo script touches canvas API');
 
     assert(fingerprintjs.data.targets.length > 0, 'fingerprintjs.com does have multiple targets - main frame + blobs');
