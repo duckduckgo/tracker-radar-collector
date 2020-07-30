@@ -115,9 +115,4 @@ async function main() {
     assert(fingerprintjs.data.cookies.length > 2, 'fingerprintjs.com does set multiple cookies by default');
 }
 
-main()
-    .catch(e => {
-        // eslint-disable-next-line no-console
-        console.error(e);
-        process.exit(1);
-    });
+main();
