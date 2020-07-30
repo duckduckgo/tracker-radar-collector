@@ -115,8 +115,7 @@ async function main() {
     assert(fingerprintjs.data.cookies.length > 2, 'fingerprintjs.com does set multiple cookies by default');
 }
 
-try {
-    main();
-} catch (e) {
-    throw new Error(`crawlerConductor.test.js failed: ${e.message}`);
-}
+main()
+    .catch(e => {
+        throw new Error(`crawlerConductor.test.js failed: ${e.message}`);
+    });
