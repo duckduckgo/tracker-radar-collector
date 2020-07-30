@@ -29,12 +29,12 @@ for (const testPath of tests) {
     console.log(`Running "${testPath}"…`);
 
     try {
-        console.time(testPath);
+        console.time(`⏰ ${testPath}`);
         execSync(`node ${testPath}`);
     } catch (e) {
         // console.error(out);
         process.exit(1);
     } finally {
-        console.timeEnd(testPath);
+        console.timeEnd(`⏰ ${testPath}`);
     }
 }
