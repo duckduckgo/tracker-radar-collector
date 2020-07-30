@@ -78,8 +78,10 @@ async function main() {
     assert(duckCom.data.requests[0].redirectedTo === 'https://duckduckgo.com/', 'first request should redirect to "duckduckgo.com"');
 
     const firstParty = ['improving.duckduckgo.com', 'duckduckgo.com', 'duck.com'];
-    const thirdPartyRequsts = duckCom.data.requests.filter(r => !firstParty.includes(new URL(r.url).hostname));
-    assert(thirdPartyRequsts.length === 0, `there should be no third party requests on duckduckgo.com (found: ${thirdPartyRequsts.map(r => r.url).join(',')}).`);
+    // eslint-disable-next-line arrow-parens
+    const thirdPartyRequsts = duckCom.data.requests.filter((/** @type {{url:string}} **/ r) => !firstParty.includes(new URL(r.url).hostname));
+    // eslint-disable-next-line arrow-parens
+    assert(thirdPartyRequsts.length === 0, `there should be no third party requests on duckduckgo.com (found: ${thirdPartyRequsts.map((/** @type {{url:string}} **/ r) => r.url).join(',')}).`);
 
     assert(duckCom.data.cookies.length === 0, 'duck.com does not set any cookies by default');
 
@@ -100,7 +102,8 @@ async function main() {
     commonTests(fingerprintjs, 'fingerprintjs.com');
 
     assert(fingerprintjs.data.requests.length > 10, 'fingerprintjs.com does load multiple subresources');
-    const fingerprintjsThirdPartyRequsts = fingerprintjs.data.requests.filter(r => !new URL(r.url).hostname.endsWith('fingerprintjs.com'));
+    // eslint-disable-next-line arrow-parens
+    const fingerprintjsThirdPartyRequsts = fingerprintjs.data.requests.filter((/** @type {{url:string}} **/ r) => !new URL(r.url).hostname.endsWith('fingerprintjs.com'));
     assert(fingerprintjsThirdPartyRequsts.length > 2, `fingerprintjs.com loads multiple third parties`);
 
     const apis = fingerprintjs.data.apis.callStats['https://fingerprintjs.com/dist/demo.js'];
