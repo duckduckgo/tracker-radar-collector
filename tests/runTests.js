@@ -32,7 +32,7 @@ for (const testPath of tests) {
         console.time(`⏰ ${testPath}`);
         execSync(`node ${testPath}`);
     } catch (e) {
-        // console.error(out);
+        console.log('🛑 test failed.');
         process.exit(1);
     } finally {
         console.timeEnd(`⏰ ${testPath}`);
