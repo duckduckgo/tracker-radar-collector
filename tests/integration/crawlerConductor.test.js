@@ -1,5 +1,5 @@
 const runCrawlers = require('../../crawlerConductor');
-const {assert} = require('console');
+const assert = require('assert');
 const {createCollector} = require('../../helpers/collectorsList');
 
 const testURLs = [
