@@ -26,15 +26,16 @@ function fromDir(startPath) {
 const tests = fromDir('./');
 
 for (const testPath of tests) {
-    console.log(`Running "${testPath}"…`);
+    console.log(`\n Running "${testPath}"…`);
 
     try {
-        console.time(`⏰ ${testPath}`);
+        console.time(`⏱ "${testPath}"`);
         execSync(`node --unhandled-rejections=strict ${testPath}`);
+        console.log(`✅ "${testPath}" passed`);
     } catch (e) {
-        console.log('🛑 test failed.');
+        console.log(`🛑 "${testPath}" failed`);
         process.exit(1);
     } finally {
-        console.timeEnd(`⏰ ${testPath}`);
+        console.timeEnd(`⏱ "${testPath}"`);
     }
 }
