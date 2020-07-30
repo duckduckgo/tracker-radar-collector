@@ -15,4 +15,8 @@ const p3 = wait(Promise.reject(new Error('rejected')), 1000)
     .then(() => assert(false, 'Promise unexpectedly resovled'))
     .catch(e => assert(e.message === 'rejected', `Unexpected error (${e})`));
 
-Promise.all([p, p2, p3]);
+Promise.all([p, p2, p3]).catch(e => {
+    // eslint-disable-next-line no-console
+    console.error(e);
+    process.exit(1);
+});

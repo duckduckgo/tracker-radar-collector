@@ -29,4 +29,8 @@ two.promise.then(() => {
 two.reject(original);
 two.resolve(); // should be a noop
 
-Promise.all([one, two]);
+Promise.all([one, two]).catch(e => {
+    // eslint-disable-next-line no-console
+    console.error(e);
+    process.exit(1);
+});
