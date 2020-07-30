@@ -30,7 +30,7 @@ for (const testPath of tests) {
 
     try {
         console.time(`⏰ ${testPath}`);
-        execSync(`node ${testPath}`);
+        execSync(`node --unhandled-rejections=strict ${testPath}`);
     } catch (e) {
         console.log('🛑 test failed.');
         process.exit(1);
