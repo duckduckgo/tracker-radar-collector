@@ -117,5 +117,7 @@ async function main() {
 
 main()
     .catch(e => {
-        throw new Error(`crawlerConductor.test.js failed: ${e.message}`);
+        // eslint-disable-next-line no-console
+        console.error(e);
+        process.exit(1);
     });
