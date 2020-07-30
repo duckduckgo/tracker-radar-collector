@@ -8,7 +8,7 @@
   "scripts": {
     "crawl": "node ./cli/crawl-cli",
     "test": "npm run lint && tsc && npm run unit",
-    "unit": "find . -name \"*.test.js\" -not -path \"./node_modules/*\" -exec node {} \\;",
+    "unit": "node ./test/runTests.js",
     "lint": "eslint *.js cli/ collectors/ helpers/ post-processing/ tests/",
     "lint-fix": "npm run lint -- --fix"
   },
