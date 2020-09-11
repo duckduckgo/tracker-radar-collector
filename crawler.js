@@ -131,11 +131,7 @@ async function getSiteData(context, url, {
     const page = await context.newPage();
 
     if (emulateUserAgent) {
-        if (emulateMobile) {
-            page.setUserAgent(MOBILE_USER_AGENT);
-        } else {
-            page.setUserAgent(DEFAULT_USER_AGENT);
-        }
+        page.setUserAgent(emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT);
     }
 
     page.setViewport(emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT);
