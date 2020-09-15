@@ -35,7 +35,6 @@ class BaseCollector {
 
 /**
  * @typedef CollectorInitOptions
- * @property {import('puppeteer').Browser} browser
  * @property {import('puppeteer').BrowserContext} context
  * @property {URL} url
  * @property {function(...any):void} log

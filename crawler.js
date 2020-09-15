@@ -8,8 +8,8 @@ const MAX_LOAD_TIME = 30000;//ms
 const MAX_TOTAL_TIME = MAX_LOAD_TIME * 2;//ms
 const EXECUTION_WAIT_TIME = 2500;//ms
 
-const DEFAULT_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36';
-const MOBILE_USER_AGENT = 'Mozilla/5.0 (Linux; Android 10; Pixel 2 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.117 Mobile Safari/537.36';
+const DEFAULT_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36';
+const MOBILE_USER_AGENT = 'Mozilla/5.0 (Linux; Android 10; Pixel 2 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Mobile Safari/537.36';
 
 const DEFAULT_VIEWPORT = {
     width: 1440,//px
@@ -30,8 +30,8 @@ const VISUAL_DEBUG = false;
  * @param {function(...any):void} log
  * @param {string} proxyHost
  */
-async function openBrowser(log, proxyHost) {
-    let args = {};
+function openBrowser(log, proxyHost) {
+    const args = {};
     if (VISUAL_DEBUG) {
         args.headless = false;
         args.devtools = true;
@@ -51,47 +51,34 @@ async function openBrowser(log, proxyHost) {
     }
 
     // for debugging: use different version of Chromium/Chrome
-    // executablePath: "/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
+    // args.executablePath = "/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary";
 
-    const browser = await puppeteer.launch(args);
-
-    return browser;
+    return puppeteer.launch(args);
 }
 
 /**
- * @param {puppeteer.Browser} browser
- */
-async function closeBrowser(browser) {
-    if (!VISUAL_DEBUG) {
-        await browser.close();
-    }
-}
-
-/**
- * @param {puppeteer.Browser} browser
+ * @param {puppeteer.BrowserContext} context
  * @param {URL} url
- * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, rank?: number, urlFilter: function(string, string):boolean, emulateMobile: boolean}} data
+ * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, rank?: number, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean}} data
  *
  * @returns {Promise<CollectResult>}
  */
-async function getSiteData(browser, url, {
+async function getSiteData(context, url, {
     collectors,
     log,
     rank,
     urlFilter,
+    emulateUserAgent,
     emulateMobile
 }) {
     const testStarted = Date.now();
 
-    // Create a new incognito browser context.
-    const context = await browser.createIncognitoBrowserContext();
     /**
      * @type {{cdpClient: import('puppeteer').CDPSession, type: string, url: string}[]}
      */
     const targets = [];
 
     const collectorOptions = {
-        browser,
         context,
         url,
         log
@@ -143,11 +130,11 @@ async function getSiteData(browser, url, {
     // Create a new page in a pristine context.
     const page = await context.newPage();
 
-    await page.emulate({
-        // just in case some sites block headless visits
-        userAgent: emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT,
-        viewport: emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT
-    });
+    if (emulateUserAgent) {
+        page.setUserAgent(emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT);
+    }
+
+    page.setViewport(emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT);
 
     // if any prompts open on page load, they'll make the page hang unless closed
     page.on('dialog', dialog => dialog.dismiss());
@@ -160,7 +147,7 @@ async function getSiteData(browser, url, {
     try {
         await page.goto(url.toString(), {timeout: MAX_LOAD_TIME, waitUntil: 'networkidle0'});
     } catch (e) {
-        if (e && e.message && e.message.startsWith('Navigation Timeout Exceeded')) {
+        if (e instanceof puppeteer.errors.TimeoutError || (e.name && e.name === 'TimeoutError')) {
             log(chalk.yellow('Navigation timeout exceeded.'));
 
             for (let target of targets) {
@@ -207,7 +194,6 @@ async function getSiteData(browser, url, {
 
     if (!VISUAL_DEBUG) {
         await page.close();
-        await context.close();
     }
 
     return {
@@ -234,26 +220,34 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile: boolean, proxyHost: string}} options
+ * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext}} options
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
-    const browser = await openBrowser(options.log, options.proxyHost);
+    const browser = options.browserContext ? null : await openBrowser(options.log, options.proxyHost);
     let data = null;
 
+    // Create a new incognito browser context.
+    const context = options.browserContext || await browser.createIncognitoBrowserContext();
+
     try {
-        data = await wait(getSiteData(browser, url, {
+        data = await wait(getSiteData(context, url, {
             collectors: options.collectors || [],
             log: options.log || (() => {}),
             rank: options.rank,
             urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null,
+            emulateUserAgent: options.emulateUserAgent !== false, // true by default
             emulateMobile: options.emulateMobile
         }), MAX_TOTAL_TIME);
     } catch(e) {
         options.log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));
         throw e;
     } finally {
-        await closeBrowser(browser);
+        // only close the browser if it was created here and not debugging
+        if (browser && !VISUAL_DEBUG) {
+            await context.close();
+            await browser.close();
+        }
     }
 
     return data;

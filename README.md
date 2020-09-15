@@ -58,7 +58,7 @@ crawlerConductor({
     logFunction: (...msg) => {…},// custom logging function
     filterOutFirstParty: true,// don't save any frist-party data (false by default)
     emulateMobile: true,// emulate a mobile device (false by default)
-    proxyHost: 'socks5://myproxy:8080'// SOCKS proxy host (none by default)
+    proxyHost: 'socks5://myproxy:8080',// SOCKS proxy host (none by default)
 });
 ```
 
@@ -73,7 +73,9 @@ const data = await crawler(new URL('https://example.com'), {
     rank: 1,
     urlFilter: (url) => {…},// function that, for each request URL, decides if its data should be stored or not
     emulateMobile: false,
-    proxyHost: 'socks5://myproxy:8080'
+    emulateUserAgent: false,// don't use the default puppeteer UA (default true)
+    proxyHost: 'socks5://myproxy:8080',
+    browserContext: context,// if you prefer to create the browser context yourself (to e.g. use other browser or non-incognito context) you can pass it here (by default crawler will create an incognito context using standard chromium for you)
 });
 ```
 
