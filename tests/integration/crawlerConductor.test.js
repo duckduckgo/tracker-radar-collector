@@ -42,7 +42,8 @@ async function main() {
         dataCallback: (url, output) => data.push(output),
         filterOutFirstParty: false,
         emulateMobile: false,
-        proxyHost: null
+        proxyHost: null,
+        regionCode: null
     });
 
     if (errors.length > 0) {
