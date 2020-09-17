@@ -152,7 +152,8 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
             dataCallback,
             filterOutFirstParty,
             emulateMobile,
-            proxyHost
+            proxyHost,
+            regionCode
         });
         log(chalk.green('\n✅ Finished successfully.'));
     } catch(e) {

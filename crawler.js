@@ -29,8 +29,9 @@ const VISUAL_DEBUG = false;
 /**
  * @param {function(...any):void} log
  * @param {string} proxyHost
+ * @param {string} regionCode
  */
-function openBrowser(log, proxyHost) {
+function openBrowser(log, proxyHost, regionCode) {
     const args = {};
     if (VISUAL_DEBUG) {
         args.headless = false;
@@ -46,7 +47,8 @@ function openBrowser(log, proxyHost) {
 
         args.args = [
             `--proxy-server=${proxyHost}`,
-            `--host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE ${url.hostname}"`
+            `--host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE ${url.hostname}"`,
+            `--lang=${regionCode.toLowerCase}`
         ];
     }
 
@@ -59,7 +61,7 @@ function openBrowser(log, proxyHost) {
 /**
  * @param {puppeteer.BrowserContext} context
  * @param {URL} url
- * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, rank?: number, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean}} data
+ * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, rank?: number, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean, regionCode: string}} data
  *
  * @returns {Promise<CollectResult>}
  */
@@ -69,7 +71,8 @@ async function getSiteData(context, url, {
     rank,
     urlFilter,
     emulateUserAgent,
-    emulateMobile
+    emulateMobile,
+    regionCode
 }) {
     const testStarted = Date.now();
 
@@ -129,6 +132,12 @@ async function getSiteData(context, url, {
 
     // Create a new page in a pristine context.
     const page = await context.newPage();
+
+    if (regionCode) {
+        await page.setExtraHTTPHeaders({
+            'Accept-Language': regionCode.toLowerCase()
+        });
+    }
 
     if (emulateUserAgent) {
         page.setUserAgent(emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT);
@@ -220,11 +229,11 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext}} options
+ * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, regionCode?: string, browserContext?: puppeteer.BrowserContext}} options
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
-    const browser = options.browserContext ? null : await openBrowser(options.log, options.proxyHost);
+    const browser = options.browserContext ? null : await openBrowser(options.log, options.proxyHost, options.regionCode);
     let data = null;
 
     // Create a new incognito browser context.
@@ -237,7 +246,8 @@ module.exports = async (url, options) => {
             rank: options.rank,
             urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null,
             emulateUserAgent: options.emulateUserAgent !== false, // true by default
-            emulateMobile: options.emulateMobile
+            emulateMobile: options.emulateMobile,
+            regionCode: options.regionCode
         }), MAX_TOTAL_TIME);
     } catch(e) {
         options.log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));

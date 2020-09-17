@@ -21,8 +21,9 @@ const MAX_NUMBER_OF_RETRIES = 2;
  * @param {function(URL, object): void} dataCallback 
  * @param {boolean} emulateMobile
  * @param {string} proxyHost
+ * @param {string} regionCode
  */
-async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost) {
+async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost, regionCode) {
     const url = new URL(urlString);
     /**
      * @type {function(...any):void} 
@@ -36,14 +37,15 @@ async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFi
         rank: idx + 1,
         filterOutFirstParty,
         emulateMobile,
-        proxyHost
+        proxyHost,
+        regionCode
     });
 
     dataCallback(url, data);
 }
 
 /**
- * @param {{urls: string[], dataCallback: function(URL, object): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string}} options
+ * @param {{urls: string[], dataCallback: function(URL, object): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, regionCode: string}} options
  */
 module.exports = options => {
     const deferred = createDeferred();
@@ -63,7 +65,7 @@ module.exports = options => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, idx, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost);
+        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, idx, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, options.regionCode);
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {
