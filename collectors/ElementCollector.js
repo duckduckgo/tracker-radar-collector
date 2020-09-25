@@ -1,7 +1,12 @@
-class BaseCollector {
+const BaseCollector = require('./BaseCollector');
+
+/**
+ * Collect page elements that a page defines, such as referrer policy meta tags.
+ */
+class ElementCollector extends BaseCollector {
 
     id() {
-        return 'base';
+        return 'element';
     }
 
     /**
@@ -19,13 +24,15 @@ class BaseCollector {
      * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('puppeteer').TargetType}} targetInfo 
      */
     // eslint-disable-next-line no-unused-vars
-    addTarget(targetInfo) {
+    addTarget(target) {
+        if (target.type !== 'page') {
+            return;
+        }
+        this._cdpClient = target.cdpClient;
     }
 
-    /**
-     * Called when a page is loaded
-     */
-    onPageLoad(page) {
+    onPageLoad (page) {
+        this._page = page;
     }
 
     /**
@@ -35,7 +42,11 @@ class BaseCollector {
      * @returns {Promise<Object>|Object}
      */
     // eslint-disable-next-line no-unused-vars
-    getData(options) {
+    async getData(options) {
+        let referrerPolicy = await this._page.$eval("meta[name='referrer']", el => el.getAttribute('content'));
+        return {
+            metaReferrer: referrerPolicy
+        };
     }
 }
 
@@ -47,4 +58,4 @@ class BaseCollector {
  * @property {function(...any):void} log
  */
 
-module.exports = BaseCollector;
+module.exports = ElementCollector;

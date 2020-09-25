@@ -121,6 +121,14 @@ async function getSiteData(browser, url, {
 
     // Create a new page in a pristine context.
     const page = await context.newPage();
+    for (let collector of collectors) {
+        try {
+            // eslint-disable-next-line no-await-in-loop
+            await collector.onPageLoad(page);
+        } catch (e) {
+            log(chalk.yellow(`${collector.id()} failed to attach to "${target.url()}"`), chalk.gray(e.message), chalk.gray(e.stack));
+        }
+    }
 
     await page.emulate({
         // just in case some sites block headless visits

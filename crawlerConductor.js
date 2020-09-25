@@ -12,8 +12,9 @@ const APICallCollector = require('./collectors/APICallCollector');
 const CookieCollector = require('./collectors/CookieCollector');
 const TargetCollector = require('./collectors/TargetCollector');
 const TraceCollector = require('./collectors/TraceCollector');
+const ElementCollector = require('./collectors/ElementCollector');
 
-const DATA_COLLECTORS = [RequestCollector, APICallCollector, CookieCollector, TargetCollector, TraceCollector];
+const DATA_COLLECTORS = [RequestCollector, APICallCollector, CookieCollector, TargetCollector, TraceCollector, ElementCollector];
 
 const MAX_NUMBER_OF_CRAWLERS = 38;// by trial and error there seems to be network bandwidth issues with more than 38 browsers. 
 const MAX_NUMBER_OF_RETRIES = 2;
