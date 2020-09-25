@@ -25,6 +25,7 @@ class BaseCollector {
     /**
      * Called when a page is loaded
      */
+    // eslint-disable-next-line no-unused-vars
     onPageLoad(page) {
     }
 

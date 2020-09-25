@@ -126,7 +126,7 @@ async function getSiteData(browser, url, {
             // eslint-disable-next-line no-await-in-loop
             await collector.onPageLoad(page);
         } catch (e) {
-            log(chalk.yellow(`${collector.id()} failed to attach to "${target.url()}"`), chalk.gray(e.message), chalk.gray(e.stack));
+            log(chalk.yellow(`${collector.id()} failed on page load `), chalk.gray(e.message), chalk.gray(e.stack));
         }
     }
 
