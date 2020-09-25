@@ -24,6 +24,8 @@ class BaseCollector {
 
     /**
      * Called when a page is loaded
+     *
+     * @param {import('puppeteer').Page} page
      */
     // eslint-disable-next-line no-unused-vars
     onPageLoad(page) {

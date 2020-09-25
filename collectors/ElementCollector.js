@@ -24,13 +24,18 @@ class ElementCollector extends BaseCollector {
      * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('puppeteer').TargetType}} targetInfo 
      */
     // eslint-disable-next-line no-unused-vars
-    addTarget(target) {
-        if (target.type !== 'page') {
+    addTarget(targetInfo) {
+        if (targetInfo.type !== 'page') {
             return;
         }
-        this._cdpClient = target.cdpClient;
+        this._cdpClient = targetInfo.cdpClient;
     }
 
+    /**
+     * Called when a page is loaded
+     *
+     * @param {import('puppeteer').Page} page
+     */
     onPageLoad (page) {
         this._page = page;
     }
@@ -39,7 +44,7 @@ class ElementCollector extends BaseCollector {
      * Called after the crawl to retrieve the data. Can be async, can throw errors.
      * 
      * @param {{finalUrl: string, urlFilter?: function(string):boolean}} options
-     * @returns {Promise<Object>|Object}
+     * @returns {Promise<Object>}
      */
     // eslint-disable-next-line no-unused-vars
     async getData(options) {
