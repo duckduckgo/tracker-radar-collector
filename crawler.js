@@ -99,12 +99,25 @@ async function getSiteData(context, url, {
     // initiate collectors for all contexts (main page, web worker, service worker etc.)
     context.on('targetcreated', async target => {
         const timer = createTimer();
-        const cdpClient = await target.createCDPSession();
+        let cdpClient = null;
+        
+        try {
+            cdpClient = await target.createCDPSession();
+        } catch (e) {
+            log(chalk.yellow(`Failed to connect to "${target.url()}"`), chalk.gray(e.message), chalk.gray(e.stack));
+            return;
+        }
+
         const simpleTarget = {url: target.url(), type: target.type(), cdpClient};
         targets.push(simpleTarget);
 
-        // we have to pause new targets and attach to them as soon as they are created not to miss any data
-        await cdpClient.send('Target.setAutoAttach', {autoAttach: true, waitForDebuggerOnStart: true});
+        try {
+            // we have to pause new targets and attach to them as soon as they are created not to miss any data
+            await cdpClient.send('Target.setAutoAttach', {autoAttach: true, waitForDebuggerOnStart: true});
+        } catch (e) {
+            log(chalk.yellow(`Failed to set "${target.url()}" up.`), chalk.gray(e.message), chalk.gray(e.stack));
+            return;
+        }
 
         for (let collector of collectors) {
             try {
