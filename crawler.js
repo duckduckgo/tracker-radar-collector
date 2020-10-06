@@ -202,8 +202,12 @@ async function getSiteData(context, url, {
     }
 
     for (let target of targets) {
-        // eslint-disable-next-line no-await-in-loop
-        await target.cdpClient.detach();
+        try {
+            // eslint-disable-next-line no-await-in-loop
+            await target.cdpClient.detach();
+        } catch (e) {
+            // we don't care that much because in most cases an error here means that target already detached
+        }
     }
 
     if (!VISUAL_DEBUG) {
