@@ -176,7 +176,8 @@ async function getSiteData(context, url, {
     }
 
     // give website a bit more time for things to settle
-    await page.waitFor(EXECUTION_WAIT_TIME);
+    // @ts-ignore @types/puppeteer not up to date with puppeteer
+    await page.waitForTimeout(EXECUTION_WAIT_TIME);
 
     const finalUrl = page.url();
     /**
