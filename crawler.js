@@ -176,7 +176,8 @@ async function getSiteData(context, url, {
     }
 
     // give website a bit more time for things to settle
-    await page.waitFor(EXECUTION_WAIT_TIME);
+    // @ts-ignore @types/puppeteer not up to date with puppeteer
+    await page.waitForTimeout(EXECUTION_WAIT_TIME);
 
     const finalUrl = page.url();
     /**
@@ -201,8 +202,12 @@ async function getSiteData(context, url, {
     }
 
     for (let target of targets) {
-        // eslint-disable-next-line no-await-in-loop
-        await target.cdpClient.detach();
+        try {
+            // eslint-disable-next-line no-await-in-loop
+            await target.cdpClient.detach();
+        } catch (e) {
+            // we don't care that much because in most cases an error here means that target already detached
+        }
     }
 
     if (!VISUAL_DEBUG) {
@@ -237,23 +242,24 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
-    const browser = options.browserContext ? null : await openBrowser(options.log, options.proxyHost);
-    let data = null;
-
+    const log = options.log || (() => {});
+    const browser = options.browserContext ? null : await openBrowser(log, options.proxyHost);
     // Create a new incognito browser context.
     const context = options.browserContext || await browser.createIncognitoBrowserContext();
+
+    let data = null;
 
     try {
         data = await wait(getSiteData(context, url, {
             collectors: options.collectors || [],
-            log: options.log || (() => {}),
+            log,
             rank: options.rank,
             urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null,
             emulateUserAgent: options.emulateUserAgent !== false, // true by default
             emulateMobile: options.emulateMobile
         }), MAX_TOTAL_TIME);
     } catch(e) {
-        options.log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));
+        log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));
         throw e;
     } finally {
         // only close the browser if it was created here and not debugging
