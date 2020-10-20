@@ -14,7 +14,7 @@ class RequestCollector extends BaseCollector {
     /**
      * @param {{saveResponseHash?: boolean, saveHeaders?: Array<string>}} additionalOptions
      */
-    constructor(additionalOptions = {saveResponseHash: false, saveHeaders: DEFAULT_SAVE_HEADERS}) {
+    constructor(additionalOptions = {saveResponseHash: true, saveHeaders: DEFAULT_SAVE_HEADERS}) {
         super();
         this._saveResponseHash = (additionalOptions.saveResponseHash === true);
         this._saveHeaders = DEFAULT_SAVE_HEADERS;
