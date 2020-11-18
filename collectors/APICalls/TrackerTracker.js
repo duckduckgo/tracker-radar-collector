@@ -153,6 +153,11 @@ class TrackerTracker {
      * @returns {string}
      */
     _getScriptURL(stack) {
+        if (typeof stack !== "string") {
+            this._log('⚠️ stack is not a string');
+            return null;
+        }
+
         const lines = stack.split('\n');
 
         for (let line of lines) {
