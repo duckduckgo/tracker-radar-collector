@@ -19,7 +19,7 @@ Available options:
 - `-u, --url <url>` - single URL to crawl
 - `-i, --input-list <path>` - path to a text file with list of URLs to crawl (each in a separate line)
 - `-d, --data-collectors <list>` - comma separated list (e.g `-d 'requests,cookies'`) of data collectors that should be used (all by default)
-- `-c, --crawlers <number>` - override the default number of concurent crawlers (default number is picked based on the number of CPU cores)
+- `-c, --crawlers <number>` - override the default number of concurrent crawlers (default number is picked based on the number of CPU cores)
 - `-v, --verbose` - log additional information on screen (progress bar will not be shown when verbose logging is enabled)
 - `-l, --log-file <path>` - save log data to a file
 - `-f, --force-overwrite` - overwrite existing output files (by default entries with existing output files are skipped)
@@ -56,7 +56,7 @@ crawlerConductor({
     failureCallback: (url, error) => {…},
     numberOfCrawlers: 12,// custom number of crawlers (there is a hard limit of 38 though)
     logFunction: (...msg) => {…},// custom logging function
-    filterOutFirstParty: true,// don't save any frist-party data (false by default)
+    filterOutFirstParty: true,// don't save any first-party data (false by default)
     emulateMobile: true,// emulate a mobile device (false by default)
     proxyHost: 'socks5://myproxy:8080',// SOCKS proxy host (none by default)
 });
