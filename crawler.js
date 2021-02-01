@@ -157,6 +157,20 @@ async function getSiteData(context, url, {
 
     // Create a new page in a pristine context.
     const page = await context.newPage();
+    // @ts-ignore we are using private API to get access to CDP connection before target is created
+    // if we create a new connection only after target is created we will miss some requests, API calls, etc.
+    const cdpClient = page._client;
+
+    const initPageTimer = createTimer();
+    for (let collector of collectors) {
+        try {
+            // eslint-disable-next-line no-await-in-loop
+            await collector.addTarget({url: url.toString(), type: 'page', cdpClient});
+        } catch (e) {
+            log(chalk.yellow(`${collector.id()} failed to attach to page`), chalk.gray(e.message), chalk.gray(e.stack));
+        }
+    }
+    log(`page context initiated in ${initPageTimer.getElapsedTime()}s`);
 
     // We are creating CDP connection before page target is created, if we create it only after
     // new target is created we will miss some requests, API calls, etc.
