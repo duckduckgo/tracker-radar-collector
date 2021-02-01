@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 const puppeteer = require('puppeteer');
 const chalk = require('chalk').default;
 const {createTimer} = require('./helpers/timer');
@@ -96,8 +97,16 @@ async function getSiteData(context, url, {
         }
     }
 
+    let pageTargetCreated = false;
+
     // initiate collectors for all contexts (main page, web worker, service worker etc.)
     context.on('targetcreated', async target => {
+        // we have already initiated collectors for the main page, so we ignore the first page target
+        if (target.type() === 'page' && !pageTargetCreated) {
+            pageTargetCreated = true;
+            return;
+        }
+
         const timer = createTimer();
         let cdpClient = null;
         
@@ -137,11 +146,25 @@ async function getSiteData(context, url, {
             return;
         }
 
-        log(`${target.url()} context initiated in ${timer.getElapsedTime()}s`);
+        log(`${target.url()} (${target.type()}) context initiated in ${timer.getElapsedTime()}s`);
     });
 
     // Create a new page in a pristine context.
     const page = await context.newPage();
+    // @ts-ignore we are using private API to get access to CDP connection before target is created
+    // if we create a new connection only after target is created we will miss some requests, API calls, etc.
+    const cdpClient = page._client;
+
+    const initPageTimer = createTimer();
+    for (let collector of collectors) {
+        try {
+            // eslint-disable-next-line no-await-in-loop
+            await collector.addTarget({url: url.toString(), type: 'page', cdpClient});
+        } catch (e) {
+            log(chalk.yellow(`${collector.id()} failed to attach to page`), chalk.gray(e.message), chalk.gray(e.stack));
+        }
+    }
+    log(`page context initiated in ${initPageTimer.getElapsedTime()}s`);
 
     if (emulateUserAgent) {
         page.setUserAgent(emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT);
@@ -186,7 +209,7 @@ async function getSiteData(context, url, {
     const data = {};
 
     for (let collector of collectors) {
-        const timer = createTimer();
+        const getDataTimer = createTimer();
         try {
             // eslint-disable-next-line no-await-in-loop
             const collectorData = await collector.getData({
@@ -194,7 +217,7 @@ async function getSiteData(context, url, {
                 urlFilter: urlFilter && urlFilter.bind(null, finalUrl)
             });
             data[collector.id()] = collectorData;
-            log(`getting ${collector.id()} data took ${timer.getElapsedTime()}s`);
+            log(`getting ${collector.id()} data took ${getDataTimer.getElapsedTime()}s`);
         } catch (e) {
             log(chalk.yellow(`getting ${collector.id()} data failed`), chalk.gray(e.message), chalk.gray(e.stack));
             data[collector.id()] = null;
