@@ -151,9 +151,10 @@ async function getSiteData(context, url, {
 
     // Create a new page in a pristine context.
     const page = await context.newPage();
-    // @ts-ignore we are using private API to get access to CDP connection before target is created
-    // if we create a new connection only after target is created we will miss some requests, API calls, etc.
-    const cdpClient = page._client;
+
+    // @ts-ignore we are creating CDP connection before page target is created, if we create it only after
+    // new target is created we will miss some requests, API calls, etc.
+    const cdpClient = await page.target().createCDPSession();
 
     const initPageTimer = createTimer();
     for (let collector of collectors) {
