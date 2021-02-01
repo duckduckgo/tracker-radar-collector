@@ -5,7 +5,7 @@ const {createCollector} = require('../../helpers/collectorsList');
 const testURLs = [
     'https://example.com/',
     'https://duck.com/',
-    'https://duckduckgo.github.io/privacy-test-pages/trackers/1major-via-script.html',
+    'https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-script.html',
     'https://fingerprintjs.com/demo/'
 ];
 
@@ -89,8 +89,8 @@ async function main() {
 
     assert(Object.keys(duckCom.data.apis.callStats).length > 0, 'duck.com does execute some JS and callStats should NOT be empty');
 
-    /// https://duckduckgo.github.io/privacy-test-pages/trackers/1major-via-script.html tests
-    const privacyTestPages1 = data.find(d => d.initialUrl === 'https://duckduckgo.github.io/privacy-test-pages/trackers/1major-via-script.html');
+    /// https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-script.html tests
+    const privacyTestPages1 = data.find(d => d.initialUrl === 'https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-script.html');
     commonTests(privacyTestPages1, 'privacy-test-pages/1major-via-script');
 
     assert(privacyTestPages1.data.requests.length === 2, 'privacy-test-pages/1major-via-script does load one subresource and one main page document');
@@ -106,9 +106,14 @@ async function main() {
     const fingerprintjsThirdPartyRequsts = fingerprintjs.data.requests.filter((/** @type {{url:string}} **/ r) => !new URL(r.url).hostname.endsWith('fingerprintjs.com'));
     assert(fingerprintjsThirdPartyRequsts.length > 2, `fingerprintjs.com loads multiple third parties`);
 
-    const apis = fingerprintjs.data.apis.callStats['https://fingerprintjs.com/dist/demo.js'];
-    assert(Object.keys(apis).length > 15, 'fingerprintjs.com demo script touches over 15 APIs');
-    assert(apis['HTMLCanvasElement.prototype.toDataURL'] > 0, 'fingerprintjs.com demo script touches canvas API');
+    /**
+     * @type {Array<string>}
+     */
+    const apis = [];
+    const scripts = Object.keys(fingerprintjs.data.apis.callStats);
+    scripts.forEach(src => Object.keys(fingerprintjs.data.apis.callStats[src]).forEach(api => apis.push(api)));
+    assert(apis.length > 15, 'fingerprintjs.com demo script touches over 15 APIs');
+    assert(apis.includes('HTMLCanvasElement.prototype.toDataURL'), 'fingerprintjs.com demo script touches canvas API');
 
     assert(fingerprintjs.data.targets.length > 0, 'fingerprintjs.com does have multiple targets - main frame + blobs');
 
