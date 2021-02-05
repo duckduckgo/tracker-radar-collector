@@ -15,14 +15,13 @@ const MAX_NUMBER_OF_RETRIES = 2;
 /**
  * @param {string} urlString 
  * @param {BaseCollector[]} dataCollectors
- * @param {number} idx 
  * @param {function} log 
  * @param {boolean} filterOutFirstParty
  * @param {function(URL, object): void} dataCallback 
  * @param {boolean} emulateMobile
  * @param {string} proxyHost
  */
-async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost) {
+async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost) {
     const url = new URL(urlString);
     /**
      * @type {function(...any):void} 
@@ -33,7 +32,6 @@ async function crawlAndSaveData(urlString, dataCollectors, idx, log, filterOutFi
         log: prefixedLog,
         // @ts-ignore
         collectors: dataCollectors.map(collector => new collector.constructor()),
-        rank: idx + 1,
         filterOutFirstParty,
         emulateMobile,
         proxyHost
@@ -63,7 +61,7 @@ module.exports = options => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, idx, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost);
+        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost);
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {

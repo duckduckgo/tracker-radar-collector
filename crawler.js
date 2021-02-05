@@ -60,14 +60,13 @@ function openBrowser(log, proxyHost) {
 /**
  * @param {puppeteer.BrowserContext} context
  * @param {URL} url
- * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, rank?: number, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean}} data
+ * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean}} data
  *
  * @returns {Promise<CollectResult>}
  */
 async function getSiteData(context, url, {
     collectors,
     log,
-    rank,
     urlFilter,
     emulateUserAgent,
     emulateMobile
@@ -240,7 +239,6 @@ async function getSiteData(context, url, {
     return {
         initialUrl: url.toString(),
         finalUrl,
-        rank,
         timeout,
         testStarted,
         testFinished: Date.now(),
@@ -261,7 +259,7 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, rank?: number, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext}} options
+ * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext}} options
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
@@ -276,7 +274,6 @@ module.exports = async (url, options) => {
         data = await wait(getSiteData(context, url, {
             collectors: options.collectors || [],
             log,
-            rank: options.rank,
             urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null,
             emulateUserAgent: options.emulateUserAgent !== false, // true by default
             emulateMobile: options.emulateMobile
@@ -299,7 +296,6 @@ module.exports = async (url, options) => {
  * @typedef {Object} CollectResult
  * @property {string} initialUrl URL from which the crawler began the crawl (as provided by the caller)
  * @property {string} finalUrl URL after page has loaded (can be different from initialUrl if e.g. there was a redirect)
- * @property {number?} rank website's rank (as provided by the caller)
  * @property {boolean} timeout true if page didn't fully load before the timeout and loading had to be stopped by the crawler
  * @property {number} testStarted time when the crawl started (unix timestamp)
  * @property {number} testFinished time when the crawl finished (unix timestamp)
