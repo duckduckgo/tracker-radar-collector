@@ -39,6 +39,7 @@ async function main() {
         dataCollectors: [createCollector('requests'), createCollector('cookies'), createCollector('targets'), createCollector('apis')],
         numberOfCrawlers: 2,
         failureCallback: (url, error) => errors.push({url, error: error.message}),
+        // @ts-ignore
         dataCallback: (url, output) => data.push(output),
         filterOutFirstParty: false,
         emulateMobile: false,

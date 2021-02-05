@@ -1,5 +1,5 @@
 /**
- * @param {Promise} promise 
+ * @param {Promise<any>} promise 
  * @param {number} maxMs 
  */
 function wait(promise, maxMs) {

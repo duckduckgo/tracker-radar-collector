@@ -1,5 +1,5 @@
 /**
- * @returns {{promise: Promise, resolve: function, reject: function}}
+ * @returns {{promise: Promise<any>, resolve: function, reject: function}}
  */
 function createDeferred() {
     let resolve, reject;

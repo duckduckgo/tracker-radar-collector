@@ -9,8 +9,8 @@ const MAX_LOAD_TIME = 30000;//ms
 const MAX_TOTAL_TIME = MAX_LOAD_TIME * 2;//ms
 const EXECUTION_WAIT_TIME = 2500;//ms
 
-const DEFAULT_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36';
-const MOBILE_USER_AGENT = 'Mozilla/5.0 (Linux; Android 10; Pixel 2 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Mobile Safari/537.36';
+const DEFAULT_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.146 Safari/537.36';
+const MOBILE_USER_AGENT = 'Mozilla/5.0 (Linux; Android 10; Pixel 2 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.146 Mobile Safari/537.36';
 
 const DEFAULT_VIEWPORT = {
     width: 1440,//px
@@ -199,7 +199,6 @@ async function getSiteData(context, url, {
     }
 
     // give website a bit more time for things to settle
-    // @ts-ignore @types/puppeteer not up to date with puppeteer
     await page.waitForTimeout(EXECUTION_WAIT_TIME);
 
     const finalUrl = page.url();
@@ -300,5 +299,5 @@ module.exports = async (url, options) => {
  * @property {boolean} timeout true if page didn't fully load before the timeout and loading had to be stopped by the crawler
  * @property {number} testStarted time when the crawl started (unix timestamp)
  * @property {number} testFinished time when the crawl finished (unix timestamp)
- * @property {object} data object containing output from all collectors
+ * @property {any} data object containing output from all collectors
 */

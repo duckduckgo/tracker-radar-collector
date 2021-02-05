@@ -99,7 +99,7 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {{initiator: object, request: CDPRequest, requestId: RequestId, timestamp: Timestamp, frameId?: FrameId, type?: ResourceType, redirectResponse?: CDPResponse}} data 
+     * @param {{initiator: import('../helpers/initiators').RequestInitiator, request: CDPRequest, requestId: RequestId, timestamp: Timestamp, frameId?: FrameId, type?: ResourceType, redirectResponse?: CDPResponse}} data 
      * @param {import('puppeteer').CDPSession} cdp
      */
     handleRequest(data, cdp) {
@@ -181,7 +181,7 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {{requestId: RequestId, url: string, initiator: object}} request 
+     * @param {{requestId: RequestId, url: string, initiator: import('../helpers/initiators').RequestInitiator}} request 
      */
     handleWebSocket(request) {
         this._requests.push({
@@ -226,7 +226,7 @@ class RequestCollector extends BaseCollector {
 
     /**
      * Network.responseReceivedExtraInfo
-     * @param {{requestId: RequestId, headers: object}} data 
+     * @param {{requestId: RequestId, headers: Object<string, string>}} data 
      */
     handleResponseExtraInfo(data) {
         const {
@@ -369,7 +369,7 @@ module.exports = RequestCollector;
  * @property {string} url
  * @property {import('puppeteer').HttpMethod=} method
  * @property {ResourceType} type
- * @property {object=} initiator
+ * @property {import('../helpers/initiators').RequestInitiator=} initiator
  * @property {string=} redirectedFrom
  * @property {string=} redirectedTo
  * @property {number=} status
@@ -403,14 +403,14 @@ module.exports = RequestCollector;
  * @property {string} url
  * @property {import('puppeteer').HttpMethod} method
  * @property {object} headers
- * @property {ResourcePriority} initialPriority
+ * @property {'VeryLow'|'Low'|'Medium'|'High'|'VeryHigh'} initialPriority
  */
 
 /**
  * @typedef CDPResponse
  * @property {string} url
  * @property {number} status
- * @property {object} headers
+ * @property {Object<string, string>} headers
  * @property {string} remoteIPAddress
  * @property {object} securityDetails
  */

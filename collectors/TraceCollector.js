@@ -31,7 +31,7 @@ class TraceCollector extends BaseCollector {
         const bufs = [];
         while (!eof) {
             /**
-             * @type {{eof:object, data:object}}
+             * @type {{eof:boolean, data:string}}
              */
             // @ts-ignore oversimplified .send signature
             // eslint-disable-next-line no-await-in-loop
