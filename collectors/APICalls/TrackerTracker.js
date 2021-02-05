@@ -95,7 +95,7 @@ class TrackerTracker {
             // if breakpoint comes with an condition only count it when this condition is met
             if (condition) {
                 conditionScript = `
-                    if (!(${condition})) {
+                    if (!!(${condition})) {
                         ${conditionScript}
                     }
                 `;
