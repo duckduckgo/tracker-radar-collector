@@ -1,5 +1,6 @@
 /**
- * @param {Array[number]} hrtime 
+ * @param {Array<number>} hrtime 
+ * @returns {string}
  */
 function parseHrtimeToSeconds(hrtime) {
     return (hrtime[0] + (hrtime[1] / 1e9)).toFixed(3);

@@ -63,6 +63,7 @@ class TrackerTracker {
             /**
              * @type {{result:{objectId: string, description: string}, exceptionDetails:{}}}
              */
+            // @ts-ignore
             const result = await this._send('Runtime.evaluate', {
                 expression,
                 contextId,

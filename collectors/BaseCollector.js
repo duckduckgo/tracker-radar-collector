@@ -30,6 +30,7 @@ class BaseCollector {
      */
     // eslint-disable-next-line no-unused-vars
     getData(options) {
+        return Promise.resolve();
     }
 }
 
