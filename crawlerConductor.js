@@ -17,7 +17,7 @@ const MAX_NUMBER_OF_RETRIES = 2;
  * @param {BaseCollector[]} dataCollectors
  * @param {function} log 
  * @param {boolean} filterOutFirstParty
- * @param {function(URL, object): void} dataCallback 
+ * @param {function(URL, import('./crawler').CollectResult): void} dataCallback 
  * @param {boolean} emulateMobile
  * @param {string} proxyHost
  */
@@ -41,7 +41,7 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
 }
 
 /**
- * @param {{urls: string[], dataCallback: function(URL, object): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string}} options
+ * @param {{urls: string[], dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string}} options
  */
 module.exports = options => {
     const deferred = createDeferred();
