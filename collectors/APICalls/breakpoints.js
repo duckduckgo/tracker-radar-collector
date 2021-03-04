@@ -127,6 +127,7 @@ const breakpoints = [
             {name: 'storage'},
             {name: 'vendor'},
             {name: 'vendorSub'},
+            {name: 'webdriver'},
             {name: 'webkitPersistentStorage'},
             {name: 'webkitTemporaryStorage'},
             // {name: 'xr'},   //VR access - not in Chromium
