@@ -32,7 +32,7 @@ class APICallCollector extends BaseCollector {
 
         cdpClient.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, trackerTracker));
         await cdpClient.send('Runtime.addBinding', {name: 'registerAPICall'});
-        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCrated.bind(this, trackerTracker));
+        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCrated.bind(this, trackerTracker, cdpClient));
 
         try {
             await trackerTracker.init({log: this._log});
@@ -44,14 +44,37 @@ class APICallCollector extends BaseCollector {
 
     /**
      * @param {TrackerTracker} trackerTracker
+     * @param {import('puppeteer').CDPSession} cdpClient
      * @param {{context: {id: string, origin: string, auxData: {type: string}}}} params 
      */
-    async onExecutionContextCrated(trackerTracker, params) {
+    async onExecutionContextCrated(trackerTracker, cdpClient, params) {
         // ignore context created by puppeteer / our crawler
         if ((!params.context.origin || params.context.origin === '://') && params.context.auxData.type === 'isolated') {
             return;
         }
+
+        // each target has one main execution context
+        const mainExecutionContext = params.context.origin !== '://';
+
+        // give ourselves a bit more time to set up API tracking for this context
+        if (mainExecutionContext) {
+            await cdpClient.send('Debugger.pause');
+        }
+
+        const pauseTimeout = mainExecutionContext && setTimeout(async () => {
+            try {
+                await cdpClient.send('Debugger.resume');
+            } catch (e) {}
+        }, 100);
+
         await trackerTracker.setupContextTracking(params.context.id);
+        
+        if (mainExecutionContext) {
+            clearTimeout(pauseTimeout);
+            try {
+                await cdpClient.send('Debugger.resume');
+            } catch (e) {}
+        }
     }
 
     /**
