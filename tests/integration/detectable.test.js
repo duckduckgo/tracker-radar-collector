@@ -32,9 +32,9 @@ async function main() {
         'userAgent',
         //'plugins',
         'languages',
-        //'webdriver',
+        'webdriver',
         //'window.chrome',
-        //'Notification.permission'
+        'Notification.permission'
     ];
     tests.forEach(test => {
         const failed = requests.find(req => req.url.indexOf(`test=${test}`) !== -1);
