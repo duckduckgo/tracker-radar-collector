@@ -32,7 +32,13 @@ const VISUAL_DEBUG = false;
  * @param {string} proxyHost
  */
 function openBrowser(log, proxyHost) {
-    const args = {};
+    const args = {
+        args: [
+            // enable FLoC
+            '--enable-blink-features=InterestCohortAPI',
+            '--enable-features="FederatedLearningOfCohorts:update_interval/10s/minimum_history_domain_size_required/1,FlocIdSortingLshBasedComputation,InterestCohortFeaturePolicy"'
+        ]
+    };
     if (VISUAL_DEBUG) {
         args.headless = false;
         args.devtools = true;
@@ -45,10 +51,8 @@ function openBrowser(log, proxyHost) {
             log('Invalid proxy URL');
         }
 
-        args.args = [
-            `--proxy-server=${proxyHost}`,
-            `--host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE ${url.hostname}"`
-        ];
+        args.args.push(`--proxy-server=${proxyHost}`);
+        args.args.push(`--host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE ${url.hostname}"`);
     }
 
     // for debugging: use different version of Chromium/Chrome
