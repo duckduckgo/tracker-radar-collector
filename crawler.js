@@ -176,21 +176,6 @@ async function getSiteData(context, url, {
     }
     log(`page context initiated in ${initPageTimer.getElapsedTime()}s`);
 
-    // We are creating CDP connection before page target is created, if we create it only after
-    // new target is created we will miss some requests, API calls, etc.
-    const cdpClient = await page.target().createCDPSession();
-
-    const initPageTimer = createTimer();
-    for (let collector of collectors) {
-        try {
-            // eslint-disable-next-line no-await-in-loop
-            await collector.addTarget({url: url.toString(), type: 'page', cdpClient});
-        } catch (e) {
-            log(chalk.yellow(`${collector.id()} failed to attach to page`), chalk.gray(e.message), chalk.gray(e.stack));
-        }
-    }
-    log(`page context initiated in ${initPageTimer.getElapsedTime()}s`);
-
     if (emulateUserAgent) {
         page.setUserAgent(emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT);
     }
