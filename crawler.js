@@ -162,6 +162,9 @@ async function getSiteData(context, url, {
     // new target is created we will miss some requests, API calls, etc.
     const cdpClient = await page.target().createCDPSession();
 
+    // without this, we will miss the initial request for the web worker or service worker file
+    await cdpClient.send('Target.setAutoAttach', {autoAttach: true, waitForDebuggerOnStart: true});
+
     const initPageTimer = createTimer();
     for (let collector of collectors) {
         try {
