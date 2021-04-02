@@ -93,6 +93,7 @@ const breakpoints = [
             // {name: 'timeline'}, - not in Chromium
         ],
         methods: [
+            {name: 'interestCohort'} // FLoC
         ]
     },
     {
