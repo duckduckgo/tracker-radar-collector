@@ -32,6 +32,9 @@ const VISUAL_DEBUG = false;
  * @param {string} proxyHost
  */
 function openBrowser(log, proxyHost) {
+    /**
+     * @type {import('puppeteer').LaunchOptions}
+     */
     const args = {
         args: [
             // enable FLoC
