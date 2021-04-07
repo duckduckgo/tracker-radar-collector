@@ -19,7 +19,6 @@ async function main() {
         "PerformanceTiming.prototype.navigationStart",
         "Document.cookie getter",
         "Document.cookie setter",
-        "Document.interestCohort",
         "Navigator.prototype.onLine",
         "Navigator.prototype.keyboard",
         "Navigator.prototype.presentation",
@@ -46,6 +45,7 @@ async function main() {
         "Gyroscope.prototype.y",
         "Gyroscope.prototype.z",
         // method calls
+        "Document.prototype.interestCohort",
         'window.matchMedia("prefers-color-scheme")',
         'HTMLCanvasElement.prototype.constructor',
         'CanvasRenderingContext2D.prototype.isPointInPath',
