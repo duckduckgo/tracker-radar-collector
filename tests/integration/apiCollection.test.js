@@ -61,6 +61,8 @@ async function main() {
         'Sensor.prototype.constructor',
     ];
 
+    console.log(apiData);
+
     breakpoints.forEach(object => {
         /**
          * @type {string}
