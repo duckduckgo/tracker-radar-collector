@@ -24,7 +24,7 @@ class APICallCollector extends BaseCollector {
     }
 
     /**
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('puppeteer').TargetType}} targetInfo 
+     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo 
      */
     async addTarget({cdpClient, url}) {
         const trackerTracker = new TrackerTracker(cdpClient.send.bind(cdpClient));

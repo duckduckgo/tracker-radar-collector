@@ -118,7 +118,7 @@ async function main() {
 
     assert(fingerprintjs.data.targets.length > 0, 'fingerprintjs.com does have multiple targets - main frame + blobs');
 
-    assert(fingerprintjs.data.cookies.length > 2, 'fingerprintjs.com does set multiple cookies by default');
+    assert(fingerprintjs.data.cookies.length > 1, 'fingerprintjs.com does set multiple cookies by default');
 }
 
 main();

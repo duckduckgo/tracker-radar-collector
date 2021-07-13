@@ -14,7 +14,7 @@ class TargetCollector extends BaseCollector {
     }
 
     /**
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('puppeteer').TargetType}} targetInfo 
+     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: TargetType}} targetInfo 
      */
     addTarget({type, url}) {
         this._targets.push({
@@ -36,5 +36,9 @@ module.exports = TargetCollector;
 /**
  * @typedef TargetData
  * @property {string} url
- * @property {import('puppeteer').TargetType} type
+ * @property {TargetType} type
+ */
+
+/**
+ * @typedef {'page'|'background_page'|'service_worker'|'shared_worker'|'other'|'browser'|'webview'} TargetType
  */
