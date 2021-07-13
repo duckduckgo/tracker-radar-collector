@@ -26,7 +26,7 @@ function fromDir(startPath) {
 const tests = fromDir('./');
 
 for (const testPath of tests) {
-    console.log(`\n Running "${testPath}"…`);
+    console.log(`\nRunning "${testPath}"…`);
 
     try {
         console.time(`⏱ "${testPath}"`);

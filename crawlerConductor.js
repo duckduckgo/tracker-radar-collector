@@ -8,6 +8,7 @@ const {createTimer} = require('./helpers/timer');
 const createDeferred = require('./helpers/deferred');
 // eslint-disable-next-line no-unused-vars
 const BaseCollector = require('./collectors/BaseCollector');
+const notABot = require('./helpers/notABot');
 
 const MAX_NUMBER_OF_CRAWLERS = 38;// by trial and error there seems to be network bandwidth issues with more than 38 browsers. 
 const MAX_NUMBER_OF_RETRIES = 2;
@@ -20,8 +21,9 @@ const MAX_NUMBER_OF_RETRIES = 2;
  * @param {function(URL, import('./crawler').CollectResult): void} dataCallback 
  * @param {boolean} emulateMobile
  * @param {string} proxyHost
+ * @param {boolean} antiBotDetection
  */
-async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost) {
+async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost, antiBotDetection) {
     const url = new URL(urlString);
     /**
      * @type {function(...any):void} 
@@ -34,14 +36,15 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
         collectors: dataCollectors.map(collector => new collector.constructor()),
         filterOutFirstParty,
         emulateMobile,
-        proxyHost
+        proxyHost,
+        runInEveryFrame: antiBotDetection ? notABot : undefined
     });
 
     dataCallback(url, data);
 }
 
 /**
- * @param {{urls: string[], dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string}} options
+ * @param {{urls: string[], dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean}} options
  */
 module.exports = options => {
     const deferred = createDeferred();
@@ -61,7 +64,7 @@ module.exports = options => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost);
+        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false));
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {

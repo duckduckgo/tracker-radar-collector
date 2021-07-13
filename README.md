@@ -27,6 +27,7 @@ Available options:
 - `-m, --mobile` - emulate a mobile device when crawling
 - `-p, --proxy-config <host>` - optional SOCKS proxy host
 - `-r, --region-code <region>` - optional 2 letter region code. For metadata only
+- `-a, --disable-anti-bot` - disable simple build-in anti bot detection script injected to every frame
 
 ### Use it as a module
 
@@ -59,6 +60,7 @@ crawlerConductor({
     filterOutFirstParty: true,// don't save any first-party data (false by default)
     emulateMobile: true,// emulate a mobile device (false by default)
     proxyHost: 'socks5://myproxy:8080',// SOCKS proxy host (none by default)
+    antiBotDetection: true,// if anti bot detection script should be injected (true by default)
 });
 ```
 
@@ -76,6 +78,7 @@ const data = await crawler(new URL('https://example.com'), {
     emulateUserAgent: false,// don't use the default puppeteer UA (default true)
     proxyHost: 'socks5://myproxy:8080',
     browserContext: context,// if you prefer to create the browser context yourself (to e.g. use other browser or non-incognito context) you can pass it here (by default crawler will create an incognito context using standard chromium for you)
+    runInEveryFrame: () => {window.alert('injected')},// function that should be executed in every frame (main + all subframes)
 });
 ```
 

@@ -30,11 +30,11 @@ async function main() {
     const requests = data[0].data.requests;
     const tests = [
         'userAgent',
-        //'plugins',
+        'plugins',
         'languages',
-        //'webdriver',
-        //'window.chrome',
-        //'Notification.permission'
+        'webdriver',
+        'window.chrome',
+        'Notification.permission'
     ];
     tests.forEach(test => {
         const failed = requests.find(req => req.url.indexOf(`test=${test}`) !== -1);
