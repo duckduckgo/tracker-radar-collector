@@ -9,11 +9,10 @@ async function main() {
     let apiData;
     try {
         apiData = await crawler(new URL('https://privacy-test-pages.glitch.me/privacy-protections/fingerprinting/?run'), {
-            log: () => {},
             collectors: [new APICallCollector()]
         });
     } catch (e) {
-        console.log('Page load failed', e);
+        assert(false, `Page load failed - ${e}`);
     }
 
     const apiCalls = apiData.data.apis.callStats['https://privacy-test-pages.glitch.me/privacy-protections/fingerprinting/helpers/tests.js'];
@@ -21,7 +20,6 @@ async function main() {
     // known fingerprinting breakpoints that are not invoked by our test page
     const knownMissing = [
         "window.name",
-        "window.devicePixelRatio",
         "PerformanceTiming.prototype.navigationStart",
         "Document.cookie getter",
         "Document.cookie setter",
