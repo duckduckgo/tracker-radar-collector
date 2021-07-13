@@ -50,7 +50,7 @@ class TraceCollector extends BaseCollector {
     }
 
     /**
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('puppeteer').TargetType}} targetInfo 
+     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo 
      */
     async addTarget({cdpClient, type}) {
         if (type === 'page' && !this._tracing) {
@@ -140,5 +140,5 @@ module.exports = TraceCollector;
 /**
  * @typedef TargetData
  * @property {string} url
- * @property {import('puppeteer').TargetType} type
+ * @property {import('./TargetCollector').TargetType} type
  */

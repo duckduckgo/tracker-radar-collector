@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "target": "es2016",
+        "target": "ES2019",
         "moduleResolution": "node",
-        "lib": ["es2015", "es2016", "dom"],
+        "lib": ["dom"],
         "allowJs": true,
         "checkJs": true,
         "resolveJsonModule": true,

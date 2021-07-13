@@ -46,7 +46,7 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('puppeteer').TargetType}} targetInfo 
+     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo 
      */
     async addTarget({cdpClient}) {
         await cdpClient.send('Runtime.enable');
@@ -89,7 +89,7 @@ class RequestCollector extends BaseCollector {
             let {body, base64Encoded} = await cdp.send('Network.getResponseBody', {requestId: id});
 
             if (base64Encoded) {
-                body = Buffer.from(body, 'base64');
+                body = Buffer.from(body, 'base64').toString('utf-8');
             }
 
             return crypto.createHash('sha256').update(body).digest('hex');
@@ -349,7 +349,7 @@ module.exports = RequestCollector;
 /**
  * @typedef RequestData
  * @property {string} url
- * @property {import('puppeteer').HttpMethod} method
+ * @property {HttpMethod} method
  * @property {ResourceType} type
  * @property {string[]=} initiator
  * @property {string=} redirectedFrom
@@ -367,7 +367,7 @@ module.exports = RequestCollector;
  * @typedef InternalRequestData
  * @property {RequestId} id
  * @property {string} url
- * @property {import('puppeteer').HttpMethod=} method
+ * @property {HttpMethod=} method
  * @property {ResourceType} type
  * @property {import('../helpers/initiators').RequestInitiator=} initiator
  * @property {string=} redirectedFrom
@@ -401,7 +401,7 @@ module.exports = RequestCollector;
 /**
  * @typedef CDPRequest
  * @property {string} url
- * @property {import('puppeteer').HttpMethod} method
+ * @property {HttpMethod} method
  * @property {object} headers
  * @property {'VeryLow'|'Low'|'Medium'|'High'|'VeryHigh'} initialPriority
  */
@@ -413,4 +413,8 @@ module.exports = RequestCollector;
  * @property {Object<string, string>} headers
  * @property {string} remoteIPAddress
  * @property {object} securityDetails
+ */
+
+/**
+ * @typedef {'GET'|'PUT'|'POST'|'DELETE'|'HEAD'|'OPTIONS'|'CONNNECT'|'TRACE'|'PATCH'} HttpMethod
  */

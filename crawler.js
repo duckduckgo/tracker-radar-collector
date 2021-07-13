@@ -33,7 +33,7 @@ const VISUAL_DEBUG = false;
  */
 function openBrowser(log, proxyHost) {
     /**
-     * @type {import('puppeteer').LaunchOptions}
+     * @type {import('puppeteer').BrowserLaunchArgumentOptions}
      */
     const args = {
         args: [
