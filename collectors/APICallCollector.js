@@ -54,27 +54,27 @@ class APICallCollector extends BaseCollector {
         }
 
         // each target has one main execution context
-        const mainExecutionContext = params.context.origin !== '://';
+        // const mainExecutionContext = params.context.origin !== '://';
 
         // give ourselves a bit more time to set up API tracking for this context
-        if (mainExecutionContext) {
-            await cdpClient.send('Debugger.pause');
-        }
+        // if (mainExecutionContext) {
+        //     await cdpClient.send('Debugger.pause');
+        // }
 
-        const pauseTimeout = mainExecutionContext && setTimeout(async () => {
-            try {
-                await cdpClient.send('Debugger.resume');
-            } catch (e) {}
-        }, 100);
+        // const pauseTimeout = mainExecutionContext && setTimeout(async () => {
+        //     try {
+        //         await cdpClient.send('Debugger.resume');
+        //     } catch (e) {}
+        // }, 100);
 
         await trackerTracker.setupContextTracking(params.context.id);
         
-        if (mainExecutionContext) {
-            clearTimeout(pauseTimeout);
-            try {
-                await cdpClient.send('Debugger.resume');
-            } catch (e) {}
-        }
+        // if (mainExecutionContext) {
+        //     clearTimeout(pauseTimeout);
+        //     try {
+        //         await cdpClient.send('Debugger.resume');
+        //     } catch (e) {}
+        // }
     }
 
     /**
