@@ -16,13 +16,12 @@ async function main() {
         console.log('Page load failed', e);
     }
 
-    console.log(apiData.data.apis);
-
     const apiCalls = apiData.data.apis.callStats['https://privacy-test-pages.glitch.me/privacy-protections/fingerprinting/helpers/tests.js'];
 
     // known fingerprinting breakpoints that are not invoked by our test page
     const knownMissing = [
         "window.name",
+        "window.devicePixelRatio",
         "PerformanceTiming.prototype.navigationStart",
         "Document.cookie getter",
         "Document.cookie setter",
