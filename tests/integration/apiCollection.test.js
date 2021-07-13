@@ -13,6 +13,8 @@ async function main() {
 
     const apiCalls = apiData.data.apis.callStats['https://privacy-test-pages.glitch.me/privacy-protections/fingerprinting/helpers/tests.js'];
 
+    assert(apiCalls.length > 0, 'API calls missing');
+
     // known fingerprinting breakpoints that are not invoked by our test page
     const knownMissing = [
         "window.name",
@@ -60,8 +62,6 @@ async function main() {
         'Element.prototype.getClientRects',
         'Sensor.prototype.constructor',
     ];
-
-    console.log(apiData);
 
     breakpoints.forEach(object => {
         /**
