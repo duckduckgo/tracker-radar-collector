@@ -30,10 +30,10 @@ async function main() {
     const requests = data[0].data.requests;
     const tests = [
         'userAgent',
-        //'plugins',
+        'plugins',
         'languages',
         'webdriver',
-        //'window.chrome',
+        'window.chrome',
         'Notification.permission'
     ];
     tests.forEach(test => {

@@ -24,6 +24,7 @@ program
     .option('-m, --mobile', 'emulate a mobile device')
     .option('-p, --proxy-config <host>', 'use an optional proxy configuration')
     .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
+    .option('-a, --disable-anti-bot', 'disable anti bot detection protections injected to every frame')
     .parse(process.argv);
 
 /**
@@ -38,8 +39,9 @@ program
  * @param {boolean} emulateMobile
  * @param {string} proxyHost
  * @param {string} regionCode
+ * @param {boolean} antiBotDetection
  */
-async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost, regionCode) {
+async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost, regionCode, antiBotDetection) {
     const logFile = logPath ? fs.createWriteStream(logPath, {flags: 'w'}) : null;
 
     /**
@@ -152,7 +154,8 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
             dataCallback,
             filterOutFirstParty,
             emulateMobile,
-            proxyHost
+            proxyHost,
+            antiBotDetection
         });
         log(chalk.green('\n✅ Finished successfully.'));
     } catch(e) {
@@ -219,7 +222,6 @@ if (program.url) {
 
 if (!urls || !program.output) {
     program.help();
-    process.exit(1);
 } else {
     urls = urls.map(url => {
         if (url.startsWith('http://') || url.startsWith('https://')) {
@@ -238,5 +240,5 @@ if (!urls || !program.output) {
         fs.mkdirSync(program.output);
     }
 
-    run(urls, program.output, verbose, program.logFile, program.crawlers || null, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, program.proxyConfig, program.regionCode);
+    run(urls, program.output, verbose, program.logFile, program.crawlers || null, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, program.proxyConfig, program.regionCode, !program.disableAntiBot);
 }

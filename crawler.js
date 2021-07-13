@@ -67,7 +67,7 @@ function openBrowser(log, proxyHost) {
 /**
  * @param {puppeteer.BrowserContext} context
  * @param {URL} url
- * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean}} data
+ * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean, runInEveryFrame: function():void}} data
  *
  * @returns {Promise<CollectResult>}
  */
@@ -76,7 +76,8 @@ async function getSiteData(context, url, {
     log,
     urlFilter,
     emulateUserAgent,
-    emulateMobile
+    emulateMobile,
+    runInEveryFrame
 }) {
     const testStarted = Date.now();
 
@@ -158,12 +159,10 @@ async function getSiteData(context, url, {
     // Create a new page in a pristine context.
     const page = await context.newPage();
 
-    // simple anti-bot-detection countermeasures
-    // TODO: move to a separate file, rewrite with toString protection and Object.setProperty
-    page.evaluateOnNewDocument(() => {
-        Notification.__defineGetter__('permission', () => 'default');
-        navigator.__defineGetter__('webdriver', () => undefined);
-    });
+    // optional function that should be run on every page (and subframe) in the browser context
+    if (runInEveryFrame) {
+        page.evaluateOnNewDocument(runInEveryFrame);
+    }
 
     // We are creating CDP connection before page target is created, if we create it only after
     // new target is created we will miss some requests, API calls, etc.
@@ -276,7 +275,7 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext}} options
+ * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext, runInEveryFrame?: function():void}} options
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
@@ -293,7 +292,8 @@ module.exports = async (url, options) => {
             log,
             urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null,
             emulateUserAgent: options.emulateUserAgent !== false, // true by default
-            emulateMobile: options.emulateMobile
+            emulateMobile: options.emulateMobile,
+            runInEveryFrame: options.runInEveryFrame
         }), MAX_TOTAL_TIME);
     } catch(e) {
         log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));
