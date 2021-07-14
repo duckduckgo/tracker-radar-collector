@@ -32,7 +32,7 @@ class APICallCollector extends BaseCollector {
 
         cdpClient.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, trackerTracker));
         await cdpClient.send('Runtime.addBinding', {name: 'registerAPICall'});
-        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCrated.bind(this, trackerTracker));
+        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCrated.bind(this, trackerTracker, cdpClient));
 
         try {
             await trackerTracker.init({log: this._log});
@@ -44,13 +44,15 @@ class APICallCollector extends BaseCollector {
 
     /**
      * @param {TrackerTracker} trackerTracker
+     * @param {import('puppeteer').CDPSession} cdpClient
      * @param {{context: {id: string, origin: string, auxData: {type: string}}}} params 
      */
-    async onExecutionContextCrated(trackerTracker, params) {
+    async onExecutionContextCrated(trackerTracker, cdpClient, params) {
         // ignore context created by puppeteer / our crawler
         if ((!params.context.origin || params.context.origin === '://') && params.context.auxData.type === 'isolated') {
             return;
         }
+
         await trackerTracker.setupContextTracking(params.context.id);
     }
 

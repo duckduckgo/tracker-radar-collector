@@ -6,10 +6,14 @@ async function main() {
 
     // we are testing all APIs that we are monitoring against our privacy test page for fingerprinting
 
-    const apiData = await crawler(new URL('https://privacy-test-pages.glitch.me/privacy-protections/fingerprinting/?run'), {
-        log: () => {},
-        collectors: [new APICallCollector()]
-    });
+    let apiData;
+    try {
+        apiData = await crawler(new URL('https://privacy-test-pages.glitch.me/privacy-protections/fingerprinting/?run'), {
+            collectors: [new APICallCollector()]
+        });
+    } catch (e) {
+        assert(false, `Page load failed - ${e}`);
+    }
 
     const apiCalls = apiData.data.apis.callStats['https://privacy-test-pages.glitch.me/privacy-protections/fingerprinting/helpers/tests.js'];
 
