@@ -72,7 +72,6 @@ const data = await crawler(new URL('https://example.com'), {
     // optional ↓
     collectors: [new RequestCollector(), new CookieCollector(), …],
     log: (...msg) => {…},
-    rank: 1,
     urlFilter: (url) => {…},// function that, for each request URL, decides if its data should be stored or not
     emulateMobile: false,
     emulateUserAgent: false,// don't use the default puppeteer UA (default true)
