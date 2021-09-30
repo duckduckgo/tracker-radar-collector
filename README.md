@@ -62,7 +62,7 @@ crawlerConductor({
     emulateMobile: true,// emulate a mobile device (false by default)
     proxyHost: 'socks5://myproxy:8080',// SOCKS proxy host (none by default)
     antiBotDetection: true,// if anti bot detection script should be injected (true by default)
-    chromiumVersion: '843427',// Chromium version that should be downloaded and used instad of the default one
+    chromiumVersion: '843427',// Chromium version that should be downloaded and used instead of the default one
 });
 ```
 
@@ -80,7 +80,7 @@ const data = await crawler(new URL('https://example.com'), {
     proxyHost: 'socks5://myproxy:8080',
     browserContext: context,// if you prefer to create the browser context yourself (to e.g. use other browser or non-incognito context) you can pass it here (by default crawler will create an incognito context using standard chromium for you)
     runInEveryFrame: () => {window.alert('injected')},// function that should be executed in every frame (main + all subframes)
-    executablePath: '/some/path/Chromium.app/Contents/MacOS/Chromium',//path to a custom Chromium installation that should be used instad of the default one
+    executablePath: '/some/path/Chromium.app/Contents/MacOS/Chromium',// path to a custom Chromium installation that should be used instead of the default one
 });
 ```
 
