@@ -25,6 +25,7 @@ program
     .option('-p, --proxy-config <host>', 'use an optional proxy configuration')
     .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
     .option('-a, --disable-anti-bot', 'disable anti bot detection protections injected to every frame')
+    .option('--chromium-version <version_number>', 'use custom version of chromium')
     .parse(process.argv);
 
 /**
@@ -40,8 +41,9 @@ program
  * @param {string} proxyHost
  * @param {string} regionCode
  * @param {boolean} antiBotDetection
+ * @param {string} chromiumVersion
  */
-async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost, regionCode, antiBotDetection) {
+async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost, regionCode, antiBotDetection, chromiumVersion) {
     const logFile = logPath ? fs.createWriteStream(logPath, {flags: 'w'}) : null;
 
     /**
@@ -155,7 +157,8 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
             filterOutFirstParty,
             emulateMobile,
             proxyHost,
-            antiBotDetection
+            antiBotDetection,
+            chromiumVersion
         });
         log(chalk.green('\n✅ Finished successfully.'));
     } catch(e) {
@@ -240,5 +243,5 @@ if (!urls || !program.output) {
         fs.mkdirSync(program.output);
     }
 
-    run(urls, program.output, verbose, program.logFile, program.crawlers || null, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, program.proxyConfig, program.regionCode, !program.disableAntiBot);
+    run(urls, program.output, verbose, program.logFile, program.crawlers || null, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, program.proxyConfig, program.regionCode, !program.disableAntiBot, program.chromiumVersion);
 }
