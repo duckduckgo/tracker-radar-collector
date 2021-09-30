@@ -6,6 +6,7 @@ const crawl = require('./crawler');
 const URL = require('url').URL;
 const {createTimer} = require('./helpers/timer');
 const createDeferred = require('./helpers/deferred');
+const downloadCustomChromium = require('./helpers/downloadCustomChromium');
 // eslint-disable-next-line no-unused-vars
 const BaseCollector = require('./collectors/BaseCollector');
 const notABot = require('./helpers/notABot');
@@ -22,8 +23,9 @@ const MAX_NUMBER_OF_RETRIES = 2;
  * @param {boolean} emulateMobile
  * @param {string} proxyHost
  * @param {boolean} antiBotDetection
+ * @param {string} executablePath
  */
-async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost, antiBotDetection) {
+async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost, antiBotDetection, executablePath) {
     const url = new URL(urlString);
     /**
      * @type {function(...any):void} 
@@ -37,16 +39,17 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
         filterOutFirstParty,
         emulateMobile,
         proxyHost,
-        runInEveryFrame: antiBotDetection ? notABot : undefined
+        runInEveryFrame: antiBotDetection ? notABot : undefined,
+        executablePath
     });
 
     dataCallback(url, data);
 }
 
 /**
- * @param {{urls: string[], dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean}} options
+ * @param {{urls: string[], dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean, chromiumVersion?: string}} options
  */
-module.exports = options => {
+module.exports = async options => {
     const deferred = createDeferred();
     const log = options.logFunction || (() => {});
     const failureCallback = options.failureCallback || (() => {});
@@ -60,11 +63,19 @@ module.exports = options => {
     }
     log(chalk.cyan(`Number of crawlers: ${numberOfCrawlers}\n`));
 
+    /**
+     * @type {string}
+     */
+    let executablePath;
+    if (options.chromiumVersion) {
+        executablePath = await downloadCustomChromium(log, options.chromiumVersion);
+    }
+
     async.eachOfLimit(options.urls, numberOfCrawlers, (urlString, idx, callback) => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false));
+        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false), executablePath);
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {
@@ -84,5 +95,5 @@ module.exports = options => {
         }
     });
 
-    return deferred.promise;
+    await deferred.promise;
 };
