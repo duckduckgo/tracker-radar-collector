@@ -8,6 +8,9 @@ const chalk = require('chalk').default;
  * @returns {Promise<string>} executable path of the downloaded Chromium
  */
 async function downloadCustomChromium(log, version) {
+    /**
+     * @type {import('puppeteer').BrowserFetcher}
+     */
     // @ts-ignore for some reason createBrowserFetcher is missing from the typescript definition?
     const browserFetcher = puppeteer.createBrowserFetcher();
     const canDownload = await browserFetcher.canDownload(version);
