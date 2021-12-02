@@ -48,6 +48,10 @@ function createMetadataFile(outputPath, {startTime, endTime, urls, successes, fa
     }, null, 2));
 }
 
+/**
+ * @param {string} dateString
+ * @return {string}
+ */
 function _getTimeBucket (dateString) {
     const date = new Date(dateString);
     return `${date.getMonth()}/${date.getDay()}/${date.getHours()}:${date.getMinutes()}`;
@@ -55,31 +59,29 @@ function _getTimeBucket (dateString) {
 
 /**
  * @param {string} outputPath
- * @param {{startTime: Date, endTime: Date, urls: number, successes: number, failures: number, skipped: number, numberOfCrawlers: number, regionCode: string, fatalError: Error}} data
+ * @param {{crawlTimes: number[], startTime: Date, urls: number, successes: number, failures: number, skipped: number, numberOfCrawlers: number, regionCode: string, fatalError: Error}} data
  */
 function createMetadataHTML(outputPath, {startTime, crawlTimes, fatalError, numberOfCrawlers, regionCode, successes, failures, urls, skipped}) {
-    try {
-        let minuteBuckets = {};
+    let minuteBuckets = {};
 
-        const crawlStats = crawlTimes.reduce((stats, siteTime) => {
-            stats.sites++;
-            stats.total += siteTime[2];
+    const crawlStats = crawlTimes.reduce((stats, siteTime) => {
+        stats.sites++;
+        stats.total += siteTime[2];
 
-            const timeBucketKey = _getTimeBucket(siteTime[1]);
-            if (minuteBuckets[timeBucketKey]) {
-                minuteBuckets[timeBucketKey]++;
-            } else {
-                minuteBuckets[timeBucketKey] = 1;
-            }
+        const timeBucketKey = _getTimeBucket(siteTime[1]);
+        if (minuteBuckets[timeBucketKey]) {
+            minuteBuckets[timeBucketKey]++;
+        } else {
+            minuteBuckets[timeBucketKey] = 1;
+        }
+        return stats;
+    }, {sites: 0, total: 0});
 
-            return stats;
-        }, {sites: 0, total: 0});
+    const crawlRate = crawlStats.sites / Object.keys(minuteBuckets).length;
+    const finishTime = new Date();
+    finishTime.setMinutes(finishTime.getMinutes() + ((urls - (successes + failures + skipped)) / crawlRate));
 
-        const crawlRate = crawlStats.sites / Object.keys(minuteBuckets).length;
-        const finishTime = new Date();
-        finishTime.setMinutes(finishTime.getMinutes() + ((urls - (successes + failures + skipped)) / crawlRate));
-
-        const html = `<html>
+    const html = `<html>
     <head>
         <title>Crawler status</title>
     </head>
@@ -96,10 +98,7 @@ function createMetadataHTML(outputPath, {startTime, crawlTimes, fatalError, numb
     </body>
     </html>`;
 
-        fs.writeFileSync(`${outputPath}/index.html`, html);
-    } catch (e) {
-        console.log(e);
-    }
+    fs.writeFileSync(`${outputPath}/index.html`, html);
 }
 
 module.exports = {
