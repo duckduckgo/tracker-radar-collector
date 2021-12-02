@@ -158,7 +158,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
         }
 
         // rewrite metadata page every 1%
-        if (program.htmlLog && (successes + failures) % 1 === 0) {
+        if (program.htmlLog && ((successes + failures) / urls.length)*100 % 1 === 0) {
             createMetadataHTML(outputPath, {
                 startTime,
                 crawlTimes,
@@ -278,7 +278,9 @@ if (!urls || !program.output) {
         console.log(chalk.red('Screenshot folder already exists'), 'Use -f to overwrite.');
     } else if (program.screenshotLogging) {
         screenshotHelper.loadScreenshotList(program.screenshotLogging);
-        fs.mkdirSync(`${program.output}/screenshots`);
+        if (!fs.existsSync(`${program.output}/screenshots`)) {
+            fs.mkdirSync(`${program.output}/screenshots`);
+        }
     }
 
     if (fs.existsSync(program.output)) {
