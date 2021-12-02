@@ -11,6 +11,8 @@ const downloadCustomChromium = require('./helpers/downloadCustomChromium');
 const BaseCollector = require('./collectors/BaseCollector');
 const notABot = require('./helpers/notABot');
 
+const {shouldTakeScreenshot} = require('./helpers/screenshot');
+
 const MAX_NUMBER_OF_CRAWLERS = 38;// by trial and error there seems to be network bandwidth issues with more than 38 browsers. 
 const MAX_NUMBER_OF_RETRIES = 2;
 
@@ -24,8 +26,9 @@ const MAX_NUMBER_OF_RETRIES = 2;
  * @param {string} proxyHost
  * @param {boolean} antiBotDetection
  * @param {string} executablePath
+ * @param {boolean} screenshotLogging
  */
-async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost, antiBotDetection, executablePath) {
+async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost, antiBotDetection, executablePath, screenshotLogging) {
     const url = new URL(urlString);
     /**
      * @type {function(...any):void} 
@@ -40,7 +43,8 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
         emulateMobile,
         proxyHost,
         runInEveryFrame: antiBotDetection ? notABot : undefined,
-        executablePath
+        executablePath,
+        getScreenshot: screenshotLogging ? shouldTakeScreenshot(url) : false
     });
 
     dataCallback(url, data);
@@ -75,7 +79,7 @@ module.exports = async options => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false), executablePath);
+        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false), executablePath, (options.screenshotLogging !== false));
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {

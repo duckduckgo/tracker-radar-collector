@@ -79,7 +79,8 @@ async function getSiteData(context, url, {
     urlFilter,
     emulateUserAgent,
     emulateMobile,
-    runInEveryFrame
+    runInEveryFrame,
+    getScreenshot
 }) {
     const testStarted = Date.now();
 
@@ -251,6 +252,11 @@ async function getSiteData(context, url, {
     }
 
     if (!VISUAL_DEBUG) {
+        if (getScreenshot) {
+            const screenshotFilename = `${Math.random().toString().substr(2, 8)}.jpg`;
+            await page.screenshot({path: screenshotFilename, type: 'jpeg'});
+            data.screenshot = screenshotFilename;
+        }
         await page.close();
     }
 
@@ -295,7 +301,8 @@ module.exports = async (url, options) => {
             urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null,
             emulateUserAgent: options.emulateUserAgent !== false, // true by default
             emulateMobile: options.emulateMobile,
-            runInEveryFrame: options.runInEveryFrame
+            runInEveryFrame: options.runInEveryFrame,
+            getScreenshot: options.getScreenshot
         }), MAX_TOTAL_TIME);
     } catch(e) {
         log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));
