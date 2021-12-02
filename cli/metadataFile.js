@@ -49,7 +49,7 @@ function createMetadataFile(outputPath, {startTime, endTime, urls, successes, fa
 }
 
 /**
- * @param {string} dateString
+ * @param {number} dateString
  * @return {string}
  */
 function _getTimeBucket (dateString) {
@@ -59,11 +59,13 @@ function _getTimeBucket (dateString) {
 
 /**
  * @param {string} outputPath
- * @param {{crawlTimes: number[], startTime: Date, urls: number, successes: number, failures: number, skipped: number, numberOfCrawlers: number, regionCode: string, fatalError: Error}} data
+ * @param {{crawlTimes: number[][], startTime: Date, urls: number, successes: number, failures: number, skipped: number, numberOfCrawlers: number, regionCode: string, fatalError: Error}} data
  */
 function createMetadataHTML(outputPath, {startTime, crawlTimes, fatalError, numberOfCrawlers, regionCode, successes, failures, urls, skipped}) {
+    /** @type {Object.<string, number>} */
     let minuteBuckets = {};
 
+    /** @type {{sites: number, total: number}}*/
     const crawlStats = crawlTimes.reduce((stats, siteTime) => {
         stats.sites++;
         stats.total += siteTime[2];

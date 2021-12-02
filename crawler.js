@@ -69,7 +69,7 @@ function openBrowser(log, proxyHost, executablePath) {
 /**
  * @param {puppeteer.BrowserContext} context
  * @param {URL} url
- * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean, runInEveryFrame: function():void}} data
+ * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean, runInEveryFrame: function():void, getScreenshot: boolean}} data
  *
  * @returns {Promise<CollectResult>}
  */
@@ -283,7 +283,7 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext, runInEveryFrame?: function():void, executablePath?: string}} options
+ * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext, runInEveryFrame?: function():void, executablePath?: string, getScreenshot?: boolean}} options
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {

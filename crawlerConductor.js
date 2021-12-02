@@ -26,7 +26,7 @@ const MAX_NUMBER_OF_RETRIES = 2;
  * @param {string} proxyHost
  * @param {boolean} antiBotDetection
  * @param {string} executablePath
- * @param {boolean} screenshotLogging
+ * @param {string} screenshotLogging
  */
 async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost, antiBotDetection, executablePath, screenshotLogging) {
     const url = new URL(urlString);
@@ -51,7 +51,7 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
 }
 
 /**
- * @param {{urls: string[], dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean, chromiumVersion?: string}} options
+ * @param {{urls: string[], dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean, chromiumVersion?: string, screenshotLogging?: string}} options
  */
 module.exports = async options => {
     const deferred = createDeferred();
@@ -79,7 +79,7 @@ module.exports = async options => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false), executablePath, (options.screenshotLogging !== false));
+        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false), executablePath, options.screenshotLogging);
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {

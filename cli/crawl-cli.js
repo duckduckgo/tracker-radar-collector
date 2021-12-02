@@ -109,7 +109,15 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
     let failures = 0;
     let successes = 0;
+
+    /**
+     * @type {Error}
+     */
     let fatalError = null;
+
+    /**
+     * @type {Array<Array<number>>}
+     */
     let crawlTimes = [];
     
     const startTime = new Date();
@@ -129,7 +137,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
     /**
      * @param {URL} url
-     * @param {object} data
+     * @param {{testStarted: number, testFinished: number, data: {screenshot: string}}} data
      */
     const dataCallback = (url, data) => {
         successes++;
