@@ -1,5 +1,5 @@
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 const chalk = require('chalk').default;
 const runCrawlers = require('../crawlerConductor');
 const program = require('commander');
@@ -151,7 +151,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
         // temp name for the screenshot is scored in data. rename the screenshot to match the file crawl file
         if (data.data.screenshot) {
             const screenshotFilename = `${outputPath}/screenshots/${url.hostname}_${outputFile.match(/_([a-z0-9]{4})\.json/)[1]}.jpg`;
-            fs.rename(data.data.screenshot, screenshotFilename, err => {
+            fs.move(data.data.screenshot, screenshotFilename, err => {
                 log(err);
             });
             screenshotHelper.rebuildIndex(outputPath);
