@@ -96,7 +96,7 @@ function createMetadataHTML(outputPath, {startTime, crawlTimes, fatalError, numb
         <p>Crawl started: ${startTime}</p>
         <p>Last update: ${new Date()}</p>
         <p>Errors: ${fatalError ? fatalError : 'None'}</p>
-        <a href="/screenshots/index.html?a=${Math.floor(Math.random() * 10000000)}">Screenshots</a>
+        <a href="./screenshots/index.html?a=${Math.floor(Math.random() * 10000000)}">Screenshots</a>
     </body>
     </html>`;
 
