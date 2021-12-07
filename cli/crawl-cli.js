@@ -1,5 +1,5 @@
 const path = require('path');
-const fs = require('fs-extra');
+const fs = require('fs');
 const chalk = require('chalk').default;
 const runCrawlers = require('../crawlerConductor');
 const program = require('commander');
@@ -27,7 +27,6 @@ program
     .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
     .option('-a, --disable-anti-bot', 'disable anti bot detection protections injected to every frame')
     .option('--chromium-version <version_number>', 'use custom version of chromium')
-    .option('-s, --screenshot-logging <path>', 'optional list of sites to take screenshots for')
     .option('-h, --html-log', 'Write index.html to output directory with crawl stats')
     .parse(process.argv);
 
@@ -45,9 +44,8 @@ program
  * @param {string} regionCode
  * @param {boolean} antiBotDetection
  * @param {string} chromiumVersion
- * @param {string} screenshotLogging
  */
-async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost, regionCode, antiBotDetection, chromiumVersion, screenshotLogging) {
+async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost, regionCode, antiBotDetection, chromiumVersion) {
     const logFile = logPath ? fs.createWriteStream(logPath, {flags: 'w'}) : null;
 
     /**
@@ -68,10 +66,10 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
      * @type {function(...any):string}
      * @param {URL} url
      */
-    const createOutputPath = (url => {
+    const createOutputPath = (({url, fileType='json'}) => {
         let hash = crypto.createHash('sha1').update(url.toString()).digest('hex');
         hash = hash.substring(0, 4); // truncate to length 4
-        return path.join(outputPath, `${url.hostname}_${hash}.json`);
+        return path.join(outputPath, `${url.hostname}_${hash}.${fileType}`);
     });
 
     const urls = inputUrls.filter(urlString => {
@@ -146,16 +144,18 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
         crawlTimes.push([data.testStarted, data.testFinished, data.testFinished - data.testStarted]);
 
         const outputFile = createOutputPath(url);
-        fs.writeFileSync(outputFile, JSON.stringify(data, null, 2));
 
         // temp name for the screenshot is scored in data. rename the screenshot to match the file crawl file
-        if (data.data.screenshot) {
-            const screenshotFilename = `${outputPath}/screenshots/${url.hostname}_${outputFile.match(/_([a-z0-9]{4})\.json/)[1]}.jpg`;
-            fs.move(data.data.screenshot, screenshotFilename, err => {
-                log(err);
-            });
+        if (data.data.screenshots) {
+            const screenshotFilename = createOutputPath(url, 'jpg');
+            fs.writeFileSync(data.data.screenshot, screenshotFilename);
             screenshotHelper.rebuildIndex(outputPath);
+
+            // we don't want to keep base64 images in json files, lets replace that with jpeg output path
+            data.data.screenshots = screenshotFilename;
         }
+
+        fs.writeFileSync(outputFile, JSON.stringify(data, null, 2));
 
         // rewrite metadata page every 1%
         if (program.htmlLog && ((successes + failures) / urls.length)*100 % 1 === 0) {
@@ -197,8 +197,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
             emulateMobile,
             proxyHost,
             antiBotDetection,
-            chromiumVersion,
-            screenshotLogging
+            chromiumVersion
         });
         log(chalk.green('\n✅ Finished successfully.'));
     } catch(e) {
@@ -272,16 +271,6 @@ if (!urls || !program.output) {
         }
         return `http://${url}`;
     });
-
-    if (fs.existsSync(`${program.output}/screenshots`) && !forceOverwrite) {
-        // eslint-disable-next-line no-console
-        console.log(chalk.red('Screenshot folder already exists'), 'Use -f to overwrite.');
-    } else if (program.screenshotLogging) {
-        screenshotHelper.loadScreenshotList(program.screenshotLogging);
-        if (!fs.existsSync(`${program.output}/screenshots`)) {
-            fs.mkdirSync(`${program.output}/screenshots`);
-        }
-    }
 
     if (fs.existsSync(program.output)) {
         if (metadataFileExists(program.output) && !forceOverwrite) {

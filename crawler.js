@@ -69,7 +69,7 @@ function openBrowser(log, proxyHost, executablePath) {
 /**
  * @param {puppeteer.BrowserContext} context
  * @param {URL} url
- * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean, runInEveryFrame: function():void, getScreenshot: boolean}} data
+ * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean, runInEveryFrame: function():void}} data
  *
  * @returns {Promise<CollectResult>}
  */
@@ -79,8 +79,7 @@ async function getSiteData(context, url, {
     urlFilter,
     emulateUserAgent,
     emulateMobile,
-    runInEveryFrame,
-    getScreenshot
+    runInEveryFrame
 }) {
     const testStarted = Date.now();
 
@@ -252,11 +251,6 @@ async function getSiteData(context, url, {
     }
 
     if (!VISUAL_DEBUG) {
-        if (getScreenshot) {
-            const screenshotFilename = `${Math.random().toString().substr(2, 8)}.jpg`;
-            await page.screenshot({path: screenshotFilename, type: 'jpeg'});
-            data.screenshot = screenshotFilename;
-        }
         await page.close();
     }
 
@@ -283,7 +277,7 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext, runInEveryFrame?: function():void, executablePath?: string, getScreenshot?: boolean}} options
+ * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext, runInEveryFrame?: function():void, executablePath?: string}} options
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
@@ -301,8 +295,7 @@ module.exports = async (url, options) => {
             urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null,
             emulateUserAgent: options.emulateUserAgent !== false, // true by default
             emulateMobile: options.emulateMobile,
-            runInEveryFrame: options.runInEveryFrame,
-            getScreenshot: options.getScreenshot
+            runInEveryFrame: options.runInEveryFrame
         }), MAX_TOTAL_TIME);
     } catch(e) {
         log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));

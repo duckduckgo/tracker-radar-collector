@@ -1,32 +1,4 @@
 const fs = require('fs');
-const ALL_SCREENSHOTS = false;
-/**
- * @type {string[]}
- */
-let screenshotList = [];
-
-/**
- * @param {string} filePath
- */
-function loadScreenshotList (filePath) {
-    screenshotList = fs.readFileSync(filePath, 'utf8').split('\n').reduce((list, site) => {
-        if (site) {
-            list.push(site);
-        }
-        return list;
-    }, []);
-}
-
-/**
- * @param {URL} url
- * @returns {boolean}
- */
-function shouldTakeScreenshot (url) {
-    if (ALL_SCREENSHOTS) {
-        return true;
-    }
-    return screenshotList.includes(url.hostname.replace(/^www\./, ''));
-}
 
 /**
  * @param {string} outputPath
@@ -56,7 +28,5 @@ function rebuildIndex (outputPath) {
 }
 
 module.exports = {
-    loadScreenshotList,
-    shouldTakeScreenshot,
     rebuildIndex
 };
