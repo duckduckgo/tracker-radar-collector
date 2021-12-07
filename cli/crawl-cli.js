@@ -135,7 +135,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
     /**
      * @param {URL} url
-     * @param {{testStarted: number, testFinished: number, data: {screenshot: string}}} data
+     * @param {{testStarted: number, testFinished: number, data: {screenshots: string}}} data
      */
     const dataCallback = (url, data) => {
         successes++;
@@ -148,7 +148,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
         // temp name for the screenshot is scored in data. rename the screenshot to match the file crawl file
         if (data.data.screenshots) {
             const screenshotFilename = createOutputPath(url, 'jpg');
-            fs.writeFileSync(data.data.screenshot, screenshotFilename);
+            fs.writeFileSync(data.data.screenshots, screenshotFilename);
             screenshotHelper.rebuildIndex(outputPath);
 
             // we don't want to keep base64 images in json files, lets replace that with jpeg output path
@@ -282,5 +282,5 @@ if (!urls || !program.output) {
         fs.mkdirSync(program.output);
     }
 
-    run(urls, program.output, verbose, program.logFile, program.crawlers || null, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, program.proxyConfig, program.regionCode, !program.disableAntiBot, program.chromiumVersion, program.screenshotLogging);
+    run(urls, program.output, verbose, program.logFile, program.crawlers || null, dataCollectors, forceOverwrite, filterOutFirstParty, emulateMobile, program.proxyConfig, program.regionCode, !program.disableAntiBot, program.chromiumVersion);
 }
