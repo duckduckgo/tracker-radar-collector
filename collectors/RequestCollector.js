@@ -114,7 +114,10 @@ class RequestCollector extends BaseCollector {
         let initiator = data.initiator;
         const url = request.url;
         const method = request.method;
-
+        const referrerPolicy = request.referrerPolicy;
+        // @ts-ignore
+        const referrer = request.headers.Referer;
+        this._log("Referrer header:", referrer, "referrerPolicy:", referrerPolicy, 'Request url', url);
         // for CORS requests initiator is set incorrectly to 'parser', thankfully we can get proper initiator
         // from the corresponding OPTIONS request
         if (method !== 'OPTIONS' && initiator.type === 'parser') {
@@ -380,6 +383,8 @@ module.exports = RequestCollector;
  * @property {Timestamp=} startTime
  * @property {Timestamp=} endTime
  * @property {string=} responseBodyHash
+ * @property {string=} referrer
+ * @property {string=} referrerPolicy
  */
 
 /**
@@ -404,6 +409,7 @@ module.exports = RequestCollector;
  * @property {HttpMethod} method
  * @property {object} headers
  * @property {'VeryLow'|'Low'|'Medium'|'High'|'VeryHigh'} initialPriority
+ * @property {string} referrerPolicy
  */
 
 /**
