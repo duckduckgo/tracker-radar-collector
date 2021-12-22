@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const BaseReporter = require('./BaseReporter');
 
 /**
@@ -6,7 +7,7 @@ const BaseReporter = require('./BaseReporter');
  * @param {Array<{path: string, url: string}>} screenshotPaths
  */
 function rebuildIndex (outputPath, screenshotPaths) {
-    const bodyContent = screenshotPaths.map(item => `<p>${item.url}</p><a href='${item.path}'> <img src='${item.path}' width="800" height="400" alt='${item.url}' loading="lazy" /></a>`);
+    const bodyContent = screenshotPaths.map(item => `<p>${item.url}</p><a href='${item.path}'><img src='${item.path}' alt='${item.url}' loading='lazy' style='max-width: 800px; max-height: 400px' /></a>`);
 
     const html = `<html>
     <head>
@@ -101,10 +102,10 @@ class HTMLReporter extends BaseReporter {
         const screenshotPath = updateData.data ? updateData.data.data.screenshots : null;
 
         if (screenshotPath) {
-            this.screenshotPaths.push({path: screenshotPath, url: updateData.site});
+            const resolvedPath = path.relative(this.logPath, screenshotPath);
+            this.screenshotPaths.push({path: resolvedPath, url: updateData.site});
+            rebuildIndex(this.logPath, this.screenshotPaths);
         }
-
-        rebuildIndex(this.logPath, this.screenshotPaths);
 
         // rewrite metadata page every 1%
         if (((updateData.successes + updateData.failures) / updateData.urls)*100 % 1 === 0) {
