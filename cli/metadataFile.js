@@ -48,63 +48,7 @@ function createMetadataFile(outputPath, {startTime, endTime, urls, successes, fa
     }, null, 2));
 }
 
-/**
- * @param {number} dateString
- * @return {string}
- */
-function _getTimeBucket (dateString) {
-    const date = new Date(dateString);
-    return `${date.getMonth()}/${date.getDay()}/${date.getHours()}:${date.getMinutes()}`;
-}
-
-/**
- * @param {string} outputPath
- * @param {{crawlTimes: number[][], startTime: Date, urls: number, successes: number, failures: number, skipped: number, numberOfCrawlers: number, regionCode: string, fatalError: Error}} data
- */
-function createMetadataHTML(outputPath, {startTime, crawlTimes, fatalError, numberOfCrawlers, regionCode, successes, failures, urls, skipped}) {
-    /** @type {Object.<string, number>} */
-    let minuteBuckets = {};
-
-    /** @type {{sites: number, total: number}}*/
-    const crawlStats = crawlTimes.reduce((stats, siteTime) => {
-        stats.sites++;
-        stats.total += siteTime[2];
-
-        const timeBucketKey = _getTimeBucket(siteTime[1]);
-        if (minuteBuckets[timeBucketKey]) {
-            minuteBuckets[timeBucketKey]++;
-        } else {
-            minuteBuckets[timeBucketKey] = 1;
-        }
-        return stats;
-    }, {sites: 0, total: 0});
-
-    const crawlRate = crawlStats.sites / Object.keys(minuteBuckets).length;
-    const finishTime = new Date();
-    finishTime.setMinutes(finishTime.getMinutes() + ((urls - (successes + failures + skipped)) / crawlRate));
-
-    const html = `<html>
-    <head>
-        <title>Crawler status</title>
-    </head>
-    <body>
-        <p>Status: crawling site ${successes + failures} of ${urls}</p>
-        <p>Avg site load time: ${((crawlStats.total / crawlStats.sites) / 1000).toFixed(1)} sec</p>
-        <p>Avg crawl rate: ${crawlRate.toFixed(1)} sites/min with ${numberOfCrawlers} crawlers</p>
-        <p>Estimated completion time: ${finishTime.toString()}</p>
-        <p>Region: ${regionCode ? regionCode : "US"}</p>
-        <p>Crawl started: ${startTime}</p>
-        <p>Last update: ${new Date()}</p>
-        <p>Errors: ${fatalError ? fatalError : 'None'}</p>
-        <a href="./screenshots/index.html?a=${Math.floor(Math.random() * 10000000)}">Screenshots</a>
-    </body>
-    </html>`;
-
-    fs.writeFileSync(`${outputPath}/index.html`, html);
-}
-
 module.exports = {
     createMetadataFile,
-    metadataFileExists,
-    createMetadataHTML
+    metadataFileExists
 };
