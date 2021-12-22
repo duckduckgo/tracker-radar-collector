@@ -15,6 +15,7 @@
         "helpers/",
         "post-processing/",
         "tests/",
+        "reporters/",
         "./*.js"
     ],
     "exclude": [
