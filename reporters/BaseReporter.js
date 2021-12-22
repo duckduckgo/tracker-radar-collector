@@ -16,7 +16,7 @@ class BaseReporter {
     /**
      * Called whenever site was crawled (either successfully or not)
      * 
-     * @param {{site: string, failures: number, successes: number, urls: number}} data 
+     * @param {{site: string, failures: number, successes: number, urls: number, data: {testStarted: number, testFinished: number, data: {screenshots: string}}, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data 
      */
     // eslint-disable-next-line no-unused-vars
     update(data) {

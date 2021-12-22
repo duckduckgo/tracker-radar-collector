@@ -116,9 +116,9 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
     let crawlTimes = [];
     
     // eslint-disable-next-line arrow-parens
-    const updateProgress = (/** @type {string} */site = '') => {
+    const updateProgress = (/** @type {string} */site = '', /** @type {{testStarted: number, testFinished: number, data: {screenshots: string}}}} */data) => {
         reporters.forEach(reporter => {
-            reporter.update({site, successes, failures, urls: urlsLength});
+            reporter.update({site, successes, failures, urls: urlsLength, data, crawlTimes, fatalError, numberOfCrawlers, regionCode});
         });
     };
 
@@ -128,7 +128,6 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
      */
     const dataCallback = (url, data) => {
         successes++;
-        updateProgress(url.toString());
 
         crawlTimes.push([data.testStarted, data.testFinished, data.testFinished - data.testStarted]);
 
@@ -142,6 +141,8 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
             // we don't want to keep base64 images in json files, lets replace that with jpeg output path
             data.data.screenshots = screenshotFilename;
         }
+
+        updateProgress(url.toString(), data);
 
         fs.writeFileSync(outputFile, JSON.stringify(data, null, 2));
     };
