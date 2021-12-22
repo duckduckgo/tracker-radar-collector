@@ -177,9 +177,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
     const endTime = new Date();
 
-    reporters.forEach(reporter => {
-        reporter.cleanup({endTime, successes, failures, urls: urlsLength});
-    });
+    await Promise.all(reporters.map(reporter => reporter.cleanup({endTime, successes, failures, urls: urlsLength})));
 
     createMetadataFile(outputPath, {
         startTime,

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const BaseReporter = require('./BaseReporter');
+const createDeferred = require('../helpers/deferred');
 
 class FileReporter extends BaseReporter {
 
@@ -29,8 +30,12 @@ class FileReporter extends BaseReporter {
      * @returns {Promise<void>}
      */
     cleanup() {
+        const {resolve, promise} = createDeferred();
+
+        this.logFile.once('close', () => resolve());
         this.logFile.close();
-        return Promise.resolve();
+
+        return promise;
     }
 }
 
