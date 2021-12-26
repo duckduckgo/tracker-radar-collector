@@ -19,9 +19,9 @@ program
     .option('-u, --url <url>', 'single URL')
     .option('-i, --input-list <path>', 'path to list of URLs')
     .option('-d, --data-collectors <list>', `comma separated list of data collectors: ${getCollectorIds().join(', ')} (all by default)`)
-    .option('-l, --log-path <path>', 'path where all logs should be written to')
-    .option('-v, --verbose', 'print log data to the screen')
     .option('--reporters <list>', `comma separated list of reporters: ${getReporterIds().join(', ')}`)
+    .option('-l, --log-path <path>', 'instructs reporters where all logs should be written to')
+    .option('-v, --verbose', 'instructs reporters to log additional information (e.g. for "cli" reporter progress bar will not be shown when verbose logging is enabled)')
     .option('-c, --crawlers <number>', 'overwrite the default number of concurent crawlers')
     .option('-f, --force-overwrite', 'overwrite existing output files')
     .option('-3, --only-3p', 'don\'t save any first-party data')
@@ -30,7 +30,6 @@ program
     .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
     .option('-a, --disable-anti-bot', 'disable anti bot detection protections injected to every frame')
     .option('--chromium-version <version_number>', 'use custom version of chromium')
-    .option('-h, --html-log', 'Write index.html to output directory with crawl stats')
     .parse(process.argv);
 
 /**
