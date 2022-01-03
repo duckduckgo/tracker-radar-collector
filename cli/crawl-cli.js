@@ -132,12 +132,11 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
         const outputFile = createOutputPath(url);
 
-        // temp name for the screenshot is scored in data. rename the screenshot to match the file crawl file
+        // move screenshot to its own file and only keep screenshot path in the JSON data
         if (data.data.screenshots) {
             const screenshotFilename = createOutputPath(url, 'jpg');
             fs.writeFileSync(screenshotFilename, Buffer.from(data.data.screenshots, 'base64'));
 
-            // we don't want to keep base64 images in json files, lets replace that with jpeg output path
             data.data.screenshots = screenshotFilename;
         }
 
