@@ -14,6 +14,8 @@
     "reporters": ["cli"],
     "urls": [
         "https://five.test",
-        "six.test"
+        "six.test",
+        {"url": "seven.test"},
+        {"url": "one.test", "dataCollectors": ["targets"]}
     ]
 }

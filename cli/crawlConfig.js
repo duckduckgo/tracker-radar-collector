@@ -74,11 +74,10 @@ function figureOut(flags) {
         crawlConfig.reporters = flags.reporters.split(',').map(n => n.trim()).filter(n => n.length > 0);
     }
 
-    // ‼️ urls passed via config and via CLI are CONCATENATED
     /**
      * @type {Array<string>}
      */
-    let cliUrls = [];
+    let cliUrls = null;
 
     if (flags.url) {
         cliUrls = [flags.url];
@@ -86,11 +85,21 @@ function figureOut(flags) {
         cliUrls = fs.readFileSync(flags.inputList).toString().split('\n').map(u => u.trim());
     }
 
-    if (Array.isArray(crawlConfig.urls)) {
-        crawlConfig.urls = crawlConfig.urls.concat(cliUrls);
-    } else {
-        crawlConfig.urls = cliUrls;
+    if (cliUrls) {
+        // ‼️ interesting thing happens if url is passed from both CLI and config - CLI list is used, but with a twist
+        // if url in the config had a custom configuration it will override matching item on the CLI list
+        if (crawlConfig.urls) {
+            /**
+             * @type {Array<{url:string, dataCollectors:string[]}>}
+             */
+            // @ts-ignore typescript doesn't understand that we filtered out all strings
+            const urlsWithConfig = crawlConfig.urls.filter(i => (typeof i !== 'string'));
+            crawlConfig.urls = cliUrls.map(url => urlsWithConfig.find(i => i.url === url) || url);
+        } else {
+            crawlConfig.urls = cliUrls;
+        }
     }
+    
 
     crawlConfig.urls = crawlConfig.urls.map(item => {
         if (typeof item === 'string') {

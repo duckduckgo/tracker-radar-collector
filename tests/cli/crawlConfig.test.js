@@ -29,10 +29,9 @@ mockery.registerMock('fs', {
 
 const crawlConfig = require('../../cli/crawlConfig');
 
-// test if all config options are passed from config and if list is merged with urls
+// test if all config options are passed from config
 const result1 = crawlConfig.figureOut({
-    config: 'config.json',
-    inputList: 'list.txt'
+    config: 'config.json'
 });
 
 assert(result1.output === mockConfigFile.output, "Correct value for 'output'");
@@ -50,18 +49,17 @@ assert.deepStrictEqual(result1.dataCollectors, mockConfigFile.dataCollectors, "C
 assert.deepStrictEqual(result1.reporters, mockConfigFile.reporters, "Correct value for 'reporters'");
 
 assert.deepStrictEqual(result1.urls, [
-    'https://five.test',
-    'http://six.test',
-    'http://one.test',
-    'http://two.test',
-    'https://three.protocol.test',
-    'http://four.protocol.test'
+    "https://five.test",
+    "http://six.test",
+    {"url": "http://seven.test"},
+    {"url": "http://one.test", "dataCollectors": ["targets"]}
 ], "Unexpected value for 'urls'");
 
-// test if CLI flags override config
+// test if CLI flags override config and if list.txt is merged with urls from config.json
 
 const flags = {
     config: 'config.json',
+    inputList: 'list.txt',
     output: '/something/else',
     logPath: '/other/path',
     crawlers: '666',
@@ -74,8 +72,7 @@ const flags = {
     regionCode: 'KA',
     chromiumVersion: '987654',
     dataCollectors: 'targets,cookies',
-    reporters: 'html,file',
-    url: 'some.domain.test'
+    reporters: 'html,file'
 };
 
 const result2 = crawlConfig.figureOut(flags);
@@ -95,9 +92,10 @@ assert.deepStrictEqual(result2.dataCollectors, ['targets', 'cookies'], "Correct 
 assert.deepStrictEqual(result2.reporters, ['html', 'file'], "Correct value for 'reporters'");
 
 assert.deepStrictEqual(result2.urls, [
-    'https://five.test',
-    'http://six.test',
-    'http://some.domain.test'
+    {'url': 'http://one.test', 'dataCollectors': ['targets']},
+    'http://two.test',
+    'https://three.protocol.test',
+    'http://four.protocol.test'
 ], "Unexpected value for 'urls'");
 
 mockery.disable();
