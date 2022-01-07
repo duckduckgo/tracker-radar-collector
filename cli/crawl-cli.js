@@ -35,7 +35,7 @@ program
     .parse(process.argv);
 
 /**
- * @param {Array<string|{url:string, dataCollectors:string[]}>} inputUrls
+ * @param {Array<string|{url:string, dataCollectors?:BaseCollector[]}>} inputUrls
  * @param {string} outputPath
  * @param {boolean} verbose
  * @param {string} logPath
@@ -159,7 +159,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
     try {
         await runCrawlers({
-            urls: urls.map(item => ((typeof item === 'string') ? item : item.url)),
+            urls,
             logFunction: log,
             dataCollectors,
             numberOfCrawlers,
@@ -207,16 +207,7 @@ const config = crawlConfig.figureOut(program);
 let dataCollectors = null;
 
 if (config.dataCollectors) {
-    dataCollectors = [];
-
-    config.dataCollectors.forEach(id => {
-        try {
-            dataCollectors.push(createCollector(id));
-        } catch (e) {
-            console.log(chalk.red(`Error creating collector "${id}".`), e.message);
-            process.exit(1);
-        }
-    });
+    dataCollectors = config.dataCollectors.map(id => createCollector(id));
 } else {
     dataCollectors = getCollectorIds().map(id => createCollector(id));
 }
@@ -227,16 +218,7 @@ if (config.dataCollectors) {
 let reporters = null;
 
 if (config.reporters) {
-    reporters = [];
-
-    config.reporters.forEach(id => {
-        try {
-            reporters.push(createReporter(id));
-        } catch (e) {
-            console.log(chalk.red(`Error creating reporter "${id}".`), e.message);
-            process.exit(1);
-        }
-    });
+    reporters = config.reporters.map(id => createReporter(id));
 } else {
     reporters = [createReporter('cli')];
 }
@@ -254,5 +236,20 @@ if (!config.urls || !config.output) {
         fs.mkdirSync(config.output);
     }
 
-    run(config.urls, config.output, config.verbose, config.logPath, config.crawlers || null, dataCollectors, reporters, config.forceOverwrite, config.filterOutFirstParty, config.emulateMobile, config.proxyConfig, config.regionCode, !config.disableAntiBot, config.chromiumVersion);
+    /**
+     * @type {Array<string|{url:string, dataCollectors:BaseCollector[]}>}
+     */
+    // @ts-ignore typescript doesn't understand that all string[] will be converted to BaseCollector[]
+    const urls = config.urls.map(item => {
+        if (typeof item !== 'string' && item.dataCollectors) {
+            return {
+                url: item.url,
+                dataCollectors: item.dataCollectors.map(id => createCollector(id))
+            };
+        }
+        
+        return item;
+    });
+
+    run(urls, config.output, config.verbose, config.logPath, config.crawlers || null, dataCollectors, reporters, config.forceOverwrite, config.filterOutFirstParty, config.emulateMobile, config.proxyConfig, config.regionCode, !config.disableAntiBot, config.chromiumVersion);
 }

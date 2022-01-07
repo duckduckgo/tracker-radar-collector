@@ -47,7 +47,7 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
 }
 
 /**
- * @param {{urls: string[], dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean, chromiumVersion?: string}} options
+ * @param {{urls: Array<string|{url:string,dataCollectors?:BaseCollector[]}>, dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean, chromiumVersion?: string}} options
  */
 module.exports = async options => {
     const deferred = createDeferred();
@@ -71,11 +71,19 @@ module.exports = async options => {
         executablePath = await downloadCustomChromium(log, options.chromiumVersion);
     }
 
-    async.eachOfLimit(options.urls, numberOfCrawlers, (urlString, idx, callback) => {
+    async.eachOfLimit(options.urls, numberOfCrawlers, (urlItem, idx, callback) => {
+        const urlString = (typeof urlItem === 'string') ? urlItem : urlItem.url;
+        let dataCollectors = options.dataCollectors;
+
+        // there can be a different set of collectors for every item
+        if ((typeof urlItem !== 'string') && urlItem.dataCollectors) {
+            dataCollectors = urlItem.dataCollectors;
+        }
+
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(null, urlString, options.dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false), executablePath);
+        const task = crawlAndSaveData.bind(null, urlString, dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false), executablePath);
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {
