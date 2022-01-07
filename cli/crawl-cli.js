@@ -8,6 +8,7 @@ const crypto = require('crypto');
 const {getCollectorIds, createCollector} = require('../helpers/collectorsList');
 const {getReporterIds, createReporter} = require('../helpers/reportersList');
 const {metadataFileExists, createMetadataFile} = require('./metadataFile');
+const crawlConfig = require('./crawlConfig');
 
 // eslint-disable-next-line no-unused-vars
 const BaseCollector = require('../collectors/BaseCollector');
@@ -29,11 +30,12 @@ program
     .option('-p, --proxy-config <host>', 'use an optional proxy configuration')
     .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
     .option('-a, --disable-anti-bot', 'disable anti bot detection protections injected to every frame')
+    .option('--config', 'crawl configuration file')
     .option('--chromium-version <version_number>', 'use custom version of chromium')
     .parse(process.argv);
 
 /**
- * @param {string[]} inputUrls
+ * @param {Array<string|{url:string, dataCollectors:string[]}>} inputUrls
  * @param {string} outputPath
  * @param {boolean} verbose
  * @param {string} logPath
@@ -75,7 +77,9 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
         return path.join(outputPath, `${url.hostname}_${hash}.${fileType}`);
     });
 
-    const urls = inputUrls.filter(urlString => {
+    const urls = inputUrls.filter(item => {
+        const urlString = (typeof item === 'string') ? item : item.url;
+
         /**
          * @type {URL}
          */
@@ -155,7 +159,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
     try {
         await runCrawlers({
-            urls,
+            urls: urls.map(item => ((typeof item === 'string') ? item : item.url)),
             logFunction: log,
             dataCollectors,
             numberOfCrawlers,
@@ -194,26 +198,18 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
     });
 }
 
-const verbose = Boolean(program.verbose);
-const forceOverwrite = Boolean(program.forceOverwrite);
-const filterOutFirstParty = Boolean(program.only3p);
-const emulateMobile = Boolean(program.mobile);
+// @ts-ignore
+const config = crawlConfig.figureOut(program);
+
 /**
  * @type {BaseCollector[]}
  */
 let dataCollectors = null;
-/**
- * @type {BaseReporter[]}
- */
-let reporters = null;
-let urls = null;
 
-if (typeof program.dataCollectors === 'string') {
-    const dataCollectorsIds = program.dataCollectors.split(',').map(n => n.trim()).filter(n => n.length > 0);
-
+if (config.dataCollectors) {
     dataCollectors = [];
 
-    dataCollectorsIds.forEach(id => {
+    config.dataCollectors.forEach(id => {
         try {
             dataCollectors.push(createCollector(id));
         } catch (e) {
@@ -225,12 +221,15 @@ if (typeof program.dataCollectors === 'string') {
     dataCollectors = getCollectorIds().map(id => createCollector(id));
 }
 
-if (typeof program.reporters === 'string') {
-    const reporterIds = program.reporters.split(',').map(n => n.trim()).filter(n => n.length > 0);
+/**
+ * @type {BaseReporter[]}
+ */
+let reporters = null;
 
+if (config.reporters) {
     reporters = [];
 
-    reporterIds.forEach(id => {
+    config.reporters.forEach(id => {
         try {
             reporters.push(createReporter(id));
         } catch (e) {
@@ -242,31 +241,18 @@ if (typeof program.reporters === 'string') {
     reporters = [createReporter('cli')];
 }
 
-if (program.url) {
-    urls = [program.url];
-} else if(program.inputList) {
-    urls = fs.readFileSync(program.inputList).toString().split('\n').map(u => u.trim());
-}
-
-if (!urls || !program.output) {
+if (!config.urls || !config.output) {
     program.help();
 } else {
-    urls = urls.map(url => {
-        if (url.startsWith('http://') || url.startsWith('https://')) {
-            return url;
-        }
-        return `http://${url}`;
-    });
-
-    if (fs.existsSync(program.output)) {
-        if (metadataFileExists(program.output) && !forceOverwrite) {
+    if (fs.existsSync(config.output)) {
+        if (metadataFileExists(config.output) && !config.forceOverwrite) {
             // eslint-disable-next-line no-console
             console.log(chalk.red('Output folder already exists and contains metadata file.'), 'Use -f to overwrite.');
             process.exit(1);
         }
     } else {
-        fs.mkdirSync(program.output);
+        fs.mkdirSync(config.output);
     }
 
-    run(urls, program.output, verbose, program.logPath, program.crawlers || null, dataCollectors, reporters, forceOverwrite, filterOutFirstParty, emulateMobile, program.proxyConfig, program.regionCode, !program.disableAntiBot, program.chromiumVersion);
+    run(config.urls, config.output, config.verbose, config.logPath, config.crawlers || null, dataCollectors, reporters, config.forceOverwrite, config.filterOutFirstParty, config.emulateMobile, config.proxyConfig, config.regionCode, !config.disableAntiBot, config.chromiumVersion);
 }
