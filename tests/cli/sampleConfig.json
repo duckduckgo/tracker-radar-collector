@@ -1,0 +1,19 @@
+{
+    "output": "./data/path",
+    "logPath": "./log/path",
+    "crawlers": 12,
+    "verbose": true,
+    "forceOverwrite": true,
+    "filterOutFirstParty": true,
+    "emulateMobile": true,
+    "disableAntiBot": true,
+    "proxyConfig": "bla:bla:123",
+    "regionCode": "PL",
+    "chromiumVersion": "123456",
+    "dataCollectors": ["requests", "apis", "screenshots"],
+    "reporters": ["cli"],
+    "urls": [
+        "https://five.test",
+        "six.test"
+    ]
+}
