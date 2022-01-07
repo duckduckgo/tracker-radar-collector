@@ -16,7 +16,7 @@ const BaseCollector = require('../collectors/BaseCollector');
 const BaseReporter = require('../reporters/BaseReporter');
 
 program
-    .option('-o, --output <path>', '(required) output folder')
+    .option('-o, --output <path>', 'output folder')
     .option('-u, --url <url>', 'single URL')
     .option('-i, --input-list <path>', 'path to list of URLs')
     .option('-d, --data-collectors <list>', `comma separated list of data collectors: ${getCollectorIds().join(', ')} (all by default)`)
@@ -30,7 +30,7 @@ program
     .option('-p, --proxy-config <host>', 'use an optional proxy configuration')
     .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
     .option('-a, --disable-anti-bot', 'disable anti bot detection protections injected to every frame')
-    .option('--config', 'crawl configuration file')
+    .option('--config <path>', 'crawl configuration file')
     .option('--chromium-version <version_number>', 'use custom version of chromium')
     .parse(process.argv);
 
