@@ -30,6 +30,7 @@ Available options:
 - `-r, --region-code <region>` - optional 2 letter region code. For metadata only
 - `-a, --disable-anti-bot` - disable simple build-in anti bot detection script injected to every frame
 - `--chromium-version <version_number>` - use custom version of Chromium (e.g. "843427") instead of using the default
+- `--config <path>` - path to a config file that allows to set all the above settings (and more). Note that CLI flags have a higher priority than settings passed via config. You can find a sample config file in `tests/cli/sampleConfig.json`.
 
 ### Use it as a module
 
@@ -52,7 +53,7 @@ const {RequestCollector, CookieCollector, …} = require('tracker-radar-collecto
 ```js
 crawlerConductor({
     // required ↓
-    urls: ['https://example.com', 'https://duck.com', …],
+    urls: ['https://example.com', {url: 'https://duck.com', dataCollectors: [new ScreenshotCollector()]}, …], // two formats available: first format will use default collectors set below, second format will use custom set of collectors for this one url
     dataCallback: (url, result) => {…},
     // optional ↓
     dataCollectors: [new RequestCollector(), new CookieCollector()],
