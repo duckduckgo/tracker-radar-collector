@@ -149,9 +149,15 @@ module.exports = APICallCollector;
  * @typedef {Object<string, number>} APICallData
  */
 
- /**
-  * @typedef SavedCall
-  * @property {string} source - source script
-  * @property {string} description - breakpoint description
-  * @property {object} arguments - preview or the passed arguments
-  */
+/**
+ * @typedef SavedCall
+ * @property {string} source - source script
+ * @property {string} description - breakpoint description
+ * @property {object} arguments - preview or the passed arguments
+ */
+
+/**
+ * @typedef APICallReport
+ * @property {SavedCall[]} savedCalls
+ * @property {Object<string, APICallData>} callStats
+ */

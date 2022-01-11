@@ -322,5 +322,5 @@ module.exports = async (url, options) => {
  * @property {boolean} timeout true if page didn't fully load before the timeout and loading had to be stopped by the crawler
  * @property {number} testStarted time when the crawl started (unix timestamp)
  * @property {number} testFinished time when the crawl finished (unix timestamp)
- * @property {any} data object containing output from all collectors
+ * @property {import('./helpers/collectorsList').CollectorData} data object containing output from all collectors
 */

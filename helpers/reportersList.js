@@ -3,7 +3,8 @@ const BaseReporter = require('../reporters/BaseReporter');
 const CLIReporter = require('./../reporters/CLIReporter');
 const FileReporter = require('./../reporters/FileReporter');
 const HTMLReporter = require('./../reporters/HTMLReporter');
-const reporterClasses = [CLIReporter, FileReporter, HTMLReporter];
+const ClickhouseReporter = require('./../reporters/ClickhouseReporter');
+const reporterClasses = [CLIReporter, FileReporter, HTMLReporter, ClickhouseReporter];
 const reporters = reporterClasses.map(ReporterClass => ({
     // @ts-ignore
     id: (new ReporterClass()).id(),
