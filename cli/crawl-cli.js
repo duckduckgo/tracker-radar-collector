@@ -117,7 +117,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
     let crawlTimes = [];
     
     // eslint-disable-next-line arrow-parens
-    const updateProgress = (/** @type {string} */site = '', /** @type {{testStarted: number, testFinished: number, data: {screenshots: string}}}} */data) => {
+    const updateProgress = (/** @type {string} */site = '', /** @type {import('../crawler').CollectResult} */data) => {
         reporters.forEach(reporter => {
             reporter.update({site, successes, failures, urls: urlsLength, data, crawlTimes, fatalError, numberOfCrawlers, regionCode});
         });
@@ -125,7 +125,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
     /**
      * @param {URL} url
-     * @param {{testStarted: number, testFinished: number, data: {screenshots: string}}} data
+     * @param {import('../crawler').CollectResult} data
      */
     const dataCallback = (url, data) => {
         successes++;

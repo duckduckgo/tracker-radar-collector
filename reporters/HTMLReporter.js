@@ -96,7 +96,7 @@ class HTMLReporter extends BaseReporter {
     }
 
     /**
-     * @param {{site: string, failures: number, successes: number, urls: number, data: {testStarted: number, testFinished: number, data: {screenshots: string}}, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} updateData 
+     * @param {{site: string, failures: number, successes: number, urls: number, data: import("../crawler").CollectResult, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} updateData 
      */
     update(updateData) {
         const screenshotPath = updateData.data ? updateData.data.data.screenshots : null;

@@ -45,5 +45,6 @@ module.exports = {
  * @property {import('../collectors/CookieCollector').CookieData[]=} cookies
  * @property {{ present: string[], visible: string[]}=} elements
  * @property {import('../collectors/RequestCollector').RequestData[]=} requests
+ * @property {string=} screenshots
  * @property {import('../collectors/TargetCollector').TargetData[]=} targets
  */
