@@ -65,6 +65,8 @@ crawlerConductor({
     proxyHost: 'socks5://myproxy:8080',// SOCKS proxy host (none by default)
     antiBotDetection: true,// if anti bot detection script should be injected (true by default)
     chromiumVersion: '843427',// Chromium version that should be downloaded and used instead of the default one
+    maxLoadTimeMs: 30000,// how long should crawlers wait for the page to load, defaults to 30s
+    extraExecutionTimeMs: 2500,// how long should crawlers wait after page loads before collecting data, defaults to 2.5s
 });
 ```
 
@@ -83,6 +85,8 @@ const data = await crawler(new URL('https://example.com'), {
     browserContext: context,// if you prefer to create the browser context yourself (to e.g. use other browser or non-incognito context) you can pass it here (by default crawler will create an incognito context using standard chromium for you)
     runInEveryFrame: () => {window.alert('injected')},// function that should be executed in every frame (main + all subframes)
     executablePath: '/some/path/Chromium.app/Contents/MacOS/Chromium',// path to a custom Chromium installation that should be used instead of the default one
+    maxLoadTimeMs: 30000,// how long should the crawler wait for the page to load, defaults to 30s
+    extraExecutionTimeMs: 2500,// how long should crawler wait after page loads before collecting data, defaults to 2.5s
 });
 ```
 

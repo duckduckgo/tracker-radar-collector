@@ -2,6 +2,8 @@
     "output": "./data/path",
     "logPath": "./log/path",
     "crawlers": 12,
+    "maxLoadTimeMs": 5000,
+    "extraExecutionTimeMs": 1000,
     "verbose": true,
     "forceOverwrite": true,
     "filterOutFirstParty": true,

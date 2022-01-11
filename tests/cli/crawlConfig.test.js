@@ -45,6 +45,8 @@ assert(result1.disableAntiBot === mockConfigFile.disableAntiBot, "Correct value 
 assert(result1.proxyConfig === mockConfigFile.proxyConfig, "Correct value for 'proxyConfig'");
 assert(result1.regionCode === mockConfigFile.regionCode, "Correct value for 'regionCode'");
 assert(result1.chromiumVersion === mockConfigFile.chromiumVersion, "Correct value for 'chromiumVersion'");
+assert(result1.maxLoadTimeMs === mockConfigFile.maxLoadTimeMs, "Correct value for 'maxLoadTimeMs'");
+assert(result1.extraExecutionTimeMs === mockConfigFile.extraExecutionTimeMs, "Correct value for 'extraExecutionTimeMs'");
 assert.deepStrictEqual(result1.dataCollectors, mockConfigFile.dataCollectors, "Correct value for 'dataCollectors'");
 assert.deepStrictEqual(result1.reporters, mockConfigFile.reporters, "Correct value for 'reporters'");
 
@@ -88,6 +90,8 @@ assert(result2.disableAntiBot === flags.disableAntiBot, "Correct value for 'disa
 assert(result2.proxyConfig === flags.proxyConfig, "Correct value for 'proxyConfig'");
 assert(result2.regionCode === flags.regionCode, "Correct value for 'regionCode'");
 assert(result2.chromiumVersion === flags.chromiumVersion, "Correct value for 'chromiumVersion'");
+assert(result2.maxLoadTimeMs === mockConfigFile.maxLoadTimeMs, "Correct value for 'maxLoadTimeMs'");
+assert(result2.extraExecutionTimeMs === mockConfigFile.extraExecutionTimeMs, "Correct value for 'extraExecutionTimeMs'");
 assert.deepStrictEqual(result2.dataCollectors, ['targets', 'cookies'], "Correct value for 'dataCollectors'");
 assert.deepStrictEqual(result2.reporters, ['html', 'file'], "Correct value for 'reporters'");
 
