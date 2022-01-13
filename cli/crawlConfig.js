@@ -135,4 +135,6 @@ module.exports = {
  * @property {boolean} verbose
  * @property {boolean} emulateMobile
  * @property {boolean} disableAntiBot
+ * @property {number} maxLoadTimeMs
+ * @property {number} extraExecutionTimeMs
  */

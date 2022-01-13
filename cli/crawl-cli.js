@@ -49,8 +49,10 @@ program
  * @param {string} regionCode
  * @param {boolean} antiBotDetection
  * @param {string} chromiumVersion
+ * @param {number} maxLoadTimeMs
+ * @param {number} extraExecutionTimeMs
  */
-async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, reporters, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost, regionCode, antiBotDetection, chromiumVersion) {
+async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, reporters, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost, regionCode, antiBotDetection, chromiumVersion, maxLoadTimeMs, extraExecutionTimeMs) {
     const startTime = new Date();
 
     reporters.forEach(reporter => {
@@ -169,7 +171,9 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
             emulateMobile,
             proxyHost,
             antiBotDetection,
-            chromiumVersion
+            chromiumVersion,
+            maxLoadTimeMs,
+            extraExecutionTimeMs
         });
         log(chalk.green('\n✅ Finished successfully.'));
     } catch(e) {
@@ -251,5 +255,5 @@ if (!config.urls || !config.output) {
         return item;
     });
 
-    run(urls, config.output, config.verbose, config.logPath, config.crawlers || null, dataCollectors, reporters, config.forceOverwrite, config.filterOutFirstParty, config.emulateMobile, config.proxyConfig, config.regionCode, !config.disableAntiBot, config.chromiumVersion);
+    run(urls, config.output, config.verbose, config.logPath, config.crawlers || null, dataCollectors, reporters, config.forceOverwrite, config.filterOutFirstParty, config.emulateMobile, config.proxyConfig, config.regionCode, !config.disableAntiBot, config.chromiumVersion, config.maxLoadTimeMs, config.extraExecutionTimeMs);
 }
