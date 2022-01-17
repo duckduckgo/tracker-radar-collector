@@ -8,7 +8,7 @@ const {getCollectorIds, createCollector} = require('../helpers/collectorsList');
 const {getReporterIds, createReporter} = require('../helpers/reportersList');
 const {metadataFileExists, createMetadataFile} = require('./metadataFile');
 const crawlConfig = require('./crawlConfig');
-const {createUrlHash} = require('../helpers/hash');
+const {createUniqueUrlName} = require('../helpers/hash');
 
 // eslint-disable-next-line no-unused-vars
 const BaseCollector = require('../collectors/BaseCollector');
@@ -73,7 +73,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
      * @param {URL} url
      * @param {string} fileType file extension, defaults to 'json'
      */
-    const createOutputPath = ((url, fileType='json') => path.join(outputPath, `${createUrlHash(url)}.${fileType}`));
+    const createOutputPath = ((url, fileType='json') => path.join(outputPath, `${createUniqueUrlName(url)}.${fileType}`));
 
     const urls = inputUrls.filter(item => {
         const urlString = (typeof item === 'string') ? item : item.url;

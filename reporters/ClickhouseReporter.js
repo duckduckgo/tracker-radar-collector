@@ -1,7 +1,7 @@
 const {ClickHouse} = require('clickhouse');
 const os = require('os');
 const BaseReporter = require('./BaseReporter');
-const {createUrlHash} = require('../helpers/hash');
+const {createUniqueUrlName} = require('../helpers/hash');
 
 // eslint-disable-next-line no-process-env
 const CLICKHOUSE_SERVER = process.env.CLICKHOUSE_SERVER || 'va-clickhouse1';
@@ -153,7 +153,7 @@ class ClickhouseReporter extends BaseReporter {
      */
     processSite(data) {
         // @ts-ignore
-        const pageId = createUrlHash(new URL(data.initialUrl));
+        const pageId = createUniqueUrlName(new URL(data.initialUrl));
         this.ready = this.ready.then(async () => {
             this.queue.pages.push([this.crawlId, pageId, data.testStarted, data.testFinished, data.initialUrl, data.finalUrl, data.timeout]);
             if (data.data.requests) {
