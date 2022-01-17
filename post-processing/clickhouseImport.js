@@ -1,7 +1,7 @@
 /* eslint-disable no-process-env */
 const fs = require('fs').promises;
 const path = require('path');
-const Clickhouse = require('./reporters/ClickhouseReporter');
+const Clickhouse = require('../reporters/ClickhouseReporter');
 
 const ch = new Clickhouse();
 const crawlName = process.env.CRAWL_NAME || '';
