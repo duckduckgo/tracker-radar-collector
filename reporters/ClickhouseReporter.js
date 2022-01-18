@@ -102,11 +102,12 @@ class ClickhouseReporter extends BaseReporter {
     }
 
     /**
-     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string, proxyHost?: string}} options 
+     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string, regionCode?: string}} options 
      */
     init(options) {
-        this.createCrawl('', options.proxyHost || '');
-        if (options.verbose) {
+        this.verbose = options.verbose;
+        this.createCrawl('', options.regionCode || '');
+        if (this.verbose) {
             console.log(`Creating crawl ${this.crawlId}`);
         }
     }
@@ -195,7 +196,9 @@ class ClickhouseReporter extends BaseReporter {
     }
 
     async commitQueue() {
-        console.log(`commit ${this.queue.pages.length} pages, ${this.queue.requests.length} requests`);
+        if (this.verbose) {
+            console.log(`commit ${this.queue.pages.length} pages, ${this.queue.requests.length} requests`);
+        }
         const inserts = Object.keys(this.queue).map(async table => {
             // @ts-ignore
             await this.client.insert(`INSERT INTO ${DB}.${table}`, this.queue[table]).toPromise();

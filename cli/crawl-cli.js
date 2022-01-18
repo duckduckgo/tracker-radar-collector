@@ -56,7 +56,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
     const startTime = new Date();
 
     reporters.forEach(reporter => {
-        reporter.init({verbose, startTime, urls: inputUrls.length, logPath, proxyHost});
+        reporter.init({verbose, startTime, urls: inputUrls.length, logPath, regionCode});
     });
 
     /**

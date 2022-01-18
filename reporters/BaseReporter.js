@@ -7,7 +7,7 @@ class BaseReporter {
     /**
      * Called once before crawling starts
      * 
-     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string, proxyHost?: string}} options 
+     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string, regionCode?: string}} options 
      */
     // eslint-disable-next-line no-unused-vars
     init(options) {
