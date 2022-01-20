@@ -153,7 +153,7 @@ module.exports = APICallCollector;
  * @typedef SavedCall
  * @property {string} source - source script
  * @property {string} description - breakpoint description
- * @property {object} arguments - preview or the passed arguments
+ * @property {string[]} arguments - preview or the passed arguments
  */
 
 /**

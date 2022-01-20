@@ -95,6 +95,15 @@ const TABLE_DEFINITIONS = [
     PRIMARY KEY(crawlId, pageId, targetId)`,
 ];
 
+/**
+ * @param {string | string[]} args
+ */
+function santizeCallArgs(args) {
+    // in some cases call args have been stringified, so unwrap that first.
+    const argsArray = typeof args === 'string'  ? JSON.parse(args) : (args || []);
+    return argsArray.map((/** @type {string} */ s) => s.replace(/'/g, ''));
+}
+
 class ClickhouseReporter extends BaseReporter {
 
     id() {
@@ -178,7 +187,7 @@ class ClickhouseReporter extends BaseReporter {
                 const {callStats,savedCalls} = data.data.apis;
                 const callStatRows = Object.keys(callStats).map(source => [this.crawlId, pageId, source, JSON.stringify(callStats[source])]);
                 this.queue.apiCallStats = this.queue.apiCallStats.concat(callStatRows);
-                const savedCallRows = savedCalls.map((c, i) => [this.crawlId, pageId, i, c.source, c.description, c.arguments]);
+                const savedCallRows = savedCalls.map((c, i) => [this.crawlId, pageId, i, c.source, c.description, santizeCallArgs(c.arguments)]);
                 this.queue.apiSavedCalls = this.queue.apiSavedCalls.concat(savedCallRows);
             }
             if (data.data.cookies) {
