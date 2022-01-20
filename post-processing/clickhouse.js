@@ -2,6 +2,8 @@
 const fs = require('fs').promises;
 const path = require('path');
 const program = require('commander');
+const ProgressBar = require('progress');
+const chalk = require('chalk').default;
 const Clickhouse = require('../reporters/ClickhouseReporter');
 
 program
@@ -9,7 +11,7 @@ program
     
 Examples:
     # import crawl with default crawlId and no metadata
-    clickhouse.js /path/to/crawl
+    clickhouse.js -d /path/to/crawl
 
     # Create an entry in the crawl table with ID "mycrawl" and import nothing
     clickhouse.js -c mycrawl --name "This is a crawl" --region US
@@ -20,11 +22,16 @@ Examples:
     .option('-d --crawldir <dir>', 'Directory of crawl output to import')
     .parse(process.argv);
 
-console.log(program.crawldir, program.crawlid, program.name);
 const ch = new Clickhouse();
 const crawlName = program.crawlname;
 const crawlRegion = program.region;
 const crawledPagePath = program.crawldir;
+
+// Must provide at least one option
+if (!crawlName && !crawlRegion && !crawledPagePath && !program.crawlId) {
+    program.outputHelp();
+    process.exit(1);
+}
 
 (async () => {
     /**
@@ -40,15 +47,25 @@ const crawledPagePath = program.crawldir;
     }
     await ch.createCrawl(crawlName, crawlRegion);
     if (crawledPagePath) {
+        const progressBar = new ProgressBar('[:bar] :percent ETA :etas :page', {
+            complete: chalk.green('='),
+            incomplete: ' ',
+            total: pages.length,
+            width: 30,
+        });
         for (const page of pages) {
             // eslint-disable-next-line no-await-in-loop
             const contents = await fs.readFile(path.join(crawledPagePath, page), {encoding: 'utf-8'});
             const data = JSON.parse(contents.toString());
             if (!data.initialUrl) {
+                progressBar.total -= 1;
                 continue;
             }
             // eslint-disable-next-line no-await-in-loop
             await ch.processSite(data);
+            progressBar.tick({
+                page,
+            });
         }
     }
     await ch.cleanup();

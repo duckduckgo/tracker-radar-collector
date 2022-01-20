@@ -204,9 +204,6 @@ class ClickhouseReporter extends BaseReporter {
     }
 
     async commitQueue() {
-        if (this.verbose) {
-            console.log(`commit ${this.queue.pages.length} pages, ${this.queue.requests.length} requests`);
-        }
         const inserts = Object.keys(this.queue).map(async table => {
             // @ts-ignore
             await this.client.insert(`INSERT INTO ${DB}.${table}`, this.queue[table]).toPromise();
