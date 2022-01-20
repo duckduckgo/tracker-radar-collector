@@ -7,7 +7,7 @@ class BaseReporter {
     /**
      * Called once before crawling starts
      * 
-     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options 
+     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string, regionCode?: string}} options 
      */
     // eslint-disable-next-line no-unused-vars
     init(options) {
@@ -16,7 +16,7 @@ class BaseReporter {
     /**
      * Called whenever site was crawled (either successfully or not)
      * 
-     * @param {{site: string, failures: number, successes: number, urls: number, data: {testStarted: number, testFinished: number, data: {screenshots: string}}, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data 
+     * @param {{site: string, failures: number, successes: number, urls: number, data: import("../crawler").CollectResult, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data 
      */
     // eslint-disable-next-line no-unused-vars
     update(data) {

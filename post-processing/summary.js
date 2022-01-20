@@ -140,6 +140,7 @@ dataFiles.forEach(file => {
             };
         }
 
+        // @ts-ignore
         const sectionData = data.data[sectionName];
 
         if (sectionData === null) {

@@ -351,7 +351,7 @@ module.exports = RequestCollector;
  * @property {string} url
  * @property {HttpMethod} method
  * @property {ResourceType} type
- * @property {string[]=} initiator
+ * @property {string[]=} initiators
  * @property {string=} redirectedFrom
  * @property {string=} redirectedTo
  * @property {number=} status

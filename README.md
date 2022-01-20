@@ -121,8 +121,10 @@ Additionally, each collector can override following methods:
 - `init(options)` which is called before the crawl begins
 - `addTarget(targetInfo)` which is called whenever new target is created (main page, iframe, web worker etc.)
 
-There are couple of build in collectors in the `collectors/` folder. `CookieCollector` is the simplest one and can be used as a template.
+There are couple of built-in collectors in the `collectors/` folder. `CookieCollector` is the simplest one and can be used as a template.
 
 Each new collector has to be added in two places to be discoverable:
 - `crawlerConductor.js` - so that `crawlerConductor` knows about it (and it can be used in the CLI tool)
 - `main.js` - so that the new collector can be imported by other projects
+
+You can also add types to define the structure of the data exported by your collector. These should be added to the `CollectorData` type in `collectorsList.js`. This will add type hints to all places where the data is used in the code.
