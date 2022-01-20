@@ -111,14 +111,26 @@ class ClickhouseReporter extends BaseReporter {
     }
 
     /**
-     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string, regionCode?: string}} options 
+     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options 
      */
     init(options) {
         this.verbose = options.verbose;
-        this.createCrawl('', options.regionCode || '');
+        this.client = new ClickHouse({url: CLICKHOUSE_SERVER});
+        this.crawlId = `${new Date().toISOString()}-${os.hostname()}`;
+        this.ready = Promise.all(TABLE_DEFINITIONS.map(stmt => this.client.query(stmt).toPromise()));
         if (this.verbose) {
             console.log(`Creating crawl ${this.crawlId}`);
         }
+        this.queue = {
+            pages: [],
+            requests: [],
+            elements: [],
+            cmps: [],
+            apiSavedCalls: [],
+            apiCallStats: [],
+            cookies: [],
+            targets: [],
+        };
     }
 
     /**
@@ -126,25 +138,12 @@ class ClickhouseReporter extends BaseReporter {
      * @param {string} region
      */
     createCrawl(name = '', region='') {
-        this.client = new ClickHouse({url: CLICKHOUSE_SERVER});
-        this.crawlId = `${new Date().toISOString()}-${os.hostname()}`;
-        this.ready = Promise.all(TABLE_DEFINITIONS.map(stmt => this.client.query(stmt).toPromise()))
-        .then(async () => {
+        this.ready.then(async () => {
             await this.client.insert(`INSERT INTO ${DB}.crawls (crawlId, name, region)`, [{
                 crawlId: this.crawlId,
                 name,
                 region,
             }]).toPromise();
-            this.queue = {
-                pages: [],
-                requests: [],
-                elements: [],
-                cmps: [],
-                apiSavedCalls: [],
-                apiCallStats: [],
-                cookies: [],
-                targets: [],
-            };
         });
         return this.ready;
     }
