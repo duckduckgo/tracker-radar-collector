@@ -73,7 +73,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
      * @param {URL} url
      * @param {string} fileType file extension, defaults to 'json'
      */
-    const createOutputPath = ((url, fileType='json') => path.join(outputPath, `${createUniqueUrlName(url)}.${fileType}`));
+    const createOutputPath = ((url, fileType = 'json') => path.join(outputPath, `${createUniqueUrlName(url)}.${fileType}`));
 
     const urls = inputUrls.filter(item => {
         const urlString = (typeof item === 'string') ? item : item.url;

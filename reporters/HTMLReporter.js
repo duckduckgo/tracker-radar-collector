@@ -108,7 +108,7 @@ class HTMLReporter extends BaseReporter {
         }
 
         // rewrite metadata page every 1%
-        if (((updateData.successes + updateData.failures) / updateData.urls)*100 % 1 === 0) {
+        if (((updateData.successes + updateData.failures) / updateData.urls) * 100 % 1 === 0) {
             createMetadataHTML(this.logPath, {
                 startTime: this.startTime,
                 crawlTimes: updateData.crawlTimes,

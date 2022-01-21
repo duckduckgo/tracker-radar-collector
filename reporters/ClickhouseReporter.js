@@ -100,7 +100,7 @@ const TABLE_DEFINITIONS = [
  */
 function santizeCallArgs(args) {
     // in some cases call args have been stringified, so unwrap that first.
-    const argsArray = typeof args === 'string'  ? JSON.parse(args) : (args || []);
+    const argsArray = typeof args === 'string' ? JSON.parse(args) : (args || []);
     return argsArray.map((/** @type {string} */ s) => s.replace(/'/g, ''));
 }
 
@@ -137,7 +137,7 @@ class ClickhouseReporter extends BaseReporter {
      * @param {string} name
      * @param {string} region
      */
-    createCrawl(name = '', region='') {
+    createCrawl(name = '', region = '') {
         this.ready.then(async () => {
             await this.client.insert(`INSERT INTO ${DB}.crawls (crawlId, name, region)`, [{
                 crawlId: this.crawlId,

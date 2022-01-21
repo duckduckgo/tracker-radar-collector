@@ -40,7 +40,7 @@ class TrackerTracker {
      * @param {object} payload 
      * @returns {Promise<object>}
      */
-    sendCommand(command, payload={}) {
+    sendCommand(command, payload = {}) {
         return this._send(command, payload);
     }
 
@@ -88,7 +88,7 @@ class TrackerTracker {
                 `;
             }
 
-            conditionScript +=`
+            conditionScript += `
                 window.registerAPICall(JSON.stringify(data));
                 false;
             `;

@@ -297,7 +297,7 @@ module.exports = {
             "error",
             "never"
         ],
-        "space-infix-ops": "off",
+        "space-infix-ops": "error",
         "space-unary-ops": "error",
         "spaced-comment": "off",
         "strict": [
