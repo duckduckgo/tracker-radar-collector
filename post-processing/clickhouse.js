@@ -39,7 +39,7 @@ if (!crawlName && !crawlRegion && !crawledPagePath && !program.crawlId) {
      */
     let pages = [];
     if (crawledPagePath) {
-        pages = await fs.readdir(crawledPagePath);
+        pages = (await fs.readdir(crawledPagePath)).filter(name => name.endsWith('.json') && name !== 'metadata.json');
     }
     ch.init({verbose: true, startTime: new Date(), urls: pages.length, logPath: ''});
     if (program.crawlId) {
