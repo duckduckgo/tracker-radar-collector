@@ -148,6 +148,15 @@ class ClickhouseReporter extends BaseReporter {
         return this.ready;
     }
 
+    async deleteCrawlData() {
+        await this.ready;
+        console.log(`Deleting all data for crawl ${this.crawlId}`);
+        const deletes = Object.keys(this.queue)
+            .map(table => this.client.query(`ALTER TABLE ${DB}.${table} DELETE WHERE crawlId = '${this.crawlId}'`).toPromise());
+        await Promise.all(deletes);
+        await this.client.query(`ALTER TABLE ${DB}.crawls DELETE WHERE crawlId = '${this.crawlId}'`).toPromise();
+    }
+
     /**
      * Called whenever site was crawled (either successfully or not)
      * 
