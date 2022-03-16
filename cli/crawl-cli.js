@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 const path = require('path');
 const fs = require('fs');
 const chalk = require('chalk').default;
@@ -31,6 +32,7 @@ program
     .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
     .option('-a, --disable-anti-bot', 'disable anti bot detection protections injected to every frame')
     .option('--config <path>', 'crawl configuration file')
+    .option('--run-autoconsent', 'run autoconsent opt-outs on pages')
     .option('--chromium-version <version_number>', 'use custom version of chromium')
     .parse(process.argv);
 
@@ -51,8 +53,9 @@ program
  * @param {string} chromiumVersion
  * @param {number} maxLoadTimeMs
  * @param {number} extraExecutionTimeMs
+ * @param {Object.<string, boolean>} collectorFlags
  */
-async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, reporters, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost, regionCode, antiBotDetection, chromiumVersion, maxLoadTimeMs, extraExecutionTimeMs) {
+async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, reporters, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost, regionCode, antiBotDetection, chromiumVersion, maxLoadTimeMs, extraExecutionTimeMs, collectorFlags) {
     const startTime = new Date();
 
     reporters.forEach(reporter => {
@@ -169,7 +172,8 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
             antiBotDetection,
             chromiumVersion,
             maxLoadTimeMs,
-            extraExecutionTimeMs
+            extraExecutionTimeMs,
+            collectorFlags,
         });
         log(chalk.green('\n✅ Finished successfully.'));
     } catch(e) {
@@ -200,7 +204,9 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
 // @ts-ignore
 const config = crawlConfig.figureOut(program);
-
+const collectorFlags = {
+    runAutoconsent: Boolean(program.runAutoconsent),
+};
 /**
  * @type {BaseCollector[]}
  */
@@ -251,5 +257,5 @@ if (!config.urls || !config.output) {
         return item;
     });
 
-    run(urls, config.output, config.verbose, config.logPath, config.crawlers || null, dataCollectors, reporters, config.forceOverwrite, config.filterOutFirstParty, config.emulateMobile, config.proxyConfig, config.regionCode, !config.disableAntiBot, config.chromiumVersion, config.maxLoadTimeMs, config.extraExecutionTimeMs);
+    run(urls, config.output, config.verbose, config.logPath, config.crawlers || null, dataCollectors, reporters, config.forceOverwrite, config.filterOutFirstParty, config.emulateMobile, config.proxyConfig, config.regionCode, !config.disableAntiBot, config.chromiumVersion, config.maxLoadTimeMs, config.extraExecutionTimeMs, collectorFlags);
 }
