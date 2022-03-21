@@ -65,7 +65,7 @@ function openBrowser(log, proxyHost, executablePath) {
 /**
  * @param {puppeteer.BrowserContext} context
  * @param {URL} url
- * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean, runInEveryFrame: function():void, maxLoadTimeMs: number, extraExecutionTimeMs: number}} data
+ * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean, runInEveryFrame: function():void, maxLoadTimeMs: number, extraExecutionTimeMs: number, collectorFlags: Object.<string, boolean>}} data
  *
  * @returns {Promise<CollectResult>}
  */
@@ -77,7 +77,8 @@ async function getSiteData(context, url, {
     emulateMobile,
     runInEveryFrame,
     maxLoadTimeMs,
-    extraExecutionTimeMs
+    extraExecutionTimeMs,
+    collectorFlags,
 }) {
     const testStarted = Date.now();
 
@@ -89,7 +90,8 @@ async function getSiteData(context, url, {
     const collectorOptions = {
         context,
         url,
-        log
+        log,
+        collectorFlags
     };
 
     for (let collector of collectors) {
@@ -275,7 +277,7 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext, runInEveryFrame?: function():void, executablePath?: string, maxLoadTimeMs?: number, extraExecutionTimeMs?: number}} options
+ * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext, runInEveryFrame?: function():void, executablePath?: string, maxLoadTimeMs?: number, extraExecutionTimeMs?: number, collectorFlags?: Object.<string, boolean>}} options
  * @returns {Promise<CollectResult>}
  */
 module.exports = async (url, options) => {
@@ -299,7 +301,8 @@ module.exports = async (url, options) => {
             emulateMobile: options.emulateMobile,
             runInEveryFrame: options.runInEveryFrame,
             maxLoadTimeMs,
-            extraExecutionTimeMs
+            extraExecutionTimeMs,
+            collectorFlags: options.collectorFlags
         }), maxTotalTimeMs);
     } catch(e) {
         log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));
