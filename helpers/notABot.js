@@ -32,7 +32,8 @@ module.exports = () => {
                 {
                     description: "Portable Document Format",
                     filename: "internal-pdf-viewer",
-                    name: "Chrome PDF Plugin"
+                    name: "Chrome PDF Plugin",
+                    0: {type: "application/pdf"}
                 }
             ])
         });
