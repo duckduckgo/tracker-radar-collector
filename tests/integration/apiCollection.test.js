@@ -23,6 +23,9 @@ async function main() {
         "PerformanceTiming.prototype.navigationStart",
         "Document.cookie getter",
         "Document.cookie setter",
+        "CookieStore.prototype.get",
+        "CookieStore.prototype.getAll",
+        "CookieStore.prototype.set",
         "Navigator.prototype.onLine",
         "Navigator.prototype.keyboard",
         "Navigator.prototype.presentation",
@@ -50,7 +53,6 @@ async function main() {
         "Gyroscope.prototype.z",
         // method calls
         "Document.prototype.interestCohort",
-        'window.matchMedia("prefers-color-scheme")',
         'HTMLCanvasElement.prototype.constructor',
         'CanvasRenderingContext2D.prototype.isPointInPath',
         'Date.prototype.getTime',
@@ -63,6 +65,10 @@ async function main() {
         'CSSStyleDeclaration.setProperty("fontFamily",…)',
         'Element.prototype.getClientRects',
         'Sensor.prototype.constructor',
+        // bug - we can only test for one matchMedia - all other fail
+        'window.matchMedia("prefers-reduced-motion")',
+        'window.matchMedia("color-gamut")',
+        'window.matchMedia("pointer")',
     ];
 
     breakpoints.forEach(object => {
