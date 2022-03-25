@@ -11,6 +11,14 @@ const breakpoints = [
             {name: 'sessionStorage'},
             {name: 'indexedDB'},
             {name: 'name'}, // can pottentially be used to link two tabs
+            {name: 'innerWidth'},
+            {name: 'innerHeight'},
+            {name: 'outerWidth'},
+            {name: 'outerHeight'},
+            {name: 'screenX'},
+            {name: 'screenY'},
+            {name: 'screenLeft'},
+            {name: 'screenTop'},
             // {name: 'ActiveXObject'}// not available in Chrome
         ],
         methods: [
@@ -20,17 +28,36 @@ const breakpoints = [
             },
             {
                 name: 'matchMedia',
+                description: 'window.matchMedia("prefers-color-scheme")',
+                condition: 'arguments.length > 0 && arguments[0].includes("prefers-color-scheme")',
+                test: 'window.matchMedia("(prefers-color-scheme: dark)")'
+            },
+            {
+                name: 'matchMedia',
                 description: 'window.matchMedia("prefers-reduced-motion")',
                 condition: 'arguments.length > 0 && arguments[0].includes("prefers-reduced-motion")',
                 test: 'window.matchMedia("(prefers-reduced-motion: reduce)")'
             },
             {
                 name: 'matchMedia',
-                description: 'window.matchMedia("prefers-color-scheme")',
-                condition: 'arguments.length > 0 && arguments[0].includes("prefers-color-scheme")',
-                test: 'window.matchMedia("(prefers-color-scheme: dark)")'
+                description: 'window.matchMedia("color-gamut")',
+                condition: 'arguments.length > 0 && arguments[0].includes("color-gamut")',
+                test: 'window.matchMedia("(color-gamut: rec2020)")'
+            },
+            {
+                name: 'matchMedia',
+                description: 'window.matchMedia("pointer")',
+                condition: 'arguments.length > 0 && arguments[0].includes("pointer")',
+                test: 'window.matchMedia("(pointer: fine)")'
             }
         ]
+    },
+    {
+        proto: 'BarProp',
+        props: [
+            {name: 'visible', test: 'window.locationbar.visible'}// is locationbar, menubar, scrollbars are visible
+        ],
+        methods: []
     },
     // {
     //     global: 'chrome',
@@ -97,6 +124,16 @@ const breakpoints = [
         ]
     },
     {
+        proto: 'CookieStore', // modern version of document.cookie
+        props: [
+        ],
+        methods: [
+            {name: 'get'},
+            {name: 'getAll'},
+            {name: 'set', saveArguments: true},
+        ]
+    },
+    {
         proto: 'Navigator',
         props: [
             {name: 'appName'}, // user agent & friends
@@ -117,6 +154,7 @@ const breakpoints = [
             //{name: 'msMaxTouchPoints'}, Microsoft only
             {name: 'mediaCapabilities'}, // codecs, mime types, display
             {name: 'mediaDevices'}, // screens, cameras, microphones
+            {name: 'mimeTypes'}, //reveals instlled plugins
             {name: 'deviceMemory'}, // memory in Gb
             {name: 'connection'}, // changes over time
             {name: 'onLine'},
@@ -138,6 +176,24 @@ const breakpoints = [
             {name: 'getGamepads'},
             // {name: 'getUserMedia'},
             {name: 'javaEnabled'},
+            {name: 'requestMediaKeySystemAccess'} // Encrypted Media Extensions API
+        ]
+    },
+    {
+        proto: 'NavigatorUAData',
+        props: [
+           {name: 'brands'}
+        ],
+        methods: [
+            {name: 'getHighEntropyValues'} // request for high entropy information about browser/OS
+        ]
+    },
+    {
+        proto: 'MediaDevices',
+        props: [
+        ],
+        methods: [
+            {name: 'enumerateDevices'}
         ]
     },
     {
