@@ -93,7 +93,10 @@ async function main() {
         payload: JSON.stringify({
             description: 'Document.cookie setter',
             stack: '(https://example.com/different.js:1:23)\n(https://example.com/different.js:2:23)',
-            args: ['uuid=123']
+            args: [
+                'uuid=123',
+                {key: 'key', value: 'value'}
+            ]
         })
     });
 
@@ -109,7 +112,8 @@ async function main() {
                 source: 'https://example.com/different.js',
                 description: 'Document.cookie setter',
                 arguments: [
-                    'uuid=123'
+                    '"uuid=123"',
+                    '{"key":"key","value":"value"}'
                 ]
             }
         ]

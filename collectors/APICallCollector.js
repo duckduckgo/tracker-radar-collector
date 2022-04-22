@@ -81,10 +81,22 @@ class APICallCollector extends BaseCollector {
             sourceStats.set(breakpoint.description, count + 1);
 
             if (breakpoint.saveArguments) {
+                const stringifiedArguments = breakpoint.arguments.map(arg => {
+                    let stringifiedArg = String(arg);
+
+                    try {
+                        stringifiedArg = JSON.stringify(arg);
+                    } catch (e) {
+                        // probably a circular reference?
+                    }
+
+                    return stringifiedArg;
+                });
+
                 this._calls.push({
                     source: breakpoint.source,
                     description: breakpoint.description,
-                    arguments: breakpoint.arguments
+                    arguments: stringifiedArguments
                 });
             }
         }
