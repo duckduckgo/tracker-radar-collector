@@ -13,7 +13,7 @@ const baseContentScript = fs.readFileSync(
  */
 function generateContentScript(config) {
     return baseContentScript + `
-        window.initAutoconsent(${JSON.stringify(config)});
+        window.initAutoconsentStandalone(${JSON.stringify(config)});
     `;
 }
 
@@ -108,7 +108,7 @@ class CMPCollector extends BaseCollector {
             });
 
             this._cdpClient.on('Runtime.bindingCalled', ({name, payload, executionContextId}) => {
-                if (name === 'autoconsentCdpSendMessage') {
+                if (name === 'autoconsentStandaloneSendMessage') {
                     try {
                         const msg = JSON.parse(payload);
                         // this.log(`received message from ${executionContextId}: ${JSON.stringify(msg)}`);
@@ -120,7 +120,7 @@ class CMPCollector extends BaseCollector {
                 }
             });
             await this._cdpClient.send('Runtime.addBinding', {
-                name: 'autoconsentCdpSendMessage',
+                name: 'autoconsentStandaloneSendMessage',
                 executionContextName: worldName,
             });
         }
@@ -146,7 +146,7 @@ class CMPCollector extends BaseCollector {
         case 'autoconsentDone': {
             if (this.selfTestFrame) {
                 await this._cdpClient.send('Runtime.evaluate', {
-                    expression: `autoconsentCdpReceiveMessage({ type: "selfTest" })`,
+                    expression: `autoconsentStandaloneReceiveMessage({ type: "selfTest" })`,
                     allowUnsafeEvalBlockedByCSP: true,
                     contextId: this.selfTestFrame,
                     silent: true
@@ -168,7 +168,7 @@ class CMPCollector extends BaseCollector {
             }
 
             await this._cdpClient.send('Runtime.evaluate', {
-                expression: `autoconsentCdpReceiveMessage({ id: "${msg.id}", type: "evalResp", result: ${JSON.stringify(evalResult)} })`,
+                expression: `autoconsentStandaloneReceiveMessage({ id: "${msg.id}", type: "evalResp", result: ${JSON.stringify(evalResult)} })`,
                 allowUnsafeEvalBlockedByCSP: true,
                 contextId: executionContextId,
                 silent: true
