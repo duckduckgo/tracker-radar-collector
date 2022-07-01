@@ -107,15 +107,14 @@ class CMPCollector extends BaseCollector {
                 }
             });
 
-            this._cdpClient.on('Runtime.bindingCalled', ({name, payload, executionContextId}) => {
+            this._cdpClient.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
                 if (name === 'autoconsentStandaloneSendMessage') {
                     try {
                         const msg = JSON.parse(payload);
                         // this.log(`received message from ${executionContextId}: ${JSON.stringify(msg)}`);
-                        this.handleMessage(msg, executionContextId);
+                        await this.handleMessage(msg, executionContextId);
                     } catch (e) {
                         this.log(`Could not handle autoconsent message ${payload}`);
-                        throw e;
                     }
                 }
             });
