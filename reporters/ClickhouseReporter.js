@@ -164,10 +164,12 @@ class ClickhouseReporter extends BaseReporter {
     /**
      * Called whenever site was crawled (either successfully or not)
      * 
-     * @param {{site: string, failures: number, successes: number, urls: number, data: import('../crawler').CollectResult, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data 
+     * @param {{site: string, failures: number, successes: number, urls: number, data: import('../crawler').CollectResult | undefined, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data 
      */
     update(data) {
-        this.processSite(data.data);
+        if (data.data) {
+            this.processSite(data.data);
+        }
     }
 
     /**
