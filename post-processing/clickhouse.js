@@ -16,7 +16,7 @@ Examples:
     # Create an entry in the crawl table with ID "mycrawl" and import nothing
     clickhouse.js -c mycrawl --name "This is a crawl" --region US
     `)
-    .option('-c, --crawlid <id>', 'Crawl ID')
+    .option('-c, --crawl-id <id>', 'Crawl ID')
     .option('--name <crawlname>', 'Name of the crawl')
     .option('--region <region>', 'Crawl region code')
     .option('-d --crawldir <dir>', 'Directory of crawl output to import')
