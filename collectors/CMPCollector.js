@@ -60,6 +60,7 @@ class CMPCollector extends BaseCollector {
         /** @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage[]} */
         this.receivedMsgs = [];
         this.selfTestFrame = null;
+        this.isolated2pageworld = new Map();
     }
 
     /**
@@ -97,6 +98,7 @@ class CMPCollector extends BaseCollector {
                         frameId: context.auxData.frameId,
                         worldName
                     });
+                    this.isolated2pageworld.set(executionContextId, context.id);
                     await this._cdpClient.send('Runtime.evaluate', {
                         expression: this.contentScript,
                         contextId: executionContextId,
@@ -111,7 +113,7 @@ class CMPCollector extends BaseCollector {
                 if (name === 'autoconsentStandaloneSendMessage') {
                     try {
                         const msg = JSON.parse(payload);
-                        // this.log(`received message from ${executionContextId}: ${JSON.stringify(msg)}`);
+                        // this.log(`autoconsent message from ${executionContextId}: ${JSON.stringify(msg)}`);
                         await this.handleMessage(msg, executionContextId);
                     } catch (e) {
                         this.log(`Could not handle autoconsent message ${payload}`);
@@ -148,7 +150,6 @@ class CMPCollector extends BaseCollector {
                     expression: `autoconsentStandaloneReceiveMessage({ type: "selfTest" })`,
                     allowUnsafeEvalBlockedByCSP: true,
                     contextId: this.selfTestFrame,
-                    silent: true
                 });
             }
             break;
@@ -159,8 +160,7 @@ class CMPCollector extends BaseCollector {
                 expression: msg.code,
                 returnByValue: true,
                 allowUnsafeEvalBlockedByCSP: true,
-                contextId: executionContextId,
-                silent: true
+                contextId: this.isolated2pageworld.get(executionContextId), // this must be done in page world
             });
             if (!result.exceptionDetails) {
                 evalResult = Boolean(result.result.value);
@@ -170,7 +170,6 @@ class CMPCollector extends BaseCollector {
                 expression: `autoconsentStandaloneReceiveMessage({ id: "${msg.id}", type: "evalResp", result: ${JSON.stringify(evalResult)} })`,
                 allowUnsafeEvalBlockedByCSP: true,
                 contextId: executionContextId,
-                silent: true
             });
             break;
         }
