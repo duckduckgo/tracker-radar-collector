@@ -1,8 +1,12 @@
 module.exports = {
     "env": {
         "node": true,
-        "es6": true
+        "es6": true,
+        "mocha": true
     },
+    plugins: [
+        'mocha',
+    ],
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": 2018
@@ -255,7 +259,7 @@ module.exports = {
         "operator-linebreak": "error",
         "padded-blocks": "off",
         "padding-line-between-statements": "error",
-        "prefer-arrow-callback": "error",
+        "prefer-arrow-callback": "off",
         "prefer-const": "off",
         "prefer-destructuring": "off",
         "prefer-numeric-literals": "error",
@@ -268,8 +272,8 @@ module.exports = {
         "quote-props": "off",
         "quotes": "off",
         "radix": "error",
-        "require-atomic-updates": "error",
-        "require-await": "error",
+        "require-atomic-updates": "off",
+        "require-await": "off",
         "require-jsdoc": "off",
         "require-unicode-regexp": "off",
         "rest-spread-spacing": [
