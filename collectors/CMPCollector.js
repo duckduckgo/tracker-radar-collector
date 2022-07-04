@@ -47,7 +47,6 @@ class CMPCollector extends BaseCollector {
      * @param {import('./BaseCollector').CollectorInitOptions} options
      */
     init(options) {
-        this.context = options.context;
         this.log = options.log;
         this.doOptOut = options.collectorFlags.runAutoconsent;
         this.contentScript = generateContentScript({
@@ -184,11 +183,10 @@ class CMPCollector extends BaseCollector {
     /**
      * Called after the crawl to retrieve the data. Can be async, can throw errors.
      *
-     * @param {{finalUrl: string, urlFilter?: function(string):boolean}} options
      * @returns {Promise<CMPResult[]>}
      */
-    // eslint-disable-next-line no-unused-vars
-    async getData(options) {
+
+    async getData() {
         // TODO: wait for messages, parse them
 
         const detected = await waitFor(() => Boolean(this.findMessage({type: 'cmpDetected'})), 20, 100);
@@ -222,11 +220,19 @@ class CMPCollector extends BaseCollector {
 
         result.optOutRuns = true;
         // did we opt-out?
+        const optOutDone = await waitFor(() => Boolean(this.findMessage({type: 'optOutResult', cmp: result.name})), 20, 100);
+        if (optOutDone) {
+            const msg = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage} */ (this.findMessage({type: 'optOutResult', cmp: result.name}));
+            if (!msg.result) {
+                return [result];
+            }
+        }
         const done = await waitFor(() => Boolean(this.findMessage({type: 'autoconsentDone'})), 20, 100);
         if (!done) {
             return [result];
         }
 
+        // the final name might be different than the detected name, in case of intermediate rules
         result.name = /** @type {import('@duckduckgo/autoconsent/lib/messages').DoneMessage} */ (this.findMessage({type: 'autoconsentDone'})).cmp;
         if (this.selfTestFrame === null) {
             result.optOutSucceeds = true;
