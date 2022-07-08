@@ -17,7 +17,7 @@ Examples:
     clickhouse.js -c mycrawl --name "This is a crawl" --region US
     `)
     .option('-c, --crawlid <id>', 'Crawl ID')
-    .option('--name <crawlname>', 'Name of the crawl')
+    .option('--crawlname <crawlname>', 'Name of the crawl')
     .option('--region <region>', 'Crawl region code')
     .option('-d --crawldir <dir>', 'Directory of crawl output to import')
     .option('--delete', 'Delete data for the given crawlid')
