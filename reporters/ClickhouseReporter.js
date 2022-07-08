@@ -100,12 +100,8 @@ const TABLE_DEFINITIONS = [
  */
 function santizeCallArgs(args) {
     // in some cases call args have been stringified, so unwrap that first.
-    try {
-        const argsArray = typeof args === 'string' ? JSON.parse(args) : (args || []);
-        return argsArray.map((/** @type {string} */ s) => s.replace(/'/g, ''));
-    } catch (e) {
-        return [];
-    }
+    const argsArray = typeof args === 'string' ? JSON.parse(args) : (args || []);
+    return argsArray.map((/** @type {string} */ s) => s.replace(/'/g, ''));
 }
 
 class ClickhouseReporter extends BaseReporter {
