@@ -16,7 +16,7 @@ class BaseReporter {
     /**
      * Called whenever site was crawled (either successfully or not)
      * 
-     * @param {{site: string, failures: number, successes: number, urls: number, data: import("../crawler").CollectResult, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data 
+     * @param {{site: string, failures: number, successes: number, urls: number, data: import("../crawler").CollectResult | undefined, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data 
      */
     // eslint-disable-next-line no-unused-vars
     update(data) {
