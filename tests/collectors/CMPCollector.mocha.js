@@ -240,10 +240,11 @@ describe('CMPCollector', () => {
             const results = await collector.getData();
             assert.deepStrictEqual(results, [{
                 name: 'superduperCMP',
-                isOpen: false,
-                optOutRuns: false,
-                optOutSucceeds: false,
-                error: '',
+                final: false,
+                open: false,
+                started: false,
+                succeeded: false,
+                errors: [],
             }]);
         });
 
@@ -273,10 +274,11 @@ describe('CMPCollector', () => {
             const results = await collector.getData();
             assert.deepStrictEqual(results, [{
                 name: 'superduperCMP',
-                isOpen: true,
-                optOutRuns: false,
-                optOutSucceeds: false,
-                error: '',
+                final: false,
+                open: true,
+                started: false,
+                succeeded: false,
+                errors: [],
             }]);
         });
 
@@ -311,7 +313,7 @@ describe('CMPCollector', () => {
                         payload: JSON.stringify({
                             type: 'optOutResult',
                             url: 'some-url',
-                            scheduleSelfTest: true,
+                            scheduleSelfTest: false,
                             cmp: 'superduperCMP',
                             result: false,
                         }),
@@ -320,10 +322,11 @@ describe('CMPCollector', () => {
                     const results = await collector.getData();
                     assert.deepStrictEqual(results, [{
                         name: 'superduperCMP',
-                        isOpen: true,
-                        optOutRuns: true,
-                        optOutSucceeds: false,
-                        error: '',
+                        final: false,
+                        open: true,
+                        started: true,
+                        succeeded: false,
+                        errors: [],
                     }]);
                 });
 
@@ -353,10 +356,11 @@ describe('CMPCollector', () => {
                     const results = await collector.getData();
                     assert.deepStrictEqual(results, [{
                         name: 'superduperCMP',
-                        isOpen: true,
-                        optOutRuns: true,
-                        optOutSucceeds: true,
-                        error: '',
+                        final: true,
+                        open: true,
+                        started: true,
+                        succeeded: true,
+                        errors: [],
                     }]);
                 });
             });
@@ -411,10 +415,11 @@ describe('CMPCollector', () => {
                     const results = await collector.getData();
                     assert.deepStrictEqual(results, [{
                         name: 'superduperCMP',
-                        isOpen: true,
-                        optOutRuns: true,
-                        optOutSucceeds: true,
-                        error: '',
+                        final: true,
+                        open: true,
+                        started: true,
+                        succeeded: true,
+                        errors: [],
                     }]);
                 });
 
@@ -433,10 +438,11 @@ describe('CMPCollector', () => {
                     const results = await collector.getData();
                     assert.deepStrictEqual(results, [{
                         name: 'superduperCMP',
-                        isOpen: true,
-                        optOutRuns: true,
-                        optOutSucceeds: false,
-                        error: '',
+                        final: true,
+                        open: true,
+                        started: true,
+                        succeeded: false,
+                        errors: [],
                     }]);
                 });
             });
