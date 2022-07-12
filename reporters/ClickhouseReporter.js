@@ -52,7 +52,7 @@ const TABLE_DEFINITIONS = [
         visible Array(String)
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.cmpsnew (
+    `CREATE TABLE IF NOT EXISTS ${DB}.cmps (
         crawlId String,
         pageId String,
         name String,
@@ -128,7 +128,7 @@ class ClickhouseReporter extends BaseReporter {
             requests: [],
             elements: [],
             apiSavedCalls: [],
-            cmpsnew: [],
+            cmps: [],
             apiCallStats: [],
             cookies: [],
             targets: [],
@@ -193,7 +193,7 @@ class ClickhouseReporter extends BaseReporter {
             }
             if (data.data.cmps) {
                 const cmpRows = data.data.cmps.map(c => [this.crawlId, pageId, c.name, c.final, c.open, c.started, c.succeeded, c.selfTestFail, c.errors]);
-                this.queue.cmpsnew = this.queue.cmpsnew.concat(cmpRows);
+                this.queue.cmps = this.queue.cmps.concat(cmpRows);
             }
             if (data.data.apis) {
                 const {callStats,savedCalls} = data.data.apis;
