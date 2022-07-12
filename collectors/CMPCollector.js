@@ -181,21 +181,26 @@ class CMPCollector extends BaseCollector {
     }
 
     /**
+     * @param {Partial<import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage>} msg
+     * @returns {Promise<import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage>}
+     */
+    async waitForMessage(msg, maxTimes = 20, interval = 500) {
+        await waitFor(() => Boolean(this.findMessage(msg)), maxTimes, interval);
+        return this.findMessage(msg);
+    }
+
+    /**
      * Called after the crawl to retrieve the data. Can be async, can throw errors.
      *
      * @returns {Promise<CMPResult[]>}
      */
-
     async getData() {
-        // TODO: wait for messages, parse them
-
-        const detected = await waitFor(() => Boolean(this.findMessage({type: 'cmpDetected'})), 20, 100);
-        if (!detected) {
+        const detectedMsg = /** @type {import('@duckduckgo/autoconsent/lib/messages').DetectedMessage} */ (await this.waitForMessage({type: 'cmpDetected'}));
+        if (!detectedMsg) {
             return [];
         }
 
         // check if anything was detected at all
-        const detectedMsg = /** @type {import('@duckduckgo/autoconsent/lib/messages').DetectedMessage} */ (this.findMessage({type: 'cmpDetected'}));
         /**
          * @type {CMPResult}
          */
@@ -208,7 +213,7 @@ class CMPCollector extends BaseCollector {
         };
 
         // was there a popup?
-        const found = await waitFor(() => Boolean(this.findMessage({type: 'popupFound'})), 20, 100);
+        const found = await this.waitForMessage({type: 'popupFound'});
         if (!found) {
             return [result];
         }
@@ -220,25 +225,24 @@ class CMPCollector extends BaseCollector {
 
         result.optOutRuns = true;
         // did we opt-out?
-        const optOutDone = await waitFor(() => Boolean(this.findMessage({type: 'optOutResult', cmp: result.name})), 20, 100);
+        const optOutDone = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage} */ (await this.waitForMessage({type: 'optOutResult', cmp: result.name}));
         if (optOutDone) {
-            const msg = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage} */ (this.findMessage({type: 'optOutResult', cmp: result.name}));
-            if (!msg.result) {
+            if (!optOutDone.result) {
                 return [result];
             }
         }
-        const done = await waitFor(() => Boolean(this.findMessage({type: 'autoconsentDone'})), 20, 100);
-        if (!done) {
+        const doneMsg = /** @type {import('@duckduckgo/autoconsent/lib/messages').DoneMessage} */ (await this.waitForMessage({type: 'autoconsentDone'}));
+        if (!doneMsg) {
             return [result];
         }
 
         // the final name might be different than the detected name, in case of intermediate rules
-        result.name = /** @type {import('@duckduckgo/autoconsent/lib/messages').DoneMessage} */ (this.findMessage({type: 'autoconsentDone'})).cmp;
+        result.name = doneMsg.cmp;
         if (this.selfTestFrame === null) {
             result.optOutSucceeds = true;
-        } else if (await waitFor(() => Boolean(this.findMessage({type: 'selfTestResult'})), 20, 100)) {
+        } else {
             // did self-test succeed?
-            const selfTestRes = /** @type {import('@duckduckgo/autoconsent/lib/messages').SelfTestResultMessage} */ (this.findMessage({type: 'selfTestResult'}));
+            const selfTestRes = /** @type {import('@duckduckgo/autoconsent/lib/messages').SelfTestResultMessage} */ (await this.waitForMessage({type: 'selfTestResult'}));
             if (selfTestRes.result) {
                 result.optOutSucceeds = true;
             }
