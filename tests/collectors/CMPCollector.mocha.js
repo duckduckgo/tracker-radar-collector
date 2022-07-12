@@ -244,6 +244,7 @@ describe('CMPCollector', () => {
                 open: false,
                 started: false,
                 succeeded: false,
+                selfTestFail: false,
                 errors: [],
             }]);
         });
@@ -278,6 +279,7 @@ describe('CMPCollector', () => {
                 open: true,
                 started: false,
                 succeeded: false,
+                selfTestFail: false,
                 errors: [],
             }]);
         });
@@ -326,6 +328,7 @@ describe('CMPCollector', () => {
                         open: true,
                         started: true,
                         succeeded: false,
+                        selfTestFail: false,
                         errors: [],
                     }]);
                 });
@@ -360,6 +363,7 @@ describe('CMPCollector', () => {
                         open: true,
                         started: true,
                         succeeded: true,
+                        selfTestFail: false,
                         errors: [],
                     }]);
                 });
@@ -419,6 +423,7 @@ describe('CMPCollector', () => {
                         open: true,
                         started: true,
                         succeeded: true,
+                        selfTestFail: false,
                         errors: [],
                     }]);
                 });
@@ -441,7 +446,8 @@ describe('CMPCollector', () => {
                         final: true,
                         open: true,
                         started: true,
-                        succeeded: false,
+                        succeeded: true,
+                        selfTestFail: true,
                         errors: [],
                     }]);
                 });

@@ -60,6 +60,7 @@ const TABLE_DEFINITIONS = [
         open UInt8,
         started UInt8,
         succeeded UInt8,
+        selfTestFail UInt8,
         errors Array(String)
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, name)`,
@@ -180,7 +181,7 @@ class ClickhouseReporter extends BaseReporter {
                 this.queue.elements.push([this.crawlId, pageId, data.data.elements.present, data.data.elements.visible]);
             }
             if (data.data.cmps) {
-                const cmpRows = data.data.cmps.map(c => [this.crawlId, pageId, c.name, c.final, c.open, c.started, c.succeeded, c.errors]);
+                const cmpRows = data.data.cmps.map(c => [this.crawlId, pageId, c.name, c.final, c.open, c.started, c.succeeded, c.selfTestFail, c.errors]);
                 this.queue.cmpsnew = this.queue.cmpsnew.concat(cmpRows);
             }
             if (data.data.apis) {

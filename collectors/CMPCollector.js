@@ -272,7 +272,13 @@ class CMPCollector extends BaseCollector {
         const errors = errorMsgs.map(e => JSON.stringify(e.details));
 
         const detectedRules = /** @type {import('@duckduckgo/autoconsent/lib/messages').DetectedMessage[]} */ (this.findAllMessages({type: 'cmpDetected'}));
+        /** @type {string[]} */
+        const processedCmps = [];
         for (const msg of detectedRules) {
+            if (processedCmps.includes(msg.cmp)) { // prevent duplicates
+                continue;
+            }
+            processedCmps.push(msg.cmp);
             /**
              * @type {CMPResult}
              */
@@ -282,6 +288,7 @@ class CMPCollector extends BaseCollector {
                 open: false,
                 started: false,
                 succeeded: false,
+                selfTestFail: Boolean(selfTestResult && !selfTestResult.result),
                 errors,
             };
 
@@ -295,13 +302,7 @@ class CMPCollector extends BaseCollector {
                         cmp: msg.cmp,
                     }));
 
-                    if (optOutResult.result &&
-                        (!selfTestResult || selfTestResult.cmp !== msg.cmp ||
-                            selfTestResult.result
-                        )
-                    ) {
-                        result.succeeded = true;
-                    }
+                    result.succeeded = optOutResult.result;
                 }
             }
             results.push(result);
@@ -328,6 +329,7 @@ class CMPCollector extends BaseCollector {
  * @property {boolean} open
  * @property {boolean} started
  * @property {boolean} succeeded
+ * @property {boolean} selfTestFail
  * @property {string[]} errors
  */
 
