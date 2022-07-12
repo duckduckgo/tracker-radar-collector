@@ -1,4 +1,4 @@
-/* eslint-disable max-lines, func-names */
+/* eslint-disable max-lines, func-names, prefer-arrow-callback */
 const CMPCollector = require('../../collectors/CMPCollector');
 const assert = require('assert');
 
@@ -13,7 +13,7 @@ const listeners = [];
 const commands = [];
 
 const fakeCDPClient = {
-    // eslint-disable-next-line arrow-parens
+    // eslint-disable-next-line arrow-parens, require-await
     send: async (/** @type {String} **/command, /** @type {any} **/ payload) => {
         commands.push([command, payload]);
         switch (command) {
@@ -284,8 +284,8 @@ describe('CMPCollector', () => {
             }]);
         });
 
-        describe('CMP with a visible popup - runAutoconsent ON', async function() {
-            beforeEach(async () => {
+        describe('CMP with a visible popup - runAutoconsent ON', function() {
+            beforeEach(() => {
                 const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
                 assert.strictEqual(contentScriptEval.contextId, 31337);
                 bindingCalled.callback({
@@ -308,7 +308,7 @@ describe('CMPCollector', () => {
                 });
             });
 
-            describe('no self-test', async function() {
+            describe('no self-test', function() {
                 it('opt-out failure', async function() {
                     bindingCalled.callback({
                         name: 'autoconsentStandaloneSendMessage',
@@ -370,7 +370,7 @@ describe('CMPCollector', () => {
             });
 
             describe('with self-test', function() {
-                beforeEach(async () => {
+                beforeEach(() => {
                     bindingCalled.callback({
                         name: 'autoconsentStandaloneSendMessage',
                         payload: JSON.stringify({
