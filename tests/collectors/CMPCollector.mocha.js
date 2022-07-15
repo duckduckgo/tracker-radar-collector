@@ -62,6 +62,30 @@ describe('CMPCollector', () => {
     });
 
     describe('handleMessage', () => {
+        describe('init ', () => {
+            it('should respond with initResp', async () => {
+                /**
+                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 */
+                const msg = {
+                    type: 'init',
+                    url: 'some-url',
+                };
+                commands.splice(0, commands.length);
+                await collector.handleMessage(msg, 1111);
+                assert.strictEqual(commands.length, 1);
+                assert.deepStrictEqual(commands[0], ['Runtime.evaluate', {
+                    expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify({
+                        enabled: true,
+                        autoAction: 'optOut',
+                        disabledCmps: [],
+                        enablePrehide: true,
+                        detectRetries: 20,
+                    })} })`,
+                    contextId: 1111,
+                }]);
+            });
+        });
         describe('optOutResult ', () => {
             it('should remember where to run self test', async () => {
                 /**
@@ -156,7 +180,7 @@ describe('CMPCollector', () => {
                 await collector.handleMessage(msg, 1111);
                 assert.strictEqual(commands.length, 1);
                 assert.deepStrictEqual(commands.pop(), ['Runtime.evaluate', {
-                    expression: `autoconsentStandaloneReceiveMessage({ type: "selfTest" })`,
+                    expression: `autoconsentReceiveMessage({ type: "selfTest" })`,
                     allowUnsafeEvalBlockedByCSP: true,
                     contextId: 1337,
                 }]);
@@ -185,7 +209,7 @@ describe('CMPCollector', () => {
                 }]);
 
                 assert.deepStrictEqual(commands[1], ['Runtime.evaluate', {
-                    expression: 'autoconsentStandaloneReceiveMessage({ id: "some id", type: "evalResp", result: true })',
+                    expression: 'autoconsentReceiveMessage({ id: "some id", type: "evalResp", result: true })',
                     allowUnsafeEvalBlockedByCSP: true,
                     contextId: 1111,
                 }]);
@@ -227,7 +251,7 @@ describe('CMPCollector', () => {
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
             assert.strictEqual(contentScriptEval.contextId, 31337);
             bindingCalled.callback({
-                name: 'autoconsentStandaloneSendMessage',
+                name: 'cdpAutoconsentSendMessage',
                 payload: JSON.stringify({
                     type: 'cmpDetected',
                     url: 'some-url',
@@ -253,7 +277,7 @@ describe('CMPCollector', () => {
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
             assert.strictEqual(contentScriptEval.contextId, 31337);
             bindingCalled.callback({
-                name: 'autoconsentStandaloneSendMessage',
+                name: 'cdpAutoconsentSendMessage',
                 payload: JSON.stringify({
                     type: 'cmpDetected',
                     url: 'some-url',
@@ -262,7 +286,7 @@ describe('CMPCollector', () => {
                 executionContextId: 31337,
             });
             bindingCalled.callback({
-                name: 'autoconsentStandaloneSendMessage',
+                name: 'cdpAutoconsentSendMessage',
                 payload: JSON.stringify({
                     type: 'popupFound',
                     url: 'some-url',
@@ -288,7 +312,7 @@ describe('CMPCollector', () => {
                 const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
                 assert.strictEqual(contentScriptEval.contextId, 31337);
                 bindingCalled.callback({
-                    name: 'autoconsentStandaloneSendMessage',
+                    name: 'cdpAutoconsentSendMessage',
                     payload: JSON.stringify({
                         type: 'cmpDetected',
                         url: 'some-url',
@@ -297,7 +321,7 @@ describe('CMPCollector', () => {
                     executionContextId: 31337,
                 });
                 bindingCalled.callback({
-                    name: 'autoconsentStandaloneSendMessage',
+                    name: 'cdpAutoconsentSendMessage',
                     payload: JSON.stringify({
                         type: 'popupFound',
                         url: 'some-url',
@@ -310,7 +334,7 @@ describe('CMPCollector', () => {
             describe('no self-test', function() {
                 it('opt-out failure', async function() {
                     bindingCalled.callback({
-                        name: 'autoconsentStandaloneSendMessage',
+                        name: 'cdpAutoconsentSendMessage',
                         payload: JSON.stringify({
                             type: 'optOutResult',
                             url: 'some-url',
@@ -334,7 +358,7 @@ describe('CMPCollector', () => {
 
                 it('opt-out success', async function() {
                     bindingCalled.callback({
-                        name: 'autoconsentStandaloneSendMessage',
+                        name: 'cdpAutoconsentSendMessage',
                         payload: JSON.stringify({
                             type: 'optOutResult',
                             url: 'some-url',
@@ -346,7 +370,7 @@ describe('CMPCollector', () => {
                     });
 
                     bindingCalled.callback({
-                        name: 'autoconsentStandaloneSendMessage',
+                        name: 'cdpAutoconsentSendMessage',
                         payload: JSON.stringify({
                             type: 'autoconsentDone',
                             url: 'some-url',
@@ -371,7 +395,7 @@ describe('CMPCollector', () => {
             describe('with self-test', function() {
                 beforeEach(() => {
                     bindingCalled.callback({
-                        name: 'autoconsentStandaloneSendMessage',
+                        name: 'cdpAutoconsentSendMessage',
                         payload: JSON.stringify({
                             type: 'optOutResult',
                             url: 'some-url',
@@ -386,7 +410,7 @@ describe('CMPCollector', () => {
                     assert(!commands.some(cmd => cmd[0] === 'Runtime.evaluate' && cmd[1].contextId === 3333), 'no self-test should be requested yet');
 
                     bindingCalled.callback({
-                        name: 'autoconsentStandaloneSendMessage',
+                        name: 'cdpAutoconsentSendMessage',
                         payload: JSON.stringify({
                             type: 'autoconsentDone',
                             url: 'some-url',
@@ -397,7 +421,7 @@ describe('CMPCollector', () => {
 
                     const selfTestRequest = commands.find(cmd => cmd[0] === 'Runtime.evaluate' && cmd[1].contextId === 3333)[1];
                     assert.deepStrictEqual(selfTestRequest,{
-                        expression: `autoconsentStandaloneReceiveMessage({ type: "selfTest" })`,
+                        expression: `autoconsentReceiveMessage({ type: "selfTest" })`,
                         allowUnsafeEvalBlockedByCSP: true,
                         contextId: 3333,
                     }, 'self-test request must be sent');
@@ -405,7 +429,7 @@ describe('CMPCollector', () => {
 
                 it('self-test successful', async function() {
                     bindingCalled.callback({
-                        name: 'autoconsentStandaloneSendMessage',
+                        name: 'cdpAutoconsentSendMessage',
                         payload: JSON.stringify({
                             type: 'selfTestResult',
                             cmp: 'superduperCMP',
@@ -429,7 +453,7 @@ describe('CMPCollector', () => {
 
                 it('self-test failure', async function() {
                     bindingCalled.callback({
-                        name: 'autoconsentStandaloneSendMessage',
+                        name: 'cdpAutoconsentSendMessage',
                         payload: JSON.stringify({
                             type: 'selfTestResult',
                             cmp: 'superduperCMP',

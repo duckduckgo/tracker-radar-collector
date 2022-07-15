@@ -6,18 +6,15 @@ const BaseCollector = require('./BaseCollector');
 
 // @ts-ignore
 const baseContentScript = fs.readFileSync(
-    path.join(__dirname, "../node_modules/@duckduckgo/autoconsent/dist/autoconsent.standalone.js"),
+    path.join(__dirname, "../node_modules/@duckduckgo/autoconsent/dist/autoconsent.playwright.js"),
     "utf8"
 );
 
-/**
- * @param {import('@duckduckgo/autoconsent/lib/types').Config} config
- */
-function generateContentScript(config) {
-    return baseContentScript + `
-        window.initAutoconsentStandalone(${JSON.stringify(config)});
-    `;
-}
+const contentScript = `
+window.autoconsentSendMessage = (msg) => {
+    window.cdpAutoconsentSendMessage(JSON.stringify(msg));
+};
+` + baseContentScript;
 
 const worldName = 'cmpcollector';
 class CMPCollector extends BaseCollector {
@@ -33,13 +30,6 @@ class CMPCollector extends BaseCollector {
         this.log = options.log;
         this.shortTimeouts = options.collectorFlags.shortTimeouts; // used to speed up unit tests
         this.autoAction = /** @type {import('@duckduckgo/autoconsent/lib/types').AutoAction} */ (options.collectorFlags.autoconsentAction);
-        this.contentScript = generateContentScript({
-            enabled: true,
-            autoAction: this.autoAction,
-            disabledCmps: [],
-            enablePrehide: true,
-            detectRetries: 20,
-        });
         /** @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage[]} */
         this.receivedMsgs = [];
         this.selfTestFrame = null;
@@ -95,7 +85,7 @@ class CMPCollector extends BaseCollector {
                     });
                     this.isolated2pageworld.set(executionContextId, context.id);
                     await this._cdpClient.send('Runtime.evaluate', {
-                        expression: this.contentScript,
+                        expression: contentScript,
                         contextId: executionContextId,
                     });
                 } catch (e) {
@@ -113,7 +103,7 @@ class CMPCollector extends BaseCollector {
             });
 
             this._cdpClient.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
-                if (name === 'autoconsentStandaloneSendMessage') {
+                if (name === 'cdpAutoconsentSendMessage') {
                     try {
                         const msg = JSON.parse(payload);
                         await this.handleMessage(msg, executionContextId);
@@ -123,7 +113,7 @@ class CMPCollector extends BaseCollector {
                 }
             });
             await this._cdpClient.send('Runtime.addBinding', {
-                name: 'autoconsentStandaloneSendMessage',
+                name: 'cdpAutoconsentSendMessage',
                 executionContextName: worldName,
             });
         }
@@ -139,6 +129,21 @@ class CMPCollector extends BaseCollector {
     async handleMessage(msg, executionContextId) {
         this.receivedMsgs.push(msg);
         switch (msg.type) {
+        case 'init': {
+            /** @type {import('@duckduckgo/autoconsent/lib/types').Config} */
+            const autoconsentConfig = {
+                enabled: true,
+                autoAction: this.autoAction,
+                disabledCmps: [],
+                enablePrehide: true,
+                detectRetries: 20,
+            };
+            await this._cdpClient.send('Runtime.evaluate', {
+                expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(autoconsentConfig)} })`,
+                contextId: executionContextId,
+            });
+            break;
+        }
         case 'optInResult':
         case 'optOutResult': {
             if (msg.scheduleSelfTest) {
@@ -149,7 +154,7 @@ class CMPCollector extends BaseCollector {
         case 'autoconsentDone': {
             if (this.selfTestFrame) {
                 await this._cdpClient.send('Runtime.evaluate', {
-                    expression: `autoconsentStandaloneReceiveMessage({ type: "selfTest" })`,
+                    expression: `autoconsentReceiveMessage({ type: "selfTest" })`,
                     allowUnsafeEvalBlockedByCSP: true,
                     contextId: this.selfTestFrame,
                 });
@@ -169,7 +174,7 @@ class CMPCollector extends BaseCollector {
             }
 
             await this._cdpClient.send('Runtime.evaluate', {
-                expression: `autoconsentStandaloneReceiveMessage({ id: "${msg.id}", type: "evalResp", result: ${JSON.stringify(evalResult)} })`,
+                expression: `autoconsentReceiveMessage({ id: "${msg.id}", type: "evalResp", result: ${JSON.stringify(evalResult)} })`,
                 allowUnsafeEvalBlockedByCSP: true,
                 contextId: executionContextId,
             });
