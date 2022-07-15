@@ -31,7 +31,7 @@ Available options:
 - `-a, --disable-anti-bot` - disable simple build-in anti bot detection script injected to every frame
 - `--chromium-version <version_number>` - use custom version of Chromium (e.g. "843427") instead of using the default
 - `--config <path>` - path to a config file that allows to set all the above settings (and more). Note that CLI flags have a higher priority than settings passed via config. You can find a sample config file in `tests/cli/sampleConfig.json`.
-- `--run-autoconsent` - enable autoconsent opt-out of cookie popups (requires the `cmps` collector)
+- `--autoconsent-action <action>` - automatic autoconsent action (requires the `cmps` collector). Possible values: optIn, optOut
 
 ### Use it as a module
 
