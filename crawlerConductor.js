@@ -26,7 +26,7 @@ const MAX_NUMBER_OF_RETRIES = 2;
  * @param {string} executablePath
  * @param {number} maxLoadTimeMs
  * @param {number} extraExecutionTimeMs
- * @param {Object.<string, boolean>} collectorFlags
+ * @param {Object.<string, string>} collectorFlags
  */
 async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost, antiBotDetection, executablePath, maxLoadTimeMs, extraExecutionTimeMs, collectorFlags) {
     const url = new URL(urlString);

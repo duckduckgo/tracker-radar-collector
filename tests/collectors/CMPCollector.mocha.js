@@ -53,8 +53,8 @@ describe('CMPCollector', () => {
         collector.init({
             log: () => {},
             collectorFlags: {
-                runAutoconsent: true,
-                shortTimeouts: true,
+                shortTimeouts: '1',
+                autoconsentAction: 'optOut',
             },
         });
         // @ts-ignore not a real CDP client
@@ -248,8 +248,8 @@ describe('CMPCollector', () => {
             }]);
         });
 
-        it('CMP with a visible popup - runAutoconsent OFF', async function() {
-            collector.doOptOut = false;
+        it('CMP with a visible popup - opt-out OFF', async function() {
+            collector.autoAction = null;
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
             assert.strictEqual(contentScriptEval.contextId, 31337);
             bindingCalled.callback({
@@ -283,7 +283,7 @@ describe('CMPCollector', () => {
             }]);
         });
 
-        describe('CMP with a visible popup - runAutoconsent ON', function() {
+        describe('CMP with a visible popup - opt-out ON', function() {
             beforeEach(() => {
                 const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
                 assert.strictEqual(contentScriptEval.contextId, 31337);

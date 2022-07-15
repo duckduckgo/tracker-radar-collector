@@ -31,11 +31,11 @@ class CMPCollector extends BaseCollector {
      */
     init(options) {
         this.log = options.log;
-        this.doOptOut = options.collectorFlags.runAutoconsent;
         this.shortTimeouts = options.collectorFlags.shortTimeouts; // used to speed up unit tests
+        this.autoAction = /** @type {import('@duckduckgo/autoconsent/lib/types').AutoAction} */ (options.collectorFlags.autoconsentAction);
         this.contentScript = generateContentScript({
             enabled: true,
-            autoAction: this.doOptOut ? 'optOut' : null,
+            autoAction: this.autoAction,
             disabledCmps: [],
             enablePrehide: true,
             detectRetries: 20,
@@ -100,7 +100,15 @@ class CMPCollector extends BaseCollector {
                     });
                 } catch (e) {
                     // ignore evaluation errors (sometimes frames reload too fast)
-                    this.log(`Error evaluating content script: ${e}`);
+                    const error = (typeof e === 'string') ? e : e.message;
+                    if (
+                        !error.includes('No frame for given id found') &&
+                        !error.includes('Target closed.') &&
+                        !error.includes('Session closed.') &&
+                        !error.includes('Cannot find context with specified id')
+                    ) {
+                        this.log(`Error evaluating content script: ${e}`);
+                    }
                 }
             });
 
@@ -110,7 +118,7 @@ class CMPCollector extends BaseCollector {
                         const msg = JSON.parse(payload);
                         await this.handleMessage(msg, executionContextId);
                     } catch (e) {
-                        this.log(`Could not handle autoconsent message ${payload}`);
+                        this.log(`Could not handle autoconsent message ${payload}`, e);
                     }
                 }
             });
@@ -204,17 +212,18 @@ class CMPCollector extends BaseCollector {
             return;
         }
 
-        if (!this.doOptOut) {
+        if (!this.autoAction) {
             return;
         }
 
         // did we opt-out?
-        const optOutDone = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage} */ (await this.waitForMessage({
-            type: 'optOutResult',
+        const resultType = this.autoAction === 'optOut' ? 'optOutResult' : 'optInResult';
+        const autoActionDone = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage|import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage} */ (await this.waitForMessage({
+            type: resultType,
             cmp: detectedMsg.cmp
         }));
-        if (optOutDone) {
-            if (!optOutDone.result) {
+        if (autoActionDone) {
+            if (!autoActionDone.result) {
                 return;
             }
         }
@@ -280,7 +289,7 @@ class CMPCollector extends BaseCollector {
             const found = this.findMessage({type: 'popupFound', cmp: msg.cmp});
             if (found) {
                 result.open = true;
-                if (this.doOptOut) {
+                if (this.autoAction) {
                     result.started = true;
                     const optOutResult = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage} */ (this.findMessage({
                         type: 'optOutResult',
