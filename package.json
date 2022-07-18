@@ -8,7 +8,8 @@
   "scripts": {
     "crawl": "node ./cli/crawl-cli",
     "test": "npm run lint && tsc && npm run unit",
-    "unit": "node ./tests/runTests.js",
+    "unit": "node ./tests/runTests.js && npm run mocha",
+    "mocha": "mocha ./tests/**/*.mocha.js",
     "lint": "eslint *.js cli/ collectors/ helpers/ post-processing/ tests/ reporters/",
     "lint-fix": "npm run lint -- --fix"
   },
@@ -24,17 +25,20 @@
   },
   "devDependencies": {
     "@types/async": "^2.4.1",
+    "@types/mocha": "^9.1.1",
     "@types/mockery": "^1.4.30",
     "@types/node": "^10.12.15",
     "@types/progress": "^2.0.3",
     "@types/stack-utils": "^1.0.1",
     "eslint": "^7.2.0",
+    "eslint-plugin-mocha": "^10.0.5",
+    "mocha": "^10.0.0",
+    "mockery": "^2.1.0",
     "pre-push": "^0.1.1",
-    "typescript": "^4.1.3",
-    "mockery": "^2.1.0"
+    "typescript": "^4.6.4"
   },
   "dependencies": {
-    "@duckduckgo/autoconsent": "^1.0.2",
+    "@duckduckgo/autoconsent": "^2.0.0",
     "async": "^2.6.1",
     "chalk": "^2.4.1",
     "clickhouse": "^2.4.2",
