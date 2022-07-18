@@ -295,13 +295,15 @@ class CMPCollector extends BaseCollector {
             if (found) {
                 result.open = true;
                 if (this.autoAction) {
+                    const resultType = this.autoAction === 'optOut' ? 'optOutResult' : 'optInResult';
                     result.started = true;
-                    const optOutResult = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage} */ (this.findMessage({
-                        type: 'optOutResult',
+                    const autoActionResult = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage|import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage} */ (this.findMessage({
+                        type: resultType,
                         cmp: msg.cmp,
                     }));
-
-                    result.succeeded = optOutResult.result;
+                    if (autoActionResult) {
+                        result.succeeded = autoActionResult.result;
+                    }
                 }
             }
             results.push(result);
