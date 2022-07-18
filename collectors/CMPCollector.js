@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 const fs = require('fs');
 const path = require('path');
+const waitFor = require('../helpers/waitFor');
 const BaseCollector = require('./BaseCollector');
 
 // @ts-ignore
@@ -19,25 +20,6 @@ function generateContentScript(config) {
 }
 
 const worldName = 'cmpcollector';
-
-/**
- * @param {() => Promise<boolean> | boolean} predicate
- * @param {number} maxTimes
- * @param {number} interval
- * @returns {Promise<boolean>}
- */
-async function waitFor(predicate, maxTimes, interval) {
-    const result = await predicate();
-    if (!result && maxTimes > 0) {
-        return new Promise(resolve => {
-            setTimeout(() => {
-                resolve(waitFor(predicate, maxTimes - 1, interval));
-            }, interval);
-        });
-    }
-    return Promise.resolve(result);
-}
-
 class CMPCollector extends BaseCollector {
 
     id() {
@@ -125,7 +107,6 @@ class CMPCollector extends BaseCollector {
                 if (name === 'autoconsentStandaloneSendMessage') {
                     try {
                         const msg = JSON.parse(payload);
-                        // this.log(`autoconsent message from ${executionContextId}: ${JSON.stringify(msg)}`);
                         await this.handleMessage(msg, executionContextId);
                     } catch (e) {
                         this.log(`Could not handle autoconsent message ${payload}`);
