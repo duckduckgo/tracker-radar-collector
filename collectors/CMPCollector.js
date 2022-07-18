@@ -32,6 +32,7 @@ class CMPCollector extends BaseCollector {
     init(options) {
         this.log = options.log;
         this.doOptOut = options.collectorFlags.runAutoconsent;
+        this.shortTimeouts = options.collectorFlags.shortTimeouts; // used to speed up unit tests
         this.contentScript = generateContentScript({
             enabled: true,
             autoAction: this.doOptOut ? 'optOut' : null,
@@ -179,10 +180,13 @@ class CMPCollector extends BaseCollector {
      * @returns {Promise<import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage>}
      */
     async waitForMessage(msg, maxTimes = 20, interval = 100) {
+        if (this.shortTimeouts) {
+            // eslint-disable-next-line no-param-reassign
+            maxTimes = 1;
+        }
         await waitFor(() => Boolean(this.findMessage(msg)), maxTimes, interval);
         return this.findMessage(msg);
     }
-
 
     /**
      * @returns {Promise<void>}

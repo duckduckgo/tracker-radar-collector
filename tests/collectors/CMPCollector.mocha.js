@@ -54,6 +54,7 @@ describe('CMPCollector', () => {
             log: () => {},
             collectorFlags: {
                 runAutoconsent: true,
+                shortTimeouts: true,
             },
         });
         // @ts-ignore not a real CDP client
@@ -216,7 +217,6 @@ describe('CMPCollector', () => {
         });
 
         it('no CMP', async function() {
-            this.timeout(3000);
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
             assert.strictEqual(contentScriptEval.contextId, 31337);
             const results = await collector.getData();
@@ -224,7 +224,6 @@ describe('CMPCollector', () => {
         });
 
         it('CMP with no visible popup', async function() {
-            this.timeout(3000);
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
             assert.strictEqual(contentScriptEval.contextId, 31337);
             bindingCalled.callback({
