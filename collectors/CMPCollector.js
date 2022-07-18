@@ -17,6 +17,21 @@ window.autoconsentSendMessage = (msg) => {
 ` + baseContentScript;
 
 const worldName = 'cmpcollector';
+
+/**
+ * @param {String|Error} e
+ */
+function isIgnoredEvalError(e) {
+    // ignore evaluation errors (sometimes frames reload too fast)
+    const error = (typeof e === 'string') ? e : e.message;
+    return (
+        error.includes('No frame for given id found') ||
+        error.includes('Target closed.') ||
+        error.includes('Session closed.') ||
+        error.includes('Cannot find context with specified id')
+    );
+}
+
 class CMPCollector extends BaseCollector {
 
     id() {
@@ -89,14 +104,7 @@ class CMPCollector extends BaseCollector {
                         contextId: executionContextId,
                     });
                 } catch (e) {
-                    // ignore evaluation errors (sometimes frames reload too fast)
-                    const error = (typeof e === 'string') ? e : e.message;
-                    if (
-                        !error.includes('No frame for given id found') &&
-                        !error.includes('Target closed.') &&
-                        !error.includes('Session closed.') &&
-                        !error.includes('Cannot find context with specified id')
-                    ) {
+                    if (!isIgnoredEvalError(e)) {
                         this.log(`Error evaluating content script: ${e}`);
                     }
                 }
@@ -108,7 +116,9 @@ class CMPCollector extends BaseCollector {
                         const msg = JSON.parse(payload);
                         await this.handleMessage(msg, executionContextId);
                     } catch (e) {
-                        this.log(`Could not handle autoconsent message ${payload}`, e);
+                        if (!isIgnoredEvalError(e)) {
+                            this.log(`Could not handle autoconsent message ${payload}`, e);
+                        }
                     }
                 }
             });
