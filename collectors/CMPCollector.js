@@ -6,20 +6,32 @@ const BaseCollector = require('./BaseCollector');
 
 // @ts-ignore
 const baseContentScript = fs.readFileSync(
-    path.join(__dirname, "../node_modules/@duckduckgo/autoconsent/dist/autoconsent.standalone.js"),
+    path.join(__dirname, "../node_modules/@duckduckgo/autoconsent/dist/autoconsent.playwright.js"),
     "utf8"
 );
 
-/**
- * @param {import('@duckduckgo/autoconsent/lib/types').Config} config
- */
-function generateContentScript(config) {
-    return baseContentScript + `
-        window.initAutoconsentStandalone(${JSON.stringify(config)});
-    `;
-}
+const contentScript = `
+window.autoconsentSendMessage = (msg) => {
+    window.cdpAutoconsentSendMessage(JSON.stringify(msg));
+};
+` + baseContentScript;
 
 const worldName = 'cmpcollector';
+
+/**
+ * @param {String|Error} e
+ */
+function isIgnoredEvalError(e) {
+    // ignore evaluation errors (sometimes frames reload too fast)
+    const error = (typeof e === 'string') ? e : e.message;
+    return (
+        error.includes('No frame for given id found') ||
+        error.includes('Target closed.') ||
+        error.includes('Session closed.') ||
+        error.includes('Cannot find context with specified id')
+    );
+}
+
 class CMPCollector extends BaseCollector {
 
     id() {
@@ -31,15 +43,8 @@ class CMPCollector extends BaseCollector {
      */
     init(options) {
         this.log = options.log;
-        this.doOptOut = options.collectorFlags.runAutoconsent;
         this.shortTimeouts = options.collectorFlags.shortTimeouts; // used to speed up unit tests
-        this.contentScript = generateContentScript({
-            enabled: true,
-            autoAction: this.doOptOut ? 'optOut' : null,
-            disabledCmps: [],
-            enablePrehide: true,
-            detectRetries: 20,
-        });
+        this.autoAction = /** @type {import('@duckduckgo/autoconsent/lib/types').AutoAction} */ (options.collectorFlags.autoconsentAction);
         /** @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage[]} */
         this.receivedMsgs = [];
         this.selfTestFrame = null;
@@ -95,27 +100,30 @@ class CMPCollector extends BaseCollector {
                     });
                     this.isolated2pageworld.set(executionContextId, context.id);
                     await this._cdpClient.send('Runtime.evaluate', {
-                        expression: this.contentScript,
+                        expression: contentScript,
                         contextId: executionContextId,
                     });
                 } catch (e) {
-                    // ignore evaluation errors (sometimes frames reload too fast)
-                    this.log(`Error evaluating content script: ${e}`);
+                    if (!isIgnoredEvalError(e)) {
+                        this.log(`Error evaluating content script: ${e}`);
+                    }
                 }
             });
 
             this._cdpClient.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
-                if (name === 'autoconsentStandaloneSendMessage') {
+                if (name === 'cdpAutoconsentSendMessage') {
                     try {
                         const msg = JSON.parse(payload);
                         await this.handleMessage(msg, executionContextId);
                     } catch (e) {
-                        this.log(`Could not handle autoconsent message ${payload}`);
+                        if (!isIgnoredEvalError(e)) {
+                            this.log(`Could not handle autoconsent message ${payload}`, e);
+                        }
                     }
                 }
             });
             await this._cdpClient.send('Runtime.addBinding', {
-                name: 'autoconsentStandaloneSendMessage',
+                name: 'cdpAutoconsentSendMessage',
                 executionContextName: worldName,
             });
         }
@@ -131,6 +139,21 @@ class CMPCollector extends BaseCollector {
     async handleMessage(msg, executionContextId) {
         this.receivedMsgs.push(msg);
         switch (msg.type) {
+        case 'init': {
+            /** @type {import('@duckduckgo/autoconsent/lib/types').Config} */
+            const autoconsentConfig = {
+                enabled: true,
+                autoAction: this.autoAction,
+                disabledCmps: [],
+                enablePrehide: true,
+                detectRetries: 20,
+            };
+            await this._cdpClient.send('Runtime.evaluate', {
+                expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(autoconsentConfig)} })`,
+                contextId: executionContextId,
+            });
+            break;
+        }
         case 'optInResult':
         case 'optOutResult': {
             if (msg.scheduleSelfTest) {
@@ -141,7 +164,7 @@ class CMPCollector extends BaseCollector {
         case 'autoconsentDone': {
             if (this.selfTestFrame) {
                 await this._cdpClient.send('Runtime.evaluate', {
-                    expression: `autoconsentStandaloneReceiveMessage({ type: "selfTest" })`,
+                    expression: `autoconsentReceiveMessage({ type: "selfTest" })`,
                     allowUnsafeEvalBlockedByCSP: true,
                     contextId: this.selfTestFrame,
                 });
@@ -161,7 +184,7 @@ class CMPCollector extends BaseCollector {
             }
 
             await this._cdpClient.send('Runtime.evaluate', {
-                expression: `autoconsentStandaloneReceiveMessage({ id: "${msg.id}", type: "evalResp", result: ${JSON.stringify(evalResult)} })`,
+                expression: `autoconsentReceiveMessage({ id: "${msg.id}", type: "evalResp", result: ${JSON.stringify(evalResult)} })`,
                 allowUnsafeEvalBlockedByCSP: true,
                 contextId: executionContextId,
             });
@@ -204,17 +227,18 @@ class CMPCollector extends BaseCollector {
             return;
         }
 
-        if (!this.doOptOut) {
+        if (!this.autoAction) {
             return;
         }
 
         // did we opt-out?
-        const optOutDone = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage} */ (await this.waitForMessage({
-            type: 'optOutResult',
+        const resultType = this.autoAction === 'optOut' ? 'optOutResult' : 'optInResult';
+        const autoActionDone = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage|import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage} */ (await this.waitForMessage({
+            type: resultType,
             cmp: detectedMsg.cmp
         }));
-        if (optOutDone) {
-            if (!optOutDone.result) {
+        if (autoActionDone) {
+            if (!autoActionDone.result) {
                 return;
             }
         }
@@ -280,14 +304,16 @@ class CMPCollector extends BaseCollector {
             const found = this.findMessage({type: 'popupFound', cmp: msg.cmp});
             if (found) {
                 result.open = true;
-                if (this.doOptOut) {
+                if (this.autoAction) {
+                    const resultType = this.autoAction === 'optOut' ? 'optOutResult' : 'optInResult';
                     result.started = true;
-                    const optOutResult = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage} */ (this.findMessage({
-                        type: 'optOutResult',
+                    const autoActionResult = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage|import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage} */ (this.findMessage({
+                        type: resultType,
                         cmp: msg.cmp,
                     }));
-
-                    result.succeeded = optOutResult.result;
+                    if (autoActionResult) {
+                        result.succeeded = autoActionResult.result;
+                    }
                 }
             }
             results.push(result);
