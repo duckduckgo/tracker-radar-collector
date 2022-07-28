@@ -34,6 +34,29 @@ function isIgnoredEvalError(e) {
 
 class CMPCollector extends BaseCollector {
 
+    PATTERNS = [
+        /accept cookies/i,
+        /accept all/i,
+        /reject all/i,
+        /only necessary cookies/i, // "only necessary" is probably too broad
+        /accept everything/i,
+        /by clicking.*(accept|agree|allow)/i,
+        /by continuing/i,
+        /we (use|serve) cookies/i,
+        /we are using cookies/i,
+        /use of cookies/i,
+        /uses? cookies/i,
+        /this (web)?site.*cookies/i,
+        /cookies (and|or) .* technologies/i,
+        /such as cookies/i,
+        /read more about.*cookies/i,
+        /consent to.*cookies/i,
+
+        // these below cause many false positives
+        // /cookies? settings/i,
+        // /cookies? preferences/i,
+    ]
+
     id() {
         return 'cmps';
     }
@@ -49,6 +72,7 @@ class CMPCollector extends BaseCollector {
         this.receivedMsgs = [];
         this.selfTestFrame = null;
         this.isolated2pageworld = new Map();
+        this.context = options.context;
     }
 
     /**
@@ -145,7 +169,7 @@ class CMPCollector extends BaseCollector {
                 enabled: true,
                 autoAction: this.autoAction,
                 disabledCmps: [],
-                enablePrehide: true,
+                enablePrehide: false,
                 detectRetries: 20,
             };
             await this._cdpClient.send('Runtime.evaluate', {
@@ -259,6 +283,46 @@ class CMPCollector extends BaseCollector {
     }
 
     /**
+     * @returns {Promise<string[]>}
+     */
+    async collectPatterns() {
+        /**
+         * @type {string[]}
+         */
+        const found = [];
+        const pages = await this.context.pages();
+        if (pages.length > 0) {
+            const page = pages[0];
+            /**
+             * @type {Promise<string>[]}
+             */
+            const promises = [];
+            page.frames().forEach(frame => {
+                promises.push(frame.evaluate(() => {
+                    return document.documentElement.innerText;
+                }).catch(reason => {
+                    this.log(`error retrieving text: ${reason}`);
+                    // ignore exceptions
+                    return '';
+                }));
+            });
+            const texts = await Promise.all(promises);
+            const notFoundPatterns = new Set(this.PATTERNS);
+            for (const frameText of texts) {
+                if (frameText) {
+                    for (const p of Array.from(notFoundPatterns)) {
+                        if (p.test(frameText)) {
+                            notFoundPatterns.delete(p);
+                            found.push(p.toString());
+                        }
+                    }
+                }
+            }
+        }
+        return found;
+    }
+
+    /**
      * @returns {CMPResult[]}
      */
     collectResults() {
@@ -299,6 +363,7 @@ class CMPCollector extends BaseCollector {
                 succeeded: false,
                 selfTestFail: Boolean(selfTestResult && !selfTestResult.result),
                 errors,
+                patterns: [],
             };
 
             const found = this.findMessage({type: 'popupFound', cmp: msg.cmp});
@@ -329,7 +394,25 @@ class CMPCollector extends BaseCollector {
      */
     async getData() {
         await this.waitForFinish();
-        return this.collectResults();
+        const patterns = await this.collectPatterns();
+        const results = this.collectResults();
+        if (results.length > 0) {
+            results.forEach(r => {
+                r.patterns = patterns;
+            });
+        } else {
+            results.push({
+                final: false,
+                name: '',
+                open: false,
+                started: false,
+                succeeded: false,
+                selfTestFail: false,
+                errors: [],
+                patterns,
+            });
+        }
+        return results;
     }
 }
 
@@ -342,6 +425,7 @@ class CMPCollector extends BaseCollector {
  * @property {boolean} succeeded
  * @property {boolean} selfTestFail
  * @property {string[]} errors
+ * @property {string[]} patterns
  */
 
 module.exports = CMPCollector;

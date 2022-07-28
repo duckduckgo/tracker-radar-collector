@@ -52,7 +52,7 @@ const TABLE_DEFINITIONS = [
         visible Array(String)
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.cmps (
+    `CREATE TABLE IF NOT EXISTS ${DB}.cmps_heuristics (
         crawlId String,
         pageId String,
         name String,
@@ -61,7 +61,8 @@ const TABLE_DEFINITIONS = [
         started UInt8,
         succeeded UInt8,
         selfTestFail UInt8,
-        errors Array(String)
+        errors Array(String),
+        patterns Array(String)
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, name)`,
     `CREATE TABLE IF NOT EXISTS ${DB}.apiSavedCalls (
@@ -129,6 +130,7 @@ class ClickhouseReporter extends BaseReporter {
             elements: [],
             apiSavedCalls: [],
             cmps: [],
+            cmps_heuristics: [],
             apiCallStats: [],
             cookies: [],
             targets: [],
@@ -192,8 +194,8 @@ class ClickhouseReporter extends BaseReporter {
                 this.queue.elements.push([this.crawlId, pageId, data.data.elements.present, data.data.elements.visible]);
             }
             if (data.data.cmps) {
-                const cmpRows = data.data.cmps.map(c => [this.crawlId, pageId, c.name, c.final, c.open, c.started, c.succeeded, c.selfTestFail, c.errors]);
-                this.queue.cmps = this.queue.cmps.concat(cmpRows);
+                const cmpRows = data.data.cmps.map(c => [this.crawlId, pageId, c.name, c.final, c.open, c.started, c.succeeded, c.selfTestFail, c.errors, c.patterns]);
+                this.queue.cmps_heuristics = this.queue.cmps_heuristics.concat(cmpRows);
             }
             if (data.data.apis) {
                 const {callStats,savedCalls} = data.data.apis;
