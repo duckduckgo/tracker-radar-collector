@@ -17,32 +17,9 @@ async function testMetadataExists() {
     }
 }
 
-async function rerunUntilComplete(retry = 0) {
+function rerunUntilComplete(retry = 0) {
     const subProcessArgs = [...process.argv];
     subProcessArgs.splice(1, 1, path.join(path.dirname(__filename), '/crawl-cli.js'));
-    if (retry > 0) {
-        const siteListFile = path.join(config.output, `urls_retry${retry}.txt`);
-        const remainingUrls = [...config.urls];
-        for (const fileName of await fs.readdir(config.output)) {
-            if (!fileName.endsWith('.json')) {
-                continue;
-            }
-            // @ts-ignore
-            // eslint-disable-next-line no-await-in-loop
-            const {initialUrl} = JSON.parse(await fs.readFile(path.join(config.output, fileName), {encoding: 'utf-8'}));
-            // remainingUrls.delete(initialUrl);
-            if (remainingUrls.indexOf(initialUrl) !== -1) {
-                remainingUrls.splice(remainingUrls.indexOf(initialUrl), 1);
-            }
-        }
-        if (remainingUrls.length === 0) {
-            console.info('No sites left to crawl');
-            return;
-        }
-        await fs.writeFile(siteListFile, remainingUrls.join('\n'));
-        console.info(`${remainingUrls.length} remaining sites written to ${siteListFile}`);
-        subProcessArgs.splice(subProcessArgs.findIndex(v => ['-i', '--input-list'].includes(v.toLowerCase())) + 1, 1, siteListFile);
-    }
     const crawl = cp.spawn(subProcessArgs[0], subProcessArgs.slice(1), {stdio: 'inherit'});
     crawl.on('close', async () => {
         const success = await testMetadataExists();
