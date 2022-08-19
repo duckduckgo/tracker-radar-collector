@@ -6,9 +6,9 @@ const fs = require('fs');
  */
 function addProtocolIfNeeded(url) {
     if (url.startsWith('http://') || url.startsWith('https://')) {
-        return new URL(url).href;
+        return url;
     }
-    return new URL(`http://${url}`).href;
+    return `http://${url}`;
 }
 
 /**
