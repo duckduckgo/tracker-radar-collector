@@ -7,6 +7,7 @@
   "main": "main.js",
   "scripts": {
     "crawl": "node ./cli/crawl-cli",
+    "crawl-with-retries": "node ./cli/crawl-runner",
     "test": "npm run lint && tsc && npm run unit",
     "unit": "node ./tests/runTests.js && npm run mocha",
     "mocha": "mocha ./tests/**/*.mocha.js",
