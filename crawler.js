@@ -27,12 +27,14 @@ const VISUAL_DEBUG = false;
  * @param {function(...any):void} log
  * @param {string} proxyHost
  * @param {string} executablePath path to chromium executable to use
+ * @param {boolean} emulateMobile
  */
-function openBrowser(log, proxyHost, executablePath) {
+function openBrowser(log, proxyHost, executablePath, emulateMobile) {
     /**
-     * @type {import('puppeteer').BrowserLaunchArgumentOptions}
+     * @type {import('puppeteer').BrowserLaunchArgumentOptions & import('puppeteer').BrowserConnectOptions & import('puppeteer').LaunchOptions}
      */
     const args = {
+        defaultViewport: emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT,
         args: [
             // enable FLoC
             '--enable-blink-features=InterestCohortAPI',
@@ -188,8 +190,6 @@ async function getSiteData(context, url, {
         page.setUserAgent(emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT);
     }
 
-    page.setViewport(emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT);
-
     // if any prompts open on page load, they'll make the page hang unless closed
     page.on('dialog', dialog => dialog.dismiss());
 
@@ -282,7 +282,7 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
  */
 module.exports = async (url, options) => {
     const log = options.log || (() => {});
-    const browser = options.browserContext ? null : await openBrowser(log, options.proxyHost, options.executablePath);
+    const browser = options.browserContext ? null : await openBrowser(log, options.proxyHost, options.executablePath, options.emulateMobile);
     // Create a new incognito browser context.
     const context = options.browserContext || await browser.createIncognitoBrowserContext();
 
