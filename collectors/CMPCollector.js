@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 const fs = require('fs');
 const path = require('path');
+const createDeferred = require('../helpers/deferred');
 const waitFor = require('../helpers/waitFor');
 const BaseCollector = require('./BaseCollector');
 
@@ -39,13 +40,11 @@ class CMPCollector extends BaseCollector {
         /accept all/i,
         /reject all/i,
         /only necessary cookies/i, // "only necessary" is probably too broad
-        /accept everything/i,
         /by clicking.*(accept|agree|allow)/i,
         /by continuing/i,
         /we (use|serve) cookies/i,
         /we are using cookies/i,
         /use of cookies/i,
-        /uses? cookies/i,
         /this (web)?site.*cookies/i,
         /cookies (and|or) .* technologies/i,
         /such as cookies/i,
@@ -72,6 +71,7 @@ class CMPCollector extends BaseCollector {
         this.receivedMsgs = [];
         this.selfTestFrame = null;
         this.isolated2pageworld = new Map();
+        this.pendingScan = createDeferred();
         this.context = options.context;
     }
 
@@ -167,7 +167,7 @@ class CMPCollector extends BaseCollector {
             /** @type {import('@duckduckgo/autoconsent/lib/types').Config} */
             const autoconsentConfig = {
                 enabled: true,
-                autoAction: this.autoAction,
+                autoAction: null, // we request action explicitly later
                 disabledCmps: [],
                 enablePrehide: false,
                 detectRetries: 20,
@@ -178,6 +178,15 @@ class CMPCollector extends BaseCollector {
             });
             break;
         }
+        case 'popupFound':
+            if (this.autoAction) {
+                await this.pendingScan.promise; // wait for the pattern detection first
+                await this._cdpClient.send('Runtime.evaluate', {
+                    expression: `autoconsentReceiveMessage({ type: "${this.autoAction}" })`,
+                    contextId: executionContextId,
+                });
+            }
+            break;
         case 'optInResult':
         case 'optOutResult': {
             if (msg.scheduleSelfTest) {
@@ -319,6 +328,7 @@ class CMPCollector extends BaseCollector {
                 }
             }
         }
+        this.pendingScan.resolve();
         return found;
     }
 
@@ -393,8 +403,8 @@ class CMPCollector extends BaseCollector {
      * @returns {Promise<CMPResult[]>}
      */
     async getData() {
-        await this.waitForFinish();
         const patterns = await this.collectPatterns();
+        await this.waitForFinish();
         const results = this.collectResults();
         if (results.length > 0) {
             results.forEach(r => {
