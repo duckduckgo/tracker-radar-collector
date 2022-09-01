@@ -33,29 +33,28 @@ function isIgnoredEvalError(e) {
     );
 }
 
+const DETECT_PATTERNS = [
+    /accept cookies/i,
+    /accept all/i,
+    /reject all/i,
+    /only necessary cookies/i, // "only necessary" is probably too broad
+    /by clicking.*(accept|agree|allow)/i,
+    /by continuing/i,
+    /we (use|serve) cookies/i,
+    /we are using cookies/i,
+    /use of cookies/i,
+    /this (web)?site.*cookies/i,
+    /cookies (and|or) .* technologies/i,
+    /such as cookies/i,
+    /read more about.*cookies/i,
+    /consent to.*cookies/i,
+
+    // these below cause many false positives
+    // /cookies? settings/i,
+    // /cookies? preferences/i,
+]
+
 class CMPCollector extends BaseCollector {
-
-    PATTERNS = [
-        /accept cookies/i,
-        /accept all/i,
-        /reject all/i,
-        /only necessary cookies/i, // "only necessary" is probably too broad
-        /by clicking.*(accept|agree|allow)/i,
-        /by continuing/i,
-        /we (use|serve) cookies/i,
-        /we are using cookies/i,
-        /use of cookies/i,
-        /this (web)?site.*cookies/i,
-        /cookies (and|or) .* technologies/i,
-        /such as cookies/i,
-        /read more about.*cookies/i,
-        /consent to.*cookies/i,
-
-        // these below cause many false positives
-        // /cookies? settings/i,
-        // /cookies? preferences/i,
-    ]
-
     id() {
         return 'cmps';
     }
@@ -316,7 +315,7 @@ class CMPCollector extends BaseCollector {
                 }));
             });
             const texts = await Promise.all(promises);
-            const notFoundPatterns = new Set(this.PATTERNS);
+            const notFoundPatterns = new Set(DETECT_PATTERNS);
             for (const frameText of texts) {
                 if (frameText) {
                     for (const p of Array.from(notFoundPatterns)) {
