@@ -12,6 +12,7 @@ class CLIReporter extends BaseReporter {
      */
     init(options) {
         this.verbose = options.verbose;
+        this.counter = 0;
 
         this.alwaysLog(chalk.cyan(`Start time: ${options.startTime.toUTCString()}`));
         this.alwaysLog(chalk.cyan(`URLs to crawl: ${options.urls}`));
@@ -51,12 +52,15 @@ class CLIReporter extends BaseReporter {
      * @param {{site: string, failures: number, successes: number, urls: number}} data 
      */
     update(data) {
-        if(this.progressBar) {
+        if (this.progressBar) {
             this.progressBar.total = data.urls;
             this.progressBar.tick({
                 site: data.site,
                 fail: (data.failures / (data.failures + data.successes) * 100).toFixed(1)
             });
+        } else {
+            this.counter++;
+            this.log(`Site ${this.counter} / ${data.urls} (${(this.counter / data.urls * 100).toFixed(1)}%)`);
         }
     }
 
