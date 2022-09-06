@@ -33,6 +33,7 @@ function isIgnoredEvalError(e) {
     );
 }
 
+// TODO: check for false positive detections per pattern
 const DETECT_PATTERNS = [
     /accept cookies/i,
     /accept all/i,
