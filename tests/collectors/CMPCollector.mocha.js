@@ -56,6 +56,10 @@ describe('CMPCollector', () => {
                 shortTimeouts: '1',
                 autoconsentAction: 'optOut',
             },
+            // @ts-ignore no need to provide all params
+            context: {
+                pages: () => Promise.resolve([])
+            }
         });
         // @ts-ignore not a real CDP client
         await collector.addTarget({cdpClient: fakeCDPClient, type: 'page', url: 'https://example.com'});
@@ -77,11 +81,31 @@ describe('CMPCollector', () => {
                 assert.deepStrictEqual(commands[0], ['Runtime.evaluate', {
                     expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify({
                         enabled: true,
-                        autoAction: 'optOut',
+                        autoAction: null,
                         disabledCmps: [],
-                        enablePrehide: true,
+                        enablePrehide: false,
                         detectRetries: 20,
                     })} })`,
+                    contextId: 1111,
+                }]);
+            });
+        });
+        describe('popupFound ', () => {
+            it('should trigger autoAction', async () => {
+                /**
+                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 */
+                const msg = {
+                    type: 'popupFound',
+                    url: 'some-url',
+                    cmp: 'someCMP',
+                };
+                commands.splice(0, commands.length);
+                collector.pendingScan.resolve();
+                await collector.handleMessage(msg, 1111);
+                assert.strictEqual(commands.length, 1);
+                assert.deepStrictEqual(commands[0], ['Runtime.evaluate', {
+                    expression: `autoconsentReceiveMessage({ type: "optOut" })`,
                     contextId: 1111,
                 }]);
             });
@@ -247,6 +271,39 @@ describe('CMPCollector', () => {
             assert.deepStrictEqual(results, []);
         });
 
+        it('no CMP, but detected heuristic patterns', async function() {
+            const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
+            assert.strictEqual(contentScriptEval.contextId, 31337);
+
+            // @ts-ignore no need to provide all params
+            collector.context.pages = () => Promise.resolve([
+                {
+                    frames: () => [
+                        {
+                            evaluate: () => Promise.resolve('This website is using cookies. We are using cookies! To reiterate, you consent to the use of cookies on this website. In fact, there is nothing you can possibly do.')
+                        }
+                    ]
+                }
+            ]);
+
+            const results = await collector.getData();
+            assert.deepStrictEqual(results, [{
+                name: '',
+                final: false,
+                open: false,
+                started: false,
+                succeeded: false,
+                selfTestFail: false,
+                errors: [],
+                patterns: [
+                    "/we are using cookies/i",
+                    "/use of cookies/i",
+                    "/this (web)?site.*cookies/i",
+                    "/consent to.*cookies/i",
+                ],
+            }]);
+        });
+
         it('CMP with no visible popup', async function() {
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
             assert.strictEqual(contentScriptEval.contextId, 31337);
@@ -269,6 +326,7 @@ describe('CMPCollector', () => {
                 succeeded: false,
                 selfTestFail: false,
                 errors: [],
+                patterns: [],
             }]);
         });
 
@@ -304,6 +362,7 @@ describe('CMPCollector', () => {
                 succeeded: false,
                 selfTestFail: false,
                 errors: [],
+                patterns: [],
             }]);
         });
 
@@ -353,6 +412,7 @@ describe('CMPCollector', () => {
                         succeeded: false,
                         selfTestFail: false,
                         errors: [],
+                        patterns: [],
                     }]);
                 });
 
@@ -388,6 +448,7 @@ describe('CMPCollector', () => {
                         succeeded: true,
                         selfTestFail: false,
                         errors: [],
+                        patterns: [],
                     }]);
                 });
             });
@@ -448,6 +509,7 @@ describe('CMPCollector', () => {
                         succeeded: true,
                         selfTestFail: false,
                         errors: [],
+                        patterns: [],
                     }]);
                 });
 
@@ -472,6 +534,7 @@ describe('CMPCollector', () => {
                         succeeded: true,
                         selfTestFail: true,
                         errors: [],
+                        patterns: [],
                     }]);
                 });
             });
