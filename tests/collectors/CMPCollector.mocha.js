@@ -3,6 +3,10 @@ const CMPCollector = require('../../collectors/CMPCollector');
 const assert = require('assert');
 
 /**
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
+ */
+
+/**
  * @type {Array<{name: String, callback: function}>}
  */
 const listeners = [];
@@ -69,7 +73,7 @@ describe('CMPCollector', () => {
         describe('init ', () => {
             it('should respond with initResp', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'init',
@@ -93,7 +97,7 @@ describe('CMPCollector', () => {
         describe('popupFound ', () => {
             it('should trigger autoAction', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'popupFound',
@@ -113,7 +117,7 @@ describe('CMPCollector', () => {
         describe('optOutResult ', () => {
             it('should remember where to run self test', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'optOutResult',
@@ -128,7 +132,7 @@ describe('CMPCollector', () => {
 
             it('should (not) remember where to run self test', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'optOutResult',
@@ -145,7 +149,7 @@ describe('CMPCollector', () => {
         describe('optInResult ', () => {
             it('should remember where to run self test', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'optInResult',
@@ -160,7 +164,7 @@ describe('CMPCollector', () => {
 
             it('should (not) remember where to run self test', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'optInResult',
@@ -177,7 +181,7 @@ describe('CMPCollector', () => {
         describe('autoconsentDone', () => {
             it('should not trigger self-test when not necessary', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'autoconsentDone',
@@ -192,7 +196,7 @@ describe('CMPCollector', () => {
 
             it('should trigger self-test when necessary', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'autoconsentDone',
@@ -214,7 +218,7 @@ describe('CMPCollector', () => {
         describe('eval', () => {
             it('should execute in main world', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'eval',
