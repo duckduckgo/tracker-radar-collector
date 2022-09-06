@@ -52,7 +52,7 @@ const DETECT_PATTERNS = [
     // these below cause many false positives
     // /cookies? settings/i,
     // /cookies? preferences/i,
-]
+];
 
 class CMPCollector extends BaseCollector {
     id() {
@@ -293,7 +293,7 @@ class CMPCollector extends BaseCollector {
     /**
      * @returns {Promise<string[]>}
      */
-    async collectPatterns() {
+    async scanPatterns() {
         /**
          * @type {string[]}
          */
@@ -306,24 +306,18 @@ class CMPCollector extends BaseCollector {
              */
             const promises = [];
             page.frames().forEach(frame => {
-                promises.push(frame.evaluate(() => {
-                    return document.documentElement.innerText;
-                }).catch(reason => {
+                // eslint-disable-next-line no-undef
+                promises.push(frame.evaluate(() => document.documentElement.innerText).catch(reason => {
                     this.log(`error retrieving text: ${reason}`);
                     // ignore exceptions
                     return '';
                 }));
             });
             const texts = await Promise.all(promises);
-            const notFoundPatterns = new Set(DETECT_PATTERNS);
-            for (const frameText of texts) {
-                if (frameText) {
-                    for (const p of Array.from(notFoundPatterns)) {
-                        if (p.test(frameText)) {
-                            notFoundPatterns.delete(p);
-                            found.push(p.toString());
-                        }
-                    }
+            const allTexts = texts.join('\n');
+            for (const p of DETECT_PATTERNS) {
+                if (p.test(allTexts)) {
+                    found.push(p.toString());
                 }
             }
         }
@@ -402,24 +396,26 @@ class CMPCollector extends BaseCollector {
      * @returns {Promise<CMPResult[]>}
      */
     async getData() {
-        const patterns = await this.collectPatterns();
+        const patterns = await this.scanPatterns();
         await this.waitForFinish();
         const results = this.collectResults();
-        if (results.length > 0) {
-            results.forEach(r => {
-                r.patterns = patterns;
-            });
-        } else {
-            results.push({
-                final: false,
-                name: '',
-                open: false,
-                started: false,
-                succeeded: false,
-                selfTestFail: false,
-                errors: [],
-                patterns,
-            });
+        if (patterns.length > 0) {
+            if (results.length > 0) {
+                results.forEach(r => {
+                    r.patterns = patterns;
+                });
+            } else {
+                results.push({
+                    final: false,
+                    name: '',
+                    open: false,
+                    started: false,
+                    succeeded: false,
+                    selfTestFail: false,
+                    errors: [],
+                    patterns,
+                });
+            }
         }
         return results;
     }
