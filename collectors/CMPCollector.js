@@ -54,14 +54,18 @@ const DETECT_PATTERNS = [
     /only necessary cookies/i, // "only necessary" is probably too broad
     /by clicking.*(accept|agree|allow)/i,
     /by continuing/i,
-    /we (use|serve) cookies/i,
+    /we (use|serve)( optional)? cookies/i,
     /we are using cookies/i,
     /use of cookies/i,
-    /this (web)?site.*cookies/i,
+    /(this|our) (web)?site.*cookies/i,
     /cookies (and|or) .* technologies/i,
     /such as cookies/i,
     /read more about.*cookies/i,
     /consent to.*cookies/i,
+    /we and our partners.*cookies/i,
+    /we.*store.*information.*such as.*cookies/i,
+    /store and\/or access information.*on a device/i,
+    /personalised ads and content, ad and content measurement/i,
 
     // these below cause many false positives
     // /cookies? settings/i,
