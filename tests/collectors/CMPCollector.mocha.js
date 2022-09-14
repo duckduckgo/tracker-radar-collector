@@ -302,7 +302,7 @@ describe('CMPCollector', () => {
                 patterns: [
                     "/we are using cookies/i",
                     "/use of cookies/i",
-                    "/this (web)?site.*cookies/i",
+                    "/(this|our) (web)?site.*cookies/i",
                     "/consent to.*cookies/i",
                 ],
             }]);
