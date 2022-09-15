@@ -185,10 +185,10 @@ async function getSiteData(context, url, {
     log(`page context initiated in ${initPageTimer.getElapsedTime()}s`);
 
     if (emulateUserAgent) {
-        page.setUserAgent(emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT);
+        await page.setUserAgent(emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT);
     }
 
-    page.setViewport(emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT);
+    await page.setViewport(emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT);
 
     // if any prompts open on page load, they'll make the page hang unless closed
     page.on('dialog', dialog => dialog.dismiss());
