@@ -300,11 +300,17 @@ describe('CMPCollector', () => {
                 selfTestFail: false,
                 errors: [],
                 patterns: [
-                    "/we are using cookies/i",
-                    "/use of cookies/i",
-                    "/(this|our) (web)?site.*cookies/i",
-                    "/consent to.*cookies/i",
+                    "/we are using cookies/gi",
+                    "/use of cookies/gi",
+                    "/(this|our) (web)?site.*cookies/gi",
+                    "/consent to.*cookies/gi",
                 ],
+                snippets: [
+                    'We are using cookies',
+                    'use of cookies',
+                    'This website is using cookies. We are using cookies! To reiterate, you consent to the use of cookies',
+                    'consent to the use of cookies'
+                ]
             }]);
         });
 
@@ -331,6 +337,7 @@ describe('CMPCollector', () => {
                 selfTestFail: false,
                 errors: [],
                 patterns: [],
+                snippets: [],
             }]);
         });
 
@@ -367,6 +374,7 @@ describe('CMPCollector', () => {
                 selfTestFail: false,
                 errors: [],
                 patterns: [],
+                snippets: [],
             }]);
         });
 
@@ -417,6 +425,7 @@ describe('CMPCollector', () => {
                         selfTestFail: false,
                         errors: [],
                         patterns: [],
+                        snippets: [],
                     }]);
                 });
 
@@ -453,6 +462,7 @@ describe('CMPCollector', () => {
                         selfTestFail: false,
                         errors: [],
                         patterns: [],
+                        snippets: [],
                     }]);
                 });
             });
@@ -514,6 +524,7 @@ describe('CMPCollector', () => {
                         selfTestFail: false,
                         errors: [],
                         patterns: [],
+                        snippets: [],
                     }]);
                 });
 
@@ -539,6 +550,7 @@ describe('CMPCollector', () => {
                         selfTestFail: true,
                         errors: [],
                         patterns: [],
+                        snippets: [],
                     }]);
                 });
             });

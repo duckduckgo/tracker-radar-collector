@@ -48,24 +48,24 @@ function isIgnoredEvalError(e) {
 
 // TODO: check for false positive detections per pattern
 const DETECT_PATTERNS = [
-    /accept cookies/i,
-    /accept all/i,
-    /reject all/i,
-    /only necessary cookies/i, // "only necessary" is probably too broad
-    /by clicking.*(accept|agree|allow)/i,
-    /by continuing/i,
-    /we (use|serve)( optional)? cookies/i,
-    /we are using cookies/i,
-    /use of cookies/i,
-    /(this|our) (web)?site.*cookies/i,
-    /cookies (and|or) .* technologies/i,
-    /such as cookies/i,
-    /read more about.*cookies/i,
-    /consent to.*cookies/i,
-    /we and our partners.*cookies/i,
-    /we.*store.*information.*such as.*cookies/i,
-    /store and\/or access information.*on a device/i,
-    /personalised ads and content, ad and content measurement/i,
+    /accept cookies/ig,
+    /accept all/ig,
+    /reject all/ig,
+    /only necessary cookies/ig, // "only necessary" is probably too broad
+    /by clicking.*(accept|agree|allow)/ig,
+    /by continuing/ig,
+    /we (use|serve)( optional)? cookies/ig,
+    /we are using cookies/ig,
+    /use of cookies/ig,
+    /(this|our) (web)?site.*cookies/ig,
+    /cookies (and|or) .* technologies/ig,
+    /such as cookies/ig,
+    /read more about.*cookies/ig,
+    /consent to.*cookies/ig,
+    /we and our partners.*cookies/ig,
+    /we.*store.*information.*such as.*cookies/ig,
+    /store and\/or access information.*on a device/ig,
+    /personalised ads and content, ad and content measurement/ig,
 
     // these below cause many false positives
     // /cookies? settings/i,
@@ -309,13 +309,14 @@ class CMPCollector extends BaseCollector {
     }
 
     /**
-     * @returns {Promise<string[]>}
+     * @returns {Promise<{ patterns: string[], snippets: string[] }>}
      */
     async scanPatterns() {
         /**
          * @type {string[]}
          */
-        const found = [];
+        const foundPatterns = [];
+        const foundSnippets = [];
         const pages = await this.context.pages();
         if (pages.length > 0) {
             const page = pages[0];
@@ -334,13 +335,18 @@ class CMPCollector extends BaseCollector {
             const texts = await Promise.all(promises);
             const allTexts = texts.join('\n');
             for (const p of DETECT_PATTERNS) {
-                if (p.test(allTexts)) {
-                    found.push(p.toString());
+                const matches = allTexts.match(p);
+                if (matches) {
+                    foundPatterns.push(p.toString());
+                    foundSnippets.push(...matches);
                 }
             }
         }
         this.pendingScan.resolve();
-        return found;
+        return {
+            patterns: foundPatterns,
+            snippets: foundSnippets,
+        };
     }
 
     /**
@@ -385,6 +391,7 @@ class CMPCollector extends BaseCollector {
                 selfTestFail: Boolean(selfTestResult && !selfTestResult.result),
                 errors,
                 patterns: [],
+                snippets: [],
             };
 
             const found = this.findMessage({type: 'popupFound', cmp: msg.cmp});
@@ -414,13 +421,14 @@ class CMPCollector extends BaseCollector {
      * @returns {Promise<CMPResult[]>}
      */
     async getData() {
-        const patterns = await this.scanPatterns();
+        const scanResult = await this.scanPatterns();
         await this.waitForFinish();
         const results = this.collectResults();
-        if (patterns.length > 0) {
+        if (scanResult.patterns.length > 0) {
             if (results.length > 0) {
                 results.forEach(r => {
-                    r.patterns = patterns;
+                    r.patterns = scanResult.patterns;
+                    r.snippets = scanResult.snippets;
                 });
             } else {
                 results.push({
@@ -431,7 +439,8 @@ class CMPCollector extends BaseCollector {
                     succeeded: false,
                     selfTestFail: false,
                     errors: [],
-                    patterns,
+                    patterns: scanResult.patterns,
+                    snippets: scanResult.snippets,
                 });
             }
         }
@@ -449,6 +458,7 @@ class CMPCollector extends BaseCollector {
  * @property {boolean} selfTestFail
  * @property {string[]} errors
  * @property {string[]} patterns
+ * @property {string[]} snippets
  */
 
 module.exports = CMPCollector;
