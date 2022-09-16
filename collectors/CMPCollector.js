@@ -67,7 +67,7 @@ const DETECT_PATTERNS = [
     /store and\/or access information.*on a device/ig,
     /personalised ads and content, ad and content measurement/ig,
 
-    // these below cause many false positives
+    // it might be tempting to add the patterns below, but they cause too many false positives. Don't do it :)
     // /cookies? settings/i,
     // /cookies? preferences/i,
 ];
