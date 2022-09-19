@@ -41,7 +41,7 @@
     "@duckduckgo/autoconsent": "^2.2.0",
     "async": "^2.6.1",
     "chalk": "^2.4.1",
-    "clickhouse": "^2.4.2",
+    "clickhouse": "^2.6.0",
     "commander": "^2.19.0",
     "progress": "^2.0.3",
     "puppeteer": "^10.2.0",
