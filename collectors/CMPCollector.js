@@ -16,6 +16,7 @@ const BaseCollector = require('./BaseCollector');
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage } OptOutResultMessage
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage } OptInResultMessage
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').DoneMessage } DoneMessage
+ * @typedef { { snippets: string[], patterns: string[] } } ScanResult
  */
 
 // @ts-ignore
@@ -90,6 +91,11 @@ class CMPCollector extends BaseCollector {
         this.isolated2pageworld = new Map();
         this.pendingScan = createDeferred();
         this.context = options.context;
+        /** @type {ScanResult} */
+        this.scanResult = {
+            snippets: [],
+            patterns: [],
+        };
     }
 
     /**
@@ -309,7 +315,7 @@ class CMPCollector extends BaseCollector {
     }
 
     /**
-     * @returns {Promise<{ patterns: string[], snippets: string[] }>}
+     * @returns {Promise<ScanResult>}
      */
     async scanPatterns() {
         /**
@@ -415,20 +421,23 @@ class CMPCollector extends BaseCollector {
         return results;
     }
 
+    async postLoad() {
+        this.scanResult = await this.scanPatterns(); // this will trigger autoAction if it's defined
+    }
+
     /**
      * Called after the crawl to retrieve the data. Can be async, can throw errors.
      *
      * @returns {Promise<CMPResult[]>}
      */
     async getData() {
-        const scanResult = await this.scanPatterns();
         await this.waitForFinish();
         const results = this.collectResults();
-        if (scanResult.patterns.length > 0) {
+        if (this.scanResult.patterns.length > 0) {
             if (results.length > 0) {
                 results.forEach(r => {
-                    r.patterns = scanResult.patterns;
-                    r.snippets = scanResult.snippets;
+                    r.patterns = this.scanResult.patterns;
+                    r.snippets = this.scanResult.snippets;
                 });
             } else {
                 results.push({
@@ -439,8 +448,8 @@ class CMPCollector extends BaseCollector {
                     succeeded: false,
                     selfTestFail: false,
                     errors: [],
-                    patterns: scanResult.patterns,
-                    snippets: scanResult.snippets,
+                    patterns: this.scanResult.patterns,
+                    snippets: this.scanResult.snippets,
                 });
             }
         }

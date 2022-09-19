@@ -216,6 +216,17 @@ async function getSiteData(context, url, {
         }
     }
 
+    for (let collector of collectors) {
+        const postLoadTimer = createTimer();
+        try {
+            // eslint-disable-next-line no-await-in-loop
+            await collector.postLoad();
+            log(`${collector.id()} postLoad took ${postLoadTimer.getElapsedTime()}s`);
+        } catch (e) {
+            log(chalk.yellow(`${collector.id()} postLoad failed`), chalk.gray(e.message), chalk.gray(e.stack));
+        }
+    }
+
     // give website a bit more time for things to settle
     await page.waitForTimeout(extraExecutionTimeMs);
 

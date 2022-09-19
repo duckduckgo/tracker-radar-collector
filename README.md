@@ -121,6 +121,7 @@ Additionally, each collector can override following methods:
 
 - `init(options)` which is called before the crawl begins
 - `addTarget(targetInfo)` which is called whenever new target is created (main page, iframe, web worker etc.)
+- `postLoad()` which is called after the page has loaded. This is the place for executing heavy page interactions (`extraExecutionTimeMs` is applied after this hook).
 
 There are couple of built-in collectors in the `collectors/` folder. `CookieCollector` is the simplest one and can be used as a template.
 

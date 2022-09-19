@@ -271,6 +271,7 @@ describe('CMPCollector', () => {
         it('no CMP', async function() {
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
             assert.strictEqual(contentScriptEval.contextId, 31337);
+            await collector.postLoad();
             const results = await collector.getData();
             assert.deepStrictEqual(results, []);
         });
@@ -290,6 +291,7 @@ describe('CMPCollector', () => {
                 }
             ]);
 
+            await collector.postLoad();
             const results = await collector.getData();
             assert.deepStrictEqual(results, [{
                 name: '',
@@ -327,6 +329,7 @@ describe('CMPCollector', () => {
                 executionContextId: 31337,
             });
 
+            await collector.postLoad();
             const results = await collector.getData();
             assert.deepStrictEqual(results, [{
                 name: 'superduperCMP',
@@ -364,6 +367,7 @@ describe('CMPCollector', () => {
                 executionContextId: 31337,
             });
 
+            await collector.postLoad();
             const results = await collector.getData();
             assert.deepStrictEqual(results, [{
                 name: 'superduperCMP',
@@ -415,6 +419,7 @@ describe('CMPCollector', () => {
                         }),
                         executionContextId: 31337,
                     });
+                    await collector.postLoad();
                     const results = await collector.getData();
                     assert.deepStrictEqual(results, [{
                         name: 'superduperCMP',
@@ -452,6 +457,7 @@ describe('CMPCollector', () => {
                         executionContextId: 31337,
                     });
 
+                    await collector.postLoad();
                     const results = await collector.getData();
                     assert.deepStrictEqual(results, [{
                         name: 'superduperCMP',
@@ -514,6 +520,7 @@ describe('CMPCollector', () => {
                         executionContextId: 31337,
                     });
 
+                    await collector.postLoad();
                     const results = await collector.getData();
                     assert.deepStrictEqual(results, [{
                         name: 'superduperCMP',
@@ -540,6 +547,7 @@ describe('CMPCollector', () => {
                         executionContextId: 31337,
                     });
 
+                    await collector.postLoad();
                     const results = await collector.getData();
                     assert.deepStrictEqual(results, [{
                         name: 'superduperCMP',
