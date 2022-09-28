@@ -25,7 +25,7 @@ class BaseCollector {
     /**
      * Called after the page has loaded. Can be async, can throw errors.
      *
-     * @returns {Promise<void>}
+     * @returns {Promise<void>|Object}
      */
     postLoad() {
         return Promise.resolve();
