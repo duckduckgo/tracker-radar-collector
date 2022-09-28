@@ -314,10 +314,7 @@ class CMPCollector extends BaseCollector {
         }
     }
 
-    /**
-     * @returns {Promise<ScanResult>}
-     */
-    async scanPatterns() {
+    async postLoad() {
         /**
          * @type {string[]}
          */
@@ -349,7 +346,7 @@ class CMPCollector extends BaseCollector {
             }
         }
         this.pendingScan.resolve();
-        return {
+        this.scanResult = {
             patterns: foundPatterns,
             snippets: foundSnippets,
         };
@@ -419,10 +416,6 @@ class CMPCollector extends BaseCollector {
         }
 
         return results;
-    }
-
-    async postLoad() {
-        this.scanResult = await this.scanPatterns(); // this will trigger autoAction if it's defined
     }
 
     /**
