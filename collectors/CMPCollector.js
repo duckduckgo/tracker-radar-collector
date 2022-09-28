@@ -341,7 +341,7 @@ class CMPCollector extends BaseCollector {
                 const matches = allTexts.match(p);
                 if (matches) {
                     foundPatterns.push(p.toString());
-                    foundSnippets.push(...matches);
+                    foundSnippets.push(...matches.map(m => m.substring(0, 200)));
                 }
             }
         }
