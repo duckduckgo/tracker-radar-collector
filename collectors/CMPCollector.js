@@ -348,7 +348,7 @@ class CMPCollector extends BaseCollector {
         this.pendingScan.resolve();
         this.scanResult = {
             patterns: foundPatterns,
-            snippets: foundSnippets,
+            snippets: Array.from(new Set(foundSnippets)),
         };
     }
 
