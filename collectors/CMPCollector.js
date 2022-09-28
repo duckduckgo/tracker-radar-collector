@@ -1,8 +1,23 @@
 /* eslint-disable max-lines */
 const fs = require('fs');
 const path = require('path');
+const createDeferred = require('../helpers/deferred');
 const waitFor = require('../helpers/waitFor');
 const BaseCollector = require('./BaseCollector');
+
+/**
+ * @typedef { import('./BaseCollector').CollectorInitOptions } CollectorInitOptions
+ * @typedef { import('@duckduckgo/autoconsent/lib/types').AutoAction } AutoAction
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/types').Config } AutoconsentConfig
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').DetectedMessage } DetectedMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').SelfTestResultMessage } SelfTestResultMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').ErrorMessage } ErrorMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage } OptOutResultMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage } OptInResultMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').DoneMessage } DoneMessage
+ * @typedef { { snippets: string[], patterns: string[] } } ScanResult
+ */
 
 // @ts-ignore
 const baseContentScript = fs.readFileSync(
@@ -32,28 +47,60 @@ function isIgnoredEvalError(e) {
     );
 }
 
-class CMPCollector extends BaseCollector {
+// TODO: check for false positive detections per pattern
+const DETECT_PATTERNS = [
+    /accept cookies/ig,
+    /accept all/ig,
+    /reject all/ig,
+    /only necessary cookies/ig, // "only necessary" is probably too broad
+    /by clicking.*(accept|agree|allow)/ig,
+    /by continuing/ig,
+    /we (use|serve)( optional)? cookies/ig,
+    /we are using cookies/ig,
+    /use of cookies/ig,
+    /(this|our) (web)?site.*cookies/ig,
+    /cookies (and|or) .* technologies/ig,
+    /such as cookies/ig,
+    /read more about.*cookies/ig,
+    /consent to.*cookies/ig,
+    /we and our partners.*cookies/ig,
+    /we.*store.*information.*such as.*cookies/ig,
+    /store and\/or access information.*on a device/ig,
+    /personalised ads and content, ad and content measurement/ig,
 
+    // it might be tempting to add the patterns below, but they cause too many false positives. Don't do it :)
+    // /cookies? settings/i,
+    // /cookies? preferences/i,
+];
+
+class CMPCollector extends BaseCollector {
     id() {
         return 'cmps';
     }
 
     /**
-     * @param {import('./BaseCollector').CollectorInitOptions} options
+     * @param {CollectorInitOptions} options
      */
     init(options) {
         this.log = options.log;
         this.shortTimeouts = options.collectorFlags.shortTimeouts; // used to speed up unit tests
-        this.autoAction = /** @type {import('@duckduckgo/autoconsent/lib/types').AutoAction} */ (options.collectorFlags.autoconsentAction);
-        /** @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage[]} */
+        this.autoAction = /** @type {AutoAction} */ (options.collectorFlags.autoconsentAction);
+        /** @type {ContentScriptMessage[]} */
         this.receivedMsgs = [];
         this.selfTestFrame = null;
         this.isolated2pageworld = new Map();
+        this.pendingScan = createDeferred();
+        this.context = options.context;
+        /** @type {ScanResult} */
+        this.scanResult = {
+            snippets: [],
+            patterns: [],
+        };
     }
 
     /**
-     * @param {Partial<import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage>} msg
-     * @returns {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage | null}
+     * @param {Partial<ContentScriptMessage>} msg
+     * @returns {ContentScriptMessage | null}
      */
     findMessage(msg, partial = true) {
         for (const m of this.receivedMsgs) {
@@ -67,8 +114,8 @@ class CMPCollector extends BaseCollector {
     }
 
     /**
-     * @param {Partial<import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage>} msg
-     * @returns {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage[]}
+     * @param {Partial<ContentScriptMessage>} msg
+     * @returns {ContentScriptMessage[]}
      */
     findAllMessages(msg, partial = true) {
         return this.receivedMsgs.filter(m => {
@@ -132,7 +179,7 @@ class CMPCollector extends BaseCollector {
     /**
      * Implements autoconsent messaging protocol
      *
-     * @param {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage} msg
+     * @param {ContentScriptMessage} msg
      * @param {any} executionContextId
      * @returns {Promise<void>}
      */
@@ -140,12 +187,12 @@ class CMPCollector extends BaseCollector {
         this.receivedMsgs.push(msg);
         switch (msg.type) {
         case 'init': {
-            /** @type {import('@duckduckgo/autoconsent/lib/types').Config} */
+            /** @type {AutoconsentConfig} */
             const autoconsentConfig = {
                 enabled: true,
-                autoAction: this.autoAction,
+                autoAction: null, // we request action explicitly later
                 disabledCmps: [],
-                enablePrehide: true,
+                enablePrehide: false,
                 detectRetries: 20,
             };
             await this._cdpClient.send('Runtime.evaluate', {
@@ -154,6 +201,15 @@ class CMPCollector extends BaseCollector {
             });
             break;
         }
+        case 'popupFound':
+            if (this.autoAction) {
+                await this.pendingScan.promise; // wait for the pattern detection first
+                await this._cdpClient.send('Runtime.evaluate', {
+                    expression: `autoconsentReceiveMessage({ type: "${this.autoAction}" })`,
+                    contextId: executionContextId,
+                });
+            }
+            break;
         case 'optInResult':
         case 'optOutResult': {
             if (msg.scheduleSelfTest) {
@@ -199,8 +255,8 @@ class CMPCollector extends BaseCollector {
     }
 
     /**
-     * @param {Partial<import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage>} msg
-     * @returns {Promise<import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage>}
+     * @param {Partial<ContentScriptMessage>} msg
+     * @returns {Promise<ContentScriptMessage>}
      */
     async waitForMessage(msg, maxTimes = 20, interval = 100) {
         if (this.shortTimeouts) {
@@ -216,7 +272,7 @@ class CMPCollector extends BaseCollector {
      */
     async waitForFinish() {
         // check if anything was detected at all
-        const detectedMsg = /** @type {import('@duckduckgo/autoconsent/lib/messages').DetectedMessage} */ (await this.waitForMessage({type: 'cmpDetected'}));
+        const detectedMsg = /** @type {DetectedMessage} */ (await this.waitForMessage({type: 'cmpDetected'}));
         if (!detectedMsg) {
             return;
         }
@@ -233,7 +289,7 @@ class CMPCollector extends BaseCollector {
 
         // did we opt-out?
         const resultType = this.autoAction === 'optOut' ? 'optOutResult' : 'optInResult';
-        const autoActionDone = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage|import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage} */ (await this.waitForMessage({
+        const autoActionDone = /** @type {OptOutResultMessage|OptInResultMessage} */ (await this.waitForMessage({
             type: resultType,
             cmp: detectedMsg.cmp
         }));
@@ -242,7 +298,7 @@ class CMPCollector extends BaseCollector {
                 return;
             }
         }
-        const doneMsg = /** @type {import('@duckduckgo/autoconsent/lib/messages').DoneMessage} */ (await this.waitForMessage({
+        const doneMsg = /** @type {DoneMessage} */ (await this.waitForMessage({
             type: 'autoconsentDone'
         }));
         if (!doneMsg) {
@@ -258,6 +314,44 @@ class CMPCollector extends BaseCollector {
         }
     }
 
+    async postLoad() {
+        /**
+         * @type {string[]}
+         */
+        const foundPatterns = [];
+        const foundSnippets = [];
+        const pages = await this.context.pages();
+        if (pages.length > 0) {
+            const page = pages[0];
+            /**
+             * @type {Promise<string>[]}
+             */
+            const promises = [];
+            page.frames().forEach(frame => {
+                // eslint-disable-next-line no-undef
+                promises.push(frame.evaluate(() => document.documentElement.innerText).catch(reason => {
+                    this.log(`error retrieving text: ${reason}`);
+                    // ignore exceptions
+                    return '';
+                }));
+            });
+            const texts = await Promise.all(promises);
+            const allTexts = texts.join('\n');
+            for (const p of DETECT_PATTERNS) {
+                const matches = allTexts.match(p);
+                if (matches) {
+                    foundPatterns.push(p.toString());
+                    foundSnippets.push(...matches.map(m => m.substring(0, 200)));
+                }
+            }
+        }
+        this.pendingScan.resolve();
+        this.scanResult = {
+            patterns: foundPatterns,
+            snippets: Array.from(new Set(foundSnippets)),
+        };
+    }
+
     /**
      * @returns {CMPResult[]}
      */
@@ -267,20 +361,20 @@ class CMPCollector extends BaseCollector {
          */
         const results = [];
 
-        const doneMsg = /** @type {import('@duckduckgo/autoconsent/lib/messages').DoneMessage} */ (this.findMessage({
+        const doneMsg = /** @type {DoneMessage} */ (this.findMessage({
             type: 'autoconsentDone'
         }));
 
-        const selfTestResult = /** @type {import('@duckduckgo/autoconsent/lib/messages').SelfTestResultMessage} */ (this.findMessage({
+        const selfTestResult = /** @type {SelfTestResultMessage} */ (this.findMessage({
             type: 'selfTestResult'
         }));
 
-        const errorMsgs = /** @type {import('@duckduckgo/autoconsent/lib/messages').ErrorMessage[]} */ (this.findAllMessages({
+        const errorMsgs = /** @type {ErrorMessage[]} */ (this.findAllMessages({
             type: 'autoconsentError',
         }));
         const errors = errorMsgs.map(e => JSON.stringify(e.details));
 
-        const detectedRules = /** @type {import('@duckduckgo/autoconsent/lib/messages').DetectedMessage[]} */ (this.findAllMessages({type: 'cmpDetected'}));
+        const detectedRules = /** @type {DetectedMessage[]} */ (this.findAllMessages({type: 'cmpDetected'}));
         /** @type {string[]} */
         const processedCmps = [];
         for (const msg of detectedRules) {
@@ -299,6 +393,8 @@ class CMPCollector extends BaseCollector {
                 succeeded: false,
                 selfTestFail: Boolean(selfTestResult && !selfTestResult.result),
                 errors,
+                patterns: [],
+                snippets: [],
             };
 
             const found = this.findMessage({type: 'popupFound', cmp: msg.cmp});
@@ -307,7 +403,7 @@ class CMPCollector extends BaseCollector {
                 if (this.autoAction) {
                     const resultType = this.autoAction === 'optOut' ? 'optOutResult' : 'optInResult';
                     result.started = true;
-                    const autoActionResult = /** @type {import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage|import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage} */ (this.findMessage({
+                    const autoActionResult = /** @type {OptOutResultMessage|OptInResultMessage} */ (this.findMessage({
                         type: resultType,
                         cmp: msg.cmp,
                     }));
@@ -329,7 +425,28 @@ class CMPCollector extends BaseCollector {
      */
     async getData() {
         await this.waitForFinish();
-        return this.collectResults();
+        const results = this.collectResults();
+        if (this.scanResult.patterns.length > 0) {
+            if (results.length > 0) {
+                results.forEach(r => {
+                    r.patterns = this.scanResult.patterns;
+                    r.snippets = this.scanResult.snippets;
+                });
+            } else {
+                results.push({
+                    final: false,
+                    name: '',
+                    open: false,
+                    started: false,
+                    succeeded: false,
+                    selfTestFail: false,
+                    errors: [],
+                    patterns: this.scanResult.patterns,
+                    snippets: this.scanResult.snippets,
+                });
+            }
+        }
+        return results;
     }
 }
 
@@ -342,6 +459,8 @@ class CMPCollector extends BaseCollector {
  * @property {boolean} succeeded
  * @property {boolean} selfTestFail
  * @property {string[]} errors
+ * @property {string[]} patterns
+ * @property {string[]} snippets
  */
 
 module.exports = CMPCollector;

@@ -51,12 +51,16 @@ class CLIReporter extends BaseReporter {
      * @param {{site: string, failures: number, successes: number, urls: number}} data 
      */
     update(data) {
-        if(this.progressBar) {
+        const finished = data.failures + data.successes;
+        if (this.progressBar) {
             this.progressBar.total = data.urls;
             this.progressBar.tick({
                 site: data.site,
-                fail: (data.failures / (data.failures + data.successes) * 100).toFixed(1)
+                fail: (data.failures / finished * 100).toFixed(1)
             });
+        } else {
+
+            this.log(`Site ${finished} / ${data.urls} (${(finished / data.urls * 100).toFixed(1)}%)`);
         }
     }
 

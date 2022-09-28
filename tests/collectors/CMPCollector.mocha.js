@@ -3,6 +3,10 @@ const CMPCollector = require('../../collectors/CMPCollector');
 const assert = require('assert');
 
 /**
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
+ */
+
+/**
  * @type {Array<{name: String, callback: function}>}
  */
 const listeners = [];
@@ -56,6 +60,10 @@ describe('CMPCollector', () => {
                 shortTimeouts: '1',
                 autoconsentAction: 'optOut',
             },
+            // @ts-ignore no need to provide all params
+            context: {
+                pages: () => Promise.resolve([])
+            }
         });
         // @ts-ignore not a real CDP client
         await collector.addTarget({cdpClient: fakeCDPClient, type: 'page', url: 'https://example.com'});
@@ -65,7 +73,7 @@ describe('CMPCollector', () => {
         describe('init ', () => {
             it('should respond with initResp', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'init',
@@ -77,11 +85,31 @@ describe('CMPCollector', () => {
                 assert.deepStrictEqual(commands[0], ['Runtime.evaluate', {
                     expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify({
                         enabled: true,
-                        autoAction: 'optOut',
+                        autoAction: null,
                         disabledCmps: [],
-                        enablePrehide: true,
+                        enablePrehide: false,
                         detectRetries: 20,
                     })} })`,
+                    contextId: 1111,
+                }]);
+            });
+        });
+        describe('popupFound ', () => {
+            it('should trigger autoAction', async () => {
+                /**
+                 * @type {ContentScriptMessage}
+                 */
+                const msg = {
+                    type: 'popupFound',
+                    url: 'some-url',
+                    cmp: 'someCMP',
+                };
+                commands.splice(0, commands.length);
+                collector.pendingScan.resolve();
+                await collector.handleMessage(msg, 1111);
+                assert.strictEqual(commands.length, 1);
+                assert.deepStrictEqual(commands[0], ['Runtime.evaluate', {
+                    expression: `autoconsentReceiveMessage({ type: "optOut" })`,
                     contextId: 1111,
                 }]);
             });
@@ -89,7 +117,7 @@ describe('CMPCollector', () => {
         describe('optOutResult ', () => {
             it('should remember where to run self test', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'optOutResult',
@@ -104,7 +132,7 @@ describe('CMPCollector', () => {
 
             it('should (not) remember where to run self test', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'optOutResult',
@@ -121,7 +149,7 @@ describe('CMPCollector', () => {
         describe('optInResult ', () => {
             it('should remember where to run self test', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'optInResult',
@@ -136,7 +164,7 @@ describe('CMPCollector', () => {
 
             it('should (not) remember where to run self test', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'optInResult',
@@ -153,7 +181,7 @@ describe('CMPCollector', () => {
         describe('autoconsentDone', () => {
             it('should not trigger self-test when not necessary', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'autoconsentDone',
@@ -168,7 +196,7 @@ describe('CMPCollector', () => {
 
             it('should trigger self-test when necessary', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'autoconsentDone',
@@ -190,7 +218,7 @@ describe('CMPCollector', () => {
         describe('eval', () => {
             it('should execute in main world', async () => {
                 /**
-                 * @type {import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage}
+                 * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'eval',
@@ -243,8 +271,49 @@ describe('CMPCollector', () => {
         it('no CMP', async function() {
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
             assert.strictEqual(contentScriptEval.contextId, 31337);
+            await collector.postLoad();
             const results = await collector.getData();
             assert.deepStrictEqual(results, []);
+        });
+
+        it('no CMP, but detected heuristic patterns', async function() {
+            const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
+            assert.strictEqual(contentScriptEval.contextId, 31337);
+
+            // @ts-ignore no need to provide all params
+            collector.context.pages = () => Promise.resolve([
+                {
+                    frames: () => [
+                        {
+                            evaluate: () => Promise.resolve('This website is using cookies. We are using cookies! To reiterate, you consent to the use of cookies on this website. In fact, there is nothing you can possibly do.')
+                        }
+                    ]
+                }
+            ]);
+
+            await collector.postLoad();
+            const results = await collector.getData();
+            assert.deepStrictEqual(results, [{
+                name: '',
+                final: false,
+                open: false,
+                started: false,
+                succeeded: false,
+                selfTestFail: false,
+                errors: [],
+                patterns: [
+                    "/we are using cookies/gi",
+                    "/use of cookies/gi",
+                    "/(this|our) (web)?site.*cookies/gi",
+                    "/consent to.*cookies/gi",
+                ],
+                snippets: [
+                    'We are using cookies',
+                    'use of cookies',
+                    'This website is using cookies. We are using cookies! To reiterate, you consent to the use of cookies',
+                    'consent to the use of cookies'
+                ]
+            }]);
         });
 
         it('CMP with no visible popup', async function() {
@@ -260,6 +329,7 @@ describe('CMPCollector', () => {
                 executionContextId: 31337,
             });
 
+            await collector.postLoad();
             const results = await collector.getData();
             assert.deepStrictEqual(results, [{
                 name: 'superduperCMP',
@@ -269,6 +339,8 @@ describe('CMPCollector', () => {
                 succeeded: false,
                 selfTestFail: false,
                 errors: [],
+                patterns: [],
+                snippets: [],
             }]);
         });
 
@@ -295,6 +367,7 @@ describe('CMPCollector', () => {
                 executionContextId: 31337,
             });
 
+            await collector.postLoad();
             const results = await collector.getData();
             assert.deepStrictEqual(results, [{
                 name: 'superduperCMP',
@@ -304,6 +377,8 @@ describe('CMPCollector', () => {
                 succeeded: false,
                 selfTestFail: false,
                 errors: [],
+                patterns: [],
+                snippets: [],
             }]);
         });
 
@@ -344,6 +419,7 @@ describe('CMPCollector', () => {
                         }),
                         executionContextId: 31337,
                     });
+                    await collector.postLoad();
                     const results = await collector.getData();
                     assert.deepStrictEqual(results, [{
                         name: 'superduperCMP',
@@ -353,6 +429,8 @@ describe('CMPCollector', () => {
                         succeeded: false,
                         selfTestFail: false,
                         errors: [],
+                        patterns: [],
+                        snippets: [],
                     }]);
                 });
 
@@ -379,6 +457,7 @@ describe('CMPCollector', () => {
                         executionContextId: 31337,
                     });
 
+                    await collector.postLoad();
                     const results = await collector.getData();
                     assert.deepStrictEqual(results, [{
                         name: 'superduperCMP',
@@ -388,6 +467,8 @@ describe('CMPCollector', () => {
                         succeeded: true,
                         selfTestFail: false,
                         errors: [],
+                        patterns: [],
+                        snippets: [],
                     }]);
                 });
             });
@@ -439,6 +520,7 @@ describe('CMPCollector', () => {
                         executionContextId: 31337,
                     });
 
+                    await collector.postLoad();
                     const results = await collector.getData();
                     assert.deepStrictEqual(results, [{
                         name: 'superduperCMP',
@@ -448,6 +530,8 @@ describe('CMPCollector', () => {
                         succeeded: true,
                         selfTestFail: false,
                         errors: [],
+                        patterns: [],
+                        snippets: [],
                     }]);
                 });
 
@@ -463,6 +547,7 @@ describe('CMPCollector', () => {
                         executionContextId: 31337,
                     });
 
+                    await collector.postLoad();
                     const results = await collector.getData();
                     assert.deepStrictEqual(results, [{
                         name: 'superduperCMP',
@@ -472,6 +557,8 @@ describe('CMPCollector', () => {
                         succeeded: true,
                         selfTestFail: true,
                         errors: [],
+                        patterns: [],
+                        snippets: [],
                     }]);
                 });
             });
