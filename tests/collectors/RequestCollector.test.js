@@ -78,7 +78,7 @@ async function testDefaultSettings() {
             }
         }
     });
-    
+
     const loadingFinished = listeners.find(a => a.name === 'Network.loadingFinished');
 
     assert(loadingFinished, 'loadingFinished listener was set');
@@ -287,7 +287,7 @@ async function testResponseHashSetting() {
 
     // @ts-ignore not a real CDP client
     await collector.addTarget({cdpClient: fakeCDPClient, type: 'page', url: 'http://example.com'});
-    
+
     const requestWillBeSent = listeners.find(a => a.name === 'Network.requestWillBeSent');
     const responseReceived = listeners.find(a => a.name === 'Network.responseReceived');
     const loadingFinished = listeners.find(a => a.name === 'Network.loadingFinished');
@@ -447,7 +447,7 @@ async function testCustomHeadersSetting() {
 
     // @ts-ignore not a real CDP client
     await collector.addTarget({cdpClient: fakeCDPClient, type: 'page', url: 'http://example.com'});
-    
+
     const requestWillBeSent = listeners.find(a => a.name === 'Network.requestWillBeSent');
     const responseReceived = listeners.find(a => a.name === 'Network.responseReceived');
     const loadingFinished = listeners.find(a => a.name === 'Network.loadingFinished');
