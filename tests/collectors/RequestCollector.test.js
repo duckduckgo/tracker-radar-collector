@@ -99,6 +99,7 @@ async function testDefaultSettings() {
             'set-cookie': 'cookie monster approves'
         },
         responseBodyHash: undefined,
+        responseBody: undefined,
         failureReason: undefined,
         redirectedTo: undefined,
         redirectedFrom: undefined,
@@ -139,6 +140,7 @@ async function testDefaultSettings() {
         remoteIPAddress: undefined,
         responseHeaders: undefined,
         responseBodyHash: undefined,
+        responseBody: undefined,
         failureReason: 'You are in a simulation',
         redirectedTo: undefined,
         redirectedFrom: undefined,
@@ -211,6 +213,7 @@ async function testDefaultSettings() {
             etag: 'redirect-etag'
         },
         responseBodyHash: undefined,
+        responseBody: undefined,
         failureReason: undefined,
         redirectedTo: 'https://example.com/other_script.js',
         redirectedFrom: undefined,
@@ -229,6 +232,7 @@ async function testDefaultSettings() {
             etag: 'other-script-etag'
         },
         responseBodyHash: undefined,
+        responseBody: undefined,
         failureReason: undefined,
         redirectedTo: undefined,
         redirectedFrom: 'https://example.com/redirect.js',
@@ -257,6 +261,7 @@ async function testDefaultSettings() {
         remoteIPAddress: undefined,
         responseHeaders: undefined,
         responseBodyHash: undefined,
+        responseBody: undefined,
         failureReason: undefined,
         redirectedTo: undefined,
         redirectedFrom: undefined,
@@ -334,6 +339,89 @@ async function testResponseHashSetting() {
         remoteIPAddress: '123.123.123.123',
         responseHeaders: {},
         responseBodyHash: '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08',
+        responseBody: undefined,
+        failureReason: undefined,
+        redirectedTo: undefined,
+        redirectedFrom: undefined,
+        initiators: [],
+        time: 100000
+    }]);
+}
+
+/**
+ * @param {boolean | ((body: string) => boolean)} bodyPredicate
+ * @param {string | undefined} expected
+ */
+async function testResponseBodySetting(bodyPredicate, expected) {
+    const collector = new RequestCollector({
+        saveResponseBody: bodyPredicate
+    });
+
+    /**
+     * getData
+     */
+    const {listeners, cdpClient: fakeCDPClient} = createFakeCDP();
+
+    // @ts-ignore no need to provide all params
+    collector.init({
+        log: () => {}
+    });
+
+    // @ts-ignore not a real CDP client
+    await collector.addTarget({cdpClient: fakeCDPClient, type: 'page', url: 'http://example.com'});
+
+    const requestWillBeSent = listeners.find(a => a.name === 'Network.requestWillBeSent');
+    const responseReceived = listeners.find(a => a.name === 'Network.responseReceived');
+    const loadingFinished = listeners.find(a => a.name === 'Network.loadingFinished');
+
+    requestWillBeSent.callback({
+        initiator: {name: 'parser'},
+        request: {
+            url: 'https://example.com/header.txt',
+            method: 'GET'
+        },
+        requestId: 100,
+        timestamp: 123456,
+        frameId: 1,
+        type: 'Image'
+    });
+
+    responseReceived.callback({
+        requestId: 100,
+        type: 'Document',
+        frameId: 1,
+        response: {
+            url: '',
+            status: 200,
+            remoteIPAddress: '123.123.123.123',
+            headers: {}
+        }
+    });
+
+    //@ts-ignore
+    fakeCDPClient.send = command => {
+        if (command === 'Network.getResponseBody') {
+            // eslint-disable-next-line no-console
+            return Promise.resolve({body: 'dGVzdA==', base64Encoded: true});//btoa('test')
+        }
+
+        return Promise.resolve();
+    };
+
+    await loadingFinished.callback({requestId: 100, encodedDataLength: 666, timestamp: 223456});
+
+    const data1 = collector.getData({finalUrl: 'https://example.com/'});
+
+    assert.deepStrictEqual(data1, [{
+        url: 'https://example.com/header.txt',
+        method: 'GET',
+        type: 'Document',
+        status: 200,
+        size: 666,
+        remoteIPAddress: '123.123.123.123',
+        responseHeaders: {},
+        responseBodyHash: undefined,
+        responseBody: expected,
         failureReason: undefined,
         redirectedTo: undefined,
         redirectedFrom: undefined,
@@ -410,6 +498,7 @@ async function testCustomHeadersSetting() {
             'test-header': 'hello'
         },
         responseBodyHash: undefined,
+        responseBody: undefined,
         failureReason: undefined,
         redirectedTo: undefined,
         redirectedFrom: undefined,
@@ -421,5 +510,9 @@ async function testCustomHeadersSetting() {
 Promise.all([
     testDefaultSettings(),
     testResponseHashSetting(),
+    testResponseBodySetting(true, 'test'),
+    testResponseBodySetting(false, undefined),
+    testResponseBodySetting(body => body.includes('t'), 'test'),
+    testResponseBodySetting(body => body.includes('o'), undefined),
     testCustomHeadersSetting()
 ]);

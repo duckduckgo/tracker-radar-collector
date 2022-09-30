@@ -12,11 +12,15 @@ const DEFAULT_SAVE_HEADERS = ['etag', 'set-cookie', 'cache-control', 'expires', 
 class RequestCollector extends BaseCollector {
 
     /**
-     * @param {{saveResponseHash?: boolean, saveHeaders?: Array<string>}} additionalOptions
+     * @param {Object} additionalOptions
+     * @param {boolean} [additionalOptions.saveResponseHash]
+     * @param {boolean | ((body: string) => boolean)} [additionalOptions.saveResponseBody]
+     * @param {Array<string>} [additionalOptions.saveHeaders]
      */
-    constructor(additionalOptions = {saveResponseHash: true, saveHeaders: DEFAULT_SAVE_HEADERS}) {
+    constructor(additionalOptions = {saveResponseHash: true, saveResponseBody: false, saveHeaders: DEFAULT_SAVE_HEADERS}) {
         super();
         this._saveResponseHash = (additionalOptions.saveResponseHash === true);
+        this._saveResponseBody = (typeof additionalOptions.saveResponseBody === 'function' ? additionalOptions.saveResponseBody : (() => additionalOptions.saveResponseBody === true));
         this._saveHeaders = DEFAULT_SAVE_HEADERS;
 
         if (additionalOptions.saveHeaders) {
@@ -82,8 +86,9 @@ class RequestCollector extends BaseCollector {
     /**
      * @param {RequestId} id 
      * @param {import('puppeteer').CDPSession} cdp
+     * @returns {Promise<string?>}
      */
-    async getResponseBodyHash(id, cdp) {
+    async getResponseBody(id, cdp) {
         try {
             // @ts-ignore oversimplified .send signature
             let {body, base64Encoded} = await cdp.send('Network.getResponseBody', {requestId: id});
@@ -92,6 +97,20 @@ class RequestCollector extends BaseCollector {
                 body = Buffer.from(body, 'base64').toString('utf-8');
             }
 
+            return body;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    /**
+     * @param {RequestId} id
+     * @param {import('puppeteer').CDPSession} cdp
+     * @returns {Promise<string?>}
+     */
+    async getResponseBodyHash(id, cdp) {
+        try {
+            const body = await this.getResponseBody(id, cdp);
             return crypto.createHash('sha256').update(body).digest('hex');
         } catch (e) {
             return null;
@@ -273,6 +292,10 @@ class RequestCollector extends BaseCollector {
         if (this._saveResponseHash) {
             request.responseBodyHash = await this.getResponseBodyHash(data.requestId, cdp);
         }
+        const body = await this.getResponseBody(data.requestId, cdp);
+        if (this._saveResponseBody(body)) {
+            request.responseBody = body;
+        }
     }
 
     /**
@@ -297,6 +320,10 @@ class RequestCollector extends BaseCollector {
 
         if (this._saveResponseHash) {
             request.responseBodyHash = await this.getResponseBodyHash(data.requestId, cdp);
+        }
+        const body = await this.getResponseBody(data.requestId, cdp);
+        if (this._saveResponseBody(body)) {
+            request.responseBody = body;
         }
     }
 
@@ -335,6 +362,7 @@ class RequestCollector extends BaseCollector {
                 remoteIPAddress: request.remoteIPAddress,
                 responseHeaders: request.responseHeaders && filterHeaders(request.responseHeaders, this._saveHeaders),
                 responseBodyHash: request.responseBodyHash,
+                responseBody: request.responseBody,
                 failureReason: request.failureReason,
                 redirectedTo: request.redirectedTo,
                 redirectedFrom: request.redirectedFrom,
@@ -358,6 +386,7 @@ module.exports = RequestCollector;
  * @property {string} remoteIPAddress
  * @property {object} responseHeaders
  * @property {string=} responseBodyHash
+ * @property {string=} responseBody
  * @property {string} failureReason
  * @property {number=} size in bytes
  * @property {number=} time in seconds
@@ -380,6 +409,7 @@ module.exports = RequestCollector;
  * @property {Timestamp=} startTime
  * @property {Timestamp=} endTime
  * @property {string=} responseBodyHash
+ * @property {string=} responseBody
  */
 
 /**
