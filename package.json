@@ -38,7 +38,7 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
-    "@duckduckgo/autoconsent": "^2.2.0",
+    "@duckduckgo/autoconsent": "^2.2.1",
     "async": "^2.6.1",
     "chalk": "^2.4.1",
     "clickhouse": "^2.6.0",
