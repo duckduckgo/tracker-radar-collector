@@ -84,7 +84,13 @@ class TrackerTracker {
             // only save arguments if requested for given breakpoint
             if (saveArguments) {
                 conditionScript += `
-                    data.args = Array.from(arguments).map(a => a.toString());
+                    data.args = Array.from(arguments).map(a => {
+                        try {
+                            return JSON.stringify(a);
+                        } catch (e) {
+                            return a.toString();
+                        }
+                    });
                 `;
             }
 
