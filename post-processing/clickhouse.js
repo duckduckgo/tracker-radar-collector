@@ -17,9 +17,10 @@ Examples:
     clickhouse.js -c mycrawl --name "This is a crawl" --region US
     `)
     .option('-c, --crawlid <id>', 'Crawl ID')
-    .option('--name <crawlname>', 'Name of the crawl')
+    .option('--crawlname <crawlname>', 'Name of the crawl')
     .option('--region <region>', 'Crawl region code')
     .option('-d --crawldir <dir>', 'Directory of crawl output to import')
+    .option('--delete', 'Delete data for the given crawlid')
     .parse(process.argv);
 
 const ch = new Clickhouse();
@@ -28,7 +29,7 @@ const crawlRegion = program.region;
 const crawledPagePath = program.crawldir;
 
 // Must provide at least one option
-if (!crawlName && !crawlRegion && !crawledPagePath && !program.crawlId) {
+if ((!crawlName && !crawlRegion && !crawledPagePath && !program.crawlid) || (program.delete && !program.crawlid)) {
     program.outputHelp();
     process.exit(1);
 }
@@ -41,9 +42,13 @@ if (!crawlName && !crawlRegion && !crawledPagePath && !program.crawlId) {
     if (crawledPagePath) {
         pages = (await fs.readdir(crawledPagePath)).filter(name => name.endsWith('.json') && name !== 'metadata.json');
     }
-    ch.init({verbose: true, startTime: new Date(), urls: pages.length, logPath: ''});
-    if (program.crawlId) {
-        ch.crawlId = program.crawlId;
+    ch.init({verbose: false, startTime: new Date(), urls: pages.length, logPath: ''});
+    if (program.crawlid) {
+        ch.crawlId = program.crawlid;
+    }
+    if (program.delete) {
+        await ch.deleteCrawlData();
+        return;
     }
     await ch.createCrawl(crawlName, crawlRegion);
     if (crawledPagePath) {

@@ -182,7 +182,8 @@ const breakpoints = [
     {
         proto: 'NavigatorUAData',
         props: [
-           {name: 'brands'}
+           {name: 'brands'},
+           {name: 'platform'}
         ],
         methods: [
             {name: 'getHighEntropyValues'} // request for high entropy information about browser/OS

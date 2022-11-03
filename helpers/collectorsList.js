@@ -41,7 +41,7 @@ module.exports = {
 /**
  * @typedef CollectorData
  * @property {import('../collectors/APICallCollector').APICallReport=} apis
- * @property {{ name: string, isOpen: boolean, optOutRuns: boolean, optOutSucceeds: boolean, error: string }[]=} cmps
+ * @property {import('../collectors/CMPCollector').CMPResult[]=} cmps
  * @property {import('../collectors/CookieCollector').CookieData[]=} cookies
  * @property {{ present: string[], visible: string[]}=} elements
  * @property {import('../collectors/RequestCollector').RequestData[]=} requests

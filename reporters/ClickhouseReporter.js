@@ -56,10 +56,14 @@ const TABLE_DEFINITIONS = [
         crawlId String,
         pageId String,
         name String,
-        isOpen UInt8,
-        optOutRuns UInt8,
-        optOutSucceeds UInt8,
-        error String
+        final UInt8,
+        open UInt8,
+        started UInt8,
+        succeeded UInt8,
+        selfTestFail UInt8,
+        errors Array(String),
+        patterns Array(String),
+        snippets Array(String)
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, name)`,
     `CREATE TABLE IF NOT EXISTS ${DB}.apiSavedCalls (
@@ -125,8 +129,8 @@ class ClickhouseReporter extends BaseReporter {
             pages: [],
             requests: [],
             elements: [],
-            cmps: [],
             apiSavedCalls: [],
+            cmps: [],
             apiCallStats: [],
             cookies: [],
             targets: [],
@@ -148,13 +152,24 @@ class ClickhouseReporter extends BaseReporter {
         return this.ready;
     }
 
+    async deleteCrawlData() {
+        await this.ready;
+        console.log(`Deleting all data for crawl ${this.crawlId}`);
+        const deletes = Object.keys(this.queue)
+            .map(table => this.client.query(`ALTER TABLE ${DB}.${table} DELETE WHERE crawlId = '${this.crawlId}'`).toPromise());
+        await Promise.all(deletes);
+        await this.client.query(`ALTER TABLE ${DB}.crawls DELETE WHERE crawlId = '${this.crawlId}'`).toPromise();
+    }
+
     /**
      * Called whenever site was crawled (either successfully or not)
      * 
-     * @param {{site: string, failures: number, successes: number, urls: number, data: import('../crawler').CollectResult, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data 
+     * @param {{site: string, failures: number, successes: number, urls: number, data: import('../crawler').CollectResult | undefined, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data 
      */
     update(data) {
-        this.processSite(data.data);
+        if (data.data) {
+            this.processSite(data.data);
+        }
     }
 
     /**
@@ -179,7 +194,7 @@ class ClickhouseReporter extends BaseReporter {
                 this.queue.elements.push([this.crawlId, pageId, data.data.elements.present, data.data.elements.visible]);
             }
             if (data.data.cmps) {
-                const cmpRows = data.data.cmps.map(c => [this.crawlId, pageId, c.name, c.isOpen, c.optOutRuns, c.optOutSucceeds, c.error]);
+                const cmpRows = data.data.cmps.map(c => [this.crawlId, pageId, c.name, c.final, c.open, c.started, c.succeeded, c.selfTestFail, c.errors, c.patterns || [], c.snippets || []]);
                 this.queue.cmps = this.queue.cmps.concat(cmpRows);
             }
             if (data.data.apis) {

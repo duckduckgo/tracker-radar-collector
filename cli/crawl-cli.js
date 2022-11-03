@@ -32,7 +32,7 @@ program
     .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
     .option('-a, --disable-anti-bot', 'disable anti bot detection protections injected to every frame')
     .option('--config <path>', 'crawl configuration file')
-    .option('--run-autoconsent', 'run autoconsent opt-outs on pages')
+    .option('--autoconsent-action <action>', 'dismiss cookie popups. Possible values: optout, optin')
     .option('--chromium-version <version_number>', 'use custom version of chromium')
     .parse(process.argv);
 
@@ -205,7 +205,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 // @ts-ignore
 const config = crawlConfig.figureOut(program);
 const collectorFlags = {
-    runAutoconsent: Boolean(program.runAutoconsent),
+    autoconsentAction: program.autoconsentAction,
 };
 /**
  * @type {BaseCollector[]}

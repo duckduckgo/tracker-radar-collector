@@ -23,8 +23,17 @@ class BaseCollector {
     }
 
     /**
+     * Called after the page has loaded. Can be async, can throw errors.
+     *
+     * @returns {Promise<void>|Object}
+     */
+    postLoad() {
+        return Promise.resolve();
+    }
+
+    /**
      * Called after the crawl to retrieve the data. Can be async, can throw errors.
-     * 
+     *
      * @param {{finalUrl: string, urlFilter?: function(string):boolean}} options
      * @returns {Promise<Object>|Object}
      */
@@ -39,7 +48,7 @@ class BaseCollector {
  * @property {import('puppeteer').BrowserContext} context
  * @property {URL} url
  * @property {function(...any):void} log
- * @property {Object.<string, boolean>} collectorFlags
+ * @property {Object.<string, string>} collectorFlags
  */
 
 module.exports = BaseCollector;

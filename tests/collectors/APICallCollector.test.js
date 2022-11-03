@@ -63,6 +63,7 @@ async function main() {
     assert(bindingCalled, 'bindingCalled listener was set');
 
     bindingCalled.callback({
+        name: 'registerAPICall',
         payload: JSON.stringify({
             description: 'window.devicePixelRatio',
             stack: '<anonymous>:1:10\n(https://example.com/bad.js:1:23)',
@@ -72,6 +73,7 @@ async function main() {
 
     // same call again
     bindingCalled.callback({
+        name: 'registerAPICall',
         payload: JSON.stringify({
             description: 'window.devicePixelRatio',
             stack: '<anonymous>:1:10\n(https://example.com/bad.js:1:23)',
@@ -81,6 +83,7 @@ async function main() {
 
     // different api, different script
     bindingCalled.callback({
+        name: 'registerAPICall',
         payload: JSON.stringify({
             description: 'Navigator.prototype.userAgent',
             stack: '(https://example.com/different.js:1:23)\n(https://example.com/different.js:2:23)',
@@ -90,6 +93,7 @@ async function main() {
 
     // API call that gets saved with arguments
     bindingCalled.callback({
+        name: 'registerAPICall',
         payload: JSON.stringify({
             description: 'Document.cookie setter',
             stack: '(https://example.com/different.js:1:23)\n(https://example.com/different.js:2:23)',
