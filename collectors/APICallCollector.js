@@ -84,7 +84,13 @@ class APICallCollector extends BaseCollector {
                 this._calls.push({
                     source: breakpoint.source,
                     description: breakpoint.description,
-                    arguments: breakpoint.arguments
+                    arguments: breakpoint.arguments.map(arg => {
+                        try {
+                            return JSON.parse(arg);
+                        } catch (e) {
+                            return arg;
+                        }
+                    })
                 });
             }
         }

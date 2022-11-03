@@ -112,8 +112,11 @@ async function main() {
                 source: 'https://example.com/different.js',
                 description: 'Document.cookie setter',
                 arguments: [
-                    "\"uuid=123\"",
-                    "{\"key\":\"key\",\"value\":\"value\"}"
+                    "uuid=123",
+                    {
+                        key: "key",
+                        value: "value"
+                    }
                 ]
             }
         ]
