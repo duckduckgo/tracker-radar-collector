@@ -10,16 +10,18 @@ const downloadCustomChromium = require('./helpers/downloadCustomChromium');
 // eslint-disable-next-line no-unused-vars
 const BaseCollector = require('./collectors/BaseCollector');
 const notABot = require('./helpers/notABot');
+const {getRemoteDriver, getPuppeteerContext} = require('./helpers/selenium');
+const {VISUAL_DEBUG} = require('./constants');
 
 const MAX_NUMBER_OF_CRAWLERS = 38;// by trial and error there seems to be network bandwidth issues with more than 38 browsers. 
 const MAX_NUMBER_OF_RETRIES = 2;
 
 /**
- * @param {string} urlString 
+ * @param {string} urlString
  * @param {BaseCollector[]} dataCollectors
- * @param {function} log 
+ * @param {function} log
  * @param {boolean} filterOutFirstParty
- * @param {function(URL, import('./crawler').CollectResult): void} dataCallback 
+ * @param {function(URL, import('./crawler').CollectResult): void} dataCallback
  * @param {boolean} emulateMobile
  * @param {string} proxyHost
  * @param {boolean} antiBotDetection
@@ -27,33 +29,49 @@ const MAX_NUMBER_OF_RETRIES = 2;
  * @param {number} maxLoadTimeMs
  * @param {number} extraExecutionTimeMs
  * @param {Object.<string, string>} collectorFlags
+ * @param {string} chromiumVersion
+ * @param {string} seleniumHub
  */
-async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost, antiBotDetection, executablePath, maxLoadTimeMs, extraExecutionTimeMs, collectorFlags) {
+async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost, antiBotDetection, executablePath, maxLoadTimeMs, extraExecutionTimeMs, collectorFlags, chromiumVersion, seleniumHub) {
     const url = new URL(urlString);
     /**
-     * @type {function(...any):void} 
+     * @type {function(...any):void}
      */
     const prefixedLog = (...msg) => log(chalk.gray(`${url.hostname}:`), ...msg);
 
-    const data = await crawl(url, {
-        log: prefixedLog,
-        // @ts-ignore
-        collectors: dataCollectors.map(collector => new collector.constructor()),
-        filterOutFirstParty,
-        emulateMobile,
-        proxyHost,
-        runInEveryFrame: antiBotDetection ? notABot : undefined,
-        executablePath,
-        maxLoadTimeMs,
-        extraExecutionTimeMs,
-        collectorFlags,
-    });
+    let browserContext = null;
+    let driver = null;
+    if (seleniumHub) {
+        driver = await getRemoteDriver({seleniumHub, chromiumVersion, proxyHost});
+        browserContext = await getPuppeteerContext(seleniumHub, driver);
+    }
 
-    dataCallback(url, data);
+    try {
+        const data = await crawl(url, {
+            log: prefixedLog,
+            // @ts-ignore
+            collectors: dataCollectors.map(collector => new collector.constructor()),
+            filterOutFirstParty,
+            emulateMobile,
+            proxyHost,
+            runInEveryFrame: antiBotDetection ? notABot : undefined,
+            executablePath,
+            maxLoadTimeMs,
+            extraExecutionTimeMs,
+            collectorFlags,
+            browserContext,
+        });
+
+        dataCallback(url, data);
+    } finally {
+        if (driver && !VISUAL_DEBUG) {
+            await driver.quit();
+        }
+    }
 }
 
 /**
- * @param {{urls: Array<string|{url:string,dataCollectors?:BaseCollector[]}>, dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean, chromiumVersion?: string, maxLoadTimeMs?: number, extraExecutionTimeMs?: number, collectorFlags?: Object.<string, boolean>}} options
+ * @param {{urls: Array<string|{url:string,dataCollectors?:BaseCollector[]}>, dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean, chromiumVersion?: string, maxLoadTimeMs?: number, extraExecutionTimeMs?: number, collectorFlags?: Object.<string, boolean>, seleniumHub?: string}} options
  */
 module.exports = async options => {
     const deferred = createDeferred();
@@ -73,7 +91,7 @@ module.exports = async options => {
      * @type {string}
      */
     let executablePath;
-    if (options.chromiumVersion) {
+    if (options.chromiumVersion && !options.seleniumHub) {
         executablePath = await downloadCustomChromium(log, options.chromiumVersion);
     }
 
@@ -89,7 +107,7 @@ module.exports = async options => {
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(null, urlString, dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false), executablePath, options.maxLoadTimeMs, options.extraExecutionTimeMs, options.collectorFlags);
+        const task = crawlAndSaveData.bind(null, urlString, dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false), executablePath, options.maxLoadTimeMs, options.extraExecutionTimeMs, options.collectorFlags, options.chromiumVersion, options.seleniumHub);
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {

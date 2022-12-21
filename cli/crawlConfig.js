@@ -14,7 +14,7 @@ function addProtocolIfNeeded(url) {
 /**
  * Looks at CLI flags, JSON config etc. to figure out the final crawl config
  * 
- * @param {{config?: string, verbose?: boolean, forceOverwrite?: boolean, only3p?: boolean, mobile?: boolean, disableAntiBot?: boolean, output?: string, logPath?: string, crawlers?: string, proxyConfig?: string, regionCode?: string, chromiumVersion?: string, dataCollectors?: string, reporters?: string, url?: string, inputList?: string}} flags 
+ * @param {{config?: string, verbose?: boolean, forceOverwrite?: boolean, only3p?: boolean, mobile?: boolean, disableAntiBot?: boolean, output?: string, logPath?: string, crawlers?: string, proxyConfig?: string, regionCode?: string, chromiumVersion?: string, seleniumHub?: string, dataCollectors?: string, reporters?: string, url?: string, inputList?: string}} flags 
  * @returns {CrawlConfig}
  */
 function figureOut(flags) {
@@ -64,6 +64,9 @@ function figureOut(flags) {
     }
     if (flags.chromiumVersion) {
         crawlConfig.chromiumVersion = flags.chromiumVersion;
+    }
+    if (flags.seleniumHub) {
+        crawlConfig.seleniumHub = flags.seleniumHub;
     }
 
     // array settings
@@ -130,6 +133,7 @@ module.exports = {
  * @property {string} proxyConfig
  * @property {string} regionCode
  * @property {string} chromiumVersion
+ * @property {string} seleniumHub
  * @property {boolean} filterOutFirstParty
  * @property {boolean} forceOverwrite
  * @property {boolean} verbose
