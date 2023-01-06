@@ -17,7 +17,7 @@ class CLIReporter extends BaseReporter {
         this.alwaysLog(chalk.cyan(`URLs to crawl: ${options.urls}`));
 
         // show progress bar only if we are not printing all logs to screen (verbose)
-        this.progressBar = (this.verbose || options.urls === 0) ? null : new ProgressBar('[:bar] :percent ETA :etas fail :fail% :site', {
+        this.progressBar = (options.urls === 0) ? null : new ProgressBar('[:bar] :percent :finished ETA :etas fail :fail% :site', {
             complete: chalk.green('='),
             incomplete: ' ',
             total: options.urls,
@@ -56,6 +56,7 @@ class CLIReporter extends BaseReporter {
             this.progressBar.total = data.urls;
             this.progressBar.tick({
                 site: data.site,
+                finished: `${finished} / ${data.urls}`,
                 fail: (data.failures / finished * 100).toFixed(1)
             });
         } else {
