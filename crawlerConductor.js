@@ -42,8 +42,15 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
     let browserContext = null;
     let driver = null;
     if (seleniumHub) {
-        driver = await getRemoteDriver({seleniumHub, chromiumVersion, proxyHost});
-        browserContext = await getPuppeteerContext(seleniumHub, driver);
+        try {
+            prefixedLog(`Getting remote browser...`);
+            driver = await getRemoteDriver({seleniumHub, chromiumVersion, proxyHost});
+            prefixedLog(`Got remote browser ${driver}`);
+            browserContext = await getPuppeteerContext(seleniumHub, driver);
+        } catch (e) {
+            prefixedLog(chalk.red(`Could not get a remote browser`), chalk.gray(e.message));
+            throw e;
+        }
     }
 
     try {
@@ -65,6 +72,7 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
         dataCallback(url, data);
     } finally {
         if (driver && !VISUAL_DEBUG) {
+            await browserContext.browser().disconnect();
             await driver.quit();
         }
     }

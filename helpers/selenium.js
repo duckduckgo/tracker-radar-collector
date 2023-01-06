@@ -9,9 +9,42 @@ const {VISUAL_DEBUG} = require('../constants');
  * chromiumVersion?: string,
  * proxyHost?: string
  * }} options
+ * 
+ * @returns {Promise<import('selenium-webdriver').WebDriver>}
  */
-function getRemoteDriver(options) {
+async function getRemoteDriver(options) {
     const opts = new chrome.Options();
+
+    // default chrome arguments passed by puppeteer 10.2.0
+    opts.addArguments(
+        '--disable-background-networking',
+        '--enable-features=NetworkService,NetworkServiceInProcess',
+        '--disable-background-timer-throttling',
+        '--disable-backgrounding-occluded-windows',
+        '--disable-breakpad',
+        '--disable-client-side-phishing-detection',
+        '--disable-component-extensions-with-background-pages',
+        '--disable-default-apps',
+        '--disable-dev-shm-usage',
+        '--disable-extensions',
+        '--disable-features=Translate',
+        '--disable-hang-monitor',
+        '--disable-ipc-flooding-protection',
+        '--disable-popup-blocking',
+        '--disable-prompt-on-repost',
+        '--disable-renderer-backgrounding',
+        '--disable-sync',
+        '--force-color-profile=srgb',
+        '--metrics-recording-only',
+        '--no-first-run',
+        '--enable-automation',
+        '--password-store=basic',
+        '--use-mock-keychain',
+        // TODO(sadym): remove '--enable-blink-features=IdleDetection'
+        // once IdleDetection is turned on by default.
+        '--enable-blink-features=IdleDetection',
+    );
+
     opts.addArguments(
         // enable FLoC
         '--enable-blink-features=InterestCohortAPI',
@@ -40,11 +73,12 @@ function getRemoteDriver(options) {
         );
     }
 
-    let driver = new Builder()
+    let driver = await (new Builder()
         .usingServer(options.seleniumHub)
         .forBrowser('chrome')
         .setChromeOptions(opts)
-        .build();
+        .build());
+
     return driver;
 }
 
