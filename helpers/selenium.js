@@ -25,7 +25,7 @@ async function getRemoteDriver(options) {
         '--disable-client-side-phishing-detection',
         '--disable-component-extensions-with-background-pages',
         '--disable-default-apps',
-        '--disable-dev-shm-usage',
+        // '--disable-dev-shm-usage',
         '--disable-extensions',
         '--disable-features=Translate',
         '--disable-hang-monitor',
@@ -50,6 +50,10 @@ async function getRemoteDriver(options) {
         '--enable-blink-features=InterestCohortAPI',
         '--enable-features="FederatedLearningOfCohorts:update_interval/10s/minimum_history_domain_size_required/1,FlocIdSortingLshBasedComputation,InterestCohortFeaturePolicy"',
     );
+
+    opts.setUserPreferences({
+        "download.default_directory": "/dev/null",
+    });
 
     if (VISUAL_DEBUG) {
         opts.addArguments('--auto-open-devtools-for-tabs');
