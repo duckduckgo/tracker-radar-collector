@@ -26,7 +26,7 @@ async function getRemoteDriver(options) {
         '--disable-component-extensions-with-background-pages',
         '--disable-component-update',
         '--disable-default-apps',
-        '--disable-dev-shm-usage',
+        // '--disable-dev-shm-usage',
         '--disable-extensions',
         // AcceptCHFrame disabled because of crbug.com/1348106.
         '--disable-features=Translate,BackForwardCache,AcceptCHFrame,MediaRouter,OptimizationHints',
@@ -54,6 +54,10 @@ async function getRemoteDriver(options) {
         '--enable-blink-features=InterestCohortAPI',
         '--enable-features="FederatedLearningOfCohorts:update_interval/10s/minimum_history_domain_size_required/1,FlocIdSortingLshBasedComputation,InterestCohortFeaturePolicy"',
     );
+
+    opts.setUserPreferences({
+        "download.default_directory": "/dev/null",
+    });
 
     if (VISUAL_DEBUG) {
         opts.addArguments('--auto-open-devtools-for-tabs');
