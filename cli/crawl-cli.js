@@ -131,6 +131,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
     };
 
     const urls = await filterUrls(inputUrls, log, forceOverwrite === true ? null : outputPath);
+    log(chalk.yellow(`Skipped ${inputUrls.length - urls.length} URLs`));
 
     const urlsLength = urls.length;
     let failures = 0;
