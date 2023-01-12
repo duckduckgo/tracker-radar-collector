@@ -2,6 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 const chalk = require('chalk').default;
+const asyncLib = require('async');
 const runCrawlers = require('../crawlerConductor');
 const program = require('commander');
 const URL = require('url').URL;
@@ -35,6 +36,62 @@ program
     .option('--autoconsent-action <action>', 'dismiss cookie popups. Possible values: optout, optin')
     .option('--chromium-version <version_number>', 'use custom version of chromium')
     .parse(process.argv);
+
+/**
+ * @param {string} outputPath
+ * @param {URL} url
+ * @param {string} fileType file extension, defaults to 'json'
+ */
+function createOutputPath(outputPath, url, fileType = 'json') {
+    return path.join(outputPath, `${createUniqueUrlName(url)}.${fileType}`);
+}
+
+/**
+ * @param {Array<string|{url:string, dataCollectors?:BaseCollector[]}>} inputUrls
+ * @param {function} logFunction
+ * @param {string} outputPath
+ */
+function filterUrls(inputUrls, logFunction, outputPath) {
+    return new Promise((resolveFilterUrls, rejectFilterUrls) => {
+        asyncLib.filter(inputUrls, (item, filterCallback) => {
+            const urlString = (typeof item === 'string') ? item : item.url;
+    
+            /**
+             * @type {URL}
+             */
+            let url;
+    
+            try {
+                url = new URL(urlString);
+            } catch (e) {
+                logFunction(chalk.yellow('Invalid URL:'), urlString);
+                filterCallback(null, false);
+                return;
+            }
+    
+            if (outputPath) {
+                // filter out entries for which result file already exists
+                const outputFile = createOutputPath(outputPath, url);
+                fs.access(outputFile, err => {
+                    if (err) {
+                        filterCallback(null, true);
+                    } else {
+                        logFunction(chalk.yellow(`Skipping "${urlString}" because output file already exists.`));
+                        filterCallback(null, false);
+                    }
+                });
+                return;
+            }
+            filterCallback(null, true);
+        }, (err, results) => {
+            if (err) {
+                logFunction(chalk.red(`Could not filter URL list: ${err}`));
+                rejectFilterUrls(err);
+            }
+            resolveFilterUrls(results);
+        });
+    });
+}
 
 /**
  * @param {Array<string|{url:string, dataCollectors?:BaseCollector[]}>} inputUrls
@@ -71,39 +128,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
         });
     };
 
-    /**
-     * @type {function(...any):string}
-     * @param {URL} url
-     * @param {string} fileType file extension, defaults to 'json'
-     */
-    const createOutputPath = ((url, fileType = 'json') => path.join(outputPath, `${createUniqueUrlName(url)}.${fileType}`));
-
-    const urls = inputUrls.filter(item => {
-        const urlString = (typeof item === 'string') ? item : item.url;
-
-        /**
-         * @type {URL}
-         */
-        let url;
-
-        try {
-            url = new URL(urlString);
-        } catch {
-            log(chalk.yellow('Invalid URL:'), urlString);
-            return false;
-        }
-
-        if (forceOverwrite !== true) {
-            // filter out entries for which result file already exists
-            const outputFile = createOutputPath(url);
-            if (fs.existsSync(outputFile)) {
-                log(chalk.yellow(`Skipping "${urlString}" because output file already exists.`));
-                return false;
-            }
-        }
-
-        return true;
-    });
+    const urls = await filterUrls(inputUrls, log, forceOverwrite === true ? null : outputPath);
 
     const urlsLength = urls.length;
     let failures = 0;
@@ -135,11 +160,11 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
         crawlTimes.push([data.testStarted, data.testFinished, data.testFinished - data.testStarted]);
 
-        const outputFile = createOutputPath(url);
+        const outputFile = createOutputPath(outputPath, url);
 
         // move screenshot to its own file and only keep screenshot path in the JSON data
         if (data.data.screenshots) {
-            const screenshotFilename = createOutputPath(url, 'jpg');
+            const screenshotFilename = createOutputPath(outputPath, url, 'jpg');
             fs.writeFileSync(screenshotFilename, Buffer.from(data.data.screenshots, 'base64'));
 
             data.data.screenshots = screenshotFilename;
