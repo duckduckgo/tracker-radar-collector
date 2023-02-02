@@ -26,7 +26,7 @@ async function getRemoteDriver(options) {
         '--disable-component-extensions-with-background-pages',
         '--disable-component-update',
         '--disable-default-apps',
-        // '--disable-dev-shm-usage',
+        '--disable-dev-shm-usage',
         '--disable-extensions',
         // AcceptCHFrame disabled because of crbug.com/1348106.
         '--disable-features=Translate,BackForwardCache,AcceptCHFrame,MediaRouter,OptimizationHints',
@@ -62,7 +62,7 @@ async function getRemoteDriver(options) {
     if (VISUAL_DEBUG) {
         opts.addArguments('--auto-open-devtools-for-tabs');
     } else {
-        opts.headless();
+        //opts.headless();
         opts.addArguments(
             '--hide-scrollbars',
             '--mute-audio',
