@@ -11,7 +11,10 @@ function wait(promise, maxMs) {
         promise.then(result => {
             clearTimeout(timeout);
             resolve(result);
-        }).catch(e => reject(e));
+        }).catch(e => {
+            clearTimeout(timeout);
+            reject(e);
+        });
     });
 }
 
