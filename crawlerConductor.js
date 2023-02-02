@@ -72,8 +72,12 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
         dataCallback(url, data);
     } finally {
         if (driver && !VISUAL_DEBUG) {
-            await browserContext.browser().disconnect();
-            await driver.quit();
+            try {
+                await browserContext.browser().disconnect();
+                await driver.quit();
+            } catch (e) {
+                prefixedLog(chalk.red(`Could not clean up remote browser`), chalk.gray(e.message));
+            }
         }
     }
 }
