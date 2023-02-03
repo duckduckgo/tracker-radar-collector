@@ -192,6 +192,7 @@ class CMPCollector extends BaseCollector {
                 autoAction: null, // we request action explicitly later
                 disabledCmps: [],
                 enablePrehide: false,
+                enableCosmeticRules: true,
                 detectRetries: 20,
             };
             await this._cdpClient.send('Runtime.evaluate', {
