@@ -21,7 +21,7 @@
     "test"
   ],
   "engines": {
-    "node": ">=12.22.4"
+    "node": ">=14.0.0"
   },
   "devDependencies": {
     "@types/async": "^2.4.1",
