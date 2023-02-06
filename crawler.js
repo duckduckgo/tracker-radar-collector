@@ -321,14 +321,7 @@ module.exports = async (url, options) => {
     } finally {
         // only close the browser if it was created here and not debugging
         if (browser && !VISUAL_DEBUG) {
-            await wait((async () => {
-                await context.close();
-                await browser.close();
-            })(), 10000).catch(e => {
-                const msg = `${chalk.red('Could not clean up the browser')} ${chalk.gray(e.message)}`;
-                console.trace(msg);
-                log(msg);
-            });
+            await browser.close();
         }
     }
 
