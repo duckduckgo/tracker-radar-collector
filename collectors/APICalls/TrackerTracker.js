@@ -1,7 +1,7 @@
 const MAX_ASYNC_CALL_STACK_DEPTH = 32;// max depth of async calls tracked
 const allBreakpoints = require('./breakpoints.js');
 const URL = require('url').URL;
-const STACK_SOURCE_REGEX = /\((https?:\/\/.*?):[0-9]+:[0-9]+\)/i;
+const STACK_SOURCE_REGEX = /(\()?(https?:[^)]+):[0-9]+:[0-9]+(\))?/i;
 
 class TrackerTracker {
     /**
@@ -166,7 +166,7 @@ class TrackerTracker {
             const lineData = line.match(STACK_SOURCE_REGEX);
 
             if (lineData) {
-                return lineData[1];
+                return lineData[2];
             }
         }
 
