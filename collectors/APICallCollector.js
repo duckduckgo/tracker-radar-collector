@@ -111,7 +111,7 @@ class APICallCollector extends BaseCollector {
                     this._calls.push({
                         source: breakpoint.source,
                         description: breakpoint.description,
-                        arguments: preview
+                        arguments: preview.map(p => p.value)
                     });
                 } catch (e) {
                     this._log(chalk.yellow('Failed to get call arguments.'), chalk.gray(e.message), chalk.gray(e.stack));
@@ -199,7 +199,7 @@ module.exports = APICallCollector;
  * @typedef SavedCall
  * @property {string} source - source script
  * @property {string} description - breakpoint description
- * @property {import('devtools-protocol/types/protocol').Protocol.Runtime.PropertyPreview[]} arguments - preview or the passed arguments
+ * @property {string[]} arguments - preview or the passed arguments
  */
 
 /**
