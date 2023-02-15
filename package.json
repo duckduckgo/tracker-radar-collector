@@ -30,6 +30,7 @@
     "@types/node": "^10.12.15",
     "@types/progress": "^2.0.3",
     "@types/stack-utils": "^1.0.1",
+    "devtools-protocol": "^0.0.1105486",
     "eslint": "^7.2.0",
     "eslint-plugin-mocha": "^10.0.5",
     "mocha": "^10.0.0",

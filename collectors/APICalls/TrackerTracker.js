@@ -1,11 +1,10 @@
 const MAX_ASYNC_CALL_STACK_DEPTH = 32;// max depth of async calls tracked
 const allBreakpoints = require('./breakpoints.js');
 const URL = require('url').URL;
-const STACK_SOURCE_REGEX = /(\()?(https?:[^)]+):[0-9]+:[0-9]+(\))?/i;
 
 class TrackerTracker {
     /**
-     * @param {function(string, object=): Promise<object>} sendCommand 
+     * @param {function(string, object=): Promise<object>} sendCommand
      */
     constructor(sendCommand) {
         /**
@@ -17,9 +16,25 @@ class TrackerTracker {
          */
         this._send = sendCommand;
         /**
+         * @type {Map<import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId, {description: string, saveArguments: boolean}>}
+         */
+        this._idToBreakpoint = new Map();
+        /**
          * @type {string}
          */
         this._mainURL = '';
+        /**
+         * @type {Map<string, string>}
+         */
+        this._scriptIdToUrl = new Map();
+    }
+
+    /**
+     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId} id
+     * @returns {{description: string, saveArguments: boolean}} 
+     */
+    getBreakpointById(id) {
+        return this._idToBreakpoint.get(id);
     }
 
     /**
@@ -56,7 +71,7 @@ class TrackerTracker {
      * @param {string} condition 
      * @param {string} description 
      * @param {boolean} saveArguments
-     * @param {CDPContextId} contextId 
+     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextId} contextId
      */
     async _addBreakpoint(expression, condition, description, contextId, saveArguments) {
         try {
@@ -74,37 +89,13 @@ class TrackerTracker {
                 throw new Error('API unavailable in given context.');
             }
 
-            let conditionScript = `
-                const data = {
-                    description: '${description}',
-                    stack: (new Error()).stack
-                };
-            `;
-
-            // only save arguments if requested for given breakpoint
-            if (saveArguments) {
-                conditionScript += `
-                    data.args = Array.from(arguments).map(a => a.toString());
-                `;
-            }
-
-            conditionScript += `
-                window.registerAPICall(JSON.stringify(data));
-                false;
-            `;
-
-            // if breakpoint comes with an condition only count it when this condition is met
-            if (condition) {
-                conditionScript = `
-                    if (!!(${condition})) {
-                        ${conditionScript}
-                    }
-                `;
-            }
-
-            await this._send('Debugger.setBreakpointOnFunctionCall', {
+            const breakpoint = /** @type {import('devtools-protocol/types/protocol').Protocol.Debugger.SetBreakpointOnFunctionCallResponse} */ (await this._send('Debugger.setBreakpointOnFunctionCall', {
                 objectId: result.result.objectId,
-                condition: conditionScript
+                condition
+            }));
+            this._idToBreakpoint.set(breakpoint.breakpointId, {
+                description,
+                saveArguments
             });
         } catch(e) {
             const error = (typeof e === 'string') ? e : e.message;
@@ -121,7 +112,7 @@ class TrackerTracker {
     }
 
     /**
-     * @param {CDPContextId} contextId 
+     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextId} contextId
      */
     async setupContextTracking(contextId = undefined) {
         const allBreakpointsSet = allBreakpoints
@@ -149,25 +140,48 @@ class TrackerTracker {
     }
 
     /**
-     * Return top non-anonymous source from the stack trace.
-     * 
-     * @param {string} stack JS stack trace 
+     * Return top non-anonymous source from Runtime.StackTrace.
+     *
+     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.StackTrace} params
      * @returns {string}
      */
-    _getScriptURL(stack) {
-        if (typeof stack !== "string") {
-            this._log('⚠️ stack is not a string');
-            return null;
-        }
-
-        const lines = stack.split('\n');
-
-        for (let line of lines) {
-            const lineData = line.match(STACK_SOURCE_REGEX);
-
-            if (lineData) {
-                return lineData[2];
+    _getScriptURLFromStackTrace(params) {
+        if (params.callFrames) {
+            for (const frame of params.callFrames) {
+                const fileUrl = frame.scriptId && this._scriptIdToUrl.get(frame.scriptId);
+                if (fileUrl && fileUrl !== this._mainURL) {
+                    return fileUrl;
+                }
             }
+        }
+        if (params.parent) {
+            return this._getScriptURLFromStackTrace(params.parent);
+        }
+        return null;
+    }
+
+    /**
+     * Return top non-anonymous source from the Debugger.paused event
+     *
+     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} params
+     * @returns {string}
+     */
+    _getScriptURLFromPausedEvent(params) {
+        if (params.callFrames) {
+            for (const frame of params.callFrames) {
+                const locationUrl = frame.location && this._scriptIdToUrl.get(frame.location.scriptId);
+                const functionLocationUrl = frame.functionLocation && this._scriptIdToUrl.get(frame.functionLocation.scriptId);
+                const frameUrl = frame.url;
+
+                for (const u of [frameUrl, functionLocationUrl, locationUrl]) {
+                    if (u && u !== this._mainURL) {
+                        return u;
+                    }
+                }
+            }
+        }
+        if (params.asyncStackTrace) {
+            return this._getScriptURLFromStackTrace(params.asyncStackTrace);
         }
 
         return null;
@@ -198,21 +212,24 @@ class TrackerTracker {
     }
 
     /**
-     * @param {{payload: string, description: string, executionContextId: number}} params
-     * @returns {{description: string, source: string, saveArguments: boolean, arguments: string[]}}
+     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.ScriptParsedEvent} params
+     */
+    processScriptParsed(params) {
+        if (this._scriptIdToUrl.has(params.scriptId)) {
+            this._log('⚠️ duplicate scriptId', params.scriptId);
+        }
+        this._scriptIdToUrl.set(params.scriptId, params.url);
+    }
+
+    /**
+     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} params
+     * @returns {{id: import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId, description: string, source: string, saveArguments: boolean}}
      */
     processDebuggerPause(params) {
-        let payload = null;
-        
-        try {
-            payload = JSON.parse(params.payload);
-        } catch(e) {
-            this._log('🚩 invalid brakpoint payload', params.payload);
-            return null;
-        }
+        const breakpointId = params.hitBreakpoints[0];
+        const breakpoint = this.getBreakpointById(breakpointId) || null;
 
-        const breakpoint = this._getBreakpointByName(payload.description);
-        let script = this._getScriptURL(payload.stack);
+        let script = this._getScriptURLFromPausedEvent(params);
 
         try {
             // calculate absolute URL
@@ -236,20 +253,12 @@ class TrackerTracker {
         // this._log('breakpoint', params, script);
 
         return {
-            description: payload.description,
+            id: breakpointId,
+            description: breakpoint.description,
             saveArguments: breakpoint.saveArguments,
-            arguments: payload.args,
             source: script
         };
     }
 }
 
 module.exports = TrackerTracker;
-
-/**
- * @typedef {string} CDPContextId
- */
-
-/**
- * @typedef {string} CDPBreakpointId
- */
