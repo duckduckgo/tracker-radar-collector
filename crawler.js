@@ -304,7 +304,6 @@ module.exports = async (url, options) => {
     } finally {
         // only close the browser if it was created here and not debugging
         if (browser && !VISUAL_DEBUG) {
-            await context.close();
             await browser.close();
         }
     }
