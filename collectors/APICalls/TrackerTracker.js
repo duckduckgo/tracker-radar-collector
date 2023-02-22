@@ -321,6 +321,10 @@ class TrackerTracker {
     processDebuggerPause(params) {
         const breakpointId = params.hitBreakpoints[0];
         const breakpoint = this.getBreakpointById(breakpointId) || null;
+        if (!breakpoint) {
+            this._log('️⚠️ unknown breakpoint', params);
+            return null;
+        }
 
         let script = this._getScriptURLFromPausedEvent(params);
 
@@ -337,13 +341,6 @@ class TrackerTracker {
             this._log('⚠️ unknown source, assuming global');
             script = this._mainURL;
         }
-
-        if (!breakpoint) {
-            this._log('️⚠️ unknown breakpoint', params);
-            return null;
-        }
-
-        // this._log('breakpoint', params, script);
 
         return {
             id: breakpointId,

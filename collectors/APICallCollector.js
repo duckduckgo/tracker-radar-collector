@@ -108,6 +108,7 @@ class APICallCollector extends BaseCollector {
     }
 
     // TODO: make sure not to conflict with other such handlers
+    // TODO: this will resume all breakpoints, not just the ones we care about. Make sure we don't use onDebuggerPaused in other places
     /**
      * @param {TrackerTracker} trackerTracker
      * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} params
@@ -117,10 +118,9 @@ class APICallCollector extends BaseCollector {
         if (!breakpoint) {
             // it's not a breakpoint we care about
             this._log(chalk.yellow('Unknown breakpoint detected.'), chalk.gray(`${params.hitBreakpoints}`));
-            return;
         }
 
-        if (breakpoint.source && breakpoint.description) {
+        if (breakpoint && breakpoint.source && breakpoint.description) {
             let sourceStats = null;
             if (this._stats.has(breakpoint.source)) {
                 sourceStats = this._stats.get(breakpoint.source);
@@ -128,13 +128,13 @@ class APICallCollector extends BaseCollector {
                 sourceStats = new Map();
                 this._stats.set(breakpoint.source, sourceStats);
             }
-    
+
             let count = 0;
 
             if (sourceStats.has(breakpoint.description)) {
                 count = sourceStats.get(breakpoint.description);
             }
-    
+
             sourceStats.set(breakpoint.description, count + 1);
 
             if (breakpoint.saveArguments && params.callFrames && params.callFrames.length) {
@@ -175,7 +175,7 @@ class APICallCollector extends BaseCollector {
     }
 
     /**
-     * @param {string} urlString 
+     * @param {string} urlString
      * @param {function(string):boolean} urlFilter
      */
     isAcceptableUrl(urlString, urlFilter) {
