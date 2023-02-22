@@ -35,6 +35,8 @@ class APICallCollector extends BaseCollector {
         cdpClient.on('Debugger.scriptParsed', this.onScriptParsed.bind(this, trackerTracker));
         cdpClient.on('Debugger.paused', this.onDebuggerPaused.bind(this, trackerTracker));
         cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCreated.bind(this, trackerTracker, cdpClient));
+        cdpClient.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, trackerTracker));
+        await cdpClient.send('Runtime.addBinding', {name: 'registerAPICall'});
 
         try {
             await trackerTracker.init({log: this._log});
@@ -64,6 +66,45 @@ class APICallCollector extends BaseCollector {
      */
     async onScriptParsed(trackerTracker, params) {
         await trackerTracker.processScriptParsed(params);
+    }
+
+    // TODO: combine with onDebuggerPaused
+    // TODO: unify the argument collection
+    /**
+     * @param {TrackerTracker} trackerTracker
+     * @param {{name: string, payload: string, description: string, executionContextId: number}} params
+     */
+    onBindingCalled(trackerTracker, params) {
+        if (params.name !== 'registerAPICall') {
+            return;
+        }
+        const breakpoint = trackerTracker.processBindingPause(params);
+
+        if (breakpoint && breakpoint.source && breakpoint.description) {
+            let sourceStats = null;
+            if (this._stats.has(breakpoint.source)) {
+                sourceStats = this._stats.get(breakpoint.source);
+            } else {
+                sourceStats = new Map();
+                this._stats.set(breakpoint.source, sourceStats);
+            }
+    
+            let count = 0;
+    
+            if (sourceStats.has(breakpoint.description)) {
+                count = sourceStats.get(breakpoint.description);
+            }
+    
+            sourceStats.set(breakpoint.description, count + 1);
+
+            if (breakpoint.saveArguments) {
+                this._calls.push({
+                    source: breakpoint.source,
+                    description: breakpoint.description,
+                    arguments: breakpoint.arguments
+                });
+            }
+        }
     }
 
     // TODO: make sure not to conflict with other such handlers
