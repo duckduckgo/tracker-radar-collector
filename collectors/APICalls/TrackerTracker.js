@@ -2,6 +2,7 @@
 const MAX_ASYNC_CALL_STACK_DEPTH = 32;// max depth of async calls tracked
 const allBreakpoints = require('./breakpoints.js');
 const URL = require('url').URL;
+const HTTP_URL_REGEX = /^https?:\/\//i;
 
 class TrackerTracker {
     /**
@@ -210,7 +211,7 @@ class TrackerTracker {
         if (params.callFrames) {
             for (const frame of params.callFrames) {
                 const fileUrl = frame.scriptId && this._scriptIdToUrl.get(frame.scriptId);
-                if (fileUrl && fileUrl !== this._mainURL) {
+                if (fileUrl && fileUrl !== this._mainURL && fileUrl.match(HTTP_URL_REGEX)) {
                     return fileUrl;
                 }
             }
@@ -235,7 +236,7 @@ class TrackerTracker {
                 const frameUrl = frame.url;
 
                 for (const u of [frameUrl, functionLocationUrl, locationUrl]) {
-                    if (u && u !== this._mainURL) {
+                    if (u && u !== this._mainURL && u.match(HTTP_URL_REGEX)) {
                         return u;
                     }
                 }
