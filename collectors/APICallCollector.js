@@ -138,13 +138,14 @@ class APICallCollector extends BaseCollector {
                     }));
 
                     // last two properties are always `callee` and `Symbol.iterator` that are useless
-                    const preview = args?.result?.preview?.properties?.slice(0, -2);
-
-                    this._calls.push({
-                        source: breakpoint.source,
-                        description: breakpoint.description,
-                        arguments: preview.map(p => p.value)
-                    });
+                    const preview = args && args.result && args.result.preview && args.result.preview.properties.slice(0, -2);
+                    if (preview) {
+                        this._calls.push({
+                            source: breakpoint.source,
+                            description: breakpoint.description,
+                            arguments: preview.map(p => p.value)
+                        });
+                    }
                 } catch (e) {
                     this._log(chalk.yellow('Failed to get call arguments.'), chalk.gray(e.message), chalk.gray(e.stack));
                 }
