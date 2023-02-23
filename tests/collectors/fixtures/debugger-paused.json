@@ -1,0 +1,2431 @@
+{
+    "callFrames": [
+        {
+            "callFrameId": "-8782401393736082235.3.0",
+            "functionName": "dateNow",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 712,
+                "columnNumber": 16
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 718,
+                "columnNumber": 22
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2599"
+                    },
+                    "name": "dateNow",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 712,
+                        "columnNumber": 16
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 719,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2600"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2601"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2602"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.1",
+            "functionName": "persistSession",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 5667,
+                "columnNumber": 23
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 5672,
+                "columnNumber": 28
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2603"
+                    },
+                    "name": "persistSession",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 5667,
+                        "columnNumber": 23
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 5674,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2604"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2605"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "objectId": "-8782401393736082235.3.2607"
+                    },
+                    "name": "withCookieLockAccess",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 5583,
+                        "columnNumber": 29
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 5647,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2608"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2609"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2610"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.3",
+            "functionName": "expandOrRenewSession",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 5763,
+                "columnNumber": 33
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 5765,
+                "columnNumber": 8
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2611"
+                    },
+                    "name": "expandOrRenewSession",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 5763,
+                        "columnNumber": 33
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 5779,
+                        "columnNumber": 5
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2612"
+                    },
+                    "name": "startSessionStore",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 5758,
+                        "columnNumber": 26
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 5858,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2613"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2614"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2615"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.4",
+            "functionName": "callMonitored",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 78,
+                "columnNumber": 22
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 81,
+                "columnNumber": 18
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2616"
+                    },
+                    "name": "callMonitored",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 78,
+                        "columnNumber": 22
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 94,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2617"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2618"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2619"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.5",
+            "functionName": "",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 73,
+                "columnNumber": 20
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 75,
+                "columnNumber": 15
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2620"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 73,
+                        "columnNumber": 20
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 76,
+                        "columnNumber": 5
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2621"
+                    },
+                    "name": "monitor",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 72,
+                        "columnNumber": 16
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 77,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2622"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2623"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2624"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.6",
+            "functionName": "throttled",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 123,
+                "columnNumber": 28
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 133,
+                "columnNumber": 19
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2625"
+                    },
+                    "name": "throttled",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 123,
+                        "columnNumber": 28
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 146,
+                        "columnNumber": 9
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2626"
+                    },
+                    "name": "throttle",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 116,
+                        "columnNumber": 17
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 153,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2627"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2628"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2629"
+                    }
+                }
+            ],
+            "this": {
+                "type": "object",
+                "className": "Object",
+                "description": "Object",
+                "objectId": "-8782401393736082235.3.2630"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.7",
+            "functionName": "startSessionManager",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 5871,
+                "columnNumber": 28
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 5883,
+                "columnNumber": 17
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2631"
+                    },
+                    "name": "startSessionManager",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 5871,
+                        "columnNumber": 28
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 5898,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2632"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2633"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2634"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.8",
+            "functionName": "startRumSessionManager",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 5924,
+                "columnNumber": 31
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 5925,
+                "columnNumber": 25
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2635"
+                    },
+                    "name": "startRumSessionManager",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 5924,
+                        "columnNumber": 31
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 5956,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2636"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2637"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2638"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.9",
+            "functionName": "startRum",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 6514,
+                "columnNumber": 17
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 6547,
+                "columnNumber": 41
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2639"
+                    },
+                    "name": "startRum",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6514,
+                        "columnNumber": 17
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6570,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2640"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2641"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2642"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.10",
+            "functionName": "doStartRum",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 1604,
+                "columnNumber": 23
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 1605,
+                "columnNumber": 30
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2643"
+                    },
+                    "name": "doStartRum",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 1604,
+                        "columnNumber": 23
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 1613,
+                        "columnNumber": 5
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2644"
+                    },
+                    "name": "makeRumPublicApi",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 1527,
+                        "columnNumber": 25
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 1707,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2645"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2646"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2647"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.11",
+            "functionName": "initRum",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 1560,
+                "columnNumber": 20
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 1588,
+                "columnNumber": 12
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2648"
+                    },
+                    "name": "initRum",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 1560,
+                        "columnNumber": 20
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 1603,
+                        "columnNumber": 5
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2649"
+                    },
+                    "name": "makeRumPublicApi",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 1527,
+                        "columnNumber": 25
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 1707,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2650"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2651"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2652"
+                    }
+                }
+            ],
+            "this": {
+                "type": "object",
+                "className": "Object",
+                "description": "Object",
+                "objectId": "-8782401393736082235.3.2653"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.12",
+            "functionName": "callMonitored",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 78,
+                "columnNumber": 22
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 81,
+                "columnNumber": 18
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2654"
+                    },
+                    "name": "callMonitored",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 78,
+                        "columnNumber": 22
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 94,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2655"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2656"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2657"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.13",
+            "functionName": "",
+            "functionLocation": {
+                "scriptId": "895",
+                "lineNumber": 73,
+                "columnNumber": 20
+            },
+            "location": {
+                "scriptId": "895",
+                "lineNumber": 75,
+                "columnNumber": 15
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2658"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 73,
+                        "columnNumber": 20
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 76,
+                        "columnNumber": 5
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2659"
+                    },
+                    "name": "monitor",
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 72,
+                        "columnNumber": 16
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 77,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2660"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": 6623,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2661"
+                    },
+                    "startLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "895",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2662"
+                    }
+                }
+            ],
+            "this": {
+                "type": "object",
+                "className": "Object",
+                "description": "Object",
+                "objectId": "-8782401393736082235.3.2663"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.14",
+            "functionName": "",
+            "functionLocation": {
+                "scriptId": "894",
+                "lineNumber": 36,
+                "columnNumber": 79
+            },
+            "location": {
+                "scriptId": "894",
+                "lineNumber": 42,
+                "columnNumber": 29
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2664"
+                    },
+                    "startLocation": {
+                        "scriptId": "894",
+                        "lineNumber": 36,
+                        "columnNumber": 79
+                    },
+                    "endLocation": {
+                        "scriptId": "894",
+                        "lineNumber": 53,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2665"
+                    },
+                    "startLocation": {
+                        "scriptId": "894",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "894",
+                        "lineNumber": 56,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2666"
+                    },
+                    "startLocation": {
+                        "scriptId": "894",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "894",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2667"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.15",
+            "functionName": "_callee2$",
+            "functionLocation": {
+                "scriptId": "557",
+                "lineNumber": 6780,
+                "columnNumber": 53
+            },
+            "location": {
+                "scriptId": "557",
+                "lineNumber": 7112,
+                "columnNumber": 52
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2668"
+                    },
+                    "name": "_callee2$",
+                    "startLocation": {
+                        "scriptId": "557",
+                        "lineNumber": 6780,
+                        "columnNumber": 53
+                    },
+                    "endLocation": {
+                        "scriptId": "557",
+                        "lineNumber": 7198,
+                        "columnNumber": 5
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2669"
+                    },
+                    "name": "_callee2",
+                    "startLocation": {
+                        "scriptId": "557",
+                        "lineNumber": 6770,
+                        "columnNumber": 114
+                    },
+                    "endLocation": {
+                        "scriptId": "557",
+                        "lineNumber": 7199,
+                        "columnNumber": 3
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2670"
+                    },
+                    "startLocation": {
+                        "scriptId": "557",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "557",
+                        "lineNumber": 7205,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2671"
+                    },
+                    "startLocation": {
+                        "scriptId": "557",
+                        "lineNumber": 7203,
+                        "columnNumber": 288634
+                    },
+                    "endLocation": {
+                        "scriptId": "557",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2672"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.16",
+            "functionName": "tryCatch",
+            "functionLocation": {
+                "scriptId": "492",
+                "lineNumber": 61,
+                "columnNumber": 19
+            },
+            "location": {
+                "scriptId": "492",
+                "lineNumber": 63,
+                "columnNumber": 39
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2673"
+                    },
+                    "name": "tryCatch",
+                    "startLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 61,
+                        "columnNumber": 19
+                    },
+                    "endLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 67,
+                        "columnNumber": 3
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2674"
+                    },
+                    "startLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 7,
+                        "columnNumber": 24
+                    },
+                    "endLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 734,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2675"
+                    },
+                    "startLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 762,
+                        "columnNumber": 22761
+                    },
+                    "endLocation": {
+                        "scriptId": "492",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2676"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.17",
+            "functionName": "invoke",
+            "functionLocation": {
+                "scriptId": "492",
+                "lineNumber": 251,
+                "columnNumber": 26
+            },
+            "location": {
+                "scriptId": "492",
+                "lineNumber": 298,
+                "columnNumber": 21
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2677"
+                    },
+                    "name": "invoke",
+                    "startLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 251,
+                        "columnNumber": 26
+                    },
+                    "endLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 323,
+                        "columnNumber": 5
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2678"
+                    },
+                    "name": "makeInvokeMethod",
+                    "startLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 248,
+                        "columnNumber": 27
+                    },
+                    "endLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 324,
+                        "columnNumber": 3
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2679"
+                    },
+                    "startLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 7,
+                        "columnNumber": 24
+                    },
+                    "endLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 734,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2680"
+                    },
+                    "startLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 762,
+                        "columnNumber": 22761
+                    },
+                    "endLocation": {
+                        "scriptId": "492",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2681"
+                    }
+                }
+            ],
+            "this": {
+                "type": "object",
+                "className": "Generator",
+                "description": "Generator",
+                "objectId": "-8782401393736082235.3.2682"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.18",
+            "functionName": "",
+            "functionLocation": {
+                "scriptId": "492",
+                "lineNumber": 122,
+                "columnNumber": 40
+            },
+            "location": {
+                "scriptId": "492",
+                "lineNumber": 123,
+                "columnNumber": 20
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2683"
+                    },
+                    "startLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 122,
+                        "columnNumber": 40
+                    },
+                    "endLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 124,
+                        "columnNumber": 7
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2684"
+                    },
+                    "startLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 121,
+                        "columnNumber": 48
+                    },
+                    "endLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 125,
+                        "columnNumber": 5
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2685"
+                    },
+                    "name": "defineIteratorMethods",
+                    "startLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 120,
+                        "columnNumber": 32
+                    },
+                    "endLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 126,
+                        "columnNumber": 3
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2686"
+                    },
+                    "startLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 7,
+                        "columnNumber": 24
+                    },
+                    "endLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 734,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2687"
+                    },
+                    "startLocation": {
+                        "scriptId": "492",
+                        "lineNumber": 762,
+                        "columnNumber": 22761
+                    },
+                    "endLocation": {
+                        "scriptId": "492",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2688"
+                    }
+                }
+            ],
+            "this": {
+                "type": "object",
+                "className": "Generator",
+                "description": "Generator",
+                "objectId": "-8782401393736082235.3.2689"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.19",
+            "functionName": "asyncGeneratorStep",
+            "functionLocation": {
+                "scriptId": "468",
+                "lineNumber": 1,
+                "columnNumber": 27
+            },
+            "location": {
+                "scriptId": "468",
+                "lineNumber": 3,
+                "columnNumber": 23
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2690"
+                    },
+                    "name": "asyncGeneratorStep",
+                    "startLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 1,
+                        "columnNumber": 27
+                    },
+                    "endLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 14,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2691"
+                    },
+                    "startLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 33,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2692"
+                    },
+                    "startLocation": {
+                        "scriptId": "468",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "468",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2693"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        },
+        {
+            "callFrameId": "-8782401393736082235.3.20",
+            "functionName": "_next",
+            "functionLocation": {
+                "scriptId": "468",
+                "lineNumber": 21,
+                "columnNumber": 20
+            },
+            "location": {
+                "scriptId": "468",
+                "lineNumber": 22,
+                "columnNumber": 8
+            },
+            "url": "",
+            "scopeChain": [
+                {
+                    "type": "local",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2694"
+                    },
+                    "name": "_next",
+                    "startLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 21,
+                        "columnNumber": 20
+                    },
+                    "endLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 23,
+                        "columnNumber": 7
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2695"
+                    },
+                    "startLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 19,
+                        "columnNumber": 32
+                    },
+                    "endLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 28,
+                        "columnNumber": 5
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2696"
+                    },
+                    "startLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 16,
+                        "columnNumber": 18
+                    },
+                    "endLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 29,
+                        "columnNumber": 3
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2697"
+                    },
+                    "name": "_asyncToGenerator",
+                    "startLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 15,
+                        "columnNumber": 26
+                    },
+                    "endLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 30,
+                        "columnNumber": 1
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2698"
+                    },
+                    "startLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 0,
+                        "columnNumber": 0
+                    },
+                    "endLocation": {
+                        "scriptId": "468",
+                        "lineNumber": 33,
+                        "columnNumber": 0
+                    }
+                },
+                {
+                    "type": "closure",
+                    "object": {
+                        "type": "object",
+                        "className": "Object",
+                        "description": "Object",
+                        "objectId": "-8782401393736082235.3.2699"
+                    },
+                    "startLocation": {
+                        "scriptId": "468",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    },
+                    "endLocation": {
+                        "scriptId": "468",
+                        "lineNumber": -1,
+                        "columnNumber": -1
+                    }
+                },
+                {
+                    "type": "global",
+                    "object": {
+                        "type": "object",
+                        "className": "Window",
+                        "description": "Window",
+                        "objectId": "-8782401393736082235.3.2700"
+                    }
+                }
+            ],
+            "this": {
+                "type": "undefined"
+            },
+            "canBeRestarted": true
+        }
+    ],
+    "reason": "other",
+    "hitBreakpoints": [
+        "7:76"
+    ],
+    "asyncStackTrace": {
+        "description": "Promise.then",
+        "callFrames": [
+            {
+                "functionName": "asyncGeneratorStep",
+                "scriptId": "468",
+                "url": "webpack-internal:///5",
+                "lineNumber": 12,
+                "columnNumber": 27
+            },
+            {
+                "functionName": "_next",
+                "scriptId": "468",
+                "url": "webpack-internal:///5",
+                "lineNumber": 22,
+                "columnNumber": 8
+            }
+        ],
+        "parent": {
+            "description": "Promise.then",
+            "callFrames": [
+                {
+                    "functionName": "asyncGeneratorStep",
+                    "scriptId": "468",
+                    "url": "webpack-internal:///5",
+                    "lineNumber": 12,
+                    "columnNumber": 27
+                },
+                {
+                    "functionName": "_next",
+                    "scriptId": "468",
+                    "url": "webpack-internal:///5",
+                    "lineNumber": 22,
+                    "columnNumber": 8
+                }
+            ],
+            "parent": {
+                "description": "Promise.then",
+                "callFrames": [
+                    {
+                        "functionName": "asyncGeneratorStep",
+                        "scriptId": "468",
+                        "url": "webpack-internal:///5",
+                        "lineNumber": 12,
+                        "columnNumber": 27
+                    },
+                    {
+                        "functionName": "_next",
+                        "scriptId": "468",
+                        "url": "webpack-internal:///5",
+                        "lineNumber": 22,
+                        "columnNumber": 8
+                    }
+                ],
+                "parent": {
+                    "description": "Promise.then",
+                    "callFrames": [
+                        {
+                            "functionName": "asyncGeneratorStep",
+                            "scriptId": "468",
+                            "url": "webpack-internal:///5",
+                            "lineNumber": 12,
+                            "columnNumber": 27
+                        },
+                        {
+                            "functionName": "_next",
+                            "scriptId": "468",
+                            "url": "webpack-internal:///5",
+                            "lineNumber": 22,
+                            "columnNumber": 8
+                        }
+                    ],
+                    "parent": {
+                        "description": "Promise.then",
+                        "callFrames": [
+                            {
+                                "functionName": "asyncGeneratorStep",
+                                "scriptId": "468",
+                                "url": "webpack-internal:///5",
+                                "lineNumber": 12,
+                                "columnNumber": 27
+                            },
+                            {
+                                "functionName": "_next",
+                                "scriptId": "468",
+                                "url": "webpack-internal:///5",
+                                "lineNumber": 22,
+                                "columnNumber": 8
+                            }
+                        ],
+                        "parent": {
+                            "description": "Promise.then",
+                            "callFrames": [
+                                {
+                                    "functionName": "asyncGeneratorStep",
+                                    "scriptId": "468",
+                                    "url": "webpack-internal:///5",
+                                    "lineNumber": 12,
+                                    "columnNumber": 27
+                                },
+                                {
+                                    "functionName": "_next",
+                                    "scriptId": "468",
+                                    "url": "webpack-internal:///5",
+                                    "lineNumber": 22,
+                                    "columnNumber": 8
+                                }
+                            ],
+                            "parent": {
+                                "description": "Promise.then",
+                                "callFrames": [
+                                    {
+                                        "functionName": "asyncGeneratorStep",
+                                        "scriptId": "468",
+                                        "url": "webpack-internal:///5",
+                                        "lineNumber": 12,
+                                        "columnNumber": 27
+                                    },
+                                    {
+                                        "functionName": "_next",
+                                        "scriptId": "468",
+                                        "url": "webpack-internal:///5",
+                                        "lineNumber": 22,
+                                        "columnNumber": 8
+                                    }
+                                ],
+                                "parent": {
+                                    "description": "Promise.then",
+                                    "callFrames": [
+                                        {
+                                            "functionName": "asyncGeneratorStep",
+                                            "scriptId": "468",
+                                            "url": "webpack-internal:///5",
+                                            "lineNumber": 12,
+                                            "columnNumber": 27
+                                        },
+                                        {
+                                            "functionName": "_next",
+                                            "scriptId": "468",
+                                            "url": "webpack-internal:///5",
+                                            "lineNumber": 22,
+                                            "columnNumber": 8
+                                        }
+                                    ],
+                                    "parent": {
+                                        "description": "Promise.then",
+                                        "callFrames": [
+                                            {
+                                                "functionName": "asyncGeneratorStep",
+                                                "scriptId": "468",
+                                                "url": "webpack-internal:///5",
+                                                "lineNumber": 12,
+                                                "columnNumber": 27
+                                            },
+                                            {
+                                                "functionName": "_next",
+                                                "scriptId": "468",
+                                                "url": "webpack-internal:///5",
+                                                "lineNumber": 22,
+                                                "columnNumber": 8
+                                            }
+                                        ],
+                                        "parent": {
+                                            "description": "Promise.then",
+                                            "callFrames": [
+                                                {
+                                                    "functionName": "asyncGeneratorStep",
+                                                    "scriptId": "468",
+                                                    "url": "webpack-internal:///5",
+                                                    "lineNumber": 12,
+                                                    "columnNumber": 27
+                                                },
+                                                {
+                                                    "functionName": "_next",
+                                                    "scriptId": "468",
+                                                    "url": "webpack-internal:///5",
+                                                    "lineNumber": 22,
+                                                    "columnNumber": 8
+                                                }
+                                            ],
+                                            "parent": {
+                                                "description": "Promise.then",
+                                                "callFrames": [
+                                                    {
+                                                        "functionName": "asyncGeneratorStep",
+                                                        "scriptId": "468",
+                                                        "url": "webpack-internal:///5",
+                                                        "lineNumber": 12,
+                                                        "columnNumber": 27
+                                                    },
+                                                    {
+                                                        "functionName": "_next",
+                                                        "scriptId": "468",
+                                                        "url": "webpack-internal:///5",
+                                                        "lineNumber": 22,
+                                                        "columnNumber": 8
+                                                    }
+                                                ],
+                                                "parent": {
+                                                    "description": "Promise.then",
+                                                    "callFrames": [
+                                                        {
+                                                            "functionName": "asyncGeneratorStep",
+                                                            "scriptId": "468",
+                                                            "url": "webpack-internal:///5",
+                                                            "lineNumber": 12,
+                                                            "columnNumber": 27
+                                                        },
+                                                        {
+                                                            "functionName": "_next",
+                                                            "scriptId": "468",
+                                                            "url": "webpack-internal:///5",
+                                                            "lineNumber": 22,
+                                                            "columnNumber": 8
+                                                        }
+                                                    ],
+                                                    "parent": {
+                                                        "description": "Promise.then",
+                                                        "callFrames": [
+                                                            {
+                                                                "functionName": "asyncGeneratorStep",
+                                                                "scriptId": "468",
+                                                                "url": "webpack-internal:///5",
+                                                                "lineNumber": 12,
+                                                                "columnNumber": 27
+                                                            },
+                                                            {
+                                                                "functionName": "_next",
+                                                                "scriptId": "468",
+                                                                "url": "webpack-internal:///5",
+                                                                "lineNumber": 22,
+                                                                "columnNumber": 8
+                                                            },
+                                                            {
+                                                                "functionName": "eval",
+                                                                "scriptId": "468",
+                                                                "url": "webpack-internal:///5",
+                                                                "lineNumber": 27,
+                                                                "columnNumber": 6
+                                                            },
+                                                            {
+                                                                "functionName": "eval",
+                                                                "scriptId": "468",
+                                                                "url": "webpack-internal:///5",
+                                                                "lineNumber": 19,
+                                                                "columnNumber": 11
+                                                            },
+                                                            {
+                                                                "functionName": "_createApp",
+                                                                "scriptId": "557",
+                                                                "url": "webpack-internal:///64",
+                                                                "lineNumber": 7200,
+                                                                "columnNumber": 20
+                                                            },
+                                                            {
+                                                                "functionName": "createApp",
+                                                                "scriptId": "557",
+                                                                "url": "webpack-internal:///64",
+                                                                "lineNumber": 6767,
+                                                                "columnNumber": 20
+                                                            },
+                                                            {
+                                                                "functionName": "eval",
+                                                                "scriptId": "408",
+                                                                "url": "webpack-internal:///348",
+                                                                "lineNumber": 110,
+                                                                "columnNumber": 68
+                                                            },
+                                                            {
+                                                                "functionName": "eval",
+                                                                "scriptId": "408",
+                                                                "url": "webpack-internal:///348",
+                                                                "lineNumber": 885,
+                                                                "columnNumber": 29
+                                                            },
+                                                            {
+                                                                "functionName": "",
+                                                                "scriptId": "270",
+                                                                "url": "https://example.com/_nuxt/5f888f5.js",
+                                                                "lineNumber": 0,
+                                                                "columnNumber": 4221045
+                                                            },
+                                                            {
+                                                                "functionName": "f",
+                                                                "scriptId": "268",
+                                                                "url": "https://example.com/_nuxt/e9f0d65.js",
+                                                                "lineNumber": 0,
+                                                                "columnNumber": 576
+                                                            },
+                                                            {
+                                                                "functionName": "",
+                                                                "scriptId": "267",
+                                                                "url": "https://example.com/_nuxt/2a0df06.js",
+                                                                "lineNumber": 0,
+                                                                "columnNumber": 985162
+                                                            },
+                                                            {
+                                                                "functionName": "f",
+                                                                "scriptId": "268",
+                                                                "url": "https://example.com/_nuxt/e9f0d65.js",
+                                                                "lineNumber": 0,
+                                                                "columnNumber": 576
+                                                            },
+                                                            {
+                                                                "functionName": "t",
+                                                                "scriptId": "268",
+                                                                "url": "https://example.com/_nuxt/e9f0d65.js",
+                                                                "lineNumber": 0,
+                                                                "columnNumber": 444
+                                                            },
+                                                            {
+                                                                "functionName": "r",
+                                                                "scriptId": "268",
+                                                                "url": "https://example.com/_nuxt/e9f0d65.js",
+                                                                "lineNumber": 0,
+                                                                "columnNumber": 307
+                                                            },
+                                                            {
+                                                                "functionName": "",
+                                                                "scriptId": "267",
+                                                                "url": "https://example.com/_nuxt/2a0df06.js",
+                                                                "lineNumber": 0,
+                                                                "columnNumber": 46
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
