@@ -225,8 +225,11 @@ class TrackerTracker {
         if (params.callFrames) {
             for (const frame of params.callFrames) {
                 const fileUrl = frame.scriptId && this._scriptIdToUrl.get(frame.scriptId);
-                if (fileUrl && fileUrl !== this._mainURL && fileUrl.match(HTTP_URL_REGEX)) {
-                    return fileUrl;
+                const frameUrl = frame.url;
+                for (const u of [frameUrl, fileUrl]) {
+                    if (u && u !== this._mainURL && u.match(HTTP_URL_REGEX)) {
+                        return u;
+                    }
                 }
             }
         }
@@ -248,7 +251,7 @@ class TrackerTracker {
             for (const frame of params.callFrames) {
                 const locationUrl = frame.location && this._scriptIdToUrl.get(frame.location.scriptId);
                 const functionLocationUrl = frame.functionLocation && this._scriptIdToUrl.get(frame.functionLocation.scriptId);
-                const frameUrl = frame.url;
+                const frameUrl = frame.url; // this is usually empty in Debugger.CallFrame (unlike Runtime.CallFrame)
 
                 for (const u of [frameUrl, functionLocationUrl, locationUrl]) {
                     if (u && u !== this._mainURL && u.match(HTTP_URL_REGEX)) {
