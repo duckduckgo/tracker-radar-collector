@@ -68,7 +68,28 @@ class APICallCollector extends BaseCollector {
         await trackerTracker.processScriptParsed(params);
     }
 
-    // TODO: combine with onDebuggerPaused
+
+    /**
+     * @param {{source: string, description: string}} breakpointInfo
+     */
+    _updateCallStats(breakpointInfo) {
+        let sourceStats = null;
+        if (this._stats.has(breakpointInfo.source)) {
+            sourceStats = this._stats.get(breakpointInfo.source);
+        } else {
+            sourceStats = new Map();
+            this._stats.set(breakpointInfo.source, sourceStats);
+        }
+
+        let count = 0;
+
+        if (sourceStats.has(breakpointInfo.description)) {
+            count = sourceStats.get(breakpointInfo.description);
+        }
+
+        sourceStats.set(breakpointInfo.description, count + 1);
+    }
+
     // TODO: unify the argument collection
     /**
      * @param {TrackerTracker} trackerTracker
@@ -81,21 +102,7 @@ class APICallCollector extends BaseCollector {
         const breakpoint = trackerTracker.processBindingPause(params);
 
         if (breakpoint && breakpoint.source && breakpoint.description) {
-            let sourceStats = null;
-            if (this._stats.has(breakpoint.source)) {
-                sourceStats = this._stats.get(breakpoint.source);
-            } else {
-                sourceStats = new Map();
-                this._stats.set(breakpoint.source, sourceStats);
-            }
-    
-            let count = 0;
-    
-            if (sourceStats.has(breakpoint.description)) {
-                count = sourceStats.get(breakpoint.description);
-            }
-    
-            sourceStats.set(breakpoint.description, count + 1);
+            this._updateCallStats(breakpoint);
 
             if (breakpoint.saveArguments) {
                 this._calls.push({
@@ -121,21 +128,7 @@ class APICallCollector extends BaseCollector {
         }
 
         if (breakpoint && breakpoint.source && breakpoint.description) {
-            let sourceStats = null;
-            if (this._stats.has(breakpoint.source)) {
-                sourceStats = this._stats.get(breakpoint.source);
-            } else {
-                sourceStats = new Map();
-                this._stats.set(breakpoint.source, sourceStats);
-            }
-
-            let count = 0;
-
-            if (sourceStats.has(breakpoint.description)) {
-                count = sourceStats.get(breakpoint.description);
-            }
-
-            sourceStats.set(breakpoint.description, count + 1);
+            this._updateCallStats(breakpoint);
 
             if (breakpoint.saveArguments && params.callFrames && params.callFrames.length) {
                 try {
