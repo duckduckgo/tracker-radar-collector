@@ -90,7 +90,6 @@ class APICallCollector extends BaseCollector {
         sourceStats.set(breakpointInfo.description, count + 1);
     }
 
-    // TODO: unify the argument collection
     /**
      * @param {TrackerTracker} trackerTracker
      * @param {{name: string, payload: string, description: string, executionContextId: number}} params
@@ -114,8 +113,7 @@ class APICallCollector extends BaseCollector {
         }
     }
 
-    // TODO: make sure not to conflict with other such handlers
-    // TODO: this will resume all breakpoints, not just the ones we care about. Make sure we don't use onDebuggerPaused in other places
+    // TODO: IMPORTANT! This will resume all breakpoints, including ones from `debugger` and set by other collectors. Make sure we don't use onDebuggerPaused in other places.
     /**
      * @param {TrackerTracker} trackerTracker
      * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} params
@@ -140,7 +138,7 @@ class APICallCollector extends BaseCollector {
                     }));
 
                     // last two properties are always `callee` and `Symbol.iterator` that are useless
-                    const preview = args && args.result && args.result.preview && args.result.preview.properties.slice(0, -2);
+                    const preview = args?.result?.preview?.properties?.slice(0, -2);
 
                     this._calls.push({
                         source: breakpoint.source,
