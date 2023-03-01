@@ -293,7 +293,7 @@ class TrackerTracker {
         if (this._scriptIdToUrl.has(params.scriptId)) {
             this._log('⚠️ duplicate scriptId', params.scriptId);
         }
-        this._scriptIdToUrl.set(params.scriptId, params.url);
+        this._scriptIdToUrl.set(params.scriptId, params.embedderName);
     }
 
     /**
