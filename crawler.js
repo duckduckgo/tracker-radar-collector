@@ -36,7 +36,8 @@ function openBrowser(log, proxyHost, executablePath) {
         args: [
             // enable FLoC
             '--enable-blink-features=InterestCohortAPI',
-            '--enable-features="FederatedLearningOfCohorts:update_interval/10s/minimum_history_domain_size_required/1,FlocIdSortingLshBasedComputation,InterestCohortFeaturePolicy"'
+            '--enable-features="FederatedLearningOfCohorts:update_interval/10s/minimum_history_domain_size_required/1,FlocIdSortingLshBasedComputation,InterestCohortFeaturePolicy"',
+            '--js-flags="--async-stack-traces --stack-trace-limit 32"'
         ]
     };
     if (VISUAL_DEBUG) {
@@ -58,7 +59,7 @@ function openBrowser(log, proxyHost, executablePath) {
         // @ts-ignore there is no single object that encapsulates properties of both BrowserLaunchArgumentOptions and LaunchOptions that are allowed here
         args.executablePath = executablePath;
     }
-
+    console.log('Opening browser...', args);
     return puppeteer.launch(args);
 }
 
