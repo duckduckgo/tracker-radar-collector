@@ -1,6 +1,5 @@
 const BaseCollector = require('./BaseCollector');
 const TrackerTracker = require('./APICalls/TrackerTracker');
-const chalk = require('chalk').default;
 const URL = require('url').URL;
 
 class APICallCollector extends BaseCollector {
@@ -122,7 +121,7 @@ class APICallCollector extends BaseCollector {
         const breakpoint = trackerTracker.processDebuggerPause(params);
         if (!breakpoint) {
             // it's not a breakpoint we care about
-            this._log(chalk.yellow('Unknown breakpoint detected.'), chalk.gray(`${params.hitBreakpoints}`));
+            this._log(`Unknown breakpoint detected. ${params.hitBreakpoints}`);
         }
 
         if (breakpoint && breakpoint.source && breakpoint.description) {
@@ -147,7 +146,7 @@ class APICallCollector extends BaseCollector {
                         });
                     }
                 } catch (e) {
-                    this._log(chalk.yellow('Failed to get call arguments.'), chalk.gray(e.message), chalk.gray(e.stack));
+                    this._log('Failed to get call arguments.', e.message, e.stack);
                 }
             }
         }
@@ -159,7 +158,7 @@ class APICallCollector extends BaseCollector {
                 // we don't care if tab was closed during this opperation
             } else {
                 if (error.includes('Operation timed out')) {
-                    this._log(chalk.red('Debugger got stuck.'));
+                    this._log('Debugger got stuck.');
                 }
                 this._incompleteData = true;
             }
