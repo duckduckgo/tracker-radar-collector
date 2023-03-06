@@ -238,7 +238,7 @@ class TrackerTracker {
     _getScriptURLFromPausedEvent(params) {
         let script = null;
         if (params.callFrames) {
-            for (const frame of params.callFrames) {
+            iterateAllFrames: for (const frame of params.callFrames) {
                 const locationUrl = frame.location && this._scriptIdToUrl.get(frame.location.scriptId);
                 const functionLocationUrl = frame.functionLocation && this._scriptIdToUrl.get(frame.functionLocation.scriptId);
                 const frameUrl = frame.url; // this is usually empty in Debugger.CallFrame (unlike Runtime.CallFrame)
@@ -246,11 +246,8 @@ class TrackerTracker {
                 for (const u of [frameUrl, functionLocationUrl, locationUrl]) {
                     if (u && u !== this._mainURL && u.match(HTTP_URL_REGEX)) {
                         script = u;
-                        break;
+                        break iterateAllFrames;
                     }
-                }
-                if (script) {
-                    break;
                 }
             }
         }

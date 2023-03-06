@@ -159,7 +159,7 @@ module.exports = {
         "no-invalid-this": "error",
         "no-iterator": "error",
         "no-label-var": "error",
-        "no-labels": "error",
+        "no-labels": "off",
         "no-lone-blocks": "error",
         "no-lonely-if": "error",
         "no-loop-func": "off",
