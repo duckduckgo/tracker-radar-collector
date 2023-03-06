@@ -117,7 +117,7 @@ class APICallCollector extends BaseCollector {
      * @param {TrackerTracker} trackerTracker
      * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} params
      */
-    async onDebuggerPaused(trackerTracker, params) {
+    onDebuggerPaused(trackerTracker, params) {
         const breakpoint = trackerTracker.processDebuggerPause(params);
         if (!breakpoint) {
             // it's not a breakpoint we care about
@@ -128,14 +128,13 @@ class APICallCollector extends BaseCollector {
             this._updateCallStats(breakpoint);
 
             if (breakpoint.saveArguments && params.callFrames && params.callFrames.length) {
-                try {
-                    const args = /** @type {import('devtools-protocol/types/protocol').Protocol.Debugger.EvaluateOnCallFrameResponse} */ (await trackerTracker.sendCommand('Debugger.evaluateOnCallFrame', {
-                        callFrameId: params.callFrames[0].callFrameId,
-                        expression: 'arguments',
-                        silent: true,
-                        generatePreview: true
-                    }));
-
+                // we don't use await here, so we can resume debugger as soon as possible
+                trackerTracker.sendCommand('Debugger.evaluateOnCallFrame', {
+                    callFrameId: params.callFrames[0].callFrameId,
+                    expression: 'arguments',
+                    silent: true,
+                    generatePreview: true
+                }).then(/** @param {import('devtools-protocol/types/protocol').Protocol.Debugger.EvaluateOnCallFrameResponse} args */ args => {
                     // last two properties are always `callee` and `Symbol.iterator` that are useless
                     const preview = args?.result?.preview?.properties?.slice(0, -2);
                     if (preview) {
@@ -145,9 +144,9 @@ class APICallCollector extends BaseCollector {
                             arguments: preview.map(p => p.value)
                         });
                     }
-                } catch (e) {
+                }).catch(e => {
                     this._log('Failed to get call arguments.', e.message, e.stack);
-                }
+                });
             }
         }
 

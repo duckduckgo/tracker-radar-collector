@@ -59,7 +59,7 @@ function openBrowser(log, proxyHost, executablePath) {
         // @ts-ignore there is no single object that encapsulates properties of both BrowserLaunchArgumentOptions and LaunchOptions that are allowed here
         args.executablePath = executablePath;
     }
-    console.log('Opening browser...', args);
+
     return puppeteer.launch(args);
 }
 
