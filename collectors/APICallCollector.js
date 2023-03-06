@@ -137,7 +137,7 @@ class APICallCollector extends BaseCollector {
                     }));
 
                     // last two properties are always `callee` and `Symbol.iterator` that are useless
-                    const preview = args && args.result && args.result.preview && args.result.preview.properties.slice(0, -2);
+                    const preview = args?.result?.preview?.properties?.slice(0, -2);
                     if (preview) {
                         this._calls.push({
                             source: breakpoint.source,
