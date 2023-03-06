@@ -39,7 +39,7 @@ class TrackerTracker {
      * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId} id
      * @returns {import('./breakpoints').MethodBreakpoint|import('./breakpoints').PropertyBreakpoint}
      */
-    getBreakpointById(id) {
+    _getBreakpointById(id) {
         return this._idToBreakpoint.get(id) || null;
     }
 
@@ -47,7 +47,7 @@ class TrackerTracker {
      * @param {string} breakpointDescription
      * @returns {import('./breakpoints').MethodBreakpoint|import('./breakpoints').PropertyBreakpoint}
      */
-    getBreakpointByDescription(breakpointDescription) {
+    _getBreakpointByDescription(breakpointDescription) {
         return this._descToBreakpoint.get(breakpointDescription) || null;
     }
 
@@ -179,16 +179,6 @@ class TrackerTracker {
     }
 
     /**
-     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId} id
-     */
-    async removeBreakpoint(id) {
-        await this._send('Debugger.removeBreakpoint', {
-            breakpointId: id
-        });
-        this._idToBreakpoint.delete(id);
-    }
-
-    /**
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextId} contextId
      */
     async setupContextTracking(contextId = undefined) {
@@ -310,7 +300,7 @@ class TrackerTracker {
             return null;
         }
 
-        const breakpoint = this.getBreakpointByDescription(payload.description);
+        const breakpoint = this._getBreakpointByDescription(payload.description);
         if (!breakpoint) {
             this._log('️⚠️ unknown breakpoint', params);
             return null;
@@ -330,7 +320,7 @@ class TrackerTracker {
      */
     processDebuggerPause(params) {
         const breakpointId = params.hitBreakpoints[0];
-        const breakpoint = this.getBreakpointById(breakpointId);
+        const breakpoint = this._getBreakpointById(breakpointId);
         if (!breakpoint) {
             this._log('️⚠️ unknown breakpoint', params);
             return null;
