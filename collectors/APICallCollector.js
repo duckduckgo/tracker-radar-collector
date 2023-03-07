@@ -118,38 +118,7 @@ class APICallCollector extends BaseCollector {
      * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} params
      */
     onDebuggerPaused(trackerTracker, params) {
-        const breakpoint = trackerTracker.processDebuggerPause(params);
-        if (!breakpoint) {
-            // it's not a breakpoint we care about
-            this._log(`Unknown breakpoint detected. ${params.hitBreakpoints}`);
-        }
-
-        if (breakpoint && breakpoint.source && breakpoint.description) {
-            this._updateCallStats(breakpoint);
-
-            if (breakpoint.saveArguments && params.callFrames && params.callFrames.length) {
-                // we don't use await here, so we can resume debugger as soon as possible
-                trackerTracker.sendCommand('Debugger.evaluateOnCallFrame', {
-                    callFrameId: params.callFrames[0].callFrameId,
-                    expression: 'arguments',
-                    silent: true,
-                    generatePreview: true
-                }).then(/** @param {import('devtools-protocol/types/protocol').Protocol.Debugger.EvaluateOnCallFrameResponse} args */ args => {
-                    // last two properties are always `callee` and `Symbol.iterator` that are useless
-                    const preview = args?.result?.preview?.properties?.slice(0, -2);
-                    if (preview) {
-                        this._calls.push({
-                            source: breakpoint.source,
-                            description: breakpoint.description,
-                            arguments: preview.map(p => p.value)
-                        });
-                    }
-                }).catch(e => {
-                    this._log('Failed to get call arguments.', e.message, e.stack);
-                });
-            }
-        }
-
+        // resume asap
         trackerTracker.sendCommand('Debugger.resume').catch(e => {
             const error = typeof e === 'string' ? e : e.message;
 
@@ -162,6 +131,30 @@ class APICallCollector extends BaseCollector {
                 this._incompleteData = true;
             }
         });
+
+        const breakpoint = trackerTracker.processDebuggerPause(params);
+        if (!breakpoint) {
+            // it's not a breakpoint we care about
+            this._log(`Unknown breakpoint detected. ${params.hitBreakpoints}`);
+        }
+
+        if (breakpoint && breakpoint.source && breakpoint.description) {
+            this._updateCallStats(breakpoint);
+
+            if (breakpoint.saveArguments) {
+                // the corresponding call arguments should already be stored
+
+                const call = trackerTracker.retrieveCallArguments(breakpoint.id);
+                if (call) {
+                    this._calls.push({
+                        ...call,
+                        source: breakpoint.source,
+                    });
+                } else {
+                    this._log(`Missing call arguments for breakpoint ${breakpoint.id}`);
+                }
+            }
+        }
     }
 
     /**
@@ -227,10 +220,7 @@ module.exports = APICallCollector;
  */
 
 /**
- * @typedef SavedCall
- * @property {string} source - source script
- * @property {string} description - breakpoint description
- * @property {string[]} arguments - preview or the passed arguments
+ * @typedef { import('./APICalls/TrackerTracker').SavedCall } SavedCall
  */
 
 /**

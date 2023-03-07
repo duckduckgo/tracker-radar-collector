@@ -33,6 +33,10 @@ class TrackerTracker {
          * @type {Map<string, string>}
          */
         this._scriptIdToUrl = new Map();
+        /**
+         * @type {Map<string, SavedCall>}
+         */
+        this._pendingCalls = new Map();
     }
 
     /**
@@ -123,7 +127,7 @@ class TrackerTracker {
                         }
                     }
 
-                    if (url) {
+                    if (url || ${Boolean(breakpoint.saveArguments)}) {
                         const data = {
                             description: '${description}',
                             stack: stack,
@@ -131,7 +135,9 @@ class TrackerTracker {
                             ${argumentCollection}
                         };
                         window.registerAPICall(JSON.stringify(data));
-                    } else {
+                    }
+
+                    if (!url) {
                         shouldPause = true;
                     }
                 }
@@ -157,10 +163,12 @@ class TrackerTracker {
                 condition: conditionScript
             }));
             this._idToBreakpoint.set(cdpBreakpointResult.breakpointId, {
+                cdpId: cdpBreakpointResult.breakpointId,
                 ...breakpoint,
                 description, // save concrete description
             });
             this._descToBreakpoint.set(description, {
+                cdpId: cdpBreakpointResult.breakpointId,
                 ...breakpoint,
                 description, // save concrete description
             });
@@ -274,6 +282,15 @@ class TrackerTracker {
     }
 
     /**
+     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId} breakpointId
+     */
+    retrieveCallArguments(breakpointId) {
+        const call = this._pendingCalls.get(breakpointId);
+        this._pendingCalls.delete(breakpointId);
+        return call;
+    }
+
+    /**
      * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.ScriptParsedEvent} params
      */
     processScriptParsed(params) {
@@ -303,11 +320,26 @@ class TrackerTracker {
             return null;
         }
 
+        if (!payload.url) {
+            if (breakpoint.saveArguments) {
+                // just save the arguments, the stack will be analyzed with CDP later
+                if (!this._pendingCalls.has(breakpoint.cdpId)) {
+                    this._log('Unexpected existing pending call', breakpoint.cdpId);
+                }
+                this._pendingCalls.set(breakpoint.cdpId, {
+                    arguments: payload.args,
+                    source: null,
+                    description: payload.description,
+                });
+            }
+            return null;
+        }
+
         return {
             description: payload.description,
             saveArguments: breakpoint.saveArguments,
             arguments: payload.args,
-            source: payload.url, // guaranteed to be present
+            source: payload.url,
         };
     }
 
@@ -335,3 +367,10 @@ class TrackerTracker {
 }
 
 module.exports = TrackerTracker;
+
+/**
+ * @typedef SavedCall
+ * @property {string} source - source script
+ * @property {string} description - breakpoint description
+ * @property {string[]} arguments - preview or the passed arguments
+ */
