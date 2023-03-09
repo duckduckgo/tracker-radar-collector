@@ -17,18 +17,19 @@ async function main() {
     }
 
     const expectedScripts = [
-        `${firstPartyOrigin}/crawler/attribution/`, // race condition
+        `${firstPartyOrigin}/crawler/attribution/`, // this can be flaky due to a race condition in the crawler https://app.asana.com/0/72649045549333/1204120569983283
         `${thirdPartyOrigin}/crawler/attribution/entrypoints/simple-3p-script.js`,
         `${thirdPartyOrigin}/crawler/attribution/entrypoints/createelement.js`,
         `${thirdPartyOrigin}/crawler/attribution/entrypoints/eval.js`,
-        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/dom0.js`, // https://app.asana.com/0/0/1204138450097419/f
-        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/blob-url.js`, // https://app.asana.com/0/0/1204138450097417/f
-        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/data-url.js`, // https://app.asana.com/0/0/1204138450097417/f
+        `${thirdPartyOrigin}/crawler/attribution/entrypoints/new-function.js`,
+        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/dom0.js`, // dom0 event handlers are attributed to the current page because that's the only entry in the call stack https://app.asana.com/0/0/1204138450097419/f
+        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/blob-url.js`, // blob: urls are attributed to the origin (e.g. https://example.com/1234-1234-1234-1234) https://app.asana.com/0/0/1204138450097417/f
+        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/data-url.js`, // data: urls are attributed to https://example.com/current-path/null because there's no link to the original script in stack traces https://app.asana.com/0/0/1204138450097417/f
         `${firstPartyOrigin}/crawler/attribution/entrypoints/document-write.js`,
-        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/iframe-blob-url.js`, // https://app.asana.com/0/72649045549333/1204120569983283
-        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/iframe-data-url.js`, // https://app.asana.com/0/72649045549333/1204120569983283
-        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/iframe-javascript-url.js`, // https://app.asana.com/0/72649045549333/1204120569983283
-        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/iframe-document-write.js`, // https://app.asana.com/0/72649045549333/1204120569983283
+        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/iframe-blob-url.js`, // capturing small dynamic contexts is currently flaky due to a race condition in the crawler https://app.asana.com/0/72649045549333/1204120569983283
+        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/iframe-data-url.js`, // capturing small dynamic contexts is currently flaky due to a race condition in the crawler https://app.asana.com/0/72649045549333/1204120569983283
+        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/iframe-javascript-url.js`, // capturing small dynamic contexts is currently flaky due to a race condition in the crawler https://app.asana.com/0/72649045549333/1204120569983283
+        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/iframe-document-write.js`, // capturing small dynamic contexts is currently flaky due to a race condition in the crawler https://app.asana.com/0/72649045549333/1204120569983283
         `${thirdPartyOrigin}/crawler/attribution/iframe-sandbox.html`,
         `${thirdPartyOrigin}/crawler/attribution/iframe-simple.html`,
         `${thirdPartyOrigin}/crawler/attribution/entrypoints/eventlistener.js`,
@@ -37,9 +38,10 @@ async function main() {
         `${thirdPartyOrigin}/crawler/attribution/entrypoints/module.mjs`,
         `${thirdPartyOrigin}/crawler/attribution/entrypoints/deep-stack.js`,
         `${thirdPartyOrigin}/crawler/attribution/entrypoints/deep-async-stack.js`,
-        // `${firstPartyOrigin}/crawler/attribution/worker-source.js`, // https://app.asana.com/0/72649045549333/1204120569983283
-        // `${firstPartyOrigin}/crawler/attribution/sw-source.js`, // https://app.asana.com/0/72649045549333/1204120569983283
-        `${thirdPartyOrigin}/crawler/attribution/entrypoints/prototype-overload.js`,
+        // `${firstPartyOrigin}/crawler/attribution/worker-source.js`, // capturing small dynamic contexts is currently flaky due to a race condition in the crawler https://app.asana.com/0/72649045549333/1204120569983283
+        // `${firstPartyOrigin}/crawler/attribution/sw-source.js`, // capturing small dynamic contexts is currently flaky due to a race condition in the crawler https://app.asana.com/0/72649045549333/1204120569983283
+        `${firstPartyOrigin}/crawler/attribution/entrypoints/prototype-overload.js`,
+        // `${thirdPartyOrigin}/crawler/attribution/entrypoints/reusing-1p-prototype.js`, // calls like this are currently attributed to the intermediate script, see https://app.asana.com/0/0/1204144855579740/f
     ];
     for (const url of expectedScripts) {
         assert(url in apiData.data.apis.callStats, `Missing ${url} script`);
