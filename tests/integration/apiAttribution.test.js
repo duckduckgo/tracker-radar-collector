@@ -40,8 +40,10 @@ async function main() {
         `${thirdPartyOrigin}/crawler/attribution/entrypoints/deep-async-stack.js`,
         // `${firstPartyOrigin}/crawler/attribution/worker-source.js`, // capturing small dynamic contexts is currently flaky due to a race condition in the crawler https://app.asana.com/0/72649045549333/1204120569983283
         // `${firstPartyOrigin}/crawler/attribution/sw-source.js`, // capturing small dynamic contexts is currently flaky due to a race condition in the crawler https://app.asana.com/0/72649045549333/1204120569983283
-        `${firstPartyOrigin}/crawler/attribution/entrypoints/prototype-overload.js`,
+        `${firstPartyOrigin}/crawler/attribution/entrypoints/1p-prototype-overload.js`,
         // `${thirdPartyOrigin}/crawler/attribution/entrypoints/reusing-1p-prototype.js`, // calls like this are currently attributed to the intermediate script, see https://app.asana.com/0/0/1204144855579740/f
+        `${thirdPartyOrigin}/crawler/attribution/entrypoints/3p-prototype-overload.js`,
+        // `${firstPartyOrigin}/crawler/attribution/entrypoints/reusing-3p-prototype.js`, // calls like this are currently attributed to the intermediate script, see https://app.asana.com/0/0/1204144855579740/f
     ];
     for (const url of expectedScripts) {
         assert(url in apiData.data.apis.callStats, `Missing ${url} script`);
