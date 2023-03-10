@@ -1,8 +1,43 @@
 /* eslint-disable max-lines */
+const fs = require('fs');
+const path = require('path');
 const MAX_ASYNC_CALL_STACK_DEPTH = 32;// max depth of async calls tracked
 const allBreakpoints = require('./breakpoints.js');
 const URL = require('url').URL;
 const HTTP_URL_REGEX = /^https?:\/\//i;
+
+const breakpointScriptTemplate = fs.readFileSync(path.join(__dirname, 'breakpointScript.template.js'), 'utf8');
+
+/**
+ * @param {import('./breakpoints').Breakpoint} breakpoint
+ * @param {string} description
+ * @returns string
+ */
+function getBreakpointScript(breakpoint, description) {
+    // only save arguments if requested for given breakpoint
+    const argumentCollection = breakpoint.saveArguments ? `args: Array.from(arguments).map(a => a.toString())` : '';
+
+    let breakpointScript = breakpointScriptTemplate
+        .replace('ARGUMENT_COLLECTION', argumentCollection)
+        .replace('DESCRIPTION', description)
+        .replace('SAVE_ARGUMENTS', breakpoint.saveArguments ? 'true' : 'false');
+
+    // if breakpoint comes with an condition only count it when this condition is met
+    if (breakpoint.condition) {
+        breakpointScript = `
+            if (!!(${breakpoint.condition})) {
+                ${breakpointScript}
+            }
+        `;
+    }
+    breakpointScript = `
+        let shouldPause = false;
+        ${breakpointScript}
+        shouldPause;
+    `;
+
+    return breakpointScript;
+}
 
 class TrackerTracker {
     /**
@@ -18,11 +53,11 @@ class TrackerTracker {
          */
         this._send = sendCommand;
         /**
-         * @type {Map<import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId, import('./breakpoints').MethodBreakpoint|import('./breakpoints').PropertyBreakpoint>}
+         * @type {Map<import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId, import('./breakpoints').Breakpoint>}
          */
         this._idToBreakpoint = new Map();
         /**
-         * @type {Map<string, import('./breakpoints').MethodBreakpoint|import('./breakpoints').PropertyBreakpoint>}
+         * @type {Map<string, import('./breakpoints').Breakpoint>}
          */
         this._descToBreakpoint = new Map();
         /**
@@ -41,7 +76,7 @@ class TrackerTracker {
 
     /**
      * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId} id
-     * @returns {import('./breakpoints').MethodBreakpoint|import('./breakpoints').PropertyBreakpoint}
+     * @returns {import('./breakpoints').Breakpoint}
      */
     _getBreakpointById(id) {
         return this._idToBreakpoint.get(id) || null;
@@ -49,7 +84,7 @@ class TrackerTracker {
 
     /**
      * @param {string} breakpointDescription
-     * @returns {import('./breakpoints').MethodBreakpoint|import('./breakpoints').PropertyBreakpoint}
+     * @returns {import('./breakpoints').Breakpoint}
      */
     _getBreakpointByDescription(breakpointDescription) {
         return this._descToBreakpoint.get(breakpointDescription) || null;
@@ -88,7 +123,7 @@ class TrackerTracker {
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextId} contextId
      * @param {string} expression
      * @param {string} description
-     * @param {import('./breakpoints').MethodBreakpoint|import('./breakpoints').PropertyBreakpoint} breakpoint
+     * @param {import('./breakpoints').Breakpoint} breakpoint
      */
     async _addBreakpoint(contextId, expression, description, breakpoint) {
         try {
@@ -106,57 +141,7 @@ class TrackerTracker {
                 throw new Error('API unavailable in given context.');
             }
 
-            // only save arguments if requested for given breakpoint
-            const argumentCollection = breakpoint.saveArguments ? `args: Array.from(arguments).map(a => a.toString())` : '';
-
-            let conditionScript = `
-                const stack = (new Error()).stack;
-                if (typeof stack !== "string") {
-                    shouldPause = true;
-                } else {
-                    const lines = stack.split('\\n');
-                    const STACK_SOURCE_REGEX = /(\\()?(https?:[^)]+):[0-9]+:[0-9]+(\\))?/i;
-                    let url = null;
-
-                    for (let line of lines) {
-                        const lineData = line.match(STACK_SOURCE_REGEX);
-
-                        if (lineData) {
-                            url = lineData[2];
-                            break;
-                        }
-                    }
-
-                    if (url || ${Boolean(breakpoint.saveArguments)}) {
-                        const data = {
-                            description: '${description}',
-                            stack: stack,
-                            url: url,
-                            ${argumentCollection}
-                        };
-                        window.registerAPICall(JSON.stringify(data));
-                    }
-
-                    if (!url) {
-                        shouldPause = true;
-                    }
-                }
-
-            `;
-
-            // if breakpoint comes with an condition only count it when this condition is met
-            if (breakpoint.condition) {
-                conditionScript = `
-                    if (!!(${breakpoint.condition})) {
-                        ${conditionScript}
-                    }
-                `;
-            }
-            conditionScript = `
-                let shouldPause = false;
-                ${conditionScript}
-                shouldPause;
-            `;
+            const conditionScript = getBreakpointScript(breakpoint, description);
 
             const cdpBreakpointResult = /** @type {import('devtools-protocol/types/protocol').Protocol.Debugger.SetBreakpointOnFunctionCallResponse} */ (await this._send('Debugger.setBreakpointOnFunctionCall', {
                 objectId: result.result.objectId,

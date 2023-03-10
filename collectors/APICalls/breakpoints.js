@@ -627,3 +627,7 @@ module.exports = breakpoints;
  * @property {boolean=} setter - hook up to a property setter instead of getter (which is a default)
  * @property {string=} cdpId - optional breakpointID from CDP
  */
+
+ /**
+  * @typedef {MethodBreakpoint | PropertyBreakpoint} Breakpoint
+  */
