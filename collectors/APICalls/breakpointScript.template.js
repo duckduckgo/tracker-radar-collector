@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable no-undef */
 const stack = (new Error()).stack;
 if (typeof stack === "string") {
