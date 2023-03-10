@@ -45,10 +45,17 @@ async function main() {
         `${thirdPartyOrigin}/crawler/attribution/entrypoints/3p-prototype-overload.js`,
         // `${firstPartyOrigin}/crawler/attribution/entrypoints/reusing-3p-prototype.js`, // calls like this are currently attributed to the intermediate script, see https://app.asana.com/0/0/1204144855579740/f
     ];
+    const errors = [];
     for (const url of expectedScripts) {
-        assert(url in apiData.data.apis.callStats, `Missing ${url} script`);
-        assert(apiData.data.apis.callStats[url]["Navigator.prototype.userAgent"], `Missing a call from ${url} script`);
+        if (!(url in apiData.data.apis.callStats)) {
+            errors.push(`Missing ${url} script`);
+            continue;
+        }
+        if (!apiData.data.apis.callStats[url]["Navigator.prototype.userAgent"]) {
+            errors.push(`Missing a call from ${url} script`);
+        }
     }
+    assert(errors.length === 0, 'Missing some API calls:\n' + errors.join('\n'));
 }
 
 main();
