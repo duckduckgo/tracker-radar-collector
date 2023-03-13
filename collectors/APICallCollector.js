@@ -29,6 +29,12 @@ class APICallCollector extends BaseCollector {
      */
     async addTarget({cdpClient, url}) {
         const trackerTracker = new TrackerTracker(cdpClient.send.bind(cdpClient));
+        try {
+            await trackerTracker.init({log: this._log});
+        } catch(e) {
+            this._log('TrackerTracker init failed.');
+            throw e;
+        }
         trackerTracker.setMainURL(url.toString());
 
         cdpClient.on('Debugger.scriptParsed', this.onScriptParsed.bind(this, trackerTracker));
@@ -36,13 +42,6 @@ class APICallCollector extends BaseCollector {
         cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCreated.bind(this, trackerTracker, cdpClient));
         cdpClient.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, trackerTracker));
         await cdpClient.send('Runtime.addBinding', {name: 'registerAPICall'});
-
-        try {
-            await trackerTracker.init({log: this._log});
-        } catch(e) {
-            this._log('TrackerTracker init failed.');
-            throw e;
-        }
     }
 
     /**
