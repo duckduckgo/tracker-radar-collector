@@ -12,6 +12,7 @@ const DEFAULT_VIEWPORT = {
     width: 1440,//px
     height: 812//px
 };
+
 const MOBILE_VIEWPORT = {
     width: 412,
     height: 691,
