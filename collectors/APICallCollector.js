@@ -37,6 +37,14 @@ class APICallCollector extends BaseCollector {
         }
         trackerTracker.setMainURL(url.toString());
 
+        await cdpClient.send('Network.enable');
+        await cdpClient.send('Network.setBlockedURLs', {urls: [
+            'https://*.googletagmanager.com/*',
+            'http://*.googletagmanager.com/*',
+            'https://googletagmanager.com/*',
+            'http://googletagmanager.com/*',
+        ]});
+
         cdpClient.on('Debugger.scriptParsed', this.onScriptParsed.bind(this, trackerTracker));
         cdpClient.on('Debugger.paused', this.onDebuggerPaused.bind(this, trackerTracker));
         cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCreated.bind(this, trackerTracker, cdpClient));
