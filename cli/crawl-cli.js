@@ -184,8 +184,8 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
     const endTime = new Date();
     console.log('JQUERY, REACT:', jqueryCases.length, reactCases.length);
-    fs.writeFileSync('jqueryCases.txt', jqueryCases.join('\n'));
-    fs.writeFileSync('reactCases.txt', reactCases.join('\n'));
+    fs.writeFileSync('jqueryCases.json', JSON.stringify(jqueryCases, null, 4));
+    fs.writeFileSync('reactCases.json', JSON.stringify(reactCases, null, 4));
 
     await Promise.all(reporters.map(reporter => reporter.cleanup({endTime, successes, failures, urls: urlsLength})));
 

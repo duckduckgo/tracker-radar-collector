@@ -10,10 +10,10 @@ const REACT_REGEX = /react/i;
 
 const breakpointScriptTemplate = fs.readFileSync(path.join(__dirname, 'breakpointScript.template.js'), 'utf8');
 
-/** @type {string[]} */
-const reactCases = [];
-/** @type {string[]} */
-const jqueryCases = [];
+/** @type {{[k: string]: string[]}} */
+const reactCases = {};
+/** @type {{[k: string]: string[]}} */
+const jqueryCases = {};
 
 /**
  * @param {import('./breakpoints').Breakpoint} breakpoint
@@ -308,10 +308,18 @@ class TrackerTracker {
         }
 
         if (jqueryDomain && !script.includes(jqueryDomain)) {
-            jqueryCases.push(jqueryDomain);
+            if (jqueryDomain in jqueryCases) {
+                jqueryCases[jqueryDomain].push(script);
+            } else {
+                jqueryCases[jqueryDomain] = [script];
+            }
         }
         if (reactDomain && !script.includes(reactDomain)) {
-            reactCases.push(reactDomain);
+            if (reactDomain in reactCases) {
+                reactCases[reactDomain].push(script);
+            } else {
+                reactCases[reactDomain] = [script];
+            }
         }
 
         return script;
@@ -372,10 +380,18 @@ class TrackerTracker {
         }
 
         if (payload.jqueryDomain && !payload.url.includes(payload.jqueryDomain)) {
-            jqueryCases.push(payload.jqueryDomain);
+            if (payload.jqueryDomain in jqueryCases) {
+                jqueryCases[payload.jqueryDomain].push(payload.url);
+            } else {
+                jqueryCases[payload.jqueryDomain] = [payload.url];
+            }
         }
         if (payload.reactDomain && !payload.url.includes(payload.reactDomain)) {
-            reactCases.push(payload.reactDomain);
+            if (payload.reactDomain in reactCases) {
+                reactCases[payload.reactDomain].push(payload.url);
+            } else {
+                reactCases[payload.reactDomain] = [payload.url];
+            }
         }
 
         return {
