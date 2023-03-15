@@ -15,6 +15,7 @@ const {createUniqueUrlName} = require('../helpers/hash');
 const BaseCollector = require('../collectors/BaseCollector');
 // eslint-disable-next-line no-unused-vars
 const BaseReporter = require('../reporters/BaseReporter');
+const { jqueryCases, reactCases } = require('../collectors/APICalls/TrackerTracker');
 
 program
     .option('-o, --output <path>', 'output folder')
@@ -182,6 +183,9 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
     }
 
     const endTime = new Date();
+    console.log('JQUERY, REACT:', jqueryCases.length, reactCases.length);
+    fs.writeFileSync('jqueryCases.txt', jqueryCases.join('\n'));
+    fs.writeFileSync('reactCases.txt', reactCases.join('\n'));
 
     await Promise.all(reporters.map(reporter => reporter.cleanup({endTime, successes, failures, urls: urlsLength})));
 

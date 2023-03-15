@@ -1,5 +1,5 @@
 const BaseCollector = require('./BaseCollector');
-const TrackerTracker = require('./APICalls/TrackerTracker');
+const {TrackerTracker} = require('./APICalls/TrackerTracker');
 const URL = require('url').URL;
 
 class APICallCollector extends BaseCollector {
@@ -25,7 +25,7 @@ class APICallCollector extends BaseCollector {
     }
 
     /**
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo 
+     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo
      */
     async addTarget({cdpClient, url}) {
         const trackerTracker = new TrackerTracker(cdpClient.send.bind(cdpClient));

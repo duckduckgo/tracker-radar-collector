@@ -4,9 +4,16 @@ const path = require('path');
 const MAX_ASYNC_CALL_STACK_DEPTH = 32;// max depth of async calls tracked
 const allBreakpoints = require('./breakpoints.js');
 const URL = require('url').URL;
-const HTTP_URL_REGEX = /^https?:\/\//i;
+const HTTP_URL_REGEX = /^https?:\/\/([^/]+)/i;
+const JQUERY_REGEX = /jquery/i;
+const REACT_REGEX = /react/i;
 
 const breakpointScriptTemplate = fs.readFileSync(path.join(__dirname, 'breakpointScript.template.js'), 'utf8');
+
+/** @type {string[]} */
+const reactCases = [];
+/** @type {string[]} */
+const jqueryCases = [];
 
 /**
  * @param {import('./breakpoints').Breakpoint} breakpoint
@@ -15,7 +22,7 @@ const breakpointScriptTemplate = fs.readFileSync(path.join(__dirname, 'breakpoin
  */
 function getBreakpointScript(breakpoint, description) {
     // only save arguments if requested for given breakpoint
-    const argumentCollection = breakpoint.saveArguments ? `args: Array.from(arguments).map(a => a.toString())` : '';
+    const argumentCollection = breakpoint.saveArguments ? `Array.from(arguments).map(a => a.toString())` : '[]';
 
     let breakpointScript = breakpointScriptTemplate
         .replace('ARGUMENT_COLLECTION', argumentCollection)
@@ -205,13 +212,30 @@ class TrackerTracker {
      * @returns {string}
      */
     _getScriptURLFromStackTrace(params) {
+        let jqueryDomain = '';
+        let reactDomain = '';
         if (params.callFrames) {
-            for (const frame of params.callFrames) {
+            allFrames: for (const frame of params.callFrames) {
                 const fileUrl = frame.scriptId && this._scriptIdToUrl.get(frame.scriptId);
                 const frameUrl = frame.url;
                 for (const u of [frameUrl, fileUrl]) {
-                    if (u && u !== this._mainURL && u.match(HTTP_URL_REGEX)) {
-                        return u;
+                    if (u && u !== this._mainURL) {
+                        const mat = u.match(HTTP_URL_REGEX);
+                        if (mat) {
+                            if (JQUERY_REGEX.test(u)) {
+                                jqueryDomain = mat[1];
+                                continue allFrames;
+                            }
+                            if (REACT_REGEX.test(u)) {
+                                reactDomain = mat[1];
+                                continue allFrames;
+                            }
+                            return {
+                                script: u,
+                                jqueryDomain,
+                                reactDomain,
+                            };
+                        }
                     }
                 }
             }
@@ -219,7 +243,11 @@ class TrackerTracker {
         if (params.parent) {
             return this._getScriptURLFromStackTrace(params.parent);
         }
-        return null;
+        return {
+            script: null,
+            jqueryDomain,
+            reactDomain,
+        };
     }
 
     /**
@@ -230,6 +258,8 @@ class TrackerTracker {
      */
     _getScriptURLFromPausedEvent(params) {
         let script = null;
+        let jqueryDomain = '';
+        let reactDomain = '';
         if (params.callFrames) {
             iterateAllFrames: for (const frame of params.callFrames) {
                 const locationUrl = frame.location && this._scriptIdToUrl.get(frame.location.scriptId);
@@ -237,16 +267,30 @@ class TrackerTracker {
                 const frameUrl = frame.url; // this is usually empty in Debugger.CallFrame (unlike Runtime.CallFrame)
 
                 for (const u of [frameUrl, functionLocationUrl, locationUrl]) {
-                    if (u && u !== this._mainURL && u.match(HTTP_URL_REGEX)) {
-                        script = u;
-                        break iterateAllFrames;
+                    if (u && u !== this._mainURL) {
+                        const mat = u.match(HTTP_URL_REGEX);
+                        if (mat) {
+                            if (REACT_REGEX.test(u)) {
+                                reactDomain = mat[1];
+                                continue iterateAllFrames;
+                            }
+                            if (JQUERY_REGEX.test(u)) {
+                                jqueryDomain = mat[1];
+                                continue iterateAllFrames;
+                            }
+                            script = u;
+                            break iterateAllFrames;
+                        }
                     }
                 }
             }
         }
 
         if (!script && params.asyncStackTrace) {
-            script = this._getScriptURLFromStackTrace(params.asyncStackTrace);
+            const r = this._getScriptURLFromStackTrace(params.asyncStackTrace);
+            script = r.script;
+            jqueryDomain = jqueryDomain || r.jqueryDomain;
+            reactDomain = reactDomain || r.reactDomain;
         }
 
         try {
@@ -261,6 +305,13 @@ class TrackerTracker {
         if (!script) {
             this._log('⚠️ unknown source, assuming global');
             script = this._mainURL;
+        }
+
+        if (jqueryDomain && !script.includes(jqueryDomain)) {
+            jqueryCases.push(jqueryDomain);
+        }
+        if (reactDomain && !script.includes(reactDomain)) {
+            reactCases.push(reactDomain);
         }
 
         return script;
@@ -320,6 +371,13 @@ class TrackerTracker {
             return null;
         }
 
+        if (payload.jqueryDomain && !payload.url.includes(payload.jqueryDomain)) {
+            jqueryCases.push(payload.jqueryDomain);
+        }
+        if (payload.reactDomain && !payload.url.includes(payload.reactDomain)) {
+            reactCases.push(payload.reactDomain);
+        }
+
         return {
             description: payload.description,
             saveArguments: breakpoint.saveArguments,
@@ -333,6 +391,7 @@ class TrackerTracker {
      * @returns {{id: import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId, description: string, source: string, saveArguments: boolean}}
      */
     processDebuggerPause(params) {
+        // console.log(params);
         const breakpointId = params.hitBreakpoints[0];
         const breakpoint = this._getBreakpointById(breakpointId);
         if (!breakpoint) {
@@ -351,7 +410,11 @@ class TrackerTracker {
     }
 }
 
-module.exports = TrackerTracker;
+module.exports = {
+    TrackerTracker,
+    reactCases,
+    jqueryCases,
+};
 
 /**
  * @typedef SavedCall
