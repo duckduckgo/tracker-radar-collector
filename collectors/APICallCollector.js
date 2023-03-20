@@ -9,7 +9,7 @@ class APICallCollector extends BaseCollector {
     }
 
     /**
-     * @param {import('./BaseCollector').CollectorInitOptions} options 
+     * @param {import('./BaseCollector').CollectorInitOptions} options
      */
     init({log}) {
         /**
@@ -20,6 +20,7 @@ class APICallCollector extends BaseCollector {
          * @type {SavedCall[]}
          */
         this._calls = [];
+        this._incompleteData = false;
         this._log = log;
     }
 
@@ -30,9 +31,11 @@ class APICallCollector extends BaseCollector {
         const trackerTracker = new TrackerTracker(cdpClient.send.bind(cdpClient));
         trackerTracker.setMainURL(url.toString());
 
+        cdpClient.on('Debugger.scriptParsed', this.onScriptParsed.bind(this, trackerTracker));
+        cdpClient.on('Debugger.paused', this.onDebuggerPaused.bind(this, trackerTracker));
+        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCreated.bind(this, trackerTracker, cdpClient));
         cdpClient.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, trackerTracker));
         await cdpClient.send('Runtime.addBinding', {name: 'registerAPICall'});
-        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCrated.bind(this, trackerTracker, cdpClient));
 
         try {
             await trackerTracker.init({log: this._log});
@@ -45,9 +48,9 @@ class APICallCollector extends BaseCollector {
     /**
      * @param {TrackerTracker} trackerTracker
      * @param {import('puppeteer').CDPSession} cdpClient
-     * @param {{context: {id: string, origin: string, auxData: {type: string}}}} params 
+     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextCreatedEvent} params
      */
-    async onExecutionContextCrated(trackerTracker, cdpClient, params) {
+    async onExecutionContextCreated(trackerTracker, cdpClient, params) {
         // ignore context created by puppeteer / our crawler
         if ((!params.context.origin || params.context.origin === '://') && params.context.auxData.type === 'isolated') {
             return;
@@ -58,30 +61,46 @@ class APICallCollector extends BaseCollector {
 
     /**
      * @param {TrackerTracker} trackerTracker
+     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.ScriptParsedEvent} params
+     */
+    async onScriptParsed(trackerTracker, params) {
+        await trackerTracker.processScriptParsed(params);
+    }
+
+
+    /**
+     * @param {{source: string, description: string}} breakpointInfo
+     */
+    _updateCallStats(breakpointInfo) {
+        let sourceStats = null;
+        if (this._stats.has(breakpointInfo.source)) {
+            sourceStats = this._stats.get(breakpointInfo.source);
+        } else {
+            sourceStats = new Map();
+            this._stats.set(breakpointInfo.source, sourceStats);
+        }
+
+        let count = 0;
+
+        if (sourceStats.has(breakpointInfo.description)) {
+            count = sourceStats.get(breakpointInfo.description);
+        }
+
+        sourceStats.set(breakpointInfo.description, count + 1);
+    }
+
+    /**
+     * @param {TrackerTracker} trackerTracker
      * @param {{name: string, payload: string, description: string, executionContextId: number}} params
      */
     onBindingCalled(trackerTracker, params) {
         if (params.name !== 'registerAPICall') {
             return;
         }
-        const breakpoint = trackerTracker.processDebuggerPause(params);
+        const breakpoint = trackerTracker.processBindingPause(params);
 
         if (breakpoint && breakpoint.source && breakpoint.description) {
-            let sourceStats = null;
-            if (this._stats.has(breakpoint.source)) {
-                sourceStats = this._stats.get(breakpoint.source);
-            } else {
-                sourceStats = new Map();
-                this._stats.set(breakpoint.source, sourceStats);
-            }
-    
-            let count = 0;
-    
-            if (sourceStats.has(breakpoint.description)) {
-                count = sourceStats.get(breakpoint.description);
-            }
-    
-            sourceStats.set(breakpoint.description, count + 1);
+            this._updateCallStats(breakpoint);
 
             if (breakpoint.saveArguments) {
                 this._calls.push({
@@ -91,11 +110,55 @@ class APICallCollector extends BaseCollector {
                 });
             }
         }
+    }
 
+    // TODO: IMPORTANT! This will resume all breakpoints, including ones from `debugger` and set by other collectors. Make sure we don't use onDebuggerPaused in other places.
+    /**
+     * @param {TrackerTracker} trackerTracker
+     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} params
+     */
+    onDebuggerPaused(trackerTracker, params) {
+        // resume asap
+        trackerTracker.sendCommand('Debugger.resume').catch(e => {
+            const error = typeof e === 'string' ? e : e.message;
+
+            if (error.includes('Target closed.') || error.includes('Session closed.')) {
+                // we don't care if tab was closed during this opperation
+            } else {
+                if (error.includes('Operation timed out')) {
+                    this._log('Debugger got stuck.');
+                }
+                this._incompleteData = true;
+            }
+        });
+
+        const breakpoint = trackerTracker.processDebuggerPause(params);
+        if (!breakpoint) {
+            // it's not a breakpoint we care about
+            this._log(`Unknown breakpoint detected. ${params.hitBreakpoints}`);
+        }
+
+        if (breakpoint && breakpoint.source && breakpoint.description) {
+            this._updateCallStats(breakpoint);
+
+            if (breakpoint.saveArguments) {
+                // the corresponding call arguments should already be stored
+
+                const call = trackerTracker.retrieveCallArguments(breakpoint.id);
+                if (call) {
+                    this._calls.push({
+                        ...call,
+                        source: breakpoint.source,
+                    });
+                } else {
+                    this._log(`Missing call arguments for breakpoint ${breakpoint.id}`);
+                }
+            }
+        }
     }
 
     /**
-     * @param {string} urlString 
+     * @param {string} urlString
      * @param {function(string):boolean} urlFilter
      */
     isAcceptableUrl(urlString, urlFilter) {
@@ -121,6 +184,10 @@ class APICallCollector extends BaseCollector {
      * @returns {{callStats: Object<string, APICallData>, savedCalls: SavedCall[]}}
      */
     getData({urlFilter}) {
+        if (this._incompleteData) {
+            throw new Error('Collected data might be incomplete because of an runtime error.');
+        }
+
         /**
          * @type {Object<string, APICallData>}
          */
@@ -153,10 +220,7 @@ module.exports = APICallCollector;
  */
 
 /**
- * @typedef SavedCall
- * @property {string} source - source script
- * @property {string} description - breakpoint description
- * @property {string[]} arguments - preview or the passed arguments
+ * @typedef { import('./APICalls/TrackerTracker').SavedCall } SavedCall
  */
 
 /**

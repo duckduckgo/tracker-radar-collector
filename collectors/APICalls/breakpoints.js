@@ -614,6 +614,7 @@ module.exports = breakpoints;
  * @property {string=} description - human redable description of a breakpoint
  * @property {string=} condition - additional condition that has to be truthy for the breakpoint to fire
  * @property {boolean=} saveArguments - save arguments of each call (defaults to false)
+ * @property {string=} cdpId - optional breakpointID from CDP
  */
 
  /**
@@ -624,4 +625,9 @@ module.exports = breakpoints;
  * @property {string=} condition - additional condition that has to be truthy for the breakpoint to fire
  * @property {boolean=} saveArguments - save arguments of each call (defaults to false)
  * @property {boolean=} setter - hook up to a property setter instead of getter (which is a default)
+ * @property {string=} cdpId - optional breakpointID from CDP
  */
+
+ /**
+  * @typedef {MethodBreakpoint | PropertyBreakpoint} Breakpoint
+  */
