@@ -1,4 +1,5 @@
 const {VISUAL_DEBUG} = require('../constants');
+const {getDefaultChromium} = require('../helpers/chromiumDownload');
 const LocalChrome = require('./LocalChrome');
 
 /**
@@ -29,7 +30,7 @@ async function openBrowser(log, proxyHost, executablePath) {
     const browser = new LocalChrome({
         extraArgs,
         headless: !VISUAL_DEBUG,
-        executablePath,
+        executablePath: executablePath || await getDefaultChromium(log),
     });
     await browser.start();
 

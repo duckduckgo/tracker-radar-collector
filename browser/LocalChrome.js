@@ -52,7 +52,6 @@ class LocalChrome extends BaseBrowser {
      */
     async start() {
         this.userDataDir = await mkdtemp(this._getProfilePath());
-        console.log('starting with', this.userDataDir);
 
         const devtools = !this.options.headless;
         const headless = this.options.headless ? 'new' : false;
@@ -66,9 +65,7 @@ class LocalChrome extends BaseBrowser {
         chromeArguments.push(`--remote-debugging-port=0`);
 
         this.runner = new BrowserRunner('chrome', this.options.executablePath, chromeArguments, this.userDataDir, true);
-        console.log('runner', this.runner);
         this.runner.start(this.launchOptions);
-        console.log('runner started');
     }
 
     /**

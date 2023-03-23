@@ -2,12 +2,11 @@ const os = require('os');
 const cores = os.cpus().length;
 const chalk = require('chalk').default;
 const async = require('async');
-const {PUPPETEER_REVISIONS} = require('puppeteer-core/lib/cjs/puppeteer/revisions.js');
 const crawl = require('./crawler');
 const URL = require('url').URL;
 const {createTimer} = require('./helpers/timer');
 const createDeferred = require('./helpers/deferred');
-const downloadCustomChromium = require('./helpers/downloadCustomChromium');
+const {downloadCustomChromium} = require('./helpers/chromiumDownload');
 // eslint-disable-next-line no-unused-vars
 const BaseCollector = require('./collectors/BaseCollector');
 const notABot = require('./helpers/notABot');
@@ -106,8 +105,8 @@ module.exports = async options => {
      * @type {string}
      */
     let executablePath;
-    if (!options.seleniumHub) {
-        executablePath = await downloadCustomChromium(log, options.chromiumVersion || PUPPETEER_REVISIONS.chromium);
+    if (options.chromiumVersion && !options.seleniumHub) {
+        executablePath = await downloadCustomChromium(log, options.chromiumVersion);
     }
 
     async.eachOfLimit(options.urls, numberOfCrawlers, (urlItem, idx, callback) => {
