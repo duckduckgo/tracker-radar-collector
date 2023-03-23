@@ -104,11 +104,6 @@ class Crawler {
                     source: `(${this.options.runInEveryFrame})()`
                 });
             }
-
-            if (!this.mainPageTarget) {
-                this.mainPageTarget = targetInfo;
-                this._mainPageDeferred.resolve(targetInfo);
-            }
         }
 
         await session.send('Runtime.enable');
@@ -123,6 +118,11 @@ class Crawler {
         }
 
         await session.send('Runtime.runIfWaitingForDebugger');
+
+        if (!this.mainPageTarget && targetInfo.type === 'page') {
+            this.mainPageTarget = targetInfo;
+            this._mainPageDeferred.resolve(targetInfo);
+        }
     }
 
     /**
@@ -183,7 +183,6 @@ class Crawler {
                  */
                 const lifecycleHandler = async e => {
                     if (e.name === 'networkIdle') {
-                        this.log(`network idle in ${mainTarget.url}: frameId: ${e.frameId}; mainFrameId: ${this.mainFrameId}`);
                         if (e.frameId === await this._mainFrameDeferred.promise) {
                             this.log(chalk.green(`network idle in ${mainTarget.url}`));
                             mainTarget.session.off('Page.lifecycleEvent', lifecycleHandler);
