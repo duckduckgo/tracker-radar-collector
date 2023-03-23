@@ -1,3 +1,4 @@
+const path = require('path');
 const puppeteer = require('puppeteer');
 const ProgressBar = require('progress');
 const chalk = require('chalk').default;
@@ -8,11 +9,14 @@ const chalk = require('chalk').default;
  * @returns {Promise<string>} executable path of the downloaded Chromium
  */
 async function downloadCustomChromium(log, version) {
-    /**
-     * @type {import('puppeteer').BrowserFetcher}
-     */
-    // @ts-ignore for some reason createBrowserFetcher is missing from the typescript definition?
-    const browserFetcher = puppeteer.createBrowserFetcher();
+    const browserFetcher = puppeteer.createBrowserFetcher({
+        path: path.join(__dirname, '..', 'chromium'),
+    });
+    const revInfo = browserFetcher.revisionInfo(version);
+    if (revInfo.local) {
+        log(chalk.blue(`⬇ Using existing version of Chromium - ${version}.`));
+        return revInfo.executablePath;
+    }
     const canDownload = await browserFetcher.canDownload(version);
 
     if (!canDownload) {
