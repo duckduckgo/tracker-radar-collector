@@ -2,6 +2,7 @@ const os = require('os');
 const cores = os.cpus().length;
 const chalk = require('chalk').default;
 const async = require('async');
+const {PUPPETEER_REVISIONS} = require('puppeteer-core/lib/cjs/puppeteer/revisions.js');
 const crawl = require('./crawler');
 const URL = require('url').URL;
 const {createTimer} = require('./helpers/timer');
@@ -35,21 +36,35 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
      */
     const prefixedLog = (...msg) => log(chalk.gray(`${url.hostname}:`), ...msg);
 
-    const data = await crawl(url, {
-        log: prefixedLog,
-        // @ts-ignore
-        collectors: dataCollectors.map(collector => new collector.constructor()),
-        filterOutFirstParty,
-        emulateMobile,
-        proxyHost,
-        runInEveryFrame: antiBotDetection ? notABot : undefined,
-        executablePath,
-        maxLoadTimeMs,
-        extraExecutionTimeMs,
-        collectorFlags,
-    });
+    let browserConnection = null;
+    let driver = null;
 
-    dataCallback(url, data);
+    try {
+        const data = await crawl(url, {
+            log: prefixedLog,
+            // @ts-ignore
+            collectors: dataCollectors.map(collector => new collector.constructor()),
+            filterOutFirstParty,
+            emulateMobile,
+            proxyHost,
+            runInEveryFrame: antiBotDetection ? notABot : undefined,
+            executablePath,
+            maxLoadTimeMs,
+            extraExecutionTimeMs,
+            collectorFlags,
+            browserConnection,
+        });
+
+        dataCallback(url, data);
+    } finally {
+        if (driver && !VISUAL_DEBUG) {
+            try {
+                await driver.quit();
+            } catch (e) {
+                prefixedLog(chalk.red(`Could not clean up remote browser`), chalk.gray(e.message));
+            }
+        }
+    }
 }
 
 /**
@@ -69,13 +84,7 @@ module.exports = async options => {
     }
     log(chalk.cyan(`Number of crawlers: ${numberOfCrawlers}\n`));
 
-    /**
-     * @type {string}
-     */
-    let executablePath;
-    if (options.chromiumVersion) {
-        executablePath = await downloadCustomChromium(log, options.chromiumVersion);
-    }
+    const executablePath = await downloadCustomChromium(log, options.chromiumVersion || PUPPETEER_REVISIONS.chromium);
 
     async.eachOfLimit(options.urls, numberOfCrawlers, (urlItem, idx, callback) => {
         const urlString = (typeof urlItem === 'string') ? urlItem : urlItem.url;
@@ -93,6 +102,7 @@ module.exports = async options => {
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {
+                console.log(err);
                 log(chalk.red(`Max number of retries (${MAX_NUMBER_OF_RETRIES}) exceeded for "${urlString}".`));
                 failureCallback(urlString, err);
             } else {

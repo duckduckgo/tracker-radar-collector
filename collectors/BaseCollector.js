@@ -16,7 +16,7 @@ class BaseCollector {
     /**
      * Called whenever new target becomes available (e.g. main page, iframe, web worker). Can be async, can throw errors.
      * 
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo 
+     * @param {TargetInfo} targetInfo 
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     addTarget(targetInfo) {
@@ -45,10 +45,19 @@ class BaseCollector {
 
 /**
  * @typedef CollectorInitOptions
- * @property {import('puppeteer').BrowserContext} context
+ * @property {import('../browser/LocalChrome').BrowserConnection} browserConnection
  * @property {URL} url
  * @property {function(...any):void} log
  * @property {Object.<string, string>} collectorFlags
  */
+
+/**
+ * @typedef {Object} TargetInfo
+ * @property {import('devtools-protocol/types/protocol').Protocol.Target.TargetID} id
+ * @property {string} type
+ * @property {string} url
+ * @property {import('puppeteer-core/lib/cjs/puppeteer/common/Connection').CDPSession} session
+ */
+
 
 module.exports = BaseCollector;

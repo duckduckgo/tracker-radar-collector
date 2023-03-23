@@ -9,6 +9,7 @@
         "noImplicitAny": true
     },
     "include": [
+        "browser/",
         "cli/",
         "collectors/",
         "helpers/",
