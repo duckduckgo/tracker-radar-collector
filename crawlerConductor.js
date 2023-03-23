@@ -2,6 +2,7 @@ const os = require('os');
 const cores = os.cpus().length;
 const chalk = require('chalk').default;
 const async = require('async');
+const {PUPPETEER_REVISIONS} = require('puppeteer-core/lib/cjs/puppeteer/revisions.js');
 const crawl = require('./crawler');
 const URL = require('url').URL;
 const {createTimer} = require('./helpers/timer');
@@ -39,19 +40,19 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
      */
     const prefixedLog = (...msg) => log(chalk.gray(`${url.hostname}:`), ...msg);
 
-    let browserContext = null;
+    let browserConnection = null;
     let driver = null;
-    if (seleniumHub) {
-        try {
-            prefixedLog(`Getting remote browser...`);
-            driver = await getRemoteDriver({seleniumHub, chromiumVersion, proxyHost});
-            prefixedLog(`Got remote browser ${driver}`);
-            browserContext = await getPuppeteerContext(seleniumHub, driver);
-        } catch (e) {
-            prefixedLog(chalk.red(`Could not get a remote browser`), chalk.gray(e.message));
-            throw e;
-        }
-    }
+    // if (seleniumHub) {
+    //     try {
+    //         prefixedLog(`Getting remote browser...`);
+    //         driver = await getRemoteDriver({seleniumHub, chromiumVersion, proxyHost});
+    //         prefixedLog(`Got remote browser ${driver}`);
+    //         browserContext = await getPuppeteerContext(seleniumHub, driver);
+    //     } catch (e) {
+    //         prefixedLog(chalk.red(`Could not get a remote browser`), chalk.gray(e.message));
+    //         throw e;
+    //     }
+    // }
 
     try {
         const data = await crawl(url, {
@@ -66,14 +67,13 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
             maxLoadTimeMs,
             extraExecutionTimeMs,
             collectorFlags,
-            browserContext,
+            browserConnection,
         });
 
         dataCallback(url, data);
     } finally {
         if (driver && !VISUAL_DEBUG) {
             try {
-                await browserContext.browser().disconnect();
                 await driver.quit();
             } catch (e) {
                 prefixedLog(chalk.red(`Could not clean up remote browser`), chalk.gray(e.message));
@@ -106,8 +106,8 @@ module.exports = async options => {
      * @type {string}
      */
     let executablePath;
-    if (options.chromiumVersion && !options.seleniumHub) {
-        executablePath = await downloadCustomChromium(log, options.chromiumVersion);
+    if (!options.seleniumHub) {
+        executablePath = await downloadCustomChromium(log, options.chromiumVersion || PUPPETEER_REVISIONS.chromium);
     }
 
     async.eachOfLimit(options.urls, numberOfCrawlers, (urlItem, idx, callback) => {
@@ -126,6 +126,7 @@ module.exports = async options => {
 
         async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {
+                console.log(err);
                 log(chalk.red(`Max number of retries (${MAX_NUMBER_OF_RETRIES}) exceeded for "${urlString}".`));
                 failureCallback(urlString, err);
             } else {

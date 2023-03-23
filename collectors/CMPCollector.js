@@ -89,7 +89,6 @@ class CMPCollector extends BaseCollector {
         this.selfTestFrame = null;
         this.isolated2pageworld = new Map();
         this.pendingScan = createDeferred();
-        this.context = options.context;
         /** @type {ScanResult} */
         this.scanResult = {
             snippets: [],
@@ -125,12 +124,12 @@ class CMPCollector extends BaseCollector {
     }
 
     /**
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo
+     * @param {import('./BaseCollector').TargetInfo} targetInfo
      */
     // eslint-disable-next-line no-unused-vars
     async addTarget(targetInfo) {
         if (targetInfo.type === 'page') {
-            this._cdpClient = targetInfo.cdpClient;
+            this._cdpClient = targetInfo.session;
             await this._cdpClient.send('Page.enable');
             await this._cdpClient.send('Runtime.enable');
 

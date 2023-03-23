@@ -1,262 +1,317 @@
 /* eslint-disable max-lines */
-const puppeteer = require('puppeteer');
 const chalk = require('chalk').default;
 const {createTimer} = require('./helpers/timer');
-const wait = require('./helpers/wait');
+const createDeferred = require('./helpers/deferred');
+const {wait, TimeoutError} = require('./helpers/wait');
 const tldts = require('tldts');
 const {DEFAULT_USER_AGENT, MOBILE_USER_AGENT, DEFAULT_VIEWPORT, MOBILE_VIEWPORT, VISUAL_DEBUG} = require('./constants');
+const openBrowser = require('./browser/openBrowser');
 
-/**
- * @param {function(...any):void} log
- * @param {string} proxyHost
- * @param {string} executablePath path to chromium executable to use
- */
-function openBrowser(log, proxyHost, executablePath) {
-    /**
-     * @type {import('puppeteer').BrowserLaunchArgumentOptions}
-     */
-    const args = {
-        args: [
-            // enable FLoC
-            '--enable-blink-features=InterestCohortAPI',
-            '--enable-features="FederatedLearningOfCohorts:update_interval/10s/minimum_history_domain_size_required/1,FlocIdSortingLshBasedComputation,InterestCohortFeaturePolicy"',
-            '--js-flags="--async-stack-traces --stack-trace-limit 32"'
-        ]
-    };
-    if (VISUAL_DEBUG) {
-        args.headless = false;
-        args.devtools = true;
-    }
-    if (proxyHost) {
-        let url;
-        try {
-            url = new URL(proxyHost);
-        } catch(e) {
-            log('Invalid proxy URL');
-        }
-
-        args.args.push(`--proxy-server=${proxyHost}`);
-        args.args.push(`--host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE ${url.hostname}"`);
-    }
-    if (executablePath) {
-        // @ts-ignore there is no single object that encapsulates properties of both BrowserLaunchArgumentOptions and LaunchOptions that are allowed here
-        args.executablePath = executablePath;
-    }
-
-    return puppeteer.launch(args);
-}
-
-/**
- * @param {puppeteer.BrowserContext} context
- * @param {URL} url
- * @param {{collectors: import('./collectors/BaseCollector')[], log: function(...any):void, urlFilter: function(string, string):boolean, emulateMobile: boolean, emulateUserAgent: boolean, runInEveryFrame: function():void, maxLoadTimeMs: number, extraExecutionTimeMs: number, collectorFlags: Object.<string, string>}} data
- *
- * @returns {Promise<CollectResult>}
- */
-async function getSiteData(context, url, {
-    collectors,
-    log,
-    urlFilter,
-    emulateUserAgent,
-    emulateMobile,
-    runInEveryFrame,
-    maxLoadTimeMs,
-    extraExecutionTimeMs,
-    collectorFlags,
-}) {
-    const testStarted = Date.now();
+class Crawler {
 
     /**
-     * @type {{cdpClient: import('puppeteer').CDPSession, type: string, url: string}[]}
+     * @param {GetSiteDataOptions} options
      */
-    const targets = [];
+    constructor(options) {
+        this.options = options;
+        /** @type {Map<import('devtools-protocol/types/protocol').Protocol.Target.TargetID, import('./collectors/BaseCollector').TargetInfo>} */
+        this.targets = new Map();
+        this._mainPageDeferred = createDeferred();
+        /** @type {import('./collectors/BaseCollector').TargetInfo} */
+        this.mainPageTarget = null;
+        this._mainFrameDeferred = createDeferred();
+        /** @type {import('devtools-protocol/types/protocol').Protocol.Page.FrameId} */
+        this.mainFrameId = null;
+        this.log = options.log;
+        this.browserConnection = options.browserConnection;
+        this.collectors = options.collectors;
+    }
 
-    const collectorOptions = {
-        context,
-        url,
-        log,
-        collectorFlags
-    };
-
-    for (let collector of collectors) {
+    /**
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.AttachedToTargetEvent} event
+     */
+    async onTargetAttached(event) {
+        const session = this.browserConnection.session(event.sessionId);
+        this.log(`new target ${event.targetInfo.targetId}: ${event.targetInfo.type} ${event.targetInfo.url}`);
         const timer = createTimer();
-
+        /** @type {import('./collectors/BaseCollector').TargetInfo} */
+        const targetInfo = {
+            id: event.targetInfo.targetId,
+            url: event.targetInfo.url,
+            type: event.targetInfo.type,
+            session
+        };
+        if (this.targets.has(targetInfo.id)) {
+            this.log(chalk.yellow(`Target ${targetInfo.id} already exists: old session: ${this.targets.get(targetInfo.id).session.id()}, new: ${session.id()}`));
+        }
+        this.targets.set(targetInfo.id, targetInfo);
         try {
-            // eslint-disable-next-line no-await-in-loop
-            await collector.init(collectorOptions);
-            log(`${collector.id()} init took ${timer.getElapsedTime()}s`);
+            await this._onTargetAttached(session, targetInfo);
+            this.log(`${targetInfo.url} (${targetInfo.url}) context initiated in ${timer.getElapsedTime()}s`);
         } catch (e) {
-            log(chalk.yellow(`${collector.id()} init failed`), chalk.gray(e.message), chalk.gray(e.stack));
+            this.log(chalk.yellow(`Could not attach to ${targetInfo.type} ${targetInfo.url}: ${e.message}`));
         }
     }
 
-    let pageTargetCreated = false;
+    /**
+     * @param {import('puppeteer-core/lib/cjs/puppeteer/common/Connection').CDPSession} session
+     * @param {import('./collectors/BaseCollector').TargetInfo} targetInfo
+     */
+    async _onTargetAttached(session, targetInfo) {
+        session.on('Target.attachedToTarget', this.onTargetAttached.bind(this));
 
-    // initiate collectors for all contexts (main page, web worker, service worker etc.)
-    context.on('targetcreated', async target => {
-        // we have already initiated collectors for the main page, so we ignore the first page target
-        if (target.type() === 'page' && !pageTargetCreated) {
-            pageTargetCreated = true;
-            return;
+        await session.send('Target.setAutoAttach', {
+            autoAttach: true,
+            waitForDebuggerOnStart: true, // pause execution until we attach all event handlers
+            flatten: true,
+        });
+
+        if (this.options.emulateUserAgent) {
+            await session.send('Network.setUserAgentOverride', {
+                userAgent: this.options.emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT
+            });
         }
 
-        const timer = createTimer();
-        let cdpClient = null;
-        
-        try {
-            cdpClient = await target.createCDPSession();
-        } catch (e) {
-            log(chalk.yellow(`Failed to connect to "${target.url()}"`), chalk.gray(e.message), chalk.gray(e.stack));
-            return;
+        if (targetInfo.type === 'page') {
+            session.on('Page.javascriptDialogOpening', async () => {
+                await session.send('Page.handleJavaScriptDialog', {
+                    accept: false,
+                });
+            });
+            session.on('Inspector.targetCrashed', () => {
+                this.log(chalk.red('Target crashed', targetInfo.url));
+            });
+            session.on('Page.frameNavigated', e => {
+                if (!e.frame.parentId) {
+                    if (this.mainFrameId) {
+                        this.log(chalk.red(`Main frame changed: ${this.mainFrameId} -> ${e.frame.id}`));
+                        this.mainFrameId = e.frame.id;
+                    } else {
+                        this.mainFrameId = e.frame.id;
+                        this._mainFrameDeferred.resolve(e.frame.id);
+                    }
+                }
+            });
+            await session.send('Page.enable');
+            await session.send('Inspector.enable');
+            await session.send('Page.setLifecycleEventsEnabled', {enabled: true});
+            await session.send(
+                'Emulation.setDeviceMetricsOverride',
+                this.options.emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT,
+            );
+            if (this.options.runInEveryFrame) {
+                await session.send('Page.addScriptToEvaluateOnNewDocument', {
+                    source: `(${this.options.runInEveryFrame})()`
+                });
+            }
+
+            if (!this.mainPageTarget) {
+                this.mainPageTarget = targetInfo;
+                this._mainPageDeferred.resolve(targetInfo);
+            }
         }
 
-        const simpleTarget = {url: target.url(), type: target.type(), cdpClient};
-        targets.push(simpleTarget);
+        await session.send('Runtime.enable');
 
-        try {
-            // we have to pause new targets and attach to them as soon as they are created not to miss any data
-            await cdpClient.send('Target.setAutoAttach', {autoAttach: true, waitForDebuggerOnStart: true});
-        } catch (e) {
-            log(chalk.yellow(`Failed to set "${target.url()}" up.`), chalk.gray(e.message), chalk.gray(e.stack));
-            return;
-        }
-
-        for (let collector of collectors) {
+        for (let collector of this.collectors) {
             try {
                 // eslint-disable-next-line no-await-in-loop
-                await collector.addTarget(simpleTarget);
+                await collector.addTarget(targetInfo);
             } catch (e) {
-                log(chalk.yellow(`${collector.id()} failed to attach to "${target.url()}"`), chalk.gray(e.message), chalk.gray(e.stack));
+                this.log(chalk.yellow(`${collector.id()} failed to attach to "${targetInfo.url}"`), chalk.gray(e.message), chalk.gray(e.stack));
             }
         }
 
-        try {
-            // resume target when all collectors are ready
-            await cdpClient.send('Runtime.enable');
-            await cdpClient.send('Runtime.runIfWaitingForDebugger');
-        } catch (e) {
-            log(chalk.yellow(`Failed to resume target "${target.url()}"`), chalk.gray(e.message), chalk.gray(e.stack));
-            return;
-        }
-
-        log(`${target.url()} (${target.type()}) context initiated in ${timer.getElapsedTime()}s`);
-    });
-
-    // Create a new page in a pristine context.
-    const page = await context.newPage();
-
-    // optional function that should be run on every page (and subframe) in the browser context
-    if (runInEveryFrame) {
-        page.evaluateOnNewDocument(runInEveryFrame);
+        await session.send('Runtime.runIfWaitingForDebugger');
     }
 
-    // We are creating CDP connection before page target is created, if we create it only after
-    // new target is created we will miss some requests, API calls, etc.
-    const cdpClient = await page.target().createCDPSession();
-
-    // without this, we will miss the initial request for the web worker or service worker file
-    await cdpClient.send('Target.setAutoAttach', {autoAttach: true, waitForDebuggerOnStart: true});
-
-    const initPageTimer = createTimer();
-    for (let collector of collectors) {
-        try {
-            // eslint-disable-next-line no-await-in-loop
-            await collector.addTarget({url: url.toString(), type: 'page', cdpClient});
-        } catch (e) {
-            log(chalk.yellow(`${collector.id()} failed to attach to page`), chalk.gray(e.message), chalk.gray(e.stack));
-        }
-    }
-    log(`page context initiated in ${initPageTimer.getElapsedTime()}s`);
-
-    if (emulateUserAgent) {
-        await page.setUserAgent(emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT);
-    }
-
-    await page.setViewport(emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT);
-
-    // if any prompts open on page load, they'll make the page hang unless closed
-    page.on('dialog', dialog => dialog.dismiss());
-
-    // catch and report crash errors
-    page.on('error', e => log(chalk.red(e.message)));
-
-    let timeout = false;
-
-    try {
-        await page.goto(url.toString(), {timeout: maxLoadTimeMs, waitUntil: 'networkidle0'});
-    } catch (e) {
-        if (e instanceof puppeteer.errors.TimeoutError || (e.name && e.name === 'TimeoutError')) {
-            log(chalk.yellow('Navigation timeout exceeded.'));
-
-            for (let target of targets) {
-                if (target.type === 'page') {
-                    // eslint-disable-next-line no-await-in-loop
-                    await target.cdpClient.send('Page.stopLoading');
-                }
-            }
-            timeout = true;
-        } else {
-            throw e;
-        }
-    }
-
-    for (let collector of collectors) {
-        const postLoadTimer = createTimer();
-        try {
-            // eslint-disable-next-line no-await-in-loop
-            await collector.postLoad();
-            log(`${collector.id()} postLoad took ${postLoadTimer.getElapsedTime()}s`);
-        } catch (e) {
-            log(chalk.yellow(`${collector.id()} postLoad failed`), chalk.gray(e.message), chalk.gray(e.stack));
-        }
-    }
-
-    // give website a bit more time for things to settle
-    await page.waitForTimeout(extraExecutionTimeMs);
-
-    const finalUrl = page.url();
     /**
-     * @type {Object<string, Object>}
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfoChangedEvent} event
      */
-    const data = {};
-
-    for (let collector of collectors) {
-        const getDataTimer = createTimer();
-        try {
-            // eslint-disable-next-line no-await-in-loop
-            const collectorData = await collector.getData({
-                finalUrl,
-                urlFilter: urlFilter && urlFilter.bind(null, finalUrl)
-            });
-            data[collector.id()] = collectorData;
-            log(`getting ${collector.id()} data took ${getDataTimer.getElapsedTime()}s`);
-        } catch (e) {
-            log(chalk.yellow(`getting ${collector.id()} data failed`), chalk.gray(e.message), chalk.gray(e.stack));
-            data[collector.id()] = null;
+    onTargetInfoChanged(event) {
+        const target = this.targets.get(event.targetInfo.targetId);
+        if (target) {
+            this.log(`${target.id} changed to ${event.targetInfo.url}`);
+            target.url = event.targetInfo.url;
         }
     }
 
-    for (let target of targets) {
-        try {
-            // eslint-disable-next-line no-await-in-loop
-            await target.cdpClient.detach();
-        } catch (e) {
-            // we don't care that much because in most cases an error here means that target already detached
+    /**
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.DetachedFromTargetEvent} event
+     */
+    onDetachedFromTarget(event) {
+        this.log(`detached from: ${event.targetId}; session: ${event.sessionId}`);
+        this.targets.delete(event.targetId);
+    }
+
+    /**
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetDestroyedEvent} event
+     */
+    onTargetDestroyed(event) {
+        this.log(`target ${event.targetId} destroyed`);
+        this.targets.delete(event.targetId);
+    }
+
+    /**
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetCreatedEvent} event
+     */
+    onTargetCreated(event) {
+        this.log(`target created: ${event.targetInfo.targetId} ${event.targetInfo.type} ${event.targetInfo.url}`);
+    }
+
+    /**
+     * @returns {Promise<import('./collectors/BaseCollector').TargetInfo>}
+     */
+    waitForMainPage() {
+        return this._mainPageDeferred.promise;
+    }
+
+    /**
+     * @param {string} url
+     * @param {number} timeoutMs
+     * @returns {Promise<void>}
+     */
+    async goto(url, timeoutMs) {
+        const mainTarget = await wait(this.waitForMainPage(), timeoutMs, 'Main page target not found');
+        await mainTarget.session.send('Page.navigate', {
+            url: url.toString(),
+        });
+        await wait(
+            new Promise(resolve => {
+                /**
+                 * @param {import('devtools-protocol/types/protocol').Protocol.Page.LifecycleEventEvent} e
+                 */
+                const lifecycleHandler = async e => {
+                    if (e.name === 'networkIdle') {
+                        this.log(`network idle in ${mainTarget.url}: frameId: ${e.frameId}; mainFrameId: ${this.mainFrameId}`);
+                        if (e.frameId === await this._mainFrameDeferred.promise) {
+                            this.log(chalk.green(`network idle in ${mainTarget.url}`));
+                            mainTarget.session.off('Page.lifecycleEvent', lifecycleHandler);
+                            resolve();
+                        }
+                    }
+                };
+                mainTarget.session.on('Page.lifecycleEvent', lifecycleHandler);
+            }),
+            timeoutMs,
+            `Page navigation timeout`
+        );
+    }
+
+    /**
+     * @param {URL} url
+     * @returns {Promise<CollectResult>}
+     */
+    async getSiteData(url) {
+        const testStarted = Date.now();
+
+        const conn = this.browserConnection;
+        conn.on('Target.targetCreated', this.onTargetCreated.bind(this));
+        conn.on('Target.attachedToTarget', this.onTargetAttached.bind(this));
+        conn.on('Target.detachedFromTarget', this.onDetachedFromTarget.bind(this));
+        conn.on('Target.targetInfoChanged', this.onTargetInfoChanged.bind(this));
+        conn.on('Target.targetDestroyed', this.onTargetDestroyed.bind(this));
+
+        /** @type {import('./collectors/BaseCollector').CollectorInitOptions} */
+        const collectorOptions = {
+            browserConnection: conn,
+            url,
+            log: this.log,
+            collectorFlags: this.options.collectorFlags,
+        };
+
+        for (let collector of this.collectors) {
+            const timer = createTimer();
+
+            try {
+                // eslint-disable-next-line no-await-in-loop
+                await collector.init(collectorOptions);
+                this.log(`${collector.id()} init took ${timer.getElapsedTime()}s`);
+            } catch (e) {
+                this.log(chalk.yellow(`${collector.id()} init failed`), chalk.gray(e.message), chalk.gray(e.stack));
+            }
         }
-    }
 
-    if (!VISUAL_DEBUG) {
-        await page.close();
-    }
+        await conn.send('Target.setAutoAttach', {
+            autoAttach: true,
+            waitForDebuggerOnStart: true,
+            flatten: true,
+        });
+        await conn.send('Target.setDiscoverTargets', {
+            discover: true,
+            filter: [{type: 'tab', exclude: true}, {}],
+        });
 
-    return {
-        initialUrl: url.toString(),
-        finalUrl,
-        timeout,
-        testStarted,
-        testFinished: Date.now(),
-        data
-    };
+        let timeout = false;
+
+        try {
+            await this.goto(url.toString(), this.options.maxLoadTimeMs);
+        } catch (e) {
+            if (e instanceof TimeoutError) {
+                this.log(chalk.yellow(e.message));
+
+                for (let target of this.targets.values()) {
+                    if (target.type === 'page') {
+                        target.session.send('Page.stopLoading').catch(() => {/* ignore */});
+                    }
+                }
+                timeout = true;
+            } else {
+                throw e;
+            }
+        }
+
+        for (let collector of this.collectors) {
+            const postLoadTimer = createTimer();
+            try {
+                // eslint-disable-next-line no-await-in-loop
+                await collector.postLoad();
+                this.log(`${collector.id()} postLoad took ${postLoadTimer.getElapsedTime()}s`);
+            } catch (e) {
+                this.log(chalk.yellow(`${collector.id()} postLoad failed`), chalk.gray(e.message), chalk.gray(e.stack));
+            }
+        }
+
+        // give website a bit more time for things to settle
+        await new Promise(resolve => {
+            setTimeout(resolve, this.options.extraExecutionTimeMs);
+        });
+
+        const finalUrl = this.mainPageTarget.url; // URL could have changed by now
+        /**
+         * @type {Object<string, Object>}
+         */
+        const data = {};
+
+        for (let collector of this.collectors) {
+            const getDataTimer = createTimer();
+            try {
+                // eslint-disable-next-line no-await-in-loop
+                const collectorData = await collector.getData({
+                    finalUrl,
+                    urlFilter: this.options.urlFilter && this.options.urlFilter.bind(null, finalUrl)
+                });
+                data[collector.id()] = collectorData;
+                this.log(`getting ${collector.id()} data took ${getDataTimer.getElapsedTime()}s`);
+            } catch (e) {
+                this.log(chalk.yellow(`getting ${collector.id()} data failed`), chalk.gray(e.message), chalk.gray(e.stack));
+                data[collector.id()] = null;
+            }
+        }
+
+        for (let target of this.targets.values()) {
+            target.session.detach().catch(() => {/* ignore */});
+        }
+
+        return {
+            initialUrl: url.toString(),
+            finalUrl,
+            timeout,
+            testStarted,
+            testFinished: Date.now(),
+            data
+        };
+    }
 }
 
 /**
@@ -272,14 +327,13 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
 
 /**
  * @param {URL} url
- * @param {{collectors?: import('./collectors/BaseCollector')[], log?: function(...any):void, filterOutFirstParty?: boolean, emulateMobile?: boolean, emulateUserAgent?: boolean, proxyHost?: string, browserContext?: puppeteer.BrowserContext, runInEveryFrame?: function():void, executablePath?: string, maxLoadTimeMs?: number, extraExecutionTimeMs?: number, collectorFlags?: Object.<string, string>}} options
+ * @param {CrawlerOptions} options
  * @returns {Promise<CollectResult>}
  */
-module.exports = async (url, options) => {
+async function crawl(url, options) {
     const log = options.log || (() => {});
-    const browser = options.browserContext ? null : await openBrowser(log, options.proxyHost, options.executablePath);
-    // Create a new incognito browser context.
-    const context = options.browserContext || await browser.createIncognitoBrowserContext();
+    const browser = options.browserConnection ? null : await openBrowser(log, options.proxyHost, options.executablePath);
+    const browserConnection = options.browserConnection || await browser.getConnection();
 
     let data = null;
 
@@ -288,7 +342,8 @@ module.exports = async (url, options) => {
     const maxTotalTimeMs = maxLoadTimeMs * 2;
 
     try {
-        data = await wait(getSiteData(context, url, {
+        const crawler = new Crawler({
+            browserConnection,
             collectors: options.collectors || [],
             log,
             urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null,
@@ -298,7 +353,8 @@ module.exports = async (url, options) => {
             maxLoadTimeMs,
             extraExecutionTimeMs,
             collectorFlags: options.collectorFlags
-        }), maxTotalTimeMs);
+        });
+        data = await wait(crawler.getSiteData(url), maxTotalTimeMs);
     } catch(e) {
         log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));
         throw e;
@@ -310,7 +366,7 @@ module.exports = async (url, options) => {
     }
 
     return data;
-};
+}
 
 /**
  * @typedef {Object} CollectResult
@@ -321,3 +377,35 @@ module.exports = async (url, options) => {
  * @property {number} testFinished time when the crawl finished (unix timestamp)
  * @property {import('./helpers/collectorsList').CollectorData} data object containing output from all collectors
 */
+
+/**
+ * @typedef {Object} CrawlerOptions
+ * @property {import('./collectors/BaseCollector')[]=} collectors
+ * @property {function(...any):void=} log
+ * @property {boolean=} filterOutFirstParty
+ * @property {boolean=} emulateMobile
+ * @property {boolean=} emulateUserAgent
+ * @property {string=} proxyHost
+ * @property {import('./browser/LocalChrome').BrowserConnection=} browserConnection
+ * @property {function():void=} runInEveryFrame
+ * @property {string=} executablePath
+ * @property {number=} maxLoadTimeMs
+ * @property {number=} extraExecutionTimeMs
+ * @property {Object.<string, string>=} collectorFlags
+ */
+
+/**
+ * @typedef {Object} GetSiteDataOptions
+ * @property {import('./browser/LocalChrome').BrowserConnection} browserConnection,
+ * @property {import('./collectors/BaseCollector')[]} collectors,
+ * @property {function(...any):void} log,
+ * @property {function(string, string):boolean} urlFilter,
+ * @property {boolean} emulateMobile,
+ * @property {boolean} emulateUserAgent,
+ * @property {function():void} runInEveryFrame,
+ * @property {number} maxLoadTimeMs,
+ * @property {number} extraExecutionTimeMs,
+ * @property {Object.<string, string>} collectorFlags,
+ */
+
+module.exports = crawl;
