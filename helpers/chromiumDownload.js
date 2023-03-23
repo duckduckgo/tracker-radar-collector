@@ -1,6 +1,7 @@
-const path = require('path');
 const puppeteer = require('puppeteer');
+const {PUPPETEER_REVISIONS} = require('puppeteer-core/lib/cjs/puppeteer/revisions.js');
 const ProgressBar = require('progress');
+const {CHROMIUM_DOWNLOAD_DIR} = require('../constants');
 const chalk = require('chalk').default;
 
 /**
@@ -10,7 +11,7 @@ const chalk = require('chalk').default;
  */
 async function downloadCustomChromium(log, version) {
     const browserFetcher = puppeteer.createBrowserFetcher({
-        path: path.join(__dirname, '..', 'chromium'),
+        path: CHROMIUM_DOWNLOAD_DIR,
     });
     const revInfo = browserFetcher.revisionInfo(version);
     if (revInfo.local) {
@@ -30,4 +31,22 @@ async function downloadCustomChromium(log, version) {
     return revisionInfo.executablePath;
 }
 
-module.exports = downloadCustomChromium;
+/**
+ * @param {function} log 
+ * @returns {Promise<string>} executable path of the downloaded Chromium
+ */
+function getDefaultChromium(log) {
+    const browserFetcher = puppeteer.createBrowserFetcher({
+        path: CHROMIUM_DOWNLOAD_DIR,
+    });
+    const revisionInfo = browserFetcher.revisionInfo(PUPPETEER_REVISIONS.chromium);
+    if (!revisionInfo.local) {
+        return downloadCustomChromium(log, PUPPETEER_REVISIONS.chromium);
+    }
+    return Promise.resolve(revisionInfo.executablePath);
+}
+
+module.exports = {
+    downloadCustomChromium,
+    getDefaultChromium,
+};

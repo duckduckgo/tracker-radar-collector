@@ -2,13 +2,10 @@ const os = require('os');
 const cores = os.cpus().length;
 const chalk = require('chalk').default;
 const async = require('async');
-const {PUPPETEER_REVISIONS} = require('puppeteer-core/lib/cjs/puppeteer/revisions.js');
 const crawl = require('./crawler');
 const {createTimer} = require('./helpers/timer');
 const createDeferred = require('./helpers/deferred');
-const downloadCustomChromium = require('./helpers/downloadCustomChromium');
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const BaseCollector = require('./collectors/BaseCollector');
+const {downloadCustomChromium} = require('./helpers/chromiumDownload');
 const notABot = require('./helpers/notABot');
 
 const MAX_NUMBER_OF_CRAWLERS = 38;// by trial and error there seems to be network bandwidth issues with more than 38 browsers. 
@@ -68,7 +65,13 @@ module.exports = async options => {
     }
     log(chalk.cyan(`Number of crawlers: ${numberOfCrawlers}\n`));
 
-    const executablePath = await downloadCustomChromium(log, options.chromiumVersion || PUPPETEER_REVISIONS.chromium);
+    /**
+     * @type {string}
+     */
+    let executablePath;
+    if (options.chromiumVersion) {
+        executablePath = await downloadCustomChromium(log, options.chromiumVersion);
+    }
 
     async.eachOfLimit(options.urls, numberOfCrawlers, (urlItem, idx, callback) => {
         const urlString = (typeof urlItem === 'string') ? urlItem : urlItem.url;
@@ -105,3 +108,7 @@ module.exports = async options => {
 
     await deferred.promise;
 };
+
+/**
+ * @typedef {import('./collectors/BaseCollector')} BaseCollector
+ */
