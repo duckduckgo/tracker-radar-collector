@@ -373,27 +373,27 @@ const breakpoints = [
         methods: [
             {
                 name: 'getSupportedExtensions',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getSupportedExtensions()'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getSupportedExtensions()'
             },
             {
                 name: 'getExtension',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getExtension("")'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getExtension("")'
             },
             {
                 name: 'getParameter',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getParameter("")'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getParameter("")'
             },
             {
                 name: 'getShaderPrecisionFormat',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getShaderPrecisionFormat(WebGLRenderingContext.FRAGMENT_SHADER, WebGLRenderingContext.LOW_FLOAT)'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getShaderPrecisionFormat(WebGLRenderingContext.FRAGMENT_SHADER, WebGLRenderingContext.LOW_FLOAT)'
             },
             {
                 name: 'getContextAttributes',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getContextAttributes()'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getContextAttributes()'
             },
             {
                 name: 'readPixels',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl").readPixels(0, 0, 1, 1, WebGLRenderingContext.RGBA, WebGLRenderingContext.UNSIGNED_BYTE, new Uint8Array(4))'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").readPixels(0, 0, 1, 1, WebGLRenderingContext.RGBA, WebGLRenderingContext.UNSIGNED_BYTE, new Uint8Array(4))'
             }
         ]
     },
