@@ -1,6 +1,6 @@
 const BaseCollector = require('./BaseCollector');
-const TrackerTracker = require('./APICalls/TrackerTracker');
 const URL = require('url').URL;
+const apiProcessors = require('./APICalls/APIProcessor');
 
 class APICallCollector extends BaseCollector {
 
@@ -13,22 +13,20 @@ class APICallCollector extends BaseCollector {
      */
     init({log}) {
         /**
-         * @type {Map<string, Map<string, number>>}
-         */
-        this._stats = new Map();
-        /**
          * @type {SavedCall[]}
          */
         this._calls = [];
         this._incompleteData = false;
         this._log = log;
+        //this._apiProcessor = apiProcessors.APIProcessorStackHead;
+        this._apiProcessor = apiProcessors.APIProcessorV8;
     }
 
     /**
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo 
+     * @param {import('./BaseCollector').TargetInfo} targetInfo
      */
     async addTarget({cdpClient, url}) {
-        const trackerTracker = new TrackerTracker(cdpClient.send.bind(cdpClient));
+        const trackerTracker = new this._apiProcessor(cdpClient.send.bind(cdpClient));
         trackerTracker.setMainURL(url.toString());
 
         cdpClient.on('Debugger.scriptParsed', this.onScriptParsed.bind(this, trackerTracker));
@@ -69,27 +67,6 @@ class APICallCollector extends BaseCollector {
 
 
     /**
-     * @param {{source: string, description: string}} breakpointInfo
-     */
-    _updateCallStats(breakpointInfo) {
-        let sourceStats = null;
-        if (this._stats.has(breakpointInfo.source)) {
-            sourceStats = this._stats.get(breakpointInfo.source);
-        } else {
-            sourceStats = new Map();
-            this._stats.set(breakpointInfo.source, sourceStats);
-        }
-
-        let count = 0;
-
-        if (sourceStats.has(breakpointInfo.description)) {
-            count = sourceStats.get(breakpointInfo.description);
-        }
-
-        sourceStats.set(breakpointInfo.description, count + 1);
-    }
-
-    /**
      * @param {TrackerTracker} trackerTracker
      * @param {{name: string, payload: string, description: string, executionContextId: number}} params
      */
@@ -99,16 +76,9 @@ class APICallCollector extends BaseCollector {
         }
         const breakpoint = trackerTracker.processBindingPause(params);
 
-        if (breakpoint && breakpoint.source && breakpoint.description) {
-            this._updateCallStats(breakpoint);
-
-            if (breakpoint.saveArguments) {
-                this._calls.push({
-                    source: breakpoint.source,
-                    description: breakpoint.description,
-                    arguments: breakpoint.arguments
-                });
-            }
+        const call = trackerTracker.processBreakpointToCall(breakpoint);
+        if (call) {
+            this._calls.push(call);
         }
     }
 
@@ -138,22 +108,9 @@ class APICallCollector extends BaseCollector {
             this._log(`Unknown breakpoint detected. ${params.hitBreakpoints}`);
         }
 
-        if (breakpoint && breakpoint.source && breakpoint.description) {
-            this._updateCallStats(breakpoint);
-
-            if (breakpoint.saveArguments) {
-                // the corresponding call arguments should already be stored
-
-                const call = trackerTracker.retrieveCallArguments(breakpoint.id);
-                if (call) {
-                    this._calls.push({
-                        ...call,
-                        source: breakpoint.source,
-                    });
-                } else {
-                    this._log(`Missing call arguments for breakpoint ${breakpoint.id}`);
-                }
-            }
+        const call = trackerTracker.processBreakpointToCall(breakpoint);
+        if (call) {
+            this._calls.push(call);
         }
     }
 
@@ -188,28 +145,10 @@ class APICallCollector extends BaseCollector {
             throw new Error('Collected data might be incomplete because of an runtime error.');
         }
 
-        /**
-         * @type {Object<string, APICallData>}
-         */
-        const callStats = {};
-
-        this._stats
-            .forEach((calls, source) => {
-                if (!this.isAcceptableUrl(source, urlFilter)) {
-                    return;
-                }
-
-                callStats[source] = Array.from(calls)
-                    .reduce((/** @type {Object<string, number>} */result, [script, number]) => {
-                        result[script] = number;
-                        return result;
-                    }, {});
-            });
-    
-        return {
-            callStats,
-            savedCalls: this._calls.filter(call => this.isAcceptableUrl(call.source, urlFilter))
-        };
+        return this._apiProcessor.produceSummary(this._calls, {
+            urlFilter: u => this.isAcceptableUrl(u, urlFilter),
+            options: {includePositions: false},
+        });
     }
 }
 
