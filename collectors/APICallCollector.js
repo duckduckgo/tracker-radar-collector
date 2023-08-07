@@ -3,7 +3,12 @@ const URL = require('url').URL;
 const apiProcessors = require('./APICalls/APIProcessor');
 
 /**
- * @typedef {apiProcessors.APIProcessor} APIProcessor
+ * @typedef {import('./APICalls/APIProcessor').TysBase} TysBase
+ */
+
+/**
+ * @template {TysBase} T
+ * @typedef {apiProcessors.APIProcessor<T>} APIProcessor
  */
 
 class APICallCollector extends BaseCollector {
@@ -22,15 +27,17 @@ class APICallCollector extends BaseCollector {
         this._calls = [];
         this._incompleteData = false;
         this._log = log;
-        //this._apiProcessor = apiProcessors.APIProcessorStackHead;
-        this._apiProcessor = apiProcessors.APIProcessorV8;
+        //this._apiProcessorClass = apiProcessors.APIProcessorStackHead;
+        this._apiProcessorClass = apiProcessors.APIProcessorV8;
+        this._apiProcessor = null;
     }
 
     /**
      * @param {import('./BaseCollector').TargetInfo} targetInfo
      */
     async addTarget({cdpClient, url}) {
-        const apiProcessor = new this._apiProcessor(cdpClient.send.bind(cdpClient));
+        const apiProcessor = new this._apiProcessorClass(cdpClient.send.bind(cdpClient));
+        this._apiProcessor = apiProcessor;
         apiProcessor.setMainURL(url.toString());
 
         cdpClient.on('Debugger.scriptParsed', this.onScriptParsed.bind(this, apiProcessor));
@@ -48,7 +55,7 @@ class APICallCollector extends BaseCollector {
     }
 
     /**
-     * @param {APIProcessor} apiProcessor
+     * @param {APIProcessor<TysBase>} apiProcessor
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextCreatedEvent} params
      */
     async onExecutionContextCreated(apiProcessor, params) {
@@ -61,7 +68,7 @@ class APICallCollector extends BaseCollector {
     }
 
     /**
-     * @param {APIProcessor} apiProcessor
+     * @param {APIProcessor<TysBase>} apiProcessor
      * @param {import('./APICalls/APIProcessor').DebuggerScriptParsedEvent} params
      */
     onScriptParsed(apiProcessor, params) {
@@ -70,7 +77,7 @@ class APICallCollector extends BaseCollector {
 
 
     /**
-     * @param {APIProcessor} apiProcessor
+     * @param {APIProcessor<TysBase>} apiProcessor
      * @param {import('./APICalls/APIProcessor').RuntimeBindingCalledEvent} params
      */
     onBindingCalled(apiProcessor, params) {
@@ -87,7 +94,7 @@ class APICallCollector extends BaseCollector {
 
     // TODO: IMPORTANT! This will resume all breakpoints, including ones from `debugger` and set by other collectors. Make sure we don't use onDebuggerPaused in other places.
     /**
-     * @param {APIProcessor} apiProcessor
+     * @param {APIProcessor<TysBase>} apiProcessor
      * @param {import('./APICalls/APIProcessor').DebuggerPausedEvent} params
      */
     onDebuggerPaused(apiProcessor, params) {
@@ -141,7 +148,6 @@ class APICallCollector extends BaseCollector {
 
     /**
      * @param {{finalUrl: string, urlFilter?: function(string):boolean}} options
-     * @returns {{callStats: Object<string, APICallData>, savedCalls: SavedCall[]}}
      */
     getData({urlFilter}) {
         if (this._incompleteData) {
@@ -158,15 +164,7 @@ class APICallCollector extends BaseCollector {
 module.exports = APICallCollector;
 
 /**
- * @typedef {Object<string, number>} APICallData
- */
-
-/**
- * @typedef { import('./APICalls/APIProcessor').SavedCall } SavedCall
- */
-
-/**
  * @typedef APICallReport
- * @property {SavedCall[]} savedCalls
- * @property {Object<string, APICallData>} callStats
+ * @property {unknown[]} savedCalls
+ * @property {Object<string, unknown>} [callStats]
  */

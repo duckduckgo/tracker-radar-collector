@@ -1,8 +1,9 @@
 /* eslint-disable max-lines */
 /* eslint-disable max-classes-per-file */
-const MAX_ASYNC_CALL_STACK_DEPTH = 32;// max depth of async calls tracked
 const allBreakpoints = require('./breakpoints.js');
 const URL = require('url').URL;
+
+const MAX_ASYNC_CALL_STACK_DEPTH = 32;// max depth of async calls tracked
 
 /**
  * @typedef {import('devtools-protocol/types/protocol').default.Runtime.BindingCalledEvent} RuntimeBindingCalledEvent
@@ -32,6 +33,13 @@ const URL = require('url').URL;
  * @typedef {import('./breakpoints.js').Breakpoint} Breakpoint
  */
 
+/**
+ * @typedef {(
+ *     (import('./breakpoints').MethodBreakpoint & {type: 'method'})
+ *   | (import('./breakpoints').PropertyBreakpoint & {type: 'property'})
+ * )} TypedBreakpoint
+ */
+
 /** @returns {never} */
 const abstract = () => {
     throw new Error("Cannot call method, is abstract.");
@@ -39,6 +47,68 @@ const abstract = () => {
 
 const SOURCE_PROTOCOL_URL_REGEX = /^(?:https?|file):\/\//i;
 
+/**
+ * Reduces a list of saved calls to a set of unique elements,
+ * with a list of call positions found for each entry.
+ *
+ * @template {object} T
+ * @param {T[]} calls
+ * @param {{
+ *   includePositions?: boolean,
+ *   includeCount?: boolean,
+ * }} [options]
+ * @returns {(T & {positions?: number[], count?: number})[]}
+ */
+function reduceSavedCalls (calls, options = {}) {
+    /**
+     * @type {(T & {
+     *     positions?: number[],
+     *     count?: number,
+     * })[]}
+     */
+    const resCalls = [];
+    /** @type {Record<string, {positions?: number[], count?: number}>} */
+    const resMap = {};
+
+    const includePositions = 'includePositions' in options ? options.includePositions : true;
+    const includeCount = 'includeCount' in options ? options.includeCount : true;
+
+    for (let i = 0; i < calls.length; i++) {
+        const idHash = JSON.stringify(calls[i]);
+        if (idHash in resMap) {
+            if (includePositions) {
+                resMap[idHash].positions.push(i);
+            }
+            if (includeCount) {
+                resMap[idHash].count++;
+            }
+        } else {
+            const entry = {
+                ...calls[i],
+                ...(includePositions ? {positions: [i]} : {}),
+                ...(includeCount ? {count: 1} : {}),
+            };
+            resCalls.push(entry);
+            resMap[idHash] = entry;
+        }
+    }
+    return resCalls;
+}
+
+/**
+ * @typedef {{
+ *     ProcessedDebuggerPause: unknown,
+ *     ProcessedRuntimePause: unknown,
+ *     ProcessedCall: object, // represents a final, processed call
+ *     Payload: {description: string},
+ *     SummaryOptions: unknown,
+ *     Result: unknown, // final result type
+ * }} TysBase
+ */
+
+/**
+ * @template {TysBase} Tys
+ */
 class APIProcessor {
     /**
      * @param {function(string, object=): Promise<object>} sendCommand
@@ -65,9 +135,9 @@ class APIProcessor {
          */
         this._mainURL = '';
         /**
-         * @type {Map<string, string>}
+         * @type {Map<string, DebuggerScriptParsedEvent>}
          */
-        this._scriptIdToUrl = new Map();
+        this._scripts = new Map();
     }
 
     /**
@@ -100,39 +170,6 @@ class APIProcessor {
     }
 
     /**
-    * Reduces a list of saved calls to a set of unique elements,
-    * with a list of call positions found for each entry.
-    */
-    static reduceSavedCalls (calls, options = {}) {
-        const resCalls = [];
-        const resMap = {};
-
-        const includePositions = 'includePositions' in options ? options.includePositions : true;
-        const includeCount = 'includeCount' in options ? options.includeCount : true;
-
-        for (let i = 0; i < calls.length; i++) {
-            const idHash = JSON.stringify(calls[i]);
-            if (idHash in resMap) {
-                if (includePositions) {
-                    resMap[idHash].positions.push(i);
-                }
-                if (includeCount) {
-                    resMap[idHash].count++;
-                }
-            } else {
-                const entry = {
-                    ...calls[i],
-                    ...(includePositions ? {positions: [i]} : {}),
-                    ...(includeCount ? {count: 1} : {}),
-                };
-                resCalls.push(entry);
-                resMap[idHash] = entry;
-            }
-        }
-        return resCalls;
-    }
-
-    /**
      * @abstract
      * @param {{
      *     argumentCollection: string,
@@ -147,11 +184,11 @@ class APIProcessor {
     }
 
     /**
-    * @param {Breakpoint} breakpoint
+    * @param {TypedBreakpoint} breakpoint
     * @param {string} description
     * @returns {string}
     */
-    getBreakpointScript(breakpoint, description) {
+    getBreakpointScript (breakpoint, description) {
         const canSaveArgs = breakpoint.type === 'method' || breakpoint.setter;
         // only save arguments if requested for given breakpoint
         const argumentCollection = canSaveArgs ? `args: Array.from(arguments).map(a => a.toString())` : '';
@@ -162,7 +199,7 @@ class APIProcessor {
             saveArguments: breakpoint.saveArguments,
         });
 
-        // if breakpoint comes with an condition only count it when this condition is met
+        // if breakpoint comes with a condition only count it when this condition is met
         if (breakpoint.condition) {
             breakpointScript = `
                 if (!!(${breakpoint.condition})) {
@@ -183,7 +220,7 @@ class APIProcessor {
      * @param {ExecutionContextId} contextId
      * @param {string} expression
      * @param {string} description
-     * @param {Breakpoint} breakpoint
+     * @param {TypedBreakpoint} breakpoint
      */
     async _addBreakpoint(contextId, expression, description, breakpoint) {
         try {
@@ -259,7 +296,7 @@ class APIProcessor {
                     const description = prop.description || `${obj}.${prop.name}`;
                     const breakpointSpec = {
                         ...prop,
-                        type: 'property',
+                        type: /** @type {const} */ ('property'),
                     };
                     await this._addBreakpoint(contextId, expression, description, breakpointSpec);
                 });
@@ -271,7 +308,7 @@ class APIProcessor {
                     const description = method.description || `${obj}.${method.name}`;
                     const breakpointSpec = {
                         ...method,
-                        type: 'method',
+                        type: /** @type {const} */ ('method'),
                     };
                     await this._addBreakpoint(contextId, expression, description, breakpointSpec);
                 });
@@ -286,21 +323,36 @@ class APIProcessor {
      * @param {DebuggerScriptParsedEvent} params
      */
     processScriptParsed(params) {
-        if (this._scriptIdToUrl.has(params.scriptId)) {
+        if (this._scripts.has(params.scriptId)) {
             this._log('⚠️ duplicate scriptId', params.scriptId);
         }
-        this._scriptIdToUrl.set(params.scriptId, params.embedderName);
+        this._scripts.set(params.scriptId, params);
+    }
+
+    /**
+     * Process the data payload returned from the injected breakpoint script.
+     *
+     * @abstract
+     * @param {unknown} payload
+     * @returns {Tys['Payload']}
+     */
+    // eslint-disable-next-line no-unused-vars
+    _processBindingPausePayload(payload) {
+        abstract();
     }
 
     /**
      * @param {RuntimeBindingCalledEvent} params
-     * @returns {{description: string, source: string, saveArguments: boolean, arguments: string[]}}
+     * @returns {{
+     *     breakpoint: Breakpoint,
+     *     payload: Tys['Payload'],
+     * } | null}
      */
     _preProcessBindingPause(params) {
         let payload = null;
 
         try {
-            payload = JSON.parse(params.payload);
+            payload = this._processBindingPausePayload(JSON.parse(params.payload));
         } catch(e) {
             this._log('🚩 invalid breakpoint payload', params.payload);
             return null;
@@ -314,35 +366,168 @@ class APIProcessor {
 
         return {breakpoint, payload};
     }
+
+    /**
+     * @abstract
+     * @param {RuntimeBindingCalledEvent} params
+     * @returns {Tys['ProcessedRuntimePause'] | null}
+     */
+    // eslint-disable-next-line no-unused-vars
+    processBindingPause(params) {
+        abstract();
+    }
+
+    /**
+     * @abstract
+     * @param {DebuggerPausedEvent} params
+     * @returns {Tys['ProcessedDebuggerPause'] | null}
+     */
+    // eslint-disable-next-line no-unused-vars
+    processDebuggerPause(params) {
+        abstract();
+    }
+
+    /**
+     * @abstract
+     * @param {Tys['ProcessedDebuggerPause'] | Tys['ProcessedRuntimePause']} breakpoint
+     * @returns {Tys['ProcessedCall'] | null}
+     */
+    // eslint-disable-next-line no-unused-vars
+    processBreakpointToCall(breakpoint) {
+        abstract();
+    }
+
+    /**
+     * @abstract
+     * @param {Tys['ProcessedCall'][]} calls
+     * @param {{
+     *     urlFilter?: (url: string) => boolean
+     *     options?: Tys['SummaryOptions'],
+     * }} options
+     * @returns {Tys['Result']}
+     */
+    // eslint-disable-next-line no-unused-vars
+    produceSummary(calls, options) {
+        abstract();
+    }
 }
 
 /**
+ * @typedef {{
+ *   functionName: string,
+ *   fileName: string,
+ *   lineNumber: number,
+ *   columnNumber: number,
+ * }} CoreStackEntry
+ */
+
+/**
+ * @typedef {CoreStackEntry[]} CoreStack
+ */
+
+/**
+ * @typedef {CoreStackEntry & {
+ *   typeName: string | null,
+ *   methodName: string | null,
+ *   evalOrigin: string | null,
+ *   isToplevel: boolean | null,
+ *   isEval: boolean | null,
+ *   isNative: boolean | null,
+ *   isConstructor: boolean | null,
+ *   isAsync: boolean | null,
+ *   isPromiseAll: boolean | null,
+ *   promiseIndex: number | null,
+ * }} V8StackEntry
+ */
+
+/**
+ * @typedef {V8StackEntry[]} V8CallStack
+ */
+
+/**
+ * @typedef {(V8StackEntry | CoreStackEntry)[]} V8CallStackAllowingAsync
+ */
+
+/**
+ * @typedef {{
+ *     stack: V8CallStack,
+ *     description: string,
+ *     saveArguments: boolean,
+ *     arguments: string[]
+ * }} V8ProcessedRuntimePause
+ */
+
+/**
+ * @typedef {{
+ *     id: BreakpointId,
+ *     description: string,
+ *     stack: V8CallStackAllowingAsync,
+ *     saveArguments: boolean
+ * }} V8ProcessedDebuggerPause
+ */
+
+/**
+ * @typedef {{
+ *     description: string,
+ *     stack: V8CallStack,
+ *     args: string[],
+ * }} V8Payload
+ */
+
+/**
+ * @typedef {{
+ *     stack: string[],
+ * }} V8ProcessedCallCompact
+ */
+
+/**
+ * @typedef {{
+ *     Payload: V8Payload,
+ *     ProcessedDebuggerPause: V8ProcessedDebuggerPause,
+ *     ProcessedRuntimePause: V8ProcessedRuntimePause,
+ *     ProcessedCall: {stack: CoreStack},
+ *     SummaryOptions: Parameters<typeof reduceSavedCalls>[1],
+ *     Result: {
+ *         savedCalls: {stack: string[], positions?: number[], count?: number}[],
+ *     },
+ * }} V8Tys
+ */
+
+/**
  * Use V8 to produce flexible stack traces with rich information.
+ *
+ * @extends APIProcessor<V8Tys>
  */
 class APIProcessorV8 extends APIProcessor {
     /**
      * Note that an empty file name corresponds to <anonymous>.
+     *
+     * @param {V8Tys['ProcessedCall'][]} calls
+     * @param {Parameters<typeof reduceSavedCalls>[1]} options
      */
-    static reduceSavedCalls (calls, options) {
-        const normaliseStack = stack => {
+    _reduceSavedCalls (calls, options) {
+        /** @param {CoreStack} stack */
+        const normaliseStack = stack => stack
             // only consider filenames. These correspond to trackers in a
             // meaningful way, so we pick only these to save space.
-            return stack.map(se => se.fileName).filter(x => x != null)
-                // group adjacent equal elements
-                .reduce((acc, x) => {
-                    if (acc.length && acc[acc.length-1] === x) {
-                        return acc;
-                    }
-                    acc.push(x);
+            .map(se => se.fileName)
+            .filter(x => x !== null)
+            // group adjacent equal elements
+            .reduce((acc, x) => {
+                if (acc.length && acc[acc.length - 1] === x) {
                     return acc;
-                }, []);
-        };
+                }
+                acc.push(x);
+                return acc;
+            }, /** @type {string[]} */ ([]));
         const callsCompact = calls.map(entry => {
-            const protoEntry = JSON.parse(JSON.stringify(entry));
-            protoEntry.stack = normaliseStack(protoEntry.stack);
-            return protoEntry;
+            const protoEntry = /** @type {typeof entry} */ (JSON.parse(JSON.stringify(entry)));
+            return {
+                ...protoEntry,
+                stack: normaliseStack(JSON.parse(JSON.stringify(entry.stack)))
+            };
         });
-        return super.reduceSavedCalls(callsCompact, options);
+        return reduceSavedCalls(callsCompact, options);
     }
 
     /**
@@ -385,12 +570,21 @@ const data = {
     stack,
     ${argumentCollection}
 };
-window.registerAPICall(JSON.stringify(data));`;
+window.registerAPICall(JSON.stringify(data));
+`;
+    }
+
+    /**
+     * @param {unknown} payload
+     * @returns {V8Tys['Payload']}
+     */
+    _processBindingPausePayload(payload) {
+        return payload;
     }
 
     /**
      * @param {RuntimeBindingCalledEvent} params
-     * @returns {{description: string, source: string, saveArguments: boolean, arguments: string[]}}
+     * @returns {V8Tys['ProcessedRuntimePause'] | null}
      */
     processBindingPause(params) {
         const {payload, breakpoint} = this._preProcessBindingPause(params) || {};
@@ -408,12 +602,7 @@ window.registerAPICall(JSON.stringify(data));`;
 
     /**
      * @param {DebuggerPausedEvent} params
-     * @returns {{
-     *     id: BreakpointId,
-     *     description: string,
-     *     stack: V8CallStack,
-     *     saveArguments: boolean
-     * }}
+     * @returns {V8Tys['ProcessedDebuggerPause'] | null}
      */
     processDebuggerPause(params) {
         const breakpointId = params.hitBreakpoints[0];
@@ -423,76 +612,165 @@ window.registerAPICall(JSON.stringify(data));`;
             return null;
         }
 
-        const source = this._getScriptURLFromPausedEvent(params);
+        const stack = this._getStackFromPausedEvent(params);
 
         return {
             id: breakpointId,
             description: breakpoint.description,
             saveArguments: breakpoint.saveArguments,
-            source,
+            stack,
         };
     }
 
-    static canResolve (breakpoint) {
-        return breakpoint && breakpoint.description;
+    /**
+     * Return stack from the Debugger.paused event
+     *
+     * @param {DebuggerPausedEvent} params
+     * @returns {V8CallStackAllowingAsync | null}
+     */
+    _getStackFromPausedEvent(params) {
+        let stack = null;
+        if (params.callFrames) {
+            /** @type {V8CallStackAllowingAsync} */
+            const cfStack = [];
+            for (const frame of params.callFrames) {
+                const locationUrl = frame.location && this._scripts.get(frame.location.scriptId).url;
+
+                cfStack.push({
+                    fileName: locationUrl,
+                    functionName: frame.functionName,
+                    lineNumber: frame.location.columnNumber,
+                    columnNumber: frame.location.columnNumber,
+                });
+            }
+        }
+
+        if (!stack && params.asyncStackTrace) {
+            stack = this._runtimeStackToStack(params.asyncStackTrace);
+        }
+
+        if (!stack) {
+            this._log('⚠️ could not retrieve stack');
+        }
+
+        return stack;
     }
 
-    static produceSummary(calls, {options}) {
+    /**
+     * @param {RuntimeStackTrace} rst
+     * @returns {CoreStack}
+     */
+    _runtimeStackToStack(rst) {
+        /** @type {CoreStack} */
+        const res = [];
+        for (const frame of rst.callFrames) {
+            res.push({
+                functionName: frame.functionName,
+                fileName: frame.url,
+                lineNumber: frame.lineNumber,
+                columnNumber: frame.columnNumber,
+            });
+        }
+        return res;
+    }
+
+    /**
+     * @param {V8Tys['ProcessedCall'][]} calls
+     * @param {{options: V8Tys['SummaryOptions']}} opts
+     * @returns {V8Tys['Result']}
+     */
+    produceSummary(calls, {options}) {
         // make the saved calls more compact to save space
-        const callsCompact = this.reduceSavedCalls(calls, options);
+        const callsCompact = this._reduceSavedCalls(calls, options);
 
         return {
             savedCalls: callsCompact,
         };
     }
 
-    processBreakpointToCall(breakpoint) {
-        if (this.constructor.canResolve(breakpoint)) {
+    /**
+     * @param {V8Tys['ProcessedDebuggerPause' | 'ProcessedRuntimePause']} breakpoint
+     * @returns {V8Tys['ProcessedCall'] | null}
+     */
+    processBreakpointToCall (breakpoint) {
+        if (breakpoint.description) {
             return breakpoint;
         }
+        return null;
     }
-
 }
 
+/**
+ * @typedef {{
+ *     description: string,
+ *     url: string,
+ *     args: string[],
+ * }} StackHeadPayload
+ */
+
+/**
+ * @typedef {Object<string, number>} APICallData
+ */
+
+/**
+ * @typedef {{
+ *     id: BreakpointId,
+ *     description: string,
+ *     source: string,
+ *     saveArguments: boolean
+ * }} StackHeadProcessedDebuggerPause
+ */
+
+/**
+ * @typedef {{
+ *     description: string,
+ *     source: string,
+ *     saveArguments: boolean,
+ *     arguments: string[]
+ * }} StackHeadProcessedRuntimeBindingCalled
+ */
+
+/**
+ * @typedef {{
+ *     description: string,
+ *     arguments: string[]
+ * }} StackHeadPendingCall
+ */
+
+/**
+ * @typedef {{
+ *     arguments: string[],
+ *     description: string,
+ *     source: string,
+ * }} StackHeadProcessedCall
+ */
+
+/**
+ * @typedef {{
+ *     Payload: StackHeadPayload,
+ *     ProcessedDebuggerPause: StackHeadProcessedDebuggerPause,
+ *     ProcessedRuntimePause: StackHeadProcessedRuntimeBindingCalled,
+ *     ProcessedCall: StackHeadProcessedCall,
+ *     SummaryOptions: Parameters<typeof reduceSavedCalls>[1],
+ *     Result: {
+ *         callStats: Record<string, APICallData>,
+ *         savedCalls: {},
+ *     },
+ * }} StackHeadTys
+ */
+
+/**
+ * Pick only the most recent non-anonymous entry from each stack.
+ *
+ * @extends APIProcessor<StackHeadTys>
+ */
 class APIProcessorStackHead extends APIProcessor {
     constructor(sendCommand) {
         super(sendCommand);
         /**
-         * @type {Map<string, SavedCall>}
+         * @type {Map<string, StackHeadPendingCall>}
          */
         this._pendingCalls = new Map();
-    }
-
-    static reduceSavedCalls (calls) {
-        // no reduction performed
-        return calls;
-    }
-
-    /**
-     * @param {DebuggerPausedEvent} params
-     * @returns {{
-     *     id: BreakpointId,
-     *     description: string,
-     *     source: string,
-     *     saveArguments: boolean
-     * }}
-     */
-    processDebuggerPause(params) {
-        const breakpointId = params.hitBreakpoints[0];
-        const breakpoint = this._getBreakpointById(breakpointId);
-        if (!breakpoint) {
-            this._log('️⚠️ unknown breakpoint', params);
-            return null;
-        }
-
-        const source = this._getScriptURLFromPausedEvent(params);
-
-        return {
-            id: breakpointId,
-            description: breakpoint.description,
-            saveArguments: breakpoint.saveArguments,
-            source,
-        };
     }
 
     /**
@@ -504,7 +782,7 @@ class APIProcessorStackHead extends APIProcessor {
     _getScriptURLFromStackTrace(params) {
         if (params.callFrames) {
             for (const frame of params.callFrames) {
-                const fileUrl = frame.scriptId && this._scriptIdToUrl.get(frame.scriptId);
+                const fileUrl = frame.scriptId && this._scripts.get(frame.scriptId).url;
                 const frameUrl = frame.url;
                 for (const u of [frameUrl, fileUrl]) {
                     if (u && u !== this._mainURL && u.match(SOURCE_PROTOCOL_URL_REGEX)) {
@@ -529,8 +807,8 @@ class APIProcessorStackHead extends APIProcessor {
         let script = null;
         if (params.callFrames) {
             iterateAllFrames: for (const frame of params.callFrames) {
-                const locationUrl = frame.location && this._scriptIdToUrl.get(frame.location.scriptId);
-                const functionLocationUrl = frame.functionLocation && this._scriptIdToUrl.get(frame.functionLocation.scriptId);
+                const locationUrl = frame.location && this._scripts.get(frame.location.scriptId).url;
+                const functionLocationUrl = frame.functionLocation && this._scripts.get(frame.functionLocation.scriptId).url;
                 const frameUrl = frame.url; // this is usually empty in Debugger.CallFrame (unlike Runtime.CallFrame)
 
                 for (const u of [frameUrl, functionLocationUrl, locationUrl]) {
@@ -573,13 +851,30 @@ class APIProcessorStackHead extends APIProcessor {
     }
 
     /**
+     * @param {DebuggerPausedEvent} params
+     * @returns {StackHeadTys['ProcessedDebuggerPause'] | null}
+     */
+    processDebuggerPause(params) {
+        const breakpointId = params.hitBreakpoints[0];
+        const breakpoint = this._getBreakpointById(breakpointId);
+        if (!breakpoint) {
+            this._log('️⚠️ unknown breakpoint', params);
+            return null;
+        }
+
+        const source = this._getScriptURLFromPausedEvent(params);
+
+        return {
+            id: breakpointId,
+            description: breakpoint.description,
+            saveArguments: breakpoint.saveArguments,
+            source,
+        };
+    }
+
+    /**
      * @param {RuntimeBindingCalledEvent} params
-     * @returns {{
-     *     description: string,
-     *     source: string,
-     *     saveArguments: boolean,
-     *     arguments: string[]
-     * }}
+     * @returns {StackHeadTys['ProcessedRuntimePause'] | null}
      */
     processBindingPause(params) {
         const {payload, breakpoint} = this._preProcessBindingPause(params) || {};
@@ -595,7 +890,6 @@ class APIProcessorStackHead extends APIProcessor {
                 }
                 this._pendingCalls.set(breakpoint.cdpId, {
                     arguments: payload.args,
-                    source: null,
                     description: payload.description,
                 });
             }
@@ -610,21 +904,26 @@ class APIProcessorStackHead extends APIProcessor {
         };
     }
 
+    /**
+     * @param {StackHeadTys['ProcessedDebuggerPause' | 'ProcessedRuntimePause']} breakpoint
+     * @returns {StackHeadTys['ProcessedCall'] | null}
+     */
     processBreakpointToCall(breakpoint) {
-        if (this.constructor.canResolve(breakpoint)) {
-            const call = this._retrieveCallArguments(breakpoint.id);
-            if (call) {
-                return {
-                    ...call,
-                    source: breakpoint.source,
-                };
+        if (breakpoint && breakpoint.source && breakpoint.description) {
+            if ('id' in breakpoint) {
+                // debugger pause, we don't know the arguments yet
+                const call = this._retrieveCallArguments(breakpoint.id);
+                if (call) {
+                    return {
+                        ...call,
+                        source: breakpoint.source,
+                    };
+                }
+            } else if (breakpoint.description) {
+                return breakpoint;
             }
-            return breakpoint;
         }
-    }
-
-    static canResolve (breakpoint) {
-        return breakpoint && breakpoint.source && breakpoint.description;
+        return null;
     }
 
     /**
@@ -674,10 +973,22 @@ if (typeof stack === "string") {
     }
 
     /**
-     * @param {{finalUrl: string, urlFilter?: function(string):boolean}} options
-     * @returns {{callStats: Object<string, APICallData>, savedCalls: SavedCall[]}}
+     * @param {unknown} payload
+     * @returns {StackHeadTys['Payload']}
      */
-    static produceSummary(calls, {urlFilter, options}) {
+    _processBindingPausePayload(payload) {
+        return payload;
+    }
+
+    /**
+     * @param {StackHeadTys['ProcessedCall'][]} calls
+     * @param {{
+     *     urlFilter?: (url: string) => boolean,
+     *     options: StackHeadTys['SummaryOptions'],
+     * }} options
+     * @returns {StackHeadTys['Result']}
+     */
+    produceSummary(calls, {urlFilter, options}) {
         /**
          * @type {Object<string, APICallData>}
          */
@@ -691,7 +1002,7 @@ if (typeof stack === "string") {
         }
 
         // make the saved calls more compact to save space
-        const callsCompact = this.reduceSavedCalls(callsFiltered, options);
+        const callsCompact = reduceSavedCalls(calls, options);
 
         return {
             callStats,
