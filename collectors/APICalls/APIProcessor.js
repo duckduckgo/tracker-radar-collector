@@ -37,6 +37,8 @@ const abstract = () => {
     throw new Error("Cannot call method, is abstract.");
 };
 
+const SOURCE_PROTOCOL_URL_REGEX = /^(?:https?|file):\/\//i;
+
 class APIProcessor {
     /**
      * @param {function(string, object=): Promise<object>} sendCommand
@@ -451,8 +453,6 @@ class APIProcessorStackHead extends APIProcessor {
         return calls;
     }
 
-    static SOURCE_PROTOCOL_URL_REGEX = /^(?:https?|file):\/\//i;
-
     /**
      * @param {DebuggerPausedEvent} params
      * @returns {{
@@ -492,7 +492,7 @@ class APIProcessorStackHead extends APIProcessor {
                 const fileUrl = frame.scriptId && this._scriptIdToUrl.get(frame.scriptId);
                 const frameUrl = frame.url;
                 for (const u of [frameUrl, fileUrl]) {
-                    if (u && u !== this._mainURL && u.match(this.constructor.SOURCE_PROTOCOL_URL_REGEX)) {
+                    if (u && u !== this._mainURL && u.match(SOURCE_PROTOCOL_URL_REGEX)) {
                         return u;
                     }
                 }
@@ -519,7 +519,7 @@ class APIProcessorStackHead extends APIProcessor {
                 const frameUrl = frame.url; // this is usually empty in Debugger.CallFrame (unlike Runtime.CallFrame)
 
                 for (const u of [frameUrl, functionLocationUrl, locationUrl]) {
-                    if (u && u !== this._mainURL && u.match(this.constructor.SOURCE_PROTOCOL_URL_REGEX)) {
+                    if (u && u !== this._mainURL && u.match(SOURCE_PROTOCOL_URL_REGEX)) {
                         script = u;
                         break iterateAllFrames;
                     }
