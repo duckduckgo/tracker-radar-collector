@@ -66,7 +66,7 @@ class APICallCollector extends BaseCollector {
      * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.ScriptParsedEvent} params
      */
     onScriptParsed(apiProcessor, params) {
-        await apiProcessor.processScriptParsed(params);
+        apiProcessor.processScriptParsed(params);
     }
 
 
