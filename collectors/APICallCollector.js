@@ -2,6 +2,10 @@ const BaseCollector = require('./BaseCollector');
 const URL = require('url').URL;
 const apiProcessors = require('./APICalls/APIProcessor');
 
+/**
+ * @typedef {apiProcessors.APIProcessor} APIProcessor
+ */
+
 class APICallCollector extends BaseCollector {
 
     id() {
@@ -26,57 +30,57 @@ class APICallCollector extends BaseCollector {
      * @param {import('./BaseCollector').TargetInfo} targetInfo
      */
     async addTarget({cdpClient, url}) {
-        const trackerTracker = new this._apiProcessor(cdpClient.send.bind(cdpClient));
-        trackerTracker.setMainURL(url.toString());
+        const apiProcessor = new this._apiProcessor(cdpClient.send.bind(cdpClient));
+        apiProcessor.setMainURL(url.toString());
 
-        cdpClient.on('Debugger.scriptParsed', this.onScriptParsed.bind(this, trackerTracker));
-        cdpClient.on('Debugger.paused', this.onDebuggerPaused.bind(this, trackerTracker));
-        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCreated.bind(this, trackerTracker, cdpClient));
-        cdpClient.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, trackerTracker));
+        cdpClient.on('Debugger.scriptParsed', this.onScriptParsed.bind(this, apiProcessor));
+        cdpClient.on('Debugger.paused', this.onDebuggerPaused.bind(this, apiProcessor));
+        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCreated.bind(this, apiProcessor, cdpClient));
+        cdpClient.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, apiProcessor));
         await cdpClient.send('Runtime.addBinding', {name: 'registerAPICall'});
 
         try {
-            await trackerTracker.init({log: this._log});
+            await apiProcessor.init({log: this._log});
         } catch(e) {
-            this._log('TrackerTracker init failed.');
+            this._log('APIProcessor init failed.');
             throw e;
         }
     }
 
     /**
-     * @param {TrackerTracker} trackerTracker
+     * @param {APIProcessor} apiProcessor
      * @param {import('puppeteer').CDPSession} cdpClient
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextCreatedEvent} params
      */
-    async onExecutionContextCreated(trackerTracker, cdpClient, params) {
+    async onExecutionContextCreated(apiProcessor, cdpClient, params) {
         // ignore context created by puppeteer / our crawler
         if ((!params.context.origin || params.context.origin === '://') && params.context.auxData.type === 'isolated') {
             return;
         }
 
-        await trackerTracker.setupContextTracking(params.context.id);
+        await apiProcessor.setupContextTracking(params.context.id);
     }
 
     /**
-     * @param {TrackerTracker} trackerTracker
+     * @param {APIProcessor} apiProcessor
      * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.ScriptParsedEvent} params
      */
-    async onScriptParsed(trackerTracker, params) {
-        await trackerTracker.processScriptParsed(params);
+    onScriptParsed(apiProcessor, params) {
+        await apiProcessor.processScriptParsed(params);
     }
 
 
     /**
-     * @param {TrackerTracker} trackerTracker
+     * @param {APIProcessor} apiProcessor
      * @param {{name: string, payload: string, description: string, executionContextId: number}} params
      */
-    onBindingCalled(trackerTracker, params) {
+    onBindingCalled(apiProcessor, params) {
         if (params.name !== 'registerAPICall') {
             return;
         }
-        const breakpoint = trackerTracker.processBindingPause(params);
+        const breakpoint = apiProcessor.processBindingPause(params);
 
-        const call = trackerTracker.processBreakpointToCall(breakpoint);
+        const call = apiProcessor.processBreakpointToCall(breakpoint);
         if (call) {
             this._calls.push(call);
         }
@@ -84,12 +88,12 @@ class APICallCollector extends BaseCollector {
 
     // TODO: IMPORTANT! This will resume all breakpoints, including ones from `debugger` and set by other collectors. Make sure we don't use onDebuggerPaused in other places.
     /**
-     * @param {TrackerTracker} trackerTracker
+     * @param {APIProcessor} apiProcessor
      * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} params
      */
-    onDebuggerPaused(trackerTracker, params) {
+    onDebuggerPaused(apiProcessor, params) {
         // resume asap
-        trackerTracker.sendCommand('Debugger.resume').catch(e => {
+        apiProcessor.sendCommand('Debugger.resume').catch(e => {
             const error = typeof e === 'string' ? e : e.message;
 
             if (error.includes('Target closed.') || error.includes('Session closed.')) {
@@ -102,13 +106,13 @@ class APICallCollector extends BaseCollector {
             }
         });
 
-        const breakpoint = trackerTracker.processDebuggerPause(params);
+        const breakpoint = apiProcessor.processDebuggerPause(params);
         if (!breakpoint) {
             // it's not a breakpoint we care about
             this._log(`Unknown breakpoint detected. ${params.hitBreakpoints}`);
         }
 
-        const call = trackerTracker.processBreakpointToCall(breakpoint);
+        const call = apiProcessor.processBreakpointToCall(breakpoint);
         if (call) {
             this._calls.push(call);
         }
@@ -159,7 +163,7 @@ module.exports = APICallCollector;
  */
 
 /**
- * @typedef { import('./APICalls/TrackerTracker').SavedCall } SavedCall
+ * @typedef { import('./APICalls/APIProcessor').SavedCall } SavedCall
  */
 
 /**
