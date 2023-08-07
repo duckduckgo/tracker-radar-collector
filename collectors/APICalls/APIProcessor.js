@@ -132,8 +132,18 @@ class APIProcessor {
         return resCalls;
     }
 
-    static _breakpointScriptTemplate () {
-        abstract();
+    /**
+     * @abstract
+     * @param {{
+     *     argumentCollection: string,
+     *     description: string,
+     *     saveArguments: boolean,
+     * }} options
+     * @returns {string}
+     */
+    // eslint-disable-next-line no-unused-vars
+    _breakpointScriptTemplate (options) {
+        return abstract();
     }
 
     /**
@@ -146,7 +156,7 @@ class APIProcessor {
         // only save arguments if requested for given breakpoint
         const argumentCollection = canSaveArgs ? `args: Array.from(arguments).map(a => a.toString())` : '';
 
-        let breakpointScript = this.constructor._breakpointScriptTemplate({
+        let breakpointScript = this._breakpointScriptTemplate({
             argumentCollection,
             description,
             saveArguments: breakpoint.saveArguments,
@@ -335,10 +345,15 @@ class APIProcessorV8 extends APIProcessor {
         return super.reduceSavedCalls(callsCompact, options);
     }
 
-    static _breakpointScriptTemplate ({
+    /**
+     * @param {{
+     *   argumentCollection: string,
+     *   description: string,
+     * }} arg
+     */
+    _breakpointScriptTemplate ({
         argumentCollection,
         description,
-        saveArguments,
         }) {
         return `
 // https://v8.dev/docs/stack-trace-api
@@ -612,7 +627,14 @@ class APIProcessorStackHead extends APIProcessor {
         return breakpoint && breakpoint.source && breakpoint.description;
     }
 
-    static _breakpointScriptTemplate ({
+    /**
+     * @param {{
+     *   argumentCollection: string,
+     *   description: string,
+     *   saveArguments: boolean,
+     * }} arg
+     */
+    _breakpointScriptTemplate ({
         argumentCollection,
         description,
         saveArguments,
