@@ -62,7 +62,7 @@ class APICallCollector extends BaseCollector {
 
     /**
      * @param {APIProcessor} apiProcessor
-     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.ScriptParsedEvent} params
+     * @param {import('./APICalls/APIProcessor').DebuggerScriptParsedEvent} params
      */
     onScriptParsed(apiProcessor, params) {
         apiProcessor.processScriptParsed(params);
@@ -71,7 +71,7 @@ class APICallCollector extends BaseCollector {
 
     /**
      * @param {APIProcessor} apiProcessor
-     * @param {{name: string, payload: string, description: string, executionContextId: number}} params
+     * @param {import('./APICalls/APIProcessor').RuntimeBindingCalledEvent} params
      */
     onBindingCalled(apiProcessor, params) {
         if (params.name !== 'registerAPICall') {
@@ -88,7 +88,7 @@ class APICallCollector extends BaseCollector {
     // TODO: IMPORTANT! This will resume all breakpoints, including ones from `debugger` and set by other collectors. Make sure we don't use onDebuggerPaused in other places.
     /**
      * @param {APIProcessor} apiProcessor
-     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} params
+     * @param {import('./APICalls/APIProcessor').DebuggerPausedEvent} params
      */
     onDebuggerPaused(apiProcessor, params) {
         // resume asap

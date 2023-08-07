@@ -4,6 +4,35 @@ const MAX_ASYNC_CALL_STACK_DEPTH = 32;// max depth of async calls tracked
 const allBreakpoints = require('./breakpoints.js');
 const URL = require('url').URL;
 
+/**
+ * @typedef {import('devtools-protocol/types/protocol').default.Runtime.BindingCalledEvent} RuntimeBindingCalledEvent
+ */
+
+/**
+ * @typedef {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextId} ExecutionContextId
+ */
+
+/**
+ * @typedef {import('devtools-protocol/types/protocol').Protocol.Runtime.StackTrace} RuntimeStackTrace
+ */
+
+/**
+ * @typedef {import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId} BreakpointId
+ */
+
+/**
+ * @typedef {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} DebuggerPausedEvent
+ */
+
+/**
+ * @typedef {import('devtools-protocol/types/protocol').Protocol.Debugger.ScriptParsedEvent} DebuggerScriptParsedEvent
+ */
+
+/**
+ * @typedef {import('./breakpoints.js').Breakpoint} Breakpoint
+ */
+
+/** @returns {never} */
 const abstract = () => {
     throw new Error("Cannot call method, is abstract.");
 };
@@ -22,11 +51,11 @@ class APIProcessor {
          */
         this._send = sendCommand;
         /**
-         * @type {Map<import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId, import('./breakpoints').Breakpoint>}
+         * @type {Map<BreakpointId, Breakpoint>}
          */
         this._idToBreakpoint = new Map();
         /**
-         * @type {Map<string, import('./breakpoints').Breakpoint>}
+         * @type {Map<string, Breakpoint>}
          */
         this._descToBreakpoint = new Map();
         /**
@@ -106,9 +135,9 @@ class APIProcessor {
     }
 
     /**
-    * @param {import('./breakpoints').Breakpoint} breakpoint
+    * @param {Breakpoint} breakpoint
     * @param {string} description
-    * @returns string
+    * @returns {string}
     */
     getBreakpointScript(breakpoint, description) {
         const canSaveArgs = breakpoint.type === 'method' || breakpoint.setter;
@@ -139,10 +168,10 @@ class APIProcessor {
     }
 
     /**
-     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextId} contextId
+     * @param {ExecutionContextId} contextId
      * @param {string} expression
      * @param {string} description
-     * @param {import('./breakpoints').Breakpoint} breakpoint
+     * @param {Breakpoint} breakpoint
      */
     async _addBreakpoint(contextId, expression, description, breakpoint) {
         try {
@@ -191,8 +220,8 @@ class APIProcessor {
     }
 
     /**
-     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId} id
-     * @returns {import('./breakpoints').Breakpoint}
+     * @param {BreakpointId} id
+     * @returns {Breakpoint}
      */
     _getBreakpointById(id) {
         return this._idToBreakpoint.get(id) || null;
@@ -200,14 +229,14 @@ class APIProcessor {
 
     /**
      * @param {string} breakpointDescription
-     * @returns {import('./breakpoints').Breakpoint}
+     * @returns {Breakpoint}
      */
     _getBreakpointByDescription(breakpointDescription) {
         return this._descToBreakpoint.get(breakpointDescription) || null;
     }
 
     /**
-     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextId} contextId
+     * @param {ExecutionContextId} contextId
      */
     async setupContextTracking(contextId = undefined) {
         const allBreakpointsSet = allBreakpoints
@@ -242,7 +271,7 @@ class APIProcessor {
     }
 
     /**
-     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.ScriptParsedEvent} params
+     * @param {DebuggerScriptParsedEvent} params
      */
     processScriptParsed(params) {
         if (this._scriptIdToUrl.has(params.scriptId)) {
@@ -252,7 +281,7 @@ class APIProcessor {
     }
 
     /**
-     * @param {{payload: string, description: string, executionContextId: number}} params
+     * @param {RuntimeBindingCalledEvent} params
      * @returns {{description: string, source: string, saveArguments: boolean, arguments: string[]}}
      */
     _preProcessBindingPause(params) {
@@ -343,7 +372,7 @@ window.registerAPICall(JSON.stringify(data));`;
     }
 
     /**
-     * @param {{payload: string, description: string, executionContextId: number}} params
+     * @param {RuntimeBindingCalledEvent} params
      * @returns {{description: string, source: string, saveArguments: boolean, arguments: string[]}}
      */
     processBindingPause(params) {
@@ -361,8 +390,13 @@ window.registerAPICall(JSON.stringify(data));`;
     }
 
     /**
-     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} params
-     * @returns {{id: import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId, description: string, source: string, saveArguments: boolean}}
+     * @param {DebuggerPausedEvent} params
+     * @returns {{
+     *     id: BreakpointId,
+     *     description: string,
+     *     stack: V8CallStack,
+     *     saveArguments: boolean
+     * }}
      */
     processDebuggerPause(params) {
         const breakpointId = params.hitBreakpoints[0];
@@ -420,8 +454,13 @@ class APIProcessorStackHead extends APIProcessor {
     static SOURCE_PROTOCOL_URL_REGEX = /^(?:https?|file):\/\//i;
 
     /**
-     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} params
-     * @returns {{id: import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId, description: string, source: string, saveArguments: boolean}}
+     * @param {DebuggerPausedEvent} params
+     * @returns {{
+     *     id: BreakpointId,
+     *     description: string,
+     *     source: string,
+     *     saveArguments: boolean
+     * }}
      */
     processDebuggerPause(params) {
         const breakpointId = params.hitBreakpoints[0];
@@ -444,7 +483,7 @@ class APIProcessorStackHead extends APIProcessor {
     /**
      * Return top non-anonymous source from Runtime.StackTrace.
      *
-     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.StackTrace} params
+     * @param {RuntimeStackTrace} params
      * @returns {string}
      */
     _getScriptURLFromStackTrace(params) {
@@ -468,7 +507,7 @@ class APIProcessorStackHead extends APIProcessor {
     /**
      * Return top non-anonymous source from the Debugger.paused event
      *
-     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.PausedEvent} params
+     * @param {DebuggerPausedEvent} params
      * @returns {string}
      */
     _getScriptURLFromPausedEvent(params) {
@@ -510,7 +549,7 @@ class APIProcessorStackHead extends APIProcessor {
     }
 
     /**
-     * @param {import('devtools-protocol/types/protocol').Protocol.Debugger.BreakpointId} breakpointId
+     * @param {BreakpointId} breakpointId
      */
     _retrieveCallArguments(breakpointId) {
         const call = this._pendingCalls.get(breakpointId);
@@ -519,8 +558,13 @@ class APIProcessorStackHead extends APIProcessor {
     }
 
     /**
-     * @param {{payload: string, description: string, executionContextId: number}} params
-     * @returns {{description: string, source: string, saveArguments: boolean, arguments: string[]}}
+     * @param {RuntimeBindingCalledEvent} params
+     * @returns {{
+     *     description: string,
+     *     source: string,
+     *     saveArguments: boolean,
+     *     arguments: string[]
+     * }}
      */
     processBindingPause(params) {
         const {payload, breakpoint} = this._preProcessBindingPause(params) || {};
