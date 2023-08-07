@@ -35,7 +35,7 @@ class APICallCollector extends BaseCollector {
 
         cdpClient.on('Debugger.scriptParsed', this.onScriptParsed.bind(this, apiProcessor));
         cdpClient.on('Debugger.paused', this.onDebuggerPaused.bind(this, apiProcessor));
-        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCreated.bind(this, apiProcessor, cdpClient));
+        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCreated.bind(this, apiProcessor));
         cdpClient.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, apiProcessor));
         await cdpClient.send('Runtime.addBinding', {name: 'registerAPICall'});
 
@@ -49,10 +49,9 @@ class APICallCollector extends BaseCollector {
 
     /**
      * @param {APIProcessor} apiProcessor
-     * @param {import('puppeteer').CDPSession} cdpClient
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextCreatedEvent} params
      */
-    async onExecutionContextCreated(apiProcessor, cdpClient, params) {
+    async onExecutionContextCreated(apiProcessor, params) {
         // ignore context created by puppeteer / our crawler
         if ((!params.context.origin || params.context.origin === '://') && params.context.auxData.type === 'isolated') {
             return;
