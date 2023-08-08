@@ -626,12 +626,12 @@ window.registerAPICall(JSON.stringify(data));
      * Return stack from the Debugger.paused event
      *
      * @param {DebuggerPausedEvent} params
-     * @returns {V8CallStackAllowingAsync | null}
+     * @returns {CoreStack | null}
      */
     _getStackFromPausedEvent(params) {
         let stack = null;
         if (params.callFrames) {
-            /** @type {V8CallStackAllowingAsync} */
+            /** @type {CoreStack} */
             const cfStack = [];
             for (const frame of params.callFrames) {
                 const locationUrl = frame.location && this._scripts.get(frame.location.scriptId).url;
@@ -643,6 +643,7 @@ window.registerAPICall(JSON.stringify(data));
                     columnNumber: frame.location.columnNumber,
                 });
             }
+            stack = cfStack;
         }
 
         if (!stack && params.asyncStackTrace) {
