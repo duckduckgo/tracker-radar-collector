@@ -30,14 +30,20 @@ const MAX_ASYNC_CALL_STACK_DEPTH = 32;// max depth of async calls tracked
  */
 
 /**
- * @typedef {import('./breakpoints.js').Breakpoint} Breakpoint
+ * @typedef {(
+ *     (import('./breakpoints').MethodBreakpointSpec & {type: 'method'})
+ *   | (import('./breakpoints').PropertyBreakpointSpec & {type: 'property'})
+ * ) & {
+ *     description: string,
+ *     saveArguments: boolean,
+ * }} TypedBreakpointSpec
  */
 
 /**
- * @typedef {(
- *     (import('./breakpoints').MethodBreakpoint & {type: 'method'})
- *   | (import('./breakpoints').PropertyBreakpoint & {type: 'property'})
- * )} TypedBreakpoint
+ * @typedef {{
+ *     spec: TypedBreakpointSpec,
+ *     cdpId: string, // breakpointID from CDP
+ * }} TypedBreakpoint
  */
 
 /** @returns {never} */
@@ -76,11 +82,14 @@ function reduceSavedCalls (calls, options = {}) {
     for (let i = 0; i < calls.length; i++) {
         const idHash = JSON.stringify(calls[i]);
         if (idHash in resMap) {
+            const entry = resMap[idHash];
             if (includePositions) {
-                resMap[idHash].positions.push(i);
+                entry.positions ??= [];
+                entry.positions.push(i);
             }
             if (includeCount) {
-                resMap[idHash].count++;
+                entry.count ??= 0;
+                entry.count++;
             }
         } else {
             const entry = {
@@ -123,11 +132,11 @@ class APIProcessor {
          */
         this._send = sendCommand;
         /**
-         * @type {Map<BreakpointId, Breakpoint>}
+         * @type {Map<BreakpointId, TypedBreakpoint>}
          */
         this._idToBreakpoint = new Map();
         /**
-         * @type {Map<string, Breakpoint>}
+         * @type {Map<string, TypedBreakpoint>}
          */
         this._descToBreakpoint = new Map();
         /**
@@ -184,7 +193,7 @@ class APIProcessor {
     }
 
     /**
-    * @param {TypedBreakpoint} breakpoint
+    * @param {TypedBreakpointSpec} breakpoint
     * @param {string} description
     * @returns {string}
     */
@@ -217,15 +226,15 @@ class APIProcessor {
     }
 
     /**
-     * @param {ExecutionContextId} contextId
+     * @param {ExecutionContextId | undefined} contextId
      * @param {string} expression
-     * @param {string} description
-     * @param {TypedBreakpoint} breakpoint
+     * @param {TypedBreakpointSpec} breakpoint
      */
-    async _addBreakpoint(contextId, expression, description, breakpoint) {
+    async _addBreakpoint(contextId, expression, breakpoint) {
+        const description = breakpoint.description;
         try {
             /**
-             * @type {{result:{objectId: string, description: string}, exceptionDetails:{}}}
+             * @type {import('devtools-protocol/types/protocol').Protocol.Runtime.EvaluateResponse}
              */
             // @ts-ignore
             const result = await this._send('Runtime.evaluate', {
@@ -246,13 +255,11 @@ class APIProcessor {
             }));
             this._idToBreakpoint.set(cdpBreakpointResult.breakpointId, {
                 cdpId: cdpBreakpointResult.breakpointId,
-                ...breakpoint,
-                description, // save concrete description
+                spec: breakpoint,
             });
             this._descToBreakpoint.set(description, {
                 cdpId: cdpBreakpointResult.breakpointId,
-                ...breakpoint,
-                description, // save concrete description
+                spec: breakpoint,
             });
         } catch(e) {
             const error = (typeof e === 'string') ? e : e.message;
@@ -270,22 +277,22 @@ class APIProcessor {
 
     /**
      * @param {BreakpointId} id
-     * @returns {Breakpoint}
+     * @returns {TypedBreakpoint | null}
      */
     _getBreakpointById(id) {
-        return this._idToBreakpoint.get(id) || null;
+        return this._idToBreakpoint.get(id) ?? null;
     }
 
     /**
      * @param {string} breakpointDescription
-     * @returns {Breakpoint}
+     * @returns {TypedBreakpoint | null}
      */
     _getBreakpointByDescription(breakpointDescription) {
-        return this._descToBreakpoint.get(breakpointDescription) || null;
+        return this._descToBreakpoint.get(breakpointDescription) ?? null;
     }
 
     /**
-     * @param {ExecutionContextId} contextId
+     * @param {ExecutionContextId | undefined} contextId
      */
     async setupContextTracking(contextId = undefined) {
         const allBreakpointsSet = allBreakpoints
@@ -293,24 +300,28 @@ class APIProcessor {
                 const obj = global || `${proto}.prototype`;
                 const propPromises = props.map(async prop => {
                     const expression = `Reflect.getOwnPropertyDescriptor(${obj}, '${prop.name}').${prop.setter === true ? 'set' : 'get'}`;
-                    const description = prop.description || `${obj}.${prop.name}`;
+                    const description = prop.description ?? `${obj}.${prop.name}`;
                     const breakpointSpec = {
                         ...prop,
+                        description,
+                        saveArguments: prop.saveArguments ?? false,
                         type: /** @type {const} */ ('property'),
                     };
-                    await this._addBreakpoint(contextId, expression, description, breakpointSpec);
+                    await this._addBreakpoint(contextId, expression, breakpointSpec);
                 });
 
                 await Promise.all(propPromises);
 
                 const methodPromises = methods.map(async method => {
                     const expression = `Reflect.getOwnPropertyDescriptor(${obj}, '${method.name}').value`;
-                    const description = method.description || `${obj}.${method.name}`;
+                    const description = method.description ?? `${obj}.${method.name}`;
                     const breakpointSpec = {
                         ...method,
+                        saveArguments: method.saveArguments ?? false,
+                        description,
                         type: /** @type {const} */ ('method'),
                     };
-                    await this._addBreakpoint(contextId, expression, description, breakpointSpec);
+                    await this._addBreakpoint(contextId, expression, breakpointSpec);
                 });
 
                 await Promise.all(methodPromises);
@@ -344,7 +355,7 @@ class APIProcessor {
     /**
      * @param {RuntimeBindingCalledEvent} params
      * @returns {{
-     *     breakpoint: Breakpoint,
+     *     breakpoint: TypedBreakpoint,
      *     payload: Tys['Payload'],
      * } | null}
      */
@@ -414,10 +425,10 @@ class APIProcessor {
 
 /**
  * @typedef {{
- *   functionName: string,
- *   fileName: string,
- *   lineNumber: number,
- *   columnNumber: number,
+ *   functionName: string | null,
+ *   fileName: string | null,
+ *   lineNumber: number | null,
+ *   columnNumber: number | null,
  * }} CoreStackEntry
  */
 
@@ -461,7 +472,7 @@ class APIProcessor {
  * @typedef {{
  *     id: BreakpointId,
  *     description: string,
- *     stack: V8CallStackAllowingAsync,
+ *     stack: CoreStack | null,
  *     saveArguments: boolean
  * }} V8ProcessedDebuggerPause
  */
@@ -511,9 +522,12 @@ class APIProcessorV8 extends APIProcessor {
             // only consider filenames. These correspond to trackers in a
             // meaningful way, so we pick only these to save space.
             .map(se => se.fileName)
-            .filter(x => x !== null)
             // group adjacent equal elements
             .reduce((acc, x) => {
+                if (x === null) {
+                    // filename is null
+                    return acc;
+                }
                 if (acc.length && acc[acc.length - 1] === x) {
                     return acc;
                 }
@@ -593,10 +607,10 @@ window.registerAPICall(JSON.stringify(data));
         }
 
         return {
-            stack: payload.stack,
             description: payload.description,
-            saveArguments: breakpoint.saveArguments,
+            saveArguments: breakpoint.spec.saveArguments,
             arguments: payload.args,
+            stack: payload.stack,
         };
     }
 
@@ -605,7 +619,7 @@ window.registerAPICall(JSON.stringify(data));
      * @returns {V8Tys['ProcessedDebuggerPause'] | null}
      */
     processDebuggerPause(params) {
-        const breakpointId = params.hitBreakpoints[0];
+        const breakpointId = (params.hitBreakpoints ?? [])[0];
         const breakpoint = this._getBreakpointById(breakpointId);
         if (!breakpoint) {
             this._log('️⚠️ unknown breakpoint', params);
@@ -616,8 +630,8 @@ window.registerAPICall(JSON.stringify(data));
 
         return {
             id: breakpointId,
-            description: breakpoint.description,
-            saveArguments: breakpoint.saveArguments,
+            description: breakpoint.spec.description,
+            saveArguments: breakpoint.spec.saveArguments,
             stack,
         };
     }
@@ -634,13 +648,13 @@ window.registerAPICall(JSON.stringify(data));
             /** @type {CoreStack} */
             const cfStack = [];
             for (const frame of params.callFrames) {
-                const locationUrl = frame.location && this._scripts.get(frame.location.scriptId).url;
+                const locationUrl = frame.location && this._scripts.get(frame.location.scriptId)?.url;
 
                 cfStack.push({
-                    fileName: locationUrl,
+                    fileName: locationUrl ?? null,
                     functionName: frame.functionName,
-                    lineNumber: frame.location.columnNumber,
-                    columnNumber: frame.location.columnNumber,
+                    lineNumber: frame.location.columnNumber ?? null,
+                    columnNumber: frame.location.columnNumber ?? null,
                 });
             }
             stack = cfStack;
@@ -694,7 +708,7 @@ window.registerAPICall(JSON.stringify(data));
      * @returns {V8Tys['ProcessedCall'] | null}
      */
     processBreakpointToCall (breakpoint) {
-        if (breakpoint.description) {
+        if (breakpoint.stack) {
             return breakpoint;
         }
         return null;
@@ -778,12 +792,12 @@ class APIProcessorStackHead extends APIProcessor {
      * Return top non-anonymous source from Runtime.StackTrace.
      *
      * @param {RuntimeStackTrace} params
-     * @returns {string}
+     * @returns {string | null}
      */
     _getScriptURLFromStackTrace(params) {
         if (params.callFrames) {
             for (const frame of params.callFrames) {
-                const fileUrl = frame.scriptId && this._scripts.get(frame.scriptId).url;
+                const fileUrl = frame.scriptId && this._scripts.get(frame.scriptId)?.url;
                 const frameUrl = frame.url;
                 for (const u of [frameUrl, fileUrl]) {
                     if (u && u !== this._mainURL && u.match(SOURCE_PROTOCOL_URL_REGEX)) {
@@ -808,8 +822,8 @@ class APIProcessorStackHead extends APIProcessor {
         let script = null;
         if (params.callFrames) {
             iterateAllFrames: for (const frame of params.callFrames) {
-                const locationUrl = frame.location && this._scripts.get(frame.location.scriptId).url;
-                const functionLocationUrl = frame.functionLocation && this._scripts.get(frame.functionLocation.scriptId).url;
+                const locationUrl = frame.location && this._scripts.get(frame.location.scriptId)?.url;
+                const functionLocationUrl = frame.functionLocation && this._scripts.get(frame.functionLocation.scriptId)?.url;
                 const frameUrl = frame.url; // this is usually empty in Debugger.CallFrame (unlike Runtime.CallFrame)
 
                 for (const u of [frameUrl, functionLocationUrl, locationUrl]) {
@@ -856,7 +870,7 @@ class APIProcessorStackHead extends APIProcessor {
      * @returns {StackHeadTys['ProcessedDebuggerPause'] | null}
      */
     processDebuggerPause(params) {
-        const breakpointId = params.hitBreakpoints[0];
+        const breakpointId = (params.hitBreakpoints ?? [])[0];
         const breakpoint = this._getBreakpointById(breakpointId);
         if (!breakpoint) {
             this._log('️⚠️ unknown breakpoint', params);
@@ -867,8 +881,8 @@ class APIProcessorStackHead extends APIProcessor {
 
         return {
             id: breakpointId,
-            description: breakpoint.description,
-            saveArguments: breakpoint.saveArguments,
+            description: breakpoint.spec.description,
+            saveArguments: breakpoint.spec.saveArguments,
             source,
         };
     }
@@ -884,7 +898,7 @@ class APIProcessorStackHead extends APIProcessor {
         }
 
         if (!payload.url) {
-            if (breakpoint.saveArguments) {
+            if (breakpoint.spec.saveArguments) {
                 // just save the arguments, the stack will be analyzed with CDP later
                 if (!this._pendingCalls.has(breakpoint.cdpId)) {
                     this._log('Unexpected existing pending call', breakpoint.cdpId);
@@ -899,7 +913,7 @@ class APIProcessorStackHead extends APIProcessor {
 
         return {
             description: payload.description,
-            saveArguments: breakpoint.saveArguments,
+            saveArguments: breakpoint.spec.saveArguments,
             arguments: payload.args,
             source: payload.url,
         };
@@ -985,11 +999,13 @@ if (typeof stack === "string") {
      * @param {StackHeadTys['ProcessedCall'][]} calls
      * @param {{
      *     urlFilter?: (url: string) => boolean,
-     *     options: StackHeadTys['SummaryOptions'],
-     * }} options
+     *     options?: StackHeadTys['SummaryOptions'],
+     * }} [options]
      * @returns {StackHeadTys['Result']}
      */
-    produceSummary(calls, {urlFilter, options}) {
+    produceSummary(calls, options = {}) {
+        // eslint-disable-next-line no-unused-vars
+        const urlFilter = options.urlFilter ?? (_ => true);
         /**
          * @type {Object<string, APICallData>}
          */
@@ -1003,7 +1019,7 @@ if (typeof stack === "string") {
         }
 
         // make the saved calls more compact to save space
-        const callsCompact = reduceSavedCalls(calls, options);
+        const callsCompact = reduceSavedCalls(calls, options.options);
 
         return {
             callStats,
