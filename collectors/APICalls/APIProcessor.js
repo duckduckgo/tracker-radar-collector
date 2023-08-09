@@ -108,7 +108,7 @@ function reduceSavedCalls (calls, options = {}) {
  * @typedef {{
  *     ProcessedDebuggerPause: unknown,
  *     ProcessedRuntimePause: unknown,
- *     ProcessedCall: object, // represents a final, processed call
+ *     ProcessedCall: unknown, // represents a final, processed call
  *     Payload: {description: string},
  *     SummaryOptions: unknown,
  *     Result: unknown, // final result type
@@ -487,8 +487,23 @@ class APIProcessor {
 
 /**
  * @typedef {{
+ *     description: string,
+ *     stack: CoreStack,
+ *     arguments?: string[],
+ * }} V8ProcessedCall
+ */
+
+/**
+ * @typedef {{
  *     stack: string[],
  * }} V8ProcessedCallCompact
+ */
+
+/**
+ * @typedef {{
+ *     description: string,
+ *     arguments: string[]
+ * }} V8PendingCall
  */
 
 /**
@@ -496,10 +511,16 @@ class APIProcessor {
  *     Payload: V8Payload,
  *     ProcessedDebuggerPause: V8ProcessedDebuggerPause,
  *     ProcessedRuntimePause: V8ProcessedRuntimePause,
- *     ProcessedCall: {stack: CoreStack},
+ *     ProcessedCall: V8ProcessedCall,
  *     SummaryOptions: Parameters<typeof reduceSavedCalls>[1],
  *     Result: {
- *         savedCalls: {stack: string[], positions?: number[], count?: number}[],
+ *         savedCalls: {
+ *             description: string,
+ *             stack: string[],
+ *             arguments?: string[],
+ *             positions?: number[],
+ *             count?: number
+ *         }[],
  *     },
  * }} V8Tys
  */
@@ -510,6 +531,14 @@ class APIProcessor {
  * @extends APIProcessor<V8Tys>
  */
 class APIProcessorV8 extends APIProcessor {
+    constructor(sendCommand) {
+        super(sendCommand);
+        /**
+         * @type {Map<string, V8PendingCall>}
+         */
+        this._pendingCalls = new Map();
+    }
+
     /**
      * Note that an empty file name corresponds to <anonymous>.
      *
@@ -603,6 +632,20 @@ window.registerAPICall(JSON.stringify(data));
     processBindingPause(params) {
         const {payload, breakpoint} = this._preProcessBindingPause(params) || {};
         if (!breakpoint || !payload) {
+            return null;
+        }
+
+        if (!payload.stack) {
+            if (breakpoint.spec.saveArguments) {
+                // just save the arguments, the stack will be analyzed with CDP later
+                if (!this._pendingCalls.has(breakpoint.cdpId)) {
+                    this._log('Unexpected existing pending call', breakpoint.cdpId);
+                }
+                this._pendingCalls.set(breakpoint.cdpId, {
+                    arguments: payload.args,
+                    description: payload.description,
+                });
+            }
             return null;
         }
 
@@ -704,12 +747,42 @@ window.registerAPICall(JSON.stringify(data));
     }
 
     /**
+     * @param {BreakpointId} breakpointId
+     */
+    _retrieveCallArguments(breakpointId) {
+        const call = this._pendingCalls.get(breakpointId);
+        this._pendingCalls.delete(breakpointId);
+        return call;
+    }
+
+    /**
      * @param {V8Tys['ProcessedDebuggerPause' | 'ProcessedRuntimePause']} breakpoint
      * @returns {V8Tys['ProcessedCall'] | null}
      */
     processBreakpointToCall (breakpoint) {
         if (breakpoint.stack) {
-            return breakpoint;
+            if ('id' in breakpoint) {
+                // debugger pause, we don't know the arguments yet
+                const call = this._retrieveCallArguments(breakpoint.id);
+                if (call) {
+                    return {
+                        description: call.description,
+                        arguments: call.arguments,
+                        stack: breakpoint.stack,
+                    };
+                }
+                return {
+                    // could not retrieve arguments (should be a property getter)
+                    description: breakpoint.description,
+                    stack: breakpoint.stack,
+                };
+            }
+            // call pause, we have arguments already
+            return {
+                description: breakpoint.description,
+                arguments: breakpoint.arguments,
+                stack: breakpoint.stack,
+            };
         }
         return null;
     }
