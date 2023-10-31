@@ -12,6 +12,7 @@
     "proxyConfig": "bla:bla:123",
     "regionCode": "PL",
     "chromiumVersion": "123456",
+    "seleniumHub": "http://localhost:4444",
     "dataCollectors": ["requests", "apis", "screenshots"],
     "reporters": ["cli"],
     "urls": [

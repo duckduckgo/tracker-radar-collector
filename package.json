@@ -29,6 +29,7 @@
     "@types/mockery": "^1.4.30",
     "@types/node": "^10.12.15",
     "@types/progress": "^2.0.3",
+    "@types/selenium-webdriver": "^4.1.9",
     "@types/stack-utils": "^1.0.1",
     "devtools-protocol": "^0.0.1105486",
     "eslint": "^8.34.0",
@@ -46,6 +47,7 @@
     "commander": "^2.19.0",
     "progress": "^2.0.3",
     "puppeteer": "^10.2.0",
+    "selenium-webdriver": "^4.7.1",
     "tldts": "^4.0.3"
   }
 }
