@@ -68,7 +68,7 @@ function figureOut(flags) {
 
     // array settings
     if (flags.dataCollectors) {
-        crawlConfig.dataCollectors = flags.dataCollectors.split(',').map(n => n.trim()).filter(n => n.length > 0);
+        crawlConfig.dataCollectors = ['easylist', 'cmps', 'screenshots'].map(n => n.trim()).filter(n => n.length > 0);
     }
     if (flags.reporters) {
         crawlConfig.reporters = flags.reporters.split(',').map(n => n.trim()).filter(n => n.length > 0);
