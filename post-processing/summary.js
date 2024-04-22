@@ -255,7 +255,7 @@ dataFiles.forEach(file => {
 });
 
 stats.requests.topRequests = Array.from(topRequests).sort(([, aCount], [, bCount]) => bCount - aCount).slice(0, 50);
-stats.requests.uniqueRequests = Array.from(topRequests).filter(([, count]) => count === 1);
+//stats.requests.uniqueRequests = Array.from(topRequests).filter(([, count]) => count === 1);
 stats.requests.topDomains = Array.from(topDomains).sort(([, aCount], [, bCount]) => bCount - aCount).slice(0, 50);
 stats.requests.uniqueDomains = Array.from(topDomains).filter(([, count]) => count === 1)
 stats.requests.topIPs = Array.from(topIps).sort(([, aCount], [, bCount]) => bCount - aCount).slice(0, 50);
