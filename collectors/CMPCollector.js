@@ -186,7 +186,7 @@ class CMPCollector extends BaseCollector {
         this.receivedMsgs.push(msg);
         switch (msg.type) {
         case 'init': {
-            /** @type {AutoconsentConfig} */
+            /** @type {Partial<AutoconsentConfig>} */
             const autoconsentConfig = {
                 enabled: true,
                 autoAction: null, // we request action explicitly later
@@ -194,6 +194,7 @@ class CMPCollector extends BaseCollector {
                 enablePrehide: false,
                 enableCosmeticRules: true,
                 detectRetries: 20,
+                isMainWorld: false
             };
             await this._cdpClient.send('Runtime.evaluate', {
                 expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(autoconsentConfig)} })`,

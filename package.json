@@ -39,7 +39,7 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
-    "@duckduckgo/autoconsent": "^4.1.1",
+    "@duckduckgo/autoconsent": "^10.15.0",
     "async": "^2.6.1",
     "chalk": "^2.4.1",
     "clickhouse": "^2.6.0",
