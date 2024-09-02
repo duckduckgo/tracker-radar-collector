@@ -17,9 +17,6 @@
     "type": "git",
     "url": "git@github.com:duckduckgo/tracker-radar-crawler.git"
   },
-  "pre-push": [
-    "test"
-  ],
   "engines": {
     "node": ">=14.0.0"
   },
@@ -37,7 +34,6 @@
     "eslint-plugin-mocha": "^10.0.5",
     "mocha": "^10.0.0",
     "mockery": "^2.1.0",
-    "pre-push": "^0.1.1",
     "typescript": "^4.6.4"
   },
   "dependencies": {
