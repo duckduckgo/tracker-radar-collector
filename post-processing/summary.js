@@ -111,7 +111,7 @@ dataFiles.forEach(file => {
     try {
         const dataString = fs.readFileSync(resolvedPath, 'utf8');
         data = JSON.parse(dataString);
-    } catch (e) {
+    } catch {
         stats.global.failingFiles++;
         return;
     }
@@ -173,7 +173,7 @@ dataFiles.forEach(file => {
                 try {
                     const url = new URL(request.url);
                     domains.add(url.hostname);
-                } catch(e) {
+                } catch {
                     stats[sectionName].invalidUrls = stats[sectionName].invalidUrls || 0;
                     stats[sectionName].invalidUrls++;
                 }

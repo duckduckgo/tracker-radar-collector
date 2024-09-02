@@ -2,7 +2,7 @@
  * @fileoverview Helper that provides IDs of all available collectors (based on the main.js file) and helps creating instances of collectors
  */
 const allExports = require('../main');
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const BaseCollector = require('../collectors/BaseCollector');
 const collectorClasses = Object.entries(allExports).filter(([name]) => name.endsWith('Collector')).map(([,collector]) => collector);
 const collectors = collectorClasses.map(CollectorClass => ({

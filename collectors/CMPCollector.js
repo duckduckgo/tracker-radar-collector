@@ -127,7 +127,7 @@ class CMPCollector extends BaseCollector {
     /**
      * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo
      */
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async addTarget(targetInfo) {
         if (targetInfo.type === 'page') {
             this._cdpClient = targetInfo.cdpClient;

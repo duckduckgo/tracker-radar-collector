@@ -9,7 +9,7 @@ class BaseCollector {
      * 
      * @param {CollectorInitOptions} options 
      */
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     init(options) {
     }
 
@@ -18,7 +18,7 @@ class BaseCollector {
      * 
      * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo 
      */
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     addTarget(targetInfo) {
     }
 
@@ -37,7 +37,7 @@ class BaseCollector {
      * @param {{finalUrl: string, urlFilter?: function(string):boolean}} options
      * @returns {Promise<Object>|Object}
      */
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getData(options) {
         return Promise.resolve();
     }

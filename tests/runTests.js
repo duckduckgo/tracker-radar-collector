@@ -35,7 +35,7 @@ for (const testPath of tests) {
             execSync(`node --unhandled-rejections=strict ${testPath}`);
             console.log(`✅ "${testPath}" passed`);
             break;
-        } catch (e) {
+        } catch {
             console.log(`🛑 "${testPath}" failed, attempt ${attempt} / ${MAX_ATTEMPTS}`);
             if (attempt >= MAX_ATTEMPTS) {
                 process.exit(1);

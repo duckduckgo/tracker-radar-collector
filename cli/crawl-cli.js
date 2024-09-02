@@ -11,9 +11,9 @@ const {metadataFileExists, createMetadataFile} = require('./metadataFile');
 const crawlConfig = require('./crawlConfig');
 const {createUniqueUrlName} = require('../helpers/hash');
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const BaseCollector = require('../collectors/BaseCollector');
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const BaseReporter = require('../reporters/BaseReporter');
 
 program
@@ -88,7 +88,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 
         try {
             url = new URL(urlString);
-        } catch(e) {
+        } catch {
             log(chalk.yellow('Invalid URL:'), urlString);
             return false;
         }

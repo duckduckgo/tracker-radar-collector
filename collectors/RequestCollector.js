@@ -93,7 +93,7 @@ class RequestCollector extends BaseCollector {
             }
 
             return crypto.createHash('sha256').update(body).digest('hex');
-        } catch (e) {
+        } catch {
             return null;
         }
     }
@@ -315,7 +315,7 @@ class RequestCollector extends BaseCollector {
 
                 try {
                     url = new URL(request.url);
-                } catch (e) {
+                } catch {
                     // ignore requests with invalid URL
                     return false;
                 }

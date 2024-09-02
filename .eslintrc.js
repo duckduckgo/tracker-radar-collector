@@ -6,12 +6,23 @@ module.exports = {
     },
     plugins: [
         'mocha',
+        '@typescript-eslint'
     ],
-    "extends": "eslint:recommended",
+    "extends": ["eslint:recommended", 'plugin:@typescript-eslint/recommended'],
     "parserOptions": {
-        "ecmaVersion": 2020
+        "ecmaVersion": 2021
     },
+    "root": true,
     "rules": {
+        // Not compatible with JSDoc according to @bradzacher and https://github.com/typescript-eslint/typescript-eslint/issues/8955#issuecomment-2097518639
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        '@typescript-eslint/parameter-properties': 'off',
+        '@typescript-eslint/typedef': 'off',
+
+        '@typescript-eslint/no-require-imports': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+
         "accessor-pairs": "error",
         "array-bracket-newline": "off",
         "array-bracket-spacing": [

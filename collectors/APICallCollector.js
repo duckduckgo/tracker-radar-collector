@@ -166,7 +166,7 @@ class APICallCollector extends BaseCollector {
 
         try {
             url = new URL(urlString);
-        } catch (e) {
+        } catch {
             // ignore requests with invalid URL
             return false;
         }
