@@ -253,7 +253,7 @@ class TrackerTracker {
             // calculate absolute URL
             const urlObj = new URL(script, this._mainURL);
             script = urlObj.href;
-        } catch(e) {
+        } catch {
             this._log('⚠️ invalid source, assuming global', script);
             script = this._mainURL;
         }
@@ -294,7 +294,7 @@ class TrackerTracker {
 
         try {
             payload = JSON.parse(params.payload);
-        } catch(e) {
+        } catch {
             this._log('🚩 invalid breakpoint payload', params.payload);
             return null;
         }

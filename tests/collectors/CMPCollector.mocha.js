@@ -90,6 +90,7 @@ describe('CMPCollector', () => {
                         enablePrehide: false,
                         enableCosmeticRules: true,
                         detectRetries: 20,
+                        isMainWorld: false,
                     })} })`,
                     contextId: 1111,
                 }]);

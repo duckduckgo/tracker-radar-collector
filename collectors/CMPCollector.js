@@ -127,7 +127,7 @@ class CMPCollector extends BaseCollector {
     /**
      * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo
      */
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async addTarget(targetInfo) {
         if (targetInfo.type === 'page') {
             this._cdpClient = targetInfo.cdpClient;
@@ -186,7 +186,7 @@ class CMPCollector extends BaseCollector {
         this.receivedMsgs.push(msg);
         switch (msg.type) {
         case 'init': {
-            /** @type {AutoconsentConfig} */
+            /** @type {Partial<AutoconsentConfig>} */
             const autoconsentConfig = {
                 enabled: true,
                 autoAction: null, // we request action explicitly later
@@ -194,6 +194,7 @@ class CMPCollector extends BaseCollector {
                 enablePrehide: false,
                 enableCosmeticRules: true,
                 detectRetries: 20,
+                isMainWorld: false
             };
             await this._cdpClient.send('Runtime.evaluate', {
                 expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(autoconsentConfig)} })`,
