@@ -2,7 +2,6 @@
     "compilerOptions": {
         "target": "es2021",
         "moduleResolution": "node",
-        "lib": ["dom", "ES2021"],
         "allowJs": true,
         "checkJs": true,
         "resolveJsonModule": true,
