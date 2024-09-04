@@ -25,8 +25,7 @@
     "@types/mocha": "^9.1.1",
     "@types/mockery": "^1.4.30",
     "@types/node": "^20.12.1",
-    "@types/progress": "^2.0.3",
-    "@types/stack-utils": "^1.0.1",
+    "@types/progress": "^2.0.7",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^8.3.0",
     "devtools-protocol": "^0.0.1105486",
@@ -44,6 +43,6 @@
     "commander": "^2.19.0",
     "progress": "^2.0.3",
     "puppeteer": "^19.7.5",
-    "tldts": "^4.0.3"
+    "tldts": "^6.1.41"
   }
 }
