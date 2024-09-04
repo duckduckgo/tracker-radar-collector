@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-const chalk = require('chalk').default;
+const chalk = require('chalk');
 const {createTimer} = require('./helpers/timer');
 const createDeferred = require('./helpers/deferred');
 const {wait, TimeoutError} = require('./helpers/wait');

@@ -1,6 +1,6 @@
 const os = require('os');
 const cores = os.cpus().length;
-const chalk = require('chalk').default;
+const chalk = require('chalk');
 const async = require('async');
 const crawl = require('./crawler');
 const {createTimer} = require('./helpers/timer');

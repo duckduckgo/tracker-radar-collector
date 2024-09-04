@@ -1,6 +1,6 @@
 const BaseReporter = require('./BaseReporter');
 const ProgressBar = require('progress');
-const chalk = require('chalk').default;
+const chalk = require('chalk');
 
 class CLIReporter extends BaseReporter {
     id() {

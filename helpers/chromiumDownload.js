@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const {PUPPETEER_REVISIONS} = require('puppeteer-core/lib/cjs/puppeteer/revisions.js');
 const ProgressBar = require('progress');
 const {CHROMIUM_DOWNLOAD_DIR} = require('../constants');
-const chalk = require('chalk').default;
+const chalk = require('chalk');
 
 /**
  * @param {function} log

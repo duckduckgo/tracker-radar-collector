@@ -3,7 +3,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const program = require('commander');
 const ProgressBar = require('progress');
-const chalk = require('chalk').default;
+const chalk = require('chalk');
 const Clickhouse = require('../reporters/ClickhouseReporter');
 
 program
