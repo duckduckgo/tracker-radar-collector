@@ -4,7 +4,6 @@ const chalk = require('chalk').default;
 const async = require('async');
 const {PUPPETEER_REVISIONS} = require('puppeteer-core/lib/cjs/puppeteer/revisions.js');
 const crawl = require('./crawler');
-const URL = require('url').URL;
 const {createTimer} = require('./helpers/timer');
 const createDeferred = require('./helpers/deferred');
 const downloadCustomChromium = require('./helpers/downloadCustomChromium');
@@ -35,36 +34,21 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
      * @type {function(...any):void} 
      */
     const prefixedLog = (...msg) => log(chalk.gray(`${url.hostname}:`), ...msg);
+    const data = await crawl(url, {
+        log: prefixedLog,
+        // @ts-ignore
+        collectors: dataCollectors.map(collector => new collector.constructor()),
+        filterOutFirstParty,
+        emulateMobile,
+        proxyHost,
+        runInEveryFrame: antiBotDetection ? notABot : undefined,
+        executablePath,
+        maxLoadTimeMs,
+        extraExecutionTimeMs,
+        collectorFlags,
+    });
 
-    let browserConnection = null;
-    let driver = null;
-
-    try {
-        const data = await crawl(url, {
-            log: prefixedLog,
-            // @ts-ignore
-            collectors: dataCollectors.map(collector => new collector.constructor()),
-            filterOutFirstParty,
-            emulateMobile,
-            proxyHost,
-            runInEveryFrame: antiBotDetection ? notABot : undefined,
-            executablePath,
-            maxLoadTimeMs,
-            extraExecutionTimeMs,
-            collectorFlags,
-            browserConnection,
-        });
-
-        dataCallback(url, data);
-    } finally {
-        if (driver && !VISUAL_DEBUG) {
-            try {
-                await driver.quit();
-            } catch (e) {
-                prefixedLog(chalk.red(`Could not clean up remote browser`), chalk.gray(e.message));
-            }
-        }
-    }
+    dataCallback(url, data);
 }
 
 /**
