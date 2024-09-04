@@ -126,7 +126,6 @@ class CMPCollector extends BaseCollector {
     /**
      * @param {import('./BaseCollector').TargetInfo} targetInfo
      */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async addTarget(targetInfo) {
         if (targetInfo.type === 'page') {
             this._cdpClient = targetInfo.session;

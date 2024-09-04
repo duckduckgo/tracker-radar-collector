@@ -5,17 +5,11 @@ const chalk = require('chalk').default;
 const asyncLib = require('async');
 const runCrawlers = require('../crawlerConductor');
 const program = require('commander');
-const URL = require('url').URL;
 const {getCollectorIds, createCollector} = require('../helpers/collectorsList');
 const {getReporterIds, createReporter} = require('../helpers/reportersList');
 const {metadataFileExists, createMetadataFile} = require('./metadataFile');
 const crawlConfig = require('./crawlConfig');
 const {createUniqueUrlName} = require('../helpers/hash');
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const BaseCollector = require('../collectors/BaseCollector');
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const BaseReporter = require('../reporters/BaseReporter');
 
 program
     .option('-o, --output <path>', 'output folder')
@@ -63,7 +57,7 @@ function filterUrls(inputUrls, logFunction, outputPath) {
     
             try {
                 url = new URL(urlString);
-            } catch (e) {
+            } catch {
                 logFunction(chalk.yellow('Invalid URL:'), urlString);
                 filterCallback(null, false);
                 return;
@@ -285,3 +279,11 @@ if (!config.urls || !config.output) {
 
     run(urls, config.output, config.verbose, config.logPath, config.crawlers || null, dataCollectors, reporters, config.forceOverwrite, config.filterOutFirstParty, config.emulateMobile, config.proxyConfig, config.regionCode, !config.disableAntiBot, config.chromiumVersion, config.maxLoadTimeMs, config.extraExecutionTimeMs, collectorFlags);
 }
+
+/**
+ * @typedef {import('../collectors/BaseCollector')} BaseCollector
+ */
+
+/**
+ * @typedef {import('../reporters/BaseReporter')} BaseReporter
+ */
