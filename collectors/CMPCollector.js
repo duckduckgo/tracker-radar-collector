@@ -319,21 +319,25 @@ class CMPCollector extends BaseCollector {
          */
         const foundPatterns = [];
         const foundSnippets = [];
-        const pages = await this.context.pages();
-        if (pages.length > 0) {
-            const page = pages[0];
+        if (this.isolated2pageworld.size > 0) {
             /**
              * @type {Promise<string>[]}
              */
             const promises = [];
-            page.frames().forEach(frame => {
-                // eslint-disable-next-line no-undef
-                promises.push(frame.evaluate(() => document.documentElement.innerText).catch(reason => {
-                    this.log(`error retrieving text: ${reason}`);
-                    // ignore exceptions
-                    return '';
+            for (const contextId of this.isolated2pageworld.values()) {
+                promises.push(this._cdpClient.send('Runtime.evaluate', {
+                    expression: `document.documentElement.innerText`,
+                    contextId,
+                    allowUnsafeEvalBlockedByCSP: true,
+                }).then(result => {
+                    if (result.exceptionDetails) {
+                        this.log(`error retrieving text: ${result.exceptionDetails.text} ${result.exceptionDetails.exception}`);
+                        // ignore exceptions
+                        return '';
+                    }
+                    return result.result.value;
                 }));
-            });
+            }
             const texts = await Promise.all(promises);
             const allTexts = texts.join('\n');
             for (const p of DETECT_PATTERNS) {
