@@ -11,6 +11,56 @@ function addProtocolIfNeeded(url) {
     return `http://${url}`;
 }
 
+
+const trackingParams = {
+    "gclid": "529804",
+    "msclkid": "087859",
+    "fbclid": "284031",
+    "utm_campaign": "684273",
+    "utm_term": "931917",
+    "utm_medium": "270153",
+    "utm_source": "975441",
+    "utm_content": "895038",
+    "fb_action_ids": "323190",
+    "fb_action_types": "027738",
+    "fb_source": "141927",
+    "fb_ref": "509702",
+    "ga_source": "144396",
+    "ga_medium": "347205",
+    "ga_term": "124250",
+    "ga_content": "050787",
+    "ga_campaign": "702125",
+    "ga_place": "110673",
+    "action_object_map": "202674",
+    "action_type_map": "561470",
+    "action_ref_map": "464659",
+    "gs_l": "364895",
+    "mkt_tok": "459073",
+    "hmb_campaign": "876268",
+    "hmb_source": "284429",
+    "hmb_medium": "951835",
+    "aff": "942477",
+    "KNC": "811482",
+    "oq": "883933",
+    "prmd": "042185",
+    "not_a_param": "825833"
+}
+
+function addParameters(url) {
+    try {
+        const urlObj = new URL(url);
+        const params = new URLSearchParams(urlObj.search);
+        Object.entries(trackingParams).forEach(([param, value]) => {
+            params.set(param, value);
+        });
+        urlObj.search = params.toString();
+        return urlObj.toString();
+    } catch (e) {
+        console.error('Invalid URL:', url);
+        return url;
+    }
+}
+
 /**
  * Looks at CLI flags, JSON config etc. to figure out the final crawl config
  * 
@@ -103,9 +153,9 @@ function figureOut(flags) {
 
     crawlConfig.urls = crawlConfig.urls.map(item => {
         if (typeof item === 'string') {
-            return addProtocolIfNeeded(item);
+            return addParameters(addProtocolIfNeeded(item));
         } else if (item.url) {
-            item.url = addProtocolIfNeeded(item.url);
+            item.url = addParameters(addProtocolIfNeeded(item.url));
             return item;
         }
 
