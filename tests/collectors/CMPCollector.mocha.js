@@ -66,7 +66,7 @@ describe('CMPCollector', () => {
             }
         });
         // @ts-ignore not a real CDP client
-        await collector.addTarget({cdpClient: fakeCDPClient, type: 'page', url: 'https://example.com'});
+        await collector.addTarget({session: fakeCDPClient, type: 'page', url: 'https://example.com'});
     });
 
     describe('handleMessage', () => {
@@ -284,18 +284,15 @@ describe('CMPCollector', () => {
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
             assert.strictEqual(contentScriptEval.contextId, 31337);
 
-            // @ts-ignore no need to provide all params
-            collector.context.pages = () => Promise.resolve([
-                {
-                    frames: () => [
-                        {
-                            evaluate: () => Promise.resolve('This website is using cookies. We are using cookies! To reiterate, you consent to the use of cookies on this website. In fact, there is nothing you can possibly do.')
-                        }
-                    ]
+            const origSessionSend = collector._cdpClient.send;
+            // @ts-expect-error monkey patching the method
+            collector._cdpClient.send = () => Promise.resolve({
+                result: {
+                    value: 'This website is using cookies. We are using cookies! To reiterate, you consent to the use of cookies on this website. In fact, there is nothing you can possibly do.'
                 }
-            ]);
-
+            });
             await collector.postLoad();
+            collector._cdpClient.send = origSessionSend;
             const results = await collector.getData();
             assert.deepStrictEqual(results, [{
                 name: '',

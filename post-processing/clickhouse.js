@@ -23,7 +23,7 @@ Examples:
     .option('--delete', 'Delete data for the given crawlid')
     .parse(process.argv);
 
-const opts = program.opts()
+const opts = program.opts();
 
 const ch = new Clickhouse();
 const crawlName = opts.crawlname;
