@@ -4,7 +4,7 @@ const fs = require('fs');
 const chalk = require('chalk');
 const asyncLib = require('async');
 const runCrawlers = require('../crawlerConductor');
-const program = require('commander');
+const {program} = require('commander');
 const {getCollectorIds, createCollector} = require('../helpers/collectorsList');
 const {getReporterIds, createReporter} = require('../helpers/reportersList');
 const {metadataFileExists, createMetadataFile} = require('./metadataFile');
@@ -223,9 +223,9 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
 }
 
 // @ts-ignore
-const config = crawlConfig.figureOut(program);
+const config = crawlConfig.figureOut(program.opts());
 const collectorFlags = {
-    autoconsentAction: program.autoconsentAction,
+    autoconsentAction: program.opts().autoconsentAction,
 };
 /**
  * @type {BaseCollector[]}

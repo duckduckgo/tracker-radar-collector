@@ -1,7 +1,7 @@
 /* eslint-disable no-process-env */
 const fs = require('fs').promises;
 const path = require('path');
-const program = require('commander');
+const {program} = require('commander');
 const ProgressBar = require('progress');
 const chalk = require('chalk');
 const Clickhouse = require('../reporters/ClickhouseReporter');
@@ -23,13 +23,15 @@ Examples:
     .option('--delete', 'Delete data for the given crawlid')
     .parse(process.argv);
 
+const opts = program.opts()
+
 const ch = new Clickhouse();
-const crawlName = program.crawlname;
-const crawlRegion = program.region;
-const crawledPagePath = program.crawldir;
+const crawlName = opts.crawlname;
+const crawlRegion = opts.region;
+const crawledPagePath = opts.crawldir;
 
 // Must provide at least one option
-if ((!crawlName && !crawlRegion && !crawledPagePath && !program.crawlid) || (program.delete && !program.crawlid)) {
+if ((!crawlName && !crawlRegion && !crawledPagePath && !opts.crawlid) || (opts.delete && !opts.crawlid)) {
     program.outputHelp();
     process.exit(1);
 }
@@ -43,10 +45,10 @@ if ((!crawlName && !crawlRegion && !crawledPagePath && !program.crawlid) || (pro
         pages = (await fs.readdir(crawledPagePath)).filter(name => name.endsWith('.json') && name !== 'metadata.json');
     }
     ch.init({verbose: false, startTime: new Date(), urls: pages.length, logPath: ''});
-    if (program.crawlid) {
-        ch.crawlId = program.crawlid;
+    if (opts.crawlid) {
+        ch.crawlId = opts.crawlid;
     }
-    if (program.delete) {
+    if (opts.delete) {
         await ch.deleteCrawlData();
         return;
     }
