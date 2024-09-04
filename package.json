@@ -21,7 +21,7 @@
     "node": ">=16.0.0"
   },
   "devDependencies": {
-    "@types/async": "^2.4.1",
+    "@types/async": "^3.2.24",
     "@types/mocha": "^9.1.1",
     "@types/mockery": "^1.4.30",
     "@types/node": "^20.12.1",
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@duckduckgo/autoconsent": "^10.15.0",
-    "async": "^2.6.1",
+    "async": "^3.2.6",
     "chalk": "^4.1.2",
     "clickhouse": "^2.6.0",
     "commander": "^12.1.0",

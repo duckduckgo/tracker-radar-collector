@@ -46,44 +46,39 @@ function createOutputPath(outputPath, url, fileType = 'json') {
  * @param {string} outputPath
  */
 function filterUrls(inputUrls, logFunction, outputPath) {
-    return new Promise((resolveFilterUrls, rejectFilterUrls) => {
-        asyncLib.filter(inputUrls, (item, filterCallback) => {
-            const urlString = (typeof item === 'string') ? item : item.url;
-    
-            /**
-             * @type {URL}
-             */
-            let url;
-    
-            try {
-                url = new URL(urlString);
-            } catch {
-                logFunction(chalk.yellow('Invalid URL:'), urlString);
-                filterCallback(null, false);
-                return;
-            }
-    
-            if (outputPath) {
-                // filter out entries for which result file already exists
-                const outputFile = createOutputPath(outputPath, url);
-                fs.access(outputFile, err => {
-                    if (err) {
-                        filterCallback(null, true);
-                    } else {
-                        logFunction(chalk.yellow(`Skipping "${urlString}" because output file already exists.`));
-                        filterCallback(null, false);
-                    }
-                });
-                return;
-            }
-            filterCallback(null, true);
-        }, (err, results) => {
-            if (err) {
-                logFunction(chalk.red(`Could not filter URL list: ${err}`));
-                rejectFilterUrls(err);
-            }
-            resolveFilterUrls(results);
-        });
+    return asyncLib.filter(inputUrls, (item, filterCallback) => {
+        const urlString = (typeof item === 'string') ? item : item.url;
+
+        /**
+         * @type {URL}
+         */
+        let url;
+
+        try {
+            url = new URL(urlString);
+        } catch {
+            logFunction(chalk.yellow('Invalid URL:'), urlString);
+            filterCallback(null, false);
+            return;
+        }
+
+        if (outputPath) {
+            // filter out entries for which result file already exists
+            const outputFile = createOutputPath(outputPath, url);
+            fs.access(outputFile, err => {
+                if (err) {
+                    filterCallback(null, true);
+                } else {
+                    logFunction(chalk.yellow(`Skipping "${urlString}" because output file already exists.`));
+                    filterCallback(null, false);
+                }
+            });
+            return;
+        }
+        filterCallback(null, true);
+    }).catch(err => {
+        logFunction(chalk.red(`Could not filter URL list: ${err}`));
+        throw err;
     });
 }
 
