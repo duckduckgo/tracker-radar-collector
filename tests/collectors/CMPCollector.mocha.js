@@ -292,6 +292,7 @@ describe('CMPCollector', () => {
                 }
             });
             await collector.postLoad();
+            // eslint-disable-next-line require-atomic-updates
             collector._cdpClient.send = origSessionSend;
             const results = await collector.getData();
             assert.deepStrictEqual(results, [{
