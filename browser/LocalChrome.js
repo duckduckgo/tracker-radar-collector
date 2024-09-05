@@ -67,7 +67,7 @@ class LocalChrome extends BaseBrowser {
     
         this.browserProcess = launch({
             executablePath: launchArgs.executablePath,
-            detached: true,
+            detached: false,
             env: process.env,
             args: launchArgs.args,
             handleSIGHUP,
