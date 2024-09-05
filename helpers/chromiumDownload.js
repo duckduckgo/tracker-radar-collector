@@ -1,52 +1,50 @@
-const puppeteer = require('puppeteer');
-const {PUPPETEER_REVISIONS} = require('puppeteer-core/lib/cjs/puppeteer/revisions.js');
+const {canDownload, install, Browser, resolveBuildId, detectBrowserPlatform, getInstalledBrowsers} = require('@puppeteer/browsers');
 const ProgressBar = require('progress');
 const {CHROMIUM_DOWNLOAD_DIR} = require('../constants');
 const chalk = require('chalk');
 
 /**
- * @param {function} log
- * @param {string} version 
- * @returns {Promise<string>} executable path of the downloaded Chromium
- */
-async function downloadCustomChromium(log, version) {
-    const browserFetcher = puppeteer.createBrowserFetcher({
-        path: CHROMIUM_DOWNLOAD_DIR,
-    });
-    const revInfo = browserFetcher.revisionInfo(version);
-    if (revInfo.local) {
-        log(chalk.blue(`⬇ Using existing version of Chromium - ${version}.`));
-        return revInfo.executablePath;
-    }
-    const canDownload = await browserFetcher.canDownload(version);
-
-    if (!canDownload) {
-        throw new Error(`Provided version of Chromium (${version}) can't be downloaded.`);
-    }
-
-    log(chalk.blue(`⬇ Downloading custom version of Chromium - ${version}.`));
-    const progressBar = new ProgressBar('[:bar] :percent ETA :etas', {total: 100, width: 30});
-    const revisionInfo = await browserFetcher.download(version, (/** @type {number} **/current, /** @type {number} **/total) => progressBar.update(current / total));
-
-    return revisionInfo.executablePath;
-}
-
-/**
  * @param {function} log 
+ * @param {string=} buildId
  * @returns {Promise<string>} executable path of the downloaded Chromium
  */
-function getDefaultChromium(log) {
-    const browserFetcher = puppeteer.createBrowserFetcher({
-        path: CHROMIUM_DOWNLOAD_DIR,
+async function downloadChrome(log, buildId) {
+    const platform = detectBrowserPlatform();
+    buildId = buildId || await resolveBuildId(Browser.CHROME, detectBrowserPlatform(), 'stable');
+
+    const installOptions = {
+        cacheDir: CHROMIUM_DOWNLOAD_DIR,
+        browser: Browser.CHROME,
+        platform,
+        buildId,
+    };
+
+    const installedBrowsers = await getInstalledBrowsers({
+        cacheDir: CHROMIUM_DOWNLOAD_DIR,
     });
-    const revisionInfo = browserFetcher.revisionInfo(PUPPETEER_REVISIONS.chromium);
-    if (!revisionInfo.local) {
-        return downloadCustomChromium(log, PUPPETEER_REVISIONS.chromium);
+
+    for (const browser of installedBrowsers) {
+        if (browser.platform === platform && browser.buildId === buildId && browser.browser === Browser.CHROME) {
+            return browser.executablePath;
+        }
     }
-    return Promise.resolve(revisionInfo.executablePath);
+
+    if (!canDownload(installOptions)) {
+        throw new Error(`Provided version of Chrome (${buildId}) can't be downloaded.`);
+    }
+
+    log(chalk.blue(`⬇ Downloading Chrome build ${buildId} for ${platform}...`));
+    const progressBar = new ProgressBar('[:bar] :percent ETA :etas', {total: 100, width: 30});
+    const browser = await install({
+        ...installOptions,
+        downloadProgressCallback(downloadedBytes, totalBytes) {
+            progressBar.update(downloadedBytes / totalBytes);
+        }
+    });
+    log(chalk.blue(`⬇ Downloaded Chrome build ${browser.buildId} for ${browser.platform} to ${browser.executablePath}`));
+    return browser.executablePath;
 }
 
 module.exports = {
-    downloadCustomChromium,
-    getDefaultChromium,
+    downloadChrome,
 };

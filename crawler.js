@@ -54,7 +54,7 @@ class Crawler {
     }
 
     /**
-     * @param {import('puppeteer-core/lib/cjs/puppeteer/common/Connection').CDPSession} session
+     * @param {import('puppeteer-core').CDPSession} session
      * @param {import('./collectors/BaseCollector').TargetInfo} targetInfo
      */
     async _onTargetAttached(session, targetInfo) {

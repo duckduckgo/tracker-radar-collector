@@ -1,5 +1,5 @@
 const {VISUAL_DEBUG} = require('../constants');
-const {getDefaultChromium} = require('../helpers/chromiumDownload');
+const {downloadChrome} = require('../helpers/chromiumDownload');
 const LocalChrome = require('./LocalChrome');
 
 /**
@@ -12,7 +12,7 @@ async function openBrowser(log, proxyHost, executablePath) {
     const extraArgs = [
         // enable FLoC
         '--enable-blink-features=InterestCohortAPI',
-        '--enable-features="FederatedLearningOfCohorts:update_interval/10s/minimum_history_domain_size_required/1,FlocIdSortingLshBasedComputation,InterestCohortFeaturePolicy"',
+        '--enable-features=FederatedLearningOfCohorts:update_interval/10s/minimum_history_domain_size_required/1,FlocIdSortingLshBasedComputation,InterestCohortFeaturePolicy',
         '--js-flags="--async-stack-traces --stack-trace-limit 32"'
     ];
     if (proxyHost) {
@@ -30,7 +30,7 @@ async function openBrowser(log, proxyHost, executablePath) {
     const browser = new LocalChrome({
         extraArgs,
         headless: !VISUAL_DEBUG,
-        executablePath: executablePath || await getDefaultChromium(log),
+        executablePath: executablePath || await downloadChrome(log),
     });
     await browser.start();
 

@@ -47,7 +47,7 @@ class APICallCollector extends BaseCollector {
 
     /**
      * @param {TrackerTracker} trackerTracker
-     * @param {import('puppeteer-core/lib/cjs/puppeteer/common/Connection').CDPSession} cdpClient
+     * @param {import('puppeteer-core').CDPSession} cdpClient
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextCreatedEvent} params
      */
     async onExecutionContextCreated(trackerTracker, cdpClient, params) {

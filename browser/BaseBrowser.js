@@ -11,7 +11,7 @@ class BaseBrowser {
     }
 
     /**
-     * @returns {Promise<import('puppeteer-core/lib/cjs/puppeteer/common/Connection').Connection>}
+     * @returns {Promise<import('puppeteer-core').Connection>}
      */
     getConnection() {
         throw new Error('Not implemented');

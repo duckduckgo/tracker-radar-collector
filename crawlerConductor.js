@@ -4,7 +4,7 @@ const chalk = require('chalk');
 const asyncLib = require('async');
 const crawl = require('./crawler');
 const {createTimer} = require('./helpers/timer');
-const {downloadCustomChromium} = require('./helpers/chromiumDownload');
+const {downloadChrome} = require('./helpers/chromiumDownload');
 const notABot = require('./helpers/notABot');
 
 const MAX_NUMBER_OF_CRAWLERS = 38;// by trial and error there seems to be network bandwidth issues with more than 38 browsers. 
@@ -68,7 +68,7 @@ module.exports = async options => {
      */
     let executablePath;
     if (options.chromiumVersion) {
-        executablePath = await downloadCustomChromium(log, options.chromiumVersion);
+        executablePath = await downloadChrome(log, options.chromiumVersion);
     }
 
     await asyncLib.eachOfLimit(options.urls, numberOfCrawlers, (urlItem, idx, callback) => {

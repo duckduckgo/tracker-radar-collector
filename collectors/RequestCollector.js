@@ -81,7 +81,7 @@ class RequestCollector extends BaseCollector {
 
     /**
      * @param {RequestId} id 
-     * @param {import('puppeteer-core/lib/cjs/puppeteer/common/Connection').CDPSession} cdp
+     * @param {import('puppeteer-core').CDPSession} cdp
      */
     async getResponseBodyHash(id, cdp) {
         try {
@@ -99,8 +99,8 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {{initiator: import('../helpers/initiators').RequestInitiator, request: CDPRequest, requestId: RequestId, timestamp: Timestamp, frameId?: FrameId, type?: ResourceType, redirectResponse?: CDPResponse}} data 
-     * @param {import('puppeteer-core/lib/cjs/puppeteer/common/Connection').CDPSession} cdp
+     * @param {import('devtools-protocol').Protocol.Network.RequestWillBeSentEvent} data 
+     * @param {import('puppeteer-core').CDPSession} cdp
      */
     handleRequest(data, cdp) {
         const {
@@ -181,7 +181,7 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {{requestId: RequestId, url: string, initiator: import('../helpers/initiators').RequestInitiator}} request 
+     * @param {import('devtools-protocol').Protocol.Network.WebSocketCreatedEvent} request 
      */
     handleWebSocket(request) {
         this._requests.push({
@@ -193,7 +193,7 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {{requestId: RequestId, type: ResourceType, frameId?: FrameId, response: CDPResponse}} data 
+     * @param {} data 
      */
     handleResponse(data) {
         const {
@@ -252,7 +252,7 @@ class RequestCollector extends BaseCollector {
 
     /**
      * @param {{errorText: string, requestId: RequestId, timestamp: Timestamp, type: ResourceType}} data 
-     * @param {import('puppeteer-core/lib/cjs/puppeteer/common/Connection').CDPSession} cdp
+     * @param {import('puppeteer-core').CDPSession} cdp
      */
     async handleFailedRequest(data, cdp) {
         let request = this.findLastRequestWithId(data.requestId);
@@ -277,7 +277,7 @@ class RequestCollector extends BaseCollector {
 
     /**
      * @param {{requestId: RequestId, encodedDataLength?: number, timestamp: Timestamp}} data 
-     * @param {import('puppeteer-core/lib/cjs/puppeteer/common/Connection').CDPSession} cdp
+     * @param {import('puppeteer-core').CDPSession} cdp
      */
     async handleFinishedRequest(data, cdp) {
         let request = this.findLastRequestWithId(data.requestId);

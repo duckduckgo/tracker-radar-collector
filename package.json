@@ -25,12 +25,11 @@
     "@types/debug": "^4.1.12",
     "@types/mocha": "^9.1.1",
     "@types/mockery": "^1.4.30",
-    "@types/node": "^20.12.1",
+    "@types/node": "^20.16.5",
     "@types/progress": "^2.0.7",
     "@types/ws": "^8.5.12",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^8.3.0",
-    "devtools-protocol": "^0.0.1105486",
     "eslint": "^8.34.0",
     "eslint-plugin-mocha": "^10.0.5",
     "mocha": "^10.0.0",
@@ -44,7 +43,7 @@
     "clickhouse": "^2.6.0",
     "commander": "^12.1.0",
     "progress": "^2.0.3",
-    "puppeteer": "^19.7.5",
+    "puppeteer": "^23.3.0",
     "tldts": "^6.1.41"
   }
 }

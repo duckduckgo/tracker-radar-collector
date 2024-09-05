@@ -1,11 +1,15 @@
-const {mkdtemp} = require('fs/promises');
+const {mkdtemp, rm} = require('fs/promises');
 const {join} = require('path');
 const {tmpdir} = require('os');
-const {BrowserRunner} = require('puppeteer-core/lib/cjs/puppeteer/node/BrowserRunner.js');
+const {CDP_WEBSOCKET_ENDPOINT_REGEX, launch} = require('@puppeteer/browsers');
+
+const {Connection} = require('puppeteer-core');
+
+// INTERNAL puppeteer classes
 const {ChromeLauncher} = require('puppeteer-core/lib/cjs/puppeteer/node/ChromeLauncher.js');
+const {NodeWebSocketTransport} = require('puppeteer-core/lib/cjs/puppeteer/node/NodeWebSocketTransport.js');
 
 const BaseBrowser = require("./BaseBrowser");
-const {DEFAULT_VIEWPORT} = require('../constants');
 
 class LocalChrome extends BaseBrowser {
     /**
@@ -15,29 +19,8 @@ class LocalChrome extends BaseBrowser {
         super();
         this.options = options;
         this.connection = null;
-        this.runner = null;
+        this.browserProcess = null;
         this.userDataDir = null;
-        /** @type import('puppeteer-core/lib/cjs/puppeteer/node/LaunchOptions') */
-        this.launchOptions = {
-            ignoreDefaultArgs: false,
-            args: options.extraArgs,
-            dumpio: false,
-            pipe: false,
-            // eslint-disable-next-line no-process-env
-            env: process.env,
-            handleSIGINT: true,
-            handleSIGTERM: true,
-            handleSIGHUP: true,
-            ignoreHTTPSErrors: false,
-            defaultViewport: options.viewport || DEFAULT_VIEWPORT,
-            slowMo: 0,
-            timeout: 30000,
-            waitForInitialPage: true,
-            channel: undefined,
-            executablePath: options.executablePath,
-            debuggingPort: undefined,
-            protocol: undefined,
-        };
     }
 
     _getProfilePath() {
@@ -54,7 +37,7 @@ class LocalChrome extends BaseBrowser {
         this.userDataDir = await mkdtemp(this._getProfilePath());
 
         const devtools = !this.options.headless;
-        const headless = this.options.headless ? 'new' : false;
+        const headless = this.options.headless;
 
         const chromeArguments = ChromeLauncher.prototype.defaultArgs({
             devtools,
@@ -64,18 +47,62 @@ class LocalChrome extends BaseBrowser {
         });
         chromeArguments.push(`--remote-debugging-port=0`);
 
-        this.runner = new BrowserRunner('chrome', this.options.executablePath, chromeArguments, this.userDataDir, true);
-        this.runner.start(this.launchOptions);
+        const handleSIGINT = true;
+        const handleSIGTERM = true;
+        const handleSIGHUP = true;
+      
+        const launchArgs = {
+            executablePath: this.options.executablePath,
+            args: chromeArguments,
+            userDataDir: this.userDataDir,
+        };
+      
+        const onProcessExit = async () => {
+            await rm(this.userDataDir, {
+                force: true,
+                recursive: true,
+                maxRetries: 5,
+            });
+        };
+    
+        this.browserProcess = launch({
+            executablePath: launchArgs.executablePath,
+            detached: true,
+            env: process.env,
+            args: launchArgs.args,
+            handleSIGHUP,
+            handleSIGTERM,
+            handleSIGINT,
+            dumpio: false, // set to true to connect stdio from the browser process to the current process
+            pipe: false,
+            onExit: onProcessExit,
+        });
     }
 
     /**
      * @returns {Promise<void>}
      */
     async close() {
-        if (!this.runner.proc) {
+        if (!this.browserProcess) {
             throw new Error('Browser is not running');
         }
-        await this.runner.close();
+        if (this.closing) {
+            return;
+        }
+        this.closing = true;
+        if (this.connection) {
+            // Attempt to close the browser gracefully
+            try {
+              await this.connection.send('Browser.close');
+              await this.browserProcess.hasClosed();
+            } catch (error) {
+              console.error('Error when closing browser connection', error);
+              await this.browserProcess.close();
+            }
+            this.connection.dispose();
+        } else {
+            await this.browserProcess.close();
+        }
     }
 
     /**
@@ -83,16 +110,24 @@ class LocalChrome extends BaseBrowser {
      */
     async getConnection() {
         try {
-            this.connection = await this.runner.setupConnection({
-                timeout: 30000,
-                slowMo: 0,
-                preferredRevision: '<SEE_PUPPETEER_SOURCE>',
-                usePipe: false,
-            });
+            const wsTimeout = 30000;
+            const browserWSEndpoint = await this.browserProcess.waitForLineOutput(
+                CDP_WEBSOCKET_ENDPOINT_REGEX,
+                wsTimeout
+            );
+            const transport = await NodeWebSocketTransport.create(browserWSEndpoint);
+            let slowMo; // override for debugging
+            let protocolTimeout; // override for debugging
+            this.connection = new Connection(
+                browserWSEndpoint,
+                transport,
+                slowMo,
+                protocolTimeout
+            );
             return this.connection;
         } catch (e) {
             console.log('error setting up connection', e);
-            this.runner.kill();
+            this.close();
             throw e;
         }
     }
@@ -105,5 +140,5 @@ module.exports = LocalChrome;
  */
 
 /**
- * @typedef {import('puppeteer-core/lib/cjs/puppeteer/common/Connection').Connection} BrowserConnection
+ * @typedef {import('puppeteer-core').Connection} BrowserConnection
  */

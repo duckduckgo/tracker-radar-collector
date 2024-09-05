@@ -18,7 +18,7 @@ class TraceCollector extends BaseCollector {
          */
         this._tracing = false;
         /**
-         * @type {import('puppeteer-core/lib/cjs/puppeteer/common/Connection').CDPSession}
+         * @type {import('puppeteer-core').CDPSession}
          */
         this._cdpClient = null;
     }

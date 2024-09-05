@@ -56,7 +56,7 @@ class BaseCollector {
  * @property {import('devtools-protocol/types/protocol').Protocol.Target.TargetID} id
  * @property {string} type
  * @property {string} url
- * @property {import('puppeteer-core/lib/cjs/puppeteer/common/Connection').CDPSession} session
+ * @property {import('puppeteer-core').CDPSession} session
  */
 
 
