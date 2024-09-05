@@ -19,8 +19,8 @@ async function openBrowser(log, proxyHost, executablePath) {
         let url;
         try {
             url = new URL(proxyHost);
-        } catch(e) {
-            log('Invalid proxy URL');
+        } catch (e) {
+            log('Invalid proxy URL', e);
         }
 
         extraArgs.push(`--proxy-server=${proxyHost}`);

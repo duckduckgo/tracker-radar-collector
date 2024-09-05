@@ -63,13 +63,8 @@ module.exports = async options => {
     }
     log(chalk.cyan(`Number of crawlers: ${numberOfCrawlers}\n`));
 
-    /**
-     * @type {string}
-     */
-    let executablePath;
-    if (options.chromiumVersion) {
-        executablePath = await downloadChrome(log, options.chromiumVersion);
-    }
+    // make sure the browser is downloaded before we start parallel tasks
+    const executablePath = await downloadChrome(log, options.chromiumVersion);
 
     await asyncLib.eachOfLimit(options.urls, numberOfCrawlers, (urlItem, idx, callback) => {
         const urlString = (typeof urlItem === 'string') ? urlItem : urlItem.url;
