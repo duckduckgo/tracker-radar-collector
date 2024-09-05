@@ -1,14 +1,10 @@
 const os = require('os');
 const cores = os.cpus().length;
-const chalk = require('chalk').default;
-const async = require('async');
+const chalk = require('chalk');
+const asyncLib = require('async');
 const crawl = require('./crawler');
-const URL = require('url').URL;
 const {createTimer} = require('./helpers/timer');
-const createDeferred = require('./helpers/deferred');
-const downloadCustomChromium = require('./helpers/downloadCustomChromium');
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const BaseCollector = require('./collectors/BaseCollector');
+const {downloadCustomChromium} = require('./helpers/chromiumDownload');
 const notABot = require('./helpers/notABot');
 
 const MAX_NUMBER_OF_CRAWLERS = 38;// by trial and error there seems to be network bandwidth issues with more than 38 browsers. 
@@ -34,7 +30,6 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
      * @type {function(...any):void} 
      */
     const prefixedLog = (...msg) => log(chalk.gray(`${url.hostname}:`), ...msg);
-
     const data = await crawl(url, {
         log: prefixedLog,
         // @ts-ignore
@@ -56,7 +51,6 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
  * @param {{urls: Array<string|{url:string,dataCollectors?:BaseCollector[]}>, dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean, chromiumVersion?: string, maxLoadTimeMs?: number, extraExecutionTimeMs?: number, collectorFlags?: Object.<string, boolean>}} options
  */
 module.exports = async options => {
-    const deferred = createDeferred();
     const log = options.logFunction || (() => {});
     const failureCallback = options.failureCallback || (() => {});
 
@@ -77,7 +71,7 @@ module.exports = async options => {
         executablePath = await downloadCustomChromium(log, options.chromiumVersion);
     }
 
-    async.eachOfLimit(options.urls, numberOfCrawlers, (urlItem, idx, callback) => {
+    await asyncLib.eachOfLimit(options.urls, numberOfCrawlers, (urlItem, idx, callback) => {
         const urlString = (typeof urlItem === 'string') ? urlItem : urlItem.url;
         let dataCollectors = options.dataCollectors;
 
@@ -91,8 +85,9 @@ module.exports = async options => {
 
         const task = crawlAndSaveData.bind(null, urlString, dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false), executablePath, options.maxLoadTimeMs, options.extraExecutionTimeMs, options.collectorFlags);
 
-        async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
+        asyncLib.retry(MAX_NUMBER_OF_RETRIES, task, err => {
             if (err) {
+                console.log(err);
                 log(chalk.red(`Max number of retries (${MAX_NUMBER_OF_RETRIES}) exceeded for "${urlString}".`));
                 failureCallback(urlString, err);
             } else {
@@ -101,13 +96,9 @@ module.exports = async options => {
 
             callback();
         });
-    }, err => {
-        if (err) {
-            deferred.reject(err);
-        } else {
-            deferred.resolve();
-        }
     });
-
-    await deferred.promise;
 };
+
+/**
+ * @typedef {import('./collectors/BaseCollector')} BaseCollector
+ */

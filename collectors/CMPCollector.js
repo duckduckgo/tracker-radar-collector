@@ -89,7 +89,6 @@ class CMPCollector extends BaseCollector {
         this.selfTestFrame = null;
         this.isolated2pageworld = new Map();
         this.pendingScan = createDeferred();
-        this.context = options.context;
         /** @type {ScanResult} */
         this.scanResult = {
             snippets: [],
@@ -125,12 +124,11 @@ class CMPCollector extends BaseCollector {
     }
 
     /**
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo
+     * @param {import('./BaseCollector').TargetInfo} targetInfo
      */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async addTarget(targetInfo) {
         if (targetInfo.type === 'page') {
-            this._cdpClient = targetInfo.cdpClient;
+            this._cdpClient = targetInfo.session;
             await this._cdpClient.send('Page.enable');
             await this._cdpClient.send('Runtime.enable');
 
@@ -321,21 +319,25 @@ class CMPCollector extends BaseCollector {
          */
         const foundPatterns = [];
         const foundSnippets = [];
-        const pages = await this.context.pages();
-        if (pages.length > 0) {
-            const page = pages[0];
+        if (this.isolated2pageworld.size > 0) {
             /**
              * @type {Promise<string>[]}
              */
             const promises = [];
-            page.frames().forEach(frame => {
-                // eslint-disable-next-line no-undef
-                promises.push(frame.evaluate(() => document.documentElement.innerText).catch(reason => {
-                    this.log(`error retrieving text: ${reason}`);
-                    // ignore exceptions
-                    return '';
+            for (const contextId of this.isolated2pageworld.values()) {
+                promises.push(this._cdpClient.send('Runtime.evaluate', {
+                    expression: `document.documentElement.innerText`,
+                    contextId,
+                    allowUnsafeEvalBlockedByCSP: true,
+                }).then(result => {
+                    if (result.exceptionDetails) {
+                        this.log(`error retrieving text: ${result.exceptionDetails.text} ${result.exceptionDetails.exception}`);
+                        // ignore exceptions
+                        return '';
+                    }
+                    return result.result.value;
                 }));
-            });
+            }
             const texts = await Promise.all(promises);
             const allTexts = texts.join('\n');
             for (const p of DETECT_PATTERNS) {

@@ -77,6 +77,8 @@ async function main() {
         'window.matchMedia("prefers-reduced-motion")',
         'window.matchMedia("color-gamut")',
         'window.matchMedia("pointer")',
+        // window.openDatabase() is removed in recent Chrome versions
+        'window.openDatabase',
     ];
 
     breakpoints.forEach(object => {

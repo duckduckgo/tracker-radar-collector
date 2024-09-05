@@ -1,11 +1,16 @@
+class TimeoutError extends Error {}
+
 /**
- * @param {Promise<any>} promise 
- * @param {number} maxMs 
+ * @template T
+ * @param {Promise<T>} promise
+ * @param {number} maxMs
+ * @param {string} timeoutMessage
+ * @returns {Promise<T>}
  */
-function wait(promise, maxMs) {
+function wait(promise, maxMs, timeoutMessage = 'Operation timed out') {
     return new Promise((resolve, reject) => {
         const timeout = setTimeout(() => {
-            reject(new Error('Operation timed out'));
+            reject(new TimeoutError(timeoutMessage));
         }, maxMs);
 
         promise.then(result => {
@@ -18,4 +23,7 @@ function wait(promise, maxMs) {
     });
 }
 
-module.exports = wait;
+module.exports = {
+    TimeoutError,
+    wait,
+};

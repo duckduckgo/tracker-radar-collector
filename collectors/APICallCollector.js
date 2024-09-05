@@ -25,17 +25,17 @@ class APICallCollector extends BaseCollector {
     }
 
     /**
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo 
+     * @param {import('./BaseCollector').TargetInfo} targetInfo 
      */
-    async addTarget({cdpClient, url}) {
-        const trackerTracker = new TrackerTracker(cdpClient.send.bind(cdpClient));
+    async addTarget({session, url}) {
+        const trackerTracker = new TrackerTracker(session.send.bind(session));
         trackerTracker.setMainURL(url.toString());
 
-        cdpClient.on('Debugger.scriptParsed', this.onScriptParsed.bind(this, trackerTracker));
-        cdpClient.on('Debugger.paused', this.onDebuggerPaused.bind(this, trackerTracker));
-        cdpClient.on('Runtime.executionContextCreated', this.onExecutionContextCreated.bind(this, trackerTracker, cdpClient));
-        cdpClient.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, trackerTracker));
-        await cdpClient.send('Runtime.addBinding', {name: 'registerAPICall'});
+        session.on('Debugger.scriptParsed', this.onScriptParsed.bind(this, trackerTracker));
+        session.on('Debugger.paused', this.onDebuggerPaused.bind(this, trackerTracker));
+        session.on('Runtime.executionContextCreated', this.onExecutionContextCreated.bind(this, trackerTracker, session));
+        session.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, trackerTracker));
+        await session.send('Runtime.addBinding', {name: 'registerAPICall'});
 
         try {
             await trackerTracker.init({log: this._log});
@@ -47,7 +47,7 @@ class APICallCollector extends BaseCollector {
 
     /**
      * @param {TrackerTracker} trackerTracker
-     * @param {import('puppeteer').CDPSession} cdpClient
+     * @param {import('puppeteer-core/lib/cjs/puppeteer/common/Connection').CDPSession} cdpClient
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextCreatedEvent} params
      */
     async onExecutionContextCreated(trackerTracker, cdpClient, params) {
