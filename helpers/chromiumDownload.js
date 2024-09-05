@@ -10,13 +10,13 @@ const chalk = require('chalk');
  */
 async function downloadChrome(log, buildId) {
     const platform = detectBrowserPlatform();
-    buildId = buildId || await resolveBuildId(Browser.CHROME, detectBrowserPlatform(), 'stable');
+    const finalBuildId = buildId || await resolveBuildId(Browser.CHROME, detectBrowserPlatform(), 'stable');
 
     const installOptions = {
         cacheDir: CHROMIUM_DOWNLOAD_DIR,
         browser: Browser.CHROME,
         platform,
-        buildId,
+        buildId: finalBuildId,
     };
 
     const installedBrowsers = await getInstalledBrowsers({
@@ -24,16 +24,16 @@ async function downloadChrome(log, buildId) {
     });
 
     for (const browser of installedBrowsers) {
-        if (browser.platform === platform && browser.buildId === buildId && browser.browser === Browser.CHROME) {
+        if (browser.platform === platform && browser.buildId === finalBuildId && browser.browser === Browser.CHROME) {
             return browser.executablePath;
         }
     }
 
     if (!canDownload(installOptions)) {
-        throw new Error(`Provided version of Chrome (${buildId}) can't be downloaded.`);
+        throw new Error(`Provided version of Chrome (${finalBuildId}) can't be downloaded.`);
     }
 
-    log(chalk.blue(`⬇ Downloading Chrome build ${buildId} for ${platform}...`));
+    log(chalk.blue(`⬇ Downloading Chrome build ${finalBuildId} for ${platform}...`));
     const progressBar = new ProgressBar('[:bar] :percent ETA :etas', {total: 100, width: 30});
     const browser = await install({
         ...installOptions,
