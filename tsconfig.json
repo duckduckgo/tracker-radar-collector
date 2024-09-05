@@ -6,7 +6,8 @@
         "checkJs": true,
         "resolveJsonModule": true,
         "noEmit": true,
-        "noImplicitAny": true
+        "noImplicitAny": true,
+        "allowSyntheticDefaultImports": true
     },
     "include": [
         "browser/",

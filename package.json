@@ -22,10 +22,12 @@
   },
   "devDependencies": {
     "@types/async": "^3.2.24",
+    "@types/debug": "^4.1.12",
     "@types/mocha": "^9.1.1",
     "@types/mockery": "^1.4.30",
     "@types/node": "^20.12.1",
     "@types/progress": "^2.0.7",
+    "@types/ws": "^8.5.12",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^8.3.0",
     "devtools-protocol": "^0.0.1105486",
