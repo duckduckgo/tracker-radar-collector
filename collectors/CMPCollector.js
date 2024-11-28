@@ -366,7 +366,7 @@ class CMPCollector extends BaseCollector {
     async getData() {
         await this.waitForFinish();
         const results = this.collectResults();
-        if (results.length === 0) {
+        if (this.scanResult.patterns.size > 0 && results.length === 0) {
             results.push({
                 final: false,
                 name: '',
