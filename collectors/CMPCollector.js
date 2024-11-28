@@ -179,7 +179,6 @@ class CMPCollector extends BaseCollector {
             break;
         }
         case 'popupFound':
-            console.log('popupFound', msg);
             if (msg.cmp === 'filterList') {
                 this.scanResult.filterListMatched = true;
             }
@@ -187,8 +186,6 @@ class CMPCollector extends BaseCollector {
         case 'report':
             msg.state.heuristicPatterns.forEach(x => this.scanResult.patterns.add(x));
             msg.state.heuristicSnippets.forEach(x => this.scanResult.snippets.add(x));
-            // console.log('report', msg.state);
-            console.log('scanResult', this.scanResult);
             break;
         case 'optInResult':
         case 'optOutResult': {
