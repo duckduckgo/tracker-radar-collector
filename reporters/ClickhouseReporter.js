@@ -6,9 +6,8 @@ const {createUniqueUrlName} = require('../helpers/hash');
 // eslint-disable-next-line no-process-env
 const CLICKHOUSE_SERVER = process.env.CLICKHOUSE_SERVER || 'va-clickhouse1';
 const DB = 'tracker_radar_crawls';
-const CLUSTER = 'ch-prod-cluster';
 const TABLE_DEFINITIONS = [
-    `CREATE TABLE IF NOT EXISTS ${DB}.crawls ON CLUSTER '${CLUSTER}' (
+    `CREATE TABLE IF NOT EXISTS ${DB}.crawls (
         crawlId String,
         name String,
         region String,
@@ -17,7 +16,7 @@ const TABLE_DEFINITIONS = [
     ENGINE = MergeTree()
     PRIMARY KEY(crawlId)
     ORDER BY crawlId`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.pages ON CLUSTER '${CLUSTER}' (
+    `CREATE TABLE IF NOT EXISTS ${DB}.pages (
         crawlId String,
         pageId String,
         testStarted DateTime64(3, 'UTC'),
@@ -27,7 +26,7 @@ const TABLE_DEFINITIONS = [
         timeout UInt8
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.requests ON CLUSTER '${CLUSTER}' (
+    `CREATE TABLE IF NOT EXISTS ${DB}.requests (
         crawlId String,
         pageId String,
         requestId UInt32,
@@ -46,14 +45,14 @@ const TABLE_DEFINITIONS = [
         time DOUBLE NULL
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, requestId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.elements ON CLUSTER '${CLUSTER}' (
+    `CREATE TABLE IF NOT EXISTS ${DB}.elements (
         crawlId String,
         pageId String,
         present Array(String),
         visible Array(String)
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.cmps ON CLUSTER '${CLUSTER}' (
+    `CREATE TABLE IF NOT EXISTS ${DB}.cmps (
         crawlId String,
         pageId String,
         name String,
@@ -68,7 +67,7 @@ const TABLE_DEFINITIONS = [
         filterListMatched Bool
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, name)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.apiSavedCalls ON CLUSTER '${CLUSTER}' (
+    `CREATE TABLE IF NOT EXISTS ${DB}.apiSavedCalls (
         crawlId String,
         pageId String,
         callId UInt32,
@@ -77,21 +76,21 @@ const TABLE_DEFINITIONS = [
         arguments Array(String)
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, callId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.apiCallStats ON CLUSTER '${CLUSTER}' (
+    `CREATE TABLE IF NOT EXISTS ${DB}.apiCallStats (
         crawlId String,
         pageId String,
         source String,
         stats String
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, source)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.cookies ON CLUSTER '${CLUSTER}' (
+    `CREATE TABLE IF NOT EXISTS ${DB}.cookies (
         crawlId String,
         pageId String,
         cookieId UInt32,
         cookie String
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, cookieId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.targets ON CLUSTER '${CLUSTER}' (
+    `CREATE TABLE IF NOT EXISTS ${DB}.targets (
         crawlId String,
         pageId String,
         targetId UInt32,
