@@ -6,8 +6,9 @@ const {createUniqueUrlName} = require('../helpers/hash');
 // eslint-disable-next-line no-process-env
 const CLICKHOUSE_SERVER = process.env.CLICKHOUSE_SERVER || 'va-clickhouse1';
 const DB = 'tracker_radar_crawls';
+const CLUSTER = 'ch-prod-cluster';
 const TABLE_DEFINITIONS = [
-    `CREATE TABLE IF NOT EXISTS ${DB}.crawls (
+    `CREATE TABLE IF NOT EXISTS ${DB}.crawls ON CLUSTER '${CLUSTER}' (
         crawlId String,
         name String,
         region String,
@@ -16,7 +17,7 @@ const TABLE_DEFINITIONS = [
     ENGINE = MergeTree()
     PRIMARY KEY(crawlId)
     ORDER BY crawlId`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.pages (
+    `CREATE TABLE IF NOT EXISTS ${DB}.pages ON CLUSTER '${CLUSTER}' (
         crawlId String,
         pageId String,
         testStarted DateTime64(3, 'UTC'),
@@ -26,7 +27,7 @@ const TABLE_DEFINITIONS = [
         timeout UInt8
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.requests (
+    `CREATE TABLE IF NOT EXISTS ${DB}.requests ON CLUSTER '${CLUSTER}' (
         crawlId String,
         pageId String,
         requestId UInt32,
@@ -45,14 +46,14 @@ const TABLE_DEFINITIONS = [
         time DOUBLE NULL
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, requestId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.elements (
+    `CREATE TABLE IF NOT EXISTS ${DB}.elements ON CLUSTER '${CLUSTER}' (
         crawlId String,
         pageId String,
         present Array(String),
         visible Array(String)
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.cmps (
+    `CREATE TABLE IF NOT EXISTS ${DB}.cmps ON CLUSTER '${CLUSTER}' (
         crawlId String,
         pageId String,
         name String,
@@ -63,10 +64,11 @@ const TABLE_DEFINITIONS = [
         selfTestFail UInt8,
         errors Array(String),
         patterns Array(String),
-        snippets Array(String)
+        snippets Array(String),
+        filterListMatched Bool
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, name)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.apiSavedCalls (
+    `CREATE TABLE IF NOT EXISTS ${DB}.apiSavedCalls ON CLUSTER '${CLUSTER}' (
         crawlId String,
         pageId String,
         callId UInt32,
@@ -75,21 +77,21 @@ const TABLE_DEFINITIONS = [
         arguments Array(String)
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, callId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.apiCallStats (
+    `CREATE TABLE IF NOT EXISTS ${DB}.apiCallStats ON CLUSTER '${CLUSTER}' (
         crawlId String,
         pageId String,
         source String,
         stats String
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, source)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.cookies (
+    `CREATE TABLE IF NOT EXISTS ${DB}.cookies ON CLUSTER '${CLUSTER}' (
         crawlId String,
         pageId String,
         cookieId UInt32,
         cookie String
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, cookieId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.targets (
+    `CREATE TABLE IF NOT EXISTS ${DB}.targets ON CLUSTER '${CLUSTER}' (
         crawlId String,
         pageId String,
         targetId UInt32,
@@ -115,7 +117,7 @@ class ClickhouseReporter extends BaseReporter {
     }
 
     /**
-     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options 
+     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options
      */
     init(options) {
         this.verbose = options.verbose;
@@ -194,7 +196,20 @@ class ClickhouseReporter extends BaseReporter {
                 this.queue.elements.push([this.crawlId, pageId, data.data.elements.present, data.data.elements.visible]);
             }
             if (data.data.cmps) {
-                const cmpRows = data.data.cmps.map(c => [this.crawlId, pageId, c.name, c.final, c.open, c.started, c.succeeded, c.selfTestFail, c.errors, c.patterns || [], c.snippets || []]);
+                const cmpRows = data.data.cmps.map(c => [
+                    this.crawlId,
+                    pageId,
+                    c.name,
+                    c.final,
+                    c.open,
+                    c.started,
+                    c.succeeded,
+                    c.selfTestFail,
+                    c.errors,
+                    c.patterns || [],
+                    c.snippets || [],
+                    c.filterListMatched || false,
+                ]);
                 this.queue.cmps = this.queue.cmps.concat(cmpRows);
             }
             if (data.data.apis) {
