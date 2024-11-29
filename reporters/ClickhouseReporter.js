@@ -123,9 +123,6 @@ class ClickhouseReporter extends BaseReporter {
         this.client = new ClickHouse({url: CLICKHOUSE_SERVER});
         this.crawlId = `${new Date().toISOString()}-${os.hostname()}`;
         this.ready = Promise.all(TABLE_DEFINITIONS.map(stmt => this.client.query(stmt).toPromise()));
-        if (this.verbose) {
-            console.log(`Creating crawl ${this.crawlId}`);
-        }
         this.queue = {
             pages: [],
             requests: [],
@@ -144,6 +141,9 @@ class ClickhouseReporter extends BaseReporter {
      */
     createCrawl(name = '', region = '') {
         this.ready.then(async () => {
+            if (this.verbose) {
+                console.log(`Creating crawl ${this.crawlId}`);
+            }
             await this.client.insert(`INSERT INTO ${DB}.crawls (crawlId, name, region)`, [{
                 crawlId: this.crawlId,
                 name,
