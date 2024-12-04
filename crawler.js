@@ -302,12 +302,15 @@ class Crawler {
             target.session.detach().catch(() => {/* ignore */});
         }
 
+        const testFinished = Date.now();
+        this.log(chalk.green(`crawl took ${(testFinished - testStarted) / 1000}s`));
+
         return {
             initialUrl: url.toString(),
             finalUrl,
             timeout,
             testStarted,
-            testFinished: Date.now(),
+            testFinished,
             data
         };
     }
