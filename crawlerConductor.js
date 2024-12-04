@@ -29,7 +29,18 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
     /**
      * @type {function(...any):void} 
      */
-    const prefixedLog = (...msg) => log(chalk.gray(`${url.hostname}:`), ...msg);
+    const prefixedLog = ((...msg) => {
+        const now = new Date();
+        const curTime = new Intl.DateTimeFormat('en-GB', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        }).format(now);
+        log(
+            chalk.gray(`${curTime} ${url.hostname}:`),
+            ...msg
+        );
+    });
     const data = await crawl(url, {
         log: prefixedLog,
         // @ts-ignore
