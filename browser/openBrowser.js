@@ -11,9 +11,9 @@ const LocalChrome = require('./LocalChrome');
 async function openBrowser(log, proxyHost, executablePath) {
     const extraArgs = [
         // enable FLoC
-        '--enable-blink-features=InterestCohortAPI',
-        '--enable-features=FederatedLearningOfCohorts:update_interval/10s/minimum_history_domain_size_required/1,FlocIdSortingLshBasedComputation,InterestCohortFeaturePolicy',
-        '--js-flags="--async-stack-traces --stack-trace-limit 32"'
+        // '--enable-blink-features=InterestCohortAPI',
+        // '--enable-features=FederatedLearningOfCohorts:update_interval/10s/minimum_history_domain_size_required/1,FlocIdSortingLshBasedComputation,InterestCohortFeaturePolicy',
+        '--js-flags=--async-stack-traces --stack-trace-limit 32' // no quotes around the CLI flags needed
     ];
     if (proxyHost) {
         let url;
@@ -24,7 +24,7 @@ async function openBrowser(log, proxyHost, executablePath) {
         }
 
         extraArgs.push(`--proxy-server=${proxyHost}`);
-        extraArgs.push(`--host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE ${url.hostname}"`);
+        extraArgs.push(`--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE ${url.hostname}`); // no quotes around the CLI flags needed
     }
 
     const browser = new LocalChrome({

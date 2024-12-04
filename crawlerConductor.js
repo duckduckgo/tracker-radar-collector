@@ -59,7 +59,9 @@ module.exports = async options => {
 
     // Increase number of listeners so we have at least one listener for each async process
     if (numberOfCrawlers > process.getMaxListeners()) {
-        process.setMaxListeners(numberOfCrawlers + 1);
+        const maxListeners = (numberOfCrawlers * 4) + 1;
+        console.log('Setting listeners to', maxListeners);
+        process.setMaxListeners(maxListeners);
     }
     log(chalk.cyan(`Number of crawlers: ${numberOfCrawlers}\n`));
 

@@ -26,6 +26,7 @@ class LocalChrome extends BaseBrowser {
     _getProfilePath() {
         return join(
             tmpdir(),
+            // '/dev/shm',
             `tr_collector_chrome_profile-`
         );
     }
@@ -39,41 +40,85 @@ class LocalChrome extends BaseBrowser {
         const devtools = !this.options.headless;
         const headless = this.options.headless;
 
+        //   At the time of writing, default args are:
+        //   [
+        //     '--allow-pre-commit-input',
+        //     '--disable-background-networking',
+        //     '--disable-background-timer-throttling',
+        //     '--disable-backgrounding-occluded-windows',
+        //     '--disable-breakpad',
+        //     '--disable-client-side-phishing-detection',
+        //     '--disable-component-extensions-with-background-pages',
+        //     '--disable-default-apps',
+        //     '--disable-dev-shm-usage', // overridden below
+        //     '--disable-extensions',
+        //     '--disable-hang-monitor',
+        //     '--disable-infobars',
+        //     '--disable-ipc-flooding-protection',
+        //     '--disable-popup-blocking',
+        //     '--disable-prompt-on-repost',
+        //     '--disable-renderer-backgrounding',
+        //     '--disable-search-engine-choice-screen',
+        //     '--disable-sync',
+        //     '--enable-automation',
+        //     '--export-tagged-pdf',
+        //     '--generate-pdf-document-outline',
+        //     '--force-color-profile=srgb',
+        //     '--metrics-recording-only',
+        //     '--no-first-run',
+        //     '--password-store=basic',
+        //     '--use-mock-keychain',
+        //     '--disable-features=Translate,AcceptCHFrame,MediaRouter,OptimizationHints,ProcessPerSiteUpToMainFrameThreshold,IsolateSandboxedIframes',
+        //     '--enable-features=PdfOopif',
+        //     '--headless=new', // depend on headless param
+        //     '--hide-scrollbars', // depend on headless param
+        //     '--mute-audio', // depend on headless param
+        //     'about:blank',
+        //   ]
         const chromeArguments = ChromeLauncher.prototype.defaultArgs({
             devtools,
             headless,
             args: this.options.extraArgs,
             userDataDir: this.userDataDir,
-        });
+        }).filter(arg => [
+            '--disable-dev-shm-usage', // see https://github.com/puppeteer/puppeteer/issues/1834#issuecomment-1435707522
+        ].includes(arg) === false);
+
         chromeArguments.push(`--remote-debugging-port=0`);
 
-        const handleSIGINT = true;
-        const handleSIGTERM = true;
-        const handleSIGHUP = true;
+        const handleSIGINT = false;
+        const handleSIGTERM = false;
+        const handleSIGHUP = false;
       
         const launchArgs = {
             executablePath: this.options.executablePath,
             args: chromeArguments,
             userDataDir: this.userDataDir,
         };
+
+        // console.log('chromeArguments', chromeArguments);
       
         const onProcessExit = async () => {
-            await rm(this.userDataDir, {
-                force: true,
-                recursive: true,
-                maxRetries: 5,
-            });
+            try {
+                await rm(this.userDataDir, {
+                    force: true,
+                    recursive: true,
+                    maxRetries: 5,
+                });
+            } catch (error) {
+                console.error('Error when deleting user data dir', error);
+            }
         };
     
         this.browserProcess = launch({
             executablePath: launchArgs.executablePath,
-            detached: false,
+            detached: true,
             env: process.env,
             args: launchArgs.args,
             handleSIGHUP,
             handleSIGTERM,
             handleSIGINT,
-            dumpio: false, // set to true to connect stdio from the browser process to the current process
+            dumpio: true, // set to true to connect stdio from the browser process to the current process
             pipe: false,
             onExit: onProcessExit,
         });
