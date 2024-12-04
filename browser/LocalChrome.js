@@ -86,9 +86,9 @@ class LocalChrome extends BaseBrowser {
 
         chromeArguments.push(`--remote-debugging-port=0`);
 
-        const handleSIGINT = false;
-        const handleSIGTERM = false;
-        const handleSIGHUP = false;
+        const handleSIGINT = true;
+        const handleSIGTERM = true;
+        const handleSIGHUP = true;
       
         const launchArgs = {
             executablePath: this.options.executablePath,
