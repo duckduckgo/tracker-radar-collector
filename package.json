@@ -43,7 +43,7 @@
     "clickhouse": "^2.6.0",
     "commander": "^12.1.0",
     "progress": "^2.0.3",
-    "puppeteer": "^23.3.0",
+    "puppeteer": "^23.10.0",
     "tldts": "^6.1.41"
   }
 }
