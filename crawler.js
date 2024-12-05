@@ -153,6 +153,14 @@ class Crawler {
     }
 
     /**
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetCrashedEvent} event
+     */
+    onTargetCrashed(event) {
+        this.log(chalk.red(`target ${event.targetId} crashed`));
+        // this.targets.delete(event.targetId);
+    }
+
+    /**
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetCreatedEvent} event
      */
     onTargetCreated(event) {
@@ -210,6 +218,7 @@ class Crawler {
         conn.on('Target.detachedFromTarget', this.onDetachedFromTarget.bind(this));
         conn.on('Target.targetInfoChanged', this.onTargetInfoChanged.bind(this));
         conn.on('Target.targetDestroyed', this.onTargetDestroyed.bind(this));
+        conn.on('Target.targetCrashed', this.onTargetCrashed.bind(this));
 
         /** @type {import('./collectors/BaseCollector').CollectorInitOptions} */
         const collectorOptions = {
