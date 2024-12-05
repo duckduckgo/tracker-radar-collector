@@ -343,7 +343,13 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
  */
 async function crawl(url, options) {
     const log = options.log || (() => {});
-    const browser = options.browserConnection ? null : await openBrowser(log, options.proxyHost, options.executablePath);
+    const browser = options.browserConnection ? null : await openBrowser(
+        log,
+        options.proxyHost,
+        options.executablePath,
+        // FIXME: this is a hardcoded value
+        'http://10.100.9.21:4444'
+    );
     const browserConnection = options.browserConnection || await browser.getConnection();
 
     let data = null;

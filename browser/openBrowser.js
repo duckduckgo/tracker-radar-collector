@@ -1,14 +1,16 @@
 const {VISUAL_DEBUG} = require('../constants');
 const {downloadChrome} = require('../helpers/chromiumDownload');
 const LocalChrome = require('./LocalChrome');
+const RemoteChrome = require('./RemoteChrome');
 
 /**
  * @param {function(...any):void} log
  * @param {string} proxyHost
  * @param {string} executablePath path to chromium executable to use
- * @returns {Promise<LocalChrome>}
+ * @param {string} [seleniumHub] selenium hub url
+ * @returns {Promise<import('./BaseBrowser')>}
  */
-async function openBrowser(log, proxyHost, executablePath) {
+async function openBrowser(log, proxyHost, executablePath, seleniumHub) {
     const extraArgs = [
         // enable FLoC
         // '--enable-blink-features=InterestCohortAPI',
@@ -26,6 +28,15 @@ async function openBrowser(log, proxyHost, executablePath) {
 
         extraArgs.push(`--proxy-server=${proxyHost}`);
         extraArgs.push(`--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE ${url.hostname}`); // no quotes around the CLI flags needed
+    }
+
+    if (seleniumHub) {
+        const seleniumBrowser = new RemoteChrome({
+            extraArgs,
+            seleniumHub,
+        });
+        await seleniumBrowser.start();
+        return seleniumBrowser;
     }
 
     const browser = new LocalChrome({

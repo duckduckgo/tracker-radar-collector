@@ -91,28 +91,42 @@ module.exports = async options => {
             dataCollectors = urlItem.dataCollectors;
         }
 
-        const staggerDelay = Number(idx) < numberOfCrawlers ? 2000 * Number(idx) : 0;
-        // stagger the start of the first browsers so they don't eat memory all at once
-        setTimeout(() => {
-            inProgress.add(urlString);
-            log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
-            const timer = createTimer();
+        // const staggerDelay = Number(idx) < numberOfCrawlers ? 2000 * Number(idx) : 0;
+        // // stagger the start of the first browsers so they don't eat memory all at once
+        // setTimeout(() => {
+        inProgress.add(urlString);
+        log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
+        const timer = createTimer();
 
-            const task = crawlAndSaveData.bind(null, urlString, dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false), executablePath, options.maxLoadTimeMs, options.extraExecutionTimeMs, options.collectorFlags);
+        const task = crawlAndSaveData.bind(
+            null,
+            urlString,
+            dataCollectors,
+            log,
+            options.filterOutFirstParty,
+            options.dataCallback,
+            options.emulateMobile,
+            options.proxyHost,
+            (options.antiBotDetection !== false),
+            executablePath,
+            options.maxLoadTimeMs,
+            options.extraExecutionTimeMs,
+            options.collectorFlags
+        );
 
-            asyncLib.retry(MAX_NUMBER_OF_RETRIES, task, err => {
-                if (err) {
-                    console.log(err);
-                    log(chalk.red(`Max number of retries (${MAX_NUMBER_OF_RETRIES}) exceeded for "${urlString}".`));
-                    failureCallback(urlString, err);
-                } else {
-                    log(chalk.cyan(`Processing "${urlString}" took ${timer.getElapsedTime()}s.`));
-                }
-                inProgress.delete(urlString);
-                log(chalk.cyan(`In progress (${inProgress.size}): ${Array.from(inProgress).join(', ')}`));
-                callback();
-            });
-        }, staggerDelay);
+        asyncLib.retry(MAX_NUMBER_OF_RETRIES, task, err => {
+            if (err) {
+                console.log(err);
+                log(chalk.red(`Max number of retries (${MAX_NUMBER_OF_RETRIES}) exceeded for "${urlString}".`));
+                failureCallback(urlString, err);
+            } else {
+                log(chalk.cyan(`Processing "${urlString}" took ${timer.getElapsedTime()}s.`));
+            }
+            inProgress.delete(urlString);
+            log(chalk.cyan(`In progress (${inProgress.size}): ${Array.from(inProgress).join(', ')}`));
+            callback();
+        });
+        // }, staggerDelay);
     });
 };
 

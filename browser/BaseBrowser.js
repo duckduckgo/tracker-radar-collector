@@ -19,11 +19,3 @@ class BaseBrowser {
 }
 
 module.exports = BaseBrowser;
-
-/**
- * @typedef BrowserOptions
- * @property {any=} viewport
- * @property {string=} executablePath
- * @property {string[]=} extraArgs
- * @property {boolean=} headless
- */

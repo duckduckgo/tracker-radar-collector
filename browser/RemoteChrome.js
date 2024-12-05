@@ -1,7 +1,5 @@
-const {mkdtemp, rm} = require('fs/promises');
-const {join} = require('path');
-const {tmpdir} = require('os');
-const {CDP_WEBSOCKET_ENDPOINT_REGEX, launch} = require('@puppeteer/browsers');
+const {Builder} = require("selenium-webdriver");
+const chrome = require("selenium-webdriver/chrome");
 
 const {Connection} = require('puppeteer-core');
 
@@ -11,35 +9,18 @@ const {NodeWebSocketTransport} = require('puppeteer-core/lib/cjs/puppeteer/node/
 
 const BaseBrowser = require("./BaseBrowser");
 
-class LocalChrome extends BaseBrowser {
+class RemoteChrome extends BaseBrowser {
     /**
-     * @param {BrowserOptions} options
+     * @param {SeleniumOptions} options
      */
     constructor(options) {
         super();
         this.options = options;
         this.connection = null;
-        this.browserProcess = null;
-        this.userDataDir = null;
+        this.driver = null;
     }
 
-    _getProfilePath() {
-        return join(
-            tmpdir(),
-            // '/dev/shm',
-            `tr_collector_chrome_profile-`
-        );
-    }
-
-    /**
-     * @returns {Promise<void>}
-     */
-    async start() {
-        this.userDataDir = await mkdtemp(this._getProfilePath());
-
-        const devtools = !this.options.headless;
-        const headless = this.options.headless;
-
+    getArguments() {
         //   At the time of writing, default args are:
         //   [
         //     '--allow-pre-commit-input',
@@ -50,7 +31,7 @@ class LocalChrome extends BaseBrowser {
         //     '--disable-client-side-phishing-detection',
         //     '--disable-component-extensions-with-background-pages',
         //     '--disable-default-apps',
-        //     '--disable-dev-shm-usage', // overridden below
+        //     '--disable-dev-shm-usage',
         //     '--disable-extensions',
         //     '--disable-hang-monitor',
         //     '--disable-infobars',
@@ -76,61 +57,38 @@ class LocalChrome extends BaseBrowser {
         //     'about:blank',
         //   ]
         const chromeArguments = ChromeLauncher.prototype.defaultArgs({
-            devtools,
-            headless,
+            headless: false, // selenium will run headful browsers
             args: this.options.extraArgs,
-            userDataDir: this.userDataDir,
         }).filter(arg => [
-            '--disable-dev-shm-usage', // see https://github.com/puppeteer/puppeteer/issues/1834#issuecomment-1435707522
+            // '--disable-dev-shm-usage', // see https://github.com/puppeteer/puppeteer/issues/1834#issuecomment-1435707522
+            'about:blank',
         ].includes(arg) === false);
+        return chromeArguments;
+    }
 
-        chromeArguments.push(`--remote-debugging-port=0`);
+    /**
+     * @returns {Promise<void>}
+     */
+    async start() {
+        const chromeArguments = this.getArguments();
+        const opts = new chrome.Options();
+        opts.addArguments(...chromeArguments);
 
-        const handleSIGINT = true;
-        const handleSIGTERM = true;
-        const handleSIGHUP = true;
-      
-        const launchArgs = {
-            executablePath: this.options.executablePath,
-            args: chromeArguments,
-            userDataDir: this.userDataDir,
-        };
-
-        // console.log('chromeArguments', chromeArguments);
-      
-        const onProcessExit = async () => {
-            try {
-                await rm(this.userDataDir, {
-                    force: true,
-                    recursive: true,
-                    maxRetries: 5,
-                });
-            } catch (error) {
-                console.error('Error when deleting user data dir', error);
-            }
-        };
-    
-        this.browserProcess = launch({
-            executablePath: launchArgs.executablePath,
-            detached: true,
-            env: process.env,
-            args: launchArgs.args,
-            handleSIGHUP,
-            handleSIGTERM,
-            handleSIGINT,
-            dumpio: true, // set to true to connect stdio from the browser process to the current process
-            pipe: false,
-            onExit: onProcessExit,
+        opts.setUserPreferences({
+            "download.default_directory": "/dev/null",
         });
+
+        this.driver = await (new Builder()
+            .usingServer(this.options.seleniumHub)
+            .forBrowser('chrome')
+            .setChromeOptions(opts)
+            .build());
     }
 
     /**
      * @returns {Promise<void>}
      */
     async close() {
-        if (!this.browserProcess) {
-            throw new Error('Browser is not running');
-        }
         if (this.closing) {
             return;
         }
@@ -139,15 +97,12 @@ class LocalChrome extends BaseBrowser {
             // Attempt to close the browser gracefully
             try {
                 await this.connection.send('Browser.close');
-                await this.browserProcess.hasClosed();
             } catch (error) {
                 console.error('Error when closing browser connection', error);
-                await this.browserProcess.close();
             }
             this.connection.dispose();
-        } else {
-            await this.browserProcess.close();
         }
+        await this.driver?.quit();
     }
 
     /**
@@ -155,12 +110,12 @@ class LocalChrome extends BaseBrowser {
      */
     async getConnection() {
         try {
-            const wsTimeout = 30000;
-            const browserWSEndpoint = await this.browserProcess.waitForLineOutput(
-                CDP_WEBSOCKET_ENDPOINT_REGEX,
-                wsTimeout
-            );
+            const seleniumHost = new URL(this.options.seleniumHub).host;
+            // @ts-expect-error session has the 'any' type
+            const sessionId = await this.driver.getSession().then(session => session.getId());
+            const browserWSEndpoint = `ws://${seleniumHost}/session/${sessionId}/se/cdp`;
             const transport = await NodeWebSocketTransport.create(browserWSEndpoint);
+
             let slowMo; // override for debugging
             let protocolTimeout; // override for debugging
             this.connection = new Connection(
@@ -171,21 +126,19 @@ class LocalChrome extends BaseBrowser {
             );
             return this.connection;
         } catch (e) {
-            console.log('error setting up connection', e);
+            console.log('error setting up remote connection', e);
             this.close();
             throw e;
         }
     }
 }
 
-module.exports = LocalChrome;
+module.exports = RemoteChrome;
 
 /**
- * @typedef BrowserOptions
- * @property {any=} viewport
- * @property {string=} executablePath
+ * @typedef SeleniumOptions
  * @property {string[]=} extraArgs
- * @property {boolean=} headless
+ * @property {string} seleniumHub
  */
 
 /**
