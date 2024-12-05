@@ -13,6 +13,7 @@ async function openBrowser(log, proxyHost, executablePath) {
         // enable FLoC
         // '--enable-blink-features=InterestCohortAPI',
         // '--enable-features=FederatedLearningOfCohorts:update_interval/10s/minimum_history_domain_size_required/1,FlocIdSortingLshBasedComputation,InterestCohortFeaturePolicy',
+        // '--disable-auto-reload', // is it needed?
         '--js-flags=--async-stack-traces --stack-trace-limit 32' // no quotes around the CLI flags needed
     ];
     if (proxyHost) {

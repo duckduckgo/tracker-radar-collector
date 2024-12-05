@@ -138,11 +138,11 @@ class LocalChrome extends BaseBrowser {
         if (this.connection) {
             // Attempt to close the browser gracefully
             try {
-              await this.connection.send('Browser.close');
-              await this.browserProcess.hasClosed();
+                await this.connection.send('Browser.close');
+                await this.browserProcess.hasClosed();
             } catch (error) {
-              console.error('Error when closing browser connection', error);
-              await this.browserProcess.close();
+                console.error('Error when closing browser connection', error);
+                await this.browserProcess.close();
             }
             this.connection.dispose();
         } else {
