@@ -16,8 +16,8 @@ class CLIReporter extends BaseReporter {
         this.alwaysLog(chalk.cyan(`Start time: ${options.startTime.toUTCString()}`));
         this.alwaysLog(chalk.cyan(`URLs to crawl: ${options.urls}`));
 
-        // show progress bar only if we are not printing all logs to screen (verbose)
-        this.progressBar = (options.urls === 0) ? null : new ProgressBar('[:bar] :percent :finished ETA :etas fail :fail% :site', {
+        // eslint-disable-next-line no-process-env
+        this.progressBar = (options.urls === 0 || process.env.IS_CI) ? null : new ProgressBar('[:bar] :percent :finished ETA :etas fail :fail% :site', {
             complete: chalk.green('='),
             incomplete: ' ',
             total: options.urls,
@@ -60,8 +60,7 @@ class CLIReporter extends BaseReporter {
                 fail: (data.failures / finished * 100).toFixed(1)
             });
         } else {
-
-            this.log(`Site ${finished} / ${data.urls} (${(finished / data.urls * 100).toFixed(1)}%)`);
+            this.alwaysLog(`Finished: ${finished} Failed: ${data.failures} Total: ${data.urls}`);
         }
     }
 
