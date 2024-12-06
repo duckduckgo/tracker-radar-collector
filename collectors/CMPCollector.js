@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */
 const fs = require('fs');
-const createDeferred = require('../helpers/deferred');
 const waitFor = require('../helpers/waitFor');
 const BaseCollector = require('./BaseCollector');
 
