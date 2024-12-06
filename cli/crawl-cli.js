@@ -29,6 +29,7 @@ program
     .option('--config <path>', 'crawl configuration file')
     .option('--autoconsent-action <action>', 'dismiss cookie popups. Possible values: optout, optin')
     .option('--chromium-version <version_number>', 'use custom version of chromium')
+    .option('--selenium-hub <url>', 'selenium hub endpoint to request browsers from')
     .parse(process.argv);
 
 /**
@@ -100,8 +101,28 @@ function filterUrls(inputUrls, logFunction, outputPath) {
  * @param {number} maxLoadTimeMs
  * @param {number} extraExecutionTimeMs
  * @param {Object.<string, boolean>} collectorFlags
+ * @param {string} seleniumHub
  */
-async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, dataCollectors, reporters, forceOverwrite, filterOutFirstParty, emulateMobile, proxyHost, regionCode, antiBotDetection, chromiumVersion, maxLoadTimeMs, extraExecutionTimeMs, collectorFlags) {
+async function run(
+    inputUrls,
+    outputPath,
+    verbose,
+    logPath,
+    numberOfCrawlers,
+    dataCollectors,
+    reporters,
+    forceOverwrite,
+    filterOutFirstParty,
+    emulateMobile,
+    proxyHost,
+    regionCode,
+    antiBotDetection,
+    chromiumVersion,
+    maxLoadTimeMs,
+    extraExecutionTimeMs,
+    collectorFlags,
+    seleniumHub
+) {
     const startTime = new Date();
 
     reporters.forEach(reporter => {
@@ -189,6 +210,7 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
             maxLoadTimeMs,
             extraExecutionTimeMs,
             collectorFlags,
+            seleniumHub
         });
         log(chalk.green('\n✅ Finished successfully.'));
     } catch(e) {
@@ -217,7 +239,6 @@ async function run(inputUrls, outputPath, verbose, logPath, numberOfCrawlers, da
     });
 }
 
-// @ts-ignore
 const config = crawlConfig.figureOut(program.opts());
 const collectorFlags = {
     autoconsentAction: program.opts().autoconsentAction,
@@ -272,7 +293,26 @@ if (!config.urls || !config.output) {
         return item;
     });
 
-    run(urls, config.output, config.verbose, config.logPath, config.crawlers || null, dataCollectors, reporters, config.forceOverwrite, config.filterOutFirstParty, config.emulateMobile, config.proxyConfig, config.regionCode, !config.disableAntiBot, config.chromiumVersion, config.maxLoadTimeMs, config.extraExecutionTimeMs, collectorFlags);
+    run(
+        urls,
+        config.output,
+        config.verbose,
+        config.logPath,
+        config.crawlers || null,
+        dataCollectors,
+        reporters,
+        config.forceOverwrite,
+        config.filterOutFirstParty,
+        config.emulateMobile,
+        config.proxyConfig,
+        config.regionCode,
+        !config.disableAntiBot,
+        config.chromiumVersion,
+        config.maxLoadTimeMs,
+        config.extraExecutionTimeMs,
+        collectorFlags,
+        config.seleniumHub
+    );
 }
 
 /**

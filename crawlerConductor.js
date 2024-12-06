@@ -22,8 +22,23 @@ const MAX_NUMBER_OF_RETRIES = 2;
  * @param {number} maxLoadTimeMs
  * @param {number} extraExecutionTimeMs
  * @param {Object.<string, string>} collectorFlags
+ * @param {string} seleniumHub
  */
-async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost, antiBotDetection, executablePath, maxLoadTimeMs, extraExecutionTimeMs, collectorFlags) {
+async function crawlAndSaveData(
+    urlString,
+    dataCollectors,
+    log,
+    filterOutFirstParty,
+    dataCallback,
+    emulateMobile,
+    proxyHost,
+    antiBotDetection,
+    executablePath,
+    maxLoadTimeMs,
+    extraExecutionTimeMs,
+    collectorFlags,
+    seleniumHub
+) {
     const url = new URL(urlString);
     /**
      * @type {function(...any):void} 
@@ -52,13 +67,14 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
         maxLoadTimeMs,
         extraExecutionTimeMs,
         collectorFlags,
+        seleniumHub,
     });
 
     dataCallback(url, data);
 }
 
 /**
- * @param {{urls: Array<string|{url:string,dataCollectors?:BaseCollector[]}>, dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean, chromiumVersion?: string, maxLoadTimeMs?: number, extraExecutionTimeMs?: number, collectorFlags?: Object.<string, boolean>}} options
+ * @param {{urls: Array<string|{url:string,dataCollectors?:BaseCollector[]}>, dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean, chromiumVersion?: string, maxLoadTimeMs?: number, extraExecutionTimeMs?: number, collectorFlags?: Object.<string, boolean>, seleniumHub?: string}} options
  */
 module.exports = async options => {
     const log = options.logFunction || (() => {});
@@ -75,7 +91,10 @@ module.exports = async options => {
     log(chalk.cyan(`Number of crawlers: ${numberOfCrawlers}\n`));
 
     // make sure the browser is downloaded before we start parallel tasks
-    const executablePath = await downloadChrome(log, options.chromiumVersion);
+    let executablePath = null;
+    if (!options.seleniumHub) {
+        executablePath = await downloadChrome(log, options.chromiumVersion);
+    }
 
     /** @type {Set<string>} */
     const inProgress = new Set();
@@ -109,7 +128,8 @@ module.exports = async options => {
             executablePath,
             options.maxLoadTimeMs,
             options.extraExecutionTimeMs,
-            options.collectorFlags
+            options.collectorFlags,
+            options.seleniumHub,
         );
 
         asyncLib.retry(MAX_NUMBER_OF_RETRIES, task, err => {

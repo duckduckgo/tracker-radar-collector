@@ -347,8 +347,7 @@ async function crawl(url, options) {
         log,
         options.proxyHost,
         options.executablePath,
-        // FIXME: this is a hardcoded value
-        'http://10.100.9.21:4444'
+        options.seleniumHub,
     );
     const browserConnection = options.browserConnection || await browser.getConnection();
 
@@ -409,6 +408,7 @@ async function crawl(url, options) {
  * @property {number=} maxLoadTimeMs
  * @property {number=} extraExecutionTimeMs
  * @property {Object.<string, string>=} collectorFlags
+ * @property {string=} seleniumHub
  */
 
 /**
