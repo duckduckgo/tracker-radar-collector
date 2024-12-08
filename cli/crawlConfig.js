@@ -85,7 +85,7 @@ function figureOut(flags) {
     if (flags.url) {
         cliUrls = [flags.url];
     } else if(flags.inputList) {
-        cliUrls = fs.readFileSync(flags.inputList).toString().split('\n').map(u => u.trim()).filter(u => !!u);
+        cliUrls = fs.readFileSync(flags.inputList).toString().split('\n').map(u => u.trim()).filter(u => Boolean(u));
     }
 
     if (cliUrls) {
