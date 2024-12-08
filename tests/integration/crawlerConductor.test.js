@@ -58,8 +58,9 @@ async function main() {
 
     assert(exampleCom.finalUrl === exampleCom.initialUrl, 'example.com does not redirect, final and initial urls should be the same');
     
-    assert(exampleCom.data.requests.length === 1, 'example.com does not load any subresources, should only have one request');
-    assert(exampleCom.data.requests[0].url === 'https://example.com/', 'example.com should have only one request to https://example.com/');
+    const exampleNonFaviconRequests = exampleCom.data.requests.filter(r => !r.url.endsWith('/favicon.ico'));
+    assert(exampleNonFaviconRequests.length === 1, 'example.com does not load any subresources, should only have one request');
+    assert(exampleNonFaviconRequests[0].url === 'https://example.com/', 'example.com should have only one request to https://example.com/');
     
     assert(exampleCom.data.cookies.length === 0, 'example.com does not set any cookies');
     
@@ -94,9 +95,10 @@ async function main() {
     const privacyTestPages1 = data.find(d => d.initialUrl === 'https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-script.html');
     commonTests(privacyTestPages1, 'privacy-test-pages/1major-via-script');
 
-    assert(privacyTestPages1.data.requests.length === 2, 'privacy-test-pages/1major-via-script does load one subresource and one main page document');
-    assert(privacyTestPages1.data.requests[1].url === 'https://doubleclick.net/tracker.js', 'subresource loaded should be "https://doubleclick.net/tracker.js"');
-    assert(privacyTestPages1.data.requests[1].status === 404, 'subresource loaded should return HTTP 404');
+    const privacyTestPages1NonFaviconRequests = privacyTestPages1.data.requests.filter(r => !r.url.endsWith('/favicon.ico'));
+    assert(privacyTestPages1NonFaviconRequests.length === 2, 'privacy-test-pages/1major-via-script does load one subresource and one main page document');
+    assert(privacyTestPages1NonFaviconRequests[1].url === 'https://doubleclick.net/tracker.js', 'subresource loaded should be "https://doubleclick.net/tracker.js"');
+    assert(privacyTestPages1NonFaviconRequests[1].status === 404, 'subresource loaded should return HTTP 404');
 
     /// https://fingerprintjs.com/demo/ tests
     const fingerprintjs = data.find(d => d.initialUrl === 'https://fingerprintjs.com/demo/');

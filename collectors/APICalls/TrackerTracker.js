@@ -160,8 +160,8 @@ class TrackerTracker {
         } catch(e) {
             const error = (typeof e === 'string') ? e : e.message;
             if (
-                !error.includes('Target closed.') && // we don't care if tab was closed during this opperation
-                !error.includes('Session closed.') && // we don't care if tab was closed during this opperation
+                !error.includes('Target closed') && // we don't care if tab was closed during this opperation
+                !error.includes('Session closed') && // we don't care if tab was closed during this opperation
                 !error.includes('Breakpoint at specified location already exists.') &&
                 !error.includes('Cannot find context with specified id') &&
                 !error.includes('API unavailable in given context.') // some APIs are unavailable on HTTP or in a worker

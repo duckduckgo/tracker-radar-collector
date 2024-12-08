@@ -46,21 +46,21 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo 
+     * @param {import('./BaseCollector').TargetInfo} targetInfo 
      */
-    async addTarget({cdpClient}) {
-        await cdpClient.send('Runtime.enable');
-        await cdpClient.send('Runtime.setAsyncCallStackDepth', {maxDepth: 32});
+    async addTarget({session}) {
+        await session.send('Runtime.enable');
+        await session.send('Runtime.setAsyncCallStackDepth', {maxDepth: 32});
 
-        await cdpClient.send('Network.enable');
+        await session.send('Network.enable');
 
         await Promise.all([
-            cdpClient.on('Network.requestWillBeSent', r => this.handleRequest(r, cdpClient)),
-            cdpClient.on('Network.webSocketCreated', r => this.handleWebSocket(r)),
-            cdpClient.on('Network.responseReceived', r => this.handleResponse(r)),
-            cdpClient.on('Network.responseReceivedExtraInfo', r => this.handleResponseExtraInfo(r)),
-            cdpClient.on('Network.loadingFailed', r => this.handleFailedRequest(r, cdpClient)),
-            cdpClient.on('Network.loadingFinished', r => this.handleFinishedRequest(r, cdpClient))
+            session.on('Network.requestWillBeSent', r => this.handleRequest(r, session)),
+            session.on('Network.webSocketCreated', r => this.handleWebSocket(r)),
+            session.on('Network.responseReceived', r => this.handleResponse(r)),
+            session.on('Network.responseReceivedExtraInfo', r => this.handleResponseExtraInfo(r)),
+            session.on('Network.loadingFailed', r => this.handleFailedRequest(r, session)),
+            session.on('Network.loadingFinished', r => this.handleFinishedRequest(r, session))
         ]);
     }
 
@@ -81,7 +81,7 @@ class RequestCollector extends BaseCollector {
 
     /**
      * @param {RequestId} id 
-     * @param {import('puppeteer').CDPSession} cdp
+     * @param {import('puppeteer-core').CDPSession} cdp
      */
     async getResponseBodyHash(id, cdp) {
         try {
@@ -99,8 +99,8 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {{initiator: import('../helpers/initiators').RequestInitiator, request: CDPRequest, requestId: RequestId, timestamp: Timestamp, frameId?: FrameId, type?: ResourceType, redirectResponse?: CDPResponse}} data 
-     * @param {import('puppeteer').CDPSession} cdp
+     * @param {import('devtools-protocol').Protocol.Network.RequestWillBeSentEvent} data 
+     * @param {import('puppeteer-core').CDPSession} cdp
      */
     handleRequest(data, cdp) {
         const {
@@ -181,7 +181,7 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {{requestId: RequestId, url: string, initiator: import('../helpers/initiators').RequestInitiator}} request 
+     * @param {import('devtools-protocol').Protocol.Network.WebSocketCreatedEvent} request 
      */
     handleWebSocket(request) {
         this._requests.push({
@@ -193,7 +193,7 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {{requestId: RequestId, type: ResourceType, frameId?: FrameId, response: CDPResponse}} data 
+     * @param {} data 
      */
     handleResponse(data) {
         const {
@@ -252,7 +252,7 @@ class RequestCollector extends BaseCollector {
 
     /**
      * @param {{errorText: string, requestId: RequestId, timestamp: Timestamp, type: ResourceType}} data 
-     * @param {import('puppeteer').CDPSession} cdp
+     * @param {import('puppeteer-core').CDPSession} cdp
      */
     async handleFailedRequest(data, cdp) {
         let request = this.findLastRequestWithId(data.requestId);
@@ -277,7 +277,7 @@ class RequestCollector extends BaseCollector {
 
     /**
      * @param {{requestId: RequestId, encodedDataLength?: number, timestamp: Timestamp}} data 
-     * @param {import('puppeteer').CDPSession} cdp
+     * @param {import('puppeteer-core').CDPSession} cdp
      */
     async handleFinishedRequest(data, cdp) {
         let request = this.findLastRequestWithId(data.requestId);
