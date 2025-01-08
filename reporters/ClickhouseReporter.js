@@ -63,7 +63,8 @@ const TABLE_DEFINITIONS = [
         selfTestFail UInt8,
         errors Array(String),
         patterns Array(String),
-        snippets Array(String)
+        snippets Array(String),
+        filterListMatched Bool
     ) ENGINE = MergeTree()
     PRIMARY KEY(crawlId, pageId, name)`,
     `CREATE TABLE IF NOT EXISTS ${DB}.apiSavedCalls (
@@ -115,16 +116,13 @@ class ClickhouseReporter extends BaseReporter {
     }
 
     /**
-     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options 
+     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options
      */
     init(options) {
         this.verbose = options.verbose;
         this.client = new ClickHouse({url: CLICKHOUSE_SERVER});
         this.crawlId = `${new Date().toISOString()}-${os.hostname()}`;
         this.ready = Promise.all(TABLE_DEFINITIONS.map(stmt => this.client.query(stmt).toPromise()));
-        if (this.verbose) {
-            console.log(`Creating crawl ${this.crawlId}`);
-        }
         this.queue = {
             pages: [],
             requests: [],
@@ -143,6 +141,9 @@ class ClickhouseReporter extends BaseReporter {
      */
     createCrawl(name = '', region = '') {
         this.ready.then(async () => {
+            if (this.verbose) {
+                console.log(`Creating crawl ${this.crawlId}`);
+            }
             await this.client.insert(`INSERT INTO ${DB}.crawls (crawlId, name, region)`, [{
                 crawlId: this.crawlId,
                 name,
@@ -194,7 +195,20 @@ class ClickhouseReporter extends BaseReporter {
                 this.queue.elements.push([this.crawlId, pageId, data.data.elements.present, data.data.elements.visible]);
             }
             if (data.data.cmps) {
-                const cmpRows = data.data.cmps.map(c => [this.crawlId, pageId, c.name, c.final, c.open, c.started, c.succeeded, c.selfTestFail, c.errors, c.patterns || [], c.snippets || []]);
+                const cmpRows = data.data.cmps.map(c => [
+                    this.crawlId,
+                    pageId,
+                    c.name,
+                    c.final,
+                    c.open,
+                    c.started,
+                    c.succeeded,
+                    c.selfTestFail,
+                    c.errors,
+                    c.patterns || [],
+                    c.snippets || [],
+                    c.filterListMatched || false,
+                ]);
                 this.queue.cmps = this.queue.cmps.concat(cmpRows);
             }
             if (data.data.apis) {

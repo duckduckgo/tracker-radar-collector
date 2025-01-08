@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */
 const fs = require('fs');
-const createDeferred = require('../helpers/deferred');
 const waitFor = require('../helpers/waitFor');
 const BaseCollector = require('./BaseCollector');
 
@@ -15,12 +14,12 @@ const BaseCollector = require('./BaseCollector');
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage } OptOutResultMessage
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage } OptInResultMessage
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').DoneMessage } DoneMessage
- * @typedef { { snippets: string[], patterns: string[] } } ScanResult
+ * @typedef { { snippets: Set<string>, patterns: Set<string>, filterListMatched: boolean } } ScanResult
  */
 
 // @ts-ignore
 const baseContentScript = fs.readFileSync(
-    require.resolve('@duckduckgo/autoconsent/dist/autoconsent.playwright.js'),
+    require.resolve('../node_modules/@duckduckgo/autoconsent/dist/autoconsent.playwright.js'),
     'utf8'
 );
 
@@ -46,32 +45,6 @@ function isIgnoredEvalError(e) {
     );
 }
 
-// TODO: check for false positive detections per pattern
-const DETECT_PATTERNS = [
-    /accept cookies/ig,
-    /accept all/ig,
-    /reject all/ig,
-    /only necessary cookies/ig, // "only necessary" is probably too broad
-    /by clicking.*(accept|agree|allow)/ig,
-    /by continuing/ig,
-    /we (use|serve)( optional)? cookies/ig,
-    /we are using cookies/ig,
-    /use of cookies/ig,
-    /(this|our) (web)?site.*cookies/ig,
-    /cookies (and|or) .* technologies/ig,
-    /such as cookies/ig,
-    /read more about.*cookies/ig,
-    /consent to.*cookies/ig,
-    /we and our partners.*cookies/ig,
-    /we.*store.*information.*such as.*cookies/ig,
-    /store and\/or access information.*on a device/ig,
-    /personalised ads and content, ad and content measurement/ig,
-
-    // it might be tempting to add the patterns below, but they cause too many false positives. Don't do it :)
-    // /cookies? settings/i,
-    // /cookies? preferences/i,
-];
-
 class CMPCollector extends BaseCollector {
     id() {
         return 'cmps';
@@ -88,12 +61,12 @@ class CMPCollector extends BaseCollector {
         this.receivedMsgs = [];
         this.selfTestFrame = null;
         this.isolated2pageworld = new Map();
-        this.pendingScan = createDeferred();
         this.context = options.context;
         /** @type {ScanResult} */
         this.scanResult = {
-            snippets: [],
-            patterns: [],
+            snippets: new Set([]),
+            patterns: new Set([]),
+            filterListMatched: false,
         };
     }
 
@@ -189,10 +162,12 @@ class CMPCollector extends BaseCollector {
             /** @type {Partial<AutoconsentConfig>} */
             const autoconsentConfig = {
                 enabled: true,
-                autoAction: null, // we request action explicitly later
+                autoAction: 'optOut',
                 disabledCmps: [],
                 enablePrehide: false,
                 enableCosmeticRules: true,
+                enableFilterList: true,
+                enableHeuristicDetection: true,
                 detectRetries: 20,
                 isMainWorld: false
             };
@@ -203,13 +178,13 @@ class CMPCollector extends BaseCollector {
             break;
         }
         case 'popupFound':
-            if (this.autoAction) {
-                await this.pendingScan.promise; // wait for the pattern detection first
-                await this._cdpClient.send('Runtime.evaluate', {
-                    expression: `autoconsentReceiveMessage({ type: "${this.autoAction}" })`,
-                    contextId: executionContextId,
-                });
+            if (msg.cmp === 'filterList') {
+                this.scanResult.filterListMatched = true;
             }
+            break;
+        case 'report':
+            msg.state.heuristicPatterns.forEach(x => this.scanResult.patterns.add(x));
+            msg.state.heuristicSnippets.forEach(x => this.scanResult.snippets.add(x));
             break;
         case 'optInResult':
         case 'optOutResult': {
@@ -315,44 +290,6 @@ class CMPCollector extends BaseCollector {
         }
     }
 
-    async postLoad() {
-        /**
-         * @type {string[]}
-         */
-        const foundPatterns = [];
-        const foundSnippets = [];
-        const pages = await this.context.pages();
-        if (pages.length > 0) {
-            const page = pages[0];
-            /**
-             * @type {Promise<string>[]}
-             */
-            const promises = [];
-            page.frames().forEach(frame => {
-                // eslint-disable-next-line no-undef
-                promises.push(frame.evaluate(() => document.documentElement.innerText).catch(reason => {
-                    this.log(`error retrieving text: ${reason}`);
-                    // ignore exceptions
-                    return '';
-                }));
-            });
-            const texts = await Promise.all(promises);
-            const allTexts = texts.join('\n');
-            for (const p of DETECT_PATTERNS) {
-                const matches = allTexts.match(p);
-                if (matches) {
-                    foundPatterns.push(p.toString());
-                    foundSnippets.push(...matches.map(m => m.substring(0, 200)));
-                }
-            }
-        }
-        this.pendingScan.resolve();
-        this.scanResult = {
-            patterns: foundPatterns,
-            snippets: Array.from(new Set(foundSnippets)),
-        };
-    }
-
     /**
      * @returns {CMPResult[]}
      */
@@ -394,8 +331,9 @@ class CMPCollector extends BaseCollector {
                 succeeded: false,
                 selfTestFail: Boolean(selfTestResult && !selfTestResult.result),
                 errors,
-                patterns: [],
-                snippets: [],
+                patterns: Array.from(this.scanResult.patterns),
+                snippets: Array.from(this.scanResult.snippets),
+                filterListMatched: this.scanResult.filterListMatched,
             };
 
             const found = this.findMessage({type: 'popupFound', cmp: msg.cmp});
@@ -427,25 +365,19 @@ class CMPCollector extends BaseCollector {
     async getData() {
         await this.waitForFinish();
         const results = this.collectResults();
-        if (this.scanResult.patterns.length > 0) {
-            if (results.length > 0) {
-                results.forEach(r => {
-                    r.patterns = this.scanResult.patterns;
-                    r.snippets = this.scanResult.snippets;
-                });
-            } else {
-                results.push({
-                    final: false,
-                    name: '',
-                    open: false,
-                    started: false,
-                    succeeded: false,
-                    selfTestFail: false,
-                    errors: [],
-                    patterns: this.scanResult.patterns,
-                    snippets: this.scanResult.snippets,
-                });
-            }
+        if (this.scanResult.patterns.size > 0 && results.length === 0) {
+            results.push({
+                final: false,
+                name: '',
+                open: false,
+                started: false,
+                succeeded: false,
+                selfTestFail: false,
+                errors: [],
+                patterns: Array.from(this.scanResult.patterns),
+                snippets: Array.from(this.scanResult.snippets),
+                filterListMatched: this.scanResult.filterListMatched,
+            });
         }
         return results;
     }
@@ -462,6 +394,7 @@ class CMPCollector extends BaseCollector {
  * @property {string[]} errors
  * @property {string[]} patterns
  * @property {string[]} snippets
+ * @property {boolean} filterListMatched
  */
 
 module.exports = CMPCollector;

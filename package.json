@@ -38,10 +38,10 @@
     "mocha": "^10.0.0",
     "mockery": "^2.1.0",
     "pre-push": "^0.1.1",
-    "typescript": "^4.6.4"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@duckduckgo/autoconsent": "^10.15.0",
+    "@duckduckgo/autoconsent": "^12.4.0",
     "async": "^2.6.1",
     "chalk": "^2.4.1",
     "clickhouse": "^2.6.0",

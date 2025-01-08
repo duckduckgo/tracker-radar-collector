@@ -85,33 +85,15 @@ describe('CMPCollector', () => {
                 assert.deepStrictEqual(commands[0], ['Runtime.evaluate', {
                     expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify({
                         enabled: true,
-                        autoAction: null,
+                        autoAction: 'optOut',
                         disabledCmps: [],
                         enablePrehide: false,
                         enableCosmeticRules: true,
+                        enableFilterList: true,
+                        enableHeuristicDetection: true,
                         detectRetries: 20,
                         isMainWorld: false,
                     })} })`,
-                    contextId: 1111,
-                }]);
-            });
-        });
-        describe('popupFound ', () => {
-            it('should trigger autoAction', async () => {
-                /**
-                 * @type {ContentScriptMessage}
-                 */
-                const msg = {
-                    type: 'popupFound',
-                    url: 'some-url',
-                    cmp: 'someCMP',
-                };
-                commands.splice(0, commands.length);
-                collector.pendingScan.resolve();
-                await collector.handleMessage(msg, 1111);
-                assert.strictEqual(commands.length, 1);
-                assert.deepStrictEqual(commands[0], ['Runtime.evaluate', {
-                    expression: `autoconsentReceiveMessage({ type: "optOut" })`,
                     contextId: 1111,
                 }]);
             });
@@ -284,16 +266,41 @@ describe('CMPCollector', () => {
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
             assert.strictEqual(contentScriptEval.contextId, 31337);
 
-            // @ts-ignore no need to provide all params
-            collector.context.pages = () => Promise.resolve([
-                {
-                    frames: () => [
-                        {
-                            evaluate: () => Promise.resolve('This website is using cookies. We are using cookies! To reiterate, you consent to the use of cookies on this website. In fact, there is nothing you can possibly do.')
-                        }
-                    ]
-                }
-            ]);
+            const expectedPatterns = [
+                "/we are using cookies/gi",
+                "/use of cookies/gi",
+                "/(this|our) (web)?site.*cookies/gi",
+                "/consent to.*cookies/gi",
+            ];
+            const expectedSnippets = [
+                'We are using cookies',
+                'use of cookies',
+                'This website is using cookies. We are using cookies! To reiterate, you consent to the use of cookies',
+                'consent to the use of cookies'
+            ];
+
+            bindingCalled.callback({
+                name: 'cdpAutoconsentSendMessage',
+                payload: JSON.stringify({
+                    type: 'report',
+                    url: 'some-url',
+                    instanceId: 'xxxxxx',
+                    mainFrame: true,
+                    state: {
+                        cosmeticFiltersOn: false,
+                        filterListReported: false,
+                        lifecycle: 'loading',
+                        prehideOn: false,
+                        findCmpAttempts: 0,
+                        detectedCmps: [],
+                        detectedPopups: [],
+                        heuristicPatterns: expectedPatterns,
+                        heuristicSnippets: expectedSnippets,
+                        selfTest: null,
+                    },
+                }),
+                executionContextId: 31337,
+            });
 
             await collector.postLoad();
             const results = await collector.getData();
@@ -304,19 +311,10 @@ describe('CMPCollector', () => {
                 started: false,
                 succeeded: false,
                 selfTestFail: false,
+                filterListMatched: false,
                 errors: [],
-                patterns: [
-                    "/we are using cookies/gi",
-                    "/use of cookies/gi",
-                    "/(this|our) (web)?site.*cookies/gi",
-                    "/consent to.*cookies/gi",
-                ],
-                snippets: [
-                    'We are using cookies',
-                    'use of cookies',
-                    'This website is using cookies. We are using cookies! To reiterate, you consent to the use of cookies',
-                    'consent to the use of cookies'
-                ]
+                patterns: expectedPatterns,
+                snippets: expectedSnippets,
             }]);
         });
 
@@ -341,6 +339,7 @@ describe('CMPCollector', () => {
                 open: false,
                 started: false,
                 succeeded: false,
+                filterListMatched: false,
                 selfTestFail: false,
                 errors: [],
                 patterns: [],
@@ -380,6 +379,7 @@ describe('CMPCollector', () => {
                 started: false,
                 succeeded: false,
                 selfTestFail: false,
+                filterListMatched: false,
                 errors: [],
                 patterns: [],
                 snippets: [],
@@ -432,6 +432,7 @@ describe('CMPCollector', () => {
                         started: true,
                         succeeded: false,
                         selfTestFail: false,
+                        filterListMatched: false,
                         errors: [],
                         patterns: [],
                         snippets: [],
@@ -470,6 +471,7 @@ describe('CMPCollector', () => {
                         started: true,
                         succeeded: true,
                         selfTestFail: false,
+                        filterListMatched: false,
                         errors: [],
                         patterns: [],
                         snippets: [],
@@ -533,6 +535,7 @@ describe('CMPCollector', () => {
                         started: true,
                         succeeded: true,
                         selfTestFail: false,
+                        filterListMatched: false,
                         errors: [],
                         patterns: [],
                         snippets: [],
@@ -559,6 +562,7 @@ describe('CMPCollector', () => {
                         open: true,
                         started: true,
                         succeeded: true,
+                        filterListMatched: false,
                         selfTestFail: true,
                         errors: [],
                         patterns: [],
