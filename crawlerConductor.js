@@ -55,6 +55,7 @@ async function crawlAndSaveData(
             ...msg
         );
     });
+
     const data = await crawl(url, {
         log: prefixedLog,
         // @ts-ignore

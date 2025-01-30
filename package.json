@@ -35,10 +35,10 @@
     "eslint-plugin-mocha": "^10.0.5",
     "mocha": "^10.0.0",
     "mockery": "^2.1.0",
-    "typescript": "^4.6.4"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@duckduckgo/autoconsent": "^10.15.0",
+    "@duckduckgo/autoconsent": "^12.7.0",
     "async": "^3.2.6",
     "chalk": "^4.1.2",
     "clickhouse": "^2.6.0",
