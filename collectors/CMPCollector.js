@@ -20,7 +20,7 @@ const BaseCollector = require('./BaseCollector');
 
 // @ts-ignore
 const baseContentScript = fs.readFileSync(
-    require.resolve('@duckduckgo/autoconsent/dist/autoconsent.playwright.js'),
+    require.resolve('../node_modules/@duckduckgo/autoconsent/dist/autoconsent.playwright.js'),
     'utf8'
 );
 
