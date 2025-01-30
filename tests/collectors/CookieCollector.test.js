@@ -51,7 +51,7 @@ const fakeCDPClient = {
 collector.init({});
 
 // @ts-ignore not a real CDP client
-collector.addTarget({cdpClient: fakeCDPClient, type: 'page', url: 'http://example.com'});
+collector.addTarget({session: fakeCDPClient, type: 'page', url: 'http://example.com'});
 
 collector.getData()
     .then(data => {
