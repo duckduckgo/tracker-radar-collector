@@ -14,7 +14,7 @@ const BaseCollector = require('./BaseCollector');
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage } OptOutResultMessage
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage } OptInResultMessage
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').DoneMessage } DoneMessage
- * @typedef { { snippets: Set<string>, patterns: Set<string>, filterListMatched: boolean } } ScanResult
+ * @typedef { { snippets: Set<string>, patterns: Set<string>, filterListMatched: boolean, matchedFilters: Set<string>, matchedJsRule: boolean } } ScanResult
  */
 
 // @ts-ignore
@@ -66,6 +66,8 @@ class CMPCollector extends BaseCollector {
             snippets: new Set([]),
             patterns: new Set([]),
             filterListMatched: false,
+            matchedFilters: new Set([]),
+            matchedJsRule: false,
         };
     }
 
@@ -183,6 +185,8 @@ class CMPCollector extends BaseCollector {
         case 'report':
             msg.state.heuristicPatterns.forEach(x => this.scanResult.patterns.add(x));
             msg.state.heuristicSnippets.forEach(x => this.scanResult.snippets.add(x));
+            msg.state.matchedFilters.forEach(x => this.scanResult.matchedFilters.add(x));
+            this.scanResult.matchedJsRule = this.scanResult.matchedJsRule || msg.state.matchedJsRule;
             break;
         case 'optInResult':
         case 'optOutResult': {
@@ -332,6 +336,8 @@ class CMPCollector extends BaseCollector {
                 patterns: Array.from(this.scanResult.patterns),
                 snippets: Array.from(this.scanResult.snippets),
                 filterListMatched: this.scanResult.filterListMatched,
+                matchedFilters: Array.from(this.scanResult.matchedFilters).sort(),
+                matchedJsRule: this.scanResult.matchedJsRule,
             };
 
             const found = this.findMessage({type: 'popupFound', cmp: msg.cmp});
@@ -363,7 +369,7 @@ class CMPCollector extends BaseCollector {
     async getData() {
         await this.waitForFinish();
         const results = this.collectResults();
-        if (this.scanResult.patterns.size > 0 && results.length === 0) {
+        if (results.length === 0 && (this.scanResult.patterns.size > 0 || this.scanResult.matchedFilters.size > 0 || this.scanResult.matchedJsRule)) {
             results.push({
                 final: false,
                 name: '',
@@ -375,6 +381,8 @@ class CMPCollector extends BaseCollector {
                 patterns: Array.from(this.scanResult.patterns),
                 snippets: Array.from(this.scanResult.snippets),
                 filterListMatched: this.scanResult.filterListMatched,
+                matchedFilters: Array.from(this.scanResult.matchedFilters).sort(),
+                matchedJsRule: this.scanResult.matchedJsRule,
             });
         }
         return results;
@@ -393,6 +401,8 @@ class CMPCollector extends BaseCollector {
  * @property {string[]} patterns
  * @property {string[]} snippets
  * @property {boolean} filterListMatched
+ * @property {string[]} matchedFilters
+ * @property {boolean} matchedJsRule
  */
 
 module.exports = CMPCollector;
