@@ -16,12 +16,14 @@ class Crawler {
         this.options = options;
         /** @type {Map<import('devtools-protocol/types/protocol').Protocol.Target.TargetID, import('./collectors/BaseCollector').TargetInfo>} */
         this.targets = new Map();
-        this._mainPageDeferred = createDeferred();
-        /** @type {import('./collectors/BaseCollector').TargetInfo} */
+        this._mainPageAttachedDeferred = createDeferred();
+        this.mainPageAttached = false;
+        /** @type {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} */
         this.mainPageTarget = null;
         this._mainFrameDeferred = createDeferred();
         /** @type {import('devtools-protocol/types/protocol').Protocol.Page.FrameId} */
         this.mainFrameId = null;
+        this._navigationDeferred = createDeferred();
         this.log = options.log;
         this.browserConnection = options.browserConnection;
         this.collectors = options.collectors;
@@ -78,9 +80,6 @@ class Crawler {
                     accept: false,
                 });
             });
-            session.on('Inspector.targetCrashed', () => {
-                this.log(chalk.red('Target crashed', targetInfo.url));
-            });
             session.on('Page.frameNavigated', e => {
                 if (!e.frame.parentId) {
                     if (this.mainFrameId) {
@@ -118,10 +117,10 @@ class Crawler {
         }
 
         await session.send('Runtime.runIfWaitingForDebugger');
-
-        if (!this.mainPageTarget && targetInfo.type === 'page') {
-            this.mainPageTarget = targetInfo;
-            this._mainPageDeferred.resolve(targetInfo);
+        if (this.mainPageTarget?.targetId === targetInfo.id) {
+            this.mainPageAttached = true;
+            this.log(chalk.green(`main page target attached: ${targetInfo.id} ${targetInfo.url}`));
+            this._mainPageAttachedDeferred.resolve(targetInfo);
         }
     }
 
@@ -156,22 +155,29 @@ class Crawler {
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetCrashedEvent} event
      */
     onTargetCrashed(event) {
-        this.log(chalk.red(`target ${event.targetId} crashed`));
-        // this.targets.delete(event.targetId);
+        this.log(chalk.red(`target ${event.targetId} crashed: status ${event.status}, code ${event.errorCode}`));
+        if (this.mainPageTarget?.targetId === event.targetId) {
+            this._navigationDeferred.reject(new Error(`Main target ${event.targetId} crashed`));
+        }
+        this.targets.delete(event.targetId);
     }
 
     /**
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetCreatedEvent} event
      */
     onTargetCreated(event) {
-        this.log(`target created: ${event.targetInfo.targetId} ${event.targetInfo.type} ${event.targetInfo.url}`);
+        const targetInfo = event.targetInfo;
+        this.log(`target created: ${targetInfo.targetId} ${targetInfo.type} ${targetInfo.url}`);
+        if (!this.mainPageTarget && targetInfo.type === 'page') {
+            this.mainPageTarget = targetInfo;
+        }
     }
 
     /**
      * @returns {Promise<import('./collectors/BaseCollector').TargetInfo>}
      */
     waitForMainPage() {
-        return this._mainPageDeferred.promise;
+        return this._mainPageAttachedDeferred.promise;
     }
 
     /**
@@ -184,22 +190,24 @@ class Crawler {
         await mainTarget.session.send('Page.navigate', {
             url: url.toString(),
         });
+
+        /**
+         * @param {import('devtools-protocol/types/protocol').Protocol.Page.LifecycleEventEvent} e
+         */
+        const lifecycleHandler = async e => {
+            if (e.name === 'networkIdle') {
+                await this._mainFrameDeferred.promise;
+                if (e.frameId === this.mainFrameId) {
+                    this.log(chalk.green(`network idle in ${mainTarget.url}`));
+                    mainTarget.session.off('Page.lifecycleEvent', lifecycleHandler);
+                    this._navigationDeferred.resolve();
+                }
+            }
+        };
+        mainTarget.session.on('Page.lifecycleEvent', lifecycleHandler);
+
         await wait(
-            new Promise(resolve => {
-                /**
-                 * @param {import('devtools-protocol/types/protocol').Protocol.Page.LifecycleEventEvent} e
-                 */
-                const lifecycleHandler = async e => {
-                    if (e.name === 'networkIdle') {
-                        if (e.frameId === await this._mainFrameDeferred.promise) {
-                            this.log(chalk.green(`network idle in ${mainTarget.url}`));
-                            mainTarget.session.off('Page.lifecycleEvent', lifecycleHandler);
-                            resolve();
-                        }
-                    }
-                };
-                mainTarget.session.on('Page.lifecycleEvent', lifecycleHandler);
-            }),
+            this._navigationDeferred.promise,
             timeoutMs,
             `Page navigation timeout`
         );
