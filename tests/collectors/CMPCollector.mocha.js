@@ -89,7 +89,7 @@ describe('CMPCollector', () => {
                         disabledCmps: [],
                         enablePrehide: false,
                         enableCosmeticRules: true,
-                        enableFilterList: true,
+                        enableFilterList: false,
                         enableHeuristicDetection: true,
                         detectRetries: 20,
                         isMainWorld: false,
