@@ -33,6 +33,7 @@ function getBreakpointScript(breakpoint, description) {
     breakpointScript = `
         let shouldPause = false;
         ${breakpointScript}
+        shouldPause = false; // FIXME: make this configurable
         shouldPause;
     `;
 
