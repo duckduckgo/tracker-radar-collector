@@ -7,6 +7,34 @@ const tldts = require('tldts');
 const {DEFAULT_USER_AGENT, MOBILE_USER_AGENT, DEFAULT_VIEWPORT, MOBILE_VIEWPORT, VISUAL_DEBUG} = require('./constants');
 const openBrowser = require('./browser/openBrowser');
 
+const targetFilter = [
+    // see list of types in https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
+
+    // these targets are disabled by default in CDP
+    {type: 'browser', exclude: true},
+    {type: 'tab', exclude: true},
+
+    // main targets we're interested in
+    {type: 'page', exclude: false},
+    {type: 'iframe', exclude: false},
+
+    // somewhat useful targets, but not sure if we actually need them
+    {type: 'worker', exclude: false},
+    {type: 'shared_worker', exclude: false},
+    {type: 'service_worker', exclude: false},
+
+    // exclude other targets because we're not doing anything with them at the moment
+    {type: 'worklet', exclude: true},
+    {type: 'shared_storage_worklet', exclude: true},
+    {type: 'webview', exclude: true},
+    {type: 'other', exclude: true},
+    {type: 'auction_worklet', exclude: true},
+    {type: 'assistive_technology', exclude: true},
+
+    // allow all other unknown types
+    {}
+];
+
 class Crawler {
 
     /**
@@ -34,7 +62,7 @@ class Crawler {
      */
     async onTargetAttached(event) {
         const session = this.browserConnection.session(event.sessionId);
-        this.log(`new target ${event.targetInfo.targetId}: ${event.targetInfo.type} ${event.targetInfo.url}`);
+        this.log(`target attached ${event.targetInfo.targetId}: ${event.targetInfo.type} ${event.targetInfo.url}`);
         const timer = createTimer();
         /** @type {import('./collectors/BaseCollector').TargetInfo} */
         const targetInfo = {
@@ -60,12 +88,13 @@ class Crawler {
      * @param {import('./collectors/BaseCollector').TargetInfo} targetInfo
      */
     async _onTargetAttached(session, targetInfo) {
+        // Auto-attach works only on related targets, so if we want to attach to everything, we have to set it up for each target
         session.on('Target.attachedToTarget', this.onTargetAttached.bind(this));
-
         await session.send('Target.setAutoAttach', {
             autoAttach: true,
             waitForDebuggerOnStart: true, // pause execution until we attach all event handlers
             flatten: true,
+            filter: targetFilter,
         });
 
         if (this.options.emulateUserAgent) {
@@ -248,33 +277,7 @@ class Crawler {
             }
         }
 
-        const targetFilter = [
-            // see list of types in https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
 
-            // these targets are disabled by default in CDP
-            {type: 'browser', exclude: true},
-            {type: 'tab', exclude: true},
-
-            // main targets we're interested in
-            {type: 'page', exclude: false},
-            {type: 'iframe', exclude: false},
-
-            // somewhat useful targets, but not sure if we actually need them
-            {type: 'worker', exclude: false},
-            {type: 'shared_worker', exclude: false},
-            {type: 'service_worker', exclude: false},
-
-            // exclude other targets because we're not doing anything with them at the moment
-            {type: 'worklet', exclude: true},
-            {type: 'shared_storage_worklet', exclude: true},
-            {type: 'webview', exclude: true},
-            {type: 'other', exclude: true},
-            {type: 'auction_worklet', exclude: true},
-            {type: 'assistive_technology', exclude: true},
-
-            // allow all other unknown types
-            {}
-        ];
         await conn.send('Target.setAutoAttach', {
             autoAttach: true,
             waitForDebuggerOnStart: true,
