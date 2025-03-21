@@ -5,7 +5,7 @@ const {createCollector} = require('../../helpers/collectorsList');
 const testURLs = [
     'https://example.com/',
     'https://duck.com/',
-    'https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-script.html',
+    'https://privacy-test-pages.site/tracker-reporting/1major-via-script.html',
     'https://fingerprintjs.com/demo/'
 ];
 
@@ -56,8 +56,7 @@ async function main() {
     const exampleCom = data.find(d => d.initialUrl === 'https://example.com/');
     commonTests(exampleCom, 'example.com');
 
-    assert(exampleCom.finalUrl === exampleCom.initialUrl, 'example.com does not redirect, final and initial urls should be the same');
-    
+    assert(exampleCom.finalUrl === exampleCom.initialUrl, `example.com does not redirect, final and initial urls should be the same ${exampleCom.finalUrl} !== ${exampleCom.initialUrl}`);
     const exampleNonFaviconRequests = exampleCom.data.requests.filter(r => !r.url.endsWith('/favicon.ico'));
     assert(exampleNonFaviconRequests.length === 1, 'example.com does not load any subresources, should only have one request');
     assert(exampleNonFaviconRequests[0].url === 'https://example.com/', 'example.com should have only one request to https://example.com/');
@@ -92,13 +91,13 @@ async function main() {
     assert(Object.keys(duckCom.data.apis.callStats).length > 0, 'duck.com does execute some JS and callStats should NOT be empty');
 
     /// https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-script.html tests
-    const privacyTestPages1 = data.find(d => d.initialUrl === 'https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-script.html');
+    const privacyTestPages1 = data.find(d => d.initialUrl === 'https://privacy-test-pages.site/tracker-reporting/1major-via-script.html');
     commonTests(privacyTestPages1, 'privacy-test-pages/1major-via-script');
 
     const privacyTestPages1NonFaviconRequests = privacyTestPages1.data.requests.filter(r => !r.url.endsWith('/favicon.ico'));
     assert(privacyTestPages1NonFaviconRequests.length === 2, 'privacy-test-pages/1major-via-script does load one subresource and one main page document');
     assert(privacyTestPages1NonFaviconRequests[1].url === 'https://doubleclick.net/tracker.js', 'subresource loaded should be "https://doubleclick.net/tracker.js"');
-    assert(privacyTestPages1NonFaviconRequests[1].status === 404, 'subresource loaded should return HTTP 404');
+    assert(privacyTestPages1NonFaviconRequests[1].failureReason.includes('ERR_BLOCKED_BY_ORB'), `subresource loaded should report an error: got ${privacyTestPages1NonFaviconRequests[1].status}`);
 
     /// https://fingerprintjs.com/demo/ tests
     const fingerprintjs = data.find(d => d.initialUrl === 'https://fingerprintjs.com/demo/');
