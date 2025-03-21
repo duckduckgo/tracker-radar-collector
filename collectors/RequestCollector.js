@@ -29,7 +29,7 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {import('./BaseCollector').CollectorInitOptions} options 
+     * @param {import('./BaseCollector').CollectorInitOptions} options
      */
     init({
         log,
@@ -46,7 +46,7 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {import('./BaseCollector').TargetInfo} targetInfo 
+     * @param {import('./BaseCollector').TargetInfo} targetInfo
      */
     async addTarget({session}) {
         await session.send('Runtime.enable');
@@ -65,7 +65,7 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {RequestId} id 
+     * @param {Protocol.Network.RequestId} id
      */
     findLastRequestWithId(id) {
         let i = this._requests.length;
@@ -80,8 +80,8 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {RequestId} id 
-     * @param {import('puppeteer-core').CDPSession} cdp
+     * @param {Protocol.Network.RequestId} id
+     * @param {CDPSession} cdp
      */
     async getResponseBodyHash(id, cdp) {
         try {
@@ -99,8 +99,8 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {import('devtools-protocol').Protocol.Network.RequestWillBeSentEvent} data 
-     * @param {import('puppeteer-core').CDPSession} cdp
+     * @param {Protocol.Network.RequestWillBeSentEvent} data
+     * @param {CDPSession} cdp
      */
     handleRequest(data, cdp) {
         const {
@@ -108,7 +108,7 @@ class RequestCollector extends BaseCollector {
             type,
             request,
             redirectResponse,
-            timestamp: startTime
+            timestamp: startTime,
         } = data;
 
         let initiator = data.initiator;
@@ -150,7 +150,8 @@ class RequestCollector extends BaseCollector {
                 });
                 this.handleFinishedRequest({
                     requestId: id,
-                    timestamp: startTime
+                    timestamp: startTime,
+                    encodedDataLength: previousRequest.size,
                 }, cdp);
 
                 // initiators of redirects are useless (they point to the main document), copy initiator from original request
@@ -181,7 +182,7 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {import('devtools-protocol').Protocol.Network.WebSocketCreatedEvent} request 
+     * @param {Protocol.Network.WebSocketCreatedEvent} request
      */
     handleWebSocket(request) {
         this._requests.push({
@@ -193,7 +194,7 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {} data 
+     * @param {{ requestId: Protocol.Network.RequestId, type: Protocol.Network.ResourceType, response: Protocol.Network.Response }} data
      */
     handleResponse(data) {
         const {
@@ -208,7 +209,7 @@ class RequestCollector extends BaseCollector {
             request = {
                 id,
                 url: response.url,
-                type
+                type,
             };
             this._unmatched.set(id, request);
         }
@@ -226,7 +227,7 @@ class RequestCollector extends BaseCollector {
 
     /**
      * Network.responseReceivedExtraInfo
-     * @param {{requestId: RequestId, headers: Object<string, string>}} data 
+     * @param {Protocol.Network.ResponseReceivedExtraInfoEvent} data
      */
     handleResponseExtraInfo(data) {
         const {
@@ -251,8 +252,8 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {{errorText: string, requestId: RequestId, timestamp: Timestamp, type: ResourceType}} data 
-     * @param {import('puppeteer-core').CDPSession} cdp
+     * @param {Protocol.Network.LoadingFailedEvent} data
+     * @param {CDPSession} cdp
      */
     async handleFailedRequest(data, cdp) {
         let request = this.findLastRequestWithId(data.requestId);
@@ -276,8 +277,8 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {{requestId: RequestId, encodedDataLength?: number, timestamp: Timestamp}} data 
-     * @param {import('puppeteer-core').CDPSession} cdp
+     * @param {Protocol.Network.LoadingFinishedEvent} data
+     * @param {CDPSession} cdp
      */
     async handleFinishedRequest(data, cdp) {
         let request = this.findLastRequestWithId(data.requestId);
@@ -347,10 +348,15 @@ class RequestCollector extends BaseCollector {
 module.exports = RequestCollector;
 
 /**
+ * @import {Protocol} from 'devtools-protocol';
+ * @import {CDPSession} from 'puppeteer-core';
+ */
+
+/**
  * @typedef RequestData
  * @property {string} url
- * @property {HttpMethod} method
- * @property {ResourceType} type
+ * @property {string} method
+ * @property {Protocol.Network.ResourceType} type
  * @property {string[]=} initiators
  * @property {string=} redirectedFrom
  * @property {string=} redirectedTo
@@ -365,11 +371,11 @@ module.exports = RequestCollector;
 
 /**
  * @typedef InternalRequestData
- * @property {RequestId} id
+ * @property {Protocol.Network.RequestId} id
  * @property {string} url
- * @property {HttpMethod=} method
- * @property {ResourceType} type
- * @property {import('../helpers/initiators').RequestInitiator=} initiator
+ * @property {string=} method
+ * @property {Protocol.Network.ResourceType} type
+ * @property {Protocol.Network.Initiator=} initiator
  * @property {string=} redirectedFrom
  * @property {string=} redirectedTo
  * @property {number=} status
@@ -377,44 +383,7 @@ module.exports = RequestCollector;
  * @property {Object<string,string>=} responseHeaders
  * @property {string=} failureReason
  * @property {number=} size
- * @property {Timestamp=} startTime
- * @property {Timestamp=} endTime
+ * @property {Protocol.Runtime.Timestamp=} startTime
+ * @property {Protocol.Runtime.Timestamp=} endTime
  * @property {string=} responseBodyHash
- */
-
-/**
- * @typedef {string} RequestId
- */
-
-/**
- * @typedef {number} Timestamp
- */
-
-/**
- * @typedef {'Document'|'Stylesheet'|'Image'|'Media'|'Font'|'Script'|'TextTrack'|'XHR'|'Fetch'|'EventSource'|'WebSocket'|'Manifest'|'SignedExchange'|'Ping'|'CSPViolationReport'|'Other'} ResourceType
- */
-
-/**
- * @typedef {string} FrameId
- */
-
-/**
- * @typedef CDPRequest
- * @property {string} url
- * @property {HttpMethod} method
- * @property {object} headers
- * @property {'VeryLow'|'Low'|'Medium'|'High'|'VeryHigh'} initialPriority
- */
-
-/**
- * @typedef CDPResponse
- * @property {string} url
- * @property {number} status
- * @property {Object<string, string>} headers
- * @property {string} remoteIPAddress
- * @property {object} securityDetails
- */
-
-/**
- * @typedef {'GET'|'PUT'|'POST'|'DELETE'|'HEAD'|'OPTIONS'|'CONNNECT'|'TRACE'|'PATCH'} HttpMethod
  */

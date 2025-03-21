@@ -111,7 +111,6 @@ class RemoteChrome extends BaseBrowser {
     async getConnection() {
         try {
             const seleniumHost = new URL(this.options.seleniumHub).host;
-            // @ts-expect-error session has the 'any' type
             const sessionId = await this.driver.getSession().then(session => session.getId());
             const browserWSEndpoint = `ws://${seleniumHost}/session/${sessionId}/se/cdp`;
             const transport = await NodeWebSocketTransport.create(browserWSEndpoint);

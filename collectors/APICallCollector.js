@@ -220,7 +220,7 @@ module.exports = APICallCollector;
  */
 
 /**
- * @typedef { import('./APICalls/TrackerTracker').SavedCall } SavedCall
+ * @import {SavedCall} from './APICalls/TrackerTracker'
  */
 
 /**
