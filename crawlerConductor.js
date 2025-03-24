@@ -10,21 +10,11 @@ const notABot = require('./helpers/notABot');
 const MAX_NUMBER_OF_RETRIES = 2;
 
 /**
- * @param {string} urlString 
- * @param {BaseCollector[]} dataCollectors
- * @param {function} log 
- * @param {boolean} filterOutFirstParty
- * @param {function(URL, import('./crawler').CollectResult): void} dataCallback 
- * @param {boolean} emulateMobile
- * @param {string} proxyHost
- * @param {boolean} antiBotDetection
- * @param {string} executablePath
- * @param {number} maxLoadTimeMs
- * @param {number} extraExecutionTimeMs
- * @param {Object.<string, string>} collectorFlags
- * @param {string} seleniumHub
+ * @param {CrawlAndSaveDataOptions} options
+ * @returns {Promise<void>}
+ * @description Wrapper function to call the crawler with the provided options.
  */
-async function crawlAndSaveData(
+async function crawlAndSaveData({
     urlString,
     dataCollectors,
     log,
@@ -38,7 +28,7 @@ async function crawlAndSaveData(
     extraExecutionTimeMs,
     collectorFlags,
     seleniumHub
-) {
+}) {
     const url = new URL(urlString);
     /**
      * @type {function(...any):void} 
@@ -109,46 +99,71 @@ module.exports = async options => {
             dataCollectors = urlItem.dataCollectors;
         }
 
-        // const staggerDelay = Number(idx) < numberOfCrawlers ? 2000 * Number(idx) : 0;
-        // // stagger the start of the first browsers so they don't eat memory all at once
-        // setTimeout(() => {
         inProgress.add(urlString);
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(
-            null,
+        const crawlAndSaveDataOptions = {
             urlString,
             dataCollectors,
             log,
-            options.filterOutFirstParty,
-            options.dataCallback,
-            options.emulateMobile,
-            options.proxyHost,
-            (options.antiBotDetection !== false),
+            filterOutFirstParty: options.filterOutFirstParty,
+            dataCallback: options.dataCallback,
+            emulateMobile: options.emulateMobile,
+            proxyHost: options.proxyHost,
+            antiBotDetection: (options.antiBotDetection !== false),
             executablePath,
-            options.maxLoadTimeMs,
-            options.extraExecutionTimeMs,
-            options.collectorFlags,
-            options.seleniumHub,
+            maxLoadTimeMs: options.maxLoadTimeMs,
+            extraExecutionTimeMs: options.extraExecutionTimeMs,
+            collectorFlags: options.collectorFlags,
+            seleniumHub: options.seleniumHub,
+        };
+
+        const task = crawlAndSaveData.bind(
+            null,
+            crawlAndSaveDataOptions,
         );
 
-        asyncLib.retry(MAX_NUMBER_OF_RETRIES, task, err => {
-            if (err) {
-                console.log(err);
-                log(chalk.red(`Max number of retries (${MAX_NUMBER_OF_RETRIES}) exceeded for "${urlString}".`));
-                failureCallback(urlString, err);
-            } else {
-                log(chalk.cyan(`Processing "${urlString}" took ${timer.getElapsedTime()}s.`));
+        asyncLib.retry(
+            {
+                times: MAX_NUMBER_OF_RETRIES,
+                interval: 0,
+                errorFilter: () => true, // TODO: allow crawler modify its behaviour on crash
+            },
+            task,
+            err => {
+                if (err) {
+                    console.log(err);
+                    log(chalk.red(`Max number of retries (${MAX_NUMBER_OF_RETRIES}) exceeded for "${urlString}".`));
+                    failureCallback(urlString, err);
+                } else {
+                    log(chalk.cyan(`Processing "${urlString}" took ${timer.getElapsedTime()}s.`));
+                }
+                inProgress.delete(urlString);
+                log(chalk.cyan(`In progress (${inProgress.size}): ${Array.from(inProgress).join(', ')}`));
+                callback();
             }
-            inProgress.delete(urlString);
-            log(chalk.cyan(`In progress (${inProgress.size}): ${Array.from(inProgress).join(', ')}`));
-            callback();
-        });
-        // }, staggerDelay);
+        );
     });
 };
 
 /**
  * @typedef {import('./collectors/BaseCollector')} BaseCollector
+ */
+
+/**
+ * @typedef {Object} CrawlAndSaveDataOptions
+ * @property {string} urlString
+ * @property {BaseCollector[]} dataCollectors
+ * @property {function(...any):void} log
+ * @property {boolean} filterOutFirstParty
+ * @property {function(URL, import('./crawler').CollectResult): void} dataCallback
+ * @property {boolean} emulateMobile
+ * @property {string} proxyHost
+ * @property {boolean} antiBotDetection
+ * @property {string} executablePath
+ * @property {number} maxLoadTimeMs
+ * @property {number} extraExecutionTimeMs
+ * @property {Object.<string, string>} collectorFlags
+ * @property {string} seleniumHub
  */
