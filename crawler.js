@@ -446,7 +446,7 @@ async function crawl(url, options) {
  * @property {string=} executablePath
  * @property {number=} maxLoadTimeMs
  * @property {number=} extraExecutionTimeMs
- * @property {Object.<string, string>=} collectorFlags
+ * @property {import('./collectors/BaseCollector').CollectorFlags=} collectorFlags
  * @property {string=} seleniumHub
  */
 
@@ -461,7 +461,7 @@ async function crawl(url, options) {
  * @property {function():void} runInEveryFrame,
  * @property {number} maxLoadTimeMs,
  * @property {number} extraExecutionTimeMs,
- * @property {Object.<string, string>} collectorFlags,
+ * @property {import('./collectors/BaseCollector').CollectorFlags} collectorFlags,
  */
 
 module.exports = crawl;

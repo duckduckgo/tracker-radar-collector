@@ -65,7 +65,7 @@ async function crawlAndSaveData({
 }
 
 /**
- * @param {{urls: Array<string|{url:string,dataCollectors?:BaseCollector[]}>, dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean, chromiumVersion?: string, maxLoadTimeMs?: number, extraExecutionTimeMs?: number, collectorFlags?: Object.<string, boolean>, seleniumHub?: string}} options
+ * @param {CrawlerConductorOptions} options
  */
 module.exports = async options => {
     const log = options.logFunction || (() => {});
@@ -164,6 +164,25 @@ module.exports = async options => {
  * @property {string} executablePath
  * @property {number} maxLoadTimeMs
  * @property {number} extraExecutionTimeMs
- * @property {Object.<string, string>} collectorFlags
+ * @property {import('./collectors/BaseCollector').CollectorFlags} collectorFlags
  * @property {string} seleniumHub
+ */
+
+/**
+ * @typedef {Object} CrawlerConductorOptions
+ * @property {Array<string|{url:string,dataCollectors?:BaseCollector[]}>} urls
+ * @property {function(URL, import('./crawler').CollectResult): void} dataCallback
+ * @property {BaseCollector[]=} dataCollectors
+ * @property {function(string, Error): void=} failureCallback
+ * @property {number=} numberOfCrawlers
+ * @property {function=} logFunction
+ * @property {boolean} filterOutFirstParty
+ * @property {boolean} emulateMobile
+ * @property {string} proxyHost
+ * @property {boolean=} antiBotDetection
+ * @property {string=} chromiumVersion
+ * @property {number=} maxLoadTimeMs
+ * @property {number=} extraExecutionTimeMs
+ * @property {import('./collectors/BaseCollector').CollectorFlags=} collectorFlags
+ * @property {string=} seleniumHub
  */

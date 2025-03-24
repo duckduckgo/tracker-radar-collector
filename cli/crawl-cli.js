@@ -27,7 +27,7 @@ program
     .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
     .option('-a, --disable-anti-bot', 'disable anti bot detection protections injected to every frame')
     .option('--config <path>', 'crawl configuration file')
-    .option('--autoconsent-action <action>', 'dismiss cookie popups. Possible values: optout, optin')
+    .option('--autoconsent-action <action>', 'dismiss cookie popups. Possible values: optout, optin. Works only when cmps collector is enabled.')
     .option('--chromium-version <version_number>', 'use custom version of chromium')
     .option('--selenium-hub <url>', 'selenium hub endpoint to request browsers from')
     .parse(process.argv);
@@ -84,26 +84,9 @@ function filterUrls(inputUrls, logFunction, outputPath) {
 }
 
 /**
- * @param {Array<string|{url:string, dataCollectors?:BaseCollector[]}>} inputUrls
- * @param {string} outputPath
- * @param {boolean} verbose
- * @param {string} logPath
- * @param {number} numberOfCrawlers
- * @param {BaseCollector[]} dataCollectors
- * @param {BaseReporter[]} reporters
- * @param {boolean} forceOverwrite
- * @param {boolean} filterOutFirstParty
- * @param {boolean} emulateMobile
- * @param {string} proxyHost
- * @param {string} regionCode
- * @param {boolean} antiBotDetection
- * @param {string} chromiumVersion
- * @param {number} maxLoadTimeMs
- * @param {number} extraExecutionTimeMs
- * @param {Object.<string, boolean>} collectorFlags
- * @param {string} seleniumHub
+ * @param {RunOptions} options
  */
-async function run(
+async function run({
     inputUrls,
     outputPath,
     verbose,
@@ -122,7 +105,7 @@ async function run(
     extraExecutionTimeMs,
     collectorFlags,
     seleniumHub
-) {
+}) {
     const startTime = new Date();
 
     reporters.forEach(reporter => {
@@ -242,6 +225,8 @@ async function run(
 const config = crawlConfig.figureOut(program.opts());
 const collectorFlags = {
     autoconsentAction: program.opts().autoconsentAction,
+    enableAsyncStacktraces: true, // this flag is disabled during retries
+    shortTimeouts: false,
 };
 /**
  * @type {BaseCollector[]}
@@ -293,26 +278,26 @@ if (!config.urls || !config.output) {
         return item;
     });
 
-    run(
-        urls,
-        config.output,
-        config.verbose,
-        config.logPath,
-        config.crawlers || null,
+    run({
+        inputUrls: urls,
+        outputPath: config.output,
+        verbose: config.verbose,
+        logPath: config.logPath,
+        numberOfCrawlers: config.crawlers || null,
         dataCollectors,
         reporters,
-        config.forceOverwrite,
-        config.filterOutFirstParty,
-        config.emulateMobile,
-        config.proxyConfig,
-        config.regionCode,
-        !config.disableAntiBot,
-        config.chromiumVersion,
-        config.maxLoadTimeMs,
-        config.extraExecutionTimeMs,
+        forceOverwrite: config.forceOverwrite,
+        filterOutFirstParty: config.filterOutFirstParty,
+        emulateMobile: config.emulateMobile,
+        proxyHost: config.proxyConfig,
+        regionCode: config.regionCode,
+        antiBotDetection: !config.disableAntiBot,
+        chromiumVersion: config.chromiumVersion,
+        maxLoadTimeMs: config.maxLoadTimeMs,
+        extraExecutionTimeMs: config.extraExecutionTimeMs,
         collectorFlags,
-        config.seleniumHub
-    );
+        seleniumHub: config.seleniumHub
+    });
 }
 
 /**
@@ -321,4 +306,26 @@ if (!config.urls || !config.output) {
 
 /**
  * @typedef {import('../reporters/BaseReporter')} BaseReporter
+ */
+
+/**
+ * @typedef {Object} RunOptions
+ * @property {Array<string|{url:string, dataCollectors?:BaseCollector[]}>} inputUrls
+ * @property {string} outputPath
+ * @property {boolean} verbose
+ * @property {string} logPath
+ * @property {number} numberOfCrawlers
+ * @property {BaseCollector[]} dataCollectors
+ * @property {BaseReporter[]} reporters
+ * @property {boolean} forceOverwrite
+ * @property {boolean} filterOutFirstParty
+ * @property {boolean} emulateMobile
+ * @property {string} proxyHost
+ * @property {string} regionCode
+ * @property {boolean} antiBotDetection
+ * @property {string} chromiumVersion
+ * @property {number} maxLoadTimeMs
+ * @property {number} extraExecutionTimeMs
+ * @property {import('../collectors/BaseCollector').CollectorFlags} collectorFlags
+ * @property {string} seleniumHub
  */

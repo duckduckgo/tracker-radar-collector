@@ -11,7 +11,7 @@ class APICallCollector extends BaseCollector {
     /**
      * @param {import('./BaseCollector').CollectorInitOptions} options
      */
-    init({log}) {
+    init({log, collectorFlags}) {
         /**
          * @type {Map<string, Map<string, number>>}
          */
@@ -22,6 +22,7 @@ class APICallCollector extends BaseCollector {
         this._calls = [];
         this._incompleteData = false;
         this._log = log;
+        this._collectorFlags = collectorFlags;
     }
 
     /**
@@ -38,7 +39,10 @@ class APICallCollector extends BaseCollector {
         await session.send('Runtime.addBinding', {name: 'registerAPICall'});
 
         try {
-            await trackerTracker.init({log: this._log});
+            await trackerTracker.init({
+                log: this._log,
+                enableAsyncStacktraces: this._collectorFlags.enableAsyncStacktraces
+            });
         } catch(e) {
             this._log('TrackerTracker init failed.');
             throw e;

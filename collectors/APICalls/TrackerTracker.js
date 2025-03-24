@@ -11,9 +11,10 @@ const breakpointScriptTemplate = fs.readFileSync(path.join(__dirname, 'breakpoin
 /**
  * @param {import('./breakpoints').Breakpoint} breakpoint
  * @param {string} description
+ * @param {boolean} enableAsyncStacktraces
  * @returns string
  */
-function getBreakpointScript(breakpoint, description) {
+function getBreakpointScript(breakpoint, description, enableAsyncStacktraces) {
     // only save arguments if requested for given breakpoint
     const argumentCollection = breakpoint.saveArguments ? `args: Array.from(arguments).map(a => a.toString())` : '';
 
@@ -33,7 +34,7 @@ function getBreakpointScript(breakpoint, description) {
     breakpointScript = `
         let shouldPause = false;
         ${breakpointScript}
-        shouldPause = false; // FIXME: make this configurable
+        ${enableAsyncStacktraces ? '' : 'shouldPause = false;'}
         shouldPause;
     `;
 
@@ -92,10 +93,11 @@ class TrackerTracker {
     }
 
     /**
-     * @param {{log: function(...any): void}} options
+     * @param {{log: function(...any): void, enableAsyncStacktraces: boolean}} options
      */
-    async init({log}) {
+    async init({log, enableAsyncStacktraces}) {
         this._log = log;
+        this._enableAsyncStacktraces = enableAsyncStacktraces;
 
         await this._send('Debugger.enable');
         await this._send('Runtime.enable');
@@ -142,7 +144,7 @@ class TrackerTracker {
                 throw new Error('API unavailable in given context.');
             }
 
-            const conditionScript = getBreakpointScript(breakpoint, description);
+            const conditionScript = getBreakpointScript(breakpoint, description, this._enableAsyncStacktraces);
 
             const cdpBreakpointResult = /** @type {import('devtools-protocol/types/protocol').Protocol.Debugger.SetBreakpointOnFunctionCallResponse} */ (await this._send('Debugger.setBreakpointOnFunctionCall', {
                 objectId: result.result.objectId,

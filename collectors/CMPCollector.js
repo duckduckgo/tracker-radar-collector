@@ -55,8 +55,8 @@ class CMPCollector extends BaseCollector {
      */
     init(options) {
         this.log = options.log;
-        this.shortTimeouts = options.collectorFlags.shortTimeouts; // used to speed up unit tests
-        this.autoAction = /** @type {AutoAction} */ (options.collectorFlags.autoconsentAction);
+        this.shortTimeouts = options.collectorFlags.shortTimeouts;
+        this.autoAction = options.collectorFlags.autoconsentAction;
         /** @type {ContentScriptMessage[]} */
         this.receivedMsgs = [];
         this.selfTestFrame = null;

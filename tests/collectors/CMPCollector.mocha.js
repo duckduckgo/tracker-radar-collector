@@ -57,8 +57,9 @@ describe('CMPCollector', () => {
         collector.init({
             log: () => {},
             collectorFlags: {
-                shortTimeouts: '1',
+                shortTimeouts: true,
                 autoconsentAction: 'optOut',
+                enableAsyncStacktraces: true,
             },
             // @ts-ignore no need to provide all params
             context: {

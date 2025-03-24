@@ -48,7 +48,14 @@ class BaseCollector {
  * @property {import('../browser/LocalChrome').BrowserConnection} browserConnection
  * @property {URL} url
  * @property {function(...any):void} log
- * @property {Object.<string, string>} collectorFlags
+ * @property {CollectorFlags} collectorFlags
+ */
+
+/**
+ * @typedef CollectorFlags
+ * @property {boolean} enableAsyncStacktraces
+ * @property {import('@duckduckgo/autoconsent/lib/types').AutoAction} autoconsentAction
+ * @property {boolean} shortTimeouts  // used to speed up unit tests
  */
 
 /**
