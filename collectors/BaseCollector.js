@@ -53,9 +53,9 @@ class BaseCollector {
 
 /**
  * @typedef CollectorFlags
- * @property {boolean} enableAsyncStacktraces
- * @property {import('@duckduckgo/autoconsent/lib/types').AutoAction} autoconsentAction
- * @property {boolean} shortTimeouts  // used to speed up unit tests
+ * @property {boolean=} enableAsyncStacktraces
+ * @property {import('@duckduckgo/autoconsent/lib/types').AutoAction=} autoconsentAction
+ * @property {boolean=} shortTimeouts  // used to speed up unit tests
  */
 
 /**

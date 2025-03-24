@@ -10,7 +10,9 @@ async function main() {
     try {
         apiData = await crawler(new URL(`${firstPartyOrigin}/crawler/attribution/`), {
             collectors: [new APICallCollector()],
-            // log: console.log,
+            collectorFlags: {
+                enableAsyncStacktraces: true,
+            },
         });
     } catch (e) {
         assert(false, `Page load failed - ${e}`);

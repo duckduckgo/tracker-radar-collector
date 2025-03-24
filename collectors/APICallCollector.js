@@ -41,7 +41,7 @@ class APICallCollector extends BaseCollector {
         try {
             await trackerTracker.init({
                 log: this._log,
-                enableAsyncStacktraces: this._collectorFlags.enableAsyncStacktraces
+                enableAsyncStacktraces: this._collectorFlags?.enableAsyncStacktraces
             });
         } catch(e) {
             this._log('TrackerTracker init failed.');
