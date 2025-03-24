@@ -115,7 +115,7 @@ module.exports = async options => {
             executablePath,
             maxLoadTimeMs: options.maxLoadTimeMs,
             extraExecutionTimeMs: options.extraExecutionTimeMs,
-            collectorFlags: options.collectorFlags,
+            collectorFlags: structuredClone(options.collectorFlags), // clone so that we can modify it for each call
             seleniumHub: options.seleniumHub,
         };
 
@@ -128,7 +128,10 @@ module.exports = async options => {
             {
                 times: MAX_NUMBER_OF_RETRIES,
                 interval: 0,
-                errorFilter: () => true, // TODO: allow crawler modify its behaviour on crash
+                errorFilter: () => {
+                    crawlAndSaveDataOptions.collectorFlags.enableAsyncStacktraces = false; // disable async stack traces because they sometimes are the cause of crash
+                    return true;
+                }
             },
             task,
             err => {
