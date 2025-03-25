@@ -115,7 +115,7 @@ module.exports = async options => {
             executablePath,
             maxLoadTimeMs: options.maxLoadTimeMs,
             extraExecutionTimeMs: options.extraExecutionTimeMs,
-            collectorFlags: JSON.parse(JSON.stringify(options.collectorFlags)), // clone so that we can modify it for each call
+            collectorFlags: JSON.parse(JSON.stringify(options.collectorFlags || {})), // clone so that we can modify it for each call
             seleniumHub: options.seleniumHub,
         };
 
