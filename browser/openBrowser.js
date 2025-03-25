@@ -30,8 +30,8 @@ async function openBrowser(log, proxyHost, executablePath, seleniumHub) {
         extraArgs.push(`--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE ${url.hostname}`); // no quotes around the CLI flags needed
     }
 
-    if (process.env.CI) {
-        console.warn('CI detected, disabling Chrome sandbox');
+    if (process.env.TRC_UNSAFE_DISABLE_SANDBOX) {
+        console.warn('Chrome sandbox disabled!');
         extraArgs.push('--no-sandbox');
         extraArgs.push('--disable-setuid-sandbox');
         extraArgs.push('--disable-dev-shm-usage');
