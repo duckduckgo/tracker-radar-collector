@@ -45,7 +45,7 @@
     "async": "^2.6.1",
     "chalk": "^2.4.1",
     "clickhouse": "^2.6.0",
-    "commander": "^2.19.0",
+    "commander": "^13.1.0",
     "progress": "^2.0.3",
     "puppeteer": "^10.2.0",
     "tldts": "^4.0.3"
