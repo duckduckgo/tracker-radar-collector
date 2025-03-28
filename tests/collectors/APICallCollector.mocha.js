@@ -65,7 +65,7 @@ describe('APICallCollector', () => {
         });
 
         // @ts-ignore not a real CDP client
-        await collector.addTarget({cdpClient: fakeCDPClient, type: 'page', url: 'https://example.com'});
+        await collector.addTarget({session: fakeCDPClient, type: 'page', url: 'https://example.com'});
 
         const executionContextCreated = listeners.find(a => a.name === 'Runtime.executionContextCreated');
         assert(executionContextCreated, 'executionContextCreated listener was set');

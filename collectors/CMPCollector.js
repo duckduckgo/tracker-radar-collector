@@ -55,13 +55,12 @@ class CMPCollector extends BaseCollector {
      */
     init(options) {
         this.log = options.log;
-        this.shortTimeouts = options.collectorFlags.shortTimeouts; // used to speed up unit tests
-        this.autoAction = /** @type {AutoAction} */ (options.collectorFlags.autoconsentAction);
+        this.shortTimeouts = options.collectorFlags.shortTimeouts;
+        this.autoAction = options.collectorFlags.autoconsentAction;
         /** @type {ContentScriptMessage[]} */
         this.receivedMsgs = [];
         this.selfTestFrame = null;
         this.isolated2pageworld = new Map();
-        this.context = options.context;
         /** @type {ScanResult} */
         this.scanResult = {
             snippets: new Set([]),
@@ -98,12 +97,11 @@ class CMPCollector extends BaseCollector {
     }
 
     /**
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo
+     * @param {import('./BaseCollector').TargetInfo} targetInfo
      */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async addTarget(targetInfo) {
         if (targetInfo.type === 'page') {
-            this._cdpClient = targetInfo.cdpClient;
+            this._cdpClient = targetInfo.session;
             await this._cdpClient.send('Page.enable');
             await this._cdpClient.send('Runtime.enable');
 
@@ -166,7 +164,7 @@ class CMPCollector extends BaseCollector {
                 disabledCmps: [],
                 enablePrehide: false,
                 enableCosmeticRules: true,
-                enableFilterList: true,
+                enableFilterList: false,
                 enableHeuristicDetection: true,
                 detectRetries: 20,
                 isMainWorld: false

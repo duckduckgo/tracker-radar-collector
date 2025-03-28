@@ -1,8 +1,11 @@
 const {getAllInitiators} = require('../../helpers/initiators');
 const assert = require('assert');
 
+/**
+ * @type {import('devtools-protocol').Protocol.Network.Initiator}
+ */
 const input = {
-    type: 'bla',
+    type: 'script',
     url: 'https://example.com/a.js',
     lineNumber: 1,
     stack: {

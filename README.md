@@ -30,6 +30,7 @@ Available options:
 - `-r, --region-code <region>` - optional 2 letter region code. For metadata only
 - `-a, --disable-anti-bot` - disable simple build-in anti bot detection script injected to every frame
 - `--chromium-version <version_number>` - use custom version of Chromium (e.g. "843427") instead of using the default
+- `--selenium-hub <url>` - If provided, browsers will be requested from selenium hub instead of spawning local processes (e.g. `--selenium-hub http://my-selenium-hub-host:4444`).
 - `--config <path>` - path to a config file that allows to set all the above settings (and more). Note that CLI flags have a higher priority than settings passed via config. You can find a sample config file in `tests/cli/sampleConfig.json`.
 - `--autoconsent-action <action>` - automatic autoconsent action (requires the `cmps` collector). Possible values: optIn, optOut
 

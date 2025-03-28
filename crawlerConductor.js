@@ -1,41 +1,51 @@
 const os = require('os');
 const cores = os.cpus().length;
-const chalk = require('chalk').default;
-const async = require('async');
+const chalk = require('chalk');
+const asyncLib = require('async');
 const crawl = require('./crawler');
-const URL = require('url').URL;
 const {createTimer} = require('./helpers/timer');
-const createDeferred = require('./helpers/deferred');
-const downloadCustomChromium = require('./helpers/downloadCustomChromium');
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const BaseCollector = require('./collectors/BaseCollector');
+const {downloadChrome} = require('./helpers/chromiumDownload');
 const notABot = require('./helpers/notABot');
 
-const MAX_NUMBER_OF_CRAWLERS = 38;// by trial and error there seems to be network bandwidth issues with more than 38 browsers. 
 const MAX_NUMBER_OF_RETRIES = 2;
 
 /**
- * @param {string} urlString 
- * @param {BaseCollector[]} dataCollectors
- * @param {function} log 
- * @param {boolean} filterOutFirstParty
- * @param {function(URL, import('./crawler').CollectResult): void} dataCallback 
- * @param {boolean} emulateMobile
- * @param {string} proxyHost
- * @param {boolean} antiBotDetection
- * @param {string} executablePath
- * @param {number} maxLoadTimeMs
- * @param {number} extraExecutionTimeMs
- * @param {Object.<string, string>} collectorFlags
+ * @param {CrawlAndSaveDataOptions} options
+ * @returns {Promise<void>}
+ * @description Wrapper function to call the crawler with the provided options.
  */
-async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstParty, dataCallback, emulateMobile, proxyHost, antiBotDetection, executablePath, maxLoadTimeMs, extraExecutionTimeMs, collectorFlags) {
+async function crawlAndSaveData({
+    urlString,
+    dataCollectors,
+    log,
+    filterOutFirstParty,
+    dataCallback,
+    emulateMobile,
+    proxyHost,
+    antiBotDetection,
+    executablePath,
+    maxLoadTimeMs,
+    extraExecutionTimeMs,
+    collectorFlags,
+    seleniumHub
+}) {
     const url = new URL(urlString);
     /**
      * @type {function(...any):void} 
      */
-    const prefixedLog = (...msg) => log(chalk.gray(`${url.hostname}:`), ...msg);
+    const prefixedLog = ((...msg) => {
+        const now = new Date();
+        const curTime = new Intl.DateTimeFormat('en-GB', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        }).format(now);
+        log(
+            chalk.gray(`${curTime} ${url.hostname}:`),
+            ...msg
+        );
+    });
 
-    // @ts-expect-error - outdated node types
     const data = await crawl(url, {
         log: prefixedLog,
         // @ts-ignore
@@ -48,37 +58,39 @@ async function crawlAndSaveData(urlString, dataCollectors, log, filterOutFirstPa
         maxLoadTimeMs,
         extraExecutionTimeMs,
         collectorFlags,
+        seleniumHub,
     });
 
     dataCallback(url, data);
 }
 
 /**
- * @param {{urls: Array<string|{url:string,dataCollectors?:BaseCollector[]}>, dataCallback: function(URL, import('./crawler').CollectResult): void, dataCollectors?: BaseCollector[], failureCallback?: function(string, Error): void, numberOfCrawlers?: number, logFunction?: function, filterOutFirstParty: boolean, emulateMobile: boolean, proxyHost: string, antiBotDetection?: boolean, chromiumVersion?: string, maxLoadTimeMs?: number, extraExecutionTimeMs?: number, collectorFlags?: Object.<string, boolean>}} options
+ * @param {CrawlerConductorOptions} options
  */
 module.exports = async options => {
-    const deferred = createDeferred();
     const log = options.logFunction || (() => {});
     const failureCallback = options.failureCallback || (() => {});
 
     let numberOfCrawlers = options.numberOfCrawlers || Math.floor(cores * 0.8);
-    numberOfCrawlers = Math.min(MAX_NUMBER_OF_CRAWLERS, numberOfCrawlers, options.urls.length);
+    numberOfCrawlers = Math.min(numberOfCrawlers, options.urls.length);
 
     // Increase number of listeners so we have at least one listener for each async process
     if (numberOfCrawlers > process.getMaxListeners()) {
-        process.setMaxListeners(numberOfCrawlers + 1);
+        const maxListeners = (numberOfCrawlers * 4) + 1;
+        process.setMaxListeners(maxListeners);
     }
     log(chalk.cyan(`Number of crawlers: ${numberOfCrawlers}\n`));
 
-    /**
-     * @type {string}
-     */
-    let executablePath;
-    if (options.chromiumVersion) {
-        executablePath = await downloadCustomChromium(log, options.chromiumVersion);
+    // make sure the browser is downloaded before we start parallel tasks
+    let executablePath = null;
+    if (!options.seleniumHub) {
+        executablePath = await downloadChrome(log, options.chromiumVersion);
     }
 
-    async.eachOfLimit(options.urls, numberOfCrawlers, (urlItem, idx, callback) => {
+    /** @type {Set<string>} */
+    const inProgress = new Set();
+
+    await asyncLib.eachOfLimit(options.urls, numberOfCrawlers, (urlItem, idx, callback) => {
         const urlString = (typeof urlItem === 'string') ? urlItem : urlItem.url;
         let dataCollectors = options.dataCollectors;
 
@@ -87,28 +99,93 @@ module.exports = async options => {
             dataCollectors = urlItem.dataCollectors;
         }
 
+        inProgress.add(urlString);
         log(chalk.cyan(`Processing entry #${Number(idx) + 1} (${urlString}).`));
         const timer = createTimer();
 
-        const task = crawlAndSaveData.bind(null, urlString, dataCollectors, log, options.filterOutFirstParty, options.dataCallback, options.emulateMobile, options.proxyHost, (options.antiBotDetection !== false), executablePath, options.maxLoadTimeMs, options.extraExecutionTimeMs, options.collectorFlags);
+        const crawlAndSaveDataOptions = {
+            urlString,
+            dataCollectors,
+            log,
+            filterOutFirstParty: options.filterOutFirstParty,
+            dataCallback: options.dataCallback,
+            emulateMobile: options.emulateMobile,
+            proxyHost: options.proxyHost,
+            antiBotDetection: (options.antiBotDetection !== false),
+            executablePath,
+            maxLoadTimeMs: options.maxLoadTimeMs,
+            extraExecutionTimeMs: options.extraExecutionTimeMs,
+            collectorFlags: JSON.parse(JSON.stringify(options.collectorFlags || {})), // clone so that we can modify it for each call
+            seleniumHub: options.seleniumHub,
+        };
 
-        async.retry(MAX_NUMBER_OF_RETRIES, task, err => {
-            if (err) {
-                log(chalk.red(`Max number of retries (${MAX_NUMBER_OF_RETRIES}) exceeded for "${urlString}".`));
-                failureCallback(urlString, err);
-            } else {
-                log(chalk.cyan(`Processing "${urlString}" took ${timer.getElapsedTime()}s.`));
+        const task = crawlAndSaveData.bind(
+            null,
+            crawlAndSaveDataOptions,
+        );
+
+        asyncLib.retry(
+            {
+                times: MAX_NUMBER_OF_RETRIES,
+                interval: 0,
+                errorFilter: () => {
+                    crawlAndSaveDataOptions.collectorFlags.enableAsyncStacktraces = false; // disable async stack traces because they sometimes are the cause of crash
+                    return true;
+                }
+            },
+            task,
+            err => {
+                if (err) {
+                    console.log(err);
+                    log(chalk.red(`Max number of retries (${MAX_NUMBER_OF_RETRIES}) exceeded for "${urlString}".`));
+                    failureCallback(urlString, err);
+                } else {
+                    log(chalk.cyan(`Processing "${urlString}" took ${timer.getElapsedTime()}s.`));
+                }
+                inProgress.delete(urlString);
+                log(chalk.cyan(`In progress (${inProgress.size}): ${Array.from(inProgress).join(', ')}`));
+                callback();
             }
-
-            callback();
-        });
-    }, err => {
-        if (err) {
-            deferred.reject(err);
-        } else {
-            deferred.resolve();
-        }
+        );
     });
-
-    await deferred.promise;
 };
+
+/**
+ * @typedef {import('./collectors/BaseCollector')} BaseCollector
+ */
+
+/**
+ * @typedef {Object} CrawlAndSaveDataOptions
+ * @property {string} urlString
+ * @property {BaseCollector[]} dataCollectors
+ * @property {function(...any):void} log
+ * @property {boolean} filterOutFirstParty
+ * @property {function(URL, import('./crawler').CollectResult): void} dataCallback
+ * @property {boolean} emulateMobile
+ * @property {string} proxyHost
+ * @property {boolean} antiBotDetection
+ * @property {string} executablePath
+ * @property {number} maxLoadTimeMs
+ * @property {number} extraExecutionTimeMs
+ * @property {import('./collectors/BaseCollector').CollectorFlags} collectorFlags
+ * @property {string} seleniumHub
+ */
+
+/**
+ * @typedef {Object} CrawlerConductorOptions
+ * @property {Array<string|{url:string,dataCollectors?:BaseCollector[]}>} urls
+ * @property {function(URL, import('./crawler').CollectResult): void} dataCallback
+ * @property {BaseCollector[]=} dataCollectors
+ * @property {function(string, Error): void=} failureCallback
+ * @property {number=} numberOfCrawlers
+ * @property {function=} logFunction
+ * @property {boolean} filterOutFirstParty
+ * @property {boolean} emulateMobile
+ * @property {string} proxyHost
+ * @property {boolean=} antiBotDetection
+ * @property {string=} chromiumVersion
+ * @property {number=} maxLoadTimeMs
+ * @property {number=} extraExecutionTimeMs
+ * @property {import('./collectors/BaseCollector').CollectorFlags=} collectorFlags
+ * @property {string=} seleniumHub
+ */
