@@ -45,6 +45,7 @@ module.exports = {
  * @property {import('../collectors/RequestCollector').RequestData[]=} requests
  * @property {string=} screenshots
  * @property {import('../collectors/TargetCollector').TargetData[]=} targets
+ * @property {import('../collectors/CookiePopupCollector').CookiePopupData[]=} cookiepopups
  */
 
 /**
