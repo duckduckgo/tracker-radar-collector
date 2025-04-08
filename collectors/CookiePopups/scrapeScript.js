@@ -84,7 +84,7 @@ const nonParentElements = (elements) => {
 };
 
 function getButtons(el) {
-    return Array.from(el.querySelectorAll('button, input[type="button"], input[type="submit"], a[href]'));
+    return Array.from(el.querySelectorAll('button, input[type="button"], input[type="submit"], a[href], [role="button"], [class*="button"]'));
 }
 
 function serializeResults(results) {
@@ -112,7 +112,7 @@ function main() {
 
     // for each potential popup, get the buttons
     for (const el of elements) {
-        const buttons = getButtons(el);
+        const buttons = nonParentElements(getButtons(el).filter(b => isVisible(b)));
         results.push({
             el,
             buttons,
