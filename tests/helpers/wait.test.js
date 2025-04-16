@@ -1,4 +1,4 @@
-const wait = require('../../helpers/wait');
+const {wait} = require('../../helpers/wait');
 const assert = require('assert');
 
 const p = wait(Promise.resolve('x'), 1000)

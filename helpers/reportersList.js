@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const BaseReporter = require('../reporters/BaseReporter');
 const CLIReporter = require('./../reporters/CLIReporter');
 const FileReporter = require('./../reporters/FileReporter');
 const HTMLReporter = require('./../reporters/HTMLReporter');
@@ -20,7 +18,7 @@ function getReporterIds() {
 
 /**
  * @param {string} id 
- * @returns {BaseReporter}
+ * @returns {import('../reporters/BaseReporter')}
  */
 function createReporter(id) {
     const reporter = reporters.find(c => c.id === id);

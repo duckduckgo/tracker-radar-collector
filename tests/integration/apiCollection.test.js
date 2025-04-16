@@ -8,14 +8,14 @@ async function main() {
 
     let apiData;
     try {
-        apiData = await crawler(new URL('https://privacy-test-pages.glitch.me/privacy-protections/fingerprinting/?run'), {
+        apiData = await crawler(new URL('https://privacy-test-pages.site/privacy-protections/fingerprinting/?run'), {
             collectors: [new APICallCollector()]
         });
     } catch (e) {
         assert(false, `Page load failed - ${e}`);
     }
 
-    const apiCalls = apiData.data.apis.callStats['https://privacy-test-pages.glitch.me/privacy-protections/fingerprinting/helpers/tests.js'];
+    const apiCalls = apiData.data.apis.callStats['https://privacy-test-pages.site/privacy-protections/fingerprinting/helpers/tests.js'];
 
     // known fingerprinting breakpoints that are not invoked by our test page
     const knownMissing = [
@@ -77,6 +77,8 @@ async function main() {
         'window.matchMedia("prefers-reduced-motion")',
         'window.matchMedia("color-gamut")',
         'window.matchMedia("pointer")',
+        // window.openDatabase() is removed in recent Chrome versions
+        'window.openDatabase',
     ];
 
     breakpoints.forEach(object => {

@@ -1,5 +1,5 @@
 /**
- * @param {{ callFrames: StackFrame[]; parent: any; }} stack
+ * @param {import('devtools-protocol').Protocol.Runtime.StackTrace} stack
  * @returns {string[]}
  */
 function getInitiatorsFromStack(stack) {
@@ -26,7 +26,7 @@ function getInitiatorsFromStack(stack) {
 }
 
 /**
- * @param {RequestInitiator} initiator
+ * @param {import('devtools-protocol').Protocol.Network.Initiator} initiator
  * @returns {Set<string>}
  */
 function getAllInitiators(initiator) {
@@ -51,20 +51,3 @@ function getAllInitiators(initiator) {
 module.exports = {
     getAllInitiators
 };
-
-/**
- * @typedef {object} RequestInitiator
- * @property {string} type
- * @property {{callFrames: StackFrame[], parent: object}=} stack
- * @property {string=} url
- * @property {number=} lineNumber
- */
-
-/**
- * @typedef {object} StackFrame
- * @property {string} functionName
- * @property {string} scriptId
- * @property {string} url
- * @property {number} lineNumber
- * @property {number} columnNumber
- */

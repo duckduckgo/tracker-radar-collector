@@ -1,8 +1,8 @@
 const fs = require('fs');
 const URL = require('url').URL;
 const path = require('path');
-const program = require('commander');
-const chalk = require('chalk').default;
+const {program} = require('commander');
+const chalk = require('chalk');
 const ProgressBar = require('progress');
 const tldts = require('tldts');
 const METADATA_FILE_NAME = 'metadata.json';
@@ -12,12 +12,14 @@ program
     .option('-o, --output <path>', 'path to the output file')
     .parse(process.argv);
 
-if (!program.input || !program.output) {
+const opts = program.opts();
+
+if (!opts.input || !opts.output) {
     program.help();
     process.exit(1);
 }
 
-const dataDir = program.input;
+const dataDir = opts.input;
 
 const dataFiles = fs.readdirSync(dataDir)
     .filter(file => {
@@ -271,4 +273,4 @@ stats.targets.mostTargets = mostTargets;
 stats.apis.popularity = Array.from(apiPopularity).sort(([, aCount], [, bCount]) => bCount - aCount);
 stats.apis.mostAPIsCalled = mostAPIsCalled.sort(([, aCount], [, bCount]) => bCount - aCount).slice(0, 50);
 
-fs.writeFileSync(program.output, JSON.stringify(stats, null, 2));
+fs.writeFileSync(opts.output, JSON.stringify(stats, null, 2));

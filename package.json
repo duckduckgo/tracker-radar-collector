@@ -8,7 +8,7 @@
   "scripts": {
     "crawl": "node ./cli/crawl-cli",
     "test": "npm run lint && tsc && npm run unit",
-    "unit": "node ./tests/runTests.js && npm run mocha",
+    "unit": "TRC_UNSAFE_DISABLE_SANDBOX=1 node ./tests/runTests.js && npm run mocha",
     "mocha": "mocha ./tests/**/*.mocha.js",
     "lint": "eslint *.js cli/ collectors/ helpers/ post-processing/ tests/ reporters/",
     "lint-fix": "npm run lint -- --fix"
@@ -17,37 +17,35 @@
     "type": "git",
     "url": "git@github.com:duckduckgo/tracker-radar-crawler.git"
   },
-  "pre-push": [
-    "test"
-  ],
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
   "devDependencies": {
-    "@types/async": "^2.4.1",
+    "@types/async": "^3.2.24",
+    "@types/debug": "^4.1.12",
     "@types/mocha": "^9.1.1",
     "@types/mockery": "^1.4.30",
-    "@types/node": "^10.12.15",
-    "@types/progress": "^2.0.3",
-    "@types/stack-utils": "^1.0.1",
+    "@types/node": "^20.16.5",
+    "@types/progress": "^2.0.7",
+    "@types/selenium-webdriver": "^4.1.27",
+    "@types/ws": "^8.5.12",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^8.3.0",
-    "devtools-protocol": "^0.0.1105486",
     "eslint": "^8.34.0",
     "eslint-plugin-mocha": "^10.0.5",
     "mocha": "^10.0.0",
     "mockery": "^2.1.0",
-    "pre-push": "^0.1.1",
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@duckduckgo/autoconsent": "^12.4.0",
-    "async": "^2.6.1",
-    "chalk": "^2.4.1",
+    "@duckduckgo/autoconsent": "^12.14.0",
+    "async": "^3.2.6",
+    "chalk": "^4.1.2",
     "clickhouse": "^2.6.0",
-    "commander": "^2.19.0",
+    "commander": "^12.1.0",
     "progress": "^2.0.3",
-    "puppeteer": "^10.2.0",
-    "tldts": "^4.0.3"
+    "puppeteer": "^23.10.0",
+    "selenium-webdriver": "^4.27.0",
+    "tldts": "^6.1.41"
   }
 }

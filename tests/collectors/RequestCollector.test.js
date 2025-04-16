@@ -8,7 +8,7 @@ function createFakeCDP() {
      */
     const listeners = [];
 
-    const cdpClient = {
+    const cdpSession = {
         send: () => Promise.resolve(),
         on: (/** @type {string} **/name, /** @type {function(object)} **/callback) => {
             listeners.push({name, callback});
@@ -18,7 +18,7 @@ function createFakeCDP() {
 
     return {
         listeners,
-        cdpClient
+        cdpSession
     };
 }
 
@@ -29,7 +29,7 @@ async function testDefaultSettings() {
     /**
      * getData
      */
-    const {listeners, cdpClient: fakeCDPClient} = createFakeCDP();
+    const {listeners, cdpSession: fakeCDPClient} = createFakeCDP();
 
     // @ts-ignore no need to provide all params
     collector.init({
@@ -37,7 +37,7 @@ async function testDefaultSettings() {
     });
 
     // @ts-ignore not a real CDP client
-    await collector.addTarget({cdpClient: fakeCDPClient, type: 'page', url: 'http://example.com'});
+    await collector.addTarget({session: fakeCDPClient, type: 'page', url: 'http://example.com'});
 
     /**
      * Regular request - success
@@ -273,7 +273,16 @@ async function testResponseHashSetting() {
     /**
      * getData
      */
-    const {listeners, cdpClient: fakeCDPClient} = createFakeCDP();
+    const {listeners, cdpSession: fakeCDPClient} = createFakeCDP();
+    // @ts-expect-error monkeypatching a method
+    fakeCDPClient.send = command => {
+        if (command === 'Network.getResponseBody') {
+            // eslint-disable-next-line no-console
+            return Promise.resolve({body: 'dGVzdA==', base64Encoded: true});//btoa('test')
+        }
+
+        return Promise.resolve();
+    };
 
     // @ts-ignore no need to provide all params
     collector.init({
@@ -281,7 +290,7 @@ async function testResponseHashSetting() {
     });
 
     // @ts-ignore not a real CDP client
-    await collector.addTarget({cdpClient: fakeCDPClient, type: 'page', url: 'http://example.com'});
+    await collector.addTarget({session: fakeCDPClient, type: 'page', url: 'http://example.com'});
     
     const requestWillBeSent = listeners.find(a => a.name === 'Network.requestWillBeSent');
     const responseReceived = listeners.find(a => a.name === 'Network.responseReceived');
@@ -310,16 +319,6 @@ async function testResponseHashSetting() {
             headers: {}
         }
     });
-
-    //@ts-ignore
-    fakeCDPClient.send = command => {
-        if (command === 'Network.getResponseBody') {
-            // eslint-disable-next-line no-console
-            return Promise.resolve({body: 'dGVzdA==', base64Encoded: true});//btoa('test')
-        }
-
-        return Promise.resolve();
-    };
 
     await loadingFinished.callback({requestId: 100, encodedDataLength: 666, timestamp: 223456});
 
@@ -350,7 +349,7 @@ async function testCustomHeadersSetting() {
     /**
      * getData
      */
-    const {listeners, cdpClient: fakeCDPClient} = createFakeCDP();
+    const {listeners, cdpSession: fakeCDPClient} = createFakeCDP();
 
     // @ts-ignore no need to provide all params
     collector.init({
@@ -358,7 +357,7 @@ async function testCustomHeadersSetting() {
     });
 
     // @ts-ignore not a real CDP client
-    await collector.addTarget({cdpClient: fakeCDPClient, type: 'page', url: 'http://example.com'});
+    await collector.addTarget({session: fakeCDPClient, type: 'page', url: 'http://example.com'});
     
     const requestWillBeSent = listeners.find(a => a.name === 'Network.requestWillBeSent');
     const responseReceived = listeners.find(a => a.name === 'Network.responseReceived');

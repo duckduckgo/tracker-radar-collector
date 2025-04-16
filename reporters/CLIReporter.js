@@ -1,6 +1,6 @@
 const BaseReporter = require('./BaseReporter');
 const ProgressBar = require('progress');
-const chalk = require('chalk').default;
+const chalk = require('chalk');
 
 class CLIReporter extends BaseReporter {
     id() {
@@ -16,8 +16,8 @@ class CLIReporter extends BaseReporter {
         this.alwaysLog(chalk.cyan(`Start time: ${options.startTime.toUTCString()}`));
         this.alwaysLog(chalk.cyan(`URLs to crawl: ${options.urls}`));
 
-        // show progress bar only if we are not printing all logs to screen (verbose)
-        this.progressBar = (this.verbose || options.urls === 0) ? null : new ProgressBar('[:bar] :percent ETA :etas fail :fail% :site', {
+        // eslint-disable-next-line no-process-env
+        this.progressBar = (options.urls === 0 || process.env.IS_CI) ? null : new ProgressBar('[:bar] :percent :finished ETA :etas fail :fail% :site', {
             complete: chalk.green('='),
             incomplete: ' ',
             total: options.urls,
@@ -56,11 +56,12 @@ class CLIReporter extends BaseReporter {
             this.progressBar.total = data.urls;
             this.progressBar.tick({
                 site: data.site,
+                finished: `${finished} / ${data.urls}`,
                 fail: (data.failures / finished * 100).toFixed(1)
             });
         } else {
-
-            this.log(`Site ${finished} / ${data.urls} (${(finished / data.urls * 100).toFixed(1)}%)`);
+            const currentTime = new Date().toUTCString();
+            this.alwaysLog(`${currentTime} | Finished: ${finished} | Failed: ${data.failures} | Total: ${data.urls}`);
         }
     }
 

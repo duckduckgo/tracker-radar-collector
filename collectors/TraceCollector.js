@@ -18,7 +18,7 @@ class TraceCollector extends BaseCollector {
          */
         this._tracing = false;
         /**
-         * @type {import('puppeteer').CDPSession}
+         * @type {import('puppeteer-core').CDPSession}
          */
         this._cdpClient = null;
     }
@@ -50,11 +50,11 @@ class TraceCollector extends BaseCollector {
     }
 
     /**
-     * @param {{cdpClient: import('puppeteer').CDPSession, url: string, type: import('./TargetCollector').TargetType}} targetInfo 
+     * @param {import('./BaseCollector').TargetInfo} targetInfo 
      */
-    async addTarget({cdpClient, type}) {
+    async addTarget({session, type}) {
         if (type === 'page' && !this._tracing) {
-            this._cdpClient = cdpClient;
+            this._cdpClient = session;
             this._tracing = true;
 
             const categories = [
@@ -140,5 +140,5 @@ module.exports = TraceCollector;
 /**
  * @typedef TargetData
  * @property {string} url
- * @property {import('./TargetCollector').TargetType} type
+ * @property {string} type
  */

@@ -57,8 +57,9 @@ describe('CMPCollector', () => {
         collector.init({
             log: () => {},
             collectorFlags: {
-                shortTimeouts: '1',
+                shortTimeouts: true,
                 autoconsentAction: 'optOut',
+                enableAsyncStacktraces: true,
             },
             // @ts-ignore no need to provide all params
             context: {
@@ -66,7 +67,7 @@ describe('CMPCollector', () => {
             }
         });
         // @ts-ignore not a real CDP client
-        await collector.addTarget({cdpClient: fakeCDPClient, type: 'page', url: 'https://example.com'});
+        await collector.addTarget({session: fakeCDPClient, type: 'page', url: 'https://example.com'});
     });
 
     describe('handleMessage', () => {
@@ -89,7 +90,7 @@ describe('CMPCollector', () => {
                         disabledCmps: [],
                         enablePrehide: false,
                         enableCosmeticRules: true,
-                        enableFilterList: true,
+                        enableFilterList: false,
                         enableHeuristicDetection: true,
                         detectRetries: 20,
                         isMainWorld: false,
