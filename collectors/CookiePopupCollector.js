@@ -146,11 +146,12 @@ class CookiePopupCollector extends BaseCollector {
                 });
                 const result = evalResult.result.value;
                 if (result.length > 0) {
-                    this.log(`Found ${result.length} cookie consent notices`);
+                    this.log(`Found ${result.length} cookie popup candidates, ${result.filter(r => r.text && r.text.trim()).length} with text`);
                     await Promise.all(result.map(async (r) => {
                         if (r.text && r.text.trim()) {
-                            this.log(`Sending to LLM: ${r.text.slice(0, 100)}`);
                             r.llmMatch = await classifyCookieConsentNotice(r.text);
+                        } else {
+                            r.llmMatch = false;
                         }
                     }));
                     this._data.push(result);
