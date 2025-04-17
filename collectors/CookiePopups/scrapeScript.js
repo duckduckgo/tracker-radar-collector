@@ -91,6 +91,8 @@ function serializeResults(results) {
     return results.map((r) => ({
         html: r.el.outerHTML,
         buttons: r.buttons.map(b => b.innerText),
+        text: r.el.innerText || '',
+        regexMatch: r.regexMatch,
     }));
 }
 
@@ -102,9 +104,6 @@ function main() {
         return (computedStyle === 'fixed' || computedStyle === 'sticky') && isVisible(el);
     });
 
-    // Filter out elements that don't match the heuristic patterns
-    elements = elements.filter((e) => checkHeuristicPatterns(e));
-
     // Get non-parent elements
     elements = nonParentElements(elements);
 
@@ -112,10 +111,12 @@ function main() {
 
     // for each potential popup, get the buttons
     for (const el of elements) {
+        const regexMatch = checkHeuristicPatterns(el);
         const buttons = nonParentElements(getButtons(el).filter(b => isVisible(b)));
         results.push({
             el,
             buttons,
+            regexMatch,
         });
     }
 
