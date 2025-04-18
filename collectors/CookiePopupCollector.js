@@ -154,7 +154,7 @@ class CookiePopupCollector extends BaseCollector {
                             r.llmMatch = false;
                         }
                     }));
-                    this._data.push(result);
+                    this._data.push(...result);
                 }
             } catch (e) {
                 if (!isIgnoredEvalError(e)) {
