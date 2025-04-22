@@ -66,11 +66,13 @@ class CLIReporter extends BaseReporter {
     }
 
     /**
-     * @param {{endTime: Date, successes: number, failures: number, urls: number}} data
+     * @param {{startTime: Date, endTime: Date, successes: number, failures: number, urls: number}} data
      * @returns {Promise<void>}
      */
-    cleanup({endTime, successes, failures, urls}) {
+    cleanup({startTime, endTime, successes, failures, urls}) {
+        this.alwaysLog(chalk.cyan(`Start time: ${startTime.toUTCString()}`));
         this.alwaysLog(chalk.cyan(`Finish time: ${endTime.toUTCString()}`));
+        this.alwaysLog(chalk.cyan(`Duration: ${(endTime.getTime() - startTime.getTime()) / 1000 / 60 / 60}h`));
         this.alwaysLog(chalk.cyan(`Sucessful crawls: ${successes}/${urls} (${(successes / urls * 100).toFixed(2)}%)`));
         this.alwaysLog(chalk.cyan(`Failed crawls: ${failures}/${urls} (${(failures / urls * 100).toFixed(2)}%)`));
 

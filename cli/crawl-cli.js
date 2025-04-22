@@ -203,7 +203,7 @@ async function run({
 
     const endTime = new Date();
 
-    await Promise.all(reporters.map(reporter => reporter.cleanup({endTime, successes, failures, urls: urlsLength})));
+    await Promise.all(reporters.map(reporter => reporter.cleanup({startTime, endTime, successes, failures, urls: urlsLength})));
 
     createMetadataFile(outputPath, {
         startTime,
