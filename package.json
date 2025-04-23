@@ -44,7 +44,7 @@
     "clickhouse": "^2.6.0",
     "commander": "^12.1.0",
     "progress": "^2.0.3",
-    "puppeteer": "^23.10.0",
+    "puppeteer": "^24.7.1",
     "selenium-webdriver": "^4.27.0",
     "tldts": "^6.1.41"
   }
