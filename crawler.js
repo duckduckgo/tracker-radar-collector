@@ -77,7 +77,7 @@ class Crawler {
         this.targets.set(targetInfo.id, targetInfo);
         try {
             await this._onTargetAttached(session, targetInfo);
-            this.log(`${targetInfo.url} (${targetInfo.url}) context initiated in ${timer.getElapsedTime()}s`);
+            this.log(`${targetInfo.url} (${targetInfo.url}) target attached in ${timer.getElapsedTime()}s`);
         } catch (e) {
             this.log(chalk.yellow(`Could not attach to ${targetInfo.type} ${targetInfo.url}: ${e.message}`));
         }

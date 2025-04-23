@@ -18,7 +18,7 @@
     "url": "git@github.com:duckduckgo/tracker-radar-crawler.git"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   },
   "devDependencies": {
     "@types/async": "^3.2.24",
