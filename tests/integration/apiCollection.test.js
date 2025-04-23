@@ -8,8 +8,11 @@ async function main() {
 
     let apiData;
     try {
-        apiData = await crawler(new URL('https://privacy-test-pages.site/privacy-protections/fingerprinting/?run'), {
-            collectors: [new APICallCollector()]
+        apiData = await crawler(new URL('https://privacy-test-pages.site/privacy-protections/fingerprinting/'), {
+            collectors: [new APICallCollector()],
+            // @ts-expect-error we know that #start is a button
+            // eslint-disable-next-line no-undef
+            runInEveryFrame: () => setTimeout(() => document.querySelector("#start")?.click(), 500),
         });
     } catch (e) {
         assert(false, `Page load failed - ${e}`);
