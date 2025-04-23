@@ -34,7 +34,7 @@ class BaseReporter {
     /**
      * Called at the end of crawling, gives time for clean up (if needed)
      * 
-     * @param {{endTime: Date, successes: number, failures: number, urls: number}} data
+     * @param {{startTime: Date, endTime: Date, successes: number, failures: number, urls: number}} data
      * @returns {Promise<void>}
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
