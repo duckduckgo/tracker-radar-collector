@@ -402,7 +402,7 @@ async function crawl(url, options) {
             collectors: options.collectors || [],
             log,
             urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null,
-            emulateUserAgent: options.emulateUserAgent !== false, // true by default
+            emulateUserAgent: options.emulateUserAgent,
             emulateMobile: options.emulateMobile,
             runInEveryFrame: options.runInEveryFrame,
             maxLoadTimeMs,

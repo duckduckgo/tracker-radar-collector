@@ -82,7 +82,7 @@ const data = await crawler(new URL('https://example.com'), {
     log: (...msg) => {…},
     urlFilter: (url) => {…},// function that, for each request URL, decides if its data should be stored or not
     emulateMobile: false,
-    emulateUserAgent: false,// don't use the default puppeteer UA (default true)
+    emulateUserAgent: true, // force UA emulation (default false)
     proxyHost: 'socks5://myproxy:8080',
     browserContext: context,// if you prefer to create the browser context yourself (to e.g. use other browser or non-incognito context) you can pass it here (by default crawler will create an incognito context using standard chromium for you)
     runInEveryFrame: () => {window.alert('injected')},// function that should be executed in every frame (main + all subframes)
