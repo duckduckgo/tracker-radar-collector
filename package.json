@@ -23,19 +23,19 @@
   "devDependencies": {
     "@types/async": "^3.2.24",
     "@types/debug": "^4.1.12",
-    "@types/mocha": "^9.1.1",
-    "@types/mockery": "^1.4.30",
-    "@types/node": "^20.16.5",
+    "@types/mocha": "^10.0.10",
+    "@types/mockery": "^1.4.33",
+    "@types/node": "^22.15.3",
     "@types/progress": "^2.0.7",
     "@types/selenium-webdriver": "^4.1.28",
-    "@types/ws": "^8.5.12",
-    "@typescript-eslint/eslint-plugin": "^8.3.0",
-    "@typescript-eslint/parser": "^8.3.0",
-    "eslint": "^8.34.0",
-    "eslint-plugin-mocha": "^10.0.5",
+    "@types/ws": "^8.18.1",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "eslint-plugin-mocha": "^11.0.0",
     "mocha": "^11.1.0",
     "mockery": "^2.1.0",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "@duckduckgo/autoconsent": "^12.14.0",
