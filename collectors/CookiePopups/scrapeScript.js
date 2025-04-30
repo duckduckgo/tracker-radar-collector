@@ -1,4 +1,4 @@
-function checkHeuristicPatterns(el) {
+function checkHeuristicPatterns(allText) {
     const DETECT_PATTERNS = [
         /accept cookies/gi,
         /accept all/gi,
@@ -24,7 +24,6 @@ function checkHeuristicPatterns(el) {
         // /cookies? preferences/i,
     ];
 
-    const allText = el.innerText;
     for (const p of DETECT_PATTERNS) {
         const matches = allText.match(p);
         if (matches) {
@@ -87,16 +86,7 @@ function getButtons(el) {
     return Array.from(el.querySelectorAll('button, input[type="button"], input[type="submit"], a[href], [role="button"], [class*="button"]'));
 }
 
-function serializeResults(results) {
-    return results.map((r) => ({
-        html: r.el.outerHTML,
-        buttons: r.buttons.map(b => b.innerText),
-        text: r.el.innerText || '',
-        regexMatch: r.regexMatch,
-    }));
-}
-
-function main() {
+function collectPotentialPopups() {
     // Collect fixed/sticky positioned elements that are visible
     let elements = collectMatchingElements((el) => {
         if (el.tagName === 'BODY') return false;
@@ -111,7 +101,7 @@ function main() {
 
     // for each potential popup, get the buttons
     for (const el of elements) {
-        const regexMatch = checkHeuristicPatterns(el);
+        const regexMatch = checkHeuristicPatterns(el.innerText);
         const buttons = nonParentElements(getButtons(el).filter(b => isVisible(b)));
         results.push({
             el,
@@ -124,5 +114,42 @@ function main() {
     return results;
 }
 
-const res = main();
-serializeResults(res);
+function collectOnScreenText() {
+    let elements = collectMatchingElements((el) => {
+        if (el.tagName === 'BODY') return false;
+        if (!isVisible(el)) return false;
+
+        // Check that element intersects with screen rectangle
+        const rect = el.getBoundingClientRect();
+        const screenIntersects = 
+            rect.top < window.innerHeight &&
+            rect.left < window.innerWidth &&
+            rect.bottom > 0 &&
+            rect.right > 0;
+
+        return screenIntersects;
+    });
+    elements = nonParentElements(elements);
+    elements.reverse();
+    return elements.map(el => el.innerText).join("\n");
+}
+
+function serializeResults() {
+    const potentialPopups = collectPotentialPopups();
+    const documentText = document.documentElement.innerText;
+    const onScreenText = collectOnScreenText();
+    return {
+        documentText,
+        documentRegexMatch: checkHeuristicPatterns(documentText),
+        onScreenText,
+        onScreenRegexMatch: checkHeuristicPatterns(onScreenText),
+        potentialPopups: potentialPopups.map((r) => ({
+            html: r.el.outerHTML,
+            buttons: r.buttons.map(b => b.innerText),
+            text: r.el.innerText || '',
+            regexMatch: r.regexMatch,
+        }))
+    };
+}
+
+serializeResults();
