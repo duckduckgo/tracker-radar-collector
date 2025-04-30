@@ -106,9 +106,9 @@ class CookiePopupCollector extends BaseCollector {
      */
     init(options) {
         /**
-         * @type {CookiePopupData}
+         * @type {CookiePopupData[]}
          */
-        this._data = { documentText: '', documentRegexMatch: false, documentLlmMatch: false, onScreenText: '', onScreenRegexMatch: false, onScreenLlmMatch: false, popups: []};
+        this._data = [];
         this.frameId2executionContextId = new Map();
         this.log = options.log;
     }
@@ -148,7 +148,7 @@ class CookiePopupCollector extends BaseCollector {
     }
 
     /**
-     * @returns {Promise<CookiePopupData>}
+     * @returns {Promise<CookiePopupData[]>}
      */
     async getData() {
         await Promise.all(Array.from(this.frameId2executionContextId.values()).map(async executionContextId => {
@@ -170,7 +170,7 @@ class CookiePopupCollector extends BaseCollector {
                           : false,
                     })
                 }
-                this._data = {
+                this._data.push({
                     documentText: result.documentText,
                     documentRegexMatch: result.documentRegexMatch,
                     documentLlmMatch: await classifyCookieConsentNotice(result.documentText, false),
@@ -178,7 +178,7 @@ class CookiePopupCollector extends BaseCollector {
                     onScreenRegexMatch: result.onScreenRegexMatch,
                     onScreenLlmMatch: await classifyCookieConsentNotice(result.onScreenText, false),
                     popups,
-                };
+                });
             } catch (e) {
                 if (!isIgnoredEvalError(e)) {
                     this.log(`Error evaluating content script: ${e}`);
