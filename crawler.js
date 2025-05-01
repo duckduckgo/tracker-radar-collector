@@ -396,13 +396,18 @@ async function crawl(url, options) {
     const extraExecutionTimeMs = options.extraExecutionTimeMs || 2500;
     const maxTotalTimeMs = maxLoadTimeMs * 2;
 
+    let emulateUserAgent = !options.seleniumHub && !VISUAL_DEBUG; // by default, override only when in headless mode
+    if (options.emulateUserAgent === false) {
+        emulateUserAgent = false;
+    }
+
     try {
         const crawler = new Crawler({
             browserConnection,
             collectors: options.collectors || [],
             log,
             urlFilter: options.filterOutFirstParty === true ? isThirdPartyRequest.bind(null) : null,
-            emulateUserAgent: options.emulateUserAgent !== false, // true by default
+            emulateUserAgent,
             emulateMobile: options.emulateMobile,
             runInEveryFrame: options.runInEveryFrame,
             maxLoadTimeMs,
