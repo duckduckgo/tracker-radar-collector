@@ -42,7 +42,7 @@ class Crawler {
      */
     constructor(options) {
         this.options = options;
-        /** @type {Map<import('devtools-protocol/types/protocol').Protocol.Target.TargetID, import('./collectors/BaseCollector').TargetInfo>} */
+        /** @type {Map<import('devtools-protocol/types/protocol').Protocol.Target.TargetID, {targetInfo: import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo, session: import('puppeteer-core').CDPSession}>} */
         this.targets = new Map();
         this._mainPageAttachedDeferred = createDeferred();
         this.mainPageAttached = false;
@@ -61,20 +61,14 @@ class Crawler {
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.AttachedToTargetEvent} event
      */
     async onTargetAttached(event) {
+        const targetInfo = event.targetInfo;
         const session = this.browserConnection.session(event.sessionId);
-        this.log(`target attached ${event.targetInfo.targetId}: ${event.targetInfo.type} ${event.targetInfo.url}`);
+        this.log(`target attached ${targetInfo.targetId}: ${targetInfo.type} ${targetInfo.url}`);
         const timer = createTimer();
-        /** @type {import('./collectors/BaseCollector').TargetInfo} */
-        const targetInfo = {
-            id: event.targetInfo.targetId,
-            url: event.targetInfo.url,
-            type: event.targetInfo.type,
-            session
-        };
-        if (this.targets.has(targetInfo.id)) {
-            this.log(chalk.yellow(`Target ${targetInfo.id} already exists: old session: ${this.targets.get(targetInfo.id).session.id()}, new: ${session.id()}`));
+        if (this.targets.has(targetInfo.targetId)) {
+            this.log(chalk.yellow(`Target ${targetInfo.targetId} already exists: old session: ${this.targets.get(targetInfo.targetId).session.id()}, new: ${session.id()}`));
         }
-        this.targets.set(targetInfo.id, targetInfo);
+        this.targets.set(targetInfo.targetId, {targetInfo, session});
         try {
             await this._onTargetAttached(session, targetInfo);
             this.log(`${targetInfo.url} (${targetInfo.url}) target attached in ${timer.getElapsedTime()}s`);
@@ -85,7 +79,7 @@ class Crawler {
 
     /**
      * @param {import('puppeteer-core').CDPSession} session
-     * @param {import('./collectors/BaseCollector').TargetInfo} targetInfo
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
     async _onTargetAttached(session, targetInfo) {
         // Auto-attach works only on related targets, so if we want to attach to everything, we have to set it up for each target
@@ -139,17 +133,17 @@ class Crawler {
         for (let collector of this.collectors) {
             try {
                 // eslint-disable-next-line no-await-in-loop
-                await collector.addTarget(targetInfo);
+                await collector.addTarget(session, targetInfo);
             } catch (e) {
                 this.log(chalk.yellow(`${collector.id()} failed to attach to "${targetInfo.url}"`), chalk.gray(e.message), chalk.gray(e.stack));
             }
         }
 
         await session.send('Runtime.runIfWaitingForDebugger');
-        if (this.mainPageTargetId === targetInfo.id) {
+        if (this.mainPageTargetId === targetInfo.targetId) {
             this.mainPageAttached = true;
-            this.log(chalk.green(`main page target attached: ${targetInfo.id} ${targetInfo.url}`));
-            this._mainPageAttachedDeferred.resolve(targetInfo);
+            this.log(chalk.green(`main page target attached: ${targetInfo.targetId} ${targetInfo.url}`));
+            this._mainPageAttachedDeferred.resolve({targetInfo, session});
         }
     }
 
@@ -159,8 +153,8 @@ class Crawler {
     onTargetInfoChanged(event) {
         const target = this.targets.get(event.targetInfo.targetId);
         if (target) {
-            this.log(`${target.id} changed to ${event.targetInfo.url}`);
-            target.url = event.targetInfo.url;
+            this.log(`${target.targetInfo.targetId} changed. old url: ${target.targetInfo.url}, new url: ${event.targetInfo.url}`);
+            target.targetInfo = event.targetInfo;
         }
     }
 
@@ -203,19 +197,12 @@ class Crawler {
     }
 
     /**
-     * @returns {Promise<import('./collectors/BaseCollector').TargetInfo>}
-     */
-    waitForMainPage() {
-        return this._mainPageAttachedDeferred.promise;
-    }
-
-    /**
      * @param {string} url
      * @param {number} timeoutMs
      * @returns {Promise<void>}
      */
     async goto(url, timeoutMs) {
-        const mainTarget = await wait(this.waitForMainPage(), timeoutMs, 'Main page target not found');
+        const mainTarget = await wait(this._mainPageAttachedDeferred.promise, timeoutMs, 'Main page target not found');
         await mainTarget.session.send('Page.navigate', {
             url: url.toString(),
         });
@@ -339,9 +326,9 @@ class Crawler {
             if (e instanceof TimeoutError) {
                 this.log(chalk.yellow(e.message));
 
-                for (let target of this.targets.values()) {
-                    if (target.type === 'page') {
-                        target.session.send('Page.stopLoading').catch(() => {/* ignore */});
+                for (let {session, targetInfo} of this.targets.values()) {
+                    if (targetInfo.type === 'page') {
+                        session.send('Page.stopLoading').catch(() => {/* ignore */});
                     }
                 }
                 timeout = true;
