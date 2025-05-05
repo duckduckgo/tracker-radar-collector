@@ -160,7 +160,7 @@ class CMPCollector extends BaseCollector {
             /** @type {Partial<AutoconsentConfig>} */
             const autoconsentConfig = {
                 enabled: true,
-                autoAction: 'optOut',
+                autoAction: this.autoAction || null, // make sure it's never undefined
                 disabledCmps: [],
                 enablePrehide: false,
                 enableCosmeticRules: true,
