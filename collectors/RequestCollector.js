@@ -332,7 +332,7 @@ class RequestCollector extends BaseCollector {
                 method: request.method,
                 type: request.type,
                 status: request.status,
-                size: request.size,
+                size: typeof request.size === 'number' && request.size < 0 ? null : request.size, // make sure we can use unsigned int for this field in clickhouse
                 remoteIPAddress: request.remoteIPAddress,
                 responseHeaders: request.responseHeaders && filterHeaders(request.responseHeaders, this._saveHeaders),
                 responseBodyHash: request.responseBodyHash,
