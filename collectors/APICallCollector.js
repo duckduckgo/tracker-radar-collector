@@ -26,11 +26,12 @@ class APICallCollector extends BaseCollector {
     }
 
     /**
-     * @param {import('./BaseCollector').TargetInfo} targetInfo 
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
-    async addTarget({session, url}) {
+    async addTarget(session, targetInfo) {
         const trackerTracker = new TrackerTracker(session.send.bind(session));
-        trackerTracker.setMainURL(url.toString());
+        trackerTracker.setMainURL(targetInfo.url);
 
         session.on('Debugger.scriptParsed', this.onScriptParsed.bind(this, trackerTracker));
         session.on('Debugger.paused', this.onDebuggerPaused.bind(this, trackerTracker));

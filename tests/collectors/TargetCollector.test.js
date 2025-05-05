@@ -11,9 +11,9 @@ const fakeCDPClient = {};
 collector.init();
 
 // @ts-ignore not a real CDP client
-collector.addTarget({session: fakeCDPClient, type: 'page', url: 'http://example.com'});
+collector.addTarget(fakeCDPClient, {type: 'page', url: 'http://example.com'});
 // @ts-ignore not a real CDP client
-collector.addTarget({session: fakeCDPClient, type: 'service_worker', url: 'http://example.com/sw.js'});
+collector.addTarget(fakeCDPClient, {type: 'service_worker', url: 'http://example.com/sw.js'});
 
 const targets = collector.getData();
 

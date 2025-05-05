@@ -46,9 +46,11 @@ class RequestCollector extends BaseCollector {
     }
 
     /**
-     * @param {import('./BaseCollector').TargetInfo} targetInfo
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
-    async addTarget({session}) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    async addTarget(session, targetInfo) {
         await session.send('Runtime.enable');
         await session.send('Runtime.setAsyncCallStackDepth', {maxDepth: 32});
 

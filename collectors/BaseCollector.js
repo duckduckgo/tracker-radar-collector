@@ -15,11 +15,12 @@ class BaseCollector {
 
     /**
      * Called whenever new target becomes available (e.g. main page, iframe, web worker). Can be async, can throw errors.
-     * 
-     * @param {TargetInfo} targetInfo 
+     *
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    addTarget(targetInfo) {
+    addTarget(session, targetInfo) {
     }
 
     /**
@@ -57,14 +58,5 @@ class BaseCollector {
  * @property {import('@duckduckgo/autoconsent/lib/types').AutoAction=} autoconsentAction
  * @property {boolean=} shortTimeouts  // used to speed up unit tests
  */
-
-/**
- * @typedef {Object} TargetInfo
- * @property {import('devtools-protocol/types/protocol').Protocol.Target.TargetID} id
- * @property {string} type
- * @property {string} url
- * @property {import('puppeteer-core').CDPSession} session
- */
-
 
 module.exports = BaseCollector;

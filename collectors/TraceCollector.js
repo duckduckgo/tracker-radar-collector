@@ -50,10 +50,12 @@ class TraceCollector extends BaseCollector {
     }
 
     /**
-     * @param {import('./BaseCollector').TargetInfo} targetInfo 
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
-    async addTarget({session, type}) {
-        if (type === 'page' && !this._tracing) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    async addTarget(session, targetInfo) {
+        if (targetInfo.type === 'page' && !this._tracing) {
             this._cdpClient = session;
             this._tracing = true;
 
