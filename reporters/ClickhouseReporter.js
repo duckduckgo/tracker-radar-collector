@@ -1,22 +1,22 @@
-const {ClickHouse} = require('clickhouse');
+const { createClient } = require('@clickhouse/client');
 const os = require('os');
 const BaseReporter = require('./BaseReporter');
 const {createUniqueUrlName} = require('../helpers/hash');
 
 // eslint-disable-next-line no-process-env
-const CLICKHOUSE_SERVER = process.env.CLICKHOUSE_SERVER || 'va-clickhouse1';
+const CLICKHOUSE_SERVER = process.env.CLICKHOUSE_SERVER || 'clickhouse';
 const DB = 'tracker_radar_crawls';
 const TABLE_DEFINITIONS = [
-    `CREATE TABLE IF NOT EXISTS ${DB}.crawls (
+    `CREATE TABLE IF NOT EXISTS crawls ON CLUSTER 'ch-prod-cluster' (
         crawlId String,
         name String,
         region String,
         startedOn Date DEFAULT today()
     )
-    ENGINE = MergeTree()
+    ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId)
     ORDER BY crawlId`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.pages (
+    `CREATE TABLE IF NOT EXISTS pages ON CLUSTER 'ch-prod-cluster' (
         crawlId String,
         pageId String,
         testStarted DateTime64(3, 'UTC'),
@@ -24,9 +24,10 @@ const TABLE_DEFINITIONS = [
         initialUrl String,
         finalUrl String,
         timeout UInt8
-    ) ENGINE = MergeTree()
+    )
+    ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.requests (
+    `CREATE TABLE IF NOT EXISTS requests ON CLUSTER 'ch-prod-cluster' (
         crawlId String,
         pageId String,
         requestId UInt32,
@@ -43,16 +44,16 @@ const TABLE_DEFINITIONS = [
         redirectedFrom String NULL,
         initiators Array(String),
         time DOUBLE NULL
-    ) ENGINE = MergeTree()
+    ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, requestId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.elements (
+    `CREATE TABLE IF NOT EXISTS elements ON CLUSTER 'ch-prod-cluster' (
         crawlId String,
         pageId String,
         present Array(String),
         visible Array(String)
-    ) ENGINE = MergeTree()
+    ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.cmps (
+    `CREATE TABLE IF NOT EXISTS cmps ON CLUSTER 'ch-prod-cluster' (
         crawlId String,
         pageId String,
         name String,
@@ -65,38 +66,38 @@ const TABLE_DEFINITIONS = [
         patterns Array(String),
         snippets Array(String),
         filterListMatched Bool
-    ) ENGINE = MergeTree()
+    ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, name)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.apiSavedCalls (
+    `CREATE TABLE IF NOT EXISTS apiSavedCalls ON CLUSTER 'ch-prod-cluster' (
         crawlId String,
         pageId String,
         callId UInt32,
         source String,
         description String,
         arguments Array(String)
-    ) ENGINE = MergeTree()
+    ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, callId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.apiCallStats (
+    `CREATE TABLE IF NOT EXISTS apiCallStats ON CLUSTER 'ch-prod-cluster' (
         crawlId String,
         pageId String,
         source String,
         stats String
-    ) ENGINE = MergeTree()
+    ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, source)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.cookies (
+    `CREATE TABLE IF NOT EXISTS cookies ON CLUSTER 'ch-prod-cluster' (
         crawlId String,
         pageId String,
         cookieId UInt32,
         cookie String
-    ) ENGINE = MergeTree()
+    ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, cookieId)`,
-    `CREATE TABLE IF NOT EXISTS ${DB}.targets (
+    `CREATE TABLE IF NOT EXISTS targets ON CLUSTER 'ch-prod-cluster' (
         crawlId String,
         pageId String,
         targetId UInt32,
         url String,
         type String
-    ) ENGINE = MergeTree()
+    ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, targetId)`,
 ];
 
@@ -120,9 +121,16 @@ class ClickhouseReporter extends BaseReporter {
      */
     init(options) {
         this.verbose = options.verbose;
-        this.client = new ClickHouse({url: CLICKHOUSE_SERVER});
+        this.client = createClient({
+            url: `http://${CLICKHOUSE_SERVER}:8123`,
+            database: DB,
+        });
         this.crawlId = `${new Date().toISOString()}-${os.hostname()}`;
-        this.ready = Promise.all(TABLE_DEFINITIONS.map(stmt => this.client.query(stmt).toPromise()));
+        this.ready = Promise.all(TABLE_DEFINITIONS.map(stmt => {
+            return this.client.query({
+                query: stmt,
+            });
+        }));
         this.queue = {
             pages: [],
             requests: [],
@@ -144,11 +152,16 @@ class ClickhouseReporter extends BaseReporter {
             if (this.verbose) {
                 console.log(`Creating crawl ${this.crawlId}`);
             }
-            await this.client.insert(`INSERT INTO ${DB}.crawls (crawlId, name, region)`, [{
-                crawlId: this.crawlId,
-                name,
-                region,
-            }]).toPromise();
+            await this.client.insert({
+                table: 'crawls',
+                values: [{
+                    crawlId: this.crawlId,
+                    name,
+                    region,
+                }],
+                columns: ['crawlId', 'name', 'region'],
+                format: 'JSONEachRow',
+            });
         });
         return this.ready;
     }
@@ -157,9 +170,13 @@ class ClickhouseReporter extends BaseReporter {
         await this.ready;
         console.log(`Deleting all data for crawl ${this.crawlId}`);
         const deletes = Object.keys(this.queue)
-            .map(table => this.client.query(`ALTER TABLE ${DB}.${table} DELETE WHERE crawlId = '${this.crawlId}'`).toPromise());
+            .map(table => this.client.query({
+                query: `ALTER TABLE ${table} DELETE WHERE crawlId = '${this.crawlId}'`,
+            }));
         await Promise.all(deletes);
-        await this.client.query(`ALTER TABLE ${DB}.crawls DELETE WHERE crawlId = '${this.crawlId}'`).toPromise();
+        await this.client.query({
+            query: `ALTER TABLE crawls DELETE WHERE crawlId = '${this.crawlId}'`,
+        });
     }
 
     /**
@@ -184,7 +201,9 @@ class ClickhouseReporter extends BaseReporter {
             if (data.data.requests) {
                 const requestRows = data.data.requests.map((request, requestId) => [
                     this.crawlId, pageId, requestId, request.url, request.method, request.type, request.status,
-                    request.size, request.remoteIPAddress, JSON.stringify(request.responseHeaders || {}),
+                    // request.size,
+                    typeof request.size === 'number' && request.size < 0 ? null : request.size, // FIXME: this is a hack for legacy data
+                    request.remoteIPAddress, JSON.stringify(request.responseHeaders || {}),
                     request.responseBodyHash, request.failureReason, request.redirectedTo, request.redirectedFrom,
                     request.initiators.map(u => u.replace(/'/g, '')), request.time || 0
                 ]);
@@ -235,7 +254,11 @@ class ClickhouseReporter extends BaseReporter {
     async commitQueue() {
         const inserts = Object.keys(this.queue).map(async table => {
             // @ts-ignore
-            await this.client.insert(`INSERT INTO ${DB}.${table}`, this.queue[table]).toPromise();
+            await this.client.insert({
+                table,
+                // @ts-ignore
+                values: this.queue[table],
+            })
             // @ts-ignore
             this.queue[table] = [];
         });
