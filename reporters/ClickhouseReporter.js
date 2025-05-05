@@ -1,4 +1,4 @@
-const { createClient } = require('@clickhouse/client');
+const {createClient} = require('@clickhouse/client');
 const os = require('os');
 const BaseReporter = require('./BaseReporter');
 const {createUniqueUrlName} = require('../helpers/hash');
@@ -126,11 +126,7 @@ class ClickhouseReporter extends BaseReporter {
             database: DB,
         });
         this.crawlId = `${new Date().toISOString()}-${os.hostname()}`;
-        this.ready = Promise.all(TABLE_DEFINITIONS.map(stmt => {
-            return this.client.query({
-                query: stmt,
-            });
-        }));
+        this.ready = Promise.all(TABLE_DEFINITIONS.map(stmt => this.client.query({query: stmt})));
         this.queue = {
             pages: [],
             requests: [],
@@ -258,7 +254,7 @@ class ClickhouseReporter extends BaseReporter {
                 table,
                 // @ts-ignore
                 values: this.queue[table],
-            })
+            });
             // @ts-ignore
             this.queue[table] = [];
         });
