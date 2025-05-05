@@ -201,9 +201,9 @@ class Crawler {
      * @param {number} timeoutMs
      * @returns {Promise<void>}
      */
-    async goto(url, timeoutMs) {
-        const mainTarget = await wait(this._mainPageAttachedDeferred.promise, timeoutMs, 'Main page target not found');
-        await mainTarget.session.send('Page.navigate', {
+    async navigateMainTarget(url, timeoutMs) {
+        const {session} = await wait(this._mainPageAttachedDeferred.promise, timeoutMs, 'Main page target not found');
+        await session.send('Page.navigate', {
             url: url.toString(),
         });
 
@@ -215,12 +215,12 @@ class Crawler {
                 await this._mainFrameDeferred.promise;
                 if (e.frameId === this.mainPageFrame.id) {
                     this.log(chalk.green(`network idle in ${this.mainPageFrame.url}`));
-                    mainTarget.session.off('Page.lifecycleEvent', lifecycleHandler);
+                    session.off('Page.lifecycleEvent', lifecycleHandler);
                     this._navigationDeferred.resolve();
                 }
             }
         };
-        mainTarget.session.on('Page.lifecycleEvent', lifecycleHandler);
+        session.on('Page.lifecycleEvent', lifecycleHandler);
 
         await wait(
             this._navigationDeferred.promise,
@@ -321,7 +321,7 @@ class Crawler {
         let timeout = false;
 
         try {
-            await this.goto(url.toString(), this.options.maxLoadTimeMs);
+            await this.navigateMainTarget(url.toString(), this.options.maxLoadTimeMs);
         } catch (e) {
             if (e instanceof TimeoutError) {
                 this.log(chalk.yellow(e.message));
