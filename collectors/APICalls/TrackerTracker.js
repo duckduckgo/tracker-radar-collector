@@ -178,6 +178,45 @@ class TrackerTracker {
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextId} contextId
      */
     async setupContextTracking(contextId = undefined) {
+        // TODO: Do something like this instead inside Page.addScriptToEvaluateOnNewDocument
+
+        // async function wrapObject(session, obj, descriptorHookToWrap, description) {
+        //     const breakpointScript = getBreakpointScript(description);
+        //     const wrapScript = `{
+        //         const origDesc = Reflect.getOwnPropertyDescriptor(${obj}, '${prop.name}');
+        //         Reflect.defineProperty(${obj}, '${prop.name}', {
+        //             ...origDesc,
+        //             ${descriptorHookToWrap}: function(...args) {
+        //                 ${breakpointScript}
+        //                 return origDesc.${descriptorHookToWrap}.call(this, ...args);
+        //             }
+        //         });
+        //     }`;
+        //     await session.send('Page.addScriptToEvaluateOnNewDocument', {
+        //         source: `(${wrapScript})()`
+        //     });
+        // }
+        
+        // allBreakpoints
+        //     .map(async ({proto, global, props, methods}) => {
+        //         const obj = global || `${proto}.prototype`;
+        //         const propPromises = props.map(async prop => {
+        //             const hook = prop.setter === true ? 'set' : 'get';
+        //             const description = prop.description || `${obj}.${prop.name}`;
+        //             await wrapObject(session, obj, hook, description);
+        //         });
+        
+        //         await Promise.all(propPromises);
+        
+        //         const methodPromises = methods.map(async method => {
+        //             const hook = 'value';
+        //             const description = method.description || `${obj}.${method.name}`;
+        //             await wrapObject(session, obj, hook, description);
+        //         });
+        
+        //         await Promise.all(methodPromises);
+        //     });
+        
         const allBreakpointsSet = allBreakpoints
             .map(async ({proto, global, props, methods}) => {
                 const obj = global || `${proto}.prototype`;
