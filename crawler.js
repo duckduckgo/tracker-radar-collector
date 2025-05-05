@@ -61,6 +61,7 @@ class Crawler {
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.AttachedToTargetEvent} event
      */
     async onTargetAttached(event) {
+        console.log('onTargetAttached', event);
         const targetInfo = event.targetInfo;
         const session = this.browserConnection.session(event.sessionId);
         this.log(`target attached ${targetInfo.targetId}: ${targetInfo.type} ${targetInfo.url}`);
@@ -103,11 +104,22 @@ class Crawler {
                     accept: false,
                 });
             });
+            session.on('Page.frameStartedNavigating', e => {
+                console.log('Page.frameStartedNavigating', e);
+            });
+            session.on('Page.frameRequestedNavigation', e => {
+                console.log('Page.frameRequestedNavigation', e);
+            });
             session.on('Page.frameNavigated', e => {
+                console.log('Page.frameNavigated', e);
                 if (!e.frame.parentId) {
                     if (this.mainPageFrame) {
-                        this.log(chalk.red(`Main frame changed: ${this.mainPageFrame.id} -> ${e.frame.id}`));
-                        this.mainPageFrame = e.frame;
+                        if (this.mainPageFrame.id === e.frame.id) {
+                            this.log(chalk.red(`Main frame navigated: ${this.mainPageFrame.url} -> ${e.frame.url}`));
+                            this.mainPageFrame = e.frame;
+                        } else {
+                            this.log(chalk.yellow(`New top frame detected: ${e.frame.url}`));
+                        }
                     } else {
                         this.mainPageFrame = e.frame;
                         this._mainFrameDeferred.resolve(e.frame.id);
@@ -130,17 +142,13 @@ class Crawler {
 
         await session.send('Runtime.enable');
 
-        for (let collector of this.collectors) {
-            try {
-                // eslint-disable-next-line no-await-in-loop
-                await collector.addTarget(session, targetInfo);
-            } catch (e) {
-                this.log(chalk.yellow(`${collector.id()} failed to attach to "${targetInfo.url}"`), chalk.gray(e.message), chalk.gray(e.stack));
-            }
+        const isMainPage = this.mainPageTargetId === targetInfo.targetId;
+        if (!isMainPage) { // for the main page, we'll add the collectors after it navigates from about:blank
+            await this.addTargetToCollectors(session, targetInfo);
         }
 
         await session.send('Runtime.runIfWaitingForDebugger');
-        if (this.mainPageTargetId === targetInfo.targetId) {
+        if (isMainPage) {
             this.mainPageAttached = true;
             this.log(chalk.green(`main page target attached: ${targetInfo.targetId} ${targetInfo.url}`));
             this._mainPageAttachedDeferred.resolve({targetInfo, session});
@@ -151,9 +159,19 @@ class Crawler {
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfoChangedEvent} event
      */
     onTargetInfoChanged(event) {
+        console.log('onTargetInfoChanged', event);
         const target = this.targets.get(event.targetInfo.targetId);
         if (target) {
-            this.log(`${target.targetInfo.targetId} changed. old url: ${target.targetInfo.url}, new url: ${event.targetInfo.url}`);
+            if (
+                this.mainPageTargetId === event.targetInfo.targetId &&
+                target.targetInfo.url === 'about:blank' &&
+                event.targetInfo.url !== 'about:blank'
+            ) {
+                this.log(chalk.green(`Main page target navigated: ${target.targetInfo.url} -> ${event.targetInfo.url}`));
+                this.addTargetToCollectors(target.session, event.targetInfo);
+            } else {
+                this.log(`${target.targetInfo.targetId} changed`);
+            }
             target.targetInfo = event.targetInfo;
         }
     }
@@ -189,6 +207,7 @@ class Crawler {
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetCreatedEvent} event
      */
     onTargetCreated(event) {
+        console.log('onTargetCreated', event);
         const targetInfo = event.targetInfo;
         this.log(`target created: ${targetInfo.targetId} ${targetInfo.type} ${targetInfo.url}`);
         if (!this.mainPageTargetId && targetInfo.type === 'page') {
@@ -262,6 +281,21 @@ class Crawler {
                 this.log(`${collector.id()} postLoad took ${postLoadTimer.getElapsedTime()}s`);
             } catch (e) {
                 this.log(chalk.yellow(`${collector.id()} postLoad failed`), chalk.gray(e.message), chalk.gray(e.stack));
+            }
+        }
+    }
+
+    /**
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
+     */
+    async addTargetToCollectors(session, targetInfo) {
+        for (let collector of this.collectors) {
+            try {
+                // eslint-disable-next-line no-await-in-loop
+                await collector.addTarget(session, targetInfo);
+            } catch (e) {
+                this.log(chalk.yellow(`${collector.id()} failed to attach to "${targetInfo.url}"`), chalk.gray(e.message), chalk.gray(e.stack));
             }
         }
     }
