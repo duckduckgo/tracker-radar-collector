@@ -244,6 +244,67 @@ class Crawler {
 
     /**
      * @param {URL} url
+     */
+    async initCollectors(url) {
+        /** @type {import('./collectors/BaseCollector').CollectorInitOptions} */
+        const collectorOptions = {
+            browserConnection: this.browserConnection,
+            url,
+            log: this.log,
+            collectorFlags: this.options.collectorFlags,
+        };
+
+        for (let collector of this.collectors) {
+            const timer = createTimer();
+            try {
+                // eslint-disable-next-line no-await-in-loop
+                await collector.init(collectorOptions);
+                this.log(`${collector.id()} init took ${timer.getElapsedTime()}s`);
+            } catch (e) {
+                this.log(chalk.yellow(`${collector.id()} init failed`), chalk.gray(e.message), chalk.gray(e.stack));
+            }
+        }
+    }
+
+    async postLoadCollectors() {
+        for (let collector of this.collectors) {
+            const postLoadTimer = createTimer();
+            try {
+                // eslint-disable-next-line no-await-in-loop
+                await collector.postLoad();
+                this.log(`${collector.id()} postLoad took ${postLoadTimer.getElapsedTime()}s`);
+            } catch (e) {
+                this.log(chalk.yellow(`${collector.id()} postLoad failed`), chalk.gray(e.message), chalk.gray(e.stack));
+            }
+        }
+    }
+
+    async getCollectorData() {
+        /**
+         * @type {Object<string, Object>}
+         */
+        const data = {};
+        const finalUrl = this.mainPageFrame.url;
+        for (let collector of this.collectors) {
+            const getDataTimer = createTimer();
+            try {
+                // eslint-disable-next-line no-await-in-loop
+                const collectorData = await collector.getData({
+                    finalUrl,
+                    urlFilter: this.options.urlFilter && this.options.urlFilter.bind(null, finalUrl)
+                });
+                data[collector.id()] = collectorData;
+                this.log(`getting ${collector.id()} data took ${getDataTimer.getElapsedTime()}s`);
+            } catch (e) {
+                this.log(chalk.yellow(`getting ${collector.id()} data failed`), chalk.gray(e.message), chalk.gray(e.stack));
+                data[collector.id()] = null;
+            }
+        }
+        return data;
+    }
+
+    /**
+     * @param {URL} url
      * @returns {Promise<CollectResult>}
      */
     async getSiteData(url) {
@@ -257,26 +318,7 @@ class Crawler {
         conn.on('Target.targetDestroyed', this.onTargetDestroyed.bind(this));
         conn.on('Target.targetCrashed', this.onTargetCrashed.bind(this));
 
-        /** @type {import('./collectors/BaseCollector').CollectorInitOptions} */
-        const collectorOptions = {
-            browserConnection: conn,
-            url,
-            log: this.log,
-            collectorFlags: this.options.collectorFlags,
-        };
-
-        for (let collector of this.collectors) {
-            const timer = createTimer();
-
-            try {
-                // eslint-disable-next-line no-await-in-loop
-                await collector.init(collectorOptions);
-                this.log(`${collector.id()} init took ${timer.getElapsedTime()}s`);
-            } catch (e) {
-                this.log(chalk.yellow(`${collector.id()} init failed`), chalk.gray(e.message), chalk.gray(e.stack));
-            }
-        }
-
+        await this.initCollectors(url);
 
         await conn.send('Target.setAutoAttach', {
             autoAttach: true,
@@ -308,43 +350,14 @@ class Crawler {
             }
         }
 
-        for (let collector of this.collectors) {
-            const postLoadTimer = createTimer();
-            try {
-                // eslint-disable-next-line no-await-in-loop
-                await collector.postLoad();
-                this.log(`${collector.id()} postLoad took ${postLoadTimer.getElapsedTime()}s`);
-            } catch (e) {
-                this.log(chalk.yellow(`${collector.id()} postLoad failed`), chalk.gray(e.message), chalk.gray(e.stack));
-            }
-        }
+        await this.postLoadCollectors();
 
         // give website a bit more time for things to settle
         await new Promise(resolve => {
             setTimeout(resolve, this.options.extraExecutionTimeMs);
         });
 
-        const finalUrl = this.mainPageFrame.url; // URL could have changed by now
-        /**
-         * @type {Object<string, Object>}
-         */
-        const data = {};
-
-        for (let collector of this.collectors) {
-            const getDataTimer = createTimer();
-            try {
-                // eslint-disable-next-line no-await-in-loop
-                const collectorData = await collector.getData({
-                    finalUrl,
-                    urlFilter: this.options.urlFilter && this.options.urlFilter.bind(null, finalUrl)
-                });
-                data[collector.id()] = collectorData;
-                this.log(`getting ${collector.id()} data took ${getDataTimer.getElapsedTime()}s`);
-            } catch (e) {
-                this.log(chalk.yellow(`getting ${collector.id()} data failed`), chalk.gray(e.message), chalk.gray(e.stack));
-                data[collector.id()] = null;
-            }
-        }
+        const data = await this.getCollectorData();
 
         for (let target of this.targets.values()) {
             target.session.detach().catch(() => {/* ignore */});
@@ -355,7 +368,7 @@ class Crawler {
 
         return {
             initialUrl: url.toString(),
-            finalUrl,
+            finalUrl: this.mainPageFrame.url,
             timeout,
             testStarted,
             testFinished,
