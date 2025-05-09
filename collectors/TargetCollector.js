@@ -14,12 +14,14 @@ class TargetCollector extends BaseCollector {
     }
 
     /**
-     * @param {import('./BaseCollector').TargetInfo} targetInfo 
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
-    addTarget({type, url}) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    addTarget(session, targetInfo) {
         this._targets.push({
-            type,
-            url
+            type: targetInfo.type,
+            url: targetInfo.url
         });
     }
 
