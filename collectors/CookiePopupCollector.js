@@ -160,27 +160,19 @@ class CookiePopupCollector extends BaseCollector {
                     returnByValue: true,
                     allowUnsafeEvalBlockedByCSP: true,
                 });
+                /** @type {ContentScriptResult} */
                 const result = evalResult.result.value;
-                const popups = [];
                 for (const potentialPopup of result.potentialPopups) {
-                    popups.push({
+                    this._data.push({
                         ...potentialPopup,
                         llmMatch: potentialPopup.text && potentialPopup.text.trim()
                           ? await classifyCookieConsentNotice(potentialPopup.text, true)
                           : false,
                     })
                 }
-                this._data.push({
-                    documentText: result.documentText,
-                    documentRegexMatch: result.documentRegexMatch,
-                    documentLlmMatch: await classifyCookieConsentNotice(result.documentText, false),
-                    onScreenText: result.onScreenText,
-                    onScreenRegexMatch: result.onScreenRegexMatch,
-                    onScreenLlmMatch: await classifyCookieConsentNotice(result.onScreenText, false),
-                    popups,
-                });
             } catch (e) {
                 if (!isIgnoredEvalError(e)) {
+                    console.error('Error evaluating content script:', e);
                     this.log(`Error evaluating content script: ${e}`);
                 }
             }
@@ -192,21 +184,31 @@ class CookiePopupCollector extends BaseCollector {
 module.exports = CookiePopupCollector;
 
 /**
- * @typedef CookiePopupData
- * @property {string} documentText
- * @property {boolean} documentRegexMatch
- * @property {boolean} documentLlmMatch
- * @property {string} onScreenText
- * @property {boolean} onScreenRegexMatch
- * @property {boolean} onScreenLlmMatch
- * @property {CookiePopupPopupData[]} popups
+ * @typedef ContentScriptResult
+ * @property {PopupData[]} potentialPopups
  */
 
 /**
- * @typedef CookiePopupPopupData
+ * @typedef PopupData
  * @property {string} html
  * @property {string} text
- * @property {string[]} buttons
+ * @property {ButtonData[]} rejectButtons
+ * @property {ButtonData[]} otherButtons
+ * @property {boolean} regexMatch
+ */
+
+/**
+ * @typedef ButtonData
+ * @property {string} text
+ * @property {string} selector
+ */
+
+/**
+ * @typedef CookiePopupData
+ * @property {string} html
+ * @property {string} text
+ * @property {ButtonData[]} rejectButtons
+ * @property {ButtonData[]} otherButtons
  * @property {boolean} regexMatch
  * @property {boolean} llmMatch
  */

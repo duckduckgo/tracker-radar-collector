@@ -1,3 +1,37 @@
+const REJECT_PATTERNS = [
+    // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close"
+    /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*(and\s+close)?\s*$/i,
+
+    // e.g. "i do not accept", "i do not accept cookies", "do not accept", "do not accept cookies"
+    /^\s*(i)?\s*do\s+not\s+accept\s*(cookies)?\s*$/i,
+
+    // e.g. "continue without accepting", "continue without agreeing", "continue without agreeing →"
+    /^\s*(continue|proceed|continue\s+browsing)\s+without\s+(accepting|agreeing|consent|cookies|tracking)(\s*→)?\s*$/i,
+
+    // e.g. "strictly necessary cookies only", "essential cookies only", "required only", "use necessary cookies only"
+    // note that "only" is required
+    /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essential|required)?\s*(cookies)?\s*only\s*$/i,
+
+    // e.g. "allow essential cookies", "allow necessary",
+    // note that "essential" is required
+    /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essential|required)\s*(cookies)?\s*$/i,
+
+    // e.g. "accept only essential cookies", "use only necessary cookies", "allow only essential", "continue with only essential cookies"
+    // note that "only" is required
+    /^\s*(use|accept|allow|continue\s+with)?\s*only\s*(strictly)?\s*(necessary|essential|required)?\s*(cookies)?\s*$/i,
+
+    // e.g. "do not sell or share my personal information", "do not sell my personal information"
+    // often used in CCPA
+    /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*information\s*$/i,
+
+    /* These are impactful, but look error-prone
+    // e.g. "disagree"
+    /^\s*(i)?\s*disagree\s*(and\s+close)?\s*$/i,
+    // e.g. "i do not agree"
+    /^\s*(i\s+)?do\s+not\s+agree\s*$/i,
+    */
+];
+
 function checkHeuristicPatterns(allText) {
     const DETECT_PATTERNS = [
         /accept cookies/gi,
@@ -31,6 +65,10 @@ function checkHeuristicPatterns(allText) {
         }
     }
     return false;
+}
+
+function isRejectButton(buttonText) {
+    return REJECT_PATTERNS.some(p => p.test(buttonText));
 }
 
 const isVisible = (node) => {
@@ -103,9 +141,19 @@ function collectPotentialPopups() {
     for (const el of elements) {
         const regexMatch = checkHeuristicPatterns(el.innerText);
         const buttons = nonParentElements(getButtons(el).filter(b => isVisible(b)));
+        const rejectButtons = [];
+        const otherButtons = [];
+        for (const b of buttons) {
+            if (isRejectButton(b.innerText)) {
+                rejectButtons.push(b);
+            } else {
+                otherButtons.push(b);
+            }
+        }
         results.push({
             el,
-            buttons,
+            rejectButtons,
+            otherButtons,
             regexMatch,
         });
     }
@@ -114,39 +162,47 @@ function collectPotentialPopups() {
     return results;
 }
 
-function collectOnScreenText() {
-    let elements = collectMatchingElements((el) => {
-        if (el.tagName === 'BODY') return false;
-        if (!isVisible(el)) return false;
+function getSelector(el) {
+    let element = el;
+    let parent;
+    let result = '';
 
-        // Check that element intersects with screen rectangle
-        const rect = el.getBoundingClientRect();
-        const screenIntersects = 
-            rect.top < window.innerHeight &&
-            rect.left < window.innerWidth &&
-            rect.bottom > 0 &&
-            rect.right > 0;
+    if (element.nodeType !== Node.ELEMENT_NODE) {
+        return result; // Should be an empty string if not an element, or handle as an error
+    }
 
-        return screenIntersects;
-    });
-    elements = nonParentElements(elements);
-    elements.reverse();
-    return elements.map(el => el.innerText).join("\n");
+    parent = element.parentNode;
+
+    while (parent instanceof Element && parent !== document.documentElement) {
+        const siblings = Array.from(parent.children);
+        const tagName = element.nodeName.toLowerCase();
+        const localSelector = siblings.length > 1 ? `${tagName}:nth-child(${siblings.indexOf(element) + 1})` : tagName;
+        result = localSelector + (result ? ' > ' + result : '');
+        element = parent;
+        parent = element.parentNode;
+    }
+
+    return result;
 }
 
 function serializeResults() {
     const potentialPopups = collectPotentialPopups();
-    const documentText = document.documentElement.innerText;
-    const onScreenText = collectOnScreenText();
     return {
-        documentText,
-        documentRegexMatch: checkHeuristicPatterns(documentText),
-        onScreenText,
-        onScreenRegexMatch: checkHeuristicPatterns(onScreenText),
         potentialPopups: potentialPopups.map((r) => ({
             html: r.el.outerHTML,
-            buttons: r.buttons.map(b => b.innerText),
             text: r.el.innerText || '',
+            rejectButtons: r.rejectButtons.map(b => {
+                return {
+                    text: b.innerText,
+                    selector: getSelector(b)
+                };
+            }),
+            otherButtons: r.otherButtons.map(b => {
+                return {
+                    text: b.innerText,
+                    selector: getSelector(b)
+                };
+            }),
             regexMatch: r.regexMatch,
         }))
     };
