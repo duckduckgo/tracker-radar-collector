@@ -55,7 +55,8 @@ async function classifyCookieConsentNotice(text) {
     try {
         const completion = await openai.beta.chat.completions.parse({
             // model: 'gpt-4o-mini-2024-07-18',
-            model: 'gpt-4.1-nano-2025-04-14',
+            // model: 'gpt-4.1-nano-2025-04-14',
+            model: 'ft:gpt-4.1-nano-2025-04-14:duckduckgo:cpm-detection:BVBKgDWz',
             messages: [
                 {role: 'system', content: systemPrompt},
                 {
