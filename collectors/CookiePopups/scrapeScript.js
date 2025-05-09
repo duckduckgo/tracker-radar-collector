@@ -18,9 +18,10 @@ function extractDomText() {
             style.display === "none" ||
             style.visibility === "hidden" ||
             style.opacity === "0" ||
-            element.hidden ||
-            (style.height === "0px" && style.overflow === "hidden") ||
-            element.getAttribute("aria-hidden") === "true"
+            element.hidden
+            // too sensitive:
+            // (style.height === "0px" && style.overflow === "hidden") ||
+            // element.getAttribute("aria-hidden") === "true"
         );
     }
 
@@ -53,6 +54,7 @@ function extractDomText() {
         if (
             node.nodeName === "SCRIPT" ||
             node.nodeName === "STYLE" ||
+            node.nodeName === "NOSCRIPT" ||
             node.nodeType !== Node.ELEMENT_NODE
         ) {
             return;
@@ -87,32 +89,47 @@ function extractDomText() {
             node.hasAttribute("href") ||
             node.getAttribute("role") === "link";
 
-        // Get text content from this node (excluding child nodes)
-        let textContent = Array.from(node.childNodes)
-            .filter((child) => child.nodeType === Node.TEXT_NODE)
-            .map((child) => child.textContent.trim())
-            .join(" ")
-            .trim();
+        // Handle button-like or link elements with all their nested text
+        if (isButtonLike || isLink) {
+            let fullText = node.textContent.trim();
+            let ariaLabel = node.getAttribute("aria-label");
 
-        // If we have text content, add it with appropriate formatting
-        if (textContent) {
-            if (isButtonLike) {
-                result.push(`<button>${textContent}</button>`);
-            } else if (isLink) {
-                result.push(`<a>${textContent}</a>`);
-            } else {
+            // Use aria-label for buttons/links with no text content (like SVG elements)
+            if (!fullText && ariaLabel) {
+                if (isButtonLike) {
+                    result.push(`<button>${ariaLabel}</button>`);
+                } else if (isLink) {
+                    result.push(`<a>${ariaLabel}</a>`);
+                }
+            } else if (fullText) {
+                if (isButtonLike) {
+                    result.push(`<button>${fullText}</button>`);
+                } else if (isLink) {
+                    result.push(`<a>${fullText}</a>`);
+                }
+            }
+        } else {
+            // Get text content from this node (excluding child nodes)
+            let textContent = Array.from(node.childNodes)
+                .filter(child => child.nodeType === Node.TEXT_NODE)
+                .map(child => child.textContent.trim())
+                .join(" ")
+                .trim();
+
+            // If we have text content, add it
+            if (textContent) {
                 result.push(textContent);
             }
-        }
 
-        // Process normal children
-        Array.from(node.children).forEach((child) => {
-            processNode(child);
-        });
+            // Process normal children
+            Array.from(node.children).forEach(child => {
+                processNode(child);
+            });
+        }
 
         // Process shadow DOM if it exists
         if (node.shadowRoot) {
-            Array.from(node.shadowRoot.children).forEach((shadowChild) => {
+            Array.from(node.shadowRoot.children).forEach(shadowChild => {
                 processNode(shadowChild);
             });
         }
