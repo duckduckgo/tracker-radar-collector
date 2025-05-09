@@ -1,155 +1,127 @@
-function checkHeuristicPatterns(allText) {
-    const DETECT_PATTERNS = [
-        /accept cookies/gi,
-        /accept all/gi,
-        /reject all/gi,
-        /only necessary cookies/gi, // "only necessary" is probably too broad
-        /by clicking.*(accept|agree|allow)/gi,
-        /by continuing/gi,
-        /we (use|serve)( optional)? cookies/gi,
-        /we are using cookies/gi,
-        /use of cookies/gi,
-        /(this|our) (web)?site.*cookies/gi,
-        /cookies (and|or) .* technologies/gi,
-        /such as cookies/gi,
-        /read more about.*cookies/gi,
-        /consent to.*cookies/gi,
-        /we and our partners.*cookies/gi,
-        /we.*store.*information.*such as.*cookies/gi,
-        /store and\/or access information.*on a device/gi,
-        /personalised ads and content, ad and content measurement/gi,
+/**
+ * Traverses the DOM including Shadow DOM and returns formatted inner text
+ * from visible elements only
+ * @returns {string} The formatted inner text from visible DOM elements
+ */
+function extractDomText() {
+    const result = [];
 
-        // it might be tempting to add the patterns below, but they cause too many false positives. Don't do it :)
-        // /cookies? settings/i,
-        // /cookies? preferences/i,
-    ];
+    /**
+     * Checks if an element is visible
+     * @param {Element} element - The element to check
+     * @returns {boolean} Whether the element is visible
+     */
+    function isElementVisible(element) {
+        const style = window.getComputedStyle(element);
 
-    for (const p of DETECT_PATTERNS) {
-        const matches = allText.match(p);
-        if (matches) {
-            return true;
+        return !(
+            style.display === "none" ||
+            style.visibility === "hidden" ||
+            style.opacity === "0" ||
+            element.hidden ||
+            (style.height === "0px" && style.overflow === "hidden") ||
+            element.getAttribute("aria-hidden") === "true"
+        );
+    }
+
+    /**
+     * Checks if an element is in the viewport
+     * @param {Element} element - The element to check
+     * @returns {boolean} Whether any part of the element is in the viewport
+     */
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+
+        // Element has no size and isn't viewport-positioned
+        if (
+            rect.width === 0 &&
+            rect.height === 0 &&
+            window.getComputedStyle(element).position !== "fixed"
+        ) {
+            return false;
         }
-    }
-    return false;
-}
 
-const isVisible = (node) => {
-    if (!node.isConnected) {
-        return false;
+        return true;
     }
-    const style = window.getComputedStyle(node);
-    if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') {
-        return false;
-    }
-    const rect = node.getBoundingClientRect();
-    return (
-        rect.width > 0 &&
-        rect.height > 0 &&
-        rect.top < window.innerHeight &&
-        rect.left < window.innerWidth &&
-        rect.bottom > 0 &&
-        rect.right > 0
-    );
-};
 
-const collectMatchingElements = (criteria) => {
-    const elements = [];
-    const walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_ELEMENT, {
-        acceptNode: (n) => (n instanceof HTMLElement && criteria(n) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP),
-    });
-    while (walker.nextNode()) {
-        elements.push(walker.currentNode);
-    }
-    return elements;
-};
+    /**
+     * Recursively processes a DOM node and its children
+     * @param {Node} node - The DOM node to process
+     */
+    function processNode(node) {
+        // Skip script, style, and non-element nodes
+        if (
+            node.nodeName === "SCRIPT" ||
+            node.nodeName === "STYLE" ||
+            node.nodeType !== Node.ELEMENT_NODE
+        ) {
+            return;
+        }
 
-const nonParentElements = (elements) => {
-    const results = [];
-    if (elements.length > 0) {
-        for (let i = elements.length - 1; i >= 0; i--) {
-            let container = false;
-            for (let j = 0; j < elements.length; j++) {
-                if (i !== j && elements[i].contains(elements[j])) {
-                    container = true;
-                    break;
-                }
-            }
-            if (!container) {
-                results.push(elements[i]);
+        // Skip invisible elements
+        if (!isElementVisible(node)) {
+            return;
+        }
+
+        // Skip elements not in the viewport
+        // if (!isInViewport(node)) {
+        //     return;
+        // }
+
+        // Get computed style for the element
+        const style = window.getComputedStyle(node);
+
+        // Check if node is a button-like element
+        const isButtonLike =
+            node.nodeName === "BUTTON" ||
+            node.getAttribute("role") === "button" ||
+            (style.cursor === "pointer" &&
+                (node.onclick ||
+                    node.addEventListener ||
+                    node.hasAttribute("onClick")) &&
+                style.display !== "none");
+
+        // Check if node is a link
+        const isLink =
+            node.nodeName === "A" ||
+            node.hasAttribute("href") ||
+            node.getAttribute("role") === "link";
+
+        // Get text content from this node (excluding child nodes)
+        let textContent = Array.from(node.childNodes)
+            .filter((child) => child.nodeType === Node.TEXT_NODE)
+            .map((child) => child.textContent.trim())
+            .join(" ")
+            .trim();
+
+        // If we have text content, add it with appropriate formatting
+        if (textContent) {
+            if (isButtonLike) {
+                result.push(`<button>${textContent}</button>`);
+            } else if (isLink) {
+                result.push(`<a>${textContent}</a>`);
+            } else {
+                result.push(textContent);
             }
         }
-    }
-    return results;
-};
 
-function getButtons(el) {
-    return Array.from(el.querySelectorAll('button, input[type="button"], input[type="submit"], a[href], [role="button"], [class*="button"]'));
-}
-
-function collectPotentialPopups() {
-    // Collect fixed/sticky positioned elements that are visible
-    let elements = collectMatchingElements((el) => {
-        if (el.tagName === 'BODY') return false;
-        const computedStyle = window.getComputedStyle(el).position;
-        return (computedStyle === 'fixed' || computedStyle === 'sticky') && isVisible(el);
-    });
-
-    // Get non-parent elements
-    elements = nonParentElements(elements);
-
-    const results = [];
-
-    // for each potential popup, get the buttons
-    for (const el of elements) {
-        const regexMatch = checkHeuristicPatterns(el.innerText);
-        const buttons = nonParentElements(getButtons(el).filter(b => isVisible(b)));
-        results.push({
-            el,
-            buttons,
-            regexMatch,
+        // Process normal children
+        Array.from(node.children).forEach((child) => {
+            processNode(child);
         });
+
+        // Process shadow DOM if it exists
+        if (node.shadowRoot) {
+            Array.from(node.shadowRoot.children).forEach((shadowChild) => {
+                processNode(shadowChild);
+            });
+        }
     }
 
-    // Return the elements
-    return results;
+    // Start processing from document body
+    processNode(document.body);
+
+    return result.join(" ");
 }
 
-function collectOnScreenText() {
-    let elements = collectMatchingElements((el) => {
-        if (el.tagName === 'BODY') return false;
-        if (!isVisible(el)) return false;
-
-        // Check that element intersects with screen rectangle
-        const rect = el.getBoundingClientRect();
-        const screenIntersects = 
-            rect.top < window.innerHeight &&
-            rect.left < window.innerWidth &&
-            rect.bottom > 0 &&
-            rect.right > 0;
-
-        return screenIntersects;
-    });
-    elements = nonParentElements(elements);
-    elements.reverse();
-    return elements.map(el => el.innerText).join("\n");
-}
-
-function serializeResults() {
-    const potentialPopups = collectPotentialPopups();
-    const documentText = document.documentElement.innerText;
-    const onScreenText = collectOnScreenText();
-    return {
-        documentText,
-        documentRegexMatch: checkHeuristicPatterns(documentText),
-        onScreenText,
-        onScreenRegexMatch: checkHeuristicPatterns(onScreenText),
-        potentialPopups: potentialPopups.map((r) => ({
-            html: r.el.outerHTML,
-            buttons: r.buttons.map(b => b.innerText),
-            text: r.el.innerText || '',
-            regexMatch: r.regexMatch,
-        }))
-    };
-}
-
-serializeResults();
+extractDomText();

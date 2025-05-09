@@ -1,6 +1,6 @@
 const OpenAI = require('openai');
-const { zodResponseFormat } = require('openai/helpers/zod');
-const { z } = require('zod');
+const {zodResponseFormat} = require('openai/helpers/zod');
+const {z} = require('zod');
 const fs = require('fs');
 
 const BaseCollector = require('./BaseCollector');
@@ -33,56 +33,37 @@ const CookieConsentNoticeClassification = z.object({
     isCookieConsentNotice: z.boolean(),
 });
 
-async function classifyCookieConsentNotice(text, popup = true) {
-    let systemPrompt;
-    if (popup) {
-        systemPrompt = `
-          Your task is to classify text from the innerText property of HTML overlay elements.
-    
-          An overlay element is considered to be a "cookie consent notice" if it meets all of these criteria:
-          1. it explicitly notifies the user of the site's use of cookies or other storage technology, such as: "We use cookies...", "This site uses...", etc.
-          2. it offers the user choices for the usage of cookies on the site, such as: "Accept", "Reject", "Learn More", etc., or informs the user that their use of the site means they accept the usage of cookies.
-    
-          Note: This definition does not include adult content notices or any other type of notice that is primarily focused on age verification or content restrictions. Cookie consent notices are specifically intended to inform users about the website's use of cookies and obtain their consent for such use.
-    
-          Note: A cookie consent notice should specifically relate to the site's use of cookies or other storage technology that stores data on the user's device, such as HTTP cookies, local storage, or session storage. Requests for permission to access geolocation information, camera, microphone, etc., do not fall under this category.
-    
-          Note: Do NOT classify a website header or footer as a "cookie consent notice". Website headers or footers may contain a list of links, possibly including a privacy policy, cookie policy, or terms of service document, but their primary purpose is navigational rather than informational.
-      `;
-    } else {
-        systemPrompt = `
-          Your task is to inspect the innerText property of an HTML document and determine if a cookie consent notice is present.
-          
-          A cookie consent notice:
-          1. explicitly notifies the user of the site's use of cookies or other storage technology, such as: "We use cookies...", "This site uses...", etc.
-          2. offers the user choices for the usage of cookies on the site, such as: "Accept", "Reject", "Learn More", etc., or informs the user that their use of the site means they accept the usage of cookies.
-    
-          Note: This definition does not include adult content notices or any other type of notice that is primarily focused on age verification or content restrictions. Cookie consent notices are specifically intended to inform users about the website's use of cookies and obtain their consent for such use.
-    
-          Note: A cookie consent notice should specifically relate to the site's use of cookies or other storage technology that stores data on the user's device, such as HTTP cookies, local storage, or session storage. Requests for permission to access geolocation information, camera, microphone, etc., do not fall under this category.
-      `;
-    }
+/**
+ * @param {string} text
+ * @returns {Promise<boolean>}
+ */
+async function classifyCookieConsentNotice(text) {
+    const systemPrompt = `
+        Your task is to inspect an HTML document and determine if a *cookie consent notice popup* is present.
 
-    // const MAX_LENGTH = 500;
-    // let snippet = text.slice(0, MAX_LENGTH);
-    // let ifTruncated = '';
-    // if (snippet.length !== text.length) {
-    //     snippet += '...';
-    //     ifTruncated = `the first ${MAX_LENGTH} characters of `;
-    // }
+        A cookie consent notice popup must:
+        1. Explicitly notify the user of the site's use of cookies or other storage technology ("We use cookies...", "This site uses cookies...", etc.); AND
+        2. Offer the user a way to accept or reject the use of cookies on the site.
+
+        Note: The HTML document provided is a simplified representation containing only text, buttons, and links.
+
+        Note: This definition does not include adult content notices or any other type of notice that is primarily focused on age verification or content restrictions. Cookie consent notices are specifically intended to inform users about the website's use of cookies and obtain their consent for such use.
+
+        Note: A cookie consent notice should specifically relate to the site's use of cookies or other storage technology that stores data on the user's device, such as HTTP cookies, local storage, or session storage. Requests for permission to access geolocation information, camera, microphone, etc., do not fall under this category.
+    `;
 
     try {
         const completion = await openai.beta.chat.completions.parse({
             // model: 'gpt-4o-mini-2024-07-18',
             model: 'gpt-4.1-nano-2025-04-14',
             messages: [
-                { role: 'system', content: systemPrompt },
+                {role: 'system', content: systemPrompt},
                 {
                     role: 'user',
-                    // content: `The following text was captured from ${ifTruncated}the innerText of an HTML overlay element:\n\n${snippet}`,
                     content: text,
                 },
             ],
+            // eslint-disable-next-line camelcase
             response_format: zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
         });
 
@@ -96,7 +77,6 @@ async function classifyCookieConsentNotice(text, popup = true) {
 }
 
 class CookiePopupCollector extends BaseCollector {
-
     id() {
         return 'cookiepopups';
     }
@@ -117,21 +97,30 @@ class CookiePopupCollector extends BaseCollector {
      * @param {import('./BaseCollector').TargetInfo} targetInfo
      */
     async addTarget(targetInfo) {
-        if (targetInfo.type === 'page') {
-            this._cdpClient = targetInfo.session;
-            await this._cdpClient.send('Page.enable');
-            await this._cdpClient.send('Runtime.enable');
-            this._cdpClient.on('Runtime.executionContextCreated', async ({context}) => {
+        if (targetInfo.type === 'page' || targetInfo.type === 'iframe') {
+            // Store CDP client for the main page if not already set
+            if (targetInfo.type === 'page') {
+                this._cdpClient = targetInfo.session;
+            }
+
+            const session = targetInfo.session;
+            await session.send('Page.enable');
+            await session.send('Runtime.enable');
+
+            session.on('Runtime.executionContextCreated', async ({context}) => {
                 // ignore context created by puppeteer / our crawler
                 if (!context.origin || context.origin === '://' || context.auxData.type !== 'default') {
                     return;
                 }
                 try {
-                    const {executionContextId} = await this._cdpClient.send('Page.createIsolatedWorld', {
+                    const {executionContextId} = await session.send('Page.createIsolatedWorld', {
                         frameId: context.auxData.frameId,
                         worldName: 'crawlercookiepopupcollector',
                     });
-                    this.frameId2executionContextId.set(context.auxData.frameId, executionContextId);
+                    this.frameId2executionContextId.set(
+                        context.auxData.frameId,
+                        {executionContextId, session}
+                    );
                 } catch (e) {
                     if (!isIgnoredEvalError(e)) {
                         this.log(`Error creating isolated world: ${e}`);
@@ -143,7 +132,7 @@ class CookiePopupCollector extends BaseCollector {
 
     async postLoad() {
         await new Promise(resolve => {
-            setTimeout(resolve, 2000);
+            setTimeout(resolve, 5000);
         });
     }
 
@@ -151,34 +140,23 @@ class CookiePopupCollector extends BaseCollector {
      * @returns {Promise<CookiePopupData[]>}
      */
     async getData() {
-        await Promise.all(Array.from(this.frameId2executionContextId.values()).map(async executionContextId => {
+        await Promise.all(Array.from(this.frameId2executionContextId.values()).map(async contextInfo => {
             try {
-                // eslint-disable-next-line no-await-in-loop
-                const evalResult = await this._cdpClient.send('Runtime.evaluate', {
+                const {executionContextId, session} = contextInfo;
+                const targetSession = session || this._cdpClient;
+                const evalResult = await targetSession.send('Runtime.evaluate', {
                     expression: scrapeScript,
                     contextId: executionContextId,
                     returnByValue: true,
                     allowUnsafeEvalBlockedByCSP: true,
                 });
-                const result = evalResult.result.value;
-                const popups = [];
-                for (const potentialPopup of result.potentialPopups) {
-                    popups.push({
-                        ...potentialPopup,
-                        llmMatch: potentialPopup.text && potentialPopup.text.trim()
-                          ? await classifyCookieConsentNotice(potentialPopup.text, true)
-                          : false,
-                    })
+                const domText = evalResult.result.value;
+                if (domText) {
+                    this._data.push({
+                        domText,
+                        llmMatch: await classifyCookieConsentNotice(domText),
+                    });
                 }
-                this._data.push({
-                    documentText: result.documentText,
-                    documentRegexMatch: result.documentRegexMatch,
-                    documentLlmMatch: await classifyCookieConsentNotice(result.documentText, false),
-                    onScreenText: result.onScreenText,
-                    onScreenRegexMatch: result.onScreenRegexMatch,
-                    onScreenLlmMatch: await classifyCookieConsentNotice(result.onScreenText, false),
-                    popups,
-                });
             } catch (e) {
                 if (!isIgnoredEvalError(e)) {
                     this.log(`Error evaluating content script: ${e}`);
@@ -193,20 +171,6 @@ module.exports = CookiePopupCollector;
 
 /**
  * @typedef CookiePopupData
- * @property {string} documentText
- * @property {boolean} documentRegexMatch
- * @property {boolean} documentLlmMatch
- * @property {string} onScreenText
- * @property {boolean} onScreenRegexMatch
- * @property {boolean} onScreenLlmMatch
- * @property {CookiePopupPopupData[]} popups
- */
-
-/**
- * @typedef CookiePopupPopupData
- * @property {string} html
- * @property {string} text
- * @property {string[]} buttons
- * @property {boolean} regexMatch
+ * @property {string} domText
  * @property {boolean} llmMatch
  */
