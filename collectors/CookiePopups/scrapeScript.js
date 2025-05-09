@@ -155,6 +155,7 @@ function collectPotentialPopups() {
             rejectButtons,
             otherButtons,
             regexMatch,
+            isTop: window.top === window,
         });
     }
 
@@ -204,6 +205,7 @@ function serializeResults() {
                 };
             }),
             regexMatch: r.regexMatch,
+            isTop: r.isTop,
         }))
     };
 }

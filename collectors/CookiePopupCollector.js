@@ -195,6 +195,7 @@ module.exports = CookiePopupCollector;
  * @property {ButtonData[]} rejectButtons
  * @property {ButtonData[]} otherButtons
  * @property {boolean} regexMatch
+ * @property {boolean} isTop
  */
 
 /**
