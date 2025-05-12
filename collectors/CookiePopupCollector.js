@@ -109,6 +109,9 @@ class CookiePopupCollector extends BaseCollector {
          * @type {CookiePopupData[]}
          */
         this._data = [];
+        /**
+         * @type {Map<string, {executionContextId: number, session: import('puppeteer-core').CDPSession}>}
+         */
         this.frameId2executionContextId = new Map();
         this.log = options.log;
     }
@@ -155,15 +158,18 @@ class CookiePopupCollector extends BaseCollector {
      * @returns {Promise<CookiePopupData[]>}
      */
     async getData() {
-        await Promise.all(Array.from(this.frameId2executionContextId.values()).map(async contextInfo => {
+        await Promise.all(Array.from(this.frameId2executionContextId.values()).map(async ({executionContextId, session}) => {
             try {
-                const {executionContextId, session} = contextInfo;
                 const evalResult = await session.send('Runtime.evaluate', {
                     expression: scrapeScript,
                     contextId: executionContextId,
                     returnByValue: true,
                     allowUnsafeEvalBlockedByCSP: true,
                 });
+                if (evalResult.exceptionDetails) {
+                    this.log(`Error evaluating content script: ${evalResult.exceptionDetails.text}`);
+                    return;
+                }
                 /** @type {ContentScriptResult} */
                 const result = evalResult.result.value;
                 for (const potentialPopup of result.potentialPopups) {
