@@ -117,21 +117,25 @@ class CookiePopupCollector extends BaseCollector {
      * @param {import('./BaseCollector').TargetInfo} targetInfo
      */
     async addTarget(targetInfo) {
-        if (targetInfo.type === 'page') {
-            this._cdpClient = targetInfo.session;
-            await this._cdpClient.send('Page.enable');
-            await this._cdpClient.send('Runtime.enable');
-            this._cdpClient.on('Runtime.executionContextCreated', async ({context}) => {
+        if (targetInfo.type === 'page' || targetInfo.type === 'iframe') {
+            const session = targetInfo.session;
+            await session.send('Page.enable');
+            await session.send('Runtime.enable');
+
+            session.on('Runtime.executionContextCreated', async ({context}) => {
                 // ignore context created by puppeteer / our crawler
                 if (!context.origin || context.origin === '://' || context.auxData.type !== 'default') {
                     return;
                 }
                 try {
-                    const {executionContextId} = await this._cdpClient.send('Page.createIsolatedWorld', {
+                    const {executionContextId} = await session.send('Page.createIsolatedWorld', {
                         frameId: context.auxData.frameId,
                         worldName: 'crawlercookiepopupcollector',
                     });
-                    this.frameId2executionContextId.set(context.auxData.frameId, executionContextId);
+                    this.frameId2executionContextId.set(
+                        context.auxData.frameId,
+                        {executionContextId, session}
+                    );
                 } catch (e) {
                     if (!isIgnoredEvalError(e)) {
                         this.log(`Error creating isolated world: ${e}`);
@@ -151,10 +155,10 @@ class CookiePopupCollector extends BaseCollector {
      * @returns {Promise<CookiePopupData[]>}
      */
     async getData() {
-        await Promise.all(Array.from(this.frameId2executionContextId.values()).map(async executionContextId => {
+        await Promise.all(Array.from(this.frameId2executionContextId.values()).map(async contextInfo => {
             try {
-                // eslint-disable-next-line no-await-in-loop
-                const evalResult = await this._cdpClient.send('Runtime.evaluate', {
+                const {executionContextId, session} = contextInfo;
+                const evalResult = await session.send('Runtime.evaluate', {
                     expression: scrapeScript,
                     contextId: executionContextId,
                     returnByValue: true,
