@@ -193,6 +193,7 @@ function collectPotentialPopups(isFramed) {
             otherButtons,
             regexMatch,
             isTop: !isFramed,
+            origin: window.location.origin,
         });
     }
 
@@ -220,7 +221,10 @@ function getSelector(el) {
         const siblings = Array.from(parent.children);
         const tagName = element.nodeName.toLowerCase();
         let localSelector = tagName;
-        if (siblings.length > 1 && parent !== document.body && parent !== document.documentElement) { // element order under <body> is often unstable
+        if (parent === document.body) {
+            // element order under <body> is often unstable. Identify by attributes
+            localSelector += `[${element.getAttributeNames().join('][')}]`;
+        } else if (siblings.length > 1 && parent !== document.documentElement) {
             localSelector += `:nth-child(${siblings.indexOf(element) + 1})`
         }
         result = localSelector + (result ? ' > ' + result : '');
@@ -262,6 +266,7 @@ function serializeResults() {
             }),
             regexMatch: r.regexMatch,
             isTop: r.isTop,
+            origin: r.origin,
         })),
     };
 }

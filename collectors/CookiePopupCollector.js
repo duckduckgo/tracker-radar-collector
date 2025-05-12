@@ -205,6 +205,7 @@ module.exports = CookiePopupCollector;
  * @property {ButtonData[]} otherButtons
  * @property {boolean} regexMatch
  * @property {boolean} isTop
+ * @property {string} origin
  */
 
 /**
@@ -220,4 +221,6 @@ module.exports = CookiePopupCollector;
  * @property {ButtonData[]} otherButtons
  * @property {boolean} regexMatch
  * @property {boolean} llmMatch
+ * @property {boolean} isTop
+ * @property {string} origin
  */
