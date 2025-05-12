@@ -163,6 +163,11 @@ function collectPotentialPopups() {
     return results;
 }
 
+/**
+ * Get the selector for an element
+ * @param {Element} el - The element to get the selector for
+ * @returns {string} The selector for the element
+ */
 function getSelector(el) {
     let element = el;
     let parent;
@@ -174,10 +179,13 @@ function getSelector(el) {
 
     parent = element.parentNode;
 
-    while (parent instanceof Element && parent !== document.documentElement) {
+    while (parent instanceof Element) {
         const siblings = Array.from(parent.children);
         const tagName = element.nodeName.toLowerCase();
-        const localSelector = siblings.length > 1 ? `${tagName}:nth-child(${siblings.indexOf(element) + 1})` : tagName;
+        let localSelector = tagName;
+        if (siblings.length > 1 && parent !== document.body && parent !== document.documentElement) { // element order under <body> is often unstable
+            localSelector += `:nth-child(${siblings.indexOf(element) + 1})`
+        }
         result = localSelector + (result ? ' > ' + result : '');
         element = parent;
         parent = element.parentNode;
