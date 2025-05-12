@@ -194,7 +194,6 @@ module.exports = CookiePopupCollector;
 
 /**
  * @typedef PopupData
- * @property {string} html
  * @property {string} text
  * @property {ButtonData[]} rejectButtons
  * @property {ButtonData[]} otherButtons
@@ -210,7 +209,6 @@ module.exports = CookiePopupCollector;
 
 /**
  * @typedef CookiePopupData
- * @property {string} html
  * @property {string} text
  * @property {ButtonData[]} rejectButtons
  * @property {ButtonData[]} otherButtons

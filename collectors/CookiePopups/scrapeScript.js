@@ -32,6 +32,10 @@ const REJECT_PATTERNS = [
     */
 ];
 
+/**
+ * @param {string} allText
+ * @returns {boolean}
+ */
 function checkHeuristicPatterns(allText) {
     const DETECT_PATTERNS = [
         /accept cookies/gi,
@@ -67,11 +71,19 @@ function checkHeuristicPatterns(allText) {
     return false;
 }
 
+/**
+ * @param {string} buttonText
+ * @returns {boolean}
+ */
 function isRejectButton(buttonText) {
     return REJECT_PATTERNS.some(p => p.test(buttonText));
 }
 
-const isVisible = (node) => {
+/**
+ * @param {HTMLElement} node
+ * @returns {boolean}
+ */
+function isVisible(node) {
     if (!node.isConnected) {
         return false;
     }
@@ -88,20 +100,29 @@ const isVisible = (node) => {
         rect.bottom > 0 &&
         rect.right > 0
     );
-};
+}
 
-const collectMatchingElements = (criteria) => {
+/**
+ * @param {(el: HTMLElement) => boolean} filterFn
+ * @returns {HTMLElement[]}
+ */
+function matchElements(filterFn) {
     const elements = [];
     const walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_ELEMENT, {
-        acceptNode: (n) => (n instanceof HTMLElement && criteria(n) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP),
+        acceptNode: (n) => (n instanceof HTMLElement && filterFn(n) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP),
     });
     while (walker.nextNode()) {
-        elements.push(walker.currentNode);
+        elements.push(/** @type {HTMLElement} */ (walker.currentNode));
     }
     return elements;
-};
+}
 
-const nonParentElements = (elements) => {
+/**
+ * Leave only elements that do not contain any other elements
+ * @param {HTMLElement[]} elements
+ * @returns {HTMLElement[]}
+ */
+function nonParentElements(elements) {
     const results = [];
     if (elements.length > 0) {
         for (let i = elements.length - 1; i >= 0; i--) {
@@ -118,22 +139,38 @@ const nonParentElements = (elements) => {
         }
     }
     return results;
-};
+}
 
+/**
+ * @param {HTMLElement} el
+ * @returns {HTMLElement[]}
+ */
 function getButtons(el) {
     return Array.from(el.querySelectorAll('button, input[type="button"], input[type="submit"], a[href], [role="button"], [class*="button"]'));
 }
 
-function collectPotentialPopups() {
-    // Collect fixed/sticky positioned elements that are visible
-    let elements = collectMatchingElements((el) => {
-        if (el.tagName === 'BODY') return false;
-        const computedStyle = window.getComputedStyle(el).position;
-        return (computedStyle === 'fixed' || computedStyle === 'sticky') && isVisible(el);
-    });
+/**
+ * @param {boolean} isFramed
+ */
+function collectPotentialPopups(isFramed) {
+    let elements = [];
+    if (!isFramed) {
+        // Collect fixed/sticky positioned elements that are visible
+        elements = matchElements((el) => {
+            if (el.tagName === 'BODY') return false;
+            const computedStyle = window.getComputedStyle(el).position;
+            return (computedStyle === 'fixed' || computedStyle === 'sticky') && isVisible(el);
+        });
 
-    // Get non-parent elements
-    elements = nonParentElements(elements);
+        // Get non-parent elements
+        elements = nonParentElements(elements);
+    } else {
+        // for iframes, just take the whole document
+        const doc = document.body || document.documentElement;
+        if (doc && isVisible(doc) && doc.innerText) {
+            elements.push(doc);
+        }
+    }
 
     const results = [];
 
@@ -155,7 +192,7 @@ function collectPotentialPopups() {
             rejectButtons,
             otherButtons,
             regexMatch,
-            isTop: window.top === window,
+            isTop: !isFramed,
         });
     }
 
@@ -165,7 +202,7 @@ function collectPotentialPopups() {
 
 /**
  * Get the selector for an element
- * @param {Element} el - The element to get the selector for
+ * @param {HTMLElement} el - The element to get the selector for
  * @returns {string} The selector for the element
  */
 function getSelector(el) {
@@ -179,7 +216,7 @@ function getSelector(el) {
 
     parent = element.parentNode;
 
-    while (parent instanceof Element) {
+    while (parent instanceof HTMLElement) {
         const siblings = Array.from(parent.children);
         const tagName = element.nodeName.toLowerCase();
         let localSelector = tagName;
@@ -194,11 +231,22 @@ function getSelector(el) {
     return result;
 }
 
+/**
+ * @returns {import('../CookiePopupCollector').ContentScriptResult}
+ */
 function serializeResults() {
-    const potentialPopups = collectPotentialPopups();
+    let isFramed = window.top !== window || location.ancestorOrigins?.length > 0;
+    // do not inspect frames that are more than one level deep
+    if (isFramed && window.parent && window.parent !== window.top) {
+        return {
+            potentialPopups: [],
+        };
+    }
+
+    const potentialPopups = collectPotentialPopups(isFramed);
     return {
         potentialPopups: potentialPopups.map((r) => ({
-            html: r.el.outerHTML,
+            // html: r.el.outerHTML,
             text: r.el.innerText || '',
             rejectButtons: r.rejectButtons.map(b => {
                 return {
@@ -214,7 +262,7 @@ function serializeResults() {
             }),
             regexMatch: r.regexMatch,
             isTop: r.isTop,
-        }))
+        })),
     };
 }
 
