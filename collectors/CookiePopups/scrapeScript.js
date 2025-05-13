@@ -187,14 +187,16 @@ function collectPotentialPopups(isFramed) {
                 otherButtons.push(b);
             }
         }
-        results.push({
-            el,
-            rejectButtons,
-            otherButtons,
-            regexMatch,
-            isTop: !isFramed,
-            origin: window.location.origin,
-        });
+        if (el.innerText) {
+            results.push({
+                el,
+                rejectButtons,
+                otherButtons,
+                regexMatch,
+                isTop: !isFramed,
+                origin: window.location.origin,
+            });
+        }
     }
 
     // Return the elements
@@ -251,7 +253,7 @@ function serializeResults() {
     return {
         potentialPopups: potentialPopups.map((r) => ({
             // html: r.el.outerHTML,
-            text: r.el.innerText || '',
+            text: r.el.innerText,
             rejectButtons: r.rejectButtons.map(b => {
                 return {
                     text: b.innerText,
