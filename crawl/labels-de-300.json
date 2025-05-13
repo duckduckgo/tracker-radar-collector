@@ -1,0 +1,2982 @@
+[
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/alleantworten.de_1499.jpg",
+    "id": 28884,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3589,
+    "created_at": "2025-05-13T02:43:39.896935Z",
+    "updated_at": "2025-05-13T02:43:39.896968Z",
+    "lead_time": 4.196
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/amaturetube.com_bf5d.jpg",
+    "id": 28885,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3590,
+    "created_at": "2025-05-13T02:43:41.908596Z",
+    "updated_at": "2025-05-13T02:43:41.908628Z",
+    "lead_time": 1.285
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/amazon.de_4c09.jpg",
+    "id": 28886,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3591,
+    "created_at": "2025-05-13T02:43:47.572303Z",
+    "updated_at": "2025-05-13T02:43:47.572337Z",
+    "lead_time": 1.389
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/answers.microsoft.com_decc.jpg",
+    "id": 28887,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3592,
+    "created_at": "2025-05-13T02:43:49.995012Z",
+    "updated_at": "2025-05-13T02:43:49.995044Z",
+    "lead_time": 1.712
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/archive.org_989f.jpg",
+    "id": 28888,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3593,
+    "created_at": "2025-05-13T02:43:52.154202Z",
+    "updated_at": "2025-05-13T02:43:52.154235Z",
+    "lead_time": 1.424
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/askubuntu.com_af3b.jpg",
+    "id": 28889,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3594,
+    "created_at": "2025-05-13T02:43:53.759403Z",
+    "updated_at": "2025-05-13T02:43:53.759436Z",
+    "lead_time": 0.888
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/chatgpt.com_3e84.jpg",
+    "id": 28890,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3595,
+    "created_at": "2025-05-13T02:43:57.067463Z",
+    "updated_at": "2025-05-13T02:43:57.067496Z",
+    "lead_time": 2.495
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/chatopenai.de_5d9c.jpg",
+    "id": 28891,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3596,
+    "created_at": "2025-05-13T02:43:59.284577Z",
+    "updated_at": "2025-05-13T02:43:59.284609Z",
+    "lead_time": 1.446
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/communities.apple.com_caae.jpg",
+    "id": 28892,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3597,
+    "created_at": "2025-05-13T02:44:02.372140Z",
+    "updated_at": "2025-05-13T02:44:02.372173Z",
+    "lead_time": 2.358
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/community.home-assistant.io_ebbd.jpg",
+    "id": 28893,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3598,
+    "created_at": "2025-05-13T02:44:06.694734Z",
+    "updated_at": "2025-05-13T02:44:06.694770Z",
+    "lead_time": 3.593
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/dasfinanzen.de_4959.jpg",
+    "id": 28894,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3599,
+    "created_at": "2025-05-13T02:44:08.801864Z",
+    "updated_at": "2025-05-13T02:44:08.801897Z",
+    "lead_time": 1.386
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de-de.facebook.com_95a4.jpg",
+    "id": 28895,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3600,
+    "created_at": "2025-05-13T02:44:10.696263Z",
+    "updated_at": "2025-05-13T02:44:10.696297Z",
+    "lead_time": 1.154
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.indeed.com_648d.jpg",
+    "id": 28896,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3601,
+    "created_at": "2025-05-13T02:44:12.476062Z",
+    "updated_at": "2025-05-13T02:44:12.476108Z",
+    "lead_time": 1.038
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.linux-console.net_ceed.jpg",
+    "id": 28897,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3602,
+    "created_at": "2025-05-13T02:44:14.267452Z",
+    "updated_at": "2025-05-13T02:44:14.267485Z",
+    "lead_time": 1.054
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.pinterest.com_c10b.jpg",
+    "id": 28898,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3603,
+    "created_at": "2025-05-13T02:44:16.226256Z",
+    "updated_at": "2025-05-13T02:44:16.226288Z",
+    "lead_time": 1.235
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.pons.com_7d70.jpg",
+    "id": 28899,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3604,
+    "created_at": "2025-05-13T02:44:26.074873Z",
+    "updated_at": "2025-05-13T02:44:26.074906Z",
+    "lead_time": 9.118
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.pornhub.org_9a38.jpg",
+    "id": 28900,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3605,
+    "created_at": "2025-05-13T02:44:28.439453Z",
+    "updated_at": "2025-05-13T02:44:28.439485Z",
+    "lead_time": 1.648
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.restaurantguru.com_b9b7.jpg",
+    "id": 28901,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3606,
+    "created_at": "2025-05-13T02:44:30.682709Z",
+    "updated_at": "2025-05-13T02:44:30.682741Z",
+    "lead_time": 1.529
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.statista.com_70fd.jpg",
+    "id": 28902,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3607,
+    "created_at": "2025-05-13T02:44:32.355835Z",
+    "updated_at": "2025-05-13T02:44:32.355870Z",
+    "lead_time": 0.965
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.trustpilot.com_087d.jpg",
+    "id": 28903,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3608,
+    "created_at": "2025-05-13T02:44:34.049594Z",
+    "updated_at": "2025-05-13T02:44:34.049627Z",
+    "lead_time": 0.976
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.wikihow.com_a3e2.jpg",
+    "id": 28904,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3609,
+    "created_at": "2025-05-13T02:45:13.345504Z",
+    "updated_at": "2025-05-13T02:45:13.345537Z",
+    "lead_time": 38.07
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.wikipedia.org_3299.jpg",
+    "id": 28905,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3610,
+    "created_at": "2025-05-13T02:45:16.821665Z",
+    "updated_at": "2025-05-13T02:45:16.821699Z",
+    "lead_time": 2.74
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.windows-office.net_7404.jpg",
+    "id": 28906,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3611,
+    "created_at": "2025-05-13T02:45:28.372146Z",
+    "updated_at": "2025-05-13T02:45:28.372178Z",
+    "lead_time": 10.817
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.xgroovy.com_11da.jpg",
+    "id": 28907,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3612,
+    "created_at": "2025-05-13T02:45:30.195932Z",
+    "updated_at": "2025-05-13T02:45:30.195963Z",
+    "lead_time": 1.104
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/de.youtube.com_1487.jpg",
+    "id": 28908,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3613,
+    "created_at": "2025-05-13T02:45:31.905571Z",
+    "updated_at": "2025-05-13T02:45:31.905603Z",
+    "lead_time": 0.977
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/dejure.org_8c3d.jpg",
+    "id": 28909,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3614,
+    "created_at": "2025-05-13T02:45:33.449567Z",
+    "updated_at": "2025-05-13T02:45:33.449601Z",
+    "lead_time": 0.806
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/developer.mozilla.org_13b4.jpg",
+    "id": 28910,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3615,
+    "created_at": "2025-05-13T02:45:38.901524Z",
+    "updated_at": "2025-05-13T02:45:38.901557Z",
+    "lead_time": 4.7
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/dict.leo.org_9c13.jpg",
+    "id": 28911,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3616,
+    "created_at": "2025-05-13T02:45:46.358079Z",
+    "updated_at": "2025-05-13T02:45:46.358113Z",
+    "lead_time": 6.603
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/discussions.apple.com_380b.jpg",
+    "id": 28912,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3617,
+    "created_at": "2025-05-13T02:45:49.199692Z",
+    "updated_at": "2025-05-13T02:45:49.199727Z",
+    "lead_time": 2.104
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/duckduckgo.com_22d0.jpg",
+    "id": 28913,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3618,
+    "created_at": "2025-05-13T02:45:52.132872Z",
+    "updated_at": "2025-05-13T02:45:52.132907Z",
+    "lead_time": 2.203
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/en.cppreference.com_20d7.jpg",
+    "id": 28914,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3619,
+    "created_at": "2025-05-13T02:45:56.979475Z",
+    "updated_at": "2025-05-13T02:45:56.979507Z",
+    "lead_time": 4.12
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/en.wikipedia.org_1072.jpg",
+    "id": 28915,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3620,
+    "created_at": "2025-05-13T02:45:59.909407Z",
+    "updated_at": "2025-05-13T02:45:59.909442Z",
+    "lead_time": 2.206
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/epornz.com_e9f0.jpg",
+    "id": 28916,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3621,
+    "created_at": "2025-05-13T02:46:04.692257Z",
+    "updated_at": "2025-05-13T02:46:04.692290Z",
+    "lead_time": 4.042
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/finde-offen.de_38d0.jpg",
+    "id": 28917,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3622,
+    "created_at": "2025-05-13T02:46:07.068326Z",
+    "updated_at": "2025-05-13T02:46:07.068359Z",
+    "lead_time": 1.666
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/firmeneintrag.creditreform.de_cfea.jpg",
+    "id": 28918,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3623,
+    "created_at": "2025-05-13T02:46:10.516173Z",
+    "updated_at": "2025-05-13T02:46:10.516205Z",
+    "lead_time": 2.713
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/flexikon.doccheck.com_dc60.jpg",
+    "id": 28919,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3624,
+    "created_at": "2025-05-13T02:46:13.358616Z",
+    "updated_at": "2025-05-13T02:46:13.358648Z",
+    "lead_time": 2.104
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/fritz.com_8ab1.jpg",
+    "id": 28920,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3625,
+    "created_at": "2025-05-13T02:46:16.477860Z",
+    "updated_at": "2025-05-13T02:46:16.477898Z",
+    "lead_time": 2.368
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/fuqqt.com_5f9b.jpg",
+    "id": 28921,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3626,
+    "created_at": "2025-05-13T02:46:19.130157Z",
+    "updated_at": "2025-05-13T02:46:19.130190Z",
+    "lead_time": 1.92
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/game8.co_f021.jpg",
+    "id": 28922,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3627,
+    "created_at": "2025-05-13T02:46:22.681947Z",
+    "updated_at": "2025-05-13T02:46:22.681981Z",
+    "lead_time": 2.836
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/ge.xhamster.desi_d7ec.jpg",
+    "id": 28923,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3628,
+    "created_at": "2025-05-13T02:46:25.455256Z",
+    "updated_at": "2025-05-13T02:46:25.455288Z",
+    "lead_time": 2.04
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/genius.com_62dd.jpg",
+    "id": 28924,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3629,
+    "created_at": "2025-05-13T02:46:27.768392Z",
+    "updated_at": "2025-05-13T02:46:27.768426Z",
+    "lead_time": 1.569
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/german.tags.literotica.com_f1c0.jpg",
+    "id": 28925,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3630,
+    "created_at": "2025-05-13T02:46:40.473663Z",
+    "updated_at": "2025-05-13T02:46:40.473694Z",
+    "lead_time": 11.967
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/github.com_8674.jpg",
+    "id": 28926,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3631,
+    "created_at": "2025-05-13T02:46:43.839158Z",
+    "updated_at": "2025-05-13T02:46:43.839190Z",
+    "lead_time": 2.608
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/hqpornsearch.com_8278.jpg",
+    "id": 28927,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3632,
+    "created_at": "2025-05-13T02:46:46.684750Z",
+    "updated_at": "2025-05-13T02:46:46.684781Z",
+    "lead_time": 2.107
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/idealo.de_f5ed.jpg",
+    "id": 28928,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3633,
+    "created_at": "2025-05-13T02:46:49.980071Z",
+    "updated_at": "2025-05-13T02:46:49.980104Z",
+    "lead_time": 2.541
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/learn.microsoft.com_d825.jpg",
+    "id": 28929,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3634,
+    "created_at": "2025-05-13T02:46:53.201400Z",
+    "updated_at": "2025-05-13T02:46:53.201435Z",
+    "lead_time": 2.48
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/link.springer.com_5f7e.jpg",
+    "id": 28930,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3635,
+    "created_at": "2025-05-13T02:46:55.734323Z",
+    "updated_at": "2025-05-13T02:46:55.734357Z",
+    "lead_time": 1.754
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/mail.google.com_5823.jpg",
+    "id": 28931,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3636,
+    "created_at": "2025-05-13T02:46:58.126346Z",
+    "updated_at": "2025-05-13T02:46:58.126378Z",
+    "lead_time": 1.656
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/maps.google.com_9199.jpg",
+    "id": 28932,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3637,
+    "created_at": "2025-05-13T02:47:00.579311Z",
+    "updated_at": "2025-05-13T02:47:00.579344Z",
+    "lead_time": 1.677
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/maps.google.de_a18f.jpg",
+    "id": 28933,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3638,
+    "created_at": "2025-05-13T02:47:03.046046Z",
+    "updated_at": "2025-05-13T02:47:03.046082Z",
+    "lead_time": 1.729
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/medium.com_2189.jpg",
+    "id": 28934,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3639,
+    "created_at": "2025-05-13T02:47:05.684758Z",
+    "updated_at": "2025-05-13T02:47:05.684790Z",
+    "lead_time": 1.918
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/my.mail.ru_cdcb.jpg",
+    "id": 28935,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3640,
+    "created_at": "2025-05-13T02:47:10.662924Z",
+    "updated_at": "2025-05-13T02:47:10.662957Z",
+    "lead_time": 4.24
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/newpornsearch.com_8217.jpg",
+    "id": 28936,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3641,
+    "created_at": "2025-05-13T02:47:15.911021Z",
+    "updated_at": "2025-05-13T02:47:15.911054Z",
+    "lead_time": 4.495
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/onlinestreet.de_c366.jpg",
+    "id": 28937,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3642,
+    "created_at": "2025-05-13T02:47:18.451922Z",
+    "updated_at": "2025-05-13T02:47:18.451956Z",
+    "lead_time": 1.821
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/openai.com_2d22.jpg",
+    "id": 28938,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3643,
+    "created_at": "2025-05-13T02:47:21.221087Z",
+    "updated_at": "2025-05-13T02:47:21.221119Z",
+    "lead_time": 2.031
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/picclick.de_fd88.jpg",
+    "id": 28939,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3644,
+    "created_at": "2025-05-13T02:47:25.711812Z",
+    "updated_at": "2025-05-13T02:47:25.711842Z",
+    "lead_time": 3.776
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/pixabay.com_84b3.jpg",
+    "id": 28940,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3645,
+    "created_at": "2025-05-13T02:47:28.709099Z",
+    "updated_at": "2025-05-13T02:47:28.709133Z",
+    "lead_time": 2.268
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/play.google.com_7c95.jpg",
+    "id": 28941,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3646,
+    "created_at": "2025-05-13T02:47:32.265822Z",
+    "updated_at": "2025-05-13T02:47:32.265855Z",
+    "lead_time": 2.845
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/poki.com_07be.jpg",
+    "id": 28942,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3647,
+    "created_at": "2025-05-13T02:47:35.487026Z",
+    "updated_at": "2025-05-13T02:47:35.487061Z",
+    "lead_time": 2.484
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/porn40.com_78a3.jpg",
+    "id": 28943,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3648,
+    "created_at": "2025-05-13T02:47:39.421802Z",
+    "updated_at": "2025-05-13T02:47:39.421838Z",
+    "lead_time": 3.194
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/pornhub-deutsch.net_87de.jpg",
+    "id": 28944,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3649,
+    "created_at": "2025-05-13T02:47:52.491394Z",
+    "updated_at": "2025-05-13T02:47:52.491426Z",
+    "lead_time": 12.335
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/pornxp.com_d81e.jpg",
+    "id": 28945,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3650,
+    "created_at": "2025-05-13T02:47:55.688245Z",
+    "updated_at": "2025-05-13T02:47:55.688276Z",
+    "lead_time": 2.476
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/pornzog.com_4696.jpg",
+    "id": 28946,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3651,
+    "created_at": "2025-05-13T02:47:58.709468Z",
+    "updated_at": "2025-05-13T02:47:58.709500Z",
+    "lead_time": 2.304
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/praxistipps.chip.de_1e5a.jpg",
+    "id": 28947,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3652,
+    "created_at": "2025-05-13T02:48:01.475866Z",
+    "updated_at": "2025-05-13T02:48:01.475899Z",
+    "lead_time": 2.032
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/praxistipps.focus.de_e45e.jpg",
+    "id": 28948,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3653,
+    "created_at": "2025-05-13T02:48:03.974702Z",
+    "updated_at": "2025-05-13T02:48:03.974736Z",
+    "lead_time": 1.754
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/pubmed.ncbi.nlm.nih.gov_94c3.jpg",
+    "id": 28949,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3654,
+    "created_at": "2025-05-13T02:48:09.029125Z",
+    "updated_at": "2025-05-13T02:48:09.029159Z",
+    "lead_time": 4.306
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/pypi.org_298d.jpg",
+    "id": 28950,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3655,
+    "created_at": "2025-05-13T02:48:11.676692Z",
+    "updated_at": "2025-05-13T02:48:11.676726Z",
+    "lead_time": 1.906
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/scholar.google.com_1ac8.jpg",
+    "id": 28951,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3656,
+    "created_at": "2025-05-13T02:48:14.034308Z",
+    "updated_at": "2025-05-13T02:48:14.034340Z",
+    "lead_time": 1.62
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/stackoverflow.com_92fe.jpg",
+    "id": 28952,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3657,
+    "created_at": "2025-05-13T02:48:16.882737Z",
+    "updated_at": "2025-05-13T02:48:16.882769Z",
+    "lead_time": 2.101
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/steamcommunity.com_f21d.jpg",
+    "id": 28953,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3658,
+    "created_at": "2025-05-13T02:48:19.690480Z",
+    "updated_at": "2025-05-13T02:48:19.690512Z",
+    "lead_time": 2.073
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/store.steampowered.com_8cbb.jpg",
+    "id": 28954,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3659,
+    "created_at": "2025-05-13T02:48:22.592884Z",
+    "updated_at": "2025-05-13T02:48:22.592917Z",
+    "lead_time": 2.147
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/studyflix.de_1741.jpg",
+    "id": 28955,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3660,
+    "created_at": "2025-05-13T02:48:25.043783Z",
+    "updated_at": "2025-05-13T02:48:25.043819Z",
+    "lead_time": 1.722
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/suchen.mobile.de_ddfc.jpg",
+    "id": 28956,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3661,
+    "created_at": "2025-05-13T02:48:27.332108Z",
+    "updated_at": "2025-05-13T02:48:27.332143Z",
+    "lead_time": 1.55
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/superuser.com_f7fe.jpg",
+    "id": 28957,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3662,
+    "created_at": "2025-05-13T02:48:30.418745Z",
+    "updated_at": "2025-05-13T02:48:30.418778Z",
+    "lead_time": 2.351
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/support.apple.com_9bf6.jpg",
+    "id": 28958,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3663,
+    "created_at": "2025-05-13T02:48:34.563164Z",
+    "updated_at": "2025-05-13T02:48:34.563196Z",
+    "lead_time": 3.421
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/support.google.com_7507.jpg",
+    "id": 28959,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3664,
+    "created_at": "2025-05-13T02:48:37.419635Z",
+    "updated_at": "2025-05-13T02:48:37.419668Z",
+    "lead_time": 2.123
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/synonyme.woxikon.de_bfc1.jpg",
+    "id": 28960,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3665,
+    "created_at": "2025-05-13T02:48:39.971563Z",
+    "updated_at": "2025-05-13T02:48:39.971596Z",
+    "lead_time": 1.818
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/t.me_6d45.jpg",
+    "id": 28961,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3666,
+    "created_at": "2025-05-13T02:48:42.800608Z",
+    "updated_at": "2025-05-13T02:48:42.800641Z",
+    "lead_time": 2.097
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/tabs.ultimate-guitar.com_a817.jpg",
+    "id": 28962,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3667,
+    "created_at": "2025-05-13T02:48:45.447182Z",
+    "updated_at": "2025-05-13T02:48:45.447213Z",
+    "lead_time": 1.894
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/taz.de_0512.jpg",
+    "id": 28963,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3668,
+    "created_at": "2025-05-13T02:48:47.933600Z",
+    "updated_at": "2025-05-13T02:48:47.933632Z",
+    "lead_time": 1.76
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/testsieger.live_200a.jpg",
+    "id": 28964,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3669,
+    "created_at": "2025-05-13T02:48:51.326491Z",
+    "updated_at": "2025-05-13T02:48:51.326524Z",
+    "lead_time": 2.643
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/tex.stackexchange.com_bf39.jpg",
+    "id": 28965,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3670,
+    "created_at": "2025-05-13T02:48:53.852301Z",
+    "updated_at": "2025-05-13T02:48:53.852335Z",
+    "lead_time": 1.803
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/tools.pdf24.org_04ef.jpg",
+    "id": 28966,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3671,
+    "created_at": "2025-05-13T02:48:56.336723Z",
+    "updated_at": "2025-05-13T02:48:56.336757Z",
+    "lead_time": 1.69
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/toom.de_4915.jpg",
+    "id": 28967,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3672,
+    "created_at": "2025-05-13T02:48:58.740337Z",
+    "updated_at": "2025-05-13T02:48:58.740372Z",
+    "lead_time": 1.655
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/translate.google.com_5454.jpg",
+    "id": 28968,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3673,
+    "created_at": "2025-05-13T02:49:01.041813Z",
+    "updated_at": "2025-05-13T02:49:01.041851Z",
+    "lead_time": 1.571
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/translate.google.de_5bc3.jpg",
+    "id": 28969,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3674,
+    "created_at": "2025-05-13T02:49:03.232249Z",
+    "updated_at": "2025-05-13T02:49:03.232280Z",
+    "lead_time": 1.462
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/tubepleasure.com_05e5.jpg",
+    "id": 28970,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3675,
+    "created_at": "2025-05-13T02:49:11.308671Z",
+    "updated_at": "2025-05-13T02:49:11.308704Z",
+    "lead_time": 7.179
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/tv.yandex.com_341e.jpg",
+    "id": 28971,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3676,
+    "created_at": "2025-05-13T02:49:14.024239Z",
+    "updated_at": "2025-05-13T02:49:14.024277Z",
+    "lead_time": 1.996
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/twitter.com_a786.jpg",
+    "id": 28972,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3677,
+    "created_at": "2025-05-13T02:49:17.258721Z",
+    "updated_at": "2025-05-13T02:49:17.258754Z",
+    "lead_time": 2.458
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/unix.stackexchange.com_3dcf.jpg",
+    "id": 28973,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3678,
+    "created_at": "2025-05-13T02:49:22.654271Z",
+    "updated_at": "2025-05-13T02:49:22.654304Z",
+    "lead_time": 4.678
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/vipergirls.to_f29c.jpg",
+    "id": 28974,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3679,
+    "created_at": "2025-05-13T02:49:26.095952Z",
+    "updated_at": "2025-05-13T02:49:26.095987Z",
+    "lead_time": 2.686
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/vk.com_1908.jpg",
+    "id": 28975,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3680,
+    "created_at": "2025-05-13T02:49:28.432188Z",
+    "updated_at": "2025-05-13T02:49:28.432220Z",
+    "lead_time": 1.598
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/web.de_84ea.jpg",
+    "id": 28976,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3681,
+    "created_at": "2025-05-13T02:49:32.049217Z",
+    "updated_at": "2025-05-13T02:49:32.049249Z",
+    "lead_time": 2.882
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/web.whatsapp.com_20ee.jpg",
+    "id": 28977,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3682,
+    "created_at": "2025-05-13T02:49:34.683481Z",
+    "updated_at": "2025-05-13T02:49:34.683511Z",
+    "lead_time": 1.917
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/web2.cylex.de_c859.jpg",
+    "id": 28978,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3683,
+    "created_at": "2025-05-13T02:49:36.992932Z",
+    "updated_at": "2025-05-13T02:49:36.992963Z",
+    "lead_time": 1.582
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/wiki.ubuntuusers.de_f5c3.jpg",
+    "id": 28979,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3684,
+    "created_at": "2025-05-13T02:49:41.900694Z",
+    "updated_at": "2025-05-13T02:49:41.900726Z",
+    "lead_time": 4.162
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.11880.com_79db.jpg",
+    "id": 28980,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3685,
+    "created_at": "2025-05-13T02:49:44.815828Z",
+    "updated_at": "2025-05-13T02:49:44.815860Z",
+    "lead_time": 2.167
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.adac.de_8907.jpg",
+    "id": 28981,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3686,
+    "created_at": "2025-05-13T02:49:47.436161Z",
+    "updated_at": "2025-05-13T02:49:47.436194Z",
+    "lead_time": 1.878
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.airbnb.de_74b6.jpg",
+    "id": 28982,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3687,
+    "created_at": "2025-05-13T02:49:50.484053Z",
+    "updated_at": "2025-05-13T02:49:50.484086Z",
+    "lead_time": 2.301
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.aldi-sued.de_0959.jpg",
+    "id": 28983,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3688,
+    "created_at": "2025-05-13T02:49:53.024795Z",
+    "updated_at": "2025-05-13T02:49:53.024829Z",
+    "lead_time": 1.773
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.amazon.com_4bc8.jpg",
+    "id": 28984,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3689,
+    "created_at": "2025-05-13T02:49:55.420072Z",
+    "updated_at": "2025-05-13T02:49:55.420105Z",
+    "lead_time": 1.674
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.amazon.de_53d2.jpg",
+    "id": 28985,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3690,
+    "created_at": "2025-05-13T02:49:57.690439Z",
+    "updated_at": "2025-05-13T02:49:57.690473Z",
+    "lead_time": 1.546
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.anwalt.de_0f28.jpg",
+    "id": 28986,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3691,
+    "created_at": "2025-05-13T02:50:00.176120Z",
+    "updated_at": "2025-05-13T02:50:00.176154Z",
+    "lead_time": 1.746
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.aok.de_6256.jpg",
+    "id": 28987,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3692,
+    "created_at": "2025-05-13T02:50:02.681306Z",
+    "updated_at": "2025-05-13T02:50:02.681338Z",
+    "lead_time": 1.779
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.apotheken-umschau.de_d70c.jpg",
+    "id": 28988,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3693,
+    "created_at": "2025-05-13T02:50:05.108115Z",
+    "updated_at": "2025-05-13T02:50:05.108147Z",
+    "lead_time": 1.685
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.apple.com_8c32.jpg",
+    "id": 28989,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3694,
+    "created_at": "2025-05-13T02:50:20.727554Z",
+    "updated_at": "2025-05-13T02:50:20.727587Z",
+    "lead_time": 14.886
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.arbeitsagentur.de_6276.jpg",
+    "id": 28990,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3695,
+    "created_at": "2025-05-13T02:50:23.399405Z",
+    "updated_at": "2025-05-13T02:50:23.399441Z",
+    "lead_time": 1.843
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.ardmediathek.de_d6e0.jpg",
+    "id": 28991,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3696,
+    "created_at": "2025-05-13T02:50:27.515352Z",
+    "updated_at": "2025-05-13T02:50:27.515384Z",
+    "lead_time": 3.38
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.arte.tv_c8a4.jpg",
+    "id": 28992,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3697,
+    "created_at": "2025-05-13T02:50:31.155797Z",
+    "updated_at": "2025-05-13T02:50:31.155830Z",
+    "lead_time": 2.902
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.arzt-auskunft.de_db48.jpg",
+    "id": 28993,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3698,
+    "created_at": "2025-05-13T02:50:33.708709Z",
+    "updated_at": "2025-05-13T02:50:33.708741Z",
+    "lead_time": 1.832
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.autoscout24.de_62f4.jpg",
+    "id": 28994,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3699,
+    "created_at": "2025-05-13T02:50:36.647348Z",
+    "updated_at": "2025-05-13T02:50:36.647381Z",
+    "lead_time": 2.197
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.aznude.com_6ea7.jpg",
+    "id": 28995,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3700,
+    "created_at": "2025-05-13T02:50:40.884697Z",
+    "updated_at": "2025-05-13T02:50:40.884732Z",
+    "lead_time": 3.513
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.baeldung.com_dd4f.jpg",
+    "id": 28996,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3701,
+    "created_at": "2025-05-13T02:50:43.548692Z",
+    "updated_at": "2025-05-13T02:50:43.548726Z",
+    "lead_time": 1.918
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.bahn.de_4bbd.jpg",
+    "id": 28997,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3702,
+    "created_at": "2025-05-13T02:50:53.077769Z",
+    "updated_at": "2025-05-13T02:50:53.077803Z",
+    "lead_time": 8.711
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.bauhaus.info_3b18.jpg",
+    "id": 28998,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3703,
+    "created_at": "2025-05-13T02:50:58.177926Z",
+    "updated_at": "2025-05-13T02:50:58.177957Z",
+    "lead_time": 4.367
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.bedienungsanleitu.ng_b529.jpg",
+    "id": 28999,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3704,
+    "created_at": "2025-05-13T02:51:01.472060Z",
+    "updated_at": "2025-05-13T02:51:01.472093Z",
+    "lead_time": 2.536
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.berlin.de_900e.jpg",
+    "id": 29000,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3705,
+    "created_at": "2025-05-13T02:51:06.408145Z",
+    "updated_at": "2025-05-13T02:51:06.408176Z",
+    "lead_time": 4.208
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.berliner-zeitung.de_40b2.jpg",
+    "id": 29001,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3706,
+    "created_at": "2025-05-13T02:51:09.336098Z",
+    "updated_at": "2025-05-13T02:51:09.336132Z",
+    "lead_time": 2.207
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.bike-discount.de_203f.jpg",
+    "id": 29002,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3707,
+    "created_at": "2025-05-13T02:51:11.913171Z",
+    "updated_at": "2025-05-13T02:51:11.913212Z",
+    "lead_time": 1.861
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.bike24.de_a06b.jpg",
+    "id": 29003,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3708,
+    "created_at": "2025-05-13T02:51:14.428839Z",
+    "updated_at": "2025-05-13T02:51:14.428876Z",
+    "lead_time": 1.766
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.bild.de_bddf.jpg",
+    "id": 29004,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3709,
+    "created_at": "2025-05-13T02:51:17.358631Z",
+    "updated_at": "2025-05-13T02:51:17.358665Z",
+    "lead_time": 2.183
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.booking.com_dd33.jpg",
+    "id": 29005,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3710,
+    "created_at": "2025-05-13T02:51:20.732676Z",
+    "updated_at": "2025-05-13T02:51:20.732711Z",
+    "lead_time": 2.653
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.bpb.de_f2ef.jpg",
+    "id": 29006,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3711,
+    "created_at": "2025-05-13T02:51:25.895159Z",
+    "updated_at": "2025-05-13T02:51:25.895190Z",
+    "lead_time": 4.432
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.br.de_ef46.jpg",
+    "id": 29007,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3712,
+    "created_at": "2025-05-13T02:51:28.880872Z",
+    "updated_at": "2025-05-13T02:51:28.880904Z",
+    "lead_time": 2.261
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.bundesliga.com_8db1.jpg",
+    "id": 29008,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3713,
+    "created_at": "2025-05-13T02:51:31.301585Z",
+    "updated_at": "2025-05-13T02:51:31.301618Z",
+    "lead_time": 1.697
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.bundestag.de_2053.jpg",
+    "id": 29009,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3714,
+    "created_at": "2025-05-13T02:51:34.581601Z",
+    "updated_at": "2025-05-13T02:51:34.581633Z",
+    "lead_time": 2.549
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.canva.com_d78a.jpg",
+    "id": 29010,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3715,
+    "created_at": "2025-05-13T02:51:37.140694Z",
+    "updated_at": "2025-05-13T02:51:37.140726Z",
+    "lead_time": 1.816
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.check24.de_3d5f.jpg",
+    "id": 29011,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3716,
+    "created_at": "2025-05-13T02:51:39.747128Z",
+    "updated_at": "2025-05-13T02:51:39.747161Z",
+    "lead_time": 1.884
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.chefkoch.de_9126.jpg",
+    "id": 29012,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3717,
+    "created_at": "2025-05-13T02:51:42.287071Z",
+    "updated_at": "2025-05-13T02:51:42.287103Z",
+    "lead_time": 1.797
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.chip.de_e3ad.jpg",
+    "id": 29013,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3718,
+    "created_at": "2025-05-13T02:51:44.730440Z",
+    "updated_at": "2025-05-13T02:51:44.730472Z",
+    "lead_time": 1.692
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.commerzbank.de_9341.jpg",
+    "id": 29014,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3719,
+    "created_at": "2025-05-13T02:51:47.627897Z",
+    "updated_at": "2025-05-13T02:51:47.627965Z",
+    "lead_time": 2.153
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.computerbase.de_7ec3.jpg",
+    "id": 29015,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3720,
+    "created_at": "2025-05-13T02:51:50.021132Z",
+    "updated_at": "2025-05-13T02:51:50.021165Z",
+    "lead_time": 1.671
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.computerbild.de_c74a.jpg",
+    "id": 29016,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3721,
+    "created_at": "2025-05-13T02:51:52.669838Z",
+    "updated_at": "2025-05-13T02:51:52.669871Z",
+    "lead_time": 1.897
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.daserste.de_1a1e.jpg",
+    "id": 29017,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3722,
+    "created_at": "2025-05-13T02:51:55.839018Z",
+    "updated_at": "2025-05-13T02:51:55.839053Z",
+    "lead_time": 2.45
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.dasoertliche.de_980a.jpg",
+    "id": 29018,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3723,
+    "created_at": "2025-05-13T02:51:58.385067Z",
+    "updated_at": "2025-05-13T02:51:58.385100Z",
+    "lead_time": 1.795
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.dastelefonbuch.de_f9cd.jpg",
+    "id": 29019,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3724,
+    "created_at": "2025-05-13T02:52:00.822428Z",
+    "updated_at": "2025-05-13T02:52:00.822461Z",
+    "lead_time": 1.727
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.decathlon.de_e5ae.jpg",
+    "id": 29020,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3725,
+    "created_at": "2025-05-13T02:52:03.250814Z",
+    "updated_at": "2025-05-13T02:52:03.250846Z",
+    "lead_time": 1.692
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.deepl.com_a608.jpg",
+    "id": 29021,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3726,
+    "created_at": "2025-05-13T02:52:05.758867Z",
+    "updated_at": "2025-05-13T02:52:05.758901Z",
+    "lead_time": 1.778
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.destatis.de_0bec.jpg",
+    "id": 29022,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3727,
+    "created_at": "2025-05-13T02:52:09.755498Z",
+    "updated_at": "2025-05-13T02:52:09.755532Z",
+    "lead_time": 3.26
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.deutsche-digitale-bibliothek.de_3647.jpg",
+    "id": 29023,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3728,
+    "created_at": "2025-05-13T02:52:13.568620Z",
+    "updated_at": "2025-05-13T02:52:13.568652Z",
+    "lead_time": 3.09
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.deutsche-rentenversicherung.de_aea9.jpg",
+    "id": 29024,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3729,
+    "created_at": "2025-05-13T02:52:18.866005Z",
+    "updated_at": "2025-05-13T02:52:18.866037Z",
+    "lead_time": 4.545
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.deutschepost.de_261a.jpg",
+    "id": 29025,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3730,
+    "created_at": "2025-05-13T02:52:21.579285Z",
+    "updated_at": "2025-05-13T02:52:21.579318Z",
+    "lead_time": 1.987
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.deutschlandfunk.de_6418.jpg",
+    "id": 29026,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3731,
+    "created_at": "2025-05-13T02:52:25.073272Z",
+    "updated_at": "2025-05-13T02:52:25.073307Z",
+    "lead_time": 2.754
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.dhl.de_8947.jpg",
+    "id": 29027,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3732,
+    "created_at": "2025-05-13T02:52:27.679329Z",
+    "updated_at": "2025-05-13T02:52:27.679363Z",
+    "lead_time": 1.862
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.dict.cc_a97f.jpg",
+    "id": 29028,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3733,
+    "created_at": "2025-05-13T02:52:30.257944Z",
+    "updated_at": "2025-05-13T02:52:30.257977Z",
+    "lead_time": 1.831
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.discogs.com_9e49.jpg",
+    "id": 29029,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3734,
+    "created_at": "2025-05-13T02:52:32.993563Z",
+    "updated_at": "2025-05-13T02:52:32.993595Z",
+    "lead_time": 2.009
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.dm.de_5dc9.jpg",
+    "id": 29030,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3735,
+    "created_at": "2025-05-13T02:52:35.407173Z",
+    "updated_at": "2025-05-13T02:52:35.407204Z",
+    "lead_time": 1.673
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.doctolib.de_4cfd.jpg",
+    "id": 29031,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3736,
+    "created_at": "2025-05-13T02:52:38.465039Z",
+    "updated_at": "2025-05-13T02:52:38.465072Z",
+    "lead_time": 2.327
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.duden.de_ec10.jpg",
+    "id": 29032,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3737,
+    "created_at": "2025-05-13T02:52:58.472377Z",
+    "updated_at": "2025-05-13T02:52:58.472409Z",
+    "lead_time": 19.244
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.ebay-kleinanzeigen.de_058a.jpg",
+    "id": 29033,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3738,
+    "created_at": "2025-05-13T02:53:01.050482Z",
+    "updated_at": "2025-05-13T02:53:01.050515Z",
+    "lead_time": 1.82
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.ebay.de_4972.jpg",
+    "id": 29034,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3739,
+    "created_at": "2025-05-13T02:53:03.734746Z",
+    "updated_at": "2025-05-13T02:53:03.734779Z",
+    "lead_time": 1.938
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.edeka.de_616a.jpg",
+    "id": 29035,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3740,
+    "created_at": "2025-05-13T02:53:06.468631Z",
+    "updated_at": "2025-05-13T02:53:06.468665Z",
+    "lead_time": 1.889
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.einfachbacken.de_d624.jpg",
+    "id": 29036,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3741,
+    "created_at": "2025-05-13T02:53:08.785770Z",
+    "updated_at": "2025-05-13T02:53:08.785802Z",
+    "lead_time": 1.579
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.elster.de_ab0c.jpg",
+    "id": 29037,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3742,
+    "created_at": "2025-05-13T02:53:13.609931Z",
+    "updated_at": "2025-05-13T02:53:13.609966Z",
+    "lead_time": 4.077
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.erome.com_9db7.jpg",
+    "id": 29038,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3743,
+    "created_at": "2025-05-13T02:53:15.965661Z",
+    "updated_at": "2025-05-13T02:53:15.965695Z",
+    "lead_time": 1.611
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.etsy.com_130c.jpg",
+    "id": 29039,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3744,
+    "created_at": "2025-05-13T02:53:18.626449Z",
+    "updated_at": "2025-05-13T02:53:18.626482Z",
+    "lead_time": 1.927
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.eventim.de_f891.jpg",
+    "id": 29040,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3745,
+    "created_at": "2025-05-13T02:53:21.455587Z",
+    "updated_at": "2025-05-13T02:53:21.455619Z",
+    "lead_time": 2.088
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.facebook.com_d611.jpg",
+    "id": 29041,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3746,
+    "created_at": "2025-05-13T02:53:36.105077Z",
+    "updated_at": "2025-05-13T02:53:36.105112Z",
+    "lead_time": 13.928
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.fahrrad-xxl.de_1629.jpg",
+    "id": 29042,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3747,
+    "created_at": "2025-05-13T02:53:39.309132Z",
+    "updated_at": "2025-05-13T02:53:39.309165Z",
+    "lead_time": 2.459
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.faz.net_d44d.jpg",
+    "id": 29043,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3748,
+    "created_at": "2025-05-13T02:53:42.411250Z",
+    "updated_at": "2025-05-13T02:53:42.411281Z",
+    "lead_time": 2.369
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.fernsehserien.de_48b6.jpg",
+    "id": 29044,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3749,
+    "created_at": "2025-05-13T02:53:45.464882Z",
+    "updated_at": "2025-05-13T02:53:45.464914Z",
+    "lead_time": 2.307
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.finanzen.net_006c.jpg",
+    "id": 29045,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3750,
+    "created_at": "2025-05-13T02:53:49.615705Z",
+    "updated_at": "2025-05-13T02:53:49.615738Z",
+    "lead_time": 3.414
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.finanztip.de_be3a.jpg",
+    "id": 29046,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3751,
+    "created_at": "2025-05-13T02:53:52.244744Z",
+    "updated_at": "2025-05-13T02:53:52.244776Z",
+    "lead_time": 1.89
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.focus.de_7194.jpg",
+    "id": 29047,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3752,
+    "created_at": "2025-05-13T02:53:54.675846Z",
+    "updated_at": "2025-05-13T02:53:54.675879Z",
+    "lead_time": 1.697
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.freieporno.com_09bd.jpg",
+    "id": 29048,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3753,
+    "created_at": "2025-05-13T02:53:57.017262Z",
+    "updated_at": "2025-05-13T02:53:57.017294Z",
+    "lead_time": 1.593
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.fuq.com_d1fe.jpg",
+    "id": 29049,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3754,
+    "created_at": "2025-05-13T02:53:59.992500Z",
+    "updated_at": "2025-05-13T02:53:59.992532Z",
+    "lead_time": 2.243
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.gartenjournal.net_be64.jpg",
+    "id": 29050,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3755,
+    "created_at": "2025-05-13T02:54:02.892771Z",
+    "updated_at": "2025-05-13T02:54:02.892802Z",
+    "lead_time": 2.149
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.geeksforgeeks.org_1a05.jpg",
+    "id": 29051,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3756,
+    "created_at": "2025-05-13T02:54:05.810797Z",
+    "updated_at": "2025-05-13T02:54:05.810830Z",
+    "lead_time": 2.194
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.gelbeseiten.de_8c3f.jpg",
+    "id": 29052,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3757,
+    "created_at": "2025-05-13T02:54:08.353367Z",
+    "updated_at": "2025-05-13T02:54:08.353401Z",
+    "lead_time": 1.801
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.giga.de_1cc2.jpg",
+    "id": 29053,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3758,
+    "created_at": "2025-05-13T02:54:10.839305Z",
+    "updated_at": "2025-05-13T02:54:10.839339Z",
+    "lead_time": 1.728
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.gmx.net_1d09.jpg",
+    "id": 29054,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3759,
+    "created_at": "2025-05-13T02:54:13.305913Z",
+    "updated_at": "2025-05-13T02:54:13.305947Z",
+    "lead_time": 1.724
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.gold.de_7f35.jpg",
+    "id": 29055,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3760,
+    "created_at": "2025-05-13T02:54:16.339870Z",
+    "updated_at": "2025-05-13T02:54:16.339925Z",
+    "lead_time": 2.276
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.google.com_d111.jpg",
+    "id": 29056,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3761,
+    "created_at": "2025-05-13T02:54:19.087161Z",
+    "updated_at": "2025-05-13T02:54:19.087193Z",
+    "lead_time": 1.993
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.google.de_6d13.jpg",
+    "id": 29057,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3762,
+    "created_at": "2025-05-13T02:54:21.561604Z",
+    "updated_at": "2025-05-13T02:54:21.561635Z",
+    "lead_time": 1.75
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.gutefrage.net_6b79.jpg",
+    "id": 29058,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3763,
+    "created_at": "2025-05-13T02:54:24.044005Z",
+    "updated_at": "2025-05-13T02:54:24.044039Z",
+    "lead_time": 1.744
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.hamburg.de_227c.jpg",
+    "id": 29059,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3764,
+    "created_at": "2025-05-13T02:54:27.705750Z",
+    "updated_at": "2025-05-13T02:54:27.705783Z",
+    "lead_time": 2.931
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.handelsblatt.com_ee35.jpg",
+    "id": 29060,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3765,
+    "created_at": "2025-05-13T02:54:30.187561Z",
+    "updated_at": "2025-05-13T02:54:30.187594Z",
+    "lead_time": 1.745
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.haufe.de_0b09.jpg",
+    "id": 29061,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3766,
+    "created_at": "2025-05-13T02:54:34.239665Z",
+    "updated_at": "2025-05-13T02:54:34.239699Z",
+    "lead_time": 3.31
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.hausjournal.net_2185.jpg",
+    "id": 29062,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3767,
+    "created_at": "2025-05-13T02:54:36.863414Z",
+    "updated_at": "2025-05-13T02:54:36.863448Z",
+    "lead_time": 1.857
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.heise.de_5774.jpg",
+    "id": 29063,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3768,
+    "created_at": "2025-05-13T02:54:39.235445Z",
+    "updated_at": "2025-05-13T02:54:39.235484Z",
+    "lead_time": 1.626
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.helpster.de_fedc.jpg",
+    "id": 29064,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3769,
+    "created_at": "2025-05-13T02:54:41.568449Z",
+    "updated_at": "2025-05-13T02:54:41.568482Z",
+    "lead_time": 1.578
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.hoerzu.de_5af2.jpg",
+    "id": 29065,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3770,
+    "created_at": "2025-05-13T02:54:43.871836Z",
+    "updated_at": "2025-05-13T02:54:43.871875Z",
+    "lead_time": 1.553
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.holidaycheck.de_5563.jpg",
+    "id": 29066,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3771,
+    "created_at": "2025-05-13T02:54:46.468565Z",
+    "updated_at": "2025-05-13T02:54:46.468598Z",
+    "lead_time": 1.865
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.hornbach.de_a92e.jpg",
+    "id": 29067,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3772,
+    "created_at": "2025-05-13T02:54:48.984671Z",
+    "updated_at": "2025-05-13T02:54:48.984705Z",
+    "lead_time": 1.769
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.idealo.de_3dcd.jpg",
+    "id": 29068,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3773,
+    "created_at": "2025-05-13T02:54:51.263693Z",
+    "updated_at": "2025-05-13T02:54:51.263725Z",
+    "lead_time": 1.541
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.ihk.de_82a6.jpg",
+    "id": 29069,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3774,
+    "created_at": "2025-05-13T02:54:53.619143Z",
+    "updated_at": "2025-05-13T02:54:53.619183Z",
+    "lead_time": 1.598
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.ikea.com_3570.jpg",
+    "id": 29070,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3775,
+    "created_at": "2025-05-13T02:54:56.147928Z",
+    "updated_at": "2025-05-13T02:54:56.147963Z",
+    "lead_time": 1.787
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.imdb.com_81d7.jpg",
+    "id": 29071,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3776,
+    "created_at": "2025-05-13T02:54:59.324240Z",
+    "updated_at": "2025-05-13T02:54:59.324271Z",
+    "lead_time": 2.442
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.immobilienscout24.de_ff44.jpg",
+    "id": 29072,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3777,
+    "created_at": "2025-05-13T02:55:01.754362Z",
+    "updated_at": "2025-05-13T02:55:01.754396Z",
+    "lead_time": 1.682
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.immowelt.de_10e5.jpg",
+    "id": 29073,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3778,
+    "created_at": "2025-05-13T02:55:04.189591Z",
+    "updated_at": "2025-05-13T02:55:04.189624Z",
+    "lead_time": 1.694
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.ing.de_a3c8.jpg",
+    "id": 29074,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3779,
+    "created_at": "2025-05-13T02:55:06.628036Z",
+    "updated_at": "2025-05-13T02:55:06.628070Z",
+    "lead_time": 1.676
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.instagram.com_f77c.jpg",
+    "id": 29075,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3780,
+    "created_at": "2025-05-13T02:55:12.637940Z",
+    "updated_at": "2025-05-13T02:55:12.637975Z",
+    "lead_time": 5.249
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.isteshaltbar.de_7820.jpg",
+    "id": 29076,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3781,
+    "created_at": "2025-05-13T02:55:17.659422Z",
+    "updated_at": "2025-05-13T02:55:17.659484Z",
+    "lead_time": 4.256
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.jameda.de_f748.jpg",
+    "id": 29077,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3782,
+    "created_at": "2025-05-13T02:55:20.317139Z",
+    "updated_at": "2025-05-13T02:55:20.317173Z",
+    "lead_time": 1.925
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.joyn.de_0844.jpg",
+    "id": 29078,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3783,
+    "created_at": "2025-05-13T02:55:23.558321Z",
+    "updated_at": "2025-05-13T02:55:23.558354Z",
+    "lead_time": 2.484
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.juraforum.de_3df1.jpg",
+    "id": 29079,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3784,
+    "created_at": "2025-05-13T02:55:26.480675Z",
+    "updated_at": "2025-05-13T02:55:26.480709Z",
+    "lead_time": 2.175
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.justwatch.com_8934.jpg",
+    "id": 29080,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3785,
+    "created_at": "2025-05-13T02:55:29.502857Z",
+    "updated_at": "2025-05-13T02:55:29.502891Z",
+    "lead_time": 2.257
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.kaufda.de_16b6.jpg",
+    "id": 29081,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3786,
+    "created_at": "2025-05-13T02:55:31.917135Z",
+    "updated_at": "2025-05-13T02:55:31.917168Z",
+    "lead_time": 1.673
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.kaufland.de_64e8.jpg",
+    "id": 29082,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3787,
+    "created_at": "2025-05-13T02:55:34.711516Z",
+    "updated_at": "2025-05-13T02:55:34.711550Z",
+    "lead_time": 2.046
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.kicker.de_bb40.jpg",
+    "id": 29083,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3788,
+    "created_at": "2025-05-13T02:55:37.408267Z",
+    "updated_at": "2025-05-13T02:55:37.408297Z",
+    "lead_time": 1.966
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.kino.de_7b8e.jpg",
+    "id": 29084,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3789,
+    "created_at": "2025-05-13T02:55:39.827214Z",
+    "updated_at": "2025-05-13T02:55:39.827246Z",
+    "lead_time": 1.673
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.kleinanzeigen.de_0220.jpg",
+    "id": 29085,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3790,
+    "created_at": "2025-05-13T02:55:42.269516Z",
+    "updated_at": "2025-05-13T02:55:42.269551Z",
+    "lead_time": 1.697
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.komoot.com_395d.jpg",
+    "id": 29086,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3791,
+    "created_at": "2025-05-13T02:55:44.718512Z",
+    "updated_at": "2025-05-13T02:55:44.718545Z",
+    "lead_time": 1.706
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.kreuzwortraetsellexikon.de_f277.jpg",
+    "id": 29087,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3792,
+    "created_at": "2025-05-13T02:55:47.091750Z",
+    "updated_at": "2025-05-13T02:55:47.091782Z",
+    "lead_time": 1.641
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.ladies.de_d218.jpg",
+    "id": 29088,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3793,
+    "created_at": "2025-05-13T02:55:49.489100Z",
+    "updated_at": "2025-05-13T02:55:49.489134Z",
+    "lead_time": 1.652
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.lecker.de_3122.jpg",
+    "id": 29089,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3794,
+    "created_at": "2025-05-13T02:55:51.879006Z",
+    "updated_at": "2025-05-13T02:55:51.879039Z",
+    "lead_time": 1.67
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.lidl.de_acf4.jpg",
+    "id": 29090,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3795,
+    "created_at": "2025-05-13T02:55:54.313856Z",
+    "updated_at": "2025-05-13T02:55:54.313888Z",
+    "lead_time": 1.681
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.linguee.de_aa97.jpg",
+    "id": 29091,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3796,
+    "created_at": "2025-05-13T02:55:56.862801Z",
+    "updated_at": "2025-05-13T02:55:56.862835Z",
+    "lead_time": 1.812
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.linkedin.com_c4bf.jpg",
+    "id": 29092,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3797,
+    "created_at": "2025-05-13T02:55:59.912165Z",
+    "updated_at": "2025-05-13T02:55:59.912200Z",
+    "lead_time": 2.242
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.lufthansa.com_cbe6.jpg",
+    "id": 29093,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3798,
+    "created_at": "2025-05-13T02:56:02.601271Z",
+    "updated_at": "2025-05-13T02:56:02.601306Z",
+    "lead_time": 1.95
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.manualslib.de_2529.jpg",
+    "id": 29094,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3799,
+    "created_at": "2025-05-13T02:56:05.085928Z",
+    "updated_at": "2025-05-13T02:56:05.085962Z",
+    "lead_time": 1.709
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.maturetube.com_11b2.jpg",
+    "id": 29095,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3800,
+    "created_at": "2025-05-13T02:56:08.349149Z",
+    "updated_at": "2025-05-13T02:56:08.349182Z",
+    "lead_time": 2.517
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.mdr.de_559f.jpg",
+    "id": 29096,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3801,
+    "created_at": "2025-05-13T02:56:11.555194Z",
+    "updated_at": "2025-05-13T02:56:11.555225Z",
+    "lead_time": 2.429
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.mediamarkt.de_73b0.jpg",
+    "id": 29097,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3802,
+    "created_at": "2025-05-13T02:56:14.129595Z",
+    "updated_at": "2025-05-13T02:56:14.129628Z",
+    "lead_time": 1.788
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.mein-schoener-garten.de_2885.jpg",
+    "id": 29098,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3803,
+    "created_at": "2025-05-13T02:56:16.740215Z",
+    "updated_at": "2025-05-13T02:56:16.740248Z",
+    "lead_time": 1.785
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.merkur.de_1868.jpg",
+    "id": 29099,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3804,
+    "created_at": "2025-05-13T02:56:19.244008Z",
+    "updated_at": "2025-05-13T02:56:19.244042Z",
+    "lead_time": 1.763
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.microsoft.com_7a13.jpg",
+    "id": 29100,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3805,
+    "created_at": "2025-05-13T02:56:22.024425Z",
+    "updated_at": "2025-05-13T02:56:22.024458Z",
+    "lead_time": 2.031
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.mobile.de_8476.jpg",
+    "id": 29101,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3806,
+    "created_at": "2025-05-13T02:56:24.275541Z",
+    "updated_at": "2025-05-13T02:56:24.275572Z",
+    "lead_time": 1.5
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.motor-talk.de_6417.jpg",
+    "id": 29102,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3807,
+    "created_at": "2025-05-13T02:56:27.399940Z",
+    "updated_at": "2025-05-13T02:56:27.399975Z",
+    "lead_time": 2.362
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.moviepilot.de_7644.jpg",
+    "id": 29103,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3808,
+    "created_at": "2025-05-13T02:56:30.047164Z",
+    "updated_at": "2025-05-13T02:56:30.047197Z",
+    "lead_time": 1.914
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.msn.com_fc0a.jpg",
+    "id": 29104,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3809,
+    "created_at": "2025-05-13T02:56:32.568465Z",
+    "updated_at": "2025-05-13T02:56:32.568499Z",
+    "lead_time": 1.784
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.myhermes.de_4c9c.jpg",
+    "id": 29105,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3810,
+    "created_at": "2025-05-13T02:56:35.373377Z",
+    "updated_at": "2025-05-13T02:56:35.373409Z",
+    "lead_time": 2.068
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.n-tv.de_bb46.jpg",
+    "id": 29106,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3811,
+    "created_at": "2025-05-13T02:56:38.020801Z",
+    "updated_at": "2025-05-13T02:56:38.020834Z",
+    "lead_time": 1.894
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.ndr.de_7c16.jpg",
+    "id": 29107,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3812,
+    "created_at": "2025-05-13T02:56:41.029213Z",
+    "updated_at": "2025-05-13T02:56:41.029255Z",
+    "lead_time": 2.273
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.netdoktor.de_a5e5.jpg",
+    "id": 29108,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3813,
+    "created_at": "2025-05-13T02:56:44.222721Z",
+    "updated_at": "2025-05-13T02:56:44.222760Z",
+    "lead_time": 2.423
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.netflix.com_6ce6.jpg",
+    "id": 29109,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3814,
+    "created_at": "2025-05-13T02:56:47.532455Z",
+    "updated_at": "2025-05-13T02:56:47.532489Z",
+    "lead_time": 2.549
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.netzwelt.de_eb40.jpg",
+    "id": 29110,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3815,
+    "created_at": "2025-05-13T02:56:50.752507Z",
+    "updated_at": "2025-05-13T02:56:50.752540Z",
+    "lead_time": 2.408
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.nexusmods.com_4b4f.jpg",
+    "id": 29111,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3816,
+    "created_at": "2025-05-13T02:56:53.571284Z",
+    "updated_at": "2025-05-13T02:56:53.571318Z",
+    "lead_time": 1.879
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.northdata.de_e117.jpg",
+    "id": 29112,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3817,
+    "created_at": "2025-05-13T02:56:55.841999Z",
+    "updated_at": "2025-05-13T02:56:55.842031Z",
+    "lead_time": 1.524
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.nudevista.net_7f27.jpg",
+    "id": 29113,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3818,
+    "created_at": "2025-05-13T02:57:00.097625Z",
+    "updated_at": "2025-05-13T02:57:00.097660Z",
+    "lead_time": 3.526
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.nzz.ch_90fb.jpg",
+    "id": 29114,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3819,
+    "created_at": "2025-05-13T02:57:03.857902Z",
+    "updated_at": "2025-05-13T02:57:03.857934Z",
+    "lead_time": 3.005
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.obi.de_318f.jpg",
+    "id": 29115,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3820,
+    "created_at": "2025-05-13T02:57:06.629123Z",
+    "updated_at": "2025-05-13T02:57:06.629156Z",
+    "lead_time": 2.028
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.office.com_2752.jpg",
+    "id": 29116,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3821,
+    "created_at": "2025-05-13T02:57:09.281529Z",
+    "updated_at": "2025-05-13T02:57:09.281562Z",
+    "lead_time": 1.909
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.onleihe.de_b22a.jpg",
+    "id": 29117,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3822,
+    "created_at": "2025-05-13T02:57:11.801745Z",
+    "updated_at": "2025-05-13T02:57:11.801777Z",
+    "lead_time": 1.752
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.otto.de_9142.jpg",
+    "id": 29118,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3823,
+    "created_at": "2025-05-13T02:57:14.499386Z",
+    "updated_at": "2025-05-13T02:57:14.499420Z",
+    "lead_time": 1.936
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.paypal.com_18a3.jpg",
+    "id": 29119,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3824,
+    "created_at": "2025-05-13T02:57:17.902873Z",
+    "updated_at": "2025-05-13T02:57:17.902905Z",
+    "lead_time": 2.619
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.pcwelt.de_70c3.jpg",
+    "id": 29120,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3825,
+    "created_at": "2025-05-13T02:57:20.444123Z",
+    "updated_at": "2025-05-13T02:57:20.444158Z",
+    "lead_time": 1.788
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.perplexity.ai_f6d4.jpg",
+    "id": 29121,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3826,
+    "created_at": "2025-05-13T02:57:22.753213Z",
+    "updated_at": "2025-05-13T02:57:22.753245Z",
+    "lead_time": 1.542
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.pornhub.com_63d2.jpg",
+    "id": 29122,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3827,
+    "created_at": "2025-05-13T02:57:25.473810Z",
+    "updated_at": "2025-05-13T02:57:25.473845Z",
+    "lead_time": 1.954
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.pornohirsch.net_294b.jpg",
+    "id": 29123,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3828,
+    "created_at": "2025-05-13T02:57:29.974054Z",
+    "updated_at": "2025-05-13T02:57:29.974086Z",
+    "lead_time": 3.749
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.pornpics.de_6a9b.jpg",
+    "id": 29124,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3829,
+    "created_at": "2025-05-13T02:57:32.510050Z",
+    "updated_at": "2025-05-13T02:57:38.864834Z",
+    "lead_time": 4.665
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.porzo.com_dc8c.jpg",
+    "id": 29125,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3830,
+    "created_at": "2025-05-13T02:57:44.959123Z",
+    "updated_at": "2025-05-13T02:57:44.959157Z",
+    "lead_time": 1.387
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.reddit.com_1713.jpg",
+    "id": 29126,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3831,
+    "created_at": "2025-05-13T02:57:47.440400Z",
+    "updated_at": "2025-05-13T02:57:47.440428Z",
+    "lead_time": 1.667
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.researchgate.net_732b.jpg",
+    "id": 29127,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3832,
+    "created_at": "2025-05-13T02:57:52.600542Z",
+    "updated_at": "2025-05-13T02:57:52.600574Z",
+    "lead_time": 4.352
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.rewe.de_26db.jpg",
+    "id": 29128,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3833,
+    "created_at": "2025-05-13T02:57:55.044845Z",
+    "updated_at": "2025-05-13T02:57:55.044879Z",
+    "lead_time": 1.704
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.rossmann.de_25bc.jpg",
+    "id": 29129,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3834,
+    "created_at": "2025-05-13T02:57:57.634875Z",
+    "updated_at": "2025-05-13T02:57:57.634909Z",
+    "lead_time": 1.844
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.rtl.de_1429.jpg",
+    "id": 29130,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3835,
+    "created_at": "2025-05-13T02:58:00.579566Z",
+    "updated_at": "2025-05-13T02:58:00.579598Z",
+    "lead_time": 2.196
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.samsung.com_fd45.jpg",
+    "id": 29131,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3836,
+    "created_at": "2025-05-13T02:58:03.090778Z",
+    "updated_at": "2025-05-13T02:58:03.090810Z",
+    "lead_time": 1.748
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.schulferien.org_32f8.jpg",
+    "id": 29132,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3837,
+    "created_at": "2025-05-13T02:58:07.345363Z",
+    "updated_at": "2025-05-13T02:58:07.345396Z",
+    "lead_time": 3.493
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.sciencedirect.com_29a5.jpg",
+    "id": 29133,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3838,
+    "created_at": "2025-05-13T02:58:09.743229Z",
+    "updated_at": "2025-05-13T02:58:09.743262Z",
+    "lead_time": 1.635
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.shop-apotheke.com_a7de.jpg",
+    "id": 29134,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3839,
+    "created_at": "2025-05-13T02:58:12.438387Z",
+    "updated_at": "2025-05-13T02:58:12.438419Z",
+    "lead_time": 1.93
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.songtexte.com_6c4e.jpg",
+    "id": 29135,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3840,
+    "created_at": "2025-05-13T02:58:15.490642Z",
+    "updated_at": "2025-05-13T02:58:15.490674Z",
+    "lead_time": 2.297
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.sparkasse.de_428c.jpg",
+    "id": 29136,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3841,
+    "created_at": "2025-05-13T02:58:18.167040Z",
+    "updated_at": "2025-05-13T02:58:18.167074Z",
+    "lead_time": 1.923
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.speedtest.net_1c84.jpg",
+    "id": 29137,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3842,
+    "created_at": "2025-05-13T02:58:20.807506Z",
+    "updated_at": "2025-05-13T02:58:20.807540Z",
+    "lead_time": 1.891
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.speisekarte.de_7a25.jpg",
+    "id": 29138,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3843,
+    "created_at": "2025-05-13T02:58:23.315200Z",
+    "updated_at": "2025-05-13T02:58:23.315234Z",
+    "lead_time": 1.747
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.spiegel.de_9a37.jpg",
+    "id": 29139,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3844,
+    "created_at": "2025-05-13T02:58:25.658640Z",
+    "updated_at": "2025-05-13T02:58:25.658674Z",
+    "lead_time": 1.579
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.sportschau.de_2c32.jpg",
+    "id": 29140,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3845,
+    "created_at": "2025-05-13T02:58:28.612372Z",
+    "updated_at": "2025-05-13T02:58:28.612403Z",
+    "lead_time": 2.207
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.stern.de_1226.jpg",
+    "id": 29141,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3846,
+    "created_at": "2025-05-13T02:58:32.255755Z",
+    "updated_at": "2025-05-13T02:58:32.255789Z",
+    "lead_time": 2.822
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.stuttgarter-zeitung.de_4030.jpg",
+    "id": 29142,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3847,
+    "created_at": "2025-05-13T02:58:35.153007Z",
+    "updated_at": "2025-05-13T02:58:35.153040Z",
+    "lead_time": 2.156
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.sueddeutsche.de_136b.jpg",
+    "id": 29143,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3848,
+    "created_at": "2025-05-13T02:58:37.533416Z",
+    "updated_at": "2025-05-13T02:58:37.533448Z",
+    "lead_time": 1.618
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.swr.de_8583.jpg",
+    "id": 29144,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3849,
+    "created_at": "2025-05-13T02:58:41.343782Z",
+    "updated_at": "2025-05-13T02:58:41.343815Z",
+    "lead_time": 3.076
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.t-online.de_accf.jpg",
+    "id": 29145,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3850,
+    "created_at": "2025-05-13T02:58:44.313719Z",
+    "updated_at": "2025-05-13T02:58:44.313752Z",
+    "lead_time": 2.222
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.tagesschau.de_d6b2.jpg",
+    "id": 29146,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3851,
+    "created_at": "2025-05-13T02:58:47.402040Z",
+    "updated_at": "2025-05-13T02:58:47.402074Z",
+    "lead_time": 2.337
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.tagesspiegel.de_56a2.jpg",
+    "id": 29147,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3852,
+    "created_at": "2025-05-13T02:58:50.043825Z",
+    "updated_at": "2025-05-13T02:58:50.043860Z",
+    "lead_time": 1.864
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.telekom.de_836a.jpg",
+    "id": 29148,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3853,
+    "created_at": "2025-05-13T02:58:53.254779Z",
+    "updated_at": "2025-05-13T02:58:53.254812Z",
+    "lead_time": 2.456
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.temu.com_fe84.jpg",
+    "id": 29149,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3854,
+    "created_at": "2025-05-13T02:58:55.702896Z",
+    "updated_at": "2025-05-13T02:58:55.702931Z",
+    "lead_time": 1.693
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.test.de_0063.jpg",
+    "id": 29150,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3855,
+    "created_at": "2025-05-13T02:58:58.707662Z",
+    "updated_at": "2025-05-13T02:58:58.707696Z",
+    "lead_time": 2.254
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.testberichte.de_7e10.jpg",
+    "id": 29151,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3856,
+    "created_at": "2025-05-13T02:59:01.602637Z",
+    "updated_at": "2025-05-13T02:59:01.602671Z",
+    "lead_time": 2.068
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.thalia.de_1196.jpg",
+    "id": 29152,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3857,
+    "created_at": "2025-05-13T02:59:04.132696Z",
+    "updated_at": "2025-05-13T02:59:04.132730Z",
+    "lead_time": 1.778
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.thomann.de_4a32.jpg",
+    "id": 29153,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3858,
+    "created_at": "2025-05-13T02:59:07.155942Z",
+    "updated_at": "2025-05-13T02:59:07.155977Z",
+    "lead_time": 2.26
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.tiktok.com_388f.jpg",
+    "id": 29154,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3859,
+    "created_at": "2025-05-13T02:59:11.000382Z",
+    "updated_at": "2025-05-13T02:59:11.000415Z",
+    "lead_time": 3.074
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.tk.de_48bf.jpg",
+    "id": 29155,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3860,
+    "created_at": "2025-05-13T02:59:13.562004Z",
+    "updated_at": "2025-05-13T02:59:13.562037Z",
+    "lead_time": 1.779
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.tripadvisor.de_6c27.jpg",
+    "id": 29156,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3861,
+    "created_at": "2025-05-13T02:59:16.007506Z",
+    "updated_at": "2025-05-13T02:59:16.007539Z",
+    "lead_time": 1.681
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.tubepornstars.com_2c52.jpg",
+    "id": 29157,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3862,
+    "created_at": "2025-05-13T02:59:19.120684Z",
+    "updated_at": "2025-05-13T02:59:19.120723Z",
+    "lead_time": 2.342
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.tvspielfilm.de_425c.jpg",
+    "id": 29158,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3863,
+    "created_at": "2025-05-13T02:59:22.001654Z",
+    "updated_at": "2025-05-13T02:59:35.501357Z",
+    "lead_time": 4.599
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.verbraucherzentrale.de_6835.jpg",
+    "id": 29159,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3864,
+    "created_at": "2025-05-13T02:59:41.031628Z",
+    "updated_at": "2025-05-13T02:59:41.031660Z",
+    "lead_time": 7.247
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.vodafone.de_ae2a.jpg",
+    "id": 29160,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3865,
+    "created_at": "2025-05-13T02:59:44.089946Z",
+    "updated_at": "2025-05-13T02:59:44.089979Z",
+    "lead_time": 2.279
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.w3schools.com_fb31.jpg",
+    "id": 29161,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3866,
+    "created_at": "2025-05-13T02:59:46.613003Z",
+    "updated_at": "2025-05-13T02:59:46.613037Z",
+    "lead_time": 1.767
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.welt.de_9a25.jpg",
+    "id": 29162,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3867,
+    "created_at": "2025-05-13T02:59:49.392915Z",
+    "updated_at": "2025-05-13T02:59:49.392948Z",
+    "lead_time": 2.013
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.werkenntdenbesten.de_ef7c.jpg",
+    "id": 29163,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3868,
+    "created_at": "2025-05-13T02:59:51.935180Z",
+    "updated_at": "2025-05-13T02:59:51.935214Z",
+    "lead_time": 1.795
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.wetter.com_cdb3.jpg",
+    "id": 29164,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3869,
+    "created_at": "2025-05-13T02:59:54.393704Z",
+    "updated_at": "2025-05-13T02:59:54.393737Z",
+    "lead_time": 1.702
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.wetter.de_730d.jpg",
+    "id": 29165,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3870,
+    "created_at": "2025-05-13T02:59:57.023989Z",
+    "updated_at": "2025-05-13T02:59:57.024023Z",
+    "lead_time": 1.868
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.wetteronline.de_8520.jpg",
+    "id": 29166,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3871,
+    "created_at": "2025-05-13T02:59:59.442615Z",
+    "updated_at": "2025-05-13T02:59:59.442649Z",
+    "lead_time": 1.654
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.wortbedeutung.info_7981.jpg",
+    "id": 29167,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3872,
+    "created_at": "2025-05-13T03:00:01.877885Z",
+    "updated_at": "2025-05-13T03:00:01.877922Z",
+    "lead_time": 1.676
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.wowhead.com_32c7.jpg",
+    "id": 29168,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3873,
+    "created_at": "2025-05-13T03:00:04.717603Z",
+    "updated_at": "2025-05-13T03:00:04.717636Z",
+    "lead_time": 2.002
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.xing.com_3094.jpg",
+    "id": 29169,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3874,
+    "created_at": "2025-05-13T03:00:07.377061Z",
+    "updated_at": "2025-05-13T03:00:07.377094Z",
+    "lead_time": 1.792
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.xnxx.com_c073.jpg",
+    "id": 29170,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3875,
+    "created_at": "2025-05-13T03:00:10.200523Z",
+    "updated_at": "2025-05-13T03:00:10.200557Z",
+    "lead_time": 2.059
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.xvideos.com_dafb.jpg",
+    "id": 29171,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3876,
+    "created_at": "2025-05-13T03:00:12.944226Z",
+    "updated_at": "2025-05-13T03:00:12.944261Z",
+    "lead_time": 1.931
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.youtube.com_d75d.jpg",
+    "id": 29172,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3877,
+    "created_at": "2025-05-13T03:00:15.937321Z",
+    "updated_at": "2025-05-13T03:00:15.937358Z",
+    "lead_time": 2.161
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.zalando.de_b257.jpg",
+    "id": 29173,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3878,
+    "created_at": "2025-05-13T03:00:18.742218Z",
+    "updated_at": "2025-05-13T03:00:18.742252Z",
+    "lead_time": 2.025
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.zdf.de_4bad.jpg",
+    "id": 29174,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3879,
+    "created_at": "2025-05-13T03:00:21.694162Z",
+    "updated_at": "2025-05-13T03:00:21.694196Z",
+    "lead_time": 2.185
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.zeit.de_77f9.jpg",
+    "id": 29175,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3880,
+    "created_at": "2025-05-13T03:00:24.150431Z",
+    "updated_at": "2025-05-13T03:00:24.150466Z",
+    "lead_time": 1.693
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www.zentrum-der-gesundheit.de_a233.jpg",
+    "id": 29176,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3881,
+    "created_at": "2025-05-13T03:00:26.877884Z",
+    "updated_at": "2025-05-13T03:00:26.877917Z",
+    "lead_time": 1.937
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/www1.wdr.de_8762.jpg",
+    "id": 29177,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3882,
+    "created_at": "2025-05-13T03:00:29.659106Z",
+    "updated_at": "2025-05-13T03:00:29.659138Z",
+    "lead_time": 1.965
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/xhamster.com_3b8c.jpg",
+    "id": 29178,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3883,
+    "created_at": "2025-05-13T03:00:33.793536Z",
+    "updated_at": "2025-05-13T03:00:33.793567Z",
+    "lead_time": 3.346
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/xhamster.desi_18ca.jpg",
+    "id": 29179,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3884,
+    "created_at": "2025-05-13T03:00:36.636705Z",
+    "updated_at": "2025-05-13T03:00:36.636741Z",
+    "lead_time": 2.05
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/xhamster3.com_4d4b.jpg",
+    "id": 29180,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3885,
+    "created_at": "2025-05-13T03:00:39.204075Z",
+    "updated_at": "2025-05-13T03:00:39.204111Z",
+    "lead_time": 1.786
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-de\/yandex.com_41f4.jpg",
+    "id": 29181,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3886,
+    "created_at": "2025-05-13T03:00:41.970929Z",
+    "updated_at": "2025-05-13T03:00:41.970962Z",
+    "lead_time": 2.007
+  }
+]

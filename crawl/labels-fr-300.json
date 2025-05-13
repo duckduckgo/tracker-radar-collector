@@ -1,0 +1,3002 @@
+[
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/accounts.google.com_5be0.jpg",
+    "id": 28584,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3289,
+    "created_at": "2025-05-13T01:25:27.541259Z",
+    "updated_at": "2025-05-13T01:25:27.541292Z",
+    "lead_time": 11.546
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/accounts.snapchat.com_4fa5.jpg",
+    "id": 28585,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3290,
+    "created_at": "2025-05-13T01:25:33.580657Z",
+    "updated_at": "2025-05-13T01:25:33.580690Z",
+    "lead_time": 5.297
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/actu.fr_95c6.jpg",
+    "id": 28586,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3291,
+    "created_at": "2025-05-13T01:25:38.729436Z",
+    "updated_at": "2025-05-13T01:25:38.729466Z",
+    "lead_time": 4.329
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/amazon.fr_38bd.jpg",
+    "id": 28587,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3292,
+    "created_at": "2025-05-13T01:25:41.887704Z",
+    "updated_at": "2025-05-13T01:25:41.887736Z",
+    "lead_time": 2.398
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/answers.microsoft.com_decc.jpg",
+    "id": 28588,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3293,
+    "created_at": "2025-05-13T01:32:17.573010Z",
+    "updated_at": "2025-05-13T01:32:17.573043Z",
+    "lead_time": 394.389
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/archive.org_989f.jpg",
+    "id": 28589,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3294,
+    "created_at": "2025-05-13T01:32:22.971732Z",
+    "updated_at": "2025-05-13T01:32:22.971763Z",
+    "lead_time": 4.652
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/askubuntu.com_af3b.jpg",
+    "id": 28590,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3295,
+    "created_at": "2025-05-13T01:32:26.242669Z",
+    "updated_at": "2025-05-13T01:32:26.242704Z",
+    "lead_time": 2.526
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/chatgpt.com_3e84.jpg",
+    "id": 28591,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3296,
+    "created_at": "2025-05-13T01:32:31.288527Z",
+    "updated_at": "2025-05-13T01:32:31.288560Z",
+    "lead_time": 4.328
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/chaturbate.com_74e8.jpg",
+    "id": 28592,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3297,
+    "created_at": "2025-05-13T01:32:34.236799Z",
+    "updated_at": "2025-05-13T01:32:34.236833Z",
+    "lead_time": 2.236
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/commentouvrir.com_89ef.jpg",
+    "id": 28593,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3298,
+    "created_at": "2025-05-13T01:32:45.435699Z",
+    "updated_at": "2025-05-13T01:32:45.435731Z",
+    "lead_time": 10.436
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/communities.apple.com_caae.jpg",
+    "id": 28594,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3299,
+    "created_at": "2025-05-13T01:32:47.831244Z",
+    "updated_at": "2025-05-13T01:32:47.831277Z",
+    "lead_time": 1.675
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/copainsdavant.linternaute.com_aa5c.jpg",
+    "id": 28595,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3300,
+    "created_at": "2025-05-13T01:32:50.068664Z",
+    "updated_at": "2025-05-13T01:32:50.068697Z",
+    "lead_time": 1.517
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/courrier.ac-strasbourg.fr_fedc.jpg",
+    "id": 28596,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3301,
+    "created_at": "2025-05-13T01:32:54.689529Z",
+    "updated_at": "2025-05-13T01:32:54.689559Z",
+    "lead_time": 3.901
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/cuisine.journaldesfemmes.fr_1932.jpg",
+    "id": 28597,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3302,
+    "created_at": "2025-05-13T01:32:56.768807Z",
+    "updated_at": "2025-05-13T01:32:56.768840Z",
+    "lead_time": 1.362
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/de.wikipedia.org_3299.jpg",
+    "id": 28598,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3303,
+    "created_at": "2025-05-13T01:33:05.232864Z",
+    "updated_at": "2025-05-13T01:33:05.232897Z",
+    "lead_time": 7.747
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/demarchesadministratives.fr_137c.jpg",
+    "id": 28599,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3304,
+    "created_at": "2025-05-13T01:33:08.805905Z",
+    "updated_at": "2025-05-13T01:33:08.805936Z",
+    "lead_time": 2.844
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/developer.mozilla.org_13b4.jpg",
+    "id": 28600,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3305,
+    "created_at": "2025-05-13T01:33:13.810336Z",
+    "updated_at": "2025-05-13T01:33:13.810368Z",
+    "lead_time": 4.283
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/dictionnaire.lerobert.com_4503.jpg",
+    "id": 28601,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3306,
+    "created_at": "2025-05-13T01:33:16.983156Z",
+    "updated_at": "2025-05-13T01:33:16.983187Z",
+    "lead_time": 2.455
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/dictionnaire.reverso.net_3024.jpg",
+    "id": 28602,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3307,
+    "created_at": "2025-05-13T01:33:24.147843Z",
+    "updated_at": "2025-05-13T01:33:24.147871Z",
+    "lead_time": 6.451
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/discord.com_39de.jpg",
+    "id": 28603,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3308,
+    "created_at": "2025-05-13T01:33:27.277510Z",
+    "updated_at": "2025-05-13T01:33:27.277542Z",
+    "lead_time": 2.409
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/docs.google.com_e354.jpg",
+    "id": 28604,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3309,
+    "created_at": "2025-05-13T01:33:29.220019Z",
+    "updated_at": "2025-05-13T01:33:29.220049Z",
+    "lead_time": 1.228
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/drive.google.com_0780.jpg",
+    "id": 28605,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3310,
+    "created_at": "2025-05-13T01:45:12.902976Z",
+    "updated_at": "2025-05-13T01:45:12.903005Z",
+    "lead_time": 702.599
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/droit-finances.commentcamarche.com_a612.jpg",
+    "id": 28606,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3311,
+    "created_at": "2025-05-13T01:45:16.209624Z",
+    "updated_at": "2025-05-13T01:45:16.209654Z",
+    "lead_time": 2.554
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/duckduckgo.com_22d0.jpg",
+    "id": 28607,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3312,
+    "created_at": "2025-05-13T01:45:25.393857Z",
+    "updated_at": "2025-05-13T01:45:25.393889Z",
+    "lead_time": 8.456
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/e-hentai.org_3ece.jpg",
+    "id": 28608,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3313,
+    "created_at": "2025-05-13T01:45:43.241913Z",
+    "updated_at": "2025-05-13T01:45:43.241946Z",
+    "lead_time": 17.121
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/eduscol.education.fr_a02b.jpg",
+    "id": 28609,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3314,
+    "created_at": "2025-05-13T01:54:32.360288Z",
+    "updated_at": "2025-05-13T01:54:32.360322Z",
+    "lead_time": 527.881
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/en.wikipedia.org_1072.jpg",
+    "id": 28610,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3315,
+    "created_at": "2025-05-13T01:54:39.175831Z",
+    "updated_at": "2025-05-13T01:54:39.175863Z",
+    "lead_time": 6.104
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/ensap.gouv.fr_4e71.jpg",
+    "id": 28611,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3316,
+    "created_at": "2025-05-13T01:55:45.669377Z",
+    "updated_at": "2025-05-13T01:55:45.669407Z",
+    "lead_time": 65.762
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/entreprendre.service-public.fr_bbe0.jpg",
+    "id": 28612,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3317,
+    "created_at": "2025-05-13T01:55:50.101753Z",
+    "updated_at": "2025-05-13T01:55:50.101785Z",
+    "lead_time": 3.684
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/forums.commentcamarche.net_b95e.jpg",
+    "id": 28613,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3318,
+    "created_at": "2025-05-13T01:55:52.996829Z",
+    "updated_at": "2025-05-13T01:55:52.996862Z",
+    "lead_time": 2.175
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr-fr.facebook.com_2bf8.jpg",
+    "id": 28614,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3319,
+    "created_at": "2025-05-13T01:56:16.541973Z",
+    "updated_at": "2025-05-13T01:56:16.542007Z",
+    "lead_time": 22.795
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.aliexpress.com_240c.jpg",
+    "id": 28615,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3320,
+    "created_at": "2025-05-13T01:56:19.961637Z",
+    "updated_at": "2025-05-13T01:56:19.961669Z",
+    "lead_time": 2.709
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.audiofanzine.com_f1e1.jpg",
+    "id": 28616,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3321,
+    "created_at": "2025-05-13T01:56:23.695120Z",
+    "updated_at": "2025-05-13T01:56:23.695153Z",
+    "lead_time": 2.969
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.eporner.com_4e10.jpg",
+    "id": 28617,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3322,
+    "created_at": "2025-05-13T01:56:27.195107Z",
+    "updated_at": "2025-05-13T01:56:27.195138Z",
+    "lead_time": 2.682
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.indeed.com_aa8d.jpg",
+    "id": 28618,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3323,
+    "created_at": "2025-05-13T01:56:29.546843Z",
+    "updated_at": "2025-05-13T01:56:29.546873Z",
+    "lead_time": 1.617
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.linkedin.com_f815.jpg",
+    "id": 28619,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3324,
+    "created_at": "2025-05-13T01:56:33.359825Z",
+    "updated_at": "2025-05-13T01:56:33.359857Z",
+    "lead_time": 3.081
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.linux-console.net_eaa4.jpg",
+    "id": 28620,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3325,
+    "created_at": "2025-05-13T01:56:38.355362Z",
+    "updated_at": "2025-05-13T01:56:38.355405Z",
+    "lead_time": 4.273
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.mail.yahoo.com_d25d.jpg",
+    "id": 28621,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3326,
+    "created_at": "2025-05-13T01:56:42.743014Z",
+    "updated_at": "2025-05-13T01:56:42.743045Z",
+    "lead_time": 3.645
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.mappy.com_09bc.jpg",
+    "id": 28622,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3327,
+    "created_at": "2025-05-13T01:56:46.074773Z",
+    "updated_at": "2025-05-13T01:56:46.074806Z",
+    "lead_time": 2.602
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.pornhub.com_6bad.jpg",
+    "id": 28623,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3328,
+    "created_at": "2025-05-13T01:56:49.920022Z",
+    "updated_at": "2025-05-13T01:56:49.920052Z",
+    "lead_time": 3.014
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.restaurantguru.com_fc08.jpg",
+    "id": 28624,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3329,
+    "created_at": "2025-05-13T01:56:53.415615Z",
+    "updated_at": "2025-05-13T01:56:53.415647Z",
+    "lead_time": 2.746
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.stripchat.com_77b6.jpg",
+    "id": 28625,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3330,
+    "created_at": "2025-05-13T01:56:57.428486Z",
+    "updated_at": "2025-05-13T01:56:57.428518Z",
+    "lead_time": 3.269
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.trustpilot.com_7413.jpg",
+    "id": 28626,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3331,
+    "created_at": "2025-05-13T01:57:01.433739Z",
+    "updated_at": "2025-05-13T01:57:01.433772Z",
+    "lead_time": 3.271
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.twitch.tv_9103.jpg",
+    "id": 28627,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3332,
+    "created_at": "2025-05-13T01:57:06.242539Z",
+    "updated_at": "2025-05-13T01:57:06.242571Z",
+    "lead_time": 4.014
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.wikihow.com_a0a0.jpg",
+    "id": 28628,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3333,
+    "created_at": "2025-05-13T01:57:10.749058Z",
+    "updated_at": "2025-05-13T01:57:10.749091Z",
+    "lead_time": 3.766
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.wikipedia.org_dcc5.jpg",
+    "id": 28629,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3334,
+    "created_at": "2025-05-13T01:57:17.495738Z",
+    "updated_at": "2025-05-13T01:57:17.495770Z",
+    "lead_time": 5.976
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.wiktionary.org_8c27.jpg",
+    "id": 28630,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3335,
+    "created_at": "2025-05-13T01:57:22.440900Z",
+    "updated_at": "2025-05-13T01:57:22.440933Z",
+    "lead_time": 4.146
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.xvideos.com_3314.jpg",
+    "id": 28631,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3336,
+    "created_at": "2025-05-13T01:57:27.580801Z",
+    "updated_at": "2025-05-13T01:57:27.580834Z",
+    "lead_time": 4.39
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.yahoo.com_bb92.jpg",
+    "id": 28632,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3337,
+    "created_at": "2025-05-13T01:57:34.586637Z",
+    "updated_at": "2025-05-13T01:57:34.586671Z",
+    "lead_time": 6.161
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.youporn.com_207f.jpg",
+    "id": 28633,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3338,
+    "created_at": "2025-05-13T01:57:37.320982Z",
+    "updated_at": "2025-05-13T01:57:37.321015Z",
+    "lead_time": 1.935
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fr.youtube.com_dafa.jpg",
+    "id": 28634,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3339,
+    "created_at": "2025-05-13T01:57:40.511054Z",
+    "updated_at": "2025-05-13T01:57:40.511085Z",
+    "lead_time": 2.468
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/fra.xhamster.com_2b71.jpg",
+    "id": 28635,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3340,
+    "created_at": "2025-05-13T01:57:43.458129Z",
+    "updated_at": "2025-05-13T01:57:43.458160Z",
+    "lead_time": 2.038
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/france3-regions.francetvinfo.fr_82eb.jpg",
+    "id": 28636,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3341,
+    "created_at": "2025-05-13T01:57:48.796949Z",
+    "updated_at": "2025-05-13T01:57:48.796980Z",
+    "lead_time": 4.521
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/genius.com_62dd.jpg",
+    "id": 28637,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3342,
+    "created_at": "2025-05-13T01:57:53.289580Z",
+    "updated_at": "2025-05-13T01:57:53.289617Z",
+    "lead_time": 3.749
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/github.com_8674.jpg",
+    "id": 28638,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3343,
+    "created_at": "2025-05-13T01:57:56.989892Z",
+    "updated_at": "2025-05-13T01:57:56.989922Z",
+    "lead_time": 2.961
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/hanime.tv_8912.jpg",
+    "id": 28639,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3344,
+    "created_at": "2025-05-13T01:58:03.389542Z",
+    "updated_at": "2025-05-13T01:58:03.389575Z",
+    "lead_time": 5.672
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/iwank.tv_850c.jpg",
+    "id": 28640,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3345,
+    "created_at": "2025-05-13T01:58:17.581653Z",
+    "updated_at": "2025-05-13T01:58:17.581686Z",
+    "lead_time": 13.486
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/jp.pornhub.com_e2d4.jpg",
+    "id": 28641,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3346,
+    "created_at": "2025-05-13T01:58:33.139071Z",
+    "updated_at": "2025-05-13T01:58:33.139104Z",
+    "lead_time": 14.819
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/la-conjugaison.nouvelobs.com_b7b4.jpg",
+    "id": 28642,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3347,
+    "created_at": "2025-05-13T01:58:37.383556Z",
+    "updated_at": "2025-05-13T01:58:37.383589Z",
+    "lead_time": 3.511
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/lannuaire.service-public.fr_e836.jpg",
+    "id": 28643,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3348,
+    "created_at": "2025-05-13T01:58:40.977596Z",
+    "updated_at": "2025-05-13T01:58:40.977628Z",
+    "lead_time": 2.886
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/laposte.net_28ac.jpg",
+    "id": 28644,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3349,
+    "created_at": "2025-05-13T01:58:44.343966Z",
+    "updated_at": "2025-05-13T01:58:44.344000Z",
+    "lead_time": 2.594
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/learn.microsoft.com_d825.jpg",
+    "id": 28645,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3350,
+    "created_at": "2025-05-13T01:58:47.784447Z",
+    "updated_at": "2025-05-13T01:58:47.784479Z",
+    "lead_time": 2.724
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/leconjugueur.lefigaro.fr_c873.jpg",
+    "id": 28646,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3351,
+    "created_at": "2025-05-13T01:58:50.910311Z",
+    "updated_at": "2025-05-13T01:58:50.910344Z",
+    "lead_time": 2.405
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/lecrabeinfo.net_7910.jpg",
+    "id": 28647,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3352,
+    "created_at": "2025-05-13T01:58:54.276818Z",
+    "updated_at": "2025-05-13T01:58:54.276849Z",
+    "lead_time": 2.642
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/mabanque.bnpparibas_6cf4.jpg",
+    "id": 28648,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3353,
+    "created_at": "2025-05-13T01:58:57.240294Z",
+    "updated_at": "2025-05-13T01:58:57.240325Z",
+    "lead_time": 2.241
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/mail.google.com_5823.jpg",
+    "id": 28649,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3354,
+    "created_at": "2025-05-13T01:58:59.697031Z",
+    "updated_at": "2025-05-13T01:58:59.697064Z",
+    "lead_time": 1.726
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/mail.proton.me_0190.jpg",
+    "id": 28650,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3355,
+    "created_at": "2025-05-13T01:59:03.983721Z",
+    "updated_at": "2025-05-13T01:59:03.983753Z",
+    "lead_time": 3.577
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/manomano.fr_f7b3.jpg",
+    "id": 28651,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3356,
+    "created_at": "2025-05-13T01:59:07.888161Z",
+    "updated_at": "2025-05-13T01:59:07.888195Z",
+    "lead_time": 3.186
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/maps.google.com_9199.jpg",
+    "id": 28652,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3357,
+    "created_at": "2025-05-13T01:59:12.983785Z",
+    "updated_at": "2025-05-13T01:59:12.983817Z",
+    "lead_time": 4.361
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/maps.google.fr_7242.jpg",
+    "id": 28653,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3358,
+    "created_at": "2025-05-13T01:59:15.762820Z",
+    "updated_at": "2025-05-13T01:59:15.762851Z",
+    "lead_time": 2.057
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/medium.com_2189.jpg",
+    "id": 28654,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3359,
+    "created_at": "2025-05-13T01:59:20.015584Z",
+    "updated_at": "2025-05-13T01:59:20.015616Z",
+    "lead_time": 3.53
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/meilleurtest.fr_e541.jpg",
+    "id": 28655,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3360,
+    "created_at": "2025-05-13T01:59:23.697060Z",
+    "updated_at": "2025-05-13T01:59:23.697091Z",
+    "lead_time": 2.962
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/messagerie.orange.fr_834f.jpg",
+    "id": 28656,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3361,
+    "created_at": "2025-05-13T01:59:26.598159Z",
+    "updated_at": "2025-05-13T01:59:26.598192Z",
+    "lead_time": 2.147
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/meteofrance.com_314f.jpg",
+    "id": 28657,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3362,
+    "created_at": "2025-05-13T01:59:29.306022Z",
+    "updated_at": "2025-05-13T01:59:29.306054Z",
+    "lead_time": 2.001
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/mistral.ai_85fd.jpg",
+    "id": 28658,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3363,
+    "created_at": "2025-05-13T01:59:32.125336Z",
+    "updated_at": "2025-05-13T01:59:32.125367Z",
+    "lead_time": 2.105
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/mobile.free.fr_0967.jpg",
+    "id": 28659,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3364,
+    "created_at": "2025-05-13T01:59:36.231234Z",
+    "updated_at": "2025-05-13T01:59:36.231265Z",
+    "lead_time": 3.397
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/music.youtube.com_1654.jpg",
+    "id": 28660,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3365,
+    "created_at": "2025-05-13T01:59:38.874857Z",
+    "updated_at": "2025-05-13T01:59:38.874888Z",
+    "lead_time": 1.927
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/my.mail.ru_cdcb.jpg",
+    "id": 28661,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3366,
+    "created_at": "2025-05-13T01:59:45.150275Z",
+    "updated_at": "2025-05-13T01:59:45.150308Z",
+    "lead_time": 5.548
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/news.google.com_dff9.jpg",
+    "id": 28662,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3367,
+    "created_at": "2025-05-13T01:59:47.710070Z",
+    "updated_at": "2025-05-13T01:59:47.710103Z",
+    "lead_time": 1.835
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/nyahentai.re_7ed7.jpg",
+    "id": 28663,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3368,
+    "created_at": "2025-05-13T02:00:13.298707Z",
+    "updated_at": "2025-05-13T02:00:13.298739Z",
+    "lead_time": 24.866
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/open.spotify.com_37d2.jpg",
+    "id": 28664,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3369,
+    "created_at": "2025-05-13T02:00:18.799193Z",
+    "updated_at": "2025-05-13T02:00:18.799226Z",
+    "lead_time": 4.682
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/openai.com_2d22.jpg",
+    "id": 28665,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3370,
+    "created_at": "2025-05-13T02:00:21.782132Z",
+    "updated_at": "2025-05-13T02:00:21.782165Z",
+    "lead_time": 2.26
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/outlook.live.com_868c.jpg",
+    "id": 28666,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3371,
+    "created_at": "2025-05-13T02:00:24.798811Z",
+    "updated_at": "2025-05-13T02:00:24.798843Z",
+    "lead_time": 2.305
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/particuliers.sg.fr_98cd.jpg",
+    "id": 28667,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3372,
+    "created_at": "2025-05-13T02:00:27.403542Z",
+    "updated_at": "2025-05-13T02:00:27.403575Z",
+    "lead_time": 1.895
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/pixabay.com_84b3.jpg",
+    "id": 28668,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3373,
+    "created_at": "2025-05-13T02:00:30.498519Z",
+    "updated_at": "2025-05-13T02:00:30.498552Z",
+    "lead_time": 2.371
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/play.google.com_7c95.jpg",
+    "id": 28669,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3374,
+    "created_at": "2025-05-13T02:00:34.159922Z",
+    "updated_at": "2025-05-13T02:00:34.159956Z",
+    "lead_time": 2.941
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/poki.com_07be.jpg",
+    "id": 28670,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3375,
+    "created_at": "2025-05-13T02:00:36.824571Z",
+    "updated_at": "2025-05-13T02:00:36.824604Z",
+    "lead_time": 1.925
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/pornxp.com_d81e.jpg",
+    "id": 28671,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3376,
+    "created_at": "2025-05-13T02:00:48.625903Z",
+    "updated_at": "2025-05-13T02:00:48.625934Z",
+    "lead_time": 11.071
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/pubmed.ncbi.nlm.nih.gov_94c3.jpg",
+    "id": 28672,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3377,
+    "created_at": "2025-05-13T02:00:52.693757Z",
+    "updated_at": "2025-05-13T02:00:52.693790Z",
+    "lead_time": 3.292
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/rule34.xxx_220f.jpg",
+    "id": 28673,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3378,
+    "created_at": "2025-05-13T02:00:56.054903Z",
+    "updated_at": "2025-05-13T02:00:56.054937Z",
+    "lead_time": 2.627
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/rule34video.com_a233.jpg",
+    "id": 28674,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3379,
+    "created_at": "2025-05-13T02:00:58.616395Z",
+    "updated_at": "2025-05-13T02:00:58.616426Z",
+    "lead_time": 1.855
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/sante.journaldesfemmes.fr_4db7.jpg",
+    "id": 28675,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3380,
+    "created_at": "2025-05-13T02:01:01.532842Z",
+    "updated_at": "2025-05-13T02:01:01.532886Z",
+    "lead_time": 2.158
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/scholar.google.com_1ac8.jpg",
+    "id": 28676,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3381,
+    "created_at": "2025-05-13T02:01:04.843708Z",
+    "updated_at": "2025-05-13T02:01:04.843741Z",
+    "lead_time": 2.58
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/scratch.mit.edu_789c.jpg",
+    "id": 28677,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3382,
+    "created_at": "2025-05-13T02:01:09.198542Z",
+    "updated_at": "2025-05-13T02:01:09.198575Z",
+    "lead_time": 3.625
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/shs.cairn.info_caaa.jpg",
+    "id": 28678,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3383,
+    "created_at": "2025-05-13T02:01:12.187976Z",
+    "updated_at": "2025-05-13T02:01:12.188011Z",
+    "lead_time": 2.25
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/soundcloud.com_c0ec.jpg",
+    "id": 28679,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3384,
+    "created_at": "2025-05-13T02:01:14.937921Z",
+    "updated_at": "2025-05-13T02:01:14.937953Z",
+    "lead_time": 2.015
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/spankbang.com_e956.jpg",
+    "id": 28680,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3385,
+    "created_at": "2025-05-13T02:01:23.829115Z",
+    "updated_at": "2025-05-13T02:01:23.829147Z",
+    "lead_time": 8.158
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/stackoverflow.com_92fe.jpg",
+    "id": 28681,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3386,
+    "created_at": "2025-05-13T02:01:26.860518Z",
+    "updated_at": "2025-05-13T02:01:26.860549Z",
+    "lead_time": 2.202
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/steamcommunity.com_f21d.jpg",
+    "id": 28682,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3387,
+    "created_at": "2025-05-13T02:01:32.078199Z",
+    "updated_at": "2025-05-13T02:01:32.078233Z",
+    "lead_time": 4.498
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/store.steampowered.com_8cbb.jpg",
+    "id": 28683,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3388,
+    "created_at": "2025-05-13T02:01:35.087827Z",
+    "updated_at": "2025-05-13T02:01:35.087860Z",
+    "lead_time": 2.295
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/superuser.com_f7fe.jpg",
+    "id": 28684,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3389,
+    "created_at": "2025-05-13T02:01:37.791030Z",
+    "updated_at": "2025-05-13T02:01:37.791063Z",
+    "lead_time": 1.962
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/support.apple.com_9bf6.jpg",
+    "id": 28685,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3390,
+    "created_at": "2025-05-13T02:01:43.372960Z",
+    "updated_at": "2025-05-13T02:01:43.372993Z",
+    "lead_time": 4.848
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/support.google.com_7507.jpg",
+    "id": 28686,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3391,
+    "created_at": "2025-05-13T02:01:46.161701Z",
+    "updated_at": "2025-05-13T02:01:46.161733Z",
+    "lead_time": 2.019
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/support.microsoft.com_4ebd.jpg",
+    "id": 28687,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3392,
+    "created_at": "2025-05-13T02:01:50.047650Z",
+    "updated_at": "2025-05-13T02:01:50.047681Z",
+    "lead_time": 3.169
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/sxyprn.net_680a.jpg",
+    "id": 28688,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3393,
+    "created_at": "2025-05-13T02:01:54.707203Z",
+    "updated_at": "2025-05-13T02:01:54.707234Z",
+    "lead_time": 3.8
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/t.me_6d45.jpg",
+    "id": 28689,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3394,
+    "created_at": "2025-05-13T02:01:58.730757Z",
+    "updated_at": "2025-05-13T02:01:58.730800Z",
+    "lead_time": 3.247
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/theporndude.com_109e.jpg",
+    "id": 28690,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3395,
+    "created_at": "2025-05-13T02:02:02.751175Z",
+    "updated_at": "2025-05-13T02:02:02.751217Z",
+    "lead_time": 3.171
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/thisvid.com_006a.jpg",
+    "id": 28691,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3396,
+    "created_at": "2025-05-13T02:02:07.077975Z",
+    "updated_at": "2025-05-13T02:02:07.078010Z",
+    "lead_time": 3.473
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/translate.google.com_5454.jpg",
+    "id": 28692,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3397,
+    "created_at": "2025-05-13T02:02:10.242163Z",
+    "updated_at": "2025-05-13T02:02:10.242194Z",
+    "lead_time": 2.386
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/translate.google.fr_4049.jpg",
+    "id": 28693,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3398,
+    "created_at": "2025-05-13T02:02:12.705746Z",
+    "updated_at": "2025-05-13T02:02:12.705777Z",
+    "lead_time": 1.664
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/trouver-ouvert.fr_976c.jpg",
+    "id": 28694,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3399,
+    "created_at": "2025-05-13T02:02:15.355026Z",
+    "updated_at": "2025-05-13T02:02:15.355070Z",
+    "lead_time": 1.816
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/tubesafari.com_6539.jpg",
+    "id": 28695,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3400,
+    "created_at": "2025-05-13T02:02:20.688073Z",
+    "updated_at": "2025-05-13T02:02:20.688107Z",
+    "lead_time": 4.565
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/tv-programme.com_64bb.jpg",
+    "id": 28696,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3401,
+    "created_at": "2025-05-13T02:02:24.512695Z",
+    "updated_at": "2025-05-13T02:02:24.512726Z",
+    "lead_time": 3.099
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/tv.yandex.com_341e.jpg",
+    "id": 28697,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3402,
+    "created_at": "2025-05-13T02:02:27.332255Z",
+    "updated_at": "2025-05-13T02:02:27.332291Z",
+    "lead_time": 2.032
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/twitter.com_a786.jpg",
+    "id": 28698,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3403,
+    "created_at": "2025-05-13T02:02:30.606458Z",
+    "updated_at": "2025-05-13T02:02:30.606492Z",
+    "lead_time": 2.555
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/umvie.com_43d1.jpg",
+    "id": 28699,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3404,
+    "created_at": "2025-05-13T02:02:33.289235Z",
+    "updated_at": "2025-05-13T02:02:33.289267Z",
+    "lead_time": 1.972
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/unix.stackexchange.com_3dcf.jpg",
+    "id": 28700,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3405,
+    "created_at": "2025-05-13T02:02:36.080526Z",
+    "updated_at": "2025-05-13T02:02:36.080560Z",
+    "lead_time": 2.074
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/vk.com_1908.jpg",
+    "id": 28701,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3406,
+    "created_at": "2025-05-13T02:02:39.393836Z",
+    "updated_at": "2025-05-13T02:02:39.393870Z",
+    "lead_time": 2.581
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/web.whatsapp.com_20ee.jpg",
+    "id": 28702,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3407,
+    "created_at": "2025-05-13T02:02:43.613930Z",
+    "updated_at": "2025-05-13T02:02:43.613962Z",
+    "lead_time": 3.487
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/webmail.sfr.fr_82df.jpg",
+    "id": 28703,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3408,
+    "created_at": "2025-05-13T02:02:46.271355Z",
+    "updated_at": "2025-05-13T02:02:46.271388Z",
+    "lead_time": 1.93
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/wetransfer.com_bb6f.jpg",
+    "id": 28704,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3409,
+    "created_at": "2025-05-13T02:02:49.470805Z",
+    "updated_at": "2025-05-13T02:02:49.470838Z",
+    "lead_time": 2.472
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/workspace.google.com_1f8c.jpg",
+    "id": 28705,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3410,
+    "created_at": "2025-05-13T02:02:52.661241Z",
+    "updated_at": "2025-05-13T02:02:52.661274Z",
+    "lead_time": 2.469
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.01net.com_a567.jpg",
+    "id": 28706,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3411,
+    "created_at": "2025-05-13T02:02:57.057563Z",
+    "updated_at": "2025-05-13T02:02:57.057596Z",
+    "lead_time": 3.614
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.20minutes.fr_3b85.jpg",
+    "id": 28707,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3412,
+    "created_at": "2025-05-13T02:03:00.640825Z",
+    "updated_at": "2025-05-13T02:03:00.640855Z",
+    "lead_time": 2.861
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.airbnb.fr_60c8.jpg",
+    "id": 28708,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3413,
+    "created_at": "2025-05-13T02:03:03.474496Z",
+    "updated_at": "2025-05-13T02:03:03.474528Z",
+    "lead_time": 2.112
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.allocine.fr_e966.jpg",
+    "id": 28709,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3414,
+    "created_at": "2025-05-13T02:03:06.007312Z",
+    "updated_at": "2025-05-13T02:03:06.007344Z",
+    "lead_time": 1.805
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.amazon.com_4bc8.jpg",
+    "id": 28710,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3415,
+    "created_at": "2025-05-13T02:03:09.327075Z",
+    "updated_at": "2025-05-13T02:03:09.327108Z",
+    "lead_time": 2.591
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.amazon.fr_ea19.jpg",
+    "id": 28711,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3416,
+    "created_at": "2025-05-13T02:03:11.729199Z",
+    "updated_at": "2025-05-13T02:03:11.729231Z",
+    "lead_time": 1.645
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.ameli.fr_61c6.jpg",
+    "id": 28712,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3417,
+    "created_at": "2025-05-13T02:03:15.668112Z",
+    "updated_at": "2025-05-13T02:03:15.668143Z",
+    "lead_time": 3.209
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.apple.com_8c32.jpg",
+    "id": 28713,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3418,
+    "created_at": "2025-05-13T02:03:18.626472Z",
+    "updated_at": "2025-05-13T02:03:18.626505Z",
+    "lead_time": 2.23
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.arte.tv_c8a4.jpg",
+    "id": 28714,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3419,
+    "created_at": "2025-05-13T02:03:21.565187Z",
+    "updated_at": "2025-05-13T02:03:21.565217Z",
+    "lead_time": 2.226
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.astuces-aide-informatique.info_2bab.jpg",
+    "id": 28715,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3420,
+    "created_at": "2025-05-13T02:03:32.861414Z",
+    "updated_at": "2025-05-13T02:03:32.861445Z",
+    "lead_time": 10.562
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.autoentrepreneur.urssaf.fr_37c5.jpg",
+    "id": 28716,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3421,
+    "created_at": "2025-05-13T02:03:45.692514Z",
+    "updated_at": "2025-05-13T02:03:45.692547Z",
+    "lead_time": 12.108
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.aznude.com_6ea7.jpg",
+    "id": 28717,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3422,
+    "created_at": "2025-05-13T02:03:50.910134Z",
+    "updated_at": "2025-05-13T02:03:50.910165Z",
+    "lead_time": 4.427
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.babelio.com_9c5b.jpg",
+    "id": 28718,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3423,
+    "created_at": "2025-05-13T02:03:54.778752Z",
+    "updated_at": "2025-05-13T02:03:54.778783Z",
+    "lead_time": 3.139
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.banquepopulaire.fr_643f.jpg",
+    "id": 28719,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3424,
+    "created_at": "2025-05-13T02:03:57.623387Z",
+    "updated_at": "2025-05-13T02:03:57.623419Z",
+    "lead_time": 2.11
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.bbc.com_a66e.jpg",
+    "id": 28720,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3425,
+    "created_at": "2025-05-13T02:04:00.282987Z",
+    "updated_at": "2025-05-13T02:04:00.283021Z",
+    "lead_time": 1.918
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.bfmtv.com_5e2b.jpg",
+    "id": 28721,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3426,
+    "created_at": "2025-05-13T02:04:09.122934Z",
+    "updated_at": "2025-05-13T02:04:09.122968Z",
+    "lead_time": 8.119
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.booking.com_dd33.jpg",
+    "id": 28722,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3427,
+    "created_at": "2025-05-13T02:04:11.986002Z",
+    "updated_at": "2025-05-13T02:04:11.986033Z",
+    "lead_time": 2.108
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.boulanger.com_2030.jpg",
+    "id": 28723,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3428,
+    "created_at": "2025-05-13T02:04:17.067617Z",
+    "updated_at": "2025-05-13T02:04:17.067650Z",
+    "lead_time": 4.306
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.boursorama.com_076c.jpg",
+    "id": 28724,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3429,
+    "created_at": "2025-05-13T02:04:24.992813Z",
+    "updated_at": "2025-05-13T02:04:24.992847Z",
+    "lead_time": 7.209
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.bouyguestelecom.fr_5c19.jpg",
+    "id": 28725,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3430,
+    "created_at": "2025-05-13T02:04:27.501172Z",
+    "updated_at": "2025-05-13T02:04:27.501204Z",
+    "lead_time": 1.749
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.bricodepot.fr_edd3.jpg",
+    "id": 28726,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3431,
+    "created_at": "2025-05-13T02:04:30.139856Z",
+    "updated_at": "2025-05-13T02:04:30.139887Z",
+    "lead_time": 1.862
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.caf.fr_89c1.jpg",
+    "id": 28727,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3432,
+    "created_at": "2025-05-13T02:04:34.644960Z",
+    "updated_at": "2025-05-13T02:04:34.644993Z",
+    "lead_time": 3.779
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.caisse-epargne.fr_4a15.jpg",
+    "id": 28728,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3433,
+    "created_at": "2025-05-13T02:04:37.333027Z",
+    "updated_at": "2025-05-13T02:04:37.333060Z",
+    "lead_time": 1.955
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.canalplus.com_9ab3.jpg",
+    "id": 28729,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3434,
+    "created_at": "2025-05-13T02:04:40.383528Z",
+    "updated_at": "2025-05-13T02:04:40.383559Z",
+    "lead_time": 2.283
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.canva.com_d78a.jpg",
+    "id": 28730,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3435,
+    "created_at": "2025-05-13T02:04:51.040108Z",
+    "updated_at": "2025-05-13T02:04:51.040142Z",
+    "lead_time": 1.863
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.carrefour.fr_2cfb.jpg",
+    "id": 28731,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3436,
+    "created_at": "2025-05-13T02:04:58.543043Z",
+    "updated_at": "2025-05-13T02:04:58.543075Z",
+    "lead_time": 6.761
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.castorama.fr_c6e8.jpg",
+    "id": 28732,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3437,
+    "created_at": "2025-05-13T02:05:01.502765Z",
+    "updated_at": "2025-05-13T02:05:01.502797Z",
+    "lead_time": 2.199
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.cdiscount.com_9aa8.jpg",
+    "id": 28733,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3438,
+    "created_at": "2025-05-13T02:05:03.997515Z",
+    "updated_at": "2025-05-13T02:05:03.997552Z",
+    "lead_time": 1.756
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.cesu.urssaf.fr_c501.jpg",
+    "id": 28734,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3439,
+    "created_at": "2025-05-13T02:05:06.648617Z",
+    "updated_at": "2025-05-13T02:05:06.648648Z",
+    "lead_time": 1.907
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.chess.com_5823.jpg",
+    "id": 28735,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3440,
+    "created_at": "2025-05-13T02:05:09.389328Z",
+    "updated_at": "2025-05-13T02:05:09.389369Z",
+    "lead_time": 1.987
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.clubic.com_3583.jpg",
+    "id": 28736,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3441,
+    "created_at": "2025-05-13T02:05:12.099626Z",
+    "updated_at": "2025-05-13T02:05:12.099658Z",
+    "lead_time": 1.936
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.cnews.fr_d519.jpg",
+    "id": 28737,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3442,
+    "created_at": "2025-05-13T02:05:15.250725Z",
+    "updated_at": "2025-05-13T02:05:15.250757Z",
+    "lead_time": 2.407
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.cnrtl.fr_8b87.jpg",
+    "id": 28738,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3443,
+    "created_at": "2025-05-13T02:05:25.454180Z",
+    "updated_at": "2025-05-13T02:05:25.454212Z",
+    "lead_time": 9.48
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.commeunefleche.com_79a0.jpg",
+    "id": 28739,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3444,
+    "created_at": "2025-05-13T02:05:33.563445Z",
+    "updated_at": "2025-05-13T02:05:33.563481Z",
+    "lead_time": 7.383
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.crazygames.com_9c67.jpg",
+    "id": 28740,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3445,
+    "created_at": "2025-05-13T02:05:39.592417Z",
+    "updated_at": "2025-05-13T02:05:39.592451Z",
+    "lead_time": 5.289
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.crazygames.fr_e865.jpg",
+    "id": 28741,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3446,
+    "created_at": "2025-05-13T02:05:42.146529Z",
+    "updated_at": "2025-05-13T02:05:42.146561Z",
+    "lead_time": 1.826
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.credit-agricole.fr_7e89.jpg",
+    "id": 28742,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3447,
+    "created_at": "2025-05-13T02:05:45.127970Z",
+    "updated_at": "2025-05-13T02:05:45.128002Z",
+    "lead_time": 2.265
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.creditmutuel.fr_e3f8.jpg",
+    "id": 28743,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3448,
+    "created_at": "2025-05-13T02:05:47.542461Z",
+    "updated_at": "2025-05-13T02:05:47.542493Z",
+    "lead_time": 1.688
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.cuisineaz.com_0955.jpg",
+    "id": 28744,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3449,
+    "created_at": "2025-05-13T02:05:49.884283Z",
+    "updated_at": "2025-05-13T02:05:49.884315Z",
+    "lead_time": 1.616
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.cultura.com_f793.jpg",
+    "id": 28745,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3450,
+    "created_at": "2025-05-13T02:05:52.287582Z",
+    "updated_at": "2025-05-13T02:05:52.287615Z",
+    "lead_time": 1.685
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.dailymotion.com_51ec.jpg",
+    "id": 28746,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3451,
+    "created_at": "2025-05-13T02:05:54.865907Z",
+    "updated_at": "2025-05-13T02:05:54.865940Z",
+    "lead_time": 1.865
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.darty.com_0702.jpg",
+    "id": 28747,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3452,
+    "created_at": "2025-05-13T02:05:57.529855Z",
+    "updated_at": "2025-05-13T02:05:57.529888Z",
+    "lead_time": 1.92
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.decathlon.fr_728e.jpg",
+    "id": 28748,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3453,
+    "created_at": "2025-05-13T02:06:00.497925Z",
+    "updated_at": "2025-05-13T02:06:00.497957Z",
+    "lead_time": 2.215
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.deepl.com_a608.jpg",
+    "id": 28749,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3454,
+    "created_at": "2025-05-13T02:06:03.694997Z",
+    "updated_at": "2025-05-13T02:06:03.695028Z",
+    "lead_time": 2.457
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.discogs.com_9e49.jpg",
+    "id": 28750,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3455,
+    "created_at": "2025-05-13T02:06:07.201281Z",
+    "updated_at": "2025-05-13T02:06:07.201313Z",
+    "lead_time": 2.775
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.doctolib.fr_c9c0.jpg",
+    "id": 28751,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3456,
+    "created_at": "2025-05-13T02:06:10.708418Z",
+    "updated_at": "2025-05-13T02:06:10.708452Z",
+    "lead_time": 2.787
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.e.leclerc_1da2.jpg",
+    "id": 28752,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3457,
+    "created_at": "2025-05-13T02:06:13.300027Z",
+    "updated_at": "2025-05-13T02:06:13.300060Z",
+    "lead_time": 1.848
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.ebay.fr_fcef.jpg",
+    "id": 28753,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3458,
+    "created_at": "2025-05-13T02:06:16.062960Z",
+    "updated_at": "2025-05-13T02:06:16.062993Z",
+    "lead_time": 2.036
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.ecoledirecte.com_f1da.jpg",
+    "id": 28754,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3459,
+    "created_at": "2025-05-13T02:06:19.950444Z",
+    "updated_at": "2025-05-13T02:06:19.950476Z",
+    "lead_time": 3.162
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.economie.gouv.fr_8bb9.jpg",
+    "id": 28755,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3460,
+    "created_at": "2025-05-13T02:06:22.824870Z",
+    "updated_at": "2025-05-13T02:06:22.824903Z",
+    "lead_time": 2.145
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.edf.fr_ded7.jpg",
+    "id": 28756,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3461,
+    "created_at": "2025-05-13T02:06:25.381684Z",
+    "updated_at": "2025-05-13T02:06:25.381716Z",
+    "lead_time": 1.804
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.education.gouv.fr_8266.jpg",
+    "id": 28757,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3462,
+    "created_at": "2025-05-13T02:06:27.812393Z",
+    "updated_at": "2025-05-13T02:06:27.812424Z",
+    "lead_time": 1.705
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.eporner.com_cff8.jpg",
+    "id": 28758,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3463,
+    "created_at": "2025-05-13T02:06:31.153361Z",
+    "updated_at": "2025-05-13T02:06:31.153397Z",
+    "lead_time": 2.611
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.erome.com_9db7.jpg",
+    "id": 28759,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3464,
+    "created_at": "2025-05-13T02:06:33.696565Z",
+    "updated_at": "2025-05-13T02:06:33.696597Z",
+    "lead_time": 1.82
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.etsy.com_130c.jpg",
+    "id": 28760,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3465,
+    "created_at": "2025-05-13T02:06:39.169494Z",
+    "updated_at": "2025-05-13T02:06:39.169527Z",
+    "lead_time": 4.753
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.facebook.com_d611.jpg",
+    "id": 28761,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3466,
+    "created_at": "2025-05-13T02:06:41.818531Z",
+    "updated_at": "2025-05-13T02:06:41.818566Z",
+    "lead_time": 1.897
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.fdj.fr_9759.jpg",
+    "id": 28762,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3467,
+    "created_at": "2025-05-13T02:06:44.566136Z",
+    "updated_at": "2025-05-13T02:06:44.566169Z",
+    "lead_time": 1.955
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.femmeactuelle.fr_0669.jpg",
+    "id": 28763,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3468,
+    "created_at": "2025-05-13T02:06:47.260122Z",
+    "updated_at": "2025-05-13T02:06:47.260155Z",
+    "lead_time": 1.955
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.fnac.com_f6cb.jpg",
+    "id": 28764,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3469,
+    "created_at": "2025-05-13T02:06:50.353164Z",
+    "updated_at": "2025-05-13T02:06:50.353194Z",
+    "lead_time": 2.373
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.france.tv_4aa2.jpg",
+    "id": 28765,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3470,
+    "created_at": "2025-05-13T02:06:54.031352Z",
+    "updated_at": "2025-05-13T02:06:54.031385Z",
+    "lead_time": 2.946
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.francebleu.fr_2eff.jpg",
+    "id": 28766,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3471,
+    "created_at": "2025-05-13T02:06:56.719249Z",
+    "updated_at": "2025-05-13T02:06:56.719281Z",
+    "lead_time": 1.952
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.francetravail.fr_8c2e.jpg",
+    "id": 28767,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3472,
+    "created_at": "2025-05-13T02:06:59.288286Z",
+    "updated_at": "2025-05-13T02:06:59.288319Z",
+    "lead_time": 1.844
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.francetvinfo.fr_339c.jpg",
+    "id": 28768,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3473,
+    "created_at": "2025-05-13T02:07:01.916967Z",
+    "updated_at": "2025-05-13T02:07:01.916998Z",
+    "lead_time": 1.895
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.frandroid.com_a683.jpg",
+    "id": 28769,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3474,
+    "created_at": "2025-05-13T02:07:04.690112Z",
+    "updated_at": "2025-05-13T02:07:04.690146Z",
+    "lead_time": 2.037
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.free.fr_29c5.jpg",
+    "id": 28770,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3475,
+    "created_at": "2025-05-13T02:07:07.121200Z",
+    "updated_at": "2025-05-13T02:07:07.121236Z",
+    "lead_time": 1.675
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.fsolver.fr_0c96.jpg",
+    "id": 28771,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3476,
+    "created_at": "2025-05-13T02:07:09.605291Z",
+    "updated_at": "2025-05-13T02:07:09.605324Z",
+    "lead_time": 1.769
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.gammvert.fr_dd3b.jpg",
+    "id": 28772,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3477,
+    "created_at": "2025-05-13T02:07:12.189484Z",
+    "updated_at": "2025-05-13T02:07:12.189516Z",
+    "lead_time": 1.861
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.gaymaletube.com_9c74.jpg",
+    "id": 28773,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3478,
+    "created_at": "2025-05-13T02:07:15.102528Z",
+    "updated_at": "2025-05-13T02:07:15.102559Z",
+    "lead_time": 2.201
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.geeksforgeeks.org_1a05.jpg",
+    "id": 28774,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3479,
+    "created_at": "2025-05-13T02:07:18.978650Z",
+    "updated_at": "2025-05-13T02:07:18.978684Z",
+    "lead_time": 3.137
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.geoportail.gouv.fr_e817.jpg",
+    "id": 28775,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3480,
+    "created_at": "2025-05-13T02:07:26.159724Z",
+    "updated_at": "2025-05-13T02:07:26.159756Z",
+    "lead_time": 6.451
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.google.com_d111.jpg",
+    "id": 28776,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3481,
+    "created_at": "2025-05-13T02:07:28.996649Z",
+    "updated_at": "2025-05-13T02:07:28.996680Z",
+    "lead_time": 2.118
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.google.fr_4b81.jpg",
+    "id": 28777,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3482,
+    "created_at": "2025-05-13T02:07:31.406355Z",
+    "updated_at": "2025-05-13T02:07:31.406387Z",
+    "lead_time": 1.669
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.hotmail.com_5bbc.jpg",
+    "id": 28778,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3483,
+    "created_at": "2025-05-13T02:07:34.174567Z",
+    "updated_at": "2025-05-13T02:07:34.174597Z",
+    "lead_time": 2.042
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.ikea.com_3570.jpg",
+    "id": 28779,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3484,
+    "created_at": "2025-05-13T02:07:36.832666Z",
+    "updated_at": "2025-05-13T02:07:36.832694Z",
+    "lead_time": 1.937
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.ilovepdf.com_4597.jpg",
+    "id": 28780,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3485,
+    "created_at": "2025-05-13T02:07:39.585519Z",
+    "updated_at": "2025-05-13T02:07:39.585551Z",
+    "lead_time": 2.002
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.imagefap.com_f2c1.jpg",
+    "id": 28781,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3486,
+    "created_at": "2025-05-13T02:07:43.843204Z",
+    "updated_at": "2025-05-13T02:07:43.843236Z",
+    "lead_time": 3.526
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.imdb.com_81d7.jpg",
+    "id": 28782,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3487,
+    "created_at": "2025-05-13T02:07:47.296932Z",
+    "updated_at": "2025-05-13T02:07:47.296965Z",
+    "lead_time": 2.722
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.impots.gouv.fr_73d1.jpg",
+    "id": 28783,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3488,
+    "created_at": "2025-05-13T02:08:02.701379Z",
+    "updated_at": "2025-05-13T02:08:02.701412Z",
+    "lead_time": 14.686
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.insee.fr_4677.jpg",
+    "id": 28784,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3489,
+    "created_at": "2025-05-13T02:08:16.296944Z",
+    "updated_at": "2025-05-13T02:08:16.296976Z",
+    "lead_time": 12.82
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.instagram.com_f77c.jpg",
+    "id": 28785,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3490,
+    "created_at": "2025-05-13T02:08:19.656568Z",
+    "updated_at": "2025-05-13T02:08:19.656599Z",
+    "lead_time": 2.592
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.jardiner-malin.fr_2b98.jpg",
+    "id": 28786,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3491,
+    "created_at": "2025-05-13T02:08:22.343402Z",
+    "updated_at": "2025-05-13T02:08:22.343434Z",
+    "lead_time": 1.952
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.jeuxvideo.com_f2e6.jpg",
+    "id": 28787,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3492,
+    "created_at": "2025-05-13T02:08:25.384692Z",
+    "updated_at": "2025-05-13T02:08:25.384723Z",
+    "lead_time": 2.298
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.justwatch.com_8934.jpg",
+    "id": 28788,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3493,
+    "created_at": "2025-05-13T02:08:28.409656Z",
+    "updated_at": "2025-05-13T02:08:28.409690Z",
+    "lead_time": 2.254
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.labanquepostale.fr_b233.jpg",
+    "id": 28789,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3494,
+    "created_at": "2025-05-13T02:08:31.084118Z",
+    "updated_at": "2025-05-13T02:08:31.084150Z",
+    "lead_time": 1.933
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.lacentrale.fr_3123.jpg",
+    "id": 28790,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3495,
+    "created_at": "2025-05-13T02:08:34.425000Z",
+    "updated_at": "2025-05-13T02:08:34.425034Z",
+    "lead_time": 2.603
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.lachainemeteo.com_0ac2.jpg",
+    "id": 28791,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3496,
+    "created_at": "2025-05-13T02:08:38.184937Z",
+    "updated_at": "2025-05-13T02:08:38.184969Z",
+    "lead_time": 2.996
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.ladepeche.fr_9c83.jpg",
+    "id": 28792,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3497,
+    "created_at": "2025-05-13T02:08:40.895859Z",
+    "updated_at": "2025-05-13T02:08:40.895891Z",
+    "lead_time": 1.956
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.lalanguefrancaise.com_c03f.jpg",
+    "id": 28793,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3498,
+    "created_at": "2025-05-13T02:08:43.298251Z",
+    "updated_at": "2025-05-13T02:08:43.298283Z",
+    "lead_time": 1.653
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.laposte.fr_e317.jpg",
+    "id": 28794,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3499,
+    "created_at": "2025-05-13T02:08:45.771729Z",
+    "updated_at": "2025-05-13T02:08:45.771764Z",
+    "lead_time": 1.753
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.largus.fr_f9e9.jpg",
+    "id": 28795,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3500,
+    "created_at": "2025-05-13T02:08:48.839172Z",
+    "updated_at": "2025-05-13T02:08:48.839203Z",
+    "lead_time": 2.293
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.larousse.fr_12d4.jpg",
+    "id": 28796,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3501,
+    "created_at": "2025-05-13T02:08:51.363530Z",
+    "updated_at": "2025-05-13T02:08:51.363561Z",
+    "lead_time": 1.782
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.lassuranceretraite.fr_1351.jpg",
+    "id": 28797,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3502,
+    "created_at": "2025-05-13T02:08:54.298489Z",
+    "updated_at": "2025-05-13T02:08:54.298520Z",
+    "lead_time": 2.195
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.ldlc.com_d3d7.jpg",
+    "id": 28798,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3503,
+    "created_at": "2025-05-13T02:08:57.141599Z",
+    "updated_at": "2025-05-13T02:08:57.141630Z",
+    "lead_time": 2.1
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.leboncoin.fr_406f.jpg",
+    "id": 28799,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3504,
+    "created_at": "2025-05-13T02:08:59.786175Z",
+    "updated_at": "2025-05-13T02:08:59.786207Z",
+    "lead_time": 1.904
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.lefigaro.fr_a264.jpg",
+    "id": 28800,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3505,
+    "created_at": "2025-05-13T02:09:03.947308Z",
+    "updated_at": "2025-05-13T02:09:03.947341Z",
+    "lead_time": 3.412
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.legifrance.gouv.fr_0ed0.jpg",
+    "id": 28801,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3506,
+    "created_at": "2025-05-13T02:09:11.935458Z",
+    "updated_at": "2025-05-13T02:09:11.935489Z",
+    "lead_time": 7.22
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.lelivrescolaire.fr_1d01.jpg",
+    "id": 28802,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3507,
+    "created_at": "2025-05-13T02:09:22.207220Z",
+    "updated_at": "2025-05-13T02:09:22.207254Z",
+    "lead_time": 9.388
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.lemonde.fr_1e7b.jpg",
+    "id": 28803,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3508,
+    "created_at": "2025-05-13T02:09:31.140943Z",
+    "updated_at": "2025-05-13T02:09:31.140973Z",
+    "lead_time": 8.174
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.leparisien.fr_569a.jpg",
+    "id": 28804,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3509,
+    "created_at": "2025-05-13T02:09:33.851497Z",
+    "updated_at": "2025-05-13T02:09:33.851528Z",
+    "lead_time": 1.838
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.lequipe.fr_345e.jpg",
+    "id": 28805,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3510,
+    "created_at": "2025-05-13T02:09:39.637657Z",
+    "updated_at": "2025-05-13T02:09:39.637689Z",
+    "lead_time": 5.033
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.leroymerlin.fr_4f89.jpg",
+    "id": 28806,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3511,
+    "created_at": "2025-05-13T02:09:42.606036Z",
+    "updated_at": "2025-05-13T02:09:42.606068Z",
+    "lead_time": 2.224
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.lesnumeriques.com_ddc6.jpg",
+    "id": 28807,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3512,
+    "created_at": "2025-05-13T02:09:45.427398Z",
+    "updated_at": "2025-05-13T02:09:45.427430Z",
+    "lead_time": 2.082
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.letudiant.fr_d5b1.jpg",
+    "id": 28808,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3513,
+    "created_at": "2025-05-13T02:09:48.173380Z",
+    "updated_at": "2025-05-13T02:09:48.173413Z",
+    "lead_time": 2.002
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.libramemoria.com_a790.jpg",
+    "id": 28809,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3514,
+    "created_at": "2025-05-13T02:09:51.733972Z",
+    "updated_at": "2025-05-13T02:09:51.734005Z",
+    "lead_time": 2.807
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.linguee.fr_791e.jpg",
+    "id": 28810,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3515,
+    "created_at": "2025-05-13T02:09:54.289415Z",
+    "updated_at": "2025-05-13T02:09:54.289447Z",
+    "lead_time": 1.803
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.linkedin.com_c4bf.jpg",
+    "id": 28811,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3516,
+    "created_at": "2025-05-13T02:09:59.061986Z",
+    "updated_at": "2025-05-13T02:09:59.062016Z",
+    "lead_time": 4.039
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.linternaute.com_bfc6.jpg",
+    "id": 28812,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3517,
+    "created_at": "2025-05-13T02:10:02.662129Z",
+    "updated_at": "2025-05-13T02:10:02.662160Z",
+    "lead_time": 2.853
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.m6.fr_7f5c.jpg",
+    "id": 28813,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3518,
+    "created_at": "2025-05-13T02:10:05.488304Z",
+    "updated_at": "2025-05-13T02:10:05.488337Z",
+    "lead_time": 2.05
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.manomano.fr_754d.jpg",
+    "id": 28814,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3519,
+    "created_at": "2025-05-13T02:10:08.159272Z",
+    "updated_at": "2025-05-13T02:10:08.159303Z",
+    "lead_time": 1.932
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.marmiton.org_4c0c.jpg",
+    "id": 28815,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3520,
+    "created_at": "2025-05-13T02:10:10.804788Z",
+    "updated_at": "2025-05-13T02:10:10.804821Z",
+    "lead_time": 1.91
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.meteociel.fr_cdbe.jpg",
+    "id": 28816,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3521,
+    "created_at": "2025-05-13T02:10:13.385809Z",
+    "updated_at": "2025-05-13T02:10:13.385838Z",
+    "lead_time": 1.823
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.meteofrance.com_45cd.jpg",
+    "id": 28817,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3522,
+    "created_at": "2025-05-13T02:10:15.790914Z",
+    "updated_at": "2025-05-13T02:10:15.790948Z",
+    "lead_time": 1.658
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.microsoft.com_7a13.jpg",
+    "id": 28818,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3523,
+    "created_at": "2025-05-13T02:10:20.067024Z",
+    "updated_at": "2025-05-13T02:10:20.067057Z",
+    "lead_time": 3.479
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.modesdemploi.fr_b112.jpg",
+    "id": 28819,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3524,
+    "created_at": "2025-05-13T02:10:23.095503Z",
+    "updated_at": "2025-05-13T02:10:23.095535Z",
+    "lead_time": 2.247
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.monbureaunumerique.fr_8d2d.jpg",
+    "id": 28820,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3525,
+    "created_at": "2025-05-13T02:10:26.510057Z",
+    "updated_at": "2025-05-13T02:10:26.510087Z",
+    "lead_time": 2.649
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.myinstants.com_b284.jpg",
+    "id": 28821,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3526,
+    "created_at": "2025-05-13T02:10:29.268031Z",
+    "updated_at": "2025-05-13T02:10:29.268061Z",
+    "lead_time": 1.973
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.netflix.com_6ce6.jpg",
+    "id": 28822,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3527,
+    "created_at": "2025-05-13T02:10:32.239955Z",
+    "updated_at": "2025-05-13T02:10:32.239987Z",
+    "lead_time": 2.16
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.nexusmods.com_4b4f.jpg",
+    "id": 28823,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3528,
+    "created_at": "2025-05-13T02:10:34.937897Z",
+    "updated_at": "2025-05-13T02:10:34.937926Z",
+    "lead_time": 1.953
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.office.com_2752.jpg",
+    "id": 28824,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3529,
+    "created_at": "2025-05-13T02:10:37.666928Z",
+    "updated_at": "2025-05-13T02:10:37.666961Z",
+    "lead_time": 1.961
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.onisep.fr_85eb.jpg",
+    "id": 28825,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3530,
+    "created_at": "2025-05-13T02:10:44.733198Z",
+    "updated_at": "2025-05-13T02:10:44.733231Z",
+    "lead_time": 6.238
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.orange.fr_7017.jpg",
+    "id": 28826,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3531,
+    "created_at": "2025-05-13T02:10:47.671986Z",
+    "updated_at": "2025-05-13T02:10:47.672018Z",
+    "lead_time": 2.206
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.ouest-france.fr_3aa1.jpg",
+    "id": 28827,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3532,
+    "created_at": "2025-05-13T02:10:50.055285Z",
+    "updated_at": "2025-05-13T02:10:50.055317Z",
+    "lead_time": 1.643
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.outlook.com_528e.jpg",
+    "id": 28828,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3533,
+    "created_at": "2025-05-13T02:10:52.814056Z",
+    "updated_at": "2025-05-13T02:10:52.814087Z",
+    "lead_time": 1.963
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.pagesjaunes.fr_ec71.jpg",
+    "id": 28829,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3534,
+    "created_at": "2025-05-13T02:10:55.355498Z",
+    "updated_at": "2025-05-13T02:10:55.355530Z",
+    "lead_time": 1.79
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.pappers.fr_88fb.jpg",
+    "id": 28830,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3535,
+    "created_at": "2025-05-13T02:11:06.891127Z",
+    "updated_at": "2025-05-13T02:11:06.891159Z",
+    "lead_time": 10.777
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.paroles.net_9b50.jpg",
+    "id": 28831,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3536,
+    "created_at": "2025-05-13T02:11:09.503074Z",
+    "updated_at": "2025-05-13T02:11:09.503120Z",
+    "lead_time": 1.832
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.passeportsante.net_22a9.jpg",
+    "id": 28832,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3537,
+    "created_at": "2025-05-13T02:11:12.112259Z",
+    "updated_at": "2025-05-13T02:11:12.112292Z",
+    "lead_time": 1.837
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.paypal.com_18a3.jpg",
+    "id": 28833,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3538,
+    "created_at": "2025-05-13T02:11:15.089615Z",
+    "updated_at": "2025-05-13T02:11:15.089648Z",
+    "lead_time": 2.226
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.petitfute.com_f517.jpg",
+    "id": 28834,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3539,
+    "created_at": "2025-05-13T02:11:17.992820Z",
+    "updated_at": "2025-05-13T02:11:17.992853Z",
+    "lead_time": 2.13
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.pinterest.fr_c3fd.jpg",
+    "id": 28835,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3540,
+    "created_at": "2025-05-13T02:11:21.920996Z",
+    "updated_at": "2025-05-13T02:11:21.921029Z",
+    "lead_time": 3.177
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.pornhub.com_63d2.jpg",
+    "id": 28836,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3541,
+    "created_at": "2025-05-13T02:11:25.394395Z",
+    "updated_at": "2025-05-13T02:11:25.394427Z",
+    "lead_time": 2.719
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.pornpics.com_e632.jpg",
+    "id": 28837,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3542,
+    "created_at": "2025-05-13T02:11:30.281377Z",
+    "updated_at": "2025-05-13T02:11:30.281410Z",
+    "lead_time": 4.148
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.porntrex.com_4f13.jpg",
+    "id": 28838,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3543,
+    "created_at": "2025-05-13T02:11:33.871990Z",
+    "updated_at": "2025-05-13T02:11:33.872024Z",
+    "lead_time": 2.854
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.primevideo.com_03db.jpg",
+    "id": 28839,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3544,
+    "created_at": "2025-05-13T02:11:38.022269Z",
+    "updated_at": "2025-05-13T02:11:38.022300Z",
+    "lead_time": 3.388
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.programme-tv.net_34b2.jpg",
+    "id": 28840,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3545,
+    "created_at": "2025-05-13T02:11:42.491346Z",
+    "updated_at": "2025-05-13T02:11:42.491378Z",
+    "lead_time": 3.694
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.promessedefleurs.com_866b.jpg",
+    "id": 28841,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3546,
+    "created_at": "2025-05-13T02:11:47.665192Z",
+    "updated_at": "2025-05-13T02:11:47.665226Z",
+    "lead_time": 4.419
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.quechoisir.org_fd8a.jpg",
+    "id": 28842,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3547,
+    "created_at": "2025-05-13T02:11:50.294563Z",
+    "updated_at": "2025-05-13T02:11:50.294596Z",
+    "lead_time": 1.876
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.radiofrance.fr_be49.jpg",
+    "id": 28843,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3548,
+    "created_at": "2025-05-13T02:11:54.563371Z",
+    "updated_at": "2025-05-13T02:11:54.563404Z",
+    "lead_time": 3.527
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.ratp.fr_baa9.jpg",
+    "id": 28844,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3549,
+    "created_at": "2025-05-13T02:11:57.078939Z",
+    "updated_at": "2025-05-13T02:11:57.078972Z",
+    "lead_time": 1.77
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.reddit.com_1713.jpg",
+    "id": 28845,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3550,
+    "created_at": "2025-05-13T02:11:59.829431Z",
+    "updated_at": "2025-05-13T02:11:59.829465Z",
+    "lead_time": 1.984
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.researchgate.net_732b.jpg",
+    "id": 28846,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3551,
+    "created_at": "2025-05-13T02:12:02.533914Z",
+    "updated_at": "2025-05-13T02:12:02.533943Z",
+    "lead_time": 1.944
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.reverso.net_292b.jpg",
+    "id": 28847,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3552,
+    "created_at": "2025-05-13T02:12:05.470872Z",
+    "updated_at": "2025-05-13T02:12:05.470907Z",
+    "lead_time": 2.116
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.roblox.com_68a1.jpg",
+    "id": 28848,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3553,
+    "created_at": "2025-05-13T02:12:12.663712Z",
+    "updated_at": "2025-05-13T02:12:12.663744Z",
+    "lead_time": 6.436
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.santemagazine.fr_8412.jpg",
+    "id": 28849,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3554,
+    "created_at": "2025-05-13T02:12:15.215872Z",
+    "updated_at": "2025-05-13T02:12:15.215924Z",
+    "lead_time": 1.79
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.sciencedirect.com_29a5.jpg",
+    "id": 28850,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3555,
+    "created_at": "2025-05-13T02:12:17.688675Z",
+    "updated_at": "2025-05-13T02:12:17.688710Z",
+    "lead_time": 1.712
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.seloger.com_ddc7.jpg",
+    "id": 28851,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3556,
+    "created_at": "2025-05-13T02:12:20.307401Z",
+    "updated_at": "2025-05-13T02:12:20.307435Z",
+    "lead_time": 1.879
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.senscritique.com_54df.jpg",
+    "id": 28852,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3557,
+    "created_at": "2025-05-13T02:12:22.889182Z",
+    "updated_at": "2025-05-13T02:12:22.889213Z",
+    "lead_time": 1.827
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.service-public.fr_d46b.jpg",
+    "id": 28853,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3558,
+    "created_at": "2025-05-13T02:12:25.558413Z",
+    "updated_at": "2025-05-13T02:12:25.558444Z",
+    "lead_time": 1.907
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.sexemodel.com_6cef.jpg",
+    "id": 28854,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3559,
+    "created_at": "2025-05-13T02:12:52.374023Z",
+    "updated_at": "2025-05-13T02:12:52.374055Z",
+    "lead_time": 26.028
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.snapchat.com_6823.jpg",
+    "id": 28855,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3560,
+    "created_at": "2025-05-13T02:12:58.081443Z",
+    "updated_at": "2025-05-13T02:12:58.081476Z",
+    "lead_time": 4.952
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.sncf-connect.com_6881.jpg",
+    "id": 28856,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3561,
+    "created_at": "2025-05-13T02:13:00.635361Z",
+    "updated_at": "2025-05-13T02:13:00.635394Z",
+    "lead_time": 1.802
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.societe.com_52c9.jpg",
+    "id": 28857,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3562,
+    "created_at": "2025-05-13T02:13:04.061333Z",
+    "updated_at": "2025-05-13T02:13:04.061365Z",
+    "lead_time": 2.69
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.speedtest.net_1c84.jpg",
+    "id": 28858,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3563,
+    "created_at": "2025-05-13T02:13:06.669397Z",
+    "updated_at": "2025-05-13T02:13:06.669427Z",
+    "lead_time": 1.871
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.sudouest.fr_d621.jpg",
+    "id": 28859,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3564,
+    "created_at": "2025-05-13T02:13:09.419269Z",
+    "updated_at": "2025-05-13T02:13:09.419304Z",
+    "lead_time": 1.999
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.sxyprn.com_b3f7.jpg",
+    "id": 28860,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3565,
+    "created_at": "2025-05-13T02:13:13.183253Z",
+    "updated_at": "2025-05-13T02:13:13.183283Z",
+    "lead_time": 3.003
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.synonymo.fr_e3ca.jpg",
+    "id": 28861,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3566,
+    "created_at": "2025-05-13T02:13:16.867739Z",
+    "updated_at": "2025-05-13T02:13:16.867773Z",
+    "lead_time": 2.921
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.temu.com_fe84.jpg",
+    "id": 28862,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3567,
+    "created_at": "2025-05-13T02:13:19.165788Z",
+    "updated_at": "2025-05-13T02:13:19.165820Z",
+    "lead_time": 1.543
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.ter.sncf.com_bb5e.jpg",
+    "id": 28863,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3568,
+    "created_at": "2025-05-13T02:13:21.936755Z",
+    "updated_at": "2025-05-13T02:13:21.936786Z",
+    "lead_time": 2.034
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.tf1.fr_e727.jpg",
+    "id": 28864,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3569,
+    "created_at": "2025-05-13T02:13:24.579312Z",
+    "updated_at": "2025-05-13T02:13:24.579347Z",
+    "lead_time": 1.9
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.tiktok.com_388f.jpg",
+    "id": 28865,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3570,
+    "created_at": "2025-05-13T02:13:27.636310Z",
+    "updated_at": "2025-05-13T02:13:27.636342Z",
+    "lead_time": 2.306
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.toutsurmesfinances.com_3743.jpg",
+    "id": 28866,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3571,
+    "created_at": "2025-05-13T02:13:30.438522Z",
+    "updated_at": "2025-05-13T02:13:30.438554Z",
+    "lead_time": 2.051
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.tripadvisor.fr_f9ad.jpg",
+    "id": 28867,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3572,
+    "created_at": "2025-05-13T02:13:33.256139Z",
+    "updated_at": "2025-05-13T02:13:33.256172Z",
+    "lead_time": 2.063
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.tubepornstars.com_2c52.jpg",
+    "id": 28868,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3573,
+    "created_at": "2025-05-13T02:13:36.089548Z",
+    "updated_at": "2025-05-13T02:13:36.089580Z",
+    "lead_time": 2.064
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.urssaf.fr_6cef.jpg",
+    "id": 28869,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3574,
+    "created_at": "2025-05-13T02:13:39.338568Z",
+    "updated_at": "2025-05-13T02:13:39.338601Z",
+    "lead_time": 2.484
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.viamichelin.fr_6699.jpg",
+    "id": 28870,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3575,
+    "created_at": "2025-05-13T02:13:42.135695Z",
+    "updated_at": "2025-05-13T02:13:42.135728Z",
+    "lead_time": 2.016
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.vidal.fr_d313.jpg",
+    "id": 28871,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3576,
+    "created_at": "2025-05-13T02:13:44.633585Z",
+    "updated_at": "2025-05-13T02:13:44.633615Z",
+    "lead_time": 1.737
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.vinted.fr_5cd8.jpg",
+    "id": 28872,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3577,
+    "created_at": "2025-05-13T02:13:47.490922Z",
+    "updated_at": "2025-05-13T02:13:47.490954Z",
+    "lead_time": 2.092
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.w3schools.com_fb31.jpg",
+    "id": 28873,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3578,
+    "created_at": "2025-05-13T02:13:50.077284Z",
+    "updated_at": "2025-05-13T02:13:50.077317Z",
+    "lead_time": 1.751
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.wordreference.com_bc91.jpg",
+    "id": 28874,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3579,
+    "created_at": "2025-05-13T02:13:54.841702Z",
+    "updated_at": "2025-05-13T02:13:54.841732Z",
+    "lead_time": 4.013
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.xbox.com_bfe2.jpg",
+    "id": 28875,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3580,
+    "created_at": "2025-05-13T02:13:59.187118Z",
+    "updated_at": "2025-05-13T02:13:59.187148Z",
+    "lead_time": 3.6
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.xnxx.com_c073.jpg",
+    "id": 28876,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3581,
+    "created_at": "2025-05-13T02:14:02.415763Z",
+    "updated_at": "2025-05-13T02:14:02.415798Z",
+    "lead_time": 2.48
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.xvideos.com_dafb.jpg",
+    "id": 28877,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3582,
+    "created_at": "2025-05-13T02:14:05.156232Z",
+    "updated_at": "2025-05-13T02:14:05.156265Z",
+    "lead_time": 1.951
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.youporn.com_3832.jpg",
+    "id": 28878,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3583,
+    "created_at": "2025-05-13T02:14:08.001760Z",
+    "updated_at": "2025-05-13T02:14:08.001798Z",
+    "lead_time": 2.038
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.youtube.com_d75d.jpg",
+    "id": 28879,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3584,
+    "created_at": "2025-05-13T02:14:11.139676Z",
+    "updated_at": "2025-05-13T02:14:11.139709Z",
+    "lead_time": 2.37
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/www.zalando.fr_3e26.jpg",
+    "id": 28880,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3585,
+    "created_at": "2025-05-13T02:14:13.827512Z",
+    "updated_at": "2025-05-13T02:14:13.827544Z",
+    "lead_time": 1.876
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/xhamster.com_3b8c.jpg",
+    "id": 28881,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3586,
+    "created_at": "2025-05-13T02:14:16.607637Z",
+    "updated_at": "2025-05-13T02:14:16.607670Z",
+    "lead_time": 2.022
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/yandex.com_41f4.jpg",
+    "id": 28882,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3587,
+    "created_at": "2025-05-13T02:14:19.226352Z",
+    "updated_at": "2025-05-13T02:14:19.226385Z",
+    "lead_time": 1.871
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection-fr\/zimbra.free.fr_cf73.jpg",
+    "id": 28883,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3588,
+    "created_at": "2025-05-13T02:14:21.956574Z",
+    "updated_at": "2025-05-13T02:14:21.956606Z",
+    "lead_time": 1.972
+  }
+]

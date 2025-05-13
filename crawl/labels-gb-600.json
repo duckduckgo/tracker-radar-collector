@@ -1,0 +1,5992 @@
+[
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/accounts.google.com_5be0.jpg",
+    "id": 27985,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2690,
+    "created_at": "2025-05-09T03:47:46.167486Z",
+    "updated_at": "2025-05-09T03:47:46.167516Z",
+    "lead_time": 31.568
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/adultwork.com_488b.jpg",
+    "id": 27986,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2691,
+    "created_at": "2025-05-09T03:49:11.287797Z",
+    "updated_at": "2025-05-09T03:49:11.287827Z",
+    "lead_time": 15.813
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/amaturetube.com_bf5d.jpg",
+    "id": 27987,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2692,
+    "created_at": "2025-05-09T03:49:38.377337Z",
+    "updated_at": "2025-05-09T03:49:38.377370Z",
+    "lead_time": 6.927
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/amazon.co.uk_fdeb.jpg",
+    "id": 27988,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2693,
+    "created_at": "2025-05-09T03:50:19.943759Z",
+    "updated_at": "2025-05-09T03:50:19.943791Z",
+    "lead_time": 5.513
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/answers.microsoft.com_decc.jpg",
+    "id": 27989,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2694,
+    "created_at": "2025-05-09T03:53:42.692249Z",
+    "updated_at": "2025-05-09T03:53:42.692280Z",
+    "lead_time": 4.164
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/apps.apple.com_c1f0.jpg",
+    "id": 27990,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2695,
+    "created_at": "2025-05-09T03:53:49.014906Z",
+    "updated_at": "2025-05-09T03:53:49.014937Z",
+    "lead_time": 5.596
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/archive.org_989f.jpg",
+    "id": 27991,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2696,
+    "created_at": "2025-05-09T03:53:54.436743Z",
+    "updated_at": "2025-05-09T03:53:54.436774Z",
+    "lead_time": 4.678
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/archiveofourown.org_6dec.jpg",
+    "id": 27992,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2697,
+    "created_at": "2025-05-09T03:54:01.160673Z",
+    "updated_at": "2025-05-09T03:54:01.160704Z",
+    "lead_time": 5.994
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/askubuntu.com_af3b.jpg",
+    "id": 27993,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2698,
+    "created_at": "2025-05-09T03:54:03.489220Z",
+    "updated_at": "2025-05-09T03:54:03.489253Z",
+    "lead_time": 1.6
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/assets.publishing.service.gov.uk_fd69.jpg",
+    "id": 27994,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2699,
+    "created_at": "2025-05-09T03:54:06.261163Z",
+    "updated_at": "2025-05-09T03:54:06.261195Z",
+    "lead_time": 2.026
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/bsky.app_d90f.jpg",
+    "id": 27995,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2700,
+    "created_at": "2025-05-09T03:54:09.059891Z",
+    "updated_at": "2025-05-09T03:54:09.059924Z",
+    "lead_time": 2.068
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/chatgpt.com_3e84.jpg",
+    "id": 27996,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2701,
+    "created_at": "2025-05-09T03:54:12.471598Z",
+    "updated_at": "2025-05-09T03:54:12.471630Z",
+    "lead_time": 2.68
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/chaturbate.com_74e8.jpg",
+    "id": 27997,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2702,
+    "created_at": "2025-05-09T03:54:14.606299Z",
+    "updated_at": "2025-05-09T03:54:14.606329Z",
+    "lead_time": 1.394
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/developer.mozilla.org_13b4.jpg",
+    "id": 27998,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2703,
+    "created_at": "2025-05-09T03:54:18.654154Z",
+    "updated_at": "2025-05-09T03:54:18.654186Z",
+    "lead_time": 3.298
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/dictionary.cambridge.org_105c.jpg",
+    "id": 27999,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2704,
+    "created_at": "2025-05-09T03:54:21.510450Z",
+    "updated_at": "2025-05-09T03:54:21.510483Z",
+    "lead_time": 2.07
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/discord.com_39de.jpg",
+    "id": 28000,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2705,
+    "created_at": "2025-05-09T03:54:24.258649Z",
+    "updated_at": "2025-05-09T03:54:24.258683Z",
+    "lead_time": 2.016
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/discussions.apple.com_380b.jpg",
+    "id": 28001,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2706,
+    "created_at": "2025-05-09T03:54:27.416997Z",
+    "updated_at": "2025-05-09T03:54:27.417028Z",
+    "lead_time": 2.41
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/docs.aws.amazon.com_1d79.jpg",
+    "id": 28002,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2707,
+    "created_at": "2025-05-09T03:54:29.867467Z",
+    "updated_at": "2025-05-09T03:54:29.867497Z",
+    "lead_time": 1.722
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/docs.google.com_e354.jpg",
+    "id": 28003,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2708,
+    "created_at": "2025-05-09T03:54:32.107475Z",
+    "updated_at": "2025-05-09T03:54:32.107506Z",
+    "lead_time": 1.506
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/duckduckgo.com_22d0.jpg",
+    "id": 28004,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2709,
+    "created_at": "2025-05-09T03:54:35.481813Z",
+    "updated_at": "2025-05-09T03:54:35.481844Z",
+    "lead_time": 2.644
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/ebay.co.uk_c813.jpg",
+    "id": 28005,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2710,
+    "created_at": "2025-05-09T03:54:37.581669Z",
+    "updated_at": "2025-05-09T03:54:37.581698Z",
+    "lead_time": 1.355
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/ee.co.uk_9795.jpg",
+    "id": 28006,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2711,
+    "created_at": "2025-05-09T03:54:39.683553Z",
+    "updated_at": "2025-05-09T03:54:39.683585Z",
+    "lead_time": 1.356
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/email.bt.com_abc0.jpg",
+    "id": 28007,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2712,
+    "created_at": "2025-05-09T03:54:41.911167Z",
+    "updated_at": "2025-05-09T03:54:41.911195Z",
+    "lead_time": 1.472
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/en-gb.facebook.com_ae86.jpg",
+    "id": 28008,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2713,
+    "created_at": "2025-05-09T03:54:44.528416Z",
+    "updated_at": "2025-05-09T03:54:44.528446Z",
+    "lead_time": 1.893
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/en.cppreference.com_20d7.jpg",
+    "id": 28009,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2714,
+    "created_at": "2025-05-09T03:54:47.987869Z",
+    "updated_at": "2025-05-09T03:54:47.987900Z",
+    "lead_time": 2.718
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/en.luxuretv.com_56e5.jpg",
+    "id": 28010,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2715,
+    "created_at": "2025-05-09T03:54:52.208550Z",
+    "updated_at": "2025-05-09T03:54:52.208581Z",
+    "lead_time": 3.47
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/en.wikipedia.org_1072.jpg",
+    "id": 28011,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2716,
+    "created_at": "2025-05-09T03:54:55.007972Z",
+    "updated_at": "2025-05-09T03:54:55.008003Z",
+    "lead_time": 2.063
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/find-and-update.company-information.service.gov.uk_2046.jpg",
+    "id": 28012,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2717,
+    "created_at": "2025-05-09T03:54:58.387976Z",
+    "updated_at": "2025-05-09T03:54:58.388009Z",
+    "lead_time": 2.649
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/find-open.co.uk_e5a7.jpg",
+    "id": 28013,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2718,
+    "created_at": "2025-05-09T03:55:02.069861Z",
+    "updated_at": "2025-05-09T03:55:02.069897Z",
+    "lead_time": 2.826
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/forums.moneysavingexpert.com_ed60.jpg",
+    "id": 28014,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2719,
+    "created_at": "2025-05-09T03:55:07.841507Z",
+    "updated_at": "2025-05-09T03:55:07.841536Z",
+    "lead_time": 5.056
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/gb.linkedin.com_6fea.jpg",
+    "id": 28015,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2720,
+    "created_at": "2025-05-09T03:55:12.801900Z",
+    "updated_at": "2025-05-09T03:55:12.801931Z",
+    "lead_time": 4.235
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/gbtimes.com_9461.jpg",
+    "id": 28016,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2721,
+    "created_at": "2025-05-09T03:55:55.113293Z",
+    "updated_at": "2025-05-09T03:55:55.113324Z",
+    "lead_time": 9.707
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/genius.com_62dd.jpg",
+    "id": 28017,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2722,
+    "created_at": "2025-05-09T03:56:16.416088Z",
+    "updated_at": "2025-05-09T03:56:16.416120Z",
+    "lead_time": 20.495
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/github.com_8674.jpg",
+    "id": 28018,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2723,
+    "created_at": "2025-05-09T03:56:40.687287Z",
+    "updated_at": "2025-05-09T03:56:40.687319Z",
+    "lead_time": 23.524
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/groceries.morrisons.com_f4b8.jpg",
+    "id": 28019,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2724,
+    "created_at": "2025-05-09T03:56:45.790362Z",
+    "updated_at": "2025-05-09T03:56:45.790394Z",
+    "lead_time": 4.371
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/iwank.tv_850c.jpg",
+    "id": 28020,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2725,
+    "created_at": "2025-05-09T03:56:50.146825Z",
+    "updated_at": "2025-05-09T03:56:50.146855Z",
+    "lead_time": 3.619
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/learn.microsoft.com_d825.jpg",
+    "id": 28021,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2726,
+    "created_at": "2025-05-09T03:56:53.674474Z",
+    "updated_at": "2025-05-09T03:56:53.674504Z",
+    "lead_time": 2.784
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/link.springer.com_5f7e.jpg",
+    "id": 28022,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2727,
+    "created_at": "2025-05-09T03:56:56.617476Z",
+    "updated_at": "2025-05-09T03:56:56.617506Z",
+    "lead_time": 2.195
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/mail.google.com_5823.jpg",
+    "id": 28023,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2728,
+    "created_at": "2025-05-09T03:56:59.178598Z",
+    "updated_at": "2025-05-09T03:56:59.178649Z",
+    "lead_time": 1.832
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/mail.proton.me_0190.jpg",
+    "id": 28024,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2729,
+    "created_at": "2025-05-09T03:57:03.284313Z",
+    "updated_at": "2025-05-09T03:57:03.284345Z",
+    "lead_time": 3.353
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/maps.google.co.uk_3493.jpg",
+    "id": 28025,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2730,
+    "created_at": "2025-05-09T03:57:07.550773Z",
+    "updated_at": "2025-05-09T03:57:07.550804Z",
+    "lead_time": 3.51
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/maps.google.com_9199.jpg",
+    "id": 28026,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2731,
+    "created_at": "2025-05-09T03:57:10.182028Z",
+    "updated_at": "2025-05-09T03:57:10.182060Z",
+    "lead_time": 1.901
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/medium.com_2189.jpg",
+    "id": 28027,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2732,
+    "created_at": "2025-05-09T03:57:20.494159Z",
+    "updated_at": "2025-05-09T03:57:20.494191Z",
+    "lead_time": 9.533
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/metro.co.uk_b1d5.jpg",
+    "id": 28028,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2733,
+    "created_at": "2025-05-09T03:57:29.034163Z",
+    "updated_at": "2025-05-09T03:57:29.034193Z",
+    "lead_time": 7.793
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/my.mail.ru_cdcb.jpg",
+    "id": 28029,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2734,
+    "created_at": "2025-05-09T03:57:40.314518Z",
+    "updated_at": "2025-05-09T03:57:40.314549Z",
+    "lead_time": 10.515
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/news.sky.com_fdb3.jpg",
+    "id": 28030,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2735,
+    "created_at": "2025-05-09T03:57:43.264013Z",
+    "updated_at": "2025-05-09T03:57:43.264043Z",
+    "lead_time": 2.218
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/online.yandex.com_cc0b.jpg",
+    "id": 28031,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2736,
+    "created_at": "2025-05-09T03:57:45.978218Z",
+    "updated_at": "2025-05-09T03:57:45.978249Z",
+    "lead_time": 1.925
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/openai.com_2d22.jpg",
+    "id": 28032,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2737,
+    "created_at": "2025-05-09T03:57:48.709065Z",
+    "updated_at": "2025-05-09T03:57:48.709094Z",
+    "lead_time": 1.99
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/outlook.live.com_868c.jpg",
+    "id": 28033,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2738,
+    "created_at": "2025-05-09T03:57:52.110712Z",
+    "updated_at": "2025-05-09T03:57:52.110746Z",
+    "lead_time": 2.65
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/outlook.office365.com_380a.jpg",
+    "id": 28034,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2739,
+    "created_at": "2025-05-09T03:57:55.323370Z",
+    "updated_at": "2025-05-09T03:57:55.323401Z",
+    "lead_time": 2.465
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/patient.info_176e.jpg",
+    "id": 28035,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2740,
+    "created_at": "2025-05-09T03:57:58.712868Z",
+    "updated_at": "2025-05-09T03:57:58.712898Z",
+    "lead_time": 2.64
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/pmc.ncbi.nlm.nih.gov_e600.jpg",
+    "id": 28036,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2741,
+    "created_at": "2025-05-09T03:58:25.478892Z",
+    "updated_at": "2025-05-09T03:58:25.478923Z",
+    "lead_time": 25.988
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/pornxp.com_d81e.jpg",
+    "id": 28037,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2742,
+    "created_at": "2025-05-09T03:58:29.623207Z",
+    "updated_at": "2025-05-09T03:58:29.623238Z",
+    "lead_time": 3.373
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/pornzog.com_4696.jpg",
+    "id": 28038,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2743,
+    "created_at": "2025-05-09T03:58:34.174403Z",
+    "updated_at": "2025-05-09T03:58:34.174435Z",
+    "lead_time": 3.794
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/pubmed.ncbi.nlm.nih.gov_94c3.jpg",
+    "id": 28039,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2744,
+    "created_at": "2025-05-09T03:58:38.474138Z",
+    "updated_at": "2025-05-09T03:58:38.474168Z",
+    "lead_time": 3.545
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/reverb.com_ad7e.jpg",
+    "id": 28040,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2745,
+    "created_at": "2025-05-09T03:58:44.367002Z",
+    "updated_at": "2025-05-09T03:58:44.367034Z",
+    "lead_time": 5.153
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/rule34.xxx_220f.jpg",
+    "id": 28041,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2746,
+    "created_at": "2025-05-09T03:58:47.930534Z",
+    "updated_at": "2025-05-09T03:58:47.930566Z",
+    "lead_time": 2.813
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/rule34video.com_a233.jpg",
+    "id": 28042,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2747,
+    "created_at": "2025-05-09T03:58:52.600992Z",
+    "updated_at": "2025-05-09T03:58:52.601024Z",
+    "lead_time": 3.851
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/rumble.com_ca07.jpg",
+    "id": 28043,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2748,
+    "created_at": "2025-05-09T03:58:56.440071Z",
+    "updated_at": "2025-05-09T03:58:56.440105Z",
+    "lead_time": 3.089
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/screenrant.com_b3d9.jpg",
+    "id": 28044,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2749,
+    "created_at": "2025-05-09T03:59:01.464239Z",
+    "updated_at": "2025-05-09T03:59:01.464272Z",
+    "lead_time": 4.286
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/scrolller.com_e501.jpg",
+    "id": 28045,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2750,
+    "created_at": "2025-05-09T03:59:06.847780Z",
+    "updated_at": "2025-05-09T03:59:06.847813Z",
+    "lead_time": 4.622
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/spankbang.com_e956.jpg",
+    "id": 28046,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2751,
+    "created_at": "2025-05-09T03:59:10.594072Z",
+    "updated_at": "2025-05-09T03:59:10.594103Z",
+    "lead_time": 2.985
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/stackoverflow.com_92fe.jpg",
+    "id": 28047,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2752,
+    "created_at": "2025-05-09T03:59:13.660244Z",
+    "updated_at": "2025-05-09T03:59:13.660276Z",
+    "lead_time": 2.312
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/steamcommunity.com_f21d.jpg",
+    "id": 28048,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2753,
+    "created_at": "2025-05-09T03:59:17.486405Z",
+    "updated_at": "2025-05-09T03:59:17.486436Z",
+    "lead_time": 3.066
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/store.steampowered.com_8cbb.jpg",
+    "id": 28049,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2754,
+    "created_at": "2025-05-09T03:59:21.159325Z",
+    "updated_at": "2025-05-09T03:59:21.159356Z",
+    "lead_time": 2.877
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/stripchat.com_9546.jpg",
+    "id": 28050,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2755,
+    "created_at": "2025-05-09T03:59:24.780723Z",
+    "updated_at": "2025-05-09T03:59:24.780755Z",
+    "lead_time": 2.68
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/superuser.com_f7fe.jpg",
+    "id": 28051,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2756,
+    "created_at": "2025-05-09T03:59:27.593196Z",
+    "updated_at": "2025-05-09T03:59:27.593228Z",
+    "lead_time": 2.039
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/support.apple.com_9bf6.jpg",
+    "id": 28052,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2757,
+    "created_at": "2025-05-09T03:59:34.769321Z",
+    "updated_at": "2025-05-09T03:59:34.769353Z",
+    "lead_time": 6.436
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/support.google.com_7507.jpg",
+    "id": 28053,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2758,
+    "created_at": "2025-05-09T03:59:38.209481Z",
+    "updated_at": "2025-05-09T03:59:38.209511Z",
+    "lead_time": 2.683
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/support.microsoft.com_4ebd.jpg",
+    "id": 28054,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2759,
+    "created_at": "2025-05-09T03:59:43.505678Z",
+    "updated_at": "2025-05-09T03:59:43.505710Z",
+    "lead_time": 4.516
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/tabs.ultimate-guitar.com_a817.jpg",
+    "id": 28055,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2760,
+    "created_at": "2025-05-09T03:59:48.462298Z",
+    "updated_at": "2025-05-09T03:59:48.462331Z",
+    "lead_time": 4.191
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/tags.literotica.com_08fd.jpg",
+    "id": 28056,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2761,
+    "created_at": "2025-05-09T03:59:53.037321Z",
+    "updated_at": "2025-05-09T03:59:53.037351Z",
+    "lead_time": 3.789
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/tfl.gov.uk_4356.jpg",
+    "id": 28057,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2762,
+    "created_at": "2025-05-09T03:59:55.870449Z",
+    "updated_at": "2025-05-09T03:59:55.870482Z",
+    "lead_time": 2.076
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/themovemarket.com_4b05.jpg",
+    "id": 28058,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2763,
+    "created_at": "2025-05-09T03:59:59.036168Z",
+    "updated_at": "2025-05-09T03:59:59.036199Z",
+    "lead_time": 2.42
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/theporndude.com_109e.jpg",
+    "id": 28059,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2764,
+    "created_at": "2025-05-09T04:00:03.054492Z",
+    "updated_at": "2025-05-09T04:00:03.054526Z",
+    "lead_time": 3.272
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/thisvid.com_006a.jpg",
+    "id": 28060,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2765,
+    "created_at": "2025-05-09T04:00:10.311851Z",
+    "updated_at": "2025-05-09T04:00:10.311885Z",
+    "lead_time": 6.487
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/translate.google.com_5454.jpg",
+    "id": 28061,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2766,
+    "created_at": "2025-05-09T04:00:13.112876Z",
+    "updated_at": "2025-05-09T04:00:13.112907Z",
+    "lead_time": 1.955
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/tubepleasure.com_05e5.jpg",
+    "id": 28062,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2767,
+    "created_at": "2025-05-09T04:00:19.294533Z",
+    "updated_at": "2025-05-09T04:00:19.294563Z",
+    "lead_time": 5.423
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/tubesafari.com_6539.jpg",
+    "id": 28063,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2768,
+    "created_at": "2025-05-09T04:00:26.105278Z",
+    "updated_at": "2025-05-09T04:00:26.105311Z",
+    "lead_time": 6.06
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/tv.yandex.com_341e.jpg",
+    "id": 28064,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2769,
+    "created_at": "2025-05-09T04:00:29.056868Z",
+    "updated_at": "2025-05-09T04:00:29.056899Z",
+    "lead_time": 2.118
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/twitter.com_a786.jpg",
+    "id": 28065,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2770,
+    "created_at": "2025-05-09T04:00:32.093718Z",
+    "updated_at": "2025-05-09T04:00:32.093750Z",
+    "lead_time": 2.292
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/uk.indeed.com_992c.jpg",
+    "id": 28066,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2771,
+    "created_at": "2025-05-09T04:00:35.701429Z",
+    "updated_at": "2025-05-09T04:00:35.701462Z",
+    "lead_time": 2.856
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/uk.linkedin.com_8b53.jpg",
+    "id": 28067,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2772,
+    "created_at": "2025-05-09T04:00:39.360267Z",
+    "updated_at": "2025-05-09T04:00:39.360298Z",
+    "lead_time": 2.896
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/uk.mail.yahoo.com_0dd2.jpg",
+    "id": 28068,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2773,
+    "created_at": "2025-05-09T04:00:46.997524Z",
+    "updated_at": "2025-05-09T04:00:46.997554Z",
+    "lead_time": 6.881
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/uk.trustpilot.com_2fe1.jpg",
+    "id": 28069,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2774,
+    "created_at": "2025-05-09T04:00:49.694718Z",
+    "updated_at": "2025-05-09T04:00:49.694749Z",
+    "lead_time": 1.954
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/uk.yahoo.com_d80d.jpg",
+    "id": 28070,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2775,
+    "created_at": "2025-05-09T04:00:52.574808Z",
+    "updated_at": "2025-05-09T04:00:52.574839Z",
+    "lead_time": 2.14
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/unix.stackexchange.com_3dcf.jpg",
+    "id": 28071,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2776,
+    "created_at": "2025-05-09T04:00:55.518426Z",
+    "updated_at": "2025-05-09T04:00:55.518455Z",
+    "lead_time": 2.179
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/vipergirls.to_f29c.jpg",
+    "id": 28072,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2777,
+    "created_at": "2025-05-09T04:00:59.011051Z",
+    "updated_at": "2025-05-09T04:00:59.011082Z",
+    "lead_time": 2.73
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/viralxxxporn.com_9a3c.jpg",
+    "id": 28073,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2778,
+    "created_at": "2025-05-09T04:01:02.164507Z",
+    "updated_at": "2025-05-09T04:01:02.164538Z",
+    "lead_time": 2.352
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/vk.com_1908.jpg",
+    "id": 28074,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2779,
+    "created_at": "2025-05-09T04:01:08.256001Z",
+    "updated_at": "2025-05-09T04:01:08.256035Z",
+    "lead_time": 5.338
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/weather.metoffice.gov.uk_cb79.jpg",
+    "id": 28075,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2780,
+    "created_at": "2025-05-09T04:01:11.276742Z",
+    "updated_at": "2025-05-09T04:01:11.276772Z",
+    "lead_time": 2.252
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/web.whatsapp.com_20ee.jpg",
+    "id": 28076,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2781,
+    "created_at": "2025-05-09T04:01:14.469922Z",
+    "updated_at": "2025-05-09T04:01:14.469953Z",
+    "lead_time": 2.436
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/who-called.co.uk_0371.jpg",
+    "id": 28077,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2782,
+    "created_at": "2025-05-09T04:01:17.304487Z",
+    "updated_at": "2025-05-09T04:01:17.304521Z",
+    "lead_time": 2.063
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.192.com_f1c5.jpg",
+    "id": 28078,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2783,
+    "created_at": "2025-05-09T04:01:20.308678Z",
+    "updated_at": "2025-05-09T04:01:20.308710Z",
+    "lead_time": 2.17
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.accuweather.com_8b67.jpg",
+    "id": 28079,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2784,
+    "created_at": "2025-05-09T04:01:23.737509Z",
+    "updated_at": "2025-05-09T04:01:23.737538Z",
+    "lead_time": 2.684
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.airbnb.co.uk_3e55.jpg",
+    "id": 28080,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2785,
+    "created_at": "2025-05-09T04:01:27.582872Z",
+    "updated_at": "2025-05-09T04:01:27.582904Z",
+    "lead_time": 3.103
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.aldi.co.uk_8576.jpg",
+    "id": 28081,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2786,
+    "created_at": "2025-05-09T04:01:30.446549Z",
+    "updated_at": "2025-05-09T04:01:30.446587Z",
+    "lead_time": 2.089
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.alohatube.com_5612.jpg",
+    "id": 28082,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2787,
+    "created_at": "2025-05-09T04:01:33.810587Z",
+    "updated_at": "2025-05-09T04:01:33.810618Z",
+    "lead_time": 2.592
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.amazon.co.uk_1446.jpg",
+    "id": 28083,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2788,
+    "created_at": "2025-05-09T04:01:37.120833Z",
+    "updated_at": "2025-05-09T04:01:37.120866Z",
+    "lead_time": 2.487
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.amazon.com_4bc8.jpg",
+    "id": 28084,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2789,
+    "created_at": "2025-05-09T04:01:39.787843Z",
+    "updated_at": "2025-05-09T04:01:39.787875Z",
+    "lead_time": 1.906
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.apple.com_8c32.jpg",
+    "id": 28085,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2790,
+    "created_at": "2025-05-09T04:01:43.251637Z",
+    "updated_at": "2025-05-09T04:01:43.251670Z",
+    "lead_time": 2.709
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.argos.co.uk_1527.jpg",
+    "id": 28086,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2791,
+    "created_at": "2025-05-09T04:01:46.269798Z",
+    "updated_at": "2025-05-09T04:01:46.269831Z",
+    "lead_time": 2.262
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.asda.com_9280.jpg",
+    "id": 28087,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2792,
+    "created_at": "2025-05-09T04:01:49.327239Z",
+    "updated_at": "2025-05-09T04:01:49.327269Z",
+    "lead_time": 2.313
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.autoexpress.co.uk_86da.jpg",
+    "id": 28088,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2793,
+    "created_at": "2025-05-09T04:01:54.474863Z",
+    "updated_at": "2025-05-09T04:01:54.474895Z",
+    "lead_time": 4.391
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.autotrader.co.uk_7f2d.jpg",
+    "id": 28089,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2794,
+    "created_at": "2025-05-09T04:01:57.101498Z",
+    "updated_at": "2025-05-09T04:01:57.101530Z",
+    "lead_time": 1.81
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.aznude.com_6ea7.jpg",
+    "id": 28090,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2795,
+    "created_at": "2025-05-09T04:02:03.988282Z",
+    "updated_at": "2025-05-09T04:02:03.988313Z",
+    "lead_time": 6.152
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.barclays.co.uk_c9bf.jpg",
+    "id": 28091,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2796,
+    "created_at": "2025-05-09T04:02:06.931058Z",
+    "updated_at": "2025-05-09T04:02:06.931089Z",
+    "lead_time": 2.201
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.bbc.co.uk_ba68.jpg",
+    "id": 28092,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2797,
+    "created_at": "2025-05-09T04:02:09.884031Z",
+    "updated_at": "2025-05-09T04:02:09.884064Z",
+    "lead_time": 2.224
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.bbc.com_a66e.jpg",
+    "id": 28093,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2798,
+    "created_at": "2025-05-09T04:02:13.233819Z",
+    "updated_at": "2025-05-09T04:02:13.233848Z",
+    "lead_time": 2.599
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.bbcgoodfood.com_ef87.jpg",
+    "id": 28094,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2799,
+    "created_at": "2025-05-09T04:02:16.182722Z",
+    "updated_at": "2025-05-09T04:02:16.182752Z",
+    "lead_time": 2.196
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.bhf.org.uk_56f0.jpg",
+    "id": 28095,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2800,
+    "created_at": "2025-05-09T04:02:19.305419Z",
+    "updated_at": "2025-05-09T04:02:19.305449Z",
+    "lead_time": 2.384
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.biblegateway.com_67f2.jpg",
+    "id": 28096,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2801,
+    "created_at": "2025-05-09T04:02:23.041020Z",
+    "updated_at": "2025-05-09T04:02:23.041050Z",
+    "lead_time": 2.961
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.bmstores.co.uk_a943.jpg",
+    "id": 28097,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2802,
+    "created_at": "2025-05-09T04:02:26.457731Z",
+    "updated_at": "2025-05-09T04:02:26.457765Z",
+    "lead_time": 2.648
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.booking.com_dd33.jpg",
+    "id": 28098,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2803,
+    "created_at": "2025-05-09T04:02:29.797281Z",
+    "updated_at": "2025-05-09T04:02:29.797310Z",
+    "lead_time": 2.595
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.boots.com_73e4.jpg",
+    "id": 28099,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2804,
+    "created_at": "2025-05-09T04:02:32.423430Z",
+    "updated_at": "2025-05-09T04:02:32.423461Z",
+    "lead_time": 1.849
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.britannica.com_7c0d.jpg",
+    "id": 28100,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2805,
+    "created_at": "2025-05-09T04:02:35.349933Z",
+    "updated_at": "2025-05-09T04:02:35.349963Z",
+    "lead_time": 2.185
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.britishairways.com_f5eb.jpg",
+    "id": 28101,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2806,
+    "created_at": "2025-05-09T04:02:38.532420Z",
+    "updated_at": "2025-05-09T04:02:38.532451Z",
+    "lead_time": 2.434
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.bt.com_2976.jpg",
+    "id": 28102,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2807,
+    "created_at": "2025-05-09T04:02:41.248354Z",
+    "updated_at": "2025-05-09T04:02:41.248383Z",
+    "lead_time": 1.963
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.canva.com_d78a.jpg",
+    "id": 28103,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2808,
+    "created_at": "2025-05-09T04:02:44.067954Z",
+    "updated_at": "2025-05-09T04:02:44.067988Z",
+    "lead_time": 2.063
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.carandclassic.com_1603.jpg",
+    "id": 28104,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2809,
+    "created_at": "2025-05-09T04:02:46.691805Z",
+    "updated_at": "2025-05-09T04:02:46.691837Z",
+    "lead_time": 1.885
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.channel4.com_e601.jpg",
+    "id": 28105,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2810,
+    "created_at": "2025-05-09T04:02:50.245528Z",
+    "updated_at": "2025-05-09T04:02:50.245561Z",
+    "lead_time": 2.801
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.checkatrade.com_6ae4.jpg",
+    "id": 28106,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2811,
+    "created_at": "2025-05-09T04:02:53.171497Z",
+    "updated_at": "2025-05-09T04:02:53.171526Z",
+    "lead_time": 2.162
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.cnn.com_653c.jpg",
+    "id": 28107,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2812,
+    "created_at": "2025-05-09T04:02:55.844688Z",
+    "updated_at": "2025-05-09T04:02:55.844718Z",
+    "lead_time": 1.897
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.co-operativebank.co.uk_f32d.jpg",
+    "id": 28108,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2813,
+    "created_at": "2025-05-09T04:02:58.396259Z",
+    "updated_at": "2025-05-09T04:02:58.396291Z",
+    "lead_time": 1.804
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.collinsdictionary.com_35f8.jpg",
+    "id": 28109,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2814,
+    "created_at": "2025-05-09T04:03:01.051603Z",
+    "updated_at": "2025-05-09T04:03:01.051636Z",
+    "lead_time": 1.917
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.currys.co.uk_dd7c.jpg",
+    "id": 28110,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2815,
+    "created_at": "2025-05-09T04:03:03.823928Z",
+    "updated_at": "2025-05-09T04:03:03.823961Z",
+    "lead_time": 1.94
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.dailymail.co.uk_17ec.jpg",
+    "id": 28111,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2816,
+    "created_at": "2025-05-09T04:03:12.847962Z",
+    "updated_at": "2025-05-09T04:03:12.847992Z",
+    "lead_time": 8.275
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.danword.com_8527.jpg",
+    "id": 28112,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2817,
+    "created_at": "2025-05-09T04:03:18.094386Z",
+    "updated_at": "2025-05-09T04:03:18.094418Z",
+    "lead_time": 4.442
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.decathlon.co.uk_2108.jpg",
+    "id": 28113,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2818,
+    "created_at": "2025-05-09T04:03:20.909821Z",
+    "updated_at": "2025-05-09T04:03:20.909852Z",
+    "lead_time": 2.037
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.dell.com_150b.jpg",
+    "id": 28114,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2819,
+    "created_at": "2025-05-09T04:03:23.957187Z",
+    "updated_at": "2025-05-09T04:03:23.957217Z",
+    "lead_time": 2.222
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.deviantart.com_b849.jpg",
+    "id": 28115,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2820,
+    "created_at": "2025-05-09T04:03:31.274830Z",
+    "updated_at": "2025-05-09T04:03:31.274860Z",
+    "lead_time": 6.566
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.discogs.com_9e49.jpg",
+    "id": 28116,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2821,
+    "created_at": "2025-05-09T04:03:35.779796Z",
+    "updated_at": "2025-05-09T04:03:35.779828Z",
+    "lead_time": 3.766
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.diy.com_f5ca.jpg",
+    "id": 28117,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2822,
+    "created_at": "2025-05-09T04:03:41.251792Z",
+    "updated_at": "2025-05-09T04:03:41.251823Z",
+    "lead_time": 4.73
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.dpreview.com_6ed9.jpg",
+    "id": 28118,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2823,
+    "created_at": "2025-05-09T04:03:43.565838Z",
+    "updated_at": "2025-05-09T04:03:43.565869Z",
+    "lead_time": 1.562
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.drugs.com_b9a2.jpg",
+    "id": 28119,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2824,
+    "created_at": "2025-05-09T04:03:46.179959Z",
+    "updated_at": "2025-05-09T04:03:46.179990Z",
+    "lead_time": 1.852
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.dunelm.com_35fe.jpg",
+    "id": 28120,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2825,
+    "created_at": "2025-05-09T04:03:50.124758Z",
+    "updated_at": "2025-05-09T04:03:50.124790Z",
+    "lead_time": 3.198
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.easyjet.com_f9e5.jpg",
+    "id": 28121,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2826,
+    "created_at": "2025-05-09T04:03:53.065896Z",
+    "updated_at": "2025-05-09T04:03:53.065929Z",
+    "lead_time": 2.174
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ebay.co.uk_1fbf.jpg",
+    "id": 28122,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2827,
+    "created_at": "2025-05-09T04:03:55.848738Z",
+    "updated_at": "2025-05-09T04:03:55.848768Z",
+    "lead_time": 1.959
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ebay.com_f2fc.jpg",
+    "id": 28123,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2828,
+    "created_at": "2025-05-09T04:04:03.010081Z",
+    "updated_at": "2025-05-09T04:04:03.010112Z",
+    "lead_time": 6.432
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.eporner.com_cff8.jpg",
+    "id": 28124,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2829,
+    "created_at": "2025-05-09T04:04:06.642414Z",
+    "updated_at": "2025-05-09T04:04:06.642444Z",
+    "lead_time": 2.898
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.erome.com_9db7.jpg",
+    "id": 28125,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2830,
+    "created_at": "2025-05-09T04:04:08.990183Z",
+    "updated_at": "2025-05-09T04:04:08.990216Z",
+    "lead_time": 1.591
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.etsy.com_130c.jpg",
+    "id": 28126,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2831,
+    "created_at": "2025-05-09T04:04:11.861205Z",
+    "updated_at": "2025-05-09T04:04:11.861237Z",
+    "lead_time": 2.119
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.express.co.uk_7725.jpg",
+    "id": 28127,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2832,
+    "created_at": "2025-05-09T04:04:17.770306Z",
+    "updated_at": "2025-05-09T04:04:17.770347Z",
+    "lead_time": 5.142
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.fabswingers.com_3bc0.jpg",
+    "id": 28128,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2833,
+    "created_at": "2025-05-09T04:04:21.279733Z",
+    "updated_at": "2025-05-09T04:04:21.279770Z",
+    "lead_time": 2.722
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.facebook.com_d611.jpg",
+    "id": 28129,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2834,
+    "created_at": "2025-05-09T04:04:25.281525Z",
+    "updated_at": "2025-05-09T04:04:25.281557Z",
+    "lead_time": 3.242
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.flickr.com_891f.jpg",
+    "id": 28130,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2835,
+    "created_at": "2025-05-09T04:04:28.239291Z",
+    "updated_at": "2025-05-09T04:04:28.239321Z",
+    "lead_time": 2.087
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.forbes.com_841c.jpg",
+    "id": 28131,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2836,
+    "created_at": "2025-05-09T04:04:30.788146Z",
+    "updated_at": "2025-05-09T04:04:30.788178Z",
+    "lead_time": 1.793
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ft.com_8dff.jpg",
+    "id": 28132,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2837,
+    "created_at": "2025-05-09T04:04:33.629747Z",
+    "updated_at": "2025-05-09T04:04:33.629778Z",
+    "lead_time": 2.09
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.gardenersworld.com_3965.jpg",
+    "id": 28133,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2838,
+    "created_at": "2025-05-09T04:04:36.155153Z",
+    "updated_at": "2025-05-09T04:04:36.155184Z",
+    "lead_time": 1.766
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.gaymaletube.com_9c74.jpg",
+    "id": 28134,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2839,
+    "created_at": "2025-05-09T04:04:39.587808Z",
+    "updated_at": "2025-05-09T04:04:39.587840Z",
+    "lead_time": 2.686
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.gbnews.com_1531.jpg",
+    "id": 28135,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2840,
+    "created_at": "2025-05-09T04:04:43.198645Z",
+    "updated_at": "2025-05-09T04:04:43.198676Z",
+    "lead_time": 2.867
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.geeksforgeeks.org_1a05.jpg",
+    "id": 28136,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2841,
+    "created_at": "2025-05-09T04:04:48.049015Z",
+    "updated_at": "2025-05-09T04:04:48.049048Z",
+    "lead_time": 4.103
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.goodhousekeeping.com_169b.jpg",
+    "id": 28137,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2842,
+    "created_at": "2025-05-09T04:04:51.679953Z",
+    "updated_at": "2025-05-09T04:04:51.679986Z",
+    "lead_time": 2.879
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.goodreads.com_8867.jpg",
+    "id": 28138,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2843,
+    "created_at": "2025-05-09T04:04:56.982854Z",
+    "updated_at": "2025-05-09T04:04:56.982885Z",
+    "lead_time": 4.542
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.google.co.uk_c827.jpg",
+    "id": 28139,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2844,
+    "created_at": "2025-05-09T04:04:59.631797Z",
+    "updated_at": "2025-05-09T04:04:59.631828Z",
+    "lead_time": 1.893
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.google.com_d111.jpg",
+    "id": 28140,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2845,
+    "created_at": "2025-05-09T04:05:02.363826Z",
+    "updated_at": "2025-05-09T04:05:02.363858Z",
+    "lead_time": 1.982
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.gov.uk_e44f.jpg",
+    "id": 28141,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2846,
+    "created_at": "2025-05-09T04:05:04.905380Z",
+    "updated_at": "2025-05-09T04:05:04.905411Z",
+    "lead_time": 1.798
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.gumtree.com_ddc3.jpg",
+    "id": 28142,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2847,
+    "created_at": "2025-05-09T04:05:08.557655Z",
+    "updated_at": "2025-05-09T04:05:08.557686Z",
+    "lead_time": 2.885
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.halfords.com_fe39.jpg",
+    "id": 28143,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2848,
+    "created_at": "2025-05-09T04:05:11.990867Z",
+    "updated_at": "2025-05-09T04:05:11.990898Z",
+    "lead_time": 2.687
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.halifax.co.uk_4c62.jpg",
+    "id": 28144,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2849,
+    "created_at": "2025-05-09T04:05:17.219935Z",
+    "updated_at": "2025-05-09T04:05:17.219967Z",
+    "lead_time": 4.466
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.healthline.com_893b.jpg",
+    "id": 28145,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2850,
+    "created_at": "2025-05-09T04:05:20.160076Z",
+    "updated_at": "2025-05-09T04:05:20.160107Z",
+    "lead_time": 2.194
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.hl.co.uk_1cf8.jpg",
+    "id": 28146,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2851,
+    "created_at": "2025-05-09T04:05:33.404728Z",
+    "updated_at": "2025-05-09T04:05:33.404758Z",
+    "lead_time": 2.493
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.hollandandbarrett.com_ebd1.jpg",
+    "id": 28147,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2852,
+    "created_at": "2025-05-09T04:05:36.066111Z",
+    "updated_at": "2025-05-09T04:05:36.066144Z",
+    "lead_time": 1.915
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.honestjohn.co.uk_dad7.jpg",
+    "id": 28148,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2853,
+    "created_at": "2025-05-09T04:05:39.536054Z",
+    "updated_at": "2025-05-09T04:05:39.536085Z",
+    "lead_time": 2.627
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.hotmail.com_5bbc.jpg",
+    "id": 28149,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2854,
+    "created_at": "2025-05-09T04:05:42.515379Z",
+    "updated_at": "2025-05-09T04:05:42.515411Z",
+    "lead_time": 2.205
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.hotukdeals.com_e805.jpg",
+    "id": 28150,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2855,
+    "created_at": "2025-05-09T04:05:45.383181Z",
+    "updated_at": "2025-05-09T04:05:45.383211Z",
+    "lead_time": 2.136
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.howtogeek.com_e938.jpg",
+    "id": 28151,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2856,
+    "created_at": "2025-05-09T04:05:48.449989Z",
+    "updated_at": "2025-05-09T04:05:48.450021Z",
+    "lead_time": 2.318
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.hsbc.co.uk_a4e7.jpg",
+    "id": 28152,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2857,
+    "created_at": "2025-05-09T04:05:50.946794Z",
+    "updated_at": "2025-05-09T04:05:50.946825Z",
+    "lead_time": 1.729
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ign.com_8e84.jpg",
+    "id": 28153,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2858,
+    "created_at": "2025-05-09T04:05:53.516772Z",
+    "updated_at": "2025-05-09T04:05:53.516803Z",
+    "lead_time": 1.812
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ikea.com_3570.jpg",
+    "id": 28154,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2859,
+    "created_at": "2025-05-09T04:05:56.181730Z",
+    "updated_at": "2025-05-09T04:05:56.181764Z",
+    "lead_time": 1.899
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.imagefap.com_f2c1.jpg",
+    "id": 28155,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2860,
+    "created_at": "2025-05-09T04:05:59.353947Z",
+    "updated_at": "2025-05-09T04:05:59.353979Z",
+    "lead_time": 2.432
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.imdb.com_81d7.jpg",
+    "id": 28156,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2861,
+    "created_at": "2025-05-09T04:06:02.687729Z",
+    "updated_at": "2025-05-09T04:06:02.687760Z",
+    "lead_time": 2.599
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.independent.co.uk_9694.jpg",
+    "id": 28157,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2862,
+    "created_at": "2025-05-09T04:06:05.803816Z",
+    "updated_at": "2025-05-09T04:06:05.803848Z",
+    "lead_time": 2.351
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.instagram.com_f77c.jpg",
+    "id": 28158,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2863,
+    "created_at": "2025-05-09T04:06:08.279575Z",
+    "updated_at": "2025-05-09T04:06:08.279607Z",
+    "lead_time": 1.742
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.itv.com_a4e1.jpg",
+    "id": 28159,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2864,
+    "created_at": "2025-05-09T04:06:11.183311Z",
+    "updated_at": "2025-05-09T04:06:11.183342Z",
+    "lead_time": 2.151
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.johnlewis.com_136c.jpg",
+    "id": 28160,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2865,
+    "created_at": "2025-05-09T04:06:14.505869Z",
+    "updated_at": "2025-05-09T04:06:14.505900Z",
+    "lead_time": 2.573
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.justwatch.com_8934.jpg",
+    "id": 28161,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2866,
+    "created_at": "2025-05-09T04:06:18.251127Z",
+    "updated_at": "2025-05-09T04:06:18.251161Z",
+    "lead_time": 2.98
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.legislation.gov.uk_359a.jpg",
+    "id": 28162,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2867,
+    "created_at": "2025-05-09T04:06:21.290588Z",
+    "updated_at": "2025-05-09T04:06:21.290620Z",
+    "lead_time": 2.276
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.lidl.co.uk_712d.jpg",
+    "id": 28163,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2868,
+    "created_at": "2025-05-09T04:06:27.637577Z",
+    "updated_at": "2025-05-09T04:06:27.637609Z",
+    "lead_time": 5.563
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.linkedin.com_c4bf.jpg",
+    "id": 28164,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2869,
+    "created_at": "2025-05-09T04:06:33.309287Z",
+    "updated_at": "2025-05-09T04:06:33.309317Z",
+    "lead_time": 4.907
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.literotica.com_cb79.jpg",
+    "id": 28165,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2870,
+    "created_at": "2025-05-09T04:06:39.682048Z",
+    "updated_at": "2025-05-09T04:06:39.682079Z",
+    "lead_time": 5.636
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.lloydsbank.com_8195.jpg",
+    "id": 28166,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2871,
+    "created_at": "2025-05-09T04:06:45.603691Z",
+    "updated_at": "2025-05-09T04:06:45.603723Z",
+    "lead_time": 5.106
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.manchestereveningnews.co.uk_d932.jpg",
+    "id": 28167,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2872,
+    "created_at": "2025-05-09T04:06:48.853095Z",
+    "updated_at": "2025-05-09T04:06:48.853132Z",
+    "lead_time": 2.472
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.manualslib.com_4457.jpg",
+    "id": 28168,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2873,
+    "created_at": "2025-05-09T04:06:51.559267Z",
+    "updated_at": "2025-05-09T04:06:51.559299Z",
+    "lead_time": 1.941
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.marksandspencer.com_37bd.jpg",
+    "id": 28169,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2874,
+    "created_at": "2025-05-09T04:06:54.082751Z",
+    "updated_at": "2025-05-09T04:06:54.082784Z",
+    "lead_time": 1.78
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.masters.com_7b89.jpg",
+    "id": 28170,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2875,
+    "created_at": "2025-05-09T04:06:57.172717Z",
+    "updated_at": "2025-05-09T04:06:57.172748Z",
+    "lead_time": 2.345
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.maturetube.com_11b2.jpg",
+    "id": 28171,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2876,
+    "created_at": "2025-05-09T04:07:00.374903Z",
+    "updated_at": "2025-05-09T04:07:00.374935Z",
+    "lead_time": 2.458
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.medicalnewstoday.com_9613.jpg",
+    "id": 28172,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2877,
+    "created_at": "2025-05-09T04:07:03.138961Z",
+    "updated_at": "2025-05-09T04:07:03.138994Z",
+    "lead_time": 2.003
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.merriam-webster.com_7199.jpg",
+    "id": 28173,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2878,
+    "created_at": "2025-05-09T04:07:05.995865Z",
+    "updated_at": "2025-05-09T04:07:05.995896Z",
+    "lead_time": 2.11
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.metoffice.gov.uk_26fd.jpg",
+    "id": 28174,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2879,
+    "created_at": "2025-05-09T04:07:10.040007Z",
+    "updated_at": "2025-05-09T04:07:10.040038Z",
+    "lead_time": 3.318
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.microsoft.com_7a13.jpg",
+    "id": 28175,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2880,
+    "created_at": "2025-05-09T04:07:13.124152Z",
+    "updated_at": "2025-05-09T04:07:13.124183Z",
+    "lead_time": 2.324
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.mirror.co.uk_5eeb.jpg",
+    "id": 28176,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2881,
+    "created_at": "2025-05-09T04:07:15.990163Z",
+    "updated_at": "2025-05-09T04:07:15.990194Z",
+    "lead_time": 2.11
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.moneysavingexpert.com_c9ae.jpg",
+    "id": 28177,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2882,
+    "created_at": "2025-05-09T04:07:18.742724Z",
+    "updated_at": "2025-05-09T04:07:18.742752Z",
+    "lead_time": 2.013
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.moneysupermarket.com_4466.jpg",
+    "id": 28178,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2883,
+    "created_at": "2025-05-09T04:07:21.592337Z",
+    "updated_at": "2025-05-09T04:07:21.592370Z",
+    "lead_time": 2.086
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.msn.com_fc0a.jpg",
+    "id": 28179,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2884,
+    "created_at": "2025-05-09T04:07:25.204000Z",
+    "updated_at": "2025-05-09T04:07:25.204031Z",
+    "lead_time": 2.814
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.mumsnet.com_e6cc.jpg",
+    "id": 28180,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2885,
+    "created_at": "2025-05-09T04:07:28.041230Z",
+    "updated_at": "2025-05-09T04:07:28.041262Z",
+    "lead_time": 2.098
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.national-lottery.co.uk_1a04.jpg",
+    "id": 28181,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2886,
+    "created_at": "2025-05-09T04:07:30.488986Z",
+    "updated_at": "2025-05-09T04:07:30.489017Z",
+    "lead_time": 1.691
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.nationalrail.co.uk_ddc7.jpg",
+    "id": 28182,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2887,
+    "created_at": "2025-05-09T04:07:33.375283Z",
+    "updated_at": "2025-05-09T04:07:33.375315Z",
+    "lead_time": 2.146
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.nationaltrust.org.uk_d7a3.jpg",
+    "id": 28183,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2888,
+    "created_at": "2025-05-09T04:07:36.601633Z",
+    "updated_at": "2025-05-09T04:07:36.601665Z",
+    "lead_time": 2.48
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.nationwide.co.uk_21a3.jpg",
+    "id": 28184,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2889,
+    "created_at": "2025-05-09T04:07:39.422537Z",
+    "updated_at": "2025-05-09T04:07:39.422573Z",
+    "lead_time": 2.068
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.natwest.com_b0f6.jpg",
+    "id": 28185,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2890,
+    "created_at": "2025-05-09T04:07:42.375417Z",
+    "updated_at": "2025-05-09T04:07:42.375450Z",
+    "lead_time": 2.216
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.netflix.com_6ce6.jpg",
+    "id": 28186,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2891,
+    "created_at": "2025-05-09T04:07:45.426132Z",
+    "updated_at": "2025-05-09T04:07:45.426164Z",
+    "lead_time": 2.288
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.newsnow.co.uk_d881.jpg",
+    "id": 28187,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2892,
+    "created_at": "2025-05-09T04:07:48.198492Z",
+    "updated_at": "2025-05-09T04:07:48.198524Z",
+    "lead_time": 1.966
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.next.co.uk_9f65.jpg",
+    "id": 28188,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2893,
+    "created_at": "2025-05-09T04:07:50.829026Z",
+    "updated_at": "2025-05-09T04:07:50.829056Z",
+    "lead_time": 1.855
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.nexusmods.com_4b4f.jpg",
+    "id": 28189,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2894,
+    "created_at": "2025-05-09T04:07:53.563338Z",
+    "updated_at": "2025-05-09T04:07:53.563369Z",
+    "lead_time": 1.9
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.nhs.uk_0e32.jpg",
+    "id": 28190,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2895,
+    "created_at": "2025-05-09T04:07:56.380018Z",
+    "updated_at": "2025-05-09T04:07:56.380048Z",
+    "lead_time": 2.064
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.nsandi.com_4ca7.jpg",
+    "id": 28191,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2896,
+    "created_at": "2025-05-09T04:07:58.943072Z",
+    "updated_at": "2025-05-09T04:07:58.943104Z",
+    "lead_time": 1.824
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.nudevista.com_57a3.jpg",
+    "id": 28192,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2897,
+    "created_at": "2025-05-09T04:08:02.253224Z",
+    "updated_at": "2025-05-09T04:08:02.253256Z",
+    "lead_time": 2.531
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.nytimes.com_b4d0.jpg",
+    "id": 28193,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2898,
+    "created_at": "2025-05-09T04:08:05.615893Z",
+    "updated_at": "2025-05-09T04:08:05.615924Z",
+    "lead_time": 2.228
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.office.com_2752.jpg",
+    "id": 28194,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2899,
+    "created_at": "2025-05-09T04:08:08.516197Z",
+    "updated_at": "2025-05-09T04:08:08.516230Z",
+    "lead_time": 2.115
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ons.gov.uk_ea0e.jpg",
+    "id": 28195,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2900,
+    "created_at": "2025-05-09T04:08:11.316955Z",
+    "updated_at": "2025-05-09T04:08:11.316987Z",
+    "lead_time": 2.039
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.onthemarket.com_648b.jpg",
+    "id": 28196,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2901,
+    "created_at": "2025-05-09T04:08:14.660417Z",
+    "updated_at": "2025-05-09T04:08:14.660448Z",
+    "lead_time": 2.59
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.openingtimesin.uk_54d1.jpg",
+    "id": 28197,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2902,
+    "created_at": "2025-05-09T04:08:17.267470Z",
+    "updated_at": "2025-05-09T04:08:17.267499Z",
+    "lead_time": 1.853
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.parkers.co.uk_5fea.jpg",
+    "id": 28198,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2903,
+    "created_at": "2025-05-09T04:08:19.832801Z",
+    "updated_at": "2025-05-09T04:08:19.832832Z",
+    "lead_time": 1.809
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.patreon.com_eb7c.jpg",
+    "id": 28199,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2904,
+    "created_at": "2025-05-09T04:08:22.547958Z",
+    "updated_at": "2025-05-09T04:08:22.547991Z",
+    "lead_time": 1.955
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.paypal.com_18a3.jpg",
+    "id": 28200,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2905,
+    "created_at": "2025-05-09T04:08:25.300523Z",
+    "updated_at": "2025-05-09T04:08:25.300557Z",
+    "lead_time": 1.996
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.pcmag.com_935c.jpg",
+    "id": 28201,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2906,
+    "created_at": "2025-05-09T04:08:28.063294Z",
+    "updated_at": "2025-05-09T04:08:28.063326Z",
+    "lead_time": 1.98
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.pexels.com_6a3b.jpg",
+    "id": 28202,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2907,
+    "created_at": "2025-05-09T04:08:31.262031Z",
+    "updated_at": "2025-05-09T04:08:31.262063Z",
+    "lead_time": 2.451
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.pinterest.com_5b2e.jpg",
+    "id": 28203,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2908,
+    "created_at": "2025-05-09T04:08:36.259488Z",
+    "updated_at": "2025-05-09T04:08:36.259522Z",
+    "lead_time": 4.201
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.pornhub.com_63d2.jpg",
+    "id": 28204,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2909,
+    "created_at": "2025-05-09T04:08:40.034460Z",
+    "updated_at": "2025-05-09T04:08:40.034493Z",
+    "lead_time": 2.98
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.pornpics.com_e632.jpg",
+    "id": 28205,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2910,
+    "created_at": "2025-05-09T04:08:48.815145Z",
+    "updated_at": "2025-05-09T04:08:48.815177Z",
+    "lead_time": 7.984
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.porntrex.com_4f13.jpg",
+    "id": 28206,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2911,
+    "created_at": "2025-05-09T04:08:52.533297Z",
+    "updated_at": "2025-05-09T04:08:52.533327Z",
+    "lead_time": 2.951
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.postoffice.co.uk_8102.jpg",
+    "id": 28207,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2912,
+    "created_at": "2025-05-09T04:08:55.317454Z",
+    "updated_at": "2025-05-09T04:08:55.317486Z",
+    "lead_time": 2.028
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.primelocation.com_a66d.jpg",
+    "id": 28208,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2913,
+    "created_at": "2025-05-09T04:08:58.029089Z",
+    "updated_at": "2025-05-09T04:08:58.029125Z",
+    "lead_time": 1.94
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.rac.co.uk_6ec4.jpg",
+    "id": 28209,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2914,
+    "created_at": "2025-05-09T04:09:01.238866Z",
+    "updated_at": "2025-05-09T04:09:01.238898Z",
+    "lead_time": 2.451
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.radiotimes.com_97d1.jpg",
+    "id": 28210,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2915,
+    "created_at": "2025-05-09T04:09:04.130806Z",
+    "updated_at": "2025-05-09T04:09:04.130842Z",
+    "lead_time": 2.13
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.reddit.com_1713.jpg",
+    "id": 28211,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2916,
+    "created_at": "2025-05-09T04:09:07.328630Z",
+    "updated_at": "2025-05-09T04:09:07.328662Z",
+    "lead_time": 2.445
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.redtube.com_1034.jpg",
+    "id": 28212,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2917,
+    "created_at": "2025-05-09T04:09:10.097801Z",
+    "updated_at": "2025-05-09T04:09:10.097832Z",
+    "lead_time": 1.991
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.researchgate.net_732b.jpg",
+    "id": 28213,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2918,
+    "created_at": "2025-05-09T04:09:12.607861Z",
+    "updated_at": "2025-05-09T04:09:12.607894Z",
+    "lead_time": 1.749
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.rhs.org.uk_4471.jpg",
+    "id": 28214,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2919,
+    "created_at": "2025-05-09T04:09:15.602668Z",
+    "updated_at": "2025-05-09T04:09:15.602698Z",
+    "lead_time": 2.234
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.rightmove.co.uk_4520.jpg",
+    "id": 28215,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2920,
+    "created_at": "2025-05-09T04:09:18.499168Z",
+    "updated_at": "2025-05-09T04:09:18.499200Z",
+    "lead_time": 2.131
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.rome2rio.com_fde2.jpg",
+    "id": 28216,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2921,
+    "created_at": "2025-05-09T04:09:21.283414Z",
+    "updated_at": "2025-05-09T04:09:21.283446Z",
+    "lead_time": 2.021
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.rottentomatoes.com_5d2d.jpg",
+    "id": 28217,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2922,
+    "created_at": "2025-05-09T04:09:24.068088Z",
+    "updated_at": "2025-05-09T04:09:24.068122Z",
+    "lead_time": 1.974
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.royalmail.com_c452.jpg",
+    "id": 28218,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2923,
+    "created_at": "2025-05-09T04:09:26.673168Z",
+    "updated_at": "2025-05-09T04:09:26.673200Z",
+    "lead_time": 1.823
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ryanair.com_387b.jpg",
+    "id": 28219,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2924,
+    "created_at": "2025-05-09T04:09:29.388151Z",
+    "updated_at": "2025-05-09T04:09:29.388182Z",
+    "lead_time": 1.865
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.sainsburys.co.uk_7641.jpg",
+    "id": 28220,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2925,
+    "created_at": "2025-05-09T04:09:32.141083Z",
+    "updated_at": "2025-05-09T04:09:32.141116Z",
+    "lead_time": 1.999
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.samsung.com_fd45.jpg",
+    "id": 28221,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2926,
+    "created_at": "2025-05-09T04:09:34.773867Z",
+    "updated_at": "2025-05-09T04:09:34.773898Z",
+    "lead_time": 1.877
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.santander.co.uk_25cf.jpg",
+    "id": 28222,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2927,
+    "created_at": "2025-05-09T04:09:37.441296Z",
+    "updated_at": "2025-05-09T04:09:37.441331Z",
+    "lead_time": 1.909
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.sciencedirect.com_29a5.jpg",
+    "id": 28223,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2928,
+    "created_at": "2025-05-09T04:09:44.149066Z",
+    "updated_at": "2025-05-09T04:09:44.149098Z",
+    "lead_time": 5.921
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.screwfix.com_0198.jpg",
+    "id": 28224,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2929,
+    "created_at": "2025-05-09T04:09:47.589798Z",
+    "updated_at": "2025-05-09T04:09:47.589830Z",
+    "lead_time": 2.703
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.sky.com_8268.jpg",
+    "id": 28225,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2930,
+    "created_at": "2025-05-09T04:09:51.394023Z",
+    "updated_at": "2025-05-09T04:09:51.394055Z",
+    "lead_time": 2.955
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.skyscanner.net_edc6.jpg",
+    "id": 28226,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2931,
+    "created_at": "2025-05-09T04:09:56.235145Z",
+    "updated_at": "2025-05-09T04:09:56.235178Z",
+    "lead_time": 4.071
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.skysports.com_fcc8.jpg",
+    "id": 28227,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2932,
+    "created_at": "2025-05-09T04:09:58.836558Z",
+    "updated_at": "2025-05-09T04:09:58.836589Z",
+    "lead_time": 1.833
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.solveyourtech.com_438e.jpg",
+    "id": 28228,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2933,
+    "created_at": "2025-05-09T04:10:02.025958Z",
+    "updated_at": "2025-05-09T04:10:02.025999Z",
+    "lead_time": 2.353
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.speedtest.net_1c84.jpg",
+    "id": 28229,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2934,
+    "created_at": "2025-05-09T04:10:05.952733Z",
+    "updated_at": "2025-05-09T04:10:05.952765Z",
+    "lead_time": 3.089
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.sportsdirect.com_44f0.jpg",
+    "id": 28230,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2935,
+    "created_at": "2025-05-09T04:10:08.614900Z",
+    "updated_at": "2025-05-09T04:10:08.614931Z",
+    "lead_time": 1.905
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.standard.co.uk_2338.jpg",
+    "id": 28231,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2936,
+    "created_at": "2025-05-09T04:10:12.237582Z",
+    "updated_at": "2025-05-09T04:10:12.237612Z",
+    "lead_time": 2.856
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.superdrug.com_d8d1.jpg",
+    "id": 28232,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2937,
+    "created_at": "2025-05-09T04:10:14.884237Z",
+    "updated_at": "2025-05-09T04:10:14.884267Z",
+    "lead_time": 1.891
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.techradar.com_02af.jpg",
+    "id": 28233,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2938,
+    "created_at": "2025-05-09T04:10:17.419739Z",
+    "updated_at": "2025-05-09T04:10:17.419773Z",
+    "lead_time": 1.77
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.telegraph.co.uk_3aa5.jpg",
+    "id": 28234,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2939,
+    "created_at": "2025-05-09T04:10:20.234800Z",
+    "updated_at": "2025-05-09T04:10:20.234835Z",
+    "lead_time": 2.057
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.temu.com_fe84.jpg",
+    "id": 28235,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2940,
+    "created_at": "2025-05-09T04:10:24.309857Z",
+    "updated_at": "2025-05-09T04:10:24.309887Z",
+    "lead_time": 3.316
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tesco.com_a77e.jpg",
+    "id": 28236,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2941,
+    "created_at": "2025-05-09T04:10:27.578601Z",
+    "updated_at": "2025-05-09T04:10:27.578632Z",
+    "lead_time": 2.49
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tgtube.com_e6bd.jpg",
+    "id": 28237,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2942,
+    "created_at": "2025-05-09T04:10:30.904003Z",
+    "updated_at": "2025-05-09T04:10:30.904036Z",
+    "lead_time": 2.564
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.theaa.com_0669.jpg",
+    "id": 28238,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2943,
+    "created_at": "2025-05-09T04:10:33.444571Z",
+    "updated_at": "2025-05-09T04:10:33.444602Z",
+    "lead_time": 1.772
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.theguardian.com_6c45.jpg",
+    "id": 28239,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2944,
+    "created_at": "2025-05-09T04:10:36.327387Z",
+    "updated_at": "2025-05-09T04:10:36.327420Z",
+    "lead_time": 2.131
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.therange.co.uk_23e3.jpg",
+    "id": 28240,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2945,
+    "created_at": "2025-05-09T04:10:39.134390Z",
+    "updated_at": "2025-05-09T04:10:39.134423Z",
+    "lead_time": 2.037
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.thesaurus.com_5caa.jpg",
+    "id": 28241,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2946,
+    "created_at": "2025-05-09T04:10:41.788573Z",
+    "updated_at": "2025-05-09T04:10:41.788603Z",
+    "lead_time": 1.854
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.thesun.co.uk_f415.jpg",
+    "id": 28242,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2947,
+    "created_at": "2025-05-09T04:10:45.084161Z",
+    "updated_at": "2025-05-09T04:10:45.084193Z",
+    "lead_time": 2.503
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.thetimes.com_d0ff.jpg",
+    "id": 28243,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2948,
+    "created_at": "2025-05-09T04:10:48.560912Z",
+    "updated_at": "2025-05-09T04:10:48.560943Z",
+    "lead_time": 2.697
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.thetrainline.com_bce1.jpg",
+    "id": 28244,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2949,
+    "created_at": "2025-05-09T04:10:51.323559Z",
+    "updated_at": "2025-05-09T04:10:51.323592Z",
+    "lead_time": 1.995
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tiktok.com_388f.jpg",
+    "id": 28245,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2950,
+    "created_at": "2025-05-09T04:10:54.461510Z",
+    "updated_at": "2025-05-09T04:10:54.461540Z",
+    "lead_time": 2.374
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.timeanddate.com_4319.jpg",
+    "id": 28246,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2951,
+    "created_at": "2025-05-09T04:10:57.654338Z",
+    "updated_at": "2025-05-09T04:10:57.654370Z",
+    "lead_time": 2.444
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.timeout.com_d339.jpg",
+    "id": 28247,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2952,
+    "created_at": "2025-05-09T04:11:00.764684Z",
+    "updated_at": "2025-05-09T04:11:00.764716Z",
+    "lead_time": 2.359
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tnaflix.com_8bfc.jpg",
+    "id": 28248,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2953,
+    "created_at": "2025-05-09T04:11:03.813651Z",
+    "updated_at": "2025-05-09T04:11:03.813680Z",
+    "lead_time": 2.29
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tomsguide.com_2847.jpg",
+    "id": 28249,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2954,
+    "created_at": "2025-05-09T04:11:07.992699Z",
+    "updated_at": "2025-05-09T04:11:07.992728Z",
+    "lead_time": 3.389
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.toolstation.com_269d.jpg",
+    "id": 28250,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2955,
+    "created_at": "2025-05-09T04:11:10.875153Z",
+    "updated_at": "2025-05-09T04:11:10.875187Z",
+    "lead_time": 2.124
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.travisperkins.co.uk_cf07.jpg",
+    "id": 28251,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2956,
+    "created_at": "2025-05-09T04:11:13.775279Z",
+    "updated_at": "2025-05-09T04:11:13.775310Z",
+    "lead_time": 2.116
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tripadvisor.co.uk_b2d1.jpg",
+    "id": 28252,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2957,
+    "created_at": "2025-05-09T04:11:16.441401Z",
+    "updated_at": "2025-05-09T04:11:16.441432Z",
+    "lead_time": 1.802
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tripadvisor.com_29fd.jpg",
+    "id": 28253,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2958,
+    "created_at": "2025-05-09T04:11:18.711599Z",
+    "updated_at": "2025-05-09T04:11:18.711629Z",
+    "lead_time": 1.507
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tubegalore.com_cef5.jpg",
+    "id": 28254,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2959,
+    "created_at": "2025-05-09T04:11:21.756739Z",
+    "updated_at": "2025-05-09T04:11:21.756771Z",
+    "lead_time": 2.266
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tubepornstars.com_2c52.jpg",
+    "id": 28255,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2960,
+    "created_at": "2025-05-09T04:11:24.686389Z",
+    "updated_at": "2025-05-09T04:11:24.686419Z",
+    "lead_time": 2.17
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tui.co.uk_cfc9.jpg",
+    "id": 28256,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2961,
+    "created_at": "2025-05-09T04:11:27.637180Z",
+    "updated_at": "2025-05-09T04:11:27.637212Z",
+    "lead_time": 2.185
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tumbex.com_149c.jpg",
+    "id": 28257,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2962,
+    "created_at": "2025-05-09T04:11:39.717932Z",
+    "updated_at": "2025-05-09T04:11:39.717964Z",
+    "lead_time": 11.317
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.verywellhealth.com_56ef.jpg",
+    "id": 28258,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2963,
+    "created_at": "2025-05-09T04:11:42.929593Z",
+    "updated_at": "2025-05-09T04:11:42.929625Z",
+    "lead_time": 2.434
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.vinted.co.uk_94b1.jpg",
+    "id": 28259,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2964,
+    "created_at": "2025-05-09T04:11:45.589129Z",
+    "updated_at": "2025-05-09T04:11:45.589160Z",
+    "lead_time": 1.866
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.virginmedia.com_b010.jpg",
+    "id": 28260,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2965,
+    "created_at": "2025-05-09T04:11:48.161471Z",
+    "updated_at": "2025-05-09T04:11:48.161501Z",
+    "lead_time": 1.81
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.vivastreet.co.uk_480c.jpg",
+    "id": 28261,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2966,
+    "created_at": "2025-05-09T04:11:50.953964Z",
+    "updated_at": "2025-05-09T04:11:50.953993Z",
+    "lead_time": 2.009
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.w3schools.com_fb31.jpg",
+    "id": 28262,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2967,
+    "created_at": "2025-05-09T04:11:53.824557Z",
+    "updated_at": "2025-05-09T04:11:53.824588Z",
+    "lead_time": 2.024
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.waitrose.com_0d5d.jpg",
+    "id": 28263,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2968,
+    "created_at": "2025-05-09T04:11:56.584881Z",
+    "updated_at": "2025-05-09T04:11:56.584911Z",
+    "lead_time": 1.995
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.walesonline.co.uk_3062.jpg",
+    "id": 28264,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2969,
+    "created_at": "2025-05-09T04:11:59.451372Z",
+    "updated_at": "2025-05-09T04:11:59.451403Z",
+    "lead_time": 2.113
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.waterstones.com_8077.jpg",
+    "id": 28265,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2970,
+    "created_at": "2025-05-09T04:12:02.395661Z",
+    "updated_at": "2025-05-09T04:12:02.395692Z",
+    "lead_time": 2.184
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.wayfair.co.uk_6dff.jpg",
+    "id": 28266,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2971,
+    "created_at": "2025-05-09T04:12:04.999097Z",
+    "updated_at": "2025-05-09T04:12:04.999130Z",
+    "lead_time": 1.829
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.webmd.com_97b0.jpg",
+    "id": 28267,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2972,
+    "created_at": "2025-05-09T04:12:08.629556Z",
+    "updated_at": "2025-05-09T04:12:08.629587Z",
+    "lead_time": 2.881
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.whatcar.com_6889.jpg",
+    "id": 28268,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2973,
+    "created_at": "2025-05-09T04:12:11.236643Z",
+    "updated_at": "2025-05-09T04:12:11.236673Z",
+    "lead_time": 1.851
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.whathifi.com_7222.jpg",
+    "id": 28269,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2974,
+    "created_at": "2025-05-09T04:12:14.071887Z",
+    "updated_at": "2025-05-09T04:12:14.071920Z",
+    "lead_time": 2.057
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.which.co.uk_41bc.jpg",
+    "id": 28270,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2975,
+    "created_at": "2025-05-09T04:12:16.738719Z",
+    "updated_at": "2025-05-09T04:12:16.738751Z",
+    "lead_time": 1.902
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.wickes.co.uk_863d.jpg",
+    "id": 28271,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2976,
+    "created_at": "2025-05-09T04:12:19.439762Z",
+    "updated_at": "2025-05-09T04:12:19.439795Z",
+    "lead_time": 1.946
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.wikihow.com_da77.jpg",
+    "id": 28272,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2977,
+    "created_at": "2025-05-09T04:12:26.761566Z",
+    "updated_at": "2025-05-09T04:12:26.761598Z",
+    "lead_time": 6.546
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.wordhippo.com_4236.jpg",
+    "id": 28273,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2978,
+    "created_at": "2025-05-09T04:12:29.370955Z",
+    "updated_at": "2025-05-09T04:12:29.370986Z",
+    "lead_time": 1.829
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.wordplays.com_0db4.jpg",
+    "id": 28274,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2979,
+    "created_at": "2025-05-09T04:12:32.331003Z",
+    "updated_at": "2025-05-09T04:12:32.331035Z",
+    "lead_time": 2.193
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.wowhead.com_32c7.jpg",
+    "id": 28275,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2980,
+    "created_at": "2025-05-09T04:12:36.222010Z",
+    "updated_at": "2025-05-09T04:12:36.222045Z",
+    "lead_time": 3.124
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.xe.com_97e1.jpg",
+    "id": 28276,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2981,
+    "created_at": "2025-05-09T04:12:40.868911Z",
+    "updated_at": "2025-05-09T04:12:40.868942Z",
+    "lead_time": 3.803
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.xnxx.com_c073.jpg",
+    "id": 28277,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2982,
+    "created_at": "2025-05-09T04:12:43.965795Z",
+    "updated_at": "2025-05-09T04:12:43.965826Z",
+    "lead_time": 2.341
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.xvideos.com_dafb.jpg",
+    "id": 28278,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2983,
+    "created_at": "2025-05-09T04:12:50.026081Z",
+    "updated_at": "2025-05-09T04:12:50.026112Z",
+    "lead_time": 5.302
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.yell.com_d81b.jpg",
+    "id": 28279,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2984,
+    "created_at": "2025-05-09T04:12:55.217989Z",
+    "updated_at": "2025-05-09T04:12:55.218022Z",
+    "lead_time": 4.407
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.youporn.com_3832.jpg",
+    "id": 28280,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2985,
+    "created_at": "2025-05-09T04:12:58.184166Z",
+    "updated_at": "2025-05-09T04:12:58.184197Z",
+    "lead_time": 2.153
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.youtube.com_d75d.jpg",
+    "id": 28281,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2986,
+    "created_at": "2025-05-09T04:13:01.214479Z",
+    "updated_at": "2025-05-09T04:13:01.214511Z",
+    "lead_time": 2.285
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.zoopla.co.uk_70f2.jpg",
+    "id": 28282,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2987,
+    "created_at": "2025-05-09T04:13:04.542749Z",
+    "updated_at": "2025-05-09T04:13:04.542780Z",
+    "lead_time": 2.578
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/xhamster.com_3b8c.jpg",
+    "id": 28283,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2988,
+    "created_at": "2025-05-09T04:13:08.370692Z",
+    "updated_at": "2025-05-09T04:13:08.370724Z",
+    "lead_time": 3.07
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/yandex.com_41f4.jpg",
+    "id": 28284,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2989,
+    "created_at": "2025-05-09T04:13:11.238174Z",
+    "updated_at": "2025-05-09T04:13:11.238205Z",
+    "lead_time": 2.111
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/academic.oup.com_606f.jpg",
+    "id": 28285,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2990,
+    "created_at": "2025-05-09T06:15:54.242887Z",
+    "updated_at": "2025-05-09T06:15:54.242921Z",
+    "lead_time": 12.376
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/ao.com_e831.jpg",
+    "id": 28286,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2991,
+    "created_at": "2025-05-09T06:15:58.339078Z",
+    "updated_at": "2025-05-09T06:15:58.339110Z",
+    "lead_time": 3.357
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/apple.stackexchange.com_5ac3.jpg",
+    "id": 28287,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2992,
+    "created_at": "2025-05-09T06:16:01.362909Z",
+    "updated_at": "2025-05-09T06:16:01.362942Z",
+    "lead_time": 2.269
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/argos.co.uk_4eca.jpg",
+    "id": 28288,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2993,
+    "created_at": "2025-05-09T06:16:04.156688Z",
+    "updated_at": "2025-05-09T06:16:04.156722Z",
+    "lead_time": 2.047
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/arxiv.org_a919.jpg",
+    "id": 28289,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2994,
+    "created_at": "2025-05-09T06:16:32.502267Z",
+    "updated_at": "2025-05-09T06:16:32.502299Z",
+    "lead_time": 27.578
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/aws.amazon.com_7492.jpg",
+    "id": 28290,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2995,
+    "created_at": "2025-05-09T06:16:37.658300Z",
+    "updated_at": "2025-05-09T06:16:37.658332Z",
+    "lead_time": 4.361
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/bank.barclays.co.uk_b3e3.jpg",
+    "id": 28291,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2996,
+    "created_at": "2025-05-09T06:16:40.880389Z",
+    "updated_at": "2025-05-09T06:16:40.880422Z",
+    "lead_time": 2.463
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/bestbuyersguide.org_cc6a.jpg",
+    "id": 28292,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2997,
+    "created_at": "2025-05-09T06:16:45.074353Z",
+    "updated_at": "2025-05-09T06:16:45.074386Z",
+    "lead_time": 3.055
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/biblehub.com_fc3c.jpg",
+    "id": 28293,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 2998,
+    "created_at": "2025-05-09T06:16:48.613327Z",
+    "updated_at": "2025-05-09T06:16:48.613360Z",
+    "lead_time": 2.804
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/birchplace.com_ca89.jpg",
+    "id": 28294,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 2999,
+    "created_at": "2025-05-09T06:16:51.897443Z",
+    "updated_at": "2025-05-09T06:16:51.897479Z",
+    "lead_time": 2.54
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/bnf.nice.org.uk_da36.jpg",
+    "id": 28295,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3000,
+    "created_at": "2025-05-09T06:16:54.653324Z",
+    "updated_at": "2025-05-09T06:16:54.653358Z",
+    "lead_time": 2.012
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/books.google.com_520a.jpg",
+    "id": 28296,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3001,
+    "created_at": "2025-05-09T06:16:59.037389Z",
+    "updated_at": "2025-05-09T06:16:59.037422Z",
+    "lead_time": 3.643
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/britishbakingrecipes.co.uk_f128.jpg",
+    "id": 28297,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3002,
+    "created_at": "2025-05-09T06:17:01.917877Z",
+    "updated_at": "2025-05-09T06:17:01.917908Z",
+    "lead_time": 2.146
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/bustimes.org_1a12.jpg",
+    "id": 28298,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3003,
+    "created_at": "2025-05-09T06:17:04.493968Z",
+    "updated_at": "2025-05-09T06:17:04.493999Z",
+    "lead_time": 1.819
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/chromewebstore.google.com_f93e.jpg",
+    "id": 28299,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3004,
+    "created_at": "2025-05-09T06:17:08.464860Z",
+    "updated_at": "2025-05-09T06:17:08.464890Z",
+    "lead_time": 3.241
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/cks.nice.org.uk_b149.jpg",
+    "id": 28300,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3005,
+    "created_at": "2025-05-09T06:17:11.155099Z",
+    "updated_at": "2025-05-09T06:17:11.155130Z",
+    "lead_time": 1.964
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/commons.wikimedia.org_338f.jpg",
+    "id": 28301,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3006,
+    "created_at": "2025-05-09T06:17:20.344523Z",
+    "updated_at": "2025-05-09T06:17:20.344556Z",
+    "lead_time": 8.433
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/community.adobe.com_d3e0.jpg",
+    "id": 28302,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3007,
+    "created_at": "2025-05-09T06:17:24.213513Z",
+    "updated_at": "2025-05-09T06:17:24.213544Z",
+    "lead_time": 3.082
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/community.bt.com_5c7d.jpg",
+    "id": 28303,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3008,
+    "created_at": "2025-05-09T06:17:27.567701Z",
+    "updated_at": "2025-05-09T06:17:27.567732Z",
+    "lead_time": 2.619
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/community.home-assistant.io_ebbd.jpg",
+    "id": 28304,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3009,
+    "created_at": "2025-05-09T06:17:31.763955Z",
+    "updated_at": "2025-05-09T06:17:31.763989Z",
+    "lead_time": 3.44
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/community.screwfix.com_4340.jpg",
+    "id": 28305,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3010,
+    "created_at": "2025-05-09T06:17:34.447110Z",
+    "updated_at": "2025-05-09T06:17:34.447145Z",
+    "lead_time": 1.854
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/de.wikipedia.org_3299.jpg",
+    "id": 28306,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3011,
+    "created_at": "2025-05-09T06:17:37.862118Z",
+    "updated_at": "2025-05-09T06:17:37.862152Z",
+    "lead_time": 2.67
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/dev.to_2d82.jpg",
+    "id": 28307,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3012,
+    "created_at": "2025-05-09T06:17:41.626597Z",
+    "updated_at": "2025-05-09T06:17:41.626630Z",
+    "lead_time": 3.001
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/developer.apple.com_a609.jpg",
+    "id": 28308,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3013,
+    "created_at": "2025-05-09T06:17:45.003856Z",
+    "updated_at": "2025-05-09T06:17:45.003891Z",
+    "lead_time": 2.611
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/direct.asda.com_348e.jpg",
+    "id": 28309,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3014,
+    "created_at": "2025-05-09T06:17:52.518788Z",
+    "updated_at": "2025-05-09T06:17:52.518820Z",
+    "lead_time": 6.777
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/docs.github.com_a557.jpg",
+    "id": 28310,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3015,
+    "created_at": "2025-05-09T06:17:56.060266Z",
+    "updated_at": "2025-05-09T06:17:56.060301Z",
+    "lead_time": 2.799
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/docs.python.org_9912.jpg",
+    "id": 28311,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3016,
+    "created_at": "2025-05-09T06:17:59.361879Z",
+    "updated_at": "2025-05-09T06:17:59.361911Z",
+    "lead_time": 2.551
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/drive.google.com_0780.jpg",
+    "id": 28312,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3017,
+    "created_at": "2025-05-09T06:18:02.319131Z",
+    "updated_at": "2025-05-09T06:18:02.319165Z",
+    "lead_time": 2.213
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/e-hentai.org_3ece.jpg",
+    "id": 28313,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3018,
+    "created_at": "2025-05-09T06:18:07.586316Z",
+    "updated_at": "2025-05-09T06:18:07.586360Z",
+    "lead_time": 4.534
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/earth.google.co.uk_653a.jpg",
+    "id": 28314,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3019,
+    "created_at": "2025-05-09T06:18:12.532632Z",
+    "updated_at": "2025-05-09T06:18:12.532666Z",
+    "lead_time": 4.186
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/en.wiktionary.org_0ed2.jpg",
+    "id": 28315,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3020,
+    "created_at": "2025-05-09T06:18:16.566267Z",
+    "updated_at": "2025-05-09T06:18:16.566298Z",
+    "lead_time": 3.289
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/eromexxx.com_7545.jpg",
+    "id": 28316,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3021,
+    "created_at": "2025-05-09T06:18:20.602202Z",
+    "updated_at": "2025-05-09T06:18:20.602237Z",
+    "lead_time": 3.286
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/finance.yahoo.com_bfde.jpg",
+    "id": 28317,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3022,
+    "created_at": "2025-05-09T06:18:23.355443Z",
+    "updated_at": "2025-05-09T06:18:23.355474Z",
+    "lead_time": 2.004
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/findajob.dwp.gov.uk_d7b7.jpg",
+    "id": 28318,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3023,
+    "created_at": "2025-05-09T06:18:26.120875Z",
+    "updated_at": "2025-05-09T06:18:26.120907Z",
+    "lead_time": 2.005
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/forums.linuxmint.com_3480.jpg",
+    "id": 28319,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3024,
+    "created_at": "2025-05-09T06:18:29.375973Z",
+    "updated_at": "2025-05-09T06:18:29.376007Z",
+    "lead_time": 2.526
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/forums.raspberrypi.com_5d80.jpg",
+    "id": 28320,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3025,
+    "created_at": "2025-05-09T06:18:32.120551Z",
+    "updated_at": "2025-05-09T06:18:32.120582Z",
+    "lead_time": 2.02
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/forums.tomshardware.com_6138.jpg",
+    "id": 28321,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3026,
+    "created_at": "2025-05-09T06:18:34.674194Z",
+    "updated_at": "2025-05-09T06:18:34.674226Z",
+    "lead_time": 1.793
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/funeral-notices.co.uk_3188.jpg",
+    "id": 28322,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3027,
+    "created_at": "2025-05-09T06:18:37.455669Z",
+    "updated_at": "2025-05-09T06:18:37.455703Z",
+    "lead_time": 2.011
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/game8.co_f021.jpg",
+    "id": 28323,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3028,
+    "created_at": "2025-05-09T06:18:40.013540Z",
+    "updated_at": "2025-05-09T06:18:40.013573Z",
+    "lead_time": 1.68
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/gamefaqs.gamespot.com_7e80.jpg",
+    "id": 28324,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3029,
+    "created_at": "2025-05-09T06:18:42.604432Z",
+    "updated_at": "2025-05-09T06:18:42.604465Z",
+    "lead_time": 1.719
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/gamerant.com_64a1.jpg",
+    "id": 28325,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3030,
+    "created_at": "2025-05-09T06:18:46.808694Z",
+    "updated_at": "2025-05-09T06:18:46.808728Z",
+    "lead_time": 3.458
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/gist.github.com_4d39.jpg",
+    "id": 28326,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3031,
+    "created_at": "2025-05-09T06:18:51.543265Z",
+    "updated_at": "2025-05-09T06:18:51.543301Z",
+    "lead_time": 3.991
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/h30434.www3.hp.com_2458.jpg",
+    "id": 28327,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3032,
+    "created_at": "2025-05-09T06:18:54.361203Z",
+    "updated_at": "2025-05-09T06:18:54.361235Z",
+    "lead_time": 2.065
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/helpforum.sky.com_924e.jpg",
+    "id": 28328,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3033,
+    "created_at": "2025-05-09T06:18:57.033300Z",
+    "updated_at": "2025-05-09T06:18:57.033334Z",
+    "lead_time": 1.79
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/hqporner.com_ebf6.jpg",
+    "id": 28329,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3034,
+    "created_at": "2025-05-09T06:19:00.345164Z",
+    "updated_at": "2025-05-09T06:19:00.345199Z",
+    "lead_time": 2.574
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/images.google.com_fdff.jpg",
+    "id": 28330,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3035,
+    "created_at": "2025-05-09T06:19:03.147844Z",
+    "updated_at": "2025-05-09T06:19:03.147876Z",
+    "lead_time": 2.054
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/inews.co.uk_563e.jpg",
+    "id": 28331,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3036,
+    "created_at": "2025-05-09T06:19:07.306028Z",
+    "updated_at": "2025-05-09T06:19:07.306061Z",
+    "lead_time": 3.412
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/itch.io_8c6b.jpg",
+    "id": 28332,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3037,
+    "created_at": "2025-05-09T06:19:15.341596Z",
+    "updated_at": "2025-05-09T06:19:15.341630Z",
+    "lead_time": 7.285
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/johnlewis.com_ce91.jpg",
+    "id": 28333,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3038,
+    "created_at": "2025-05-09T06:19:18.378291Z",
+    "updated_at": "2025-05-09T06:19:18.378320Z",
+    "lead_time": 2.298
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/journals.sagepub.com_88bd.jpg",
+    "id": 28334,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3039,
+    "created_at": "2025-05-09T06:19:21.043516Z",
+    "updated_at": "2025-05-09T06:19:21.043548Z",
+    "lead_time": 1.92
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/knowyourmeme.com_2397.jpg",
+    "id": 28335,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3040,
+    "created_at": "2025-05-09T06:19:24.485839Z",
+    "updated_at": "2025-05-09T06:19:24.485874Z",
+    "lead_time": 2.704
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/linktr.ee_ee55.jpg",
+    "id": 28336,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3041,
+    "created_at": "2025-05-09T06:19:27.444710Z",
+    "updated_at": "2025-05-09T06:19:27.444746Z",
+    "lead_time": 2.111
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/mail.aol.com_d260.jpg",
+    "id": 28337,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3042,
+    "created_at": "2025-05-09T06:19:30.060781Z",
+    "updated_at": "2025-05-09T06:19:30.060816Z",
+    "lead_time": 1.86
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/markets.ft.com_7f9b.jpg",
+    "id": 28338,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3043,
+    "created_at": "2025-05-09T06:19:35.609606Z",
+    "updated_at": "2025-05-09T06:19:35.609644Z",
+    "lead_time": 4.795
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/marksandspencer.com_3503.jpg",
+    "id": 28339,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3044,
+    "created_at": "2025-05-09T06:19:38.129464Z",
+    "updated_at": "2025-05-09T06:19:38.129499Z",
+    "lead_time": 1.742
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/minecraft.fandom.com_859b.jpg",
+    "id": 28340,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3045,
+    "created_at": "2025-05-09T06:19:41.014913Z",
+    "updated_at": "2025-05-09T06:19:41.014945Z",
+    "lead_time": 2.142
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/motherless.com_4665.jpg",
+    "id": 28341,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3046,
+    "created_at": "2025-05-09T06:19:44.444302Z",
+    "updated_at": "2025-05-09T06:19:44.444334Z",
+    "lead_time": 2.69
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/music.youtube.com_1654.jpg",
+    "id": 28342,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3047,
+    "created_at": "2025-05-09T06:19:47.305711Z",
+    "updated_at": "2025-05-09T06:19:47.305742Z",
+    "lead_time": 2.104
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/my.clevelandclinic.org_b3b1.jpg",
+    "id": 28343,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3048,
+    "created_at": "2025-05-09T06:19:51.194170Z",
+    "updated_at": "2025-05-09T06:19:51.194202Z",
+    "lead_time": 3.129
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/newpornsearch.com_8217.jpg",
+    "id": 28344,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3049,
+    "created_at": "2025-05-09T06:19:54.934243Z",
+    "updated_at": "2025-05-09T06:19:54.934276Z",
+    "lead_time": 2.994
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/nhentai.net_d8f8.jpg",
+    "id": 28345,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3050,
+    "created_at": "2025-05-09T06:19:58.263486Z",
+    "updated_at": "2025-05-09T06:19:58.263520Z",
+    "lead_time": 2.583
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/octopus.energy_9c6d.jpg",
+    "id": 28346,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3051,
+    "created_at": "2025-05-09T06:20:01.674971Z",
+    "updated_at": "2025-05-09T06:20:01.675006Z",
+    "lead_time": 2.656
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/oldschool.runescape.wiki_72c4.jpg",
+    "id": 28347,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3052,
+    "created_at": "2025-05-09T06:20:06.057922Z",
+    "updated_at": "2025-05-09T06:20:06.057953Z",
+    "lead_time": 3.63
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/onedrive.live.com_f380.jpg",
+    "id": 28348,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3053,
+    "created_at": "2025-05-09T06:20:09.506948Z",
+    "updated_at": "2025-05-09T06:20:09.506982Z",
+    "lead_time": 2.711
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/onlinebanking.nationwide.co.uk_a71e.jpg",
+    "id": 28349,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3054,
+    "created_at": "2025-05-09T06:20:12.707883Z",
+    "updated_at": "2025-05-09T06:20:12.707917Z",
+    "lead_time": 2.461
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/onlyfans.com_ab69.jpg",
+    "id": 28350,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3055,
+    "created_at": "2025-05-09T06:20:16.800415Z",
+    "updated_at": "2025-05-09T06:20:16.800447Z",
+    "lead_time": 3.16
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/open.spotify.com_37d2.jpg",
+    "id": 28351,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3056,
+    "created_at": "2025-05-09T06:20:19.585004Z",
+    "updated_at": "2025-05-09T06:20:19.585038Z",
+    "lead_time": 2.041
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/perchance.org_1c99.jpg",
+    "id": 28352,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3057,
+    "created_at": "2025-05-09T06:20:24.715962Z",
+    "updated_at": "2025-05-09T06:20:24.715995Z",
+    "lead_time": 4.373
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/picclick.co.uk_e860.jpg",
+    "id": 28353,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3058,
+    "created_at": "2025-05-09T06:20:28.844159Z",
+    "updated_at": "2025-05-09T06:20:28.844197Z",
+    "lead_time": 3.399
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/pixabay.com_84b3.jpg",
+    "id": 28354,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3059,
+    "created_at": "2025-05-09T06:20:33.085322Z",
+    "updated_at": "2025-05-09T06:20:33.085355Z",
+    "lead_time": 3.44
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/play.google.com_7c95.jpg",
+    "id": 28355,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3060,
+    "created_at": "2025-05-09T06:20:38.560870Z",
+    "updated_at": "2025-05-09T06:20:38.560905Z",
+    "lead_time": 4.719
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/pornkai.com_35b3.jpg",
+    "id": 28356,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3061,
+    "created_at": "2025-05-09T06:20:44.819050Z",
+    "updated_at": "2025-05-09T06:20:44.819083Z",
+    "lead_time": 5.455
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/pypi.org_298d.jpg",
+    "id": 28357,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3062,
+    "created_at": "2025-05-09T06:20:47.656361Z",
+    "updated_at": "2025-05-09T06:20:47.656392Z",
+    "lead_time": 2.098
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/quizlet.com_6a1a.jpg",
+    "id": 28358,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3063,
+    "created_at": "2025-05-09T06:20:50.428691Z",
+    "updated_at": "2025-05-09T06:20:50.428724Z",
+    "lead_time": 2.014
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/restaurantguru.com_0106.jpg",
+    "id": 28359,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3064,
+    "created_at": "2025-05-09T06:20:53.154134Z",
+    "updated_at": "2025-05-09T06:20:53.154165Z",
+    "lead_time": 1.992
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/retail.santander.co.uk_7841.jpg",
+    "id": 28360,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3065,
+    "created_at": "2025-05-09T06:20:55.525022Z",
+    "updated_at": "2025-05-09T06:20:55.525053Z",
+    "lead_time": 1.634
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/rutracker.org_263e.jpg",
+    "id": 28361,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3066,
+    "created_at": "2025-05-09T06:20:59.197528Z",
+    "updated_at": "2025-05-09T06:20:59.197561Z",
+    "lead_time": 2.938
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/scholar.google.co.uk_260b.jpg",
+    "id": 28362,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3067,
+    "created_at": "2025-05-09T06:21:01.676264Z",
+    "updated_at": "2025-05-09T06:21:01.676299Z",
+    "lead_time": 1.736
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/scholar.google.com_1ac8.jpg",
+    "id": 28363,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3068,
+    "created_at": "2025-05-09T06:21:03.904314Z",
+    "updated_at": "2025-05-09T06:21:03.904344Z",
+    "lead_time": 1.489
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/serverfault.com_1317.jpg",
+    "id": 28364,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3069,
+    "created_at": "2025-05-09T06:21:07.340004Z",
+    "updated_at": "2025-05-09T06:21:07.340036Z",
+    "lead_time": 2.23
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/solitaired.com_b503.jpg",
+    "id": 28365,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3070,
+    "created_at": "2025-05-09T06:21:10.304806Z",
+    "updated_at": "2025-05-09T06:21:10.304841Z",
+    "lead_time": 2.229
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/soundcloud.com_c0ec.jpg",
+    "id": 28366,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3071,
+    "created_at": "2025-05-09T06:21:13.390932Z",
+    "updated_at": "2025-05-09T06:21:13.390965Z",
+    "lead_time": 2.345
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/stock.adobe.com_f562.jpg",
+    "id": 28367,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3072,
+    "created_at": "2025-05-09T06:21:16.397647Z",
+    "updated_at": "2025-05-09T06:21:16.397679Z",
+    "lead_time": 2.252
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/support.hp.com_66ba.jpg",
+    "id": 28368,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3073,
+    "created_at": "2025-05-09T06:21:21.572024Z",
+    "updated_at": "2025-05-09T06:21:21.572061Z",
+    "lead_time": 4.422
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/support.mozilla.org_373c.jpg",
+    "id": 28369,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3074,
+    "created_at": "2025-05-09T06:21:24.664025Z",
+    "updated_at": "2025-05-09T06:21:24.664056Z",
+    "lead_time": 2.278
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/sxyprn.net_680a.jpg",
+    "id": 28370,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3075,
+    "created_at": "2025-05-09T06:21:28.618022Z",
+    "updated_at": "2025-05-09T06:21:28.618054Z",
+    "lead_time": 3.209
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/t.me_6d45.jpg",
+    "id": 28371,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3076,
+    "created_at": "2025-05-09T06:21:31.585763Z",
+    "updated_at": "2025-05-09T06:21:31.585794Z",
+    "lead_time": 2.218
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/techcommunity.microsoft.com_04b1.jpg",
+    "id": 28372,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3077,
+    "created_at": "2025-05-09T06:21:34.576144Z",
+    "updated_at": "2025-05-09T06:21:34.576176Z",
+    "lead_time": 2.24
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/tex.stackexchange.com_bf39.jpg",
+    "id": 28373,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3078,
+    "created_at": "2025-05-09T06:21:37.273977Z",
+    "updated_at": "2025-05-09T06:21:37.274007Z",
+    "lead_time": 1.896
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/thepiratebay.org_ec6c.jpg",
+    "id": 28374,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3079,
+    "created_at": "2025-05-09T06:21:39.887290Z",
+    "updated_at": "2025-05-09T06:21:39.887323Z",
+    "lead_time": 1.881
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/thothub.to_5379.jpg",
+    "id": 28375,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3080,
+    "created_at": "2025-05-09T06:21:43.562725Z",
+    "updated_at": "2025-05-09T06:21:43.562762Z",
+    "lead_time": 2.928
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/topchoice.co.uk_12d1.jpg",
+    "id": 28376,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3081,
+    "created_at": "2025-05-09T06:21:47.354094Z",
+    "updated_at": "2025-05-09T06:21:47.354127Z",
+    "lead_time": 2.979
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/tpb.party_622f.jpg",
+    "id": 28377,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3082,
+    "created_at": "2025-05-09T06:21:50.168817Z",
+    "updated_at": "2025-05-09T06:21:50.168851Z",
+    "lead_time": 2.047
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/trannyclips.com_dcd1.jpg",
+    "id": 28378,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3083,
+    "created_at": "2025-05-09T06:21:54.301238Z",
+    "updated_at": "2025-05-09T06:21:54.301270Z",
+    "lead_time": 3.356
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/tubitv.com_ef32.jpg",
+    "id": 28379,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3084,
+    "created_at": "2025-05-09T06:21:59.072270Z",
+    "updated_at": "2025-05-09T06:21:59.072302Z",
+    "lead_time": 4.0
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/txxx.com_3f54.jpg",
+    "id": 28380,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3085,
+    "created_at": "2025-05-09T06:22:02.387972Z",
+    "updated_at": "2025-05-09T06:22:02.388005Z",
+    "lead_time": 2.532
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/uk.finance.yahoo.com_c697.jpg",
+    "id": 28381,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3086,
+    "created_at": "2025-05-09T06:22:05.992311Z",
+    "updated_at": "2025-05-09T06:22:05.992343Z",
+    "lead_time": 2.871
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/uk.news.yahoo.com_191d.jpg",
+    "id": 28382,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3087,
+    "created_at": "2025-05-09T06:22:09.050418Z",
+    "updated_at": "2025-05-09T06:22:09.050450Z",
+    "lead_time": 2.317
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/uk.pcmag.com_43ac.jpg",
+    "id": 28383,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3088,
+    "created_at": "2025-05-09T06:22:11.806150Z",
+    "updated_at": "2025-05-09T06:22:11.806182Z",
+    "lead_time": 1.997
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/uk.rs-online.com_6c6e.jpg",
+    "id": 28384,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3089,
+    "created_at": "2025-05-09T06:22:15.114143Z",
+    "updated_at": "2025-05-09T06:22:15.114175Z",
+    "lead_time": 2.505
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/uk.virginmoney.com_2260.jpg",
+    "id": 28385,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3090,
+    "created_at": "2025-05-09T06:22:17.814751Z",
+    "updated_at": "2025-05-09T06:22:17.814783Z",
+    "lead_time": 1.967
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/uk.webuy.com_d7bf.jpg",
+    "id": 28386,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3091,
+    "created_at": "2025-05-09T06:22:20.936295Z",
+    "updated_at": "2025-05-09T06:22:20.936329Z",
+    "lead_time": 2.373
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/umatechnology.org_4f31.jpg",
+    "id": 28387,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3092,
+    "created_at": "2025-05-09T06:22:23.616809Z",
+    "updated_at": "2025-05-09T06:22:23.616842Z",
+    "lead_time": 1.925
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/vimeo.com_a115.jpg",
+    "id": 28388,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3093,
+    "created_at": "2025-05-09T06:22:26.988045Z",
+    "updated_at": "2025-05-09T06:22:26.988077Z",
+    "lead_time": 2.614
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/vintage-erotica-forum.com_dba0.jpg",
+    "id": 28389,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3094,
+    "created_at": "2025-05-09T06:22:32.951895Z",
+    "updated_at": "2025-05-09T06:22:32.951931Z",
+    "lead_time": 5.219
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/vipwank.com_4b72.jpg",
+    "id": 28390,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3095,
+    "created_at": "2025-05-09T06:22:36.824221Z",
+    "updated_at": "2025-05-09T06:22:36.824254Z",
+    "lead_time": 3.12
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/wap.yandex.com_ebfd.jpg",
+    "id": 28391,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3096,
+    "created_at": "2025-05-09T06:22:39.766222Z",
+    "updated_at": "2025-05-09T06:22:39.766256Z",
+    "lead_time": 2.136
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/wetransfer.com_bb6f.jpg",
+    "id": 28392,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3097,
+    "created_at": "2025-05-09T06:22:44.026467Z",
+    "updated_at": "2025-05-09T06:22:44.026498Z",
+    "lead_time": 3.495
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/whatismyipaddress.com_f6f4.jpg",
+    "id": 28393,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3098,
+    "created_at": "2025-05-09T06:22:48.770741Z",
+    "updated_at": "2025-05-09T06:22:48.770775Z",
+    "lead_time": 3.99
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/windows.microsoft.com_1890.jpg",
+    "id": 28394,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3099,
+    "created_at": "2025-05-09T06:22:52.020517Z",
+    "updated_at": "2025-05-09T06:22:52.020549Z",
+    "lead_time": 2.515
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/wise.com_6e52.jpg",
+    "id": 28395,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3100,
+    "created_at": "2025-05-09T06:22:54.506393Z",
+    "updated_at": "2025-05-09T06:22:54.506429Z",
+    "lead_time": 1.734
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.4chan.org_44d1.jpg",
+    "id": 28396,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3101,
+    "created_at": "2025-05-09T06:22:57.000087Z",
+    "updated_at": "2025-05-09T06:22:57.000121Z",
+    "lead_time": 1.758
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.4tube.com_9e45.jpg",
+    "id": 28397,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3102,
+    "created_at": "2025-05-09T06:23:00.178861Z",
+    "updated_at": "2025-05-09T06:23:00.178900Z",
+    "lead_time": 2.42
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.abebooks.co.uk_1eb9.jpg",
+    "id": 28398,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3103,
+    "created_at": "2025-05-09T06:23:02.903654Z",
+    "updated_at": "2025-05-09T06:23:02.903686Z",
+    "lead_time": 1.967
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.adobe.com_4edc.jpg",
+    "id": 28399,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3104,
+    "created_at": "2025-05-09T06:23:06.330255Z",
+    "updated_at": "2025-05-09T06:23:06.330287Z",
+    "lead_time": 2.583
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.adultwork.com_3461.jpg",
+    "id": 28400,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3105,
+    "created_at": "2025-05-09T06:23:10.195661Z",
+    "updated_at": "2025-05-09T06:23:10.195694Z",
+    "lead_time": 3.107
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ageuk.org.uk_db18.jpg",
+    "id": 28401,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3106,
+    "created_at": "2025-05-09T06:23:12.713492Z",
+    "updated_at": "2025-05-09T06:23:12.713524Z",
+    "lead_time": 1.773
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.aliexpress.com_3359.jpg",
+    "id": 28402,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3107,
+    "created_at": "2025-05-09T06:23:16.269104Z",
+    "updated_at": "2025-05-09T06:23:16.269139Z",
+    "lead_time": 2.787
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.allrecipes.com_efdb.jpg",
+    "id": 28403,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3108,
+    "created_at": "2025-05-09T06:23:18.842316Z",
+    "updated_at": "2025-05-09T06:23:18.842347Z",
+    "lead_time": 1.809
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.andertons.co.uk_d6c8.jpg",
+    "id": 28404,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3109,
+    "created_at": "2025-05-09T06:23:21.952176Z",
+    "updated_at": "2025-05-09T06:23:21.952210Z",
+    "lead_time": 2.364
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ashemaletube.com_f5d3.jpg",
+    "id": 28405,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3110,
+    "created_at": "2025-05-09T06:23:26.066423Z",
+    "updated_at": "2025-05-09T06:23:26.066457Z",
+    "lead_time": 2.84
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.asos.com_8918.jpg",
+    "id": 28406,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3111,
+    "created_at": "2025-05-09T06:23:28.936737Z",
+    "updated_at": "2025-05-09T06:23:28.936770Z",
+    "lead_time": 1.86
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.asus.com_23b1.jpg",
+    "id": 28407,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3112,
+    "created_at": "2025-05-09T06:23:32.667633Z",
+    "updated_at": "2025-05-09T06:23:32.667661Z",
+    "lead_time": 2.991
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.autocar.co.uk_a503.jpg",
+    "id": 28408,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3113,
+    "created_at": "2025-05-09T06:23:35.213369Z",
+    "updated_at": "2025-05-09T06:23:35.213402Z",
+    "lead_time": 1.783
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.avforums.com_249e.jpg",
+    "id": 28409,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3114,
+    "created_at": "2025-05-09T06:23:37.777237Z",
+    "updated_at": "2025-05-09T06:23:37.777273Z",
+    "lead_time": 1.812
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.aviva.co.uk_dee4.jpg",
+    "id": 28410,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3115,
+    "created_at": "2025-05-09T06:23:41.799993Z",
+    "updated_at": "2025-05-09T06:23:41.800025Z",
+    "lead_time": 3.219
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.azlyrics.com_74c0.jpg",
+    "id": 28411,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3116,
+    "created_at": "2025-05-09T06:23:44.262637Z",
+    "updated_at": "2025-05-09T06:23:44.262668Z",
+    "lead_time": 1.716
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.babestation.tv_1861.jpg",
+    "id": 28412,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3117,
+    "created_at": "2025-05-09T06:23:48.587469Z",
+    "updated_at": "2025-05-09T06:23:48.587500Z",
+    "lead_time": 3.564
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.baeldung.com_dd4f.jpg",
+    "id": 28413,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3118,
+    "created_at": "2025-05-09T06:23:51.693229Z",
+    "updated_at": "2025-05-09T06:23:51.693262Z",
+    "lead_time": 2.354
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.barclaycard.co.uk_84f4.jpg",
+    "id": 28414,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3119,
+    "created_at": "2025-05-09T06:23:54.279272Z",
+    "updated_at": "2025-05-09T06:23:54.279303Z",
+    "lead_time": 1.849
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.bellesa.co_e140.jpg",
+    "id": 28415,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3120,
+    "created_at": "2025-05-09T06:23:58.368858Z",
+    "updated_at": "2025-05-09T06:23:58.368889Z",
+    "lead_time": 3.321
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.bing.com_b46b.jpg",
+    "id": 28416,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3121,
+    "created_at": "2025-05-09T06:24:01.455526Z",
+    "updated_at": "2025-05-09T06:24:01.455559Z",
+    "lead_time": 2.321
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.birminghammail.co.uk_975f.jpg",
+    "id": 28417,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3122,
+    "created_at": "2025-05-09T06:24:03.967938Z",
+    "updated_at": "2025-05-09T06:24:03.967968Z",
+    "lead_time": 1.778
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.bookseriesinorder.com_36c8.jpg",
+    "id": 28418,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3123,
+    "created_at": "2025-05-09T06:24:06.838723Z",
+    "updated_at": "2025-05-09T06:24:06.838753Z",
+    "lead_time": 2.12
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.boyfriendtv.com_9be8.jpg",
+    "id": 28419,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3124,
+    "created_at": "2025-05-09T06:24:10.428368Z",
+    "updated_at": "2025-05-09T06:24:10.428400Z",
+    "lead_time": 2.841
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.britishgas.co.uk_3312.jpg",
+    "id": 28420,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3125,
+    "created_at": "2025-05-09T06:24:13.251152Z",
+    "updated_at": "2025-05-09T06:24:13.251185Z",
+    "lead_time": 2.007
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.broadbandspeedchecker.co.uk_bc6a.jpg",
+    "id": 28421,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3126,
+    "created_at": "2025-05-09T06:24:15.800805Z",
+    "updated_at": "2025-05-09T06:24:15.800836Z",
+    "lead_time": 1.805
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.bullionbypost.co.uk_43b2.jpg",
+    "id": 28422,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3127,
+    "created_at": "2025-05-09T06:24:21.774789Z",
+    "updated_at": "2025-05-09T06:24:21.774822Z",
+    "lead_time": 5.228
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.bupa.co.uk_7461.jpg",
+    "id": 28423,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3128,
+    "created_at": "2025-05-09T06:24:24.337350Z",
+    "updated_at": "2025-05-09T06:24:24.337384Z",
+    "lead_time": 1.82
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.calculator.net_de26.jpg",
+    "id": 28424,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3129,
+    "created_at": "2025-05-09T06:24:27.637214Z",
+    "updated_at": "2025-05-09T06:24:27.637246Z",
+    "lead_time": 2.56
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.callchecker.co.uk_4a9f.jpg",
+    "id": 28425,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3130,
+    "created_at": "2025-05-09T06:24:30.832207Z",
+    "updated_at": "2025-05-09T06:24:30.832243Z",
+    "lead_time": 2.437
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.cambridge.org_2e8f.jpg",
+    "id": 28426,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3131,
+    "created_at": "2025-05-09T06:24:33.635567Z",
+    "updated_at": "2025-05-09T06:24:33.635600Z",
+    "lead_time": 2.061
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.cambro.video_d48b.jpg",
+    "id": 28427,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3132,
+    "created_at": "2025-05-09T06:24:37.615883Z",
+    "updated_at": "2025-05-09T06:24:37.615915Z",
+    "lead_time": 3.23
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.camwhores.tv_0012.jpg",
+    "id": 28428,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3133,
+    "created_at": "2025-05-09T06:24:43.506335Z",
+    "updated_at": "2025-05-09T06:24:43.506370Z",
+    "lead_time": 5.126
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.canon.co.uk_7d3f.jpg",
+    "id": 28429,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3134,
+    "created_at": "2025-05-09T06:24:46.291312Z",
+    "updated_at": "2025-05-09T06:24:46.291346Z",
+    "lead_time": 1.967
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.carwow.co.uk_e56d.jpg",
+    "id": 28430,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3135,
+    "created_at": "2025-05-09T06:24:49.017466Z",
+    "updated_at": "2025-05-09T06:24:49.017503Z",
+    "lead_time": 1.967
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.chat-avenue.com_f34e.jpg",
+    "id": 28431,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3136,
+    "created_at": "2025-05-09T06:24:52.222445Z",
+    "updated_at": "2025-05-09T06:24:52.222478Z",
+    "lead_time": 2.373
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.chess.com_5823.jpg",
+    "id": 28432,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3137,
+    "created_at": "2025-05-09T06:24:55.010885Z",
+    "updated_at": "2025-05-09T06:24:55.010919Z",
+    "lead_time": 2.029
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.chroniclelive.co.uk_ecca.jpg",
+    "id": 28433,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3138,
+    "created_at": "2025-05-09T06:24:57.520653Z",
+    "updated_at": "2025-05-09T06:24:57.520685Z",
+    "lead_time": 1.744
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.cineworld.co.uk_0762.jpg",
+    "id": 28434,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3139,
+    "created_at": "2025-05-09T06:25:00.016687Z",
+    "updated_at": "2025-05-09T06:25:00.016721Z",
+    "lead_time": 1.733
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.citizensadvice.org.uk_fa9a.jpg",
+    "id": 28435,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3140,
+    "created_at": "2025-05-09T06:25:02.970060Z",
+    "updated_at": "2025-05-09T06:25:02.970092Z",
+    "lead_time": 2.192
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.clips4sale.com_8335.jpg",
+    "id": 28436,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3141,
+    "created_at": "2025-05-09T06:25:07.189104Z",
+    "updated_at": "2025-05-09T06:25:07.189134Z",
+    "lead_time": 3.472
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.comparethemarket.com_66db.jpg",
+    "id": 28437,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3142,
+    "created_at": "2025-05-09T06:25:10.126535Z",
+    "updated_at": "2025-05-09T06:25:10.126568Z",
+    "lead_time": 2.177
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.costco.co.uk_15d8.jpg",
+    "id": 28438,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3143,
+    "created_at": "2025-05-09T06:25:12.804824Z",
+    "updated_at": "2025-05-09T06:25:12.804858Z",
+    "lead_time": 1.936
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.coventrybuildingsociety.co.uk_f407.jpg",
+    "id": 28439,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3144,
+    "created_at": "2025-05-09T06:25:20.119826Z",
+    "updated_at": "2025-05-09T06:25:20.119862Z",
+    "lead_time": 6.541
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.crazygames.com_9c67.jpg",
+    "id": 28440,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3145,
+    "created_at": "2025-05-09T06:25:23.032451Z",
+    "updated_at": "2025-05-09T06:25:23.032483Z",
+    "lead_time": 2.154
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.curseforge.com_b99d.jpg",
+    "id": 28441,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3146,
+    "created_at": "2025-05-09T06:25:26.374070Z",
+    "updated_at": "2025-05-09T06:25:26.374102Z",
+    "lead_time": 2.567
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.dailymotion.com_51ec.jpg",
+    "id": 28442,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3147,
+    "created_at": "2025-05-09T06:25:31.548268Z",
+    "updated_at": "2025-05-09T06:25:31.548300Z",
+    "lead_time": 4.445
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.dailyrecord.co.uk_e3d0.jpg",
+    "id": 28443,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3148,
+    "created_at": "2025-05-09T06:25:34.225004Z",
+    "updated_at": "2025-05-09T06:25:34.225040Z",
+    "lead_time": 1.92
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.dailystar.co.uk_2c9f.jpg",
+    "id": 28444,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3149,
+    "created_at": "2025-05-09T06:25:36.740527Z",
+    "updated_at": "2025-05-09T06:25:36.740559Z",
+    "lead_time": 1.771
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.debenhams.com_0d50.jpg",
+    "id": 28445,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3150,
+    "created_at": "2025-05-09T06:25:39.428091Z",
+    "updated_at": "2025-05-09T06:25:39.428123Z",
+    "lead_time": 1.949
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.deliciousmagazine.co.uk_081b.jpg",
+    "id": 28446,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3151,
+    "created_at": "2025-05-09T06:25:42.060667Z",
+    "updated_at": "2025-05-09T06:25:42.060698Z",
+    "lead_time": 1.86
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.digitalcameraworld.com_eccb.jpg",
+    "id": 28447,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3152,
+    "created_at": "2025-05-09T06:25:44.686308Z",
+    "updated_at": "2025-05-09T06:25:44.686341Z",
+    "lead_time": 1.886
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.disneyplus.com_123a.jpg",
+    "id": 28448,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3153,
+    "created_at": "2025-05-09T06:25:47.234759Z",
+    "updated_at": "2025-05-09T06:25:47.234792Z",
+    "lead_time": 1.786
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.diynot.com_0ad1.jpg",
+    "id": 28449,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3154,
+    "created_at": "2025-05-09T06:25:49.675940Z",
+    "updated_at": "2025-05-09T06:25:49.675970Z",
+    "lead_time": 1.692
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.dndbeyond.com_9215.jpg",
+    "id": 28450,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3155,
+    "created_at": "2025-05-09T06:25:52.666321Z",
+    "updated_at": "2025-05-09T06:25:52.666351Z",
+    "lead_time": 2.243
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.elitebabes.com_393b.jpg",
+    "id": 28451,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3156,
+    "created_at": "2025-05-09T06:25:56.839533Z",
+    "updated_at": "2025-05-09T06:25:56.839566Z",
+    "lead_time": 3.41
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.england.nhs.uk_bb9d.jpg",
+    "id": 28452,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3157,
+    "created_at": "2025-05-09T06:25:59.672004Z",
+    "updated_at": "2025-05-09T06:25:59.672036Z",
+    "lead_time": 2.016
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.eurocarparts.com_37f0.jpg",
+    "id": 28453,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3158,
+    "created_at": "2025-05-09T06:26:02.718613Z",
+    "updated_at": "2025-05-09T06:26:02.718645Z",
+    "lead_time": 2.297
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.eventbrite.co.uk_7532.jpg",
+    "id": 28454,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3159,
+    "created_at": "2025-05-09T06:26:05.499407Z",
+    "updated_at": "2025-05-09T06:26:05.499438Z",
+    "lead_time": 2.024
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.evri.com_a465.jpg",
+    "id": 28455,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3160,
+    "created_at": "2025-05-09T06:26:08.087137Z",
+    "updated_at": "2025-05-09T06:26:08.087170Z",
+    "lead_time": 1.845
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.exceldemy.com_81e4.jpg",
+    "id": 28456,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3161,
+    "created_at": "2025-05-09T06:26:10.488745Z",
+    "updated_at": "2025-05-09T06:26:10.488781Z",
+    "lead_time": 1.659
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.exchangerates.org.uk_08c2.jpg",
+    "id": 28457,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3162,
+    "created_at": "2025-05-09T06:26:12.882582Z",
+    "updated_at": "2025-05-09T06:26:12.882612Z",
+    "lead_time": 1.654
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.expertreviews.co.uk_de5c.jpg",
+    "id": 28458,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3163,
+    "created_at": "2025-05-09T06:26:15.487859Z",
+    "updated_at": "2025-05-09T06:26:15.487893Z",
+    "lead_time": 1.849
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.firstdirect.com_f559.jpg",
+    "id": 28459,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3164,
+    "created_at": "2025-05-09T06:26:17.937390Z",
+    "updated_at": "2025-05-09T06:26:17.937422Z",
+    "lead_time": 1.668
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.flightradar24.com_95a9.jpg",
+    "id": 28460,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3165,
+    "created_at": "2025-05-09T06:26:20.610167Z",
+    "updated_at": "2025-05-09T06:26:20.610199Z",
+    "lead_time": 1.923
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.formula1.com_c4e2.jpg",
+    "id": 28461,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3166,
+    "created_at": "2025-05-09T06:26:23.134563Z",
+    "updated_at": "2025-05-09T06:26:23.134596Z",
+    "lead_time": 1.74
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.foxnews.com_e39c.jpg",
+    "id": 28462,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3167,
+    "created_at": "2025-05-09T06:26:27.214907Z",
+    "updated_at": "2025-05-09T06:26:27.214942Z",
+    "lead_time": 3.247
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.freeconvert.com_5603.jpg",
+    "id": 28463,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3168,
+    "created_at": "2025-05-09T06:26:30.690637Z",
+    "updated_at": "2025-05-09T06:26:30.690670Z",
+    "lead_time": 2.655
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.freeones.com_ec9c.jpg",
+    "id": 28464,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3169,
+    "created_at": "2025-05-09T06:26:34.757526Z",
+    "updated_at": "2025-05-09T06:26:34.757559Z",
+    "lead_time": 3.31
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.freeview.co.uk_d103.jpg",
+    "id": 28465,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3170,
+    "created_at": "2025-05-09T06:26:37.486940Z",
+    "updated_at": "2025-05-09T06:26:37.486976Z",
+    "lead_time": 1.784
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.fuq.com_d1fe.jpg",
+    "id": 28466,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3171,
+    "created_at": "2025-05-09T06:26:40.559591Z",
+    "updated_at": "2025-05-09T06:26:40.559621Z",
+    "lead_time": 2.331
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.glassdoor.co.uk_1896.jpg",
+    "id": 28467,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3172,
+    "created_at": "2025-05-09T06:26:43.454730Z",
+    "updated_at": "2025-05-09T06:26:43.454763Z",
+    "lead_time": 2.135
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.gooutdoors.co.uk_bc29.jpg",
+    "id": 28468,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3173,
+    "created_at": "2025-05-09T06:26:46.496867Z",
+    "updated_at": "2025-05-09T06:26:46.496895Z",
+    "lead_time": 2.277
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.gsmarena.com_6d5e.jpg",
+    "id": 28469,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3174,
+    "created_at": "2025-05-09T06:26:50.626803Z",
+    "updated_at": "2025-05-09T06:26:50.626836Z",
+    "lead_time": 3.374
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.guidingtech.com_ae6f.jpg",
+    "id": 28470,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3175,
+    "created_at": "2025-05-09T06:26:53.900374Z",
+    "updated_at": "2025-05-09T06:26:53.900404Z",
+    "lead_time": 2.52
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.hellomagazine.com_e5d0.jpg",
+    "id": 28471,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3176,
+    "created_at": "2025-05-09T06:26:56.368910Z",
+    "updated_at": "2025-05-09T06:26:56.368941Z",
+    "lead_time": 1.722
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.hobbycraft.co.uk_92ef.jpg",
+    "id": 28472,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3177,
+    "created_at": "2025-05-09T06:27:00.791849Z",
+    "updated_at": "2025-05-09T06:27:00.791880Z",
+    "lead_time": 3.674
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.homebuilding.co.uk_cf84.jpg",
+    "id": 28473,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3178,
+    "created_at": "2025-05-09T06:27:05.302721Z",
+    "updated_at": "2025-05-09T06:27:05.302752Z",
+    "lead_time": 3.761
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.houseoffraser.co.uk_70bc.jpg",
+    "id": 28474,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3179,
+    "created_at": "2025-05-09T06:27:07.619580Z",
+    "updated_at": "2025-05-09T06:27:07.619611Z",
+    "lead_time": 1.565
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.icloud.com_f29c.jpg",
+    "id": 28475,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3180,
+    "created_at": "2025-05-09T06:27:10.335970Z",
+    "updated_at": "2025-05-09T06:27:10.336000Z",
+    "lead_time": 1.957
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.idealhome.co.uk_59b9.jpg",
+    "id": 28476,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3181,
+    "created_at": "2025-05-09T06:27:13.865516Z",
+    "updated_at": "2025-05-09T06:27:13.865558Z",
+    "lead_time": 2.768
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.indeed.co.uk_aa81.jpg",
+    "id": 28477,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3182,
+    "created_at": "2025-05-09T06:27:16.061616Z",
+    "updated_at": "2025-05-09T06:27:16.061648Z",
+    "lead_time": 1.458
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.intel.com_f3e2.jpg",
+    "id": 28478,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3183,
+    "created_at": "2025-05-09T06:27:18.735923Z",
+    "updated_at": "2025-05-09T06:27:18.735953Z",
+    "lead_time": 1.909
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.investopedia.com_4eb7.jpg",
+    "id": 28479,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3184,
+    "created_at": "2025-05-09T06:27:22.406249Z",
+    "updated_at": "2025-05-09T06:27:22.406287Z",
+    "lead_time": 2.914
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ixxx.com_38e9.jpg",
+    "id": 28480,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3185,
+    "created_at": "2025-05-09T06:27:26.260045Z",
+    "updated_at": "2025-05-09T06:27:26.260077Z",
+    "lead_time": 2.978
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.jamieoliver.com_f126.jpg",
+    "id": 28481,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3186,
+    "created_at": "2025-05-09T06:27:32.654888Z",
+    "updated_at": "2025-05-09T06:27:32.654920Z",
+    "lead_time": 5.619
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.jet2.com_a2ef.jpg",
+    "id": 28482,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3187,
+    "created_at": "2025-05-09T06:27:35.301582Z",
+    "updated_at": "2025-05-09T06:27:35.301613Z",
+    "lead_time": 1.904
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.jet2holidays.com_74d6.jpg",
+    "id": 28483,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3188,
+    "created_at": "2025-05-09T06:27:37.816836Z",
+    "updated_at": "2025-05-09T06:27:37.816870Z",
+    "lead_time": 1.712
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.jewson.co.uk_c725.jpg",
+    "id": 28484,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3189,
+    "created_at": "2025-05-09T06:27:40.632360Z",
+    "updated_at": "2025-05-09T06:27:40.632392Z",
+    "lead_time": 2.026
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.jstor.org_ebd9.jpg",
+    "id": 28485,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3190,
+    "created_at": "2025-05-09T06:27:44.127799Z",
+    "updated_at": "2025-05-09T06:27:44.127830Z",
+    "lead_time": 2.737
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.just-eat.co.uk_f7f8.jpg",
+    "id": 28486,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3191,
+    "created_at": "2025-05-09T06:27:50.960539Z",
+    "updated_at": "2025-05-09T06:27:50.960568Z",
+    "lead_time": 6.075
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.kayak.co.uk_ad9a.jpg",
+    "id": 28487,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3192,
+    "created_at": "2025-05-09T06:27:53.558614Z",
+    "updated_at": "2025-05-09T06:27:53.558646Z",
+    "lead_time": 1.845
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.lifewire.com_30db.jpg",
+    "id": 28488,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3193,
+    "created_at": "2025-05-09T06:27:56.125807Z",
+    "updated_at": "2025-05-09T06:27:56.125843Z",
+    "lead_time": 1.794
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.live-footballontv.com_ce60.jpg",
+    "id": 28489,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3194,
+    "created_at": "2025-05-09T06:28:00.012618Z",
+    "updated_at": "2025-05-09T06:28:00.012652Z",
+    "lead_time": 3.092
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.liverpoolecho.co.uk_6051.jpg",
+    "id": 28490,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3195,
+    "created_at": "2025-05-09T06:28:03.884393Z",
+    "updated_at": "2025-05-09T06:28:03.884423Z",
+    "lead_time": 3.112
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.livestrong.com_2d42.jpg",
+    "id": 28491,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3196,
+    "created_at": "2025-05-09T06:28:06.432881Z",
+    "updated_at": "2025-05-09T06:28:06.432915Z",
+    "lead_time": 1.805
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.londonstockexchange.com_9d4d.jpg",
+    "id": 28492,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3197,
+    "created_at": "2025-05-09T06:28:09.988861Z",
+    "updated_at": "2025-05-09T06:28:09.988893Z",
+    "lead_time": 2.812
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.lottery.co.uk_884f.jpg",
+    "id": 28493,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3198,
+    "created_at": "2025-05-09T06:28:15.576409Z",
+    "updated_at": "2025-05-09T06:28:15.576440Z",
+    "lead_time": 4.821
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.lse.co.uk_b8bb.jpg",
+    "id": 28494,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3199,
+    "created_at": "2025-05-09T06:28:18.239421Z",
+    "updated_at": "2025-05-09T06:28:18.239452Z",
+    "lead_time": 1.863
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.macworld.com_7a66.jpg",
+    "id": 28495,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3200,
+    "created_at": "2025-05-09T06:28:26.320956Z",
+    "updated_at": "2025-05-09T06:28:26.320988Z",
+    "lead_time": 7.261
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.manuals.co.uk_6d80.jpg",
+    "id": 28496,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3201,
+    "created_at": "2025-05-09T06:29:39.139969Z",
+    "updated_at": "2025-05-09T06:29:39.140002Z",
+    "lead_time": 2.832
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.matalan.co.uk_4931.jpg",
+    "id": 28497,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3202,
+    "created_at": "2025-05-09T06:29:41.862546Z",
+    "updated_at": "2025-05-09T06:29:41.862579Z",
+    "lead_time": 1.928
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.mayoclinic.org_b5f1.jpg",
+    "id": 28498,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3203,
+    "created_at": "2025-05-09T06:29:46.908998Z",
+    "updated_at": "2025-05-09T06:29:46.909029Z",
+    "lead_time": 4.309
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.menshealth.com_91f1.jpg",
+    "id": 28499,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3204,
+    "created_at": "2025-05-09T06:29:49.550158Z",
+    "updated_at": "2025-05-09T06:29:49.550189Z",
+    "lead_time": 1.904
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.motorcyclenews.com_0939.jpg",
+    "id": 28500,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3205,
+    "created_at": "2025-05-09T06:29:51.948955Z",
+    "updated_at": "2025-05-09T06:29:51.948986Z",
+    "lead_time": 1.632
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.motors.co.uk_2677.jpg",
+    "id": 28501,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3206,
+    "created_at": "2025-05-09T06:29:54.829878Z",
+    "updated_at": "2025-05-09T06:29:54.829911Z",
+    "lead_time": 2.135
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.myvue.com_3e24.jpg",
+    "id": 28502,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3207,
+    "created_at": "2025-05-09T06:29:57.503076Z",
+    "updated_at": "2025-05-09T06:29:57.503107Z",
+    "lead_time": 1.946
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.nature.com_adcb.jpg",
+    "id": 28503,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3208,
+    "created_at": "2025-05-09T06:30:00.036878Z",
+    "updated_at": "2025-05-09T06:30:00.036913Z",
+    "lead_time": 1.772
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ncesc.com_b23e.jpg",
+    "id": 28504,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3209,
+    "created_at": "2025-05-09T06:30:03.447309Z",
+    "updated_at": "2025-05-09T06:30:03.447344Z",
+    "lead_time": 2.613
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.newsweek.com_4465.jpg",
+    "id": 28505,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3210,
+    "created_at": "2025-05-09T06:30:06.119201Z",
+    "updated_at": "2025-05-09T06:30:06.119234Z",
+    "lead_time": 1.935
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.nhsinform.scot_57d3.jpg",
+    "id": 28506,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3211,
+    "created_at": "2025-05-09T06:30:09.662194Z",
+    "updated_at": "2025-05-09T06:30:09.662227Z",
+    "lead_time": 2.821
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.nowtv.com_cde7.jpg",
+    "id": 28507,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3212,
+    "created_at": "2025-05-09T06:30:12.205130Z",
+    "updated_at": "2025-05-09T06:30:12.205167Z",
+    "lead_time": 1.792
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.npmjs.com_f2aa.jpg",
+    "id": 28508,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3213,
+    "created_at": "2025-05-09T06:30:15.464486Z",
+    "updated_at": "2025-05-09T06:30:15.464519Z",
+    "lead_time": 2.533
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.nvidia.com_ce6f.jpg",
+    "id": 28509,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3214,
+    "created_at": "2025-05-09T06:30:18.109256Z",
+    "updated_at": "2025-05-09T06:30:18.109288Z",
+    "lead_time": 1.915
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.o2.co.uk_5d49.jpg",
+    "id": 28510,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3215,
+    "created_at": "2025-05-09T06:30:20.555141Z",
+    "updated_at": "2025-05-09T06:30:20.555172Z",
+    "lead_time": 1.713
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ocado.com_acd8.jpg",
+    "id": 28511,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3216,
+    "created_at": "2025-05-09T06:30:23.458826Z",
+    "updated_at": "2025-05-09T06:30:23.458858Z",
+    "lead_time": 2.186
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.odeon.co.uk_5795.jpg",
+    "id": 28512,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3217,
+    "created_at": "2025-05-09T06:30:26.068577Z",
+    "updated_at": "2025-05-09T06:30:26.068610Z",
+    "lead_time": 1.862
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.pcgamer.com_c6bb.jpg",
+    "id": 28513,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3218,
+    "created_at": "2025-05-09T06:30:28.959051Z",
+    "updated_at": "2025-05-09T06:30:28.959084Z",
+    "lead_time": 2.173
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.pets4homes.co.uk_40fa.jpg",
+    "id": 28514,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3219,
+    "created_at": "2025-05-09T06:30:34.899693Z",
+    "updated_at": "2025-05-09T06:30:34.899723Z",
+    "lead_time": 5.189
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.pgatour.com_50c2.jpg",
+    "id": 28515,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3220,
+    "created_at": "2025-05-09T06:30:37.555972Z",
+    "updated_at": "2025-05-09T06:30:37.556001Z",
+    "lead_time": 1.928
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.physicsandmathstutor.com_8818.jpg",
+    "id": 28516,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3221,
+    "created_at": "2025-05-09T06:30:39.945879Z",
+    "updated_at": "2025-05-09T06:30:39.945911Z",
+    "lead_time": 1.648
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.pistonheads.com_b986.jpg",
+    "id": 28517,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3222,
+    "created_at": "2025-05-09T06:30:42.545647Z",
+    "updated_at": "2025-05-09T06:30:42.545678Z",
+    "lead_time": 1.858
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.porn.com_40c5.jpg",
+    "id": 28518,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3223,
+    "created_at": "2025-05-09T06:30:54.896463Z",
+    "updated_at": "2025-05-09T06:30:54.896497Z",
+    "lead_time": 3.053
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.porzo.com_dc8c.jpg",
+    "id": 28519,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3224,
+    "created_at": "2025-05-09T06:30:57.805669Z",
+    "updated_at": "2025-05-09T06:30:57.805700Z",
+    "lead_time": 2.168
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.premierinn.com_31de.jpg",
+    "id": 28520,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3225,
+    "created_at": "2025-05-09T06:31:00.351597Z",
+    "updated_at": "2025-05-09T06:31:00.351629Z",
+    "lead_time": 1.802
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.premierleague.com_ba58.jpg",
+    "id": 28521,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3226,
+    "created_at": "2025-05-09T06:31:03.097759Z",
+    "updated_at": "2025-05-09T06:31:03.097794Z",
+    "lead_time": 2.018
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.pressreader.com_7bf6.jpg",
+    "id": 28522,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3227,
+    "created_at": "2025-05-09T06:31:05.709566Z",
+    "updated_at": "2025-05-09T06:31:05.709600Z",
+    "lead_time": 1.866
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.pricerunner.com_f280.jpg",
+    "id": 28523,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3228,
+    "created_at": "2025-05-09T06:31:08.041547Z",
+    "updated_at": "2025-05-09T06:31:08.041580Z",
+    "lead_time": 1.602
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.psychologytoday.com_0483.jpg",
+    "id": 28524,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3229,
+    "created_at": "2025-05-09T06:31:10.810407Z",
+    "updated_at": "2025-05-09T06:31:10.810442Z",
+    "lead_time": 2.037
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.qvcuk.com_e3d1.jpg",
+    "id": 28525,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3230,
+    "created_at": "2025-05-09T06:31:13.232645Z",
+    "updated_at": "2025-05-09T06:31:13.232676Z",
+    "lead_time": 1.699
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.racingpost.com_9722.jpg",
+    "id": 28526,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3231,
+    "created_at": "2025-05-09T06:31:17.317951Z",
+    "updated_at": "2025-05-09T06:31:17.317984Z",
+    "lead_time": 3.34
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ranker.com_8013.jpg",
+    "id": 28527,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3232,
+    "created_at": "2025-05-09T06:31:30.414140Z",
+    "updated_at": "2025-05-09T06:31:30.414177Z",
+    "lead_time": 12.281
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.redditmedia.com_1ff9.jpg",
+    "id": 28528,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3233,
+    "created_at": "2025-05-09T06:31:33.459269Z",
+    "updated_at": "2025-05-09T06:31:33.459313Z",
+    "lead_time": 2.249
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.reuters.com_89d0.jpg",
+    "id": 28529,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3234,
+    "created_at": "2025-05-09T06:31:36.198779Z",
+    "updated_at": "2025-05-09T06:31:36.198813Z",
+    "lead_time": 1.971
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.richersounds.com_8d4b.jpg",
+    "id": 28530,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3235,
+    "created_at": "2025-05-09T06:31:38.960711Z",
+    "updated_at": "2025-05-09T06:31:38.960744Z",
+    "lead_time": 1.979
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.robertdyas.co.uk_8a2e.jpg",
+    "id": 28531,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3236,
+    "created_at": "2025-05-09T06:31:42.362443Z",
+    "updated_at": "2025-05-09T06:31:42.362477Z",
+    "lead_time": 2.625
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.roblox.com_68a1.jpg",
+    "id": 28532,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3237,
+    "created_at": "2025-05-09T06:31:45.411356Z",
+    "updated_at": "2025-05-09T06:31:45.411593Z",
+    "lead_time": 2.303
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.rspb.org.uk_ba6b.jpg",
+    "id": 28533,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3238,
+    "created_at": "2025-05-09T06:31:48.709361Z",
+    "updated_at": "2025-05-09T06:31:48.709395Z",
+    "lead_time": 2.504
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.savemyexams.com_7cc2.jpg",
+    "id": 28534,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3239,
+    "created_at": "2025-05-09T06:31:52.537766Z",
+    "updated_at": "2025-05-09T06:31:52.537799Z",
+    "lead_time": 3.066
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.scribd.com_1a3c.jpg",
+    "id": 28535,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3240,
+    "created_at": "2025-05-09T06:31:55.313729Z",
+    "updated_at": "2025-05-09T06:31:55.313762Z",
+    "lead_time": 2.02
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.seat61.com_f943.jpg",
+    "id": 28536,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3241,
+    "created_at": "2025-05-09T06:31:58.295130Z",
+    "updated_at": "2025-05-09T06:31:58.295161Z",
+    "lead_time": 2.176
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.skipton.co.uk_fa8b.jpg",
+    "id": 28537,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3242,
+    "created_at": "2025-05-09T06:32:00.821530Z",
+    "updated_at": "2025-05-09T06:32:00.821562Z",
+    "lead_time": 1.793
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.sony.co.uk_6e5e.jpg",
+    "id": 28538,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3243,
+    "created_at": "2025-05-09T06:32:03.221478Z",
+    "updated_at": "2025-05-09T06:32:03.221509Z",
+    "lead_time": 1.64
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.specsavers.co.uk_872e.jpg",
+    "id": 28539,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3244,
+    "created_at": "2025-05-09T06:32:05.530449Z",
+    "updated_at": "2025-05-09T06:32:05.530481Z",
+    "lead_time": 1.576
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.sportinglife.com_2a59.jpg",
+    "id": 28540,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3245,
+    "created_at": "2025-05-09T06:32:08.752594Z",
+    "updated_at": "2025-05-09T06:32:08.752628Z",
+    "lead_time": 2.481
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.sportskeeda.com_ebcf.jpg",
+    "id": 28541,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3246,
+    "created_at": "2025-05-09T06:32:11.668509Z",
+    "updated_at": "2025-05-09T06:32:11.668543Z",
+    "lead_time": 2.182
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.spotify.com_dd8f.jpg",
+    "id": 28542,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3247,
+    "created_at": "2025-05-09T06:32:14.443419Z",
+    "updated_at": "2025-05-09T06:32:14.443450Z",
+    "lead_time": 1.926
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.stagecoachbus.com_0934.jpg",
+    "id": 28543,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3248,
+    "created_at": "2025-05-09T06:32:17.431922Z",
+    "updated_at": "2025-05-09T06:32:17.431955Z",
+    "lead_time": 2.245
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.statista.com_767f.jpg",
+    "id": 28544,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3249,
+    "created_at": "2025-05-09T06:32:19.994290Z",
+    "updated_at": "2025-05-09T06:32:19.994321Z",
+    "lead_time": 1.797
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.supportyourtech.com_cd22.jpg",
+    "id": 28545,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3250,
+    "created_at": "2025-05-09T06:32:22.376700Z",
+    "updated_at": "2025-05-09T06:32:22.376731Z",
+    "lead_time": 1.642
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.sxyprn.com_b3f7.jpg",
+    "id": 28546,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3251,
+    "created_at": "2025-05-09T06:32:25.201480Z",
+    "updated_at": "2025-05-09T06:32:25.201517Z",
+    "lead_time": 2.075
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tandfonline.com_b958.jpg",
+    "id": 28547,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3252,
+    "created_at": "2025-05-09T06:32:27.684579Z",
+    "updated_at": "2025-05-09T06:32:27.684612Z",
+    "lead_time": 1.731
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.the-saleroom.com_7913.jpg",
+    "id": 28548,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3253,
+    "created_at": "2025-05-09T06:32:37.457096Z",
+    "updated_at": "2025-05-09T06:32:37.457130Z",
+    "lead_time": 9.028
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.thecalculatorsite.com_2a32.jpg",
+    "id": 28549,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3254,
+    "created_at": "2025-05-09T06:32:43.956030Z",
+    "updated_at": "2025-05-09T06:32:43.956060Z",
+    "lead_time": 5.742
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.thegamer.com_528e.jpg",
+    "id": 28550,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3255,
+    "created_at": "2025-05-09T06:32:46.860603Z",
+    "updated_at": "2025-05-09T06:32:46.860637Z",
+    "lead_time": 2.08
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.thewindowsclub.com_dacc.jpg",
+    "id": 28551,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3256,
+    "created_at": "2025-05-09T06:32:49.566329Z",
+    "updated_at": "2025-05-09T06:32:49.566362Z",
+    "lead_time": 1.951
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.thisismoney.co.uk_131f.jpg",
+    "id": 28552,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3257,
+    "created_at": "2025-05-09T06:32:52.135519Z",
+    "updated_at": "2025-05-09T06:32:52.135552Z",
+    "lead_time": 1.763
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.thomann.co.uk_cea7.jpg",
+    "id": 28553,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3258,
+    "created_at": "2025-05-09T06:32:54.892616Z",
+    "updated_at": "2025-05-09T06:32:54.892649Z",
+    "lead_time": 2.0
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tiava.com_0ec2.jpg",
+    "id": 28554,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3259,
+    "created_at": "2025-05-09T06:32:57.645647Z",
+    "updated_at": "2025-05-09T06:32:57.645678Z",
+    "lead_time": 2.022
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ticketmaster.co.uk_9cad.jpg",
+    "id": 28555,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3260,
+    "created_at": "2025-05-09T06:32:59.847466Z",
+    "updated_at": "2025-05-09T06:32:59.847499Z",
+    "lead_time": 1.468
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tkmaxx.com_13e5.jpg",
+    "id": 28556,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3261,
+    "created_at": "2025-05-09T06:33:03.239679Z",
+    "updated_at": "2025-05-09T06:33:03.239714Z",
+    "lead_time": 2.655
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tomshardware.com_26b6.jpg",
+    "id": 28557,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3262,
+    "created_at": "2025-05-09T06:33:06.236335Z",
+    "updated_at": "2025-05-09T06:33:06.236366Z",
+    "lead_time": 2.265
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tradingview.com_3794.jpg",
+    "id": 28558,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3263,
+    "created_at": "2025-05-09T06:33:09.100185Z",
+    "updated_at": "2025-05-09T06:33:09.100220Z",
+    "lead_time": 2.126
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.travelodge.co.uk_fe8f.jpg",
+    "id": 28559,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3264,
+    "created_at": "2025-05-09T06:33:11.330925Z",
+    "updated_at": "2025-05-09T06:33:11.330960Z",
+    "lead_time": 1.519
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.trustedreviews.com_7492.jpg",
+    "id": 28560,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3265,
+    "created_at": "2025-05-09T06:33:13.856711Z",
+    "updated_at": "2025-05-09T06:33:13.856743Z",
+    "lead_time": 1.794
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.trustpilot.com_bf33.jpg",
+    "id": 28561,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3266,
+    "created_at": "2025-05-09T06:33:15.879634Z",
+    "updated_at": "2025-05-09T06:33:15.879667Z",
+    "lead_time": 1.248
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tsb.co.uk_0110.jpg",
+    "id": 28562,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3267,
+    "created_at": "2025-05-09T06:33:17.455156Z",
+    "updated_at": "2025-05-09T06:33:17.455187Z",
+    "lead_time": 0.834
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tumblr.com_d125.jpg",
+    "id": 28563,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3268,
+    "created_at": "2025-05-09T06:33:19.120701Z",
+    "updated_at": "2025-05-09T06:33:19.120732Z",
+    "lead_time": 0.933
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.tvguide.co.uk_6b32.jpg",
+    "id": 28564,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3269,
+    "created_at": "2025-05-09T06:33:20.728169Z",
+    "updated_at": "2025-05-09T06:33:20.728200Z",
+    "lead_time": 0.836
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ucl.ac.uk_62db.jpg",
+    "id": 28565,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3270,
+    "created_at": "2025-05-09T06:33:22.283123Z",
+    "updated_at": "2025-05-09T06:33:22.283155Z",
+    "lead_time": 0.83
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.uefa.com_2017.jpg",
+    "id": 28566,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3271,
+    "created_at": "2025-05-09T06:33:23.725311Z",
+    "updated_at": "2025-05-09T06:33:23.725343Z",
+    "lead_time": 0.72
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ukpunting.com_b466.jpg",
+    "id": 28567,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3272,
+    "created_at": "2025-05-09T06:33:25.613712Z",
+    "updated_at": "2025-05-09T06:33:25.613745Z",
+    "lead_time": 1.15
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.unitconverters.net_914c.jpg",
+    "id": 28568,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3273,
+    "created_at": "2025-05-09T06:33:27.483644Z",
+    "updated_at": "2025-05-09T06:33:27.483677Z",
+    "lead_time": 1.118
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.vodafone.co.uk_20b2.jpg",
+    "id": 28569,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3274,
+    "created_at": "2025-05-09T06:33:29.123857Z",
+    "updated_at": "2025-05-09T06:33:29.123889Z",
+    "lead_time": 0.888
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.whoscalled.co.uk_23d6.jpg",
+    "id": 28570,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3275,
+    "created_at": "2025-05-09T06:33:30.734587Z",
+    "updated_at": "2025-05-09T06:33:30.734621Z",
+    "lead_time": 0.866
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.wikipedia.org_ea8c.jpg",
+    "id": 28571,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3276,
+    "created_at": "2025-05-09T06:33:32.647640Z",
+    "updated_at": "2025-05-09T06:33:32.647672Z",
+    "lead_time": 1.177
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.womenshealthmag.com_e513.jpg",
+    "id": 28572,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3277,
+    "created_at": "2025-05-09T06:33:34.714482Z",
+    "updated_at": "2025-05-09T06:33:34.714512Z",
+    "lead_time": 1.33
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.woodlandtrust.org.uk_b5bc.jpg",
+    "id": 28573,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3278,
+    "created_at": "2025-05-09T06:33:36.412810Z",
+    "updated_at": "2025-05-09T06:33:36.412846Z",
+    "lead_time": 0.949
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.xxbrits.com_f5db.jpg",
+    "id": 28574,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3279,
+    "created_at": "2025-05-09T06:33:38.198031Z",
+    "updated_at": "2025-05-09T06:33:38.198063Z",
+    "lead_time": 1.05
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.ybs.co.uk_bd95.jpg",
+    "id": 28575,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3280,
+    "created_at": "2025-05-09T06:33:40.934583Z",
+    "updated_at": "2025-05-09T06:33:40.934615Z",
+    "lead_time": 2.005
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.yelp.com_8a97.jpg",
+    "id": 28576,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3281,
+    "created_at": "2025-05-09T06:33:42.538345Z",
+    "updated_at": "2025-05-09T06:33:42.538379Z",
+    "lead_time": 0.869
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.youjizz.com_eb16.jpg",
+    "id": 28577,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3282,
+    "created_at": "2025-05-09T06:33:44.317856Z",
+    "updated_at": "2025-05-09T06:33:44.317889Z",
+    "lead_time": 1.048
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www.zara.com_a913.jpg",
+    "id": 28578,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3283,
+    "created_at": "2025-05-09T06:33:46.274104Z",
+    "updated_at": "2025-05-09T06:33:46.274137Z",
+    "lead_time": 1.225
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www2.hm.com_c40f.jpg",
+    "id": 28579,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3284,
+    "created_at": "2025-05-09T06:33:47.858457Z",
+    "updated_at": "2025-05-09T06:33:47.858489Z",
+    "lead_time": 0.851
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/www4.javhdporn.net_de7e.jpg",
+    "id": 28580,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3285,
+    "created_at": "2025-05-09T06:33:49.946505Z",
+    "updated_at": "2025-05-09T06:33:49.946537Z",
+    "lead_time": 1.355
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/xgroovy.com_0004.jpg",
+    "id": 28581,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3286,
+    "created_at": "2025-05-09T06:33:52.136055Z",
+    "updated_at": "2025-05-09T06:33:52.136085Z",
+    "lead_time": 1.434
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/xhamsterlive.com_a47f.jpg",
+    "id": 28582,
+    "choice": "no popup",
+    "annotator": 18,
+    "annotation_id": 3287,
+    "created_at": "2025-05-09T06:33:54.461938Z",
+    "updated_at": "2025-05-09T06:33:54.461970Z",
+    "lead_time": 1.596
+  },
+  {
+    "image": "\/data\/local-files\/?d=cpm-detection\/zoom.us_2c00.jpg",
+    "id": 28583,
+    "choice": "popup",
+    "annotator": 18,
+    "annotation_id": 3288,
+    "created_at": "2025-05-09T06:33:56.288294Z",
+    "updated_at": "2025-05-09T06:33:56.288327Z",
+    "lead_time": 1.096
+  }
+]
