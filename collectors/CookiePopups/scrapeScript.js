@@ -103,6 +103,15 @@ function isVisible(node) {
 }
 
 /**
+ * @param {HTMLElement} el
+ * @returns {boolean}
+ */
+function isDisabled(el) {
+    // @ts-expect-error disabled is a property of input elements
+    return el.disabled || el.getAttribute('disabled') === 'true';
+}
+
+/**
  * @param {(el: HTMLElement) => boolean} filterFn
  * @returns {HTMLElement[]}
  */
@@ -177,7 +186,8 @@ function collectPotentialPopups(isFramed) {
     // for each potential popup, get the buttons
     for (const el of elements) {
         const regexMatch = checkHeuristicPatterns(el.innerText);
-        const buttons = nonParentElements(getButtons(el).filter(b => isVisible(b)));
+        const buttons = nonParentElements(getButtons(el))
+            .filter(b => isVisible(b) && !isDisabled(b));
         const rejectButtons = [];
         const otherButtons = [];
         for (const b of buttons) {
@@ -221,20 +231,43 @@ function getSelector(el) {
 
     while (parent instanceof HTMLElement) {
         const siblings = Array.from(parent.children);
-        const tagName = element.nodeName.toLowerCase();
+        const tagName = element.tagName.toLowerCase();
         let localSelector = tagName;
-        if (parent === document.body) {
-            // element order under <body> is often unstable. Identify by attributes
-            localSelector += `[${element.getAttributeNames().join('][')}]`;
-        } else if (siblings.length > 1 && parent !== document.documentElement) {
+
+        if (element.id) {
+            localSelector += `#${element.id}`;
+        } else if (!element.hasAttribute('id')) { // do not add it for id attribute without a value
+            localSelector += `:not([id])`;
+        }
+
+        if (siblings.length > 1 &&
+            parent !== document.body && // element order under <body> is often unstable.
+            parent !== document.documentElement
+        ) {
             localSelector += `:nth-child(${siblings.indexOf(element) + 1})`
         }
+
         result = localSelector + (result ? ' > ' + result : '');
         element = parent;
         parent = element.parentNode;
     }
 
     return result;
+}
+
+/**
+ * Get a unique selector for an element
+ * @param {HTMLElement} el - The element to get the unique selector for
+ * @returns {string} The unique selector for the element
+ */
+function getUniqueSelector(el) {
+    const selector = getSelector(el);
+    // verify that the selector is unique
+    if (document.querySelectorAll(selector).length > 1) {
+        // FIXME: try a more strict selector with class names, data attributes, etc.
+        return 'FIXME';
+    }
+    return selector;
 }
 
 /**
@@ -254,18 +287,14 @@ function serializeResults() {
         potentialPopups: potentialPopups.map((r) => ({
             // html: r.el.outerHTML,
             text: r.el.innerText,
-            rejectButtons: r.rejectButtons.map(b => {
-                return {
-                    text: b.innerText,
-                    selector: getSelector(b)
-                };
-            }),
-            otherButtons: r.otherButtons.map(b => {
-                return {
-                    text: b.innerText,
-                    selector: getSelector(b)
-                };
-            }),
+            rejectButtons: r.rejectButtons.map(b => ({
+                text: b.innerText,
+                selector: getUniqueSelector(b),
+            })),
+            otherButtons: r.otherButtons.map(b => ({
+                text: b.innerText,
+                selector: getUniqueSelector(b),
+            })),
             regexMatch: r.regexMatch,
             isTop: r.isTop,
             origin: r.origin,
