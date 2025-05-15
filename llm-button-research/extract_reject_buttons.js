@@ -1,11 +1,18 @@
 const fs = require('fs');
 const path = require('path');
 
+const OpenAI = require('openai');
+const { zodResponseFormat } = require('openai/helpers/zod');
+const { z } = require('zod');
+
 const crawlDir = process.argv[2] || '/mnt/efs/shared/crawler-data/2025-05-12-cookiebuttons/GB/';
 const region = crawlDir.split('/').filter(part => !!part).pop();
 const dataDir = path.join(crawlDir, '3p-crawl');
-const outputDir = path.join(crawlDir, 'generated-rules');
+const rulesDir = path.join(crawlDir, 'generated-rules');
 const testDir = path.join(crawlDir, 'generated-tests');
+const rejectButtonTextsFile = path.join(crawlDir, 'reject-button-texts.txt');
+const otherButtonTextsFile = path.join(crawlDir, 'other-button-texts.txt');
+
 function generalizeDomain(domain) {
     return domain.replace(/^www\./, '');
 }
@@ -44,16 +51,20 @@ async function processFiles() {
     let totalFiles = 0;
     let totalUnhandled = 0;
     let totalSitesWithNewRules = 0;
+    let totalSitesWithPopups = 0;
+    let totalSitesWithKnownCmps = 0;
     let totalRules = 0;
+    const rejectButtonTexts = new Set();
+    const otherButtonTexts = new Set();
 
     console.log('Cleaning up output directories...');
 
-    if (!fs.existsSync(outputDir)) {
-        await fs.promises.mkdir(outputDir, { recursive: true });
+    if (!fs.existsSync(rulesDir)) {
+        await fs.promises.mkdir(rulesDir, { recursive: true });
     } else {
-        const files = await fs.promises.readdir(outputDir);
+        const files = await fs.promises.readdir(rulesDir);
         await Promise.all(files.map(file => 
-            fs.promises.unlink(path.join(outputDir, file))
+            fs.promises.unlink(path.join(rulesDir, file))
         ));
     }
 
@@ -89,13 +100,20 @@ async function processFiles() {
                         cmps.some(cmp => cmp && cmp.name && cmp.name.trim() !== '')
                     );
 
-                    if (!hasKnownCmp) {
+                    /** @type {import('../collectors/CookiePopupCollector').CookiePopupData[]} */
+                    const cookiePopups = (jsonData.data.cookiepopups || []).filter(popup => popup && popup.llmMatch === true);
+                    if (cookiePopups.length > 1) {
+                        console.warn('Multiple cookie popups found in', fileName);
+                    }
+                    if (cookiePopups.length > 0) {
+                        totalSitesWithPopups += 1;
+                    }
+
+                    if (hasKnownCmp) {
+                        totalSitesWithKnownCmps += 1;
+                    } else if (cookiePopups.length > 0) {
                         totalUnhandled++;
-                        /** @type {import('../collectors/CookiePopupCollector').CookiePopupData[]} */
-                        const cookiePopups = (jsonData.data.cookiepopups || []).filter(popup => popup && popup.llmMatch === true);
-                        if (cookiePopups.length > 1) {
-                            console.warn('Multiple cookie popups found in', fileName);
-                        }
+                        
                         const siteRules = [];
                         for (let i = 0; i < cookiePopups.length; i++) {
                             const popup = cookiePopups[i];
@@ -108,20 +126,22 @@ async function processFiles() {
                                 siteRules.push(...rules);
                                 totalRules += rules.length;
                             }
+                            rejectButtonTexts.add(...popup.rejectButtons.map(button => button.text));
+                            otherButtonTexts.add(...popup.otherButtons.map(button => button.text));
                         }
                         if (siteRules.length > 0) {
                             totalSitesWithNewRules++;
                             console.log(`${fileName}: ${siteRules.length} rules`);
                             await Promise.all(siteRules.map(async (rule, i) => {
-                                const outputFilePath = path.join(outputDir, `${rule.name}_${i}.json`);
-                                await fs.promises.writeFile(outputFilePath, JSON.stringify({...rule, name: `${rule.name}_${i}`}, null, 2));
+                                const ruleFilePath = path.join(rulesDir, `${rule.name}_${i}.json`);
+                                await fs.promises.writeFile(ruleFilePath, JSON.stringify({...rule, name: `${rule.name}_${i}`}, null, 2));
                                 const testFilePath = path.join(testDir, `${rule.name}_${i}.spec.ts`);
                                 await fs.promises.writeFile(testFilePath, `import generateCMPTests from "../playwright/runner";
 
 generateCMPTests('${rule.name}_${i}', [ '${jsonData.finalUrl}' ], {testOptIn: false, testSelfTest: false, onlyRegions: ['${region}']});
 `);
                                 console.log('  ', testFilePath);
-                                console.log('  ', outputFilePath);
+                                console.log('  ', ruleFilePath);
                             }));
                             
                         }
@@ -134,10 +154,77 @@ generateCMPTests('${rule.name}_${i}', [ '${jsonData.finalUrl}' ], {testOptIn: fa
     } catch (err) {
         console.error('Error reading directory:', err.message);
     }
-    console.log(`Total files: ${totalFiles}`);
-    console.log(`Total unhandled: ${totalUnhandled}`);
-    console.log(`Total sites with new rules: ${totalSitesWithNewRules}`);
-    console.log(`Total rules: ${totalRules}`);
+    await fs.promises.writeFile(rejectButtonTextsFile, Array.from(rejectButtonTexts).join('\n'));
+    await fs.promises.writeFile(otherButtonTextsFile, Array.from(otherButtonTexts).join('\n'));
+    console.log(`Total crawled sites: ${totalFiles}`);
+    console.log(`Sites with popups: ${totalSitesWithPopups}`);
+    console.log(`Sites with known CMPs: ${totalSitesWithKnownCmps}`);
+    console.log(`Total unhandled by Autoconsent: ${totalUnhandled}`);
+    console.log(`Generated ${totalRules} rules for ${totalSitesWithNewRules} sites`);
+    console.log(`Reject button texts (${rejectButtonTexts.size}) ${rejectButtonTextsFile}`);
+    console.log(`Other button texts (${otherButtonTexts.size}) ${otherButtonTextsFile}`);
 }
 
-processFiles(); 
+async function verifyButtonTexts() {
+    const openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+    });
+    
+    const FalsePositiveSuggestions = z.object({
+        potentiallyIncorrectRejectButtons: z.array(z.string()),
+    });
+    const FalseNegativeSuggestions = z.object({
+        potentiallyMissedRejectButtons: z.array(z.string()),
+    });
+
+    const systemPromptFalsePositive = `
+    You are a helpful assistant that reviews a list of button texts found in cookie popups and classified as a "reject button".
+    This means that clicking on those buttons will opt out of optional cookies. Reject buttons MAY accept some essential cookies that are required for the site to function.
+    Your task is to identify any items that might not be a reject button.
+    `;
+
+    const systemPromptFalseNegative = `
+    You are a helpful assistant that reviews a list of button texts found in cookie popups and classified as NOT a "reject button".
+    This means that clicking on those buttons will NOT opt out of optional cookies. Reject buttons MAY accept some essential cookies that are required for the site to function.
+    Your task is to identify any items that might be a reject button.
+    `;
+
+    try {
+        const completionFalsePositive = await openai.beta.chat.completions.parse({
+            model: 'gpt-4.1-nano-2025-04-14',
+            messages: [
+                { role: 'system', content: systemPromptFalsePositive },
+                {
+                    role: 'user',
+                    content: await fs.promises.readFile(rejectButtonTextsFile, 'utf8'),
+                },
+            ],
+            response_format: zodResponseFormat(FalsePositiveSuggestions, 'FalsePositiveSuggestions'),
+        });
+        const resultFalsePositive = completionFalsePositive.choices[0].message.parsed;
+        console.log(resultFalsePositive);
+    } catch (error) {
+        console.error('Error classifying false positives:', error);
+    }
+
+    try {
+        const completionFalseNegative = await openai.beta.chat.completions.parse({
+            model: 'gpt-4.1-nano-2025-04-14',
+            messages: [
+                { role: 'system', content: systemPromptFalseNegative },
+                {
+                    role: 'user',
+                    content: await fs.promises.readFile(otherButtonTextsFile, 'utf8'),
+                },
+            ],
+            response_format: zodResponseFormat(FalseNegativeSuggestions, 'FalseNegativeSuggestions'),
+        });
+        const resultFalseNegative = completionFalseNegative.choices[0].message.parsed;
+        console.log(resultFalseNegative);
+    } catch (error) {
+        console.error('Error classifying false negatives:', error);
+    }
+}
+
+processFiles();
+verifyButtonTexts();
