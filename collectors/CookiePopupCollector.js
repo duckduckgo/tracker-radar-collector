@@ -33,6 +33,11 @@ const CookieConsentNoticeClassification = z.object({
     isCookieConsentNotice: z.boolean(),
 });
 
+/**
+ * @param {string} text
+ * @param {boolean} popup
+ * @returns {Promise<boolean>}
+ */
 async function classifyCookieConsentNotice(text, popup = true) {
     let systemPrompt;
     if (popup) {
@@ -76,13 +81,17 @@ async function classifyCookieConsentNotice(text, popup = true) {
             // model: 'gpt-4o-mini-2024-07-18',
             model: 'gpt-4.1-nano-2025-04-14',
             messages: [
-                { role: 'system', content: systemPrompt },
+                {
+                    role: 'system',
+                    content: systemPrompt,
+                },
                 {
                     role: 'user',
                     // content: `The following text was captured from ${ifTruncated}the innerText of an HTML overlay element:\n\n${snippet}`,
                     content: text,
                 },
             ],
+            // eslint-disable-next-line camelcase
             response_format: zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
         });
 
@@ -176,9 +185,10 @@ class CookiePopupCollector extends BaseCollector {
                     this._data.push({
                         ...potentialPopup,
                         llmMatch: potentialPopup.text && potentialPopup.text.trim()
+                          // eslint-disable-next-line no-await-in-loop
                           ? await classifyCookieConsentNotice(potentialPopup.text, true)
                           : false,
-                    })
+                    });
                 }
             } catch (e) {
                 if (!isIgnoredEvalError(e)) {

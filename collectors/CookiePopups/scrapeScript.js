@@ -1,3 +1,6 @@
+/* global window, document, HTMLElement, Node, NodeFilter, location */
+/* eslint-disable max-lines */
+
 const REJECT_PATTERNS = [
     // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close"
     /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*(and\s+close)?\s*$/i,
@@ -24,12 +27,11 @@ const REJECT_PATTERNS = [
     // often used in CCPA
     /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*information\s*$/i,
 
-    /* These are impactful, but look error-prone
-    // e.g. "disagree"
-    /^\s*(i)?\s*disagree\s*(and\s+close)?\s*$/i,
-    // e.g. "i do not agree"
-    /^\s*(i\s+)?do\s+not\s+agree\s*$/i,
-    */
+    // These are impactful, but look error-prone
+    // // e.g. "disagree"
+    // /^\s*(i)?\s*disagree\s*(and\s+close)?\s*$/i,
+    // // e.g. "i do not agree"
+    // /^\s*(i\s+)?do\s+not\s+agree\s*$/i,
 ];
 
 /**
@@ -118,7 +120,7 @@ function isDisabled(el) {
 function matchElements(filterFn) {
     const elements = [];
     const walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_ELEMENT, {
-        acceptNode: (n) => (n instanceof HTMLElement && filterFn(n) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP),
+        acceptNode: n => (n instanceof HTMLElement && filterFn(n) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP),
     });
     while (walker.nextNode()) {
         elements.push(/** @type {HTMLElement} */ (walker.currentNode));
@@ -165,8 +167,10 @@ function collectPotentialPopups(isFramed) {
     let elements = [];
     if (!isFramed) {
         // Collect fixed/sticky positioned elements that are visible
-        elements = matchElements((el) => {
-            if (el.tagName === 'BODY') return false;
+        elements = matchElements(el => {
+            if (el.tagName === 'BODY') {
+                return false;
+            }
             const computedStyle = window.getComputedStyle(el).position;
             return (computedStyle === 'fixed' || computedStyle === 'sticky') && isVisible(el);
         });
@@ -284,7 +288,7 @@ function serializeResults() {
 
     const potentialPopups = collectPotentialPopups(isFramed);
     return {
-        potentialPopups: potentialPopups.map((r) => ({
+        potentialPopups: potentialPopups.map(r => ({
             // html: r.el.outerHTML,
             text: r.el.innerText,
             rejectButtons: r.rejectButtons.map(b => ({
