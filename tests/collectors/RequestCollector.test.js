@@ -37,7 +37,7 @@ async function testDefaultSettings() {
     });
 
     // @ts-ignore not a real CDP client
-    await collector.addTarget({session: fakeCDPClient, type: 'page', url: 'http://example.com'});
+    await collector.addTarget(fakeCDPClient, {type: 'page', url: 'http://example.com'});
 
     /**
      * Regular request - success
@@ -290,7 +290,7 @@ async function testResponseHashSetting() {
     });
 
     // @ts-ignore not a real CDP client
-    await collector.addTarget({session: fakeCDPClient, type: 'page', url: 'http://example.com'});
+    await collector.addTarget(fakeCDPClient, {type: 'page', url: 'http://example.com'});
     
     const requestWillBeSent = listeners.find(a => a.name === 'Network.requestWillBeSent');
     const responseReceived = listeners.find(a => a.name === 'Network.responseReceived');
@@ -357,7 +357,7 @@ async function testCustomHeadersSetting() {
     });
 
     // @ts-ignore not a real CDP client
-    await collector.addTarget({session: fakeCDPClient, type: 'page', url: 'http://example.com'});
+    await collector.addTarget(fakeCDPClient, {type: 'page', url: 'http://example.com'});
     
     const requestWillBeSent = listeners.find(a => a.name === 'Network.requestWillBeSent');
     const responseReceived = listeners.find(a => a.name === 'Network.responseReceived');

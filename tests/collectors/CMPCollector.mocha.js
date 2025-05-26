@@ -67,7 +67,7 @@ describe('CMPCollector', () => {
             }
         });
         // @ts-ignore not a real CDP client
-        await collector.addTarget({session: fakeCDPClient, type: 'page', url: 'https://example.com'});
+        await collector.addTarget(fakeCDPClient, {type: 'page', url: 'https://example.com'});
     });
 
     describe('handleMessage', () => {
