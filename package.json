@@ -44,7 +44,7 @@
     "chalk": "^4.1.2",
     "commander": "^13.1.0",
     "progress": "^2.0.3",
-    "puppeteer": "^24.7.1",
+    "puppeteer": "^24.9.0",
     "selenium-webdriver": "^4.31.0",
     "tldts": "^7.0.4"
   }
