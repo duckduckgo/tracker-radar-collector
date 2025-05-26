@@ -220,9 +220,10 @@ function collectPotentialPopups(isFramed) {
 /**
  * Get the selector for an element
  * @param {HTMLElement} el - The element to get the selector for
+ * @param {{ order?: boolean, ids?: boolean, dataAttributes?: boolean, classes?: boolean, absoluteOrder?: boolean }} specificity - details to add to the selector
  * @returns {string} The selector for the element
  */
-function getSelector(el) {
+function getSelector(el, specificity) {
     let element = el;
     let parent;
     let result = '';
@@ -238,17 +239,40 @@ function getSelector(el) {
         const tagName = element.tagName.toLowerCase();
         let localSelector = tagName;
 
-        if (element.id) {
-            localSelector += `#${element.id}`;
-        } else if (!element.hasAttribute('id')) { // do not add it for id attribute without a value
-            localSelector += `:not([id])`;
+        if (specificity.order) {
+            if (
+                specificity.absoluteOrder ||
+                (
+                    siblings.length > 1 &&
+                    parent !== document.body && // element order under <body> is often unstable.
+                    parent !== document.documentElement
+                )
+            ) {
+                localSelector += `:nth-child(${siblings.indexOf(element) + 1})`;
+            }
         }
 
-        if (siblings.length > 1 &&
-            parent !== document.body && // element order under <body> is often unstable.
-            parent !== document.documentElement
-        ) {
-            localSelector += `:nth-child(${siblings.indexOf(element) + 1})`
+        if (specificity.ids) {
+            if (element.id) {
+                localSelector += `#${element.id}`;
+            } else if (!element.hasAttribute('id')) { // do not add it for id attribute without a value
+                localSelector += `:not([id])`;
+            }
+        }
+
+        if (specificity.dataAttributes) {
+            const dataAttributes = Array.from(element.attributes).filter(a => a.name.startsWith('data-'));
+            dataAttributes.forEach(a => {
+                const escapedValue = a.value.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+                localSelector += `[${a.name}="${escapedValue}"]`;
+            });
+        }
+
+        if (specificity.classes) {
+            const classes = Array.from(element.classList);
+            if (classes.length > 0) {
+                localSelector += `.${classes.join('.')}`;
+            }
         }
 
         result = localSelector + (result ? ' > ' + result : '');
@@ -265,12 +289,31 @@ function getSelector(el) {
  * @returns {string} The unique selector for the element
  */
 function getUniqueSelector(el) {
-    const selector = getSelector(el);
+    const specificity = {
+        order: true,
+        ids: true, // consider disabling this by default for auto-generated IDs
+        dataAttributes: false,
+        classes: false,
+        absoluteOrder: false,
+    };
+    let selector = getSelector(el, specificity);
+
     // verify that the selector is unique
     if (document.querySelectorAll(selector).length > 1) {
-        // FIXME: try a more strict selector with class names, data attributes, etc.
-        return 'FIXME';
+        specificity.dataAttributes = true;
+        selector = getSelector(el, specificity);
     }
+
+    if (document.querySelectorAll(selector).length > 1) {
+        specificity.classes = true;
+        selector = getSelector(el, specificity);
+    }
+
+    if (document.querySelectorAll(selector).length > 1) {
+        specificity.absoluteOrder = true;
+        selector = getSelector(el, specificity);
+    }
+
     return selector;
 }
 
