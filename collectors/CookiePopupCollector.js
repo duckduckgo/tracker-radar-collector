@@ -1,6 +1,3 @@
-const OpenAI = require('openai');
-const { zodResponseFormat } = require('openai/helpers/zod');
-const { z } = require('zod');
 const fs = require('fs');
 
 const BaseCollector = require('./BaseCollector');
@@ -23,85 +20,6 @@ function isIgnoredEvalError(e) {
         error.includes('Session closed.') ||
         error.includes('Cannot find context with specified id')
     );
-}
-
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-});
-
-const CookieConsentNoticeClassification = z.object({
-    isCookieConsentNotice: z.boolean(),
-});
-
-/**
- * @param {string} text
- * @param {boolean} popup
- * @returns {Promise<boolean>}
- */
-async function classifyCookieConsentNotice(text, popup = true) {
-    let systemPrompt;
-    if (popup) {
-        systemPrompt = `
-          Your task is to classify text from the innerText property of HTML overlay elements.
-    
-          An overlay element is considered to be a "cookie consent notice" if it meets all of these criteria:
-          1. it explicitly notifies the user of the site's use of cookies or other storage technology, such as: "We use cookies...", "This site uses...", etc.
-          2. it offers the user choices for the usage of cookies on the site, such as: "Accept", "Reject", "Learn More", etc., or informs the user that their use of the site means they accept the usage of cookies.
-    
-          Note: This definition does not include adult content notices or any other type of notice that is primarily focused on age verification or content restrictions. Cookie consent notices are specifically intended to inform users about the website's use of cookies and obtain their consent for such use.
-    
-          Note: A cookie consent notice should specifically relate to the site's use of cookies or other storage technology that stores data on the user's device, such as HTTP cookies, local storage, or session storage. Requests for permission to access geolocation information, camera, microphone, etc., do not fall under this category.
-    
-          Note: Do NOT classify a website header or footer as a "cookie consent notice". Website headers or footers may contain a list of links, possibly including a privacy policy, cookie policy, or terms of service document, but their primary purpose is navigational rather than informational.
-      `;
-    } else {
-        systemPrompt = `
-          Your task is to inspect the innerText property of an HTML document and determine if a cookie consent notice is present.
-          
-          A cookie consent notice:
-          1. explicitly notifies the user of the site's use of cookies or other storage technology, such as: "We use cookies...", "This site uses...", etc.
-          2. offers the user choices for the usage of cookies on the site, such as: "Accept", "Reject", "Learn More", etc., or informs the user that their use of the site means they accept the usage of cookies.
-    
-          Note: This definition does not include adult content notices or any other type of notice that is primarily focused on age verification or content restrictions. Cookie consent notices are specifically intended to inform users about the website's use of cookies and obtain their consent for such use.
-    
-          Note: A cookie consent notice should specifically relate to the site's use of cookies or other storage technology that stores data on the user's device, such as HTTP cookies, local storage, or session storage. Requests for permission to access geolocation information, camera, microphone, etc., do not fall under this category.
-      `;
-    }
-
-    // const MAX_LENGTH = 500;
-    // let snippet = text.slice(0, MAX_LENGTH);
-    // let ifTruncated = '';
-    // if (snippet.length !== text.length) {
-    //     snippet += '...';
-    //     ifTruncated = `the first ${MAX_LENGTH} characters of `;
-    // }
-
-    try {
-        const completion = await openai.beta.chat.completions.parse({
-            // model: 'gpt-4o-mini-2024-07-18',
-            model: 'gpt-4.1-nano-2025-04-14',
-            messages: [
-                {
-                    role: 'system',
-                    content: systemPrompt,
-                },
-                {
-                    role: 'user',
-                    // content: `The following text was captured from ${ifTruncated}the innerText of an HTML overlay element:\n\n${snippet}`,
-                    content: text,
-                },
-            ],
-            // eslint-disable-next-line camelcase
-            response_format: zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
-        });
-
-        const result = completion.choices[0].message.parsed;
-        return result?.isCookieConsentNotice ?? false;
-    } catch (error) {
-        console.error('Error classifying candidate:', error);
-    }
-
-    return false;
 }
 
 class CookiePopupCollector extends BaseCollector {
@@ -182,13 +100,7 @@ class CookiePopupCollector extends BaseCollector {
                 /** @type {ContentScriptResult} */
                 const result = evalResult.result.value;
                 for (const potentialPopup of result.potentialPopups) {
-                    this._data.push({
-                        ...potentialPopup,
-                        llmMatch: potentialPopup.text && potentialPopup.text.trim()
-                          // eslint-disable-next-line no-await-in-loop
-                          ? await classifyCookieConsentNotice(potentialPopup.text, true)
-                          : false,
-                    });
+                    this._data.push(potentialPopup);
                 }
             } catch (e) {
                 if (!isIgnoredEvalError(e)) {
@@ -211,9 +123,7 @@ module.exports = CookiePopupCollector;
 /**
  * @typedef PopupData
  * @property {string} text
- * @property {ButtonData[]} rejectButtons
- * @property {ButtonData[]} otherButtons
- * @property {boolean} regexMatch
+ * @property {ButtonData[]} buttons
  * @property {boolean} isTop
  * @property {string} origin
  */
@@ -227,10 +137,7 @@ module.exports = CookiePopupCollector;
 /**
  * @typedef CookiePopupData
  * @property {string} text
- * @property {ButtonData[]} rejectButtons
- * @property {ButtonData[]} otherButtons
- * @property {boolean} regexMatch
- * @property {boolean} llmMatch
+ * @property {ButtonData[]} buttons
  * @property {boolean} isTop
  * @property {string} origin
  */

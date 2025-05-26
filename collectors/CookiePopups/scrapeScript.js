@@ -1,85 +1,4 @@
 /* global window, document, HTMLElement, Node, NodeFilter, location */
-/* eslint-disable max-lines */
-
-const REJECT_PATTERNS = [
-    // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close"
-    /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*(and\s+close)?\s*$/i,
-
-    // e.g. "i do not accept", "i do not accept cookies", "do not accept", "do not accept cookies"
-    /^\s*(i)?\s*do\s+not\s+accept\s*(cookies)?\s*$/i,
-
-    // e.g. "continue without accepting", "continue without agreeing", "continue without agreeing →"
-    /^\s*(continue|proceed|continue\s+browsing)\s+without\s+(accepting|agreeing|consent|cookies|tracking)(\s*→)?\s*$/i,
-
-    // e.g. "strictly necessary cookies only", "essential cookies only", "required only", "use necessary cookies only"
-    // note that "only" is required
-    /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essential|required)?\s*(cookies)?\s*only\s*$/i,
-
-    // e.g. "allow essential cookies", "allow necessary",
-    // note that "essential" is required
-    /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essential|required)\s*(cookies)?\s*$/i,
-
-    // e.g. "accept only essential cookies", "use only necessary cookies", "allow only essential", "continue with only essential cookies"
-    // note that "only" is required
-    /^\s*(use|accept|allow|continue\s+with)?\s*only\s*(strictly)?\s*(necessary|essential|required)?\s*(cookies)?\s*$/i,
-
-    // e.g. "do not sell or share my personal information", "do not sell my personal information"
-    // often used in CCPA
-    /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*information\s*$/i,
-
-    // These are impactful, but look error-prone
-    // // e.g. "disagree"
-    // /^\s*(i)?\s*disagree\s*(and\s+close)?\s*$/i,
-    // // e.g. "i do not agree"
-    // /^\s*(i\s+)?do\s+not\s+agree\s*$/i,
-];
-
-/**
- * @param {string} allText
- * @returns {boolean}
- */
-function checkHeuristicPatterns(allText) {
-    const DETECT_PATTERNS = [
-        /accept cookies/gi,
-        /accept all/gi,
-        /reject all/gi,
-        /only necessary cookies/gi, // "only necessary" is probably too broad
-        /by clicking.*(accept|agree|allow)/gi,
-        /by continuing/gi,
-        /we (use|serve)( optional)? cookies/gi,
-        /we are using cookies/gi,
-        /use of cookies/gi,
-        /(this|our) (web)?site.*cookies/gi,
-        /cookies (and|or) .* technologies/gi,
-        /such as cookies/gi,
-        /read more about.*cookies/gi,
-        /consent to.*cookies/gi,
-        /we and our partners.*cookies/gi,
-        /we.*store.*information.*such as.*cookies/gi,
-        /store and\/or access information.*on a device/gi,
-        /personalised ads and content, ad and content measurement/gi,
-
-        // it might be tempting to add the patterns below, but they cause too many false positives. Don't do it :)
-        // /cookies? settings/i,
-        // /cookies? preferences/i,
-    ];
-
-    for (const p of DETECT_PATTERNS) {
-        const matches = allText.match(p);
-        if (matches) {
-            return true;
-        }
-    }
-    return false;
-}
-
-/**
- * @param {string} buttonText
- * @returns {boolean}
- */
-function isRejectButton(buttonText) {
-    return REJECT_PATTERNS.some(p => p.test(buttonText));
-}
 
 /**
  * @param {HTMLElement} node
@@ -189,24 +108,12 @@ function collectPotentialPopups(isFramed) {
 
     // for each potential popup, get the buttons
     for (const el of elements) {
-        const regexMatch = checkHeuristicPatterns(el.innerText);
         const buttons = nonParentElements(getButtons(el))
             .filter(b => isVisible(b) && !isDisabled(b));
-        const rejectButtons = [];
-        const otherButtons = [];
-        for (const b of buttons) {
-            if (isRejectButton(b.innerText)) {
-                rejectButtons.push(b);
-            } else {
-                otherButtons.push(b);
-            }
-        }
         if (el.innerText) {
             results.push({
                 el,
-                rejectButtons,
-                otherButtons,
-                regexMatch,
+                buttons,
                 isTop: !isFramed,
                 origin: window.location.origin,
             });
@@ -334,15 +241,10 @@ function serializeResults() {
         potentialPopups: potentialPopups.map(r => ({
             // html: r.el.outerHTML,
             text: r.el.innerText,
-            rejectButtons: r.rejectButtons.map(b => ({
+            buttons: r.buttons.map(b => ({
                 text: b.innerText,
                 selector: getUniqueSelector(b),
             })),
-            otherButtons: r.otherButtons.map(b => ({
-                text: b.innerText,
-                selector: getUniqueSelector(b),
-            })),
-            regexMatch: r.regexMatch,
             isTop: r.isTop,
             origin: r.origin,
         })),
