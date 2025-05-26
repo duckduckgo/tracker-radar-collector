@@ -13,39 +13,6 @@ const testDir = path.join(crawlDir, 'generated-tests');
 const rejectButtonTextsFile = path.join(crawlDir, 'reject-button-texts.txt');
 const otherButtonTextsFile = path.join(crawlDir, 'other-button-texts.txt');
 
-const REJECT_PATTERNS = [
-    // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close"
-    /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*(and\s+close)?\s*$/i,
-
-    // e.g. "i do not accept", "i do not accept cookies", "do not accept", "do not accept cookies"
-    /^\s*(i)?\s*do\s+not\s+accept\s*(cookies)?\s*$/i,
-
-    // e.g. "continue without accepting", "continue without agreeing", "continue without agreeing →"
-    /^\s*(continue|proceed|continue\s+browsing)\s+without\s+(accepting|agreeing|consent|cookies|tracking)(\s*→)?\s*$/i,
-
-    // e.g. "strictly necessary cookies only", "essential cookies only", "required only", "use necessary cookies only"
-    // note that "only" is required
-    /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essential|required)?\s*(cookies)?\s*only\s*$/i,
-
-    // e.g. "allow essential cookies", "allow necessary",
-    // note that "essential" is required
-    /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essential|required)\s*(cookies)?\s*$/i,
-
-    // e.g. "accept only essential cookies", "use only necessary cookies", "allow only essential", "continue with only essential cookies"
-    // note that "only" is required
-    /^\s*(use|accept|allow|continue\s+with)?\s*only\s*(strictly)?\s*(necessary|essential|required)?\s*(cookies)?\s*$/i,
-
-    // e.g. "do not sell or share my personal information", "do not sell my personal information"
-    // often used in CCPA
-    /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*information\s*$/i,
-
-    // These are impactful, but look error-prone
-    // // e.g. "disagree"
-    // /^\s*(i)?\s*disagree\s*(and\s+close)?\s*$/i,
-    // // e.g. "i do not agree"
-    // /^\s*(i\s+)?do\s+not\s+agree\s*$/i,
-];
-
 /**
  * @param {string} allText
  * @returns {boolean}
@@ -90,6 +57,38 @@ function checkHeuristicPatterns(allText) {
  * @returns {boolean}
  */
 function isRejectButton(buttonText) {
+    const REJECT_PATTERNS = [
+        // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close"
+        /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*(and\s+close)?\s*$/i,
+    
+        // e.g. "i do not accept", "i do not accept cookies", "do not accept", "do not accept cookies"
+        /^\s*(i)?\s*do\s+not\s+accept\s*(cookies)?\s*$/i,
+    
+        // e.g. "continue without accepting", "continue without agreeing", "continue without agreeing →"
+        /^\s*(continue|proceed|continue\s+browsing)\s+without\s+(accepting|agreeing|consent|cookies|tracking)(\s*→)?\s*$/i,
+    
+        // e.g. "strictly necessary cookies only", "essential cookies only", "required only", "use necessary cookies only"
+        // note that "only" is required
+        /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essential|required)?\s*(cookies)?\s*only\s*$/i,
+    
+        // e.g. "allow essential cookies", "allow necessary",
+        // note that "essential" is required
+        /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essential|required)\s*(cookies)?\s*$/i,
+    
+        // e.g. "accept only essential cookies", "use only necessary cookies", "allow only essential", "continue with only essential cookies"
+        // note that "only" is required
+        /^\s*(use|accept|allow|continue\s+with)?\s*only\s*(strictly)?\s*(necessary|essential|required)?\s*(cookies)?\s*$/i,
+    
+        // e.g. "do not sell or share my personal information", "do not sell my personal information"
+        // often used in CCPA
+        /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*information\s*$/i,
+    
+        // These are impactful, but look error-prone
+        // // e.g. "disagree"
+        // /^\s*(i)?\s*disagree\s*(and\s+close)?\s*$/i,
+        // // e.g. "i do not agree"
+        // /^\s*(i\s+)?do\s+not\s+agree\s*$/i,
+    ];
     return REJECT_PATTERNS.some(p => p.test(buttonText));
 }
 
@@ -97,58 +96,32 @@ function generalizeDomain(domain) {
     return domain.replace(/^www\./, '');
 }
 
-
-const CookieConsentNoticeClassification = z.object({
-    isCookieConsentNotice: z.boolean(),
-});
-
 /**
  * @param {OpenAI} openai
  * @param {string} text
- * @param {boolean} popup
  * @returns {Promise<boolean>}
  */
-async function classifyCookieConsentNotice(openai, text, popup = true) {
-    let systemPrompt;
-    if (popup) {
-        systemPrompt = `
-          Your task is to classify text from the innerText property of HTML overlay elements.
-    
-          An overlay element is considered to be a "cookie consent notice" if it meets all of these criteria:
-          1. it explicitly notifies the user of the site's use of cookies or other storage technology, such as: "We use cookies...", "This site uses...", etc.
-          2. it offers the user choices for the usage of cookies on the site, such as: "Accept", "Reject", "Learn More", etc., or informs the user that their use of the site means they accept the usage of cookies.
-    
-          Note: This definition does not include adult content notices or any other type of notice that is primarily focused on age verification or content restrictions. Cookie consent notices are specifically intended to inform users about the website's use of cookies and obtain their consent for such use.
-    
-          Note: A cookie consent notice should specifically relate to the site's use of cookies or other storage technology that stores data on the user's device, such as HTTP cookies, local storage, or session storage. Requests for permission to access geolocation information, camera, microphone, etc., do not fall under this category.
-    
-          Note: Do NOT classify a website header or footer as a "cookie consent notice". Website headers or footers may contain a list of links, possibly including a privacy policy, cookie policy, or terms of service document, but their primary purpose is navigational rather than informational.
-      `;
-    } else {
-        systemPrompt = `
-          Your task is to inspect the innerText property of an HTML document and determine if a cookie consent notice is present.
-          
-          A cookie consent notice:
-          1. explicitly notifies the user of the site's use of cookies or other storage technology, such as: "We use cookies...", "This site uses...", etc.
-          2. offers the user choices for the usage of cookies on the site, such as: "Accept", "Reject", "Learn More", etc., or informs the user that their use of the site means they accept the usage of cookies.
-    
-          Note: This definition does not include adult content notices or any other type of notice that is primarily focused on age verification or content restrictions. Cookie consent notices are specifically intended to inform users about the website's use of cookies and obtain their consent for such use.
-    
-          Note: A cookie consent notice should specifically relate to the site's use of cookies or other storage technology that stores data on the user's device, such as HTTP cookies, local storage, or session storage. Requests for permission to access geolocation information, camera, microphone, etc., do not fall under this category.
-      `;
-    }
+async function classifyCookieConsentNotice(openai, text) {
+    const systemPrompt = `
+        Your task is to classify text from the innerText property of HTML overlay elements.
 
-    // const MAX_LENGTH = 500;
-    // let snippet = text.slice(0, MAX_LENGTH);
-    // let ifTruncated = '';
-    // if (snippet.length !== text.length) {
-    //     snippet += '...';
-    //     ifTruncated = `the first ${MAX_LENGTH} characters of `;
-    // }
+        An overlay element is considered to be a "cookie consent notice" if it meets all of these criteria:
+        1. it explicitly notifies the user of the site's use of cookies or other storage technology, such as: "We use cookies...", "This site uses...", etc.
+        2. it offers the user choices for the usage of cookies on the site, such as: "Accept", "Reject", "Learn More", etc., or informs the user that their use of the site means they accept the usage of cookies.
+
+        Note: This definition does not include adult content notices or any other type of notice that is primarily focused on age verification or content restrictions. Cookie consent notices are specifically intended to inform users about the website's use of cookies and obtain their consent for such use.
+
+        Note: A cookie consent notice should specifically relate to the site's use of cookies or other storage technology that stores data on the user's device, such as HTTP cookies, local storage, or session storage. Requests for permission to access geolocation information, camera, microphone, etc., do not fall under this category.
+
+        Note: Do NOT classify a website header or footer as a "cookie consent notice". Website headers or footers may contain a list of links, possibly including a privacy policy, cookie policy, or terms of service document, but their primary purpose is navigational rather than informational.
+    `;
+
+    const CookieConsentNoticeClassification = z.object({
+        isCookieConsentNotice: z.boolean(),
+    });
 
     try {
         const completion = await openai.beta.chat.completions.parse({
-            // model: 'gpt-4o-mini-2024-07-18',
             model: 'gpt-4.1-nano-2025-04-14',
             messages: [
                 {
@@ -157,7 +130,6 @@ async function classifyCookieConsentNotice(openai, text, popup = true) {
                 },
                 {
                     role: 'user',
-                    // content: `The following text was captured from ${ifTruncated}the innerText of an HTML overlay element:\n\n${snippet}`,
                     content: text,
                 },
             ],
@@ -176,20 +148,20 @@ async function classifyCookieConsentNotice(openai, text, popup = true) {
 
 /**
  * Generate an autoconsent rule from a reject button.
- * @param {import('../crawler').CollectResult} crawlData - The crawl data object.
+ * @param {string} url - The URL of the site.
  * @param {import('../collectors/CookiePopupCollector').CookiePopupData} popup - The popup object.
  * @param {import('../collectors/CookiePopupCollector').ButtonData} button - The reject button object.
  * @returns {Object} The autoconsent rule.
  */
-function generateAutoconsentRule(crawlData, popup, button) {
+function generateAutoconsentRule(url, popup, button) {
     // TODO: merge subdomain rules with matching selectors
     const frameDomain = generalizeDomain(new URL(popup.origin).hostname);
-    const topDomain = generalizeDomain(new URL(crawlData.finalUrl).hostname);
+    const topDomain = generalizeDomain(new URL(url).hostname);
     const urlPattern = `^https?://(www\\.)?${frameDomain.replace(/\./g, '\\.')}/`;
     const ruleName = `auto_${region}_${topDomain}`;
     return {
         name: ruleName,
-        vendorUrl: crawlData.finalUrl,
+        vendorUrl: url,
         cosmetic: false,
         runContext: {
             main: popup.isTop,
@@ -202,6 +174,66 @@ function generateAutoconsentRule(crawlData, popup, button) {
         optIn: [],
         optOut: [{ waitForThenClick: button.selector, text: button.text }],
     };
+}
+
+/**
+ * @param {string} ruleName
+ * @param {string[]} testUrls
+ * @param {string[]} regions
+ * @returns {string}
+ */
+function generateTestFile(ruleName, testUrls, regions) {
+    return `import generateCMPTests from "../playwright/runner";
+generateCMPTests('${ruleName}', ${JSON.stringify(testUrls)}, {testOptIn: false, testSelfTest: false, onlyRegions: ${JSON.stringify(regions)}});
+`;
+}
+
+/**
+ * Run popup through LLM and regex to identify reject buttons.
+ * @param {import('../collectors/CookiePopupCollector').CookiePopupData} popup
+ * @param {OpenAI} openai
+ * @returns {Promise<ProcessedCookiePopup>}
+ */
+async function identifyPopup(popup, openai) {
+    const popupText = popup.text?.trim();
+    if (!popupText) {
+        return false;
+    }
+    const regexMatch = checkHeuristicPatterns(popupText);
+    const llmMatch = await classifyCookieConsentNotice(openai, popupText);
+    const rejectButtons = [];
+    const otherButtons = [];
+    popup.buttons.forEach(button => {
+        if (isRejectButton(button.text)) {
+            rejectButtons.push(button);
+        } else {
+            otherButtons.push(button);
+        }
+    });
+
+    return {
+        ...popup,
+        llmMatch,
+        regexMatch,
+        rejectButtons,
+        otherButtons,
+    };
+}
+
+function generateRulesForUnknownPopups(url, cookiePopups) {
+    const siteRules = [];
+    for (let i = 0; i < cookiePopups.length; i++) {
+        const popup = cookiePopups[i];
+
+        if (popup.rejectButtons.length > 1) {
+            console.warn(`Multiple reject buttons found for popup ${i} on ${url}`);
+        }
+        if (popup.rejectButtons.length > 0) {
+            const rules = popup.rejectButtons.map(button => generateAutoconsentRule(url, popup, button));
+            siteRules.push(...rules);
+        }
+    }
+    return siteRules;
 }
 
 async function processFiles(openai) {
@@ -255,32 +287,9 @@ async function processFiles(openai) {
                     if (hasKnownCmp) {
                         totalSitesWithKnownCmps += 1;
                     } else {
-                        /** @type {ProcessedCookiePopup[]} */
-                        const processedCookiePopups = await Promise.all((jsonData.data.cookiepopups || []).map(async popup => {
-                            const popupText = popup.text?.trim();
-                            if (!popupText) {
-                                return false;
-                            }
-                            const regexMatch = checkHeuristicPatterns(popupText);
-                            const llmMatch = await classifyCookieConsentNotice(openai, popupText, true);
-                            const rejectButtons = [];
-                            const otherButtons = [];
-                            popup.buttons.forEach(button => {
-                                if (isRejectButton(button.text)) {
-                                    rejectButtons.push(button);
-                                } else {
-                                    otherButtons.push(button);
-                                }
-                            });
 
-                            return {
-                                ...popup,
-                                llmMatch,
-                                regexMatch,
-                                rejectButtons,
-                                otherButtons,
-                            };
-                        }));
+                        /** @type {ProcessedCookiePopup[]} */
+                        const processedCookiePopups = await Promise.all((jsonData.data.cookiepopups || []).map(popup => identifyPopup(popup, openai)));
 
                         const cookiePopups = processedCookiePopups.filter(popup => popup && popup.llmMatch);
                         if (cookiePopups.length > 1) {
@@ -290,39 +299,24 @@ async function processFiles(openai) {
                         if (cookiePopups.length > 0) {
                             totalSitesWithPopups += 1;
                             totalUnhandled++;
+                            rejectButtonTexts.add(...cookiePopups.flatMap(popup => popup.rejectButtons.map(button => button.text)));
+                            otherButtonTexts.add(...cookiePopups.flatMap(popup => popup.otherButtons.map(button => button.text)));
 
-                            const siteRules = [];
-                            for (let i = 0; i < cookiePopups.length; i++) {
-                                const popup = cookiePopups[i];
-
-
-                                if (popup.rejectButtons.length > 1) {
-                                    console.warn(`Multiple reject buttons found for popup ${i} in ${fileName}`);
-                                }
-                                if (popup.rejectButtons.length > 0) {
-                                    const rules = popup.rejectButtons.map(button => generateAutoconsentRule(jsonData, popup, button));
-                                    // console.log(`${fileName} - popup ${i} - ${rules.length} rules`);
-                                    siteRules.push(...rules);
-                                    totalRules += rules.length;
-                                }
-                                rejectButtonTexts.add(...popup.rejectButtons.map(button => button.text));
-                                otherButtonTexts.add(...popup.otherButtons.map(button => button.text));
-                            }
+                            const siteRules = generateRulesForUnknownPopups(jsonData.finalUrl, cookiePopups);
+                            totalRules += siteRules.length;
                             if (siteRules.length > 0) {
                                 totalSitesWithNewRules++;
                                 console.log(`${fileName}: ${siteRules.length} rules`);
                                 await Promise.all(siteRules.map(async (rule, i) => {
-                                    const ruleFilePath = path.join(rulesDir, `${rule.name}_${i}.json`);
-                                    await fs.promises.writeFile(ruleFilePath, JSON.stringify({...rule, name: `${rule.name}_${i}`}, null, 2));
-                                    const testFilePath = path.join(testDir, `${rule.name}_${i}.spec.ts`);
-                                    await fs.promises.writeFile(testFilePath, `import generateCMPTests from "../playwright/runner";
-
-    generateCMPTests('${rule.name}_${i}', [ '${jsonData.finalUrl}' ], {testOptIn: false, testSelfTest: false, onlyRegions: ['${region}']});
-    `);
-                                    console.log('  ', testFilePath);
+                                    const finalRuleName = `${rule.name}_${i}`;
+                                    const ruleFilePath = path.join(rulesDir, `${finalRuleName}.json`);
+                                    await fs.promises.writeFile(ruleFilePath, JSON.stringify({...rule, name: finalRuleName}, null, 2));
+                                    const testFilePath = path.join(testDir, `${finalRuleName}.spec.ts`);
+                                    await fs.promises.writeFile(testFilePath, generateTestFile(finalRuleName, [jsonData.finalUrl], [region]));
                                     console.log('  ', ruleFilePath);
+                                    console.log('  ', testFilePath);
                                 }));
-
+                        
                             }
                         }
                     }
@@ -345,6 +339,10 @@ async function processFiles(openai) {
     console.log(`Other button texts (${otherButtonTexts.size}) ${otherButtonTextsFile}`);
 }
 
+/**
+ * Run LLM to detect potential false positives and false negatives in button detection.
+ * @param {OpenAI} openai
+ */
 async function verifyButtonTexts(openai) {
     const FalsePositiveSuggestions = z.object({
         potentiallyIncorrectRejectButtons: z.array(z.string()),
