@@ -123,6 +123,7 @@ module.exports = CookiePopupCollector;
 /**
  * @typedef PopupData
  * @property {string} text
+ * @property {string} selector
  * @property {ButtonData[]} buttons
  * @property {boolean} isTop
  * @property {string} origin

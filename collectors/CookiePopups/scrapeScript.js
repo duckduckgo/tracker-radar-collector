@@ -80,51 +80,6 @@ function getButtons(el) {
 }
 
 /**
- * @param {boolean} isFramed
- */
-function collectPotentialPopups(isFramed) {
-    let elements = [];
-    if (!isFramed) {
-        // Collect fixed/sticky positioned elements that are visible
-        elements = matchElements(el => {
-            if (el.tagName === 'BODY') {
-                return false;
-            }
-            const computedStyle = window.getComputedStyle(el).position;
-            return (computedStyle === 'fixed' || computedStyle === 'sticky') && isVisible(el);
-        });
-
-        // Get non-parent elements
-        elements = nonParentElements(elements);
-    } else {
-        // for iframes, just take the whole document
-        const doc = document.body || document.documentElement;
-        if (doc && isVisible(doc) && doc.innerText) {
-            elements.push(doc);
-        }
-    }
-
-    const results = [];
-
-    // for each potential popup, get the buttons
-    for (const el of elements) {
-        const buttons = nonParentElements(getButtons(el))
-            .filter(b => isVisible(b) && !isDisabled(b));
-        if (el.innerText) {
-            results.push({
-                el,
-                buttons,
-                isTop: !isFramed,
-                origin: window.location.origin,
-            });
-        }
-    }
-
-    // Return the elements
-    return results;
-}
-
-/**
  * Get the selector for an element
  * @param {HTMLElement} el - The element to get the selector for
  * @param {{ order?: boolean, ids?: boolean, dataAttributes?: boolean, classes?: boolean, absoluteOrder?: boolean }} specificity - details to add to the selector
@@ -225,6 +180,52 @@ function getUniqueSelector(el) {
 }
 
 /**
+ * @param {boolean} isFramed
+ */
+function collectPotentialPopups(isFramed) {
+    let elements = [];
+    if (!isFramed) {
+        // Collect fixed/sticky positioned elements that are visible
+        elements = matchElements(el => {
+            if (el.tagName === 'BODY') {
+                return false;
+            }
+            const computedStyle = window.getComputedStyle(el).position;
+            return (computedStyle === 'fixed' || computedStyle === 'sticky') && isVisible(el);
+        });
+
+        // Get non-parent elements
+        elements = nonParentElements(elements);
+    } else {
+        // for iframes, just take the whole document
+        const doc = document.body || document.documentElement;
+        if (doc && isVisible(doc) && doc.innerText) {
+            elements.push(doc);
+        }
+    }
+
+    const results = [];
+
+    // for each potential popup, get the buttons
+    for (const el of elements) {
+        const buttons = nonParentElements(getButtons(el))
+            .filter(b => isVisible(b) && !isDisabled(b));
+        if (el.innerText) {
+            results.push({
+                el,
+                selector: getUniqueSelector(el),
+                buttons,
+                isTop: !isFramed,
+                origin: window.location.origin,
+            });
+        }
+    }
+
+    // Return the elements
+    return results;
+}
+
+/**
  * @returns {import('../CookiePopupCollector').ContentScriptResult}
  */
 function serializeResults() {
@@ -241,6 +242,7 @@ function serializeResults() {
         potentialPopups: potentialPopups.map(r => ({
             // html: r.el.outerHTML,
             text: r.el.innerText,
+            selector: r.selector,
             buttons: r.buttons.map(b => ({
                 text: b.innerText,
                 selector: getUniqueSelector(b),
