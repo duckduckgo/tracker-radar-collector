@@ -117,11 +117,11 @@ class CookiePopupCollector extends BaseCollector {
     }
 
     /**
-     * @param {import('./BaseCollector').TargetInfo} targetInfo
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
-    async addTarget(targetInfo) {
+    async addTarget(session, targetInfo) {
         if (targetInfo.type === 'page' || targetInfo.type === 'iframe') {
-            const session = targetInfo.session;
             await session.send('Page.enable');
             await session.send('Runtime.enable');
 
