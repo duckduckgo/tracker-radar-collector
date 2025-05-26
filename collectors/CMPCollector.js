@@ -98,54 +98,56 @@ class CMPCollector extends BaseCollector {
     }
 
     /**
-     * @param {import('./BaseCollector').TargetInfo} targetInfo
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
-    async addTarget(targetInfo) {
-        if (targetInfo.type === 'page' || targetInfo.type === 'iframe') {
-            const session = targetInfo.session;
-            await session.send('Page.enable');
-            await session.send('Runtime.enable');
+    async addTarget(session, targetInfo) {
+        if (targetInfo.type !== 'page' && targetInfo.type !== 'iframe') {
+            return;
+        }
 
-            session.on('Runtime.executionContextCreated', async ({context}) => {
-                // ignore context created by puppeteer / our crawler
-                if (!context.origin || context.origin === '://' || context.auxData.type === 'isolated') {
-                    return;
+        await session.send('Page.enable');
+        await session.send('Runtime.enable');
+
+        session.on('Runtime.executionContextCreated', async ({context}) => {
+            // ignore context created by puppeteer / our crawler
+            if (!context.origin || context.origin === '://' || context.auxData.type === 'isolated') {
+                return;
+            }
+            try {
+                const {executionContextId} = await session.send('Page.createIsolatedWorld', {
+                    frameId: context.auxData.frameId,
+                    worldName
+                });
+                this.isolated2pageworld.set(executionContextId, context.id);
+                this.cdpSessions.set(executionContextId, session);
+                await session.send('Runtime.evaluate', {
+                    expression: contentScript,
+                    contextId: executionContextId,
+                });
+            } catch (e) {
+                if (!isIgnoredEvalError(e)) {
+                    this.log(`Error evaluating content script: ${e}`);
                 }
+            }
+        });
+
+        session.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
+            if (name === 'cdpAutoconsentSendMessage') {
                 try {
-                    const {executionContextId} = await session.send('Page.createIsolatedWorld', {
-                        frameId: context.auxData.frameId,
-                        worldName
-                    });
-                    this.isolated2pageworld.set(executionContextId, context.id);
-                    this.cdpSessions.set(executionContextId, session);
-                    await session.send('Runtime.evaluate', {
-                        expression: contentScript,
-                        contextId: executionContextId,
-                    });
+                    const msg = JSON.parse(payload);
+                    await this.handleMessage(msg, executionContextId);
                 } catch (e) {
                     if (!isIgnoredEvalError(e)) {
-                        this.log(`Error evaluating content script: ${e}`);
+                        this.log(`Could not handle autoconsent message ${payload}`, e);
                     }
                 }
-            });
-
-            session.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
-                if (name === 'cdpAutoconsentSendMessage') {
-                    try {
-                        const msg = JSON.parse(payload);
-                        await this.handleMessage(msg, executionContextId);
-                    } catch (e) {
-                        if (!isIgnoredEvalError(e)) {
-                            this.log(`Could not handle autoconsent message ${payload}`, e);
-                        }
-                    }
-                }
-            });
-            await session.send('Runtime.addBinding', {
-                name: 'cdpAutoconsentSendMessage',
-                executionContextName: worldName,
-            });
-        }
+            }
+        });
+        await session.send('Runtime.addBinding', {
+            name: 'cdpAutoconsentSendMessage',
+            executionContextName: worldName,
+        });
     }
 
     /**

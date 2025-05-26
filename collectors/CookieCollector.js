@@ -21,10 +21,11 @@ class CookieCollector extends BaseCollector {
     }
 
     /**
-     * @param {import('./BaseCollector').TargetInfo} targetInfo 
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
-    addTarget({session, type}) {
-        if (type === 'page') {
+    addTarget(session, targetInfo) {
+        if (targetInfo.type === 'page') {
             this._cdpClient = session;
         }
     }
