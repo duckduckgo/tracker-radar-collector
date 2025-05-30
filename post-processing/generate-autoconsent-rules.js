@@ -31,7 +31,7 @@ const rulesDir = path.join(autoconsentDir, 'rules/generated');
 const testDir = path.join(autoconsentDir, 'tests');
 const rejectButtonTextsFile = path.join(crawlDir, 'reject-button-texts.txt');
 const otherButtonTextsFile = path.join(crawlDir, 'other-button-texts.txt');
-const reviewNotesFile = path.join(crawlDir, 'autoconsent-review-notes.json');
+const autoconsentManifestFile = path.join(crawlDir, 'autoconsent-manifest.json');
 
 /**
  * @param {string} allText
@@ -178,7 +178,6 @@ async function classifyCookieConsentNotice(openai, text) {
  * @returns {AutoConsentCMPRule} The autoconsent rule.
  */
 function generateAutoconsentRule(url, popup, button) {
-    // TODO: merge subdomain rules with matching selectors
     const frameDomain = generalizeDomain(new URL(popup.origin).hostname);
     const topDomain = generalizeDomain(new URL(url).hostname);
     const urlPattern = `^https?://(www\\.)?${frameDomain.replace(/\./g, '\\.')}/`;
@@ -421,12 +420,18 @@ async function readExistingRules() {
 /**
  * @param {AutoConsentCMPRule} rule
  * @param {string} url
+ * @returns {Promise<AutoconsentManifestFileData>}
  */
 async function writeRuleFiles(rule, url) {
     const ruleFilePath = path.join(rulesDir, `${rule.name}.json`);
     await fs.promises.writeFile(ruleFilePath, JSON.stringify(rule, null, 4));
     const testFilePath = path.join(testDir, `${rule.name}.spec.ts`);
     await fs.promises.writeFile(testFilePath, generateTestFile(rule.name, [url], [region]));
+    return {
+        ruleName: rule.name,
+        rulePath: ruleFilePath,
+        testPath: testFilePath,
+    };
 }
 
 /**
@@ -437,7 +442,13 @@ async function writeRuleFiles(rule, url) {
  *  openai: OpenAI, // OpenAI client
  *  existingRules: AutoConsentCMPRule[], // existing Autoconsent rules
  * }} params
- * @returns {Promise<{processedCookiePopups: ProcessedCookiePopup[], newRulesCount: number, keptCount: number, overriddenCount: number, reviewNotes: ReviewNote[]}>}
+ * @returns {Promise<{
+ * processedCookiePopups: ProcessedCookiePopup[], 
+ * newRuleFiles: AutoconsentManifestFileData[],
+ * updatedRuleFiles: AutoconsentManifestFileData[], 
+ * keptCount: number, 
+ * reviewNotes: ReviewNote[]
+ * }>}
  */
 async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, existingRules}) {
     // filter out popups that are not confirmed by LLM
@@ -446,8 +457,13 @@ async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, e
         await Promise.all(cookiePopupsData.map(popup => applyDetectionHeuristics(popup, openai)))
     ).filter(p => p && p.llmMatch);
 
+    /** @type {AutoconsentManifestFileData[]} */
+    const newRuleFiles = [];
+    /** @type {AutoconsentManifestFileData[]} */
+    const updatedRuleFiles = [];
+
     if (processedCookiePopups.length === 0) {
-        return { processedCookiePopups, newRulesCount: 0, keptCount: 0, overriddenCount: 0, reviewNotes: [] };
+        return { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount: 0, reviewNotes: [] };
     }
 
     const matchingRules = findMatchingExistingRules(finalUrl, existingRules);
@@ -458,26 +474,27 @@ async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, e
         console.log(`${finalUrl}: ${note.note} ${JSON.stringify(note)}`);
     });
 
-    rulesToOverride.forEach(rule => {
-        // for overriding existing rules, do not append an index to the rule name
+    await Promise.all(rulesToOverride.map(async rule => {
         console.log(`${finalUrl}: overriding rule ${rule.name}`);
-        writeRuleFiles(rule, finalUrl);
+        updatedRuleFiles.push(await writeRuleFiles(rule, finalUrl));
+    }));
+
+    // Prepare new rules with their final names before writing in parallel
+    newRules.forEach((rule, index) => {
+        const finalRuleName = `${rule.name}_${matchingRules.length + index}`;
+        rule.name = finalRuleName;
     });
 
-    let newRuleIndex = matchingRules.length;
-    for (const rule of newRules) {
-        // for new rules, append an index to the rule name
-        const finalRuleName = `${rule.name}_${newRuleIndex}`;
-        console.log(`${finalUrl}: new rule ${finalRuleName}`);
-        writeRuleFiles({...rule, name: finalRuleName}, finalUrl);
-        newRuleIndex++;
-    }
+    await Promise.all(newRules.map(async ruleToWrite => {
+        console.log(`${finalUrl}: new rule ${ruleToWrite.name}`);
+        newRuleFiles.push(await writeRuleFiles(ruleToWrite, finalUrl));
+    }));
 
     return {
         processedCookiePopups,
-        newRulesCount: newRules.length,
+        newRuleFiles,
+        updatedRuleFiles,
         keptCount,
-        overriddenCount: rulesToOverride.length,
         reviewNotes,
     };
 }
@@ -499,8 +516,9 @@ async function processFiles(openai, existingRules) {
     let totalOverriddenRules = 0;
     let totalSitesWithKeptRules = 0;
     let totalSitesWithOverriddenRules = 0;
-    /** @type {Map<string, ReviewNote[]>} */
-    const reviewNotesPerSite = new Map();
+    
+    /** @type {Map<string, AutoconsentSiteManifest>} */
+    const autoconsentManifest = new Map();
     const rejectButtonTexts = new Set();
     const otherButtonTexts = new Set();
 
@@ -529,7 +547,7 @@ async function processFiles(openai, existingRules) {
                         totalSitesWithKnownCmps++;
                     } else {
                         totalUnhandled++;
-                        const { processedCookiePopups, newRulesCount, keptCount, overriddenCount, reviewNotes } = await processCookiePopupsForSite({
+                        const { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount, reviewNotes } = await processCookiePopupsForSite({
                             finalUrl: jsonData.finalUrl,
                             cookiePopupsData: jsonData.data.cookiepopups || [],
                             openai,
@@ -538,19 +556,25 @@ async function processFiles(openai, existingRules) {
                         // Collect button texts for analysis
                         processedCookiePopups.flatMap(popup => popup.rejectButtons.map(button => button.text)).forEach(b => rejectButtonTexts.add(b));
                         processedCookiePopups.flatMap(popup => popup.otherButtons.map(button => button.text)).forEach(b => otherButtonTexts.add(b));
-                        reviewNotesPerSite.set(fileName, reviewNotes);
+                        
+                        autoconsentManifest.set(fileName, {
+                            siteUrl: jsonData.finalUrl,
+                            newlyCreatedRules: newRuleFiles,
+                            updatedRules: updatedRuleFiles,
+                            reviewNotes
+                        });
 
-                        if (newRulesCount > 0 || keptCount > 0) {
-                            if (newRulesCount > 0) {
-                                totalRules += newRulesCount;
+                        if (newRuleFiles.length > 0 || keptCount > 0 || updatedRuleFiles.length > 0) {
+                            if (newRuleFiles.length > 0) {
+                                totalRules += newRuleFiles.length;
                                 totalSitesWithNewRules++;
                             }
                             if (keptCount > 0) {
                                 totalKeptRules += keptCount;
                                 totalSitesWithKeptRules++;
                             }
-                            if (overriddenCount > 0) {
-                                totalOverriddenRules += overriddenCount;
+                            if (updatedRuleFiles.length > 0) {
+                                totalOverriddenRules += updatedRuleFiles.length;
                                 totalSitesWithOverriddenRules++;
                             }
                         }
@@ -565,7 +589,9 @@ async function processFiles(openai, existingRules) {
     }
     await fs.promises.writeFile(rejectButtonTextsFile, Array.from(rejectButtonTexts).join('\n'));
     await fs.promises.writeFile(otherButtonTextsFile, Array.from(otherButtonTexts).join('\n'));
-    await fs.promises.writeFile(reviewNotesFile, JSON.stringify(Object.fromEntries(reviewNotesPerSite), null, 4));
+
+    await fs.promises.writeFile(autoconsentManifestFile, JSON.stringify(Object.fromEntries(autoconsentManifest), null, 4));
+
     console.log(`Total crawled sites: ${totalFiles}`);
     console.log(`Sites with popups: ${totalSitesWithPopups}`);
     console.log(`Sites with known CMPs: ${totalSitesWithKnownCmps}`);
@@ -575,7 +601,7 @@ async function processFiles(openai, existingRules) {
     console.log(`Updated ${totalOverriddenRules} rules for ${totalSitesWithOverriddenRules} sites`);
     console.log(`Reject button texts (${rejectButtonTexts.size}) saved in ${rejectButtonTextsFile}`);
     console.log(`Other button texts (${otherButtonTexts.size}) saved in ${otherButtonTextsFile}`);
-    console.log(`Review notes for ${reviewNotesPerSite.size} sites saved in ${reviewNotesFile}`);
+    console.log(`Actions manifest for ${autoconsentManifest.size} sites saved in ${autoconsentManifestFile}`);
 }
 
 /**
@@ -700,4 +726,21 @@ main();
  *  ruleName?: string;
  *  ruleNames?: string[];
  * }} ReviewNote
+ */
+
+/**
+ * @typedef {{
+ *  ruleName: string;
+ *  rulePath: string;
+ *  testPath: string;
+ * }} AutoconsentManifestFileData
+ */
+
+/**
+ * @typedef {{
+ *  siteUrl: string;
+ *  newlyCreatedRules: AutoconsentManifestFileData[];
+ *  updatedRules: AutoconsentManifestFileData[];
+ *  reviewNotes: ReviewNote[];
+ * }} AutoconsentSiteManifest
  */
