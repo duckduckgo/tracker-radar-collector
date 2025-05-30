@@ -31,6 +31,7 @@ const rulesDir = path.join(autoconsentDir, 'rules/generated');
 const testDir = path.join(autoconsentDir, 'tests');
 const rejectButtonTextsFile = path.join(crawlDir, 'reject-button-texts.txt');
 const otherButtonTextsFile = path.join(crawlDir, 'other-button-texts.txt');
+const reviewNotesFile = path.join(crawlDir, 'autoconsent-review-notes.json');
 
 /**
  * @param {string} allText
@@ -212,12 +213,12 @@ generateCMPTests('${ruleName}', ${JSON.stringify(testUrls)}, {testOptIn: false, 
 }
 
 /**
- * Run popup through LLM and regex to identify reject buttons.
+ * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
  * @param {import('../collectors/CookiePopupCollector').CookiePopupData} popup
  * @param {OpenAI} openai
  * @returns {Promise<ProcessedCookiePopup | null>}
  */
-async function identifyPopup(popup, openai) {
+async function applyDetectionHeuristics(popup, openai) {
     const popupText = popup.text?.trim();
     if (!popupText) {
         return null;
@@ -248,24 +249,153 @@ async function identifyPopup(popup, openai) {
 }
 
 /**
- * @param {string} url
- * @param {ProcessedCookiePopup[]} cookiePopups
- * @returns {AutoConsentCMPRule[]}
+ * Find existing rules that match a given URL/domain.
+ * @param {string} url - The URL to match against.
+ * @param {AutoConsentCMPRule[]} existingRules - Array of existing rules.
+ * @returns {AutoConsentCMPRule[]} Array of matching existing rules.
  */
-function generateRulesForUnknownPopups(url, cookiePopups) {
-    const siteRules = [];
-    for (let i = 0; i < cookiePopups.length; i++) {
-        const popup = cookiePopups[i];
-
-        if (popup.rejectButtons.length > 1) {
-            console.warn(`Multiple reject buttons found for popup ${i} on ${url}`);
+function findMatchingExistingRules(url, existingRules) {
+    return existingRules.filter(rule => {
+        if (rule.runContext && rule.runContext.urlPattern) {
+            try {
+                const pattern = new RegExp(rule.runContext.urlPattern);
+                return pattern.test(url);
+            } catch {
+                // Invalid regex, skip
+                return false;
+            }
         }
-        if (popup.rejectButtons.length > 0) {
-            const rules = popup.rejectButtons.map(button => generateAutoconsentRule(url, popup, button));
-            siteRules.push(...rules);
+        return false;
+    });
+}
+
+/**
+ * Compare if the same reject button is used in an existing rule.
+ * @param {ButtonData} newButton - The new button.
+ * @param {AutoConsentCMPRule} existingRule - The existing rule.
+ * @returns {boolean} True if buttons are the same.
+ */
+function isSameRejectButton(newButton, existingRule) {
+    if (!existingRule.optOut || existingRule.optOut.length === 0) {
+        return false;
+    }
+    
+    const existingOptOut = existingRule.optOut[0];
+    
+    // Compare selector
+    if (existingOptOut.waitForThenClick !== newButton.selector) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * Parse rule name components.
+ * @param {string} ruleName - The rule name (e.g., "auto_GB_example_com_0").
+ * @returns {{region: string|null, domain: string|null, ruleIndex: number|null}} The parsed components.
+ */
+function parseRuleName(ruleName) {
+    const match = ruleName.match(/^auto_([A-Z]{2})_(.+?)_(\d+)$/);
+    if (match) {
+        return {
+            region: match[1],
+            domain: match[2],
+            ruleIndex: parseInt(match[3], 10)
+        };
+    }
+    return {
+        region: null,
+        domain: null,
+        ruleIndex: null
+    };
+}
+
+/**
+ * Analyze existing rules and generate new rules when necessary.
+ * @param {string} url - The URL being processed.
+ * @param {ProcessedCookiePopup[]} cookiePopups - The detected cookie popups.
+ * @param {AutoConsentCMPRule[]} matchingRules - Array of existing rules.
+ * @returns {{newRules: AutoConsentCMPRule[], rulesToOverride: AutoConsentCMPRule[], reviewNotes: ReviewNote[], keptCount: number}}
+ */
+function generateRulesForSite(url, cookiePopups, matchingRules) {
+    const newRules = [];
+    const rulesToOverride = [];
+    const reviewNotes = [];
+    let keptCount = 0;
+
+    if (cookiePopups.length > 1 || cookiePopups[0].rejectButtons.length > 1) {
+        console.warn('Multiple cookie popups or reject buttons found in', url);
+        reviewNotes.push({
+            note: 'Multiple popups or reject buttons found',
+            url,
+            region,
+        });
+    }
+
+    for (const popup of cookiePopups) {
+        for (const button of popup.rejectButtons) {
+            // most of the time, we'll have a single popup with a single reject button
+
+
+            if (matchingRules.some(rule => isSameRejectButton(button, rule))) {
+                // if there is an existing rule with the same reject button, do nothing
+                keptCount++;
+            } else {
+                const newRule = generateAutoconsentRule(url, popup, button);
+                if (matchingRules.length === 0) {
+                    // add the first rule for this site
+                    newRules.push(newRule);
+                } else {
+                    // there were some existing rules for this site, but all of them use different selectors
+                    // this can happen for several reasons: site uses different popups in different regions, or the popup has changed since last crawl
+                    const existingRuleWithSameRegion = matchingRules.find(rule => parseRuleName(rule.name).region === region);
+                    if (existingRuleWithSameRegion) {
+                        // if there is an existing rule with the same region, override it
+                        rulesToOverride.push({
+                            ...newRule,
+                            name: existingRuleWithSameRegion.name, // keep the existing rule name
+                        });
+                        reviewNotes.push({
+                            note: 'Overriding existing rule',
+                            ruleName: existingRuleWithSameRegion.name,
+                            region,
+                        });
+                    } else {
+                        // assume it's a new region-specific popup, but flag it for review
+                        newRules.push(newRule);
+                        reviewNotes.push({
+                            note: 'New region-specific popup',
+                            ruleName: newRule.name,
+                            region,
+                        });
+                    }
+                }
+            }
         }
     }
-    return siteRules;
+
+    if (newRules.length > 1) {
+        reviewNotes.push({
+            note: 'Multiple new rules generated',
+            ruleNames: newRules.map(rule => rule.name),
+        });
+    }
+    return { newRules, rulesToOverride, reviewNotes, keptCount };
+}
+
+/**
+ * Determine if a site should be processed for cookie popup rules based on existing CMP detection.
+ * @param {import('../collectors/CMPCollector').CMPResult[]} cmps - The detected CMPs.
+ * @returns {boolean} True if the site should be processed (no known CMPs found).
+ */
+function hasKnownCmp(cmps) {
+    return (
+        cmps &&
+        Array.isArray(cmps) &&
+        cmps.length > 0 &&
+        cmps.some(cmp => cmp && cmp.name && cmp.name.trim() !== '' && !cmp.name.trim().startsWith('auto_')) // we may override existing autogenerated rules
+    );
 }
 
 /**
@@ -289,8 +419,74 @@ async function readExistingRules() {
 }
 
 /**
+ * @param {AutoConsentCMPRule} rule
+ * @param {string} url
+ */
+async function writeRuleFiles(rule, url) {
+    const ruleFilePath = path.join(rulesDir, `${rule.name}.json`);
+    await fs.promises.writeFile(ruleFilePath, JSON.stringify(rule, null, 4));
+    const testFilePath = path.join(testDir, `${rule.name}.spec.ts`);
+    await fs.promises.writeFile(testFilePath, generateTestFile(rule.name, [url], [region]));
+}
+
+/**
+ * Process cookie popups for a single site and generate/update rules.
+ * @param {{
+ *  finalUrl: string, // URL of the site
+ *  cookiePopupsData: import('../collectors/CookiePopupCollector').CookiePopupData[], // raw cookie popup data
+ *  openai: OpenAI, // OpenAI client
+ *  existingRules: AutoConsentCMPRule[], // existing Autoconsent rules
+ * }} params
+ * @returns {Promise<{processedCookiePopups: ProcessedCookiePopup[], newRulesCount: number, keptCount: number, overriddenCount: number, reviewNotes: ReviewNote[]}>}
+ */
+async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, existingRules}) {
+    // filter out popups that are not confirmed by LLM
+    /** @type {ProcessedCookiePopup[]} */
+    const processedCookiePopups = (
+        await Promise.all(cookiePopupsData.map(popup => applyDetectionHeuristics(popup, openai)))
+    ).filter(p => p && p.llmMatch);
+
+    if (processedCookiePopups.length === 0) {
+        return { processedCookiePopups, newRulesCount: 0, keptCount: 0, overriddenCount: 0, reviewNotes: [] };
+    }
+
+    const matchingRules = findMatchingExistingRules(finalUrl, existingRules);
+    const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(finalUrl, processedCookiePopups, matchingRules);
+
+    // Log review notes
+    reviewNotes.forEach(note => {
+        console.log(`${finalUrl}: ${note.note} ${JSON.stringify(note)}`);
+    });
+
+    rulesToOverride.forEach(rule => {
+        // for overriding existing rules, do not append an index to the rule name
+        console.log(`${finalUrl}: overriding rule ${rule.name}`);
+        writeRuleFiles(rule, finalUrl);
+    });
+
+    let newRuleIndex = matchingRules.length;
+    for (const rule of newRules) {
+        // for new rules, append an index to the rule name
+        const finalRuleName = `${rule.name}_${newRuleIndex}`;
+        console.log(`${finalUrl}: new rule ${finalRuleName}`);
+        writeRuleFiles({...rule, name: finalRuleName}, finalUrl);
+        newRuleIndex++;
+    }
+
+    return {
+        processedCookiePopups,
+        newRulesCount: newRules.length,
+        keptCount,
+        overriddenCount: rulesToOverride.length,
+        reviewNotes,
+    };
+}
+
+/**
+ * Process all crawl data files in the crawl directory.
  * @param {OpenAI} openai
  * @param {AutoConsentCMPRule[]} existingRules
+ * @returns {Promise<void>}
  */
 async function processFiles(openai, existingRules) {
     let totalFiles = 0;
@@ -299,6 +495,12 @@ async function processFiles(openai, existingRules) {
     let totalSitesWithPopups = 0;
     let totalSitesWithKnownCmps = 0;
     let totalRules = 0;
+    let totalKeptRules = 0;
+    let totalOverriddenRules = 0;
+    let totalSitesWithKeptRules = 0;
+    let totalSitesWithOverriddenRules = 0;
+    /** @type {Map<string, ReviewNote[]>} */
+    const reviewNotesPerSite = new Map();
     const rejectButtonTexts = new Set();
     const otherButtonTexts = new Set();
 
@@ -319,46 +521,37 @@ async function processFiles(openai, existingRules) {
                         continue;
                     }
 
-                    /** @type {import('../collectors/CMPCollector').CMPResult[]} */
-                    const cmps = jsonData.data.cmps;
-                    const hasKnownCmp = (
-                        cmps &&
-                        Array.isArray(cmps) &&
-                        cmps.length > 0 &&
-                        cmps.some(cmp => cmp && cmp.name && cmp.name.trim() !== '' && !cmp.name.trim().startsWith('auto_')) // we may override existing autogenerated rules
-                    );
-                    if (hasKnownCmp) {
-                        totalSitesWithKnownCmps += 1;
+                    if (jsonData.data.cookiepopups && jsonData.data.cookiepopups.length > 0) {
+                        totalSitesWithPopups++;
+                    }
+
+                    if (hasKnownCmp(jsonData.data.cmps)) {
+                        totalSitesWithKnownCmps++;
                     } else {
-                        /** @type {ProcessedCookiePopup[]} */
-                        const processedCookiePopups = await Promise.all((jsonData.data.cookiepopups || []).map(popup => identifyPopup(popup, openai)));
+                        totalUnhandled++;
+                        const { processedCookiePopups, newRulesCount, keptCount, overriddenCount, reviewNotes } = await processCookiePopupsForSite({
+                            finalUrl: jsonData.finalUrl,
+                            cookiePopupsData: jsonData.data.cookiepopups || [],
+                            openai,
+                            existingRules,
+                        });
+                        // Collect button texts for analysis
+                        processedCookiePopups.flatMap(popup => popup.rejectButtons.map(button => button.text)).forEach(b => rejectButtonTexts.add(b));
+                        processedCookiePopups.flatMap(popup => popup.otherButtons.map(button => button.text)).forEach(b => otherButtonTexts.add(b));
+                        reviewNotesPerSite.set(fileName, reviewNotes);
 
-                        const cookiePopups = processedCookiePopups.filter(p => p && p.llmMatch);
-                        if (cookiePopups.length > 1) {
-                            console.warn('Multiple cookie popups found in', fileName);
-                        }
-
-                        if (cookiePopups.length > 0) {
-                            totalSitesWithPopups += 1;
-                            totalUnhandled++;
-                            cookiePopups.flatMap(popup => popup.rejectButtons.map(button => button.text)).forEach(b => rejectButtonTexts.add(b));
-                            cookiePopups.flatMap(popup => popup.otherButtons.map(button => button.text)).forEach(b => otherButtonTexts.add(b));
-
-                            const siteRules = generateRulesForUnknownPopups(jsonData.finalUrl, cookiePopups);
-                            totalRules += siteRules.length;
-                            if (siteRules.length > 0) {
+                        if (newRulesCount > 0 || keptCount > 0) {
+                            if (newRulesCount > 0) {
+                                totalRules += newRulesCount;
                                 totalSitesWithNewRules++;
-                                console.log(`${fileName}: ${siteRules.length} rules`);
-                                await Promise.all(siteRules.map(async (rule, i) => {
-                                    const finalRuleName = `${rule.name}_${i}`;
-                                    const ruleFilePath = path.join(rulesDir, `${finalRuleName}.json`);
-                                    await fs.promises.writeFile(ruleFilePath, JSON.stringify({...rule, name: finalRuleName}, null, 4));
-                                    const testFilePath = path.join(testDir, `${finalRuleName}.spec.ts`);
-                                    await fs.promises.writeFile(testFilePath, generateTestFile(finalRuleName, [jsonData.finalUrl], [region]));
-                                    console.log('  ', ruleFilePath);
-                                    console.log('  ', testFilePath);
-                                }));
-                        
+                            }
+                            if (keptCount > 0) {
+                                totalKeptRules += keptCount;
+                                totalSitesWithKeptRules++;
+                            }
+                            if (overriddenCount > 0) {
+                                totalOverriddenRules += overriddenCount;
+                                totalSitesWithOverriddenRules++;
                             }
                         }
                     }
@@ -372,13 +565,17 @@ async function processFiles(openai, existingRules) {
     }
     await fs.promises.writeFile(rejectButtonTextsFile, Array.from(rejectButtonTexts).join('\n'));
     await fs.promises.writeFile(otherButtonTextsFile, Array.from(otherButtonTexts).join('\n'));
+    await fs.promises.writeFile(reviewNotesFile, JSON.stringify(Object.fromEntries(reviewNotesPerSite), null, 4));
     console.log(`Total crawled sites: ${totalFiles}`);
     console.log(`Sites with popups: ${totalSitesWithPopups}`);
     console.log(`Sites with known CMPs: ${totalSitesWithKnownCmps}`);
     console.log(`Total unhandled by Autoconsent: ${totalUnhandled}`);
-    console.log(`Generated ${totalRules} rules for ${totalSitesWithNewRules} sites`);
-    console.log(`Reject button texts (${rejectButtonTexts.size}) ${rejectButtonTextsFile}`);
-    console.log(`Other button texts (${otherButtonTexts.size}) ${otherButtonTextsFile}`);
+    console.log(`Generated ${totalRules} new rules for ${totalSitesWithNewRules} sites`);
+    console.log(`Kept ${totalKeptRules} rules for ${totalSitesWithKeptRules} sites`);
+    console.log(`Updated ${totalOverriddenRules} rules for ${totalSitesWithOverriddenRules} sites`);
+    console.log(`Reject button texts (${rejectButtonTexts.size}) saved in ${rejectButtonTextsFile}`);
+    console.log(`Other button texts (${otherButtonTexts.size}) saved in ${otherButtonTextsFile}`);
+    console.log(`Review notes for ${reviewNotesPerSite.size} sites saved in ${reviewNotesFile}`);
 }
 
 /**
@@ -494,4 +691,13 @@ main();
  *  rejectButtons: ButtonData[];
  *  otherButtons: ButtonData[];
  * }} ProcessedCookiePopup
+ */
+
+/**
+ * @typedef {{
+ *  note: string;
+ *  region?: string;
+ *  ruleName?: string;
+ *  ruleNames?: string[];
+ * }} ReviewNote
  */
