@@ -426,13 +426,15 @@ async function readExistingRules() {
  */
 async function writeRuleFiles(rule, url) {
     const ruleFilePath = path.join(rulesDir, `${rule.name}.json`);
+    const relativeRuleFilePath = path.relative(autoconsentDir, ruleFilePath);
     await fs.promises.writeFile(ruleFilePath, JSON.stringify(rule, null, 4));
     const testFilePath = path.join(testDir, `${rule.name}.spec.ts`);
+    const relativeTestFilePath = path.relative(autoconsentDir, testFilePath);
     await fs.promises.writeFile(testFilePath, generateTestFile(rule.name, [url], [region]));
     return {
         ruleName: rule.name,
-        rulePath: ruleFilePath,
-        testPath: testFilePath,
+        rulePath: relativeRuleFilePath,
+        testPath: relativeTestFilePath,
     };
 }
 
