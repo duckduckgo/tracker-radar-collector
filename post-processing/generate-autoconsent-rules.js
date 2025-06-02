@@ -345,6 +345,10 @@ function generateRulesForSite(url, cookiePopups, matchingRules) {
                 if (matchingRules.length === 0) {
                     // add the first rule for this site
                     newRules.push(newRule);
+                    reviewNotes.push({
+                        note: 'New rule added',
+                        ruleName: newRule.name,
+                    });
                 } else {
                     // there were some existing rules for this site, but all of them use different selectors
                     // this can happen for several reasons: site uses different popups in different regions, or the popup has changed since last crawl
