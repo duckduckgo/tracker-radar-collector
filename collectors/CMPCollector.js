@@ -61,9 +61,15 @@ class CMPCollector extends BaseCollector {
         this.receivedMsgs = [];
         /** @type {number | null} */
         this.selfTestFrame = null;
-        /** @type {Map<number, number>} */
+        /**
+         * maps executionContextId to page world executionContextId
+         * @type {Map<number, number>}
+         */
         this.isolated2pageworld = new Map();
-        /** @type {Map<number, import('puppeteer-core').CDPSession>} */
+        /**
+         * maps executionContextId to CDPSession
+         * @type {Map<number, import('puppeteer-core').CDPSession>}
+         */
         this.cdpSessions = new Map();
         /** @type {ScanResult} */
         this.scanResult = {

@@ -2,7 +2,6 @@ const fs = require('fs');
 
 const BaseCollector = require('./BaseCollector');
 
-// @ts-ignore
 const scrapeScript = fs.readFileSync(
     require.resolve('./CookiePopups/scrapeScript.js'),
     'utf8'
@@ -37,9 +36,10 @@ class CookiePopupCollector extends BaseCollector {
          */
         this._data = [];
         /**
-         * @type {Map<string, {executionContextId: number, session: import('puppeteer-core').CDPSession}>}
+         * maps executionContextId to CDPSession
+         * @type {Map<number, import('puppeteer-core').CDPSession>}
          */
-        this.frameId2executionContextId = new Map();
+        this.cdpSessions = new Map(); 
         this.log = options.log;
     }
 
@@ -62,10 +62,7 @@ class CookiePopupCollector extends BaseCollector {
                         frameId: context.auxData.frameId,
                         worldName: 'crawlercookiepopupcollector',
                     });
-                    this.frameId2executionContextId.set(
-                        context.auxData.frameId,
-                        {executionContextId, session}
-                    );
+                    this.cdpSessions.set(executionContextId, session);
                 } catch (e) {
                     if (!isIgnoredEvalError(e)) {
                         this.log(`Error creating isolated world: ${e}`);
@@ -85,7 +82,7 @@ class CookiePopupCollector extends BaseCollector {
      * @returns {Promise<CookiePopupData[]>}
      */
     async getData() {
-        await Promise.all(Array.from(this.frameId2executionContextId.values()).map(async ({executionContextId, session}) => {
+        await Promise.all(Array.from(this.cdpSessions.entries()).map(async ([executionContextId, session]) => {
             try {
                 const evalResult = await session.send('Runtime.evaluate', {
                     expression: scrapeScript,
