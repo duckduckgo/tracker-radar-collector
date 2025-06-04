@@ -39,7 +39,7 @@ class CookiePopupCollector extends BaseCollector {
          * maps executionContextId to CDPSession
          * @type {Map<number, import('puppeteer-core').CDPSession>}
          */
-        this.cdpSessions = new Map(); 
+        this.cdpSessions = new Map();
         this.log = options.log;
     }
 
