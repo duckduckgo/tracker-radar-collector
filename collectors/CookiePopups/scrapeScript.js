@@ -52,7 +52,7 @@ function matchElements(filterFn) {
  * @param {HTMLElement[]} elements
  * @returns {HTMLElement[]}
  */
-function nonParentElements(elements) {
+function excludeContainers(elements) {
     const results = [];
     if (elements.length > 0) {
         for (let i = elements.length - 1; i >= 0; i--) {
@@ -195,7 +195,7 @@ function collectPotentialPopups(isFramed) {
         });
 
         // Get non-parent elements
-        elements = nonParentElements(elements);
+        elements = excludeContainers(elements);
     } else {
         // for iframes, just take the whole document
         const doc = document.body || document.documentElement;
@@ -208,7 +208,7 @@ function collectPotentialPopups(isFramed) {
 
     // for each potential popup, get the buttons
     for (const el of elements) {
-        const buttons = nonParentElements(getButtons(el))
+        const buttons = excludeContainers(getButtons(el))
             .filter(b => isVisible(b) && !isDisabled(b));
         if (el.innerText) {
             results.push({
