@@ -480,6 +480,7 @@ async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, e
     }
 
     const matchingRules = findMatchingExistingRules(finalUrl, existingRules);
+    console.log(`Detected ${processedCookiePopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`);
     const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(finalUrl, processedCookiePopups, matchingRules);
 
     // Log review notes
