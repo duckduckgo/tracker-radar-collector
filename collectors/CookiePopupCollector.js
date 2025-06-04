@@ -74,12 +74,6 @@ class CookiePopupCollector extends BaseCollector {
         });
     }
 
-    async postLoad() {
-        await new Promise(resolve => {
-            setTimeout(resolve, 2000);
-        });
-    }
-
     /**
      * @returns {Promise<CookiePopupData[]>}
      */
