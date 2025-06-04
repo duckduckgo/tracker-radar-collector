@@ -180,9 +180,17 @@ function getUniqueSelector(el) {
 }
 
 /**
- * @param {boolean} isFramed
+ * @returns {import('../CookiePopupCollector').ContentScriptResult}
  */
-function collectPotentialPopups(isFramed) {
+function collectPotentialPopups() {
+    const isFramed = window.top !== window || location.ancestorOrigins?.length > 0;
+    // do not inspect frames that are more than one level deep
+    if (isFramed && window.parent && window.parent !== window.top) {
+        return {
+            potentialPopups: [],
+        };
+    }
+
     let elements = [];
     if (!isFramed) {
         // Collect fixed/sticky positioned elements that are visible
@@ -204,53 +212,27 @@ function collectPotentialPopups(isFramed) {
         }
     }
 
-    const results = [];
+    const potentialPopups = [];
 
     // for each potential popup, get the buttons
     for (const el of elements) {
         const buttons = excludeContainers(getButtons(el))
             .filter(b => isVisible(b) && !isDisabled(b));
         if (el.innerText) {
-            results.push({
-                el,
+            potentialPopups.push({
+                text: el.innerText,
                 selector: getUniqueSelector(el),
-                buttons,
+                buttons: buttons.map(b => ({
+                    text: b.innerText,
+                    selector: getUniqueSelector(b),
+                })),
                 isTop: !isFramed,
                 origin: window.location.origin,
             });
         }
     }
 
-    // Return the elements
-    return results;
+    return { potentialPopups };
 }
 
-/**
- * @returns {import('../CookiePopupCollector').ContentScriptResult}
- */
-function serializeResults() {
-    let isFramed = window.top !== window || location.ancestorOrigins?.length > 0;
-    // do not inspect frames that are more than one level deep
-    if (isFramed && window.parent && window.parent !== window.top) {
-        return {
-            potentialPopups: [],
-        };
-    }
-
-    const potentialPopups = collectPotentialPopups(isFramed);
-    return {
-        potentialPopups: potentialPopups.map(r => ({
-            // html: r.el.outerHTML,
-            text: r.el.innerText,
-            selector: r.selector,
-            buttons: r.buttons.map(b => ({
-                text: b.innerText,
-                selector: getUniqueSelector(b),
-            })),
-            isTop: r.isTop,
-            origin: r.origin,
-        })),
-    };
-}
-
-serializeResults();
+collectPotentialPopups();
