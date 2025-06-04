@@ -210,7 +210,12 @@ class CMPCollector extends BaseCollector {
         }
         case 'eval': {
             let evalResult = false;
-            const result = await this.cdpSessions.get(executionContextId)?.send('Runtime.evaluate', {
+            const session = this.cdpSessions.get(executionContextId);
+            if (!session) {
+                this.log(`Received eval message for executionContextId ${executionContextId} but no session found`);
+                break;
+            }
+            const result = await session.send('Runtime.evaluate', {
                 expression: msg.code,
                 returnByValue: true,
                 allowUnsafeEvalBlockedByCSP: true,
@@ -220,7 +225,7 @@ class CMPCollector extends BaseCollector {
                 evalResult = Boolean(result.result.value);
             }
 
-            await this.cdpSessions.get(executionContextId)?.send('Runtime.evaluate', {
+            await session.send('Runtime.evaluate', {
                 expression: `autoconsentReceiveMessage({ id: "${msg.id}", type: "evalResp", result: ${JSON.stringify(evalResult)} })`,
                 allowUnsafeEvalBlockedByCSP: true,
                 contextId: executionContextId,
