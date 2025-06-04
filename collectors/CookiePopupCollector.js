@@ -48,28 +48,30 @@ class CookiePopupCollector extends BaseCollector {
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
     async addTarget(session, targetInfo) {
-        if (targetInfo.type === 'page' || targetInfo.type === 'iframe') {
-            await session.send('Page.enable');
-            await session.send('Runtime.enable');
-
-            session.on('Runtime.executionContextCreated', async ({context}) => {
-                // ignore context created by puppeteer / our crawler
-                if (!context.origin || context.origin === '://' || context.auxData.type !== 'default') {
-                    return;
-                }
-                try {
-                    const {executionContextId} = await session.send('Page.createIsolatedWorld', {
-                        frameId: context.auxData.frameId,
-                        worldName: 'crawlercookiepopupcollector',
-                    });
-                    this.cdpSessions.set(executionContextId, session);
-                } catch (e) {
-                    if (!isIgnoredEvalError(e)) {
-                        this.log(`Error creating isolated world: ${e}`);
-                    }
-                }
-            });
+        if (targetInfo.type !== 'page' && targetInfo.type !== 'iframe') {
+            return;
         }
+
+        await session.send('Page.enable');
+        await session.send('Runtime.enable');
+
+        session.on('Runtime.executionContextCreated', async ({context}) => {
+            // ignore context created by puppeteer / our crawler
+            if (!context.origin || context.origin === '://' || context.auxData.type !== 'default') {
+                return;
+            }
+            try {
+                const {executionContextId} = await session.send('Page.createIsolatedWorld', {
+                    frameId: context.auxData.frameId,
+                    worldName: 'crawlercookiepopupcollector',
+                });
+                this.cdpSessions.set(executionContextId, session);
+            } catch (e) {
+                if (!isIgnoredEvalError(e)) {
+                    this.log(`Error creating isolated world: ${e}`);
+                }
+            }
+        });
     }
 
     async postLoad() {
