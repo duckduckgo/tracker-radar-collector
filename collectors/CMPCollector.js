@@ -59,8 +59,11 @@ class CMPCollector extends BaseCollector {
         this.autoAction = options.collectorFlags.autoconsentAction;
         /** @type {ContentScriptMessage[]} */
         this.receivedMsgs = [];
+        /** @type {number | null} */
         this.selfTestFrame = null;
+        /** @type {Map<number, number>} */
         this.isolated2pageworld = new Map();
+        /** @type {Map<number, import('puppeteer-core').CDPSession>} */
         this.cdpSessions = new Map();
         /** @type {ScanResult} */
         this.scanResult = {
@@ -154,7 +157,7 @@ class CMPCollector extends BaseCollector {
      * Implements autoconsent messaging protocol
      *
      * @param {ContentScriptMessage} msg
-     * @param {any} executionContextId
+     * @param {number} executionContextId
      * @returns {Promise<void>}
      */
     async handleMessage(msg, executionContextId) {
