@@ -28,8 +28,8 @@ function isVisible(node) {
  * @returns {boolean}
  */
 function isDisabled(el) {
-    // @ts-expect-error disabled is a property of input elements
-    return el.disabled || el.getAttribute('disabled') === 'true';
+    // @ts-expect-error we want to be lenient here: if a non-input element has a disabled attribute, we want to consider it too
+    return el.disabled || el.hasAttribute('disabled');
 }
 
 /**
