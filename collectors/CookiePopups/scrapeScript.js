@@ -36,7 +36,7 @@ function isDisabled(el) {
  * @param {(el: HTMLElement) => boolean} filterFn
  * @returns {HTMLElement[]}
  */
-function matchElements(filterFn) {
+function walk(filterFn) {
     const elements = [];
     const walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_ELEMENT, {
         acceptNode: n => (n instanceof HTMLElement && filterFn(n) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP),
@@ -46,6 +46,7 @@ function matchElements(filterFn) {
     }
     return elements;
 }
+
 
 /**
  * Leave only elements that do not contain any other elements
@@ -69,6 +70,41 @@ function excludeContainers(elements) {
         }
     }
     return results;
+}
+
+/**
+ * Heuristic to get all elements that look like "popups"
+ * TODO: this heuristic is too strict, not all popups are actually sticky/fixed
+ * @returns {HTMLElement[]}
+ */
+function getPopupLikeElements() {
+    const found = [];
+
+    const walker = document.createTreeWalker(
+        document.documentElement,
+        NodeFilter.SHOW_ELEMENT,      // visit only element nodes
+        {
+            /**
+             * @param {HTMLElement} node
+             */
+            acceptNode(node) {
+                if (node.tagName === 'BODY') {
+                    return NodeFilter.FILTER_SKIP;
+                }
+                const cssPosition = window.getComputedStyle(node).position;
+                if ((cssPosition === 'fixed' || cssPosition === 'sticky') && isVisible(node)) {
+                    return NodeFilter.FILTER_ACCEPT;
+                } else {
+                    return NodeFilter.FILTER_SKIP;
+                }
+            }
+        }
+    );
+
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        found.push(/** @type {HTMLElement} */ (node));
+    }
+    return excludeContainers(found);
 }
 
 /**
@@ -193,17 +229,7 @@ function collectPotentialPopups() {
 
     let elements = [];
     if (!isFramed) {
-        // Collect fixed/sticky positioned elements that are visible
-        elements = matchElements(el => {
-            if (el.tagName === 'BODY') {
-                return false;
-            }
-            const computedStyle = window.getComputedStyle(el).position;
-            return (computedStyle === 'fixed' || computedStyle === 'sticky') && isVisible(el);
-        });
-
-        // Get non-parent elements
-        elements = excludeContainers(elements);
+        elements = getPopupLikeElements();
     } else {
         // for iframes, just take the whole document
         const doc = document.body || document.documentElement;
