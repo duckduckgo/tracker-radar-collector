@@ -78,9 +78,8 @@ function getPopupLikeElements() {
                 const cssPosition = window.getComputedStyle(node).position;
                 if ((cssPosition === 'fixed' || cssPosition === 'sticky') && isVisible(node)) {
                     return NodeFilter.FILTER_ACCEPT;
-                } else {
-                    return NodeFilter.FILTER_SKIP;
                 }
+                return NodeFilter.FILTER_SKIP;
             }
         }
     );
