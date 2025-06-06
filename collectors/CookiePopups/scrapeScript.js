@@ -33,22 +33,6 @@ function isDisabled(el) {
 }
 
 /**
- * @param {(el: HTMLElement) => boolean} filterFn
- * @returns {HTMLElement[]}
- */
-function walk(filterFn) {
-    const elements = [];
-    const walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_ELEMENT, {
-        acceptNode: n => (n instanceof HTMLElement && filterFn(n) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP),
-    });
-    while (walker.nextNode()) {
-        elements.push(/** @type {HTMLElement} */ (walker.currentNode));
-    }
-    return elements;
-}
-
-
-/**
  * Leave only elements that do not contain any other elements
  * @param {HTMLElement[]} elements
  * @returns {HTMLElement[]}
