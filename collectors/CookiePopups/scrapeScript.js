@@ -95,7 +95,7 @@ function getPopupLikeElements() {
  * @returns {HTMLElement[]}
  */
 function getButtons(el) {
-    return Array.from(el.querySelectorAll('button, input[type="button"], input[type="submit"], a[href], [role="button"], [class*="button"]'));
+    return Array.from(el.querySelectorAll('button, input[type="button"], input[type="submit"], a, [role="button"], [class*="button"]'));
 }
 
 /**
