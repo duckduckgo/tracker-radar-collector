@@ -28,8 +28,8 @@ function isVisible(node) {
  * @returns {boolean}
  */
 function isDisabled(el) {
-    // @ts-expect-error we want to be lenient here: if a non-input element has a disabled attribute, we want to consider it too
-    return el.disabled || el.hasAttribute('disabled');
+    // we want to be lenient here: if a non-input element has a disabled attribute, we want to consider it too
+    return ('disabled' in el && Boolean(el.disabled)) || el.hasAttribute('disabled');
 }
 
 /**
@@ -62,8 +62,6 @@ function excludeContainers(elements) {
  * @returns {HTMLElement[]}
  */
 function getPopupLikeElements() {
-    const found = [];
-
     const walker = document.createTreeWalker(
         document.documentElement,
         NodeFilter.SHOW_ELEMENT,      // visit only element nodes
@@ -84,6 +82,7 @@ function getPopupLikeElements() {
         }
     );
 
+    const found = [];
     for (let node = walker.nextNode(); node; node = walker.nextNode()) {
         found.push(/** @type {HTMLElement} */ (node));
     }
@@ -170,6 +169,11 @@ function getSelector(el, specificity) {
  * @returns {string} The unique selector for the element
  */
 function getUniqueSelector(el) {
+    // We need to strike a balance here. Selector has to be unique, but we want to avoid auto-generated (randomized) identifiers to make the it resilient. Assumptions:
+    // - Classes are the most common thing to randomize, so we use them as the last resort.
+    // - The general shape of the DOM doesn't change that much, so order is always preferred
+    // - data attributes can contain anything, so don't add them by default
+    // - IDs are often used on the popup containers, so are very useful. And they are definitely less commonly randomized than classes, but it's still possible, so we may want to change this logic later if we see randomized ids in the results.
     const specificity = {
         order: true,
         ids: true, // consider disabling this by default for auto-generated IDs
