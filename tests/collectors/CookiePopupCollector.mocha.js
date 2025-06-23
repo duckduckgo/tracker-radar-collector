@@ -108,4 +108,4 @@ describe('CookiePopupCollector', () => {
             assert.strictEqual(data.length, 0);
         });
     });
-}); 
+});
