@@ -583,13 +583,15 @@ async function processFiles(openai, existingRules) {
         if (hasKnownCmp(jsonData.data.cmps)) {
             totalSitesWithKnownCmps++;
         } else {
-            totalUnhandled++;
             const { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount, reviewNotes } = await processCookiePopupsForSite({
                 finalUrl: jsonData.finalUrl,
                 cookiePopupsData: jsonData.data.cookiepopups || [],
                 openai,
                 existingRules,
             });
+            if (processedCookiePopups.length > 0) {
+                totalUnhandled++;
+            }
             // Collect button texts for analysis
             processedCookiePopups.flatMap(popup => popup.rejectButtons.map(button => button.text)).forEach(b => rejectButtonTexts.add(b));
             processedCookiePopups.flatMap(popup => popup.otherButtons.map(button => button.text)).forEach(b => otherButtonTexts.add(b));
@@ -626,9 +628,10 @@ async function processFiles(openai, existingRules) {
 
     console.log(`Summary for ${region}:`);
     console.log(`Total crawled sites: ${totalFiles}`);
-    console.log(`Sites with popups: ${totalSitesWithPopups}`);
-    console.log(`Sites with known CMPs: ${totalSitesWithKnownCmps}`);
-    console.log(`Total unhandled by Autoconsent: ${totalUnhandled}`);
+    console.log(`Sites with popup-like elements: ${totalSitesWithPopups}`);
+    console.log(`Sites with detected cookie popups: ${totalUnhandled + totalSitesWithKnownCmps}`);
+    console.log(`  handled by Autoconsent: ${totalSitesWithKnownCmps}`);
+    console.log(`  not handled by Autoconsent: ${totalUnhandled}`);
     console.log(`Generated ${totalRules} new rules for ${totalSitesWithNewRules} sites`);
     console.log(`Kept ${totalKeptRules} rules for ${totalSitesWithKeptRules} sites`);
     console.log(`Updated ${totalOverriddenRules} rules for ${totalSitesWithOverriddenRules} sites`);
