@@ -466,14 +466,15 @@ async function writeRuleFiles(rule, url) {
  *  finalUrl: string, // URL of the site
  *  cookiePopupsData: import('../collectors/CookiePopupCollector').CookiePopupData[], // raw cookie popup data
  *  openai: OpenAI, // OpenAI client
- *  existingRules: AutoConsentCMPRule[], // existing Autoconsent rules
+ *  existingRules: AutoConsentCMPRule[], // existing Autoconsent rules (will be mutated)
  * }} params
  * @returns {Promise<{
  * processedCookiePopups: ProcessedCookiePopup[], 
  * newRuleFiles: AutoconsentManifestFileData[],
  * updatedRuleFiles: AutoconsentManifestFileData[], 
  * keptCount: number, 
- * reviewNotes: ReviewNote[]
+ * reviewNotes: ReviewNote[],
+ * updatedExistingRules: AutoConsentCMPRule[],
  * }>}
  */
 async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, existingRules}) {
@@ -488,13 +489,23 @@ async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, e
     /** @type {AutoconsentManifestFileData[]} */
     const updatedRuleFiles = [];
 
+    const updatedExistingRules = structuredClone(existingRules);
+
     if (processedCookiePopups.length === 0) {
-        return { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount: 0, reviewNotes: [] };
+        return { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount: 0, reviewNotes: [], updatedExistingRules };
     }
 
     const matchingRules = findMatchingExistingRules(finalUrl, processedCookiePopups, existingRules);
     console.log(`Detected ${processedCookiePopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`);
     const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(finalUrl, processedCookiePopups, matchingRules);
+
+    updatedExistingRules.push(...newRules);
+    rulesToOverride.forEach(rule => {
+        const index = updatedExistingRules.findIndex(r => r.name === rule.name);
+        if (index !== -1) {
+            updatedExistingRules[index] = rule;
+        }
+    });
 
     // Log review notes
     reviewNotes.forEach(note => {
@@ -517,6 +528,7 @@ async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, e
         updatedRuleFiles,
         keptCount,
         reviewNotes,
+        updatedExistingRules,
     };
 }
 
@@ -537,7 +549,9 @@ async function processFiles(openai, existingRules) {
     let totalOverriddenRules = 0;
     let totalSitesWithKeptRules = 0;
     let totalSitesWithOverriddenRules = 0;
-    
+
+    let existingRulesAfter = structuredClone(existingRules);
+
     /** @type {Map<string, AutoconsentSiteManifest>} */
     const autoconsentManifest = new Map();
     const rejectButtonTexts = new Set();
@@ -579,12 +593,13 @@ async function processFiles(openai, existingRules) {
         if (hasKnownCmp(jsonData.data.cmps)) {
             totalSitesWithKnownCmps++;
         } else {
-            const { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount, reviewNotes } = await processCookiePopupsForSite({
+            const { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount, reviewNotes, updatedExistingRules } = await processCookiePopupsForSite({
                 finalUrl: jsonData.finalUrl,
                 cookiePopupsData: jsonData.data.cookiepopups || [],
                 openai,
-                existingRules,
+                existingRules: existingRulesAfter,
             });
+            existingRulesAfter = updatedExistingRules;
             if (processedCookiePopups.length > 0) {
                 totalUnhandled++;
             }
