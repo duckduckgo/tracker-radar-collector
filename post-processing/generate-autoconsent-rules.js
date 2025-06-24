@@ -495,7 +495,7 @@ async function writeRuleFiles(rule, url) {
  *  finalUrl: string, // URL of the site
  *  cookiePopupsData: import('../collectors/CookiePopupCollector').CookiePopupData[], // raw cookie popup data
  *  openai: OpenAI, // OpenAI client
- *  existingRules: AutoConsentCMPRule[], // existing Autoconsent rules (will be mutated)
+ *  existingRules: AutoConsentCMPRule[], // existing Autoconsent rules
  * }} params
  * @returns {Promise<{
  * processedCookiePopups: ProcessedCookiePopup[],
