@@ -257,15 +257,16 @@ async function applyDetectionHeuristics(popup, openai) {
 /**
  * Find existing rules that match a given URL/domain.
  * @param {string} url - The URL to match against.
+ * @param {ProcessedCookiePopup[]} cookiePopups - Array of processed cookie popups.
  * @param {AutoConsentCMPRule[]} existingRules - Array of existing rules.
  * @returns {AutoConsentCMPRule[]} Array of matching existing rules.
  */
-function findMatchingExistingRules(url, existingRules) {
+function findMatchingExistingRules(url, cookiePopups, existingRules) {
     return existingRules.filter(rule => {
         if (rule.runContext && rule.runContext.urlPattern) {
             try {
                 const pattern = new RegExp(rule.runContext.urlPattern);
-                return pattern.test(url);
+                return pattern.test(url) || cookiePopups.some(popup => pattern.test(popup.origin));
             } catch {
                 // Invalid regex, skip
                 return false;
@@ -490,7 +491,7 @@ async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, e
         return { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount: 0, reviewNotes: [] };
     }
 
-    const matchingRules = findMatchingExistingRules(finalUrl, existingRules);
+    const matchingRules = findMatchingExistingRules(finalUrl, processedCookiePopups, existingRules);
     console.log(`Detected ${processedCookiePopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`);
     const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(finalUrl, processedCookiePopups, matchingRules);
 
