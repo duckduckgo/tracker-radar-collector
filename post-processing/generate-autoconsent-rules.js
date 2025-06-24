@@ -27,6 +27,12 @@ if (!crawlDir || !region || !autoconsentDir) {
     process.exit(1);
 }
 
+// check that directories exist
+if (!fs.existsSync(autoconsentDir) || !fs.existsSync(crawlDir)) {
+    console.error('Autoconsent directory or crawl directory not found:', autoconsentDir, crawlDir);
+    process.exit(1);
+}
+
 const rulesDir = path.join(autoconsentDir, 'rules', 'generated');
 const testDir = path.join(autoconsentDir, 'tests', 'generated');
 const rejectButtonTextsFile = path.join(crawlDir, 'reject-button-texts.txt');
