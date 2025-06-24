@@ -27,8 +27,8 @@ if (!crawlDir || !region || !autoconsentDir) {
     process.exit(1);
 }
 
-const rulesDir = path.join(autoconsentDir, 'rules/generated');
-const testDir = path.join(autoconsentDir, 'tests');
+const rulesDir = path.join(autoconsentDir, 'rules', 'generated');
+const testDir = path.join(autoconsentDir, 'tests', 'generated');
 const rejectButtonTextsFile = path.join(crawlDir, 'reject-button-texts.txt');
 const otherButtonTextsFile = path.join(crawlDir, 'other-button-texts.txt');
 const autoconsentManifestFile = path.join(crawlDir, '..', 'autoconsent-manifest.json');
