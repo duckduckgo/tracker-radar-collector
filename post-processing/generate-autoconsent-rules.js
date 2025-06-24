@@ -348,7 +348,13 @@ function generateRulesForSite(url, cookiePopups, matchingRules) {
                 // if there is an existing rule with the same reject button, do nothing
                 keptCount++;
             } else {
-                const newRule = generateAutoconsentRule(url, popup, button);
+                let newRule;
+                try {
+                    newRule = generateAutoconsentRule(url, popup, button);
+                } catch (err) {
+                    console.error(`Error generating rule for ${url} (${popup.origin})`, err);
+                    continue;
+                }
                 if (matchingRules.length === 0) {
                     // add the first rule for this site
                     newRules.push(newRule);
