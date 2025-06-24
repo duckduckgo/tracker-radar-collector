@@ -370,19 +370,43 @@ function generateRulesForSite(url, cookiePopups, matchingRules) {
                 } else {
                     // there were some existing rules for this site, but all of them use different selectors
                     // this can happen for several reasons: site uses different popups in different regions, or the popup has changed since last crawl
-                    const existingRuleWithSameRegion = matchingRules.find(rule => parseRuleName(rule.name).region === region);
-                    if (existingRuleWithSameRegion) {
+                    const existingRulesWithSameRegion = matchingRules.filter(rule => parseRuleName(rule.name).region === region);
+                    if (existingRulesWithSameRegion.length > 0) {
                         // if there is an existing rule with the same region, override it
-                        rulesToOverride.push({
-                            ...newRule,
-                            name: existingRuleWithSameRegion.name, // keep the existing rule name
-                        });
-                        reviewNotes.push({
-                            note: 'Overriding existing rule',
-                            ruleName: existingRuleWithSameRegion.name,
-                            existingRules: matchingRules.map(rule => rule.name),
-                            region,
-                        });
+
+                        if (existingRulesWithSameRegion.length > 1) {
+                            console.warn('Multiple existing rules with the same region found for', url, region);
+                            reviewNotes.push({
+                                note: 'Multiple existing rules with the same region found, consider removing all but one',
+                                ruleNames: existingRulesWithSameRegion.map(rule => rule.name),
+                                existingRules: matchingRules.map(rule => rule.name),
+                                region,
+                            });
+                        }
+
+                        // find an existing rule that we haven't overridden yet
+                        const ruleToOverride = existingRulesWithSameRegion.find(rule => !rulesToOverride.some(r => r.name === rule.name));
+                        if (!ruleToOverride) {
+                            console.warn('Already overridden all existing rules for', url, region, 'creating a new one');
+                            reviewNotes.push({
+                                note: 'Already overridden all existing rules, creating a new one',
+                                ruleName: newRule.name,
+                                existingRules: existingRulesWithSameRegion.map(rule => rule.name),
+                                region,
+                            });
+                            newRules.push(newRule);
+                        } else {
+                            rulesToOverride.push({
+                                ...newRule,
+                                name: ruleToOverride.name, // keep the existing rule name
+                            });
+                            reviewNotes.push({
+                                note: 'Overriding existing rule',
+                                ruleName: ruleToOverride.name,
+                                existingRules: matchingRules.map(rule => rule.name),
+                                region,
+                            });
+                        }
                     } else {
                         // assume it's a new region-specific popup, but flag it for review
                         newRules.push(newRule);
