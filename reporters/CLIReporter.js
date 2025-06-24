@@ -72,7 +72,12 @@ class CLIReporter extends BaseReporter {
     cleanup({startTime, endTime, successes, failures, urls}) {
         this.alwaysLog(chalk.cyan(`Start time: ${startTime.toUTCString()}`));
         this.alwaysLog(chalk.cyan(`Finish time: ${endTime.toUTCString()}`));
-        this.alwaysLog(chalk.cyan(`Duration: ${(endTime.getTime() - startTime.getTime()) / 1000 / 60 / 60}h`));
+        const durationMs = endTime.getTime() - startTime.getTime();
+        const totalSeconds = Math.floor(durationMs / 1000);
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        this.alwaysLog(chalk.cyan(`Duration: ${hours}h ${minutes}m ${seconds}s`));
         this.alwaysLog(chalk.cyan(`Sucessful crawls: ${successes}/${urls} (${(successes / urls * 100).toFixed(2)}%)`));
         this.alwaysLog(chalk.cyan(`Failed crawls: ${failures}/${urls} (${(failures / urls * 100).toFixed(2)}%)`));
 

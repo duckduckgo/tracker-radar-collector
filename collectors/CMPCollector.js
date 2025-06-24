@@ -59,8 +59,18 @@ class CMPCollector extends BaseCollector {
         this.autoAction = options.collectorFlags.autoconsentAction;
         /** @type {ContentScriptMessage[]} */
         this.receivedMsgs = [];
+        /** @type {number | null} */
         this.selfTestFrame = null;
+        /**
+         * maps executionContextId to page world executionContextId
+         * @type {Map<number, number>}
+         */
         this.isolated2pageworld = new Map();
+        /**
+         * maps executionContextId to CDPSession
+         * @type {Map<number, import('puppeteer-core').CDPSession>}
+         */
+        this.cdpSessions = new Map();
         /** @type {ScanResult} */
         this.scanResult = {
             snippets: new Set([]),
@@ -105,22 +115,22 @@ class CMPCollector extends BaseCollector {
             return;
         }
 
-        this._cdpClient = session;
-        await this._cdpClient.send('Page.enable');
-        await this._cdpClient.send('Runtime.enable');
+        await session.send('Page.enable');
+        await session.send('Runtime.enable');
 
-        this._cdpClient.on('Runtime.executionContextCreated', async ({context}) => {
+        session.on('Runtime.executionContextCreated', async ({context}) => {
             // ignore context created by puppeteer / our crawler
             if (!context.origin || context.origin === '://' || context.auxData.type === 'isolated') {
                 return;
             }
             try {
-                const {executionContextId} = await this._cdpClient.send('Page.createIsolatedWorld', {
+                const {executionContextId} = await session.send('Page.createIsolatedWorld', {
                     frameId: context.auxData.frameId,
                     worldName
                 });
                 this.isolated2pageworld.set(executionContextId, context.id);
-                await this._cdpClient.send('Runtime.evaluate', {
+                this.cdpSessions.set(executionContextId, session);
+                await session.send('Runtime.evaluate', {
                     expression: contentScript,
                     contextId: executionContextId,
                 });
@@ -131,7 +141,7 @@ class CMPCollector extends BaseCollector {
             }
         });
 
-        this._cdpClient.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
+        session.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
             if (name === 'cdpAutoconsentSendMessage') {
                 try {
                     const msg = JSON.parse(payload);
@@ -143,7 +153,7 @@ class CMPCollector extends BaseCollector {
                 }
             }
         });
-        await this._cdpClient.send('Runtime.addBinding', {
+        await session.send('Runtime.addBinding', {
             name: 'cdpAutoconsentSendMessage',
             executionContextName: worldName,
         });
@@ -153,7 +163,7 @@ class CMPCollector extends BaseCollector {
      * Implements autoconsent messaging protocol
      *
      * @param {ContentScriptMessage} msg
-     * @param {any} executionContextId
+     * @param {number} executionContextId
      * @returns {Promise<void>}
      */
     async handleMessage(msg, executionContextId) {
@@ -172,7 +182,7 @@ class CMPCollector extends BaseCollector {
                 detectRetries: 20,
                 isMainWorld: false
             };
-            await this._cdpClient.send('Runtime.evaluate', {
+            await this.cdpSessions.get(executionContextId)?.send('Runtime.evaluate', {
                 expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(autoconsentConfig)} })`,
                 contextId: executionContextId,
             });
@@ -196,7 +206,7 @@ class CMPCollector extends BaseCollector {
         }
         case 'autoconsentDone': {
             if (this.selfTestFrame) {
-                await this._cdpClient.send('Runtime.evaluate', {
+                await this.cdpSessions.get(this.selfTestFrame)?.send('Runtime.evaluate', {
                     expression: `autoconsentReceiveMessage({ type: "selfTest" })`,
                     allowUnsafeEvalBlockedByCSP: true,
                     contextId: this.selfTestFrame,
@@ -206,7 +216,12 @@ class CMPCollector extends BaseCollector {
         }
         case 'eval': {
             let evalResult = false;
-            const result = await this._cdpClient.send('Runtime.evaluate', {
+            const session = this.cdpSessions.get(executionContextId);
+            if (!session) {
+                this.log(`Received eval message for executionContextId ${executionContextId} but no session found`);
+                break;
+            }
+            const result = await session.send('Runtime.evaluate', {
                 expression: msg.code,
                 returnByValue: true,
                 allowUnsafeEvalBlockedByCSP: true,
@@ -216,7 +231,7 @@ class CMPCollector extends BaseCollector {
                 evalResult = Boolean(result.result.value);
             }
 
-            await this._cdpClient.send('Runtime.evaluate', {
+            await session.send('Runtime.evaluate', {
                 expression: `autoconsentReceiveMessage({ id: "${msg.id}", type: "evalResp", result: ${JSON.stringify(evalResult)} })`,
                 allowUnsafeEvalBlockedByCSP: true,
                 contextId: executionContextId,

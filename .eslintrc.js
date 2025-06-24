@@ -120,9 +120,9 @@ module.exports = {
         "lines-around-directive": "error",
         "lines-between-class-members": "error",
         "max-classes-per-file": "error",
-        "max-depth": "error",
+        "max-depth": "off",
         "max-len": "off",
-        "max-lines": "error",
+        "max-lines": "off",
         "max-lines-per-function": "off",
         "max-nested-callbacks": "error",
         "max-params": "off",
@@ -188,7 +188,7 @@ module.exports = {
         "no-multi-str": "error",
         "no-multiple-empty-lines": "error",
         "no-native-reassign": "error",
-        "no-negated-condition": "error",
+        "no-negated-condition": "off",
         "no-negated-in-lhs": "error",
         "no-nested-ternary": "error",
         "no-new": "error",
@@ -253,10 +253,7 @@ module.exports = {
         "no-with": "error",
         "nonblock-statement-body-position": "error",
         "object-curly-newline": "error",
-        "object-curly-spacing": [
-            "error",
-            "never"
-        ],
+        "object-curly-spacing": "off",
         "object-shorthand": "error",
         "one-var": "off",
         "one-var-declaration-per-line": [

@@ -28,6 +28,7 @@
     "@types/node": "^20.16.5",
     "@types/progress": "^2.0.7",
     "@types/selenium-webdriver": "^4.1.28",
+    "@types/sinon": "^17.0.4",
     "@types/ws": "^8.5.12",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^8.3.0",
@@ -35,17 +36,21 @@
     "eslint-plugin-mocha": "^10.0.5",
     "mocha": "^11.1.0",
     "mockery": "^2.1.0",
+    "sinon": "^21.0.0",
     "typescript": "^5.7.3"
   },
   "dependencies": {
     "@clickhouse/client": "^1.11.1",
     "@duckduckgo/autoconsent": "^12.14.0",
+    "@types/commander": "^2.12.0",
     "async": "^3.2.6",
     "chalk": "^4.1.2",
     "commander": "^13.1.0",
+    "openai": "^4.103.0",
     "progress": "^2.0.3",
     "puppeteer": "^24.7.1",
     "selenium-webdriver": "^4.31.0",
-    "tldts": "^7.0.4"
+    "tldts": "^7.0.4",
+    "zod": "^3.25.32"
   }
 }

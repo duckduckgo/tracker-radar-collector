@@ -24,7 +24,7 @@ function fromDir(startPath) {
     return tests;
 }
 
-const tests = fromDir('./');
+const tests = fromDir(__dirname);
 
 for (const testPath of tests) {
     console.log(`\nRunning "${testPath}"…`);

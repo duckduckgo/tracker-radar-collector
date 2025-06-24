@@ -66,8 +66,12 @@ describe('CMPCollector', () => {
                 pages: () => Promise.resolve([])
             }
         });
-        // @ts-ignore not a real CDP client
+        // @ts-expect-error not a real CDP client
         await collector.addTarget(fakeCDPClient, {type: 'page', url: 'https://example.com'});
+        // @ts-expect-error passing mock objects
+        collector.cdpSessions.set(1111, fakeCDPClient);
+        // @ts-expect-error passing mock objects
+        collector.cdpSessions.set(3333, fakeCDPClient);
     });
 
     describe('handleMessage', () => {
@@ -190,14 +194,14 @@ describe('CMPCollector', () => {
                     url: 'some url',
                     isCosmetic: false,
                 };
-                collector.selfTestFrame = 1337;
+                collector.selfTestFrame = 1111;
                 commands.splice(0, commands.length);
-                await collector.handleMessage(msg, 1111);
+                await collector.handleMessage(msg, 1337);
                 assert.strictEqual(commands.length, 1);
                 assert.deepStrictEqual(commands.pop(), ['Runtime.evaluate', {
                     expression: `autoconsentReceiveMessage({ type: "selfTest" })`,
                     allowUnsafeEvalBlockedByCSP: true,
-                    contextId: 1337,
+                    contextId: 1111,
                 }]);
             });
         });
