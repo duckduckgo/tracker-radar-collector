@@ -188,7 +188,7 @@ function generateAutoconsentRule(url, popup, button) {
     const frameDomain = generalizeDomain(new URL(popup.origin).hostname);
     const topDomain = generalizeDomain(new URL(url).hostname);
     const urlPattern = `^https?://(www\\.)?${frameDomain.replace(/\./g, '\\.')}/`;
-    const ruleName = `auto_${region}_${topDomain}`;
+    const ruleName = `auto_${region}_${topDomain}_${Math.random().toString(36).substring(2, 5)}`;
     return {
         name: ruleName,
         vendorUrl: url,
@@ -298,22 +298,22 @@ function isSameRejectButton(newButton, existingRule) {
 
 /**
  * Parse rule name components.
- * @param {string} ruleName - The rule name (e.g., "auto_GB_example_com_0").
- * @returns {{region: string|null, domain: string|null, ruleIndex: number|null}} The parsed components.
+ * @param {string} ruleName - The rule name (e.g., "auto_GB_example_com_abc").
+ * @returns {{region: string|null, domain: string|null, ruleSuffix: string|null}} The parsed components.
  */
 function parseRuleName(ruleName) {
-    const match = ruleName.match(/^auto_([A-Z]{2})_(.+?)_(\d+)$/);
+    const match = ruleName.match(/^auto_([A-Z]{2})_(.+?)_(.+)$/);
     if (match) {
         return {
             region: match[1],
             domain: match[2],
-            ruleIndex: parseInt(match[3], 10)
+            ruleSuffix: match[3],
         };
     }
     return {
         region: null,
         domain: null,
-        ruleIndex: null
+        ruleSuffix: null,
     };
 }
 
@@ -503,12 +503,6 @@ async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, e
         console.log(`${finalUrl}: overriding rule ${rule.name}`);
         updatedRuleFiles.push(await writeRuleFiles(rule, finalUrl));
     }));
-
-    // Prepare new rules with their final names before writing in parallel
-    newRules.forEach((rule, index) => {
-        const finalRuleName = `${rule.name}_${matchingRules.length + index}`;
-        rule.name = finalRuleName;
-    });
 
     await Promise.all(newRules.map(async ruleToWrite => {
         console.log(`${finalUrl}: new rule ${ruleToWrite.name}`);
