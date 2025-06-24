@@ -1,217 +1,11 @@
 const fs = require('fs');
 const path = require('path');
-
 const { OpenAI } = require('openai');
 const { Command } = require('commander');
-const { zodResponseFormat } = require('openai/helpers/zod');
-const { z } = require('zod');
+const { applyDetectionHeuristics } = require('./detection.js');
+const { generateRulesForSite } = require('./generation.js');
+const { verifyButtonTexts } = require('./verification.js');
 
-const program = new Command();
-program
-    .description(`Generate autoconsent rules from a crawl directory
-Example:
-    node generate-autoconsent-rules.js --crawl-dir /mnt/efs/shared/crawler-data/2025-05-12/GB/3p-crawl/ --region GB --autoconsent-dir ../autoconsent
-`)
-    .option('--crawl-dir <path>', 'Crawl directory')
-    .option('--region <region>', 'Crawl region code')
-    .option('--autoconsent-dir <path>', 'Autoconsent directory')
-    .parse(process.argv);
-
-const options = program.opts();
-const crawlDir = options.crawlDir;
-const region = options.region;
-const autoconsentDir = options.autoconsentDir;
-
-if (!crawlDir || !region || !autoconsentDir) {
-    program.outputHelp();
-    process.exit(1);
-}
-
-// check that directories exist
-if (!fs.existsSync(autoconsentDir) || !fs.existsSync(crawlDir)) {
-    console.error('Autoconsent directory or crawl directory not found:', autoconsentDir, crawlDir);
-    process.exit(1);
-}
-
-const rulesDir = path.join(autoconsentDir, 'rules', 'generated');
-const testDir = path.join(autoconsentDir, 'tests', 'generated');
-const rejectButtonTextsFile = path.join(crawlDir, 'reject-button-texts.txt');
-const otherButtonTextsFile = path.join(crawlDir, 'other-button-texts.txt');
-const autoconsentManifestFile = path.join(crawlDir, '..', 'autoconsent-manifest.json');
-
-/**
- * @param {string} allText
- * @returns {boolean}
- */
-function checkHeuristicPatterns(allText) {
-    const DETECT_PATTERNS = [
-        /accept cookies/gi,
-        /accept all/gi,
-        /reject all/gi,
-        /only necessary cookies/gi, // "only necessary" is probably too broad
-        /by clicking.*(accept|agree|allow)/gi,
-        /by continuing/gi,
-        /we (use|serve)( optional)? cookies/gi,
-        /we are using cookies/gi,
-        /use of cookies/gi,
-        /(this|our) (web)?site.*cookies/gi,
-        /cookies (and|or) .* technologies/gi,
-        /such as cookies/gi,
-        /read more about.*cookies/gi,
-        /consent to.*cookies/gi,
-        /we and our partners.*cookies/gi,
-        /we.*store.*information.*such as.*cookies/gi,
-        /store and\/or access information.*on a device/gi,
-        /personalised ads and content, ad and content measurement/gi,
-
-        // it might be tempting to add the patterns below, but they cause too many false positives. Don't do it :)
-        // /cookies? settings/i,
-        // /cookies? preferences/i,
-    ];
-
-    for (const p of DETECT_PATTERNS) {
-        const matches = allText.match(p);
-        if (matches) {
-            return true;
-        }
-    }
-    return false;
-}
-
-/**
- * @param {string} buttonText
- * @returns {boolean}
- */
-function isRejectButton(buttonText) {
-    const REJECT_PATTERNS = [
-        // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject all non-essential cookies and continue", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close"
-        // note that "reject and subscribe" and "reject and pay" are excluded
-        /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*(and\s+(?!subscribe|pay)\w+)?\s*$/i,
-
-        // e.g. "i do not accept", "i do not accept cookies", "do not accept", "do not accept cookies"
-        /^\s*(i)?\s*do\s+not\s+accept\s*(cookies)?\s*$/i,
-
-        // e.g. "continue without accepting", "continue without agreeing", "continue without agreeing →"
-        /^\s*(continue|proceed|continue\s+browsing)\s+without\s+(accepting|agreeing|consent|cookies|tracking)(\s*→)?\s*$/i,
-
-        // e.g. "strictly necessary cookies only", "essential cookies only", "required only", "use necessary cookies only", "essentials only"
-        // note that "only" is required
-        /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essentials?|required)?\s*(cookies)?\s*only\s*$/i,
-
-        // e.g. "allow essential cookies", "allow necessary", "allow essentials", "allow essentials only"
-        // note that "essential" is required
-        /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essentials?|required)\s*(cookies)?\s*$/i,
-
-        // e.g. "accept only essential cookies", "use only necessary cookies", "allow only essential", "only essentials", "continue with only essential cookies"
-        // note that "only" is required
-        /^\s*(use|accept|allow|continue\s+with)?\s*only\s*(strictly)?\s*(necessary|essentials?|required)?\s*(cookies)?\s*$/i,
-
-        // e.g. "do not sell or share my personal information", "do not sell my personal information"
-        // often used in CCPA
-        /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*information\s*$/i,
-
-        // These are impactful, but look error-prone
-        // // e.g. "disagree"
-        // /^\s*(i)?\s*disagree\s*(and\s+close)?\s*$/i,
-        // // e.g. "i do not agree"
-        // /^\s*(i\s+)?do\s+not\s+agree\s*$/i,
-    ];
-    return REJECT_PATTERNS.some(p => p.test(buttonText));
-}
-
-/**
- * @param {string} domain
- * @returns {string}
- */
-function generalizeDomain(domain) {
-    return domain.replace(/^www\./, '');
-}
-
-/**
- * @param {OpenAI} openai
- * @param {string} text
- * @returns {Promise<boolean>}
- */
-async function checkLLM(openai, text) {
-    const systemPrompt = `
-You are an expert in web application user interfaces. You are given a text extracted from an HTML element. Your task is to determine whether this element is a cookie popup.
-
-A "cookie popup", also known as "consent management dialog", is a notification that informs users about the use of cookies (or other storage technologies), and seeks their consent. It typically includes information about cookies, consent options, privacy policy links, and action buttons.
-
-While cookie popups are primarily focused on obtaining consent for the use of cookies, they often encompass broader data privacy and tracking practices. Therefore, cookie popups may also include information about:
-- other tracking technologies: popups may address other tracking technologies such as web beacons, pixels, and local storage that websites use to collect data about user behavior.
-- data collection and usage: the popups may provide information about what types of data are collected, how it is used, and with whom it is shared, extending beyond just cookies.
-- consent for other technologies: some popups may also seek consent for other technologies that involve data processing, such as analytics tools, advertising networks, and social media plugins.
-- user preferences: they often allow users to manage their preferences regarding different types of data collection and processing activities.
-
-Examples of cookie popup text:
-- "This site uses cookies to improve your experience. By continuing to use our site, you agree to our cookie policy."
-- "We and our partners process data to provide and improve our services, including advertising and personalized content. This may include data from other companies and the public. [Accept All] [Reject All] [Show Purposes]"
-
-Examples of NON-cookie popup text:
-- "This site is for adults only. By pressing continue, you confirm that you are at least 18 years old."
-- "Help Contact Pricing Company Jobs Research Program Sitemap Privacy Settings Legal Notice Cookie Policy"
-- "Would you like to enable notifications to stay up to date?"
-    `;
-
-    const CookieConsentNoticeClassification = z.object({
-        isCookieConsentNotice: z.boolean(),
-    });
-
-    try {
-        const completion = await openai.beta.chat.completions.parse({
-            model: 'gpt-4.1-nano-2025-04-14',
-            messages: [
-                {
-                    role: 'system',
-                    content: systemPrompt,
-                },
-                {
-                    role: 'user',
-                    content: text,
-                },
-            ],
-            // eslint-disable-next-line camelcase
-            response_format: zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
-        });
-
-        const result = completion.choices[0].message.parsed;
-        return result?.isCookieConsentNotice ?? false;
-    } catch (error) {
-        console.error('Error classifying candidate:', error);
-    }
-
-    return false;
-}
-
-/**
- * Generate an autoconsent rule from a reject button.
- * @param {string} url - The URL of the site.
- * @param {CookiePopupData} popup - The popup object.
- * @param {ButtonData} button - The reject button object.
- * @returns {AutoConsentCMPRule} The autoconsent rule.
- */
-function generateAutoconsentRule(url, popup, button) {
-    const frameDomain = generalizeDomain(new URL(popup.origin).hostname);
-    const topDomain = generalizeDomain(new URL(url).hostname);
-    const urlPattern = `^https?://(www\\.)?${frameDomain.replace(/\./g, '\\.')}/`;
-    const ruleName = `auto_${region}_${topDomain}_${Math.random().toString(36).substring(2, 5)}`;
-    return {
-        name: ruleName,
-        vendorUrl: url,
-        cosmetic: false,
-        runContext: {
-            main: popup.isTop,
-            frame: !popup.isTop,
-            urlPattern,
-        },
-        prehideSelectors: [],
-        detectCmp: [{ exists: button.selector }],
-        detectPopup: [{ visible: button.selector }],
-        optIn: [],
-        optOut: [{ waitForThenClick: button.selector, comment: button.text }],
-    };
-}
 
 /**
  * @param {string} ruleName
@@ -223,42 +17,6 @@ function generateTestFile(ruleName, testUrls, regions) {
     return `import generateCMPTests from "../../playwright/runner";
 generateCMPTests('${ruleName}', ${JSON.stringify(testUrls)}, {testOptIn: false, testSelfTest: false, onlyRegions: ${JSON.stringify(regions)}});
 `;
-}
-
-/**
- * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
- * @param {import('../../collectors/CookiePopupCollector').CookiePopupData} popup
- * @param {OpenAI} openai
- * @returns {Promise<ProcessedCookiePopup | null>}
- */
-async function applyDetectionHeuristics(popup, openai) {
-    const popupText = popup.text?.trim();
-    if (!popupText) {
-        return null;
-    }
-    const regexMatch = checkHeuristicPatterns(popupText);
-    const llmMatch = await checkLLM(openai, popupText);
-
-    /** @type {ButtonData[]} */
-    const rejectButtons = [];
-    /** @type {ButtonData[]} */
-    const otherButtons = [];
-
-    popup.buttons.forEach(button => {
-        if (isRejectButton(button.text)) {
-            rejectButtons.push(button);
-        } else {
-            otherButtons.push(button);
-        }
-    });
-
-    return {
-        ...popup,
-        llmMatch,
-        regexMatch,
-        rejectButtons,
-        otherButtons,
-    };
 }
 
 /**
@@ -284,161 +42,6 @@ function findMatchingExistingRules(url, cookiePopups, existingRules) {
 }
 
 /**
- * Compare if the same reject button is used in an existing rule.
- * @param {ButtonData} newButton - The new button.
- * @param {AutoConsentCMPRule} existingRule - The existing rule.
- * @returns {boolean} True if buttons are the same.
- */
-function isSameRejectButton(newButton, existingRule) {
-    if (!existingRule.optOut || existingRule.optOut.length === 0) {
-        return false;
-    }
-
-    const existingOptOut = existingRule.optOut[0];
-
-    // Compare selector
-    if (existingOptOut.waitForThenClick !== newButton.selector) {
-        return false;
-    }
-
-    return true;
-}
-
-/**
- * Parse rule name components.
- * @param {string} ruleName - The rule name (e.g., "auto_GB_example_com_abc").
- * @returns {{region: string|null, domain: string|null, ruleSuffix: string|null}} The parsed components.
- */
-function parseRuleName(ruleName) {
-    const match = ruleName.match(/^auto_([A-Z]{2})_(.+?)_(.+)$/);
-    if (match) {
-        return {
-            region: match[1],
-            domain: match[2],
-            ruleSuffix: match[3],
-        };
-    }
-    return {
-        region: null,
-        domain: null,
-        ruleSuffix: null,
-    };
-}
-
-/**
- * Analyze existing rules and generate new rules when necessary.
- * @param {string} url - The URL being processed.
- * @param {ProcessedCookiePopup[]} cookiePopups - The detected cookie popups.
- * @param {AutoConsentCMPRule[]} matchingRules - Array of existing rules.
- * @returns {{newRules: AutoConsentCMPRule[], rulesToOverride: AutoConsentCMPRule[], reviewNotes: ReviewNote[], keptCount: number}}
- */
-function generateRulesForSite(url, cookiePopups, matchingRules) {
-    /** @type {AutoConsentCMPRule[]} */
-    const newRules = [];
-    /** @type {AutoConsentCMPRule[]} */
-    const rulesToOverride = [];
-    /** @type {ReviewNote[]} */
-    const reviewNotes = [];
-    let keptCount = 0;
-
-    if (cookiePopups.length > 1 || cookiePopups[0].rejectButtons.length > 1) {
-        console.warn('Multiple cookie popups or reject buttons found in', url);
-        reviewNotes.push({
-            note: 'Multiple popups or reject buttons found',
-            url,
-            region,
-        });
-    }
-
-    for (const popup of cookiePopups) {
-        for (const button of popup.rejectButtons) {
-            // most of the time, we'll have a single popup with a single reject button
-
-            if (matchingRules.some(rule => isSameRejectButton(button, rule)) ||
-                    newRules.some(rule => isSameRejectButton(button, rule)) ||
-                    rulesToOverride.some(rule => isSameRejectButton(button, rule))) {
-                // if there is an existing rule with the same reject button, do nothing
-                keptCount++;
-            } else {
-                let newRule;
-                try {
-                    newRule = generateAutoconsentRule(url, popup, button);
-                } catch (err) {
-                    console.error(`Error generating rule for ${url} (${popup.origin})`, err);
-                    continue;
-                }
-                if (matchingRules.length === 0) {
-                    // add the first rule for this site
-                    newRules.push(newRule);
-                    reviewNotes.push({
-                        note: 'New rule added',
-                        ruleName: newRule.name,
-                    });
-                } else {
-                    // there were some existing rules for this site, but all of them use different selectors
-                    // this can happen for several reasons: site uses different popups in different regions, or the popup has changed since last crawl
-                    const existingRulesWithSameRegion = matchingRules.filter(rule => parseRuleName(rule.name).region === region);
-                    if (existingRulesWithSameRegion.length > 0) {
-                        // if there is an existing rule with the same region, override it
-
-                        if (existingRulesWithSameRegion.length > 1) {
-                            console.warn('Multiple existing rules with the same region found for', url, region);
-                            reviewNotes.push({
-                                note: 'Multiple existing rules with the same region found, consider removing all but one',
-                                ruleNames: existingRulesWithSameRegion.map(rule => rule.name),
-                                existingRules: matchingRules.map(rule => rule.name),
-                                region,
-                            });
-                        }
-
-                        // find an existing rule that we haven't overridden yet
-                        const ruleToOverride = existingRulesWithSameRegion.find(rule => !rulesToOverride.some(r => r.name === rule.name));
-                        if (!ruleToOverride) {
-                            console.warn('Already overridden all existing rules for', url, region, 'creating a new one');
-                            reviewNotes.push({
-                                note: 'Already overridden all existing rules, creating a new one',
-                                ruleName: newRule.name,
-                                existingRules: existingRulesWithSameRegion.map(rule => rule.name),
-                                region,
-                            });
-                            newRules.push(newRule);
-                        } else {
-                            rulesToOverride.push({
-                                ...newRule,
-                                name: ruleToOverride.name, // keep the existing rule name
-                            });
-                            reviewNotes.push({
-                                note: 'Overriding existing rule',
-                                ruleName: ruleToOverride.name,
-                                existingRules: matchingRules.map(rule => rule.name),
-                                region,
-                            });
-                        }
-                    } else {
-                        // assume it's a new region-specific popup, but flag it for review
-                        newRules.push(newRule);
-                        reviewNotes.push({
-                            note: 'New region-specific popup',
-                            ruleName: newRule.name,
-                            existingRules: matchingRules.map(rule => rule.name),
-                            region,
-                        });
-                    }
-                }
-            }
-        }
-    }
-
-    if (newRules.length > 1) {
-        reviewNotes.push({
-            note: 'Multiple new rules generated',
-            ruleNames: newRules.map(rule => rule.name),
-        });
-    }
-    return { newRules, rulesToOverride, reviewNotes, keptCount };
-}
-
-/**
  * Determine if a site should be processed for cookie popup rules based on existing CMP detection.
  * @param {import('../../collectors/CMPCollector').CMPResult[]} cmps - The detected CMPs.
  * @returns {boolean} True if the site should be processed (no known CMPs found).
@@ -457,9 +60,10 @@ function hasKnownCmp(cmps) {
 
 /**
  * Read all existing rules from the rules directory. Note that this will ALSO read rules that were generated by this script for other regions.
+ * @param {string} rulesDir
  * @returns {Promise<AutoConsentCMPRule[]>}
  */
-async function readExistingRules() {
+async function readExistingRules(rulesDir) {
     const files = await fs.promises.readdir(rulesDir);
     /** @type {AutoConsentCMPRule[]} */
     const result = [];
@@ -477,11 +81,17 @@ async function readExistingRules() {
 }
 
 /**
- * @param {AutoConsentCMPRule} rule
- * @param {string} url
+ * @param {{
+ *  rule: AutoConsentCMPRule,
+ *  url: string,
+ *  rulesDir: string,
+ *  testDir: string,
+ *  autoconsentDir: string,
+ *  region: string,
+ * }} params
  * @returns {Promise<AutoconsentManifestFileData>}
  */
-async function writeRuleFiles(rule, url) {
+async function writeRuleFiles({rule, url, rulesDir, testDir, autoconsentDir, region}) {
     const ruleFilePath = path.join(rulesDir, `${rule.name}.json`);
     const relativeRuleFilePath = path.relative(autoconsentDir, ruleFilePath);
     await fs.promises.writeFile(ruleFilePath, JSON.stringify(rule, null, 4));
@@ -497,10 +107,10 @@ async function writeRuleFiles(rule, url) {
 
 /**
  * Process cookie popups for a single site and generate/update rules.
+ * @param {GlobalParams} globalParams
  * @param {{
  *  finalUrl: string, // URL of the site
  *  cookiePopupsData: import('../../collectors/CookiePopupCollector').CookiePopupData[], // raw cookie popup data
- *  openai: OpenAI, // OpenAI client
  *  existingRules: AutoConsentCMPRule[], // existing Autoconsent rules
  * }} params
  * @returns {Promise<{
@@ -512,7 +122,8 @@ async function writeRuleFiles(rule, url) {
  * updatedExistingRules: AutoConsentCMPRule[],
  * }>}
  */
-async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, existingRules}) {
+async function processCookiePopupsForSite(globalParams, {finalUrl, cookiePopupsData, existingRules}) {
+    const { openai, rulesDir, testDir, autoconsentDir, region } = globalParams;
     // filter out popups that are not confirmed by LLM
     /** @type {ProcessedCookiePopup[]} */
     const processedCookiePopups = (
@@ -532,7 +143,7 @@ async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, e
 
     const matchingRules = findMatchingExistingRules(finalUrl, processedCookiePopups, existingRules);
     console.log(`Detected ${processedCookiePopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`);
-    const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(finalUrl, processedCookiePopups, matchingRules);
+    const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(globalParams, finalUrl, processedCookiePopups, matchingRules);
 
     updatedExistingRules.push(...newRules);
     rulesToOverride.forEach(rule => {
@@ -549,12 +160,26 @@ async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, e
 
     await Promise.all(rulesToOverride.map(async rule => {
         console.log(`${finalUrl}: overriding rule ${rule.name}`);
-        updatedRuleFiles.push(await writeRuleFiles(rule, finalUrl));
+        updatedRuleFiles.push(await writeRuleFiles({
+            rule,
+            url: finalUrl,
+            rulesDir,
+            testDir,
+            autoconsentDir,
+            region,
+        }));
     }));
 
     await Promise.all(newRules.map(async ruleToWrite => {
         console.log(`${finalUrl}: new rule ${ruleToWrite.name}`);
-        newRuleFiles.push(await writeRuleFiles(ruleToWrite, finalUrl));
+        newRuleFiles.push(await writeRuleFiles({
+            rule: ruleToWrite,
+            url: finalUrl,
+            rulesDir,
+            testDir,
+            autoconsentDir,
+            region,
+        }));
     }));
 
     return {
@@ -569,11 +194,12 @@ async function processCookiePopupsForSite({finalUrl, cookiePopupsData, openai, e
 
 /**
  * Process all crawl data files in the crawl directory.
- * @param {OpenAI} openai
+ * @param {GlobalParams} globalParams
  * @param {AutoConsentCMPRule[]} existingRules
  * @returns {Promise<void>}
  */
-async function processFiles(openai, existingRules) {
+async function processFiles(globalParams, existingRules) {
+    const { crawlDir, region, rejectButtonTextsFile, otherButtonTextsFile, autoconsentManifestFile } = globalParams;
     let totalFiles = 0;
     let totalUnhandled = 0;
     let totalSitesWithNewRules = 0;
@@ -628,10 +254,9 @@ async function processFiles(openai, existingRules) {
         if (hasKnownCmp(jsonData.data.cmps)) {
             totalSitesWithKnownCmps++;
         } else {
-            const { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount, reviewNotes, updatedExistingRules } = await processCookiePopupsForSite({
+            const { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount, reviewNotes, updatedExistingRules } = await processCookiePopupsForSite(globalParams, {
                 finalUrl: jsonData.finalUrl,
                 cookiePopupsData: jsonData.data.cookiepopups || [],
-                openai,
                 existingRules: existingRulesAfter,
             });
             existingRulesAfter = updatedExistingRules;
@@ -686,72 +311,40 @@ async function processFiles(openai, existingRules) {
     console.log(`Actions manifest for ${autoconsentManifest.size} sites saved in ${autoconsentManifestFile}`);
 }
 
-/**
- * Run LLM to detect potential false positives and false negatives in button detection.
- * @param {OpenAI} openai
- */
-async function verifyButtonTexts(openai) {
-    const FalsePositiveSuggestions = z.object({
-        potentiallyIncorrectRejectButtons: z.array(z.string()),
-    });
-    const FalseNegativeSuggestions = z.object({
-        potentiallyMissedRejectButtons: z.array(z.string()),
-    });
-
-    const systemPromptFalsePositive = `
-    You are a helpful assistant that reviews the results of button text classification.
-    Reject buttons are buttons that let users OPT OUT of optional cookie usage, data sharing, and tracking. Reject buttons MAY accept some essential cookies that are required for the site to function.
-    You are given a list of button texts found in cookie popups and classified as a "Reject button".
-    Your task is to identify any items that have been classified incorrectly and might be NOT a reject button.
-    `;
-
-    const systemPromptFalseNegative = `
-    You are a helpful assistant that reviews the results of button text classification.
-    Reject buttons are buttons that let users OPT OUT of optional cookie usage, data sharing, and tracking. Reject buttons MAY accept some essential cookies that are required for the site to function.
-    You are given a list of button texts found in cookie popups and classified as NOT a "Reject button".
-    Your task is to identify any items that have been classified incorrectly and might be a reject button.
-    `;
-
-    try {
-        const completionFalsePositive = await openai.beta.chat.completions.parse({
-            model: 'gpt-4.1-nano-2025-04-14',
-            messages: [
-                { role: 'system', content: systemPromptFalsePositive },
-                {
-                    role: 'user',
-                    content: await fs.promises.readFile(rejectButtonTextsFile, 'utf8'),
-                },
-            ],
-            // eslint-disable-next-line camelcase
-            response_format: zodResponseFormat(FalsePositiveSuggestions, 'FalsePositiveSuggestions'),
-        });
-        const resultFalsePositive = completionFalsePositive.choices[0].message.parsed;
-        console.log(resultFalsePositive);
-    } catch (error) {
-        console.error('Error classifying false positives:', error);
-    }
-
-    try {
-        const completionFalseNegative = await openai.beta.chat.completions.parse({
-            model: 'gpt-4.1-nano-2025-04-14',
-            messages: [
-                { role: 'system', content: systemPromptFalseNegative },
-                {
-                    role: 'user',
-                    content: await fs.promises.readFile(otherButtonTextsFile, 'utf8'),
-                },
-            ],
-            // eslint-disable-next-line camelcase
-            response_format: zodResponseFormat(FalseNegativeSuggestions, 'FalseNegativeSuggestions'),
-        });
-        const resultFalseNegative = completionFalseNegative.choices[0].message.parsed;
-        console.log(resultFalseNegative);
-    } catch (error) {
-        console.error('Error classifying false negatives:', error);
-    }
-}
-
 async function main() {
+    const program = new Command();
+    program
+        .description(`Generate autoconsent rules from a crawl directory
+    Example:
+        node post-processing/generate-autoconsent-rules/main.js --crawl-dir /mnt/efs/shared/crawler-data/2025-05-12/GB/3p-crawl/ --region GB --autoconsent-dir ../autoconsent
+    `)
+        .option('--crawl-dir <path>', 'Crawl directory')
+        .option('--region <region>', 'Crawl region code')
+        .option('--autoconsent-dir <path>', 'Autoconsent directory')
+        .parse(process.argv);
+
+    const options = program.opts();
+    const crawlDir = options.crawlDir;
+    const region = options.region;
+    const autoconsentDir = options.autoconsentDir;
+
+    if (!crawlDir || !region || !autoconsentDir) {
+        program.outputHelp();
+        process.exit(1);
+    }
+
+    // check that directories exist
+    if (!fs.existsSync(autoconsentDir) || !fs.existsSync(crawlDir)) {
+        console.error('Autoconsent directory or crawl directory not found:', autoconsentDir, crawlDir);
+        process.exit(1);
+    }
+
+    const rulesDir = path.join(autoconsentDir, 'rules', 'generated');
+    const testDir = path.join(autoconsentDir, 'tests', 'generated');
+    const rejectButtonTextsFile = path.join(crawlDir, 'reject-button-texts.txt');
+    const otherButtonTextsFile = path.join(crawlDir, 'other-button-texts.txt');
+    const autoconsentManifestFile = path.join(crawlDir, '..', 'autoconsent-manifest.json');
+
     const openai = new OpenAI({
         apiKey: process.env.OPENAI_API_KEY,
     });
@@ -762,10 +355,24 @@ async function main() {
         await fs.promises.mkdir(rulesDir, { recursive: true });
     }
 
-    const existingRules = await readExistingRules();
+    const existingRules = await readExistingRules(rulesDir);
     console.log(`Found ${existingRules.length} existing generated rules`);
-    await processFiles(openai, existingRules);
-    await verifyButtonTexts(openai);
+
+    /** @type {GlobalParams} */
+    const globalParams = {
+        openai,
+        crawlDir,
+        rulesDir,
+        testDir,
+        autoconsentDir,
+        region,
+        rejectButtonTextsFile,
+        otherButtonTextsFile,
+        autoconsentManifestFile,
+    }
+
+    await processFiles(globalParams, existingRules);
+    await verifyButtonTexts(globalParams);
 }
 
 main();
@@ -827,4 +434,18 @@ main();
  *  updatedRules: AutoconsentManifestFileData[];
  *  reviewNotes: ReviewNote[];
  * }} AutoconsentSiteManifest
+ */
+
+/**
+ * @typedef {{
+ *  openai: OpenAI,
+ *  crawlDir: string,
+ *  rulesDir: string,
+ *  testDir: string,
+ *  autoconsentDir: string,
+ *  region: string,
+ *  rejectButtonTextsFile: string,
+ *  otherButtonTextsFile: string,
+ *  autoconsentManifestFile: string,
+ * }} GlobalParams
  */
