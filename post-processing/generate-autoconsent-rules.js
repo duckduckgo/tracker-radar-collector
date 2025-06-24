@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const {OpenAI} = require('openai');
+const { OpenAI } = require('openai');
 const { Command } = require('commander');
 const { zodResponseFormat } = require('openai/helpers/zod');
 const { z } = require('zod');
@@ -402,7 +402,6 @@ function generateRulesForSite(url, cookiePopups, matchingRules) {
  */
 function hasKnownCmp(cmps) {
     return (
-        cmps &&
         Array.isArray(cmps) &&
         cmps.length > 0 &&
         cmps.some(cmp => cmp &&
@@ -542,72 +541,77 @@ async function processFiles(openai, existingRules) {
     const rejectButtonTexts = new Set();
     const otherButtonTexts = new Set();
 
+    let dir;
     try {
-        const dir = await fs.promises.opendir(crawlDir);
-        for await (const dirent of dir) {
-            if (dirent.isFile() && path.extname(dirent.name).toLowerCase() === '.json') {
-                totalFiles++;
-                const fileName = dirent.name;
-                const filePath = path.join(crawlDir, fileName);
-                try {
-                    const fileContent = await fs.promises.readFile(filePath, 'utf8');
-                    /** @type {CrawlData} */
-                    const jsonData = JSON.parse(fileContent);
+        dir = await fs.promises.opendir(crawlDir);
+    } catch (err) {
+        console.error('Error reading directory:', err.message);
+        return;
+    }
 
-                    if (!jsonData || !jsonData.data) {
-                        console.warn(`Skipping ${fileName}: no data field`);
-                        continue;
-                    }
+    for await (const dirent of dir) {
+        if (!dirent.isFile() || path.extname(dirent.name).toLowerCase() !== '.json') {
+            continue;
+        }
+        totalFiles++;
+        const fileName = dirent.name;
+        const filePath = path.join(crawlDir, fileName);
+        const fileContent = await fs.promises.readFile(filePath, 'utf8');
+        /** @type {CrawlData} */
+        let jsonData;
+        try {            
+            jsonData = JSON.parse(fileContent);
+            if (!jsonData || !jsonData.data) {
+                console.warn(`Skipping ${fileName}: no data field`);
+                continue;
+            }
+        } catch (err) {
+            console.error(`Error processing file ${fileName}:`, err.message);
+            continue;
+        }
 
-                    if (jsonData.data.cookiepopups && jsonData.data.cookiepopups.length > 0) {
-                        totalSitesWithPopups++;
-                    }
+        if (jsonData.data.cookiepopups && jsonData.data.cookiepopups.length > 0) {
+            totalSitesWithPopups++;
+        }
 
-                    if (hasKnownCmp(jsonData.data.cmps)) {
-                        totalSitesWithKnownCmps++;
-                    } else {
-                        totalUnhandled++;
-                        const { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount, reviewNotes } = await processCookiePopupsForSite({
-                            finalUrl: jsonData.finalUrl,
-                            cookiePopupsData: jsonData.data.cookiepopups || [],
-                            openai,
-                            existingRules,
-                        });
-                        // Collect button texts for analysis
-                        processedCookiePopups.flatMap(popup => popup.rejectButtons.map(button => button.text)).forEach(b => rejectButtonTexts.add(b));
-                        processedCookiePopups.flatMap(popup => popup.otherButtons.map(button => button.text)).forEach(b => otherButtonTexts.add(b));
-                        
-                        if (newRuleFiles.length > 0 || updatedRuleFiles.length > 0 || reviewNotes.length > 0) {
-                            autoconsentManifest.set(fileName, {
-                                siteUrl: jsonData.finalUrl,
-                                newlyCreatedRules: newRuleFiles,
-                                updatedRules: updatedRuleFiles,
-                                reviewNotes
-                            });
-                        }
+        if (hasKnownCmp(jsonData.data.cmps)) {
+            totalSitesWithKnownCmps++;
+        } else {
+            totalUnhandled++;
+            const { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount, reviewNotes } = await processCookiePopupsForSite({
+                finalUrl: jsonData.finalUrl,
+                cookiePopupsData: jsonData.data.cookiepopups || [],
+                openai,
+                existingRules,
+            });
+            // Collect button texts for analysis
+            processedCookiePopups.flatMap(popup => popup.rejectButtons.map(button => button.text)).forEach(b => rejectButtonTexts.add(b));
+            processedCookiePopups.flatMap(popup => popup.otherButtons.map(button => button.text)).forEach(b => otherButtonTexts.add(b));
+            
+            if (newRuleFiles.length > 0 || updatedRuleFiles.length > 0 || reviewNotes.length > 0) {
+                autoconsentManifest.set(fileName, {
+                    siteUrl: jsonData.finalUrl,
+                    newlyCreatedRules: newRuleFiles,
+                    updatedRules: updatedRuleFiles,
+                    reviewNotes
+                });
+            }
 
-                        if (newRuleFiles.length > 0 || keptCount > 0 || updatedRuleFiles.length > 0) {
-                            if (newRuleFiles.length > 0) {
-                                totalRules += newRuleFiles.length;
-                                totalSitesWithNewRules++;
-                            }
-                            if (keptCount > 0) {
-                                totalKeptRules += keptCount;
-                                totalSitesWithKeptRules++;
-                            }
-                            if (updatedRuleFiles.length > 0) {
-                                totalOverriddenRules += updatedRuleFiles.length;
-                                totalSitesWithOverriddenRules++;
-                            }
-                        }
-                    }
-                } catch (err) {
-                    console.error(`Error processing file ${fileName}:`, err.message);
+            if (newRuleFiles.length > 0 || keptCount > 0 || updatedRuleFiles.length > 0) {
+                if (newRuleFiles.length > 0) {
+                    totalRules += newRuleFiles.length;
+                    totalSitesWithNewRules++;
+                }
+                if (keptCount > 0) {
+                    totalKeptRules += keptCount;
+                    totalSitesWithKeptRules++;
+                }
+                if (updatedRuleFiles.length > 0) {
+                    totalOverriddenRules += updatedRuleFiles.length;
+                    totalSitesWithOverriddenRules++;
                 }
             }
         }
-    } catch (err) {
-        console.error('Error reading directory:', err.message);
     }
     await fs.promises.writeFile(rejectButtonTextsFile, Array.from(rejectButtonTexts).join('\n'));
     await fs.promises.writeFile(otherButtonTextsFile, Array.from(otherButtonTexts).join('\n'));
