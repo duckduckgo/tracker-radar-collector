@@ -220,14 +220,14 @@ function generateAutoconsentRule(url, popup, button) {
  * @returns {string}
  */
 function generateTestFile(ruleName, testUrls, regions) {
-    return `import generateCMPTests from "../playwright/runner";
+    return `import generateCMPTests from "../../playwright/runner";
 generateCMPTests('${ruleName}', ${JSON.stringify(testUrls)}, {testOptIn: false, testSelfTest: false, onlyRegions: ${JSON.stringify(regions)}});
 `;
 }
 
 /**
  * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
- * @param {import('../collectors/CookiePopupCollector').CookiePopupData} popup
+ * @param {import('../../collectors/CookiePopupCollector').CookiePopupData} popup
  * @param {OpenAI} openai
  * @returns {Promise<ProcessedCookiePopup | null>}
  */
@@ -440,7 +440,7 @@ function generateRulesForSite(url, cookiePopups, matchingRules) {
 
 /**
  * Determine if a site should be processed for cookie popup rules based on existing CMP detection.
- * @param {import('../collectors/CMPCollector').CMPResult[]} cmps - The detected CMPs.
+ * @param {import('../../collectors/CMPCollector').CMPResult[]} cmps - The detected CMPs.
  * @returns {boolean} True if the site should be processed (no known CMPs found).
  */
 function hasKnownCmp(cmps) {
@@ -499,7 +499,7 @@ async function writeRuleFiles(rule, url) {
  * Process cookie popups for a single site and generate/update rules.
  * @param {{
  *  finalUrl: string, // URL of the site
- *  cookiePopupsData: import('../collectors/CookiePopupCollector').CookiePopupData[], // raw cookie popup data
+ *  cookiePopupsData: import('../../collectors/CookiePopupCollector').CookiePopupData[], // raw cookie popup data
  *  openai: OpenAI, // OpenAI client
  *  existingRules: AutoConsentCMPRule[], // existing Autoconsent rules
  * }} params
@@ -773,23 +773,23 @@ main();
 /**
  * @typedef {{
  *  data: {
- *      cmps: import('../collectors/CMPCollector').CMPResult[];
- *      cookiepopups: import('../collectors/CookiePopupCollector').CookiePopupData[];
+ *      cmps: import('../../collectors/CMPCollector').CMPResult[];
+ *      cookiepopups: import('../../collectors/CookiePopupCollector').CookiePopupData[];
  *  };
  *  finalUrl: string;
  * }} CrawlData
  */
 
 /**
- * @typedef {import('../collectors/CookiePopupCollector').ButtonData} ButtonData
+ * @typedef {import('../../collectors/CookiePopupCollector').ButtonData} ButtonData
  */
 
 /**
- * @typedef {import('../collectors/CookiePopupCollector').CookiePopupData} CookiePopupData
+ * @typedef {import('../../collectors/CookiePopupCollector').CookiePopupData} CookiePopupData
  */
 
 /**
- * @typedef {import('../node_modules/@duckduckgo/autoconsent/lib/rules').AutoConsentCMPRule} AutoConsentCMPRule
+ * @typedef {import('../../node_modules/@duckduckgo/autoconsent/lib/rules').AutoConsentCMPRule} AutoConsentCMPRule
  */
 
 /**
