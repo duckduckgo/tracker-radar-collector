@@ -1,4 +1,3 @@
-const { OpenAI } = require('openai');
 const { zodResponseFormat } = require('openai/helpers/zod');
 const { z } = require('zod');
 
@@ -84,7 +83,7 @@ function isRejectButton(buttonText) {
 }
 
 /**
- * @param {OpenAI} openai
+ * @param {import('openai').OpenAI} openai
  * @param {string} text
  * @returns {Promise<boolean>}
  */
@@ -143,7 +142,7 @@ Examples of NON-cookie popup text:
 /**
  * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
  * @param {import('./main').CookiePopupData} popup
- * @param {OpenAI} openai
+ * @param {import('openai').OpenAI} openai
  * @returns {Promise<import('./main').ProcessedCookiePopup | null>}
  */
 export async function applyDetectionHeuristics(popup, openai) {

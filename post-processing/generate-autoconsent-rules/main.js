@@ -369,7 +369,7 @@ async function main() {
         rejectButtonTextsFile,
         otherButtonTextsFile,
         autoconsentManifestFile,
-    }
+    };
 
     await processFiles(globalParams, existingRules);
     await verifyButtonTexts(globalParams);
