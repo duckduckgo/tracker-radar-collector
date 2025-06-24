@@ -266,7 +266,7 @@ function findMatchingExistingRules(url, cookiePopups, existingRules) {
         if (rule.runContext && rule.runContext.urlPattern) {
             try {
                 const pattern = new RegExp(rule.runContext.urlPattern);
-                return pattern.test(url) || cookiePopups.some(popup => pattern.test(popup.origin));
+                return pattern.test(url) || rule.vendorUrl === url || cookiePopups.some(popup => pattern.test(popup.origin));
             } catch {
                 // Invalid regex, skip
                 return false;
