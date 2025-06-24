@@ -376,6 +376,7 @@ function generateRulesForSite(url, cookiePopups, matchingRules) {
                         reviewNotes.push({
                             note: 'Overriding existing rule',
                             ruleName: existingRuleWithSameRegion.name,
+                            existingRules: matchingRules.map(rule => rule.name),
                             region,
                         });
                     } else {
