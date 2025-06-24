@@ -326,8 +326,11 @@ function parseRuleName(ruleName) {
  * @returns {{newRules: AutoConsentCMPRule[], rulesToOverride: AutoConsentCMPRule[], reviewNotes: ReviewNote[], keptCount: number}}
  */
 function generateRulesForSite(url, cookiePopups, matchingRules) {
+    /** @type {AutoConsentCMPRule[]} */
     const newRules = [];
+    /** @type {AutoConsentCMPRule[]} */
     const rulesToOverride = [];
+    /** @type {ReviewNote[]} */
     const reviewNotes = [];
     let keptCount = 0;
 
@@ -344,8 +347,9 @@ function generateRulesForSite(url, cookiePopups, matchingRules) {
         for (const button of popup.rejectButtons) {
             // most of the time, we'll have a single popup with a single reject button
 
-
-            if (matchingRules.some(rule => isSameRejectButton(button, rule))) {
+            if (matchingRules.some(rule => isSameRejectButton(button, rule)) ||
+                    newRules.some(rule => isSameRejectButton(button, rule)) ||
+                    rulesToOverride.some(rule => isSameRejectButton(button, rule))) {
                 // if there is an existing rule with the same reject button, do nothing
                 keptCount++;
             } else {
@@ -769,9 +773,11 @@ main();
 /**
  * @typedef {{
  *  note: string;
+ *  url?: string;
  *  region?: string;
  *  ruleName?: string;
  *  ruleNames?: string[];
+ *  existingRules?: string[];
  * }} ReviewNote
  */
 
