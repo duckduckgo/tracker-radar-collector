@@ -111,7 +111,7 @@ class CMPCollector extends BaseCollector {
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
     async addTarget(session, targetInfo) {
-        if (targetInfo.type !== 'page') {
+        if (targetInfo.type !== 'page' && targetInfo.type !== 'iframe') {
             return;
         }
 
