@@ -10,8 +10,8 @@ const testURLs = [
 ];
 
 /**
- * @param {import('../../crawler').CollectResult} output 
- * @param {string} crawlName 
+ * @param {import('../../crawler').CollectResult} output
+ * @param {string} crawlName
  */
 function commonTests(output, crawlName) {
     assert(output, `${crawlName} - data not found`);
@@ -60,12 +60,12 @@ async function main() {
     const exampleNonFaviconRequests = exampleCom.data.requests.filter(r => !r.url.endsWith('/favicon.ico'));
     assert(exampleNonFaviconRequests.length === 1, 'example.com does not load any subresources, should only have one request');
     assert(exampleNonFaviconRequests[0].url === 'https://example.com/', 'example.com should have only one request to https://example.com/');
-    
+
     assert(exampleCom.data.cookies.length === 0, 'example.com does not set any cookies');
-    
+
     assert(exampleCom.data.targets.length === 1, 'example.com does have only one target - main frame');
     assert(exampleCom.data.targets[0].type === 'page', 'example.com does have only one target - main frame');
-    
+
     assert(Object.keys(exampleCom.data.apis.callStats).length === 0, 'example.com does not execute any JavaScript, API call stats should be empty');
 
     /// duck.com tests
@@ -73,7 +73,7 @@ async function main() {
     commonTests(duckCom, 'duck.com');
 
     assert(duckCom.finalUrl !== duckCom.initialUrl, 'duck.com redirects, final url should be different than initial url');
-    
+
     assert(duckCom.data.requests.length > 10, 'duck.com does load multiple subresources');
     assert(duckCom.data.requests[0].url === 'https://duck.com/', 'first request should be to "duck.com"');
     assert(duckCom.data.requests[0].redirectedTo === 'https://duckduckgo.com/', 'first request should redirect to "duckduckgo.com"');
@@ -90,7 +90,7 @@ async function main() {
 
     assert(Object.keys(duckCom.data.apis.callStats).length > 0, 'duck.com does execute some JS and callStats should NOT be empty');
 
-    /// https://privacy-test-pages.glitch.me/tracker-reporting/1major-via-script.html tests
+    /// https://privacy-test-pages.site/tracker-reporting/1major-via-script.html tests
     const privacyTestPages1 = data.find(d => d.initialUrl === 'https://privacy-test-pages.site/tracker-reporting/1major-via-script.html');
     commonTests(privacyTestPages1, 'privacy-test-pages/1major-via-script');
 
