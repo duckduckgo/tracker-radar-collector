@@ -10,7 +10,7 @@ async function main() {
      */
     const data = [];
     await runCrawlers({
-        urls: ['https://privacy-test-pages.glitch.me/crawler/'],
+        urls: ['https://privacy-test-pages.site/crawler/'],
         logFunction: () => {},
         dataCollectors: [createCollector('requests')],
         numberOfCrawlers: 2,
