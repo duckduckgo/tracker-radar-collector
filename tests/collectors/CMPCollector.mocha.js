@@ -69,9 +69,9 @@ describe('CMPCollector', () => {
         // @ts-expect-error not a real CDP client
         await collector.addTarget(fakeCDPClient, {type: 'page', url: 'https://example.com'});
         // @ts-expect-error passing mock objects
-        collector.cdpSessions.set(1111, fakeCDPClient);
+        collector.cdpSessions.set('1111', fakeCDPClient);
         // @ts-expect-error passing mock objects
-        collector.cdpSessions.set(3333, fakeCDPClient);
+        collector.cdpSessions.set('3333', fakeCDPClient);
     });
 
     describe('handleMessage', () => {
@@ -85,7 +85,7 @@ describe('CMPCollector', () => {
                     url: 'some-url',
                 };
                 commands.splice(0, commands.length);
-                await collector.handleMessage(msg, 1111);
+                await collector.handleMessage(msg, '1111');
                 assert.strictEqual(commands.length, 1);
                 assert.deepStrictEqual(commands[0], ['Runtime.evaluate', {
                     expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify({
@@ -99,7 +99,7 @@ describe('CMPCollector', () => {
                         detectRetries: 20,
                         isMainWorld: false,
                     })} })`,
-                    contextId: 1111,
+                    uniqueContextId: '1111',
                 }]);
             });
         });
@@ -115,8 +115,8 @@ describe('CMPCollector', () => {
                     scheduleSelfTest: true,
                     url: 'some url',
                 };
-                await collector.handleMessage(msg, 1337);
-                assert.strictEqual(collector.selfTestFrame, 1337);
+                await collector.handleMessage(msg, '1337');
+                assert.strictEqual(collector.selfTestFrame, '1337');
             });
 
             it('should (not) remember where to run self test', async () => {
@@ -130,7 +130,7 @@ describe('CMPCollector', () => {
                     scheduleSelfTest: false,
                     url: 'some url',
                 };
-                await collector.handleMessage(msg, 1337);
+                await collector.handleMessage(msg, '1337');
                 assert.strictEqual(collector.selfTestFrame, null);
             });
         });
@@ -147,8 +147,8 @@ describe('CMPCollector', () => {
                     scheduleSelfTest: true,
                     url: 'some url',
                 };
-                await collector.handleMessage(msg, 1337);
-                assert.strictEqual(collector.selfTestFrame, 1337);
+                await collector.handleMessage(msg, '1337');
+                assert.strictEqual(collector.selfTestFrame, '1337');
             });
 
             it('should (not) remember where to run self test', async () => {
@@ -162,7 +162,7 @@ describe('CMPCollector', () => {
                     scheduleSelfTest: false,
                     url: 'some url',
                 };
-                await collector.handleMessage(msg, 1337);
+                await collector.handleMessage(msg, '1337');
                 assert.strictEqual(collector.selfTestFrame, null);
             });
         });
@@ -180,7 +180,7 @@ describe('CMPCollector', () => {
                 };
                 collector.selfTestFrame = null;
                 commands.splice(0, commands.length);
-                await collector.handleMessage(msg, 1111);
+                await collector.handleMessage(msg, '1111');
                 assert.strictEqual(commands.length, 0);
             });
 
@@ -194,14 +194,14 @@ describe('CMPCollector', () => {
                     url: 'some url',
                     isCosmetic: false,
                 };
-                collector.selfTestFrame = 1111;
+                collector.selfTestFrame = '1111';
                 commands.splice(0, commands.length);
-                await collector.handleMessage(msg, 1337);
+                await collector.handleMessage(msg, '1337');
                 assert.strictEqual(commands.length, 1);
                 assert.deepStrictEqual(commands.pop(), ['Runtime.evaluate', {
                     expression: `autoconsentReceiveMessage({ type: "selfTest" })`,
                     allowUnsafeEvalBlockedByCSP: true,
-                    contextId: 1111,
+                    uniqueContextId: '1111',
                 }]);
             });
         });
@@ -217,20 +217,20 @@ describe('CMPCollector', () => {
                     code: '1+1==2'
                 };
                 commands.splice(0, commands.length);
-                collector.isolated2pageworld = new Map([[1111, 2222]]);
-                await collector.handleMessage(msg, 1111);
+                collector.isolated2pageworld = new Map([['1111', '2222']]);
+                await collector.handleMessage(msg, '1111');
                 assert.strictEqual(commands.length, 2);
                 assert.deepStrictEqual(commands[0], ['Runtime.evaluate', {
                     expression: msg.code,
                     returnByValue: true,
                     allowUnsafeEvalBlockedByCSP: true,
-                    contextId: 2222,
+                    uniqueContextId: '2222',
                 }]);
 
                 assert.deepStrictEqual(commands[1], ['Runtime.evaluate', {
                     expression: 'autoconsentReceiveMessage({ id: "some id", type: "evalResp", result: true })',
                     allowUnsafeEvalBlockedByCSP: true,
-                    contextId: 1111,
+                    uniqueContextId: '1111',
                 }]);
             });
         });
@@ -250,8 +250,24 @@ describe('CMPCollector', () => {
             await executionContextCreated.callback({
                 context: {
                     id: 1,
+                    uniqueId: 'some_main_world',
                     origin: 'https://example.com/',
-                    auxData: {}
+                    auxData: {
+                        type: 'default',
+                    },
+                }
+            });
+
+            await executionContextCreated.callback({
+                context: {
+                    id: 2,
+                    uniqueId: 'some_isolated_world',
+                    origin: 'https://example.com/',
+                    auxData: {
+                        type: 'isolated',
+                        frameId: 1,
+                    },
+                    name: 'cmpcollector_iw_for_some_main_world',
                 }
             });
 
@@ -261,7 +277,7 @@ describe('CMPCollector', () => {
 
         it('no CMP', async function() {
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
-            assert.strictEqual(contentScriptEval.contextId, 31337);
+            assert.strictEqual(contentScriptEval.uniqueContextId, 'some_isolated_world');
             await collector.postLoad();
             const results = await collector.getData();
             assert.deepStrictEqual(results, []);
@@ -269,7 +285,7 @@ describe('CMPCollector', () => {
 
         it('no CMP, but detected heuristic patterns', async function() {
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
-            assert.strictEqual(contentScriptEval.contextId, 31337);
+            assert.strictEqual(contentScriptEval.uniqueContextId, 'some_isolated_world');
 
             const expectedPatterns = [
                 "/we are using cookies/gi",
@@ -304,7 +320,7 @@ describe('CMPCollector', () => {
                         selfTest: null,
                     },
                 }),
-                executionContextId: 31337,
+                executionContextId: 2,
             });
 
             await collector.postLoad();
@@ -325,7 +341,7 @@ describe('CMPCollector', () => {
 
         it('CMP with no visible popup', async function() {
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
-            assert.strictEqual(contentScriptEval.contextId, 31337);
+            assert.strictEqual(contentScriptEval.uniqueContextId, 'some_isolated_world');
             bindingCalled.callback({
                 name: 'cdpAutoconsentSendMessage',
                 payload: JSON.stringify({
@@ -333,7 +349,7 @@ describe('CMPCollector', () => {
                     url: 'some-url',
                     cmp: 'superduperCMP',
                 }),
-                executionContextId: 31337,
+                executionContextId: 2,
             });
 
             await collector.postLoad();
@@ -355,7 +371,7 @@ describe('CMPCollector', () => {
         it('CMP with a visible popup - opt-out OFF', async function() {
             collector.autoAction = null;
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
-            assert.strictEqual(contentScriptEval.contextId, 31337);
+            assert.strictEqual(contentScriptEval.uniqueContextId, 'some_isolated_world');
             bindingCalled.callback({
                 name: 'cdpAutoconsentSendMessage',
                 payload: JSON.stringify({
@@ -363,7 +379,7 @@ describe('CMPCollector', () => {
                     url: 'some-url',
                     cmp: 'superduperCMP',
                 }),
-                executionContextId: 31337,
+                executionContextId: 2,
             });
             bindingCalled.callback({
                 name: 'cdpAutoconsentSendMessage',
@@ -372,7 +388,7 @@ describe('CMPCollector', () => {
                     url: 'some-url',
                     cmp: 'superduperCMP',
                 }),
-                executionContextId: 31337,
+                executionContextId: 2,
             });
 
             await collector.postLoad();
@@ -394,7 +410,7 @@ describe('CMPCollector', () => {
         describe('CMP with a visible popup - opt-out ON', function() {
             beforeEach(() => {
                 const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
-                assert.strictEqual(contentScriptEval.contextId, 31337);
+                assert.strictEqual(contentScriptEval.uniqueContextId, 'some_isolated_world');
                 bindingCalled.callback({
                     name: 'cdpAutoconsentSendMessage',
                     payload: JSON.stringify({
@@ -402,7 +418,7 @@ describe('CMPCollector', () => {
                         url: 'some-url',
                         cmp: 'superduperCMP',
                     }),
-                    executionContextId: 31337,
+                    executionContextId: 2,
                 });
                 bindingCalled.callback({
                     name: 'cdpAutoconsentSendMessage',
@@ -411,7 +427,7 @@ describe('CMPCollector', () => {
                         url: 'some-url',
                         cmp: 'superduperCMP',
                     }),
-                    executionContextId: 31337,
+                    executionContextId: 2,
                 });
             });
 
@@ -426,7 +442,7 @@ describe('CMPCollector', () => {
                             cmp: 'superduperCMP',
                             result: false,
                         }),
-                        executionContextId: 31337,
+                        executionContextId: 2,
                     });
                     await collector.postLoad();
                     const results = await collector.getData();
@@ -454,7 +470,7 @@ describe('CMPCollector', () => {
                             cmp: 'superduperCMP',
                             result: true,
                         }),
-                        executionContextId: 31337,
+                        executionContextId: 2,
                     });
 
                     bindingCalled.callback({
@@ -464,7 +480,7 @@ describe('CMPCollector', () => {
                             url: 'some-url',
                             cmp: 'superduperCMP',
                         }),
-                        executionContextId: 31337,
+                        executionContextId: 2,
                     });
 
                     await collector.postLoad();
@@ -495,11 +511,15 @@ describe('CMPCollector', () => {
                             cmp: 'superduperCMP',
                             result: true,
                         }),
-                        executionContextId: 3333,
+                        executionContextId: 2,
                     });
-                    assert.strictEqual(collector.selfTestFrame, 3333, 'self-test frame must be remembered');
+                    assert.strictEqual(collector.selfTestFrame, 'some_isolated_world', 'self-test frame must be remembered');
 
-                    assert(!commands.some(cmd => cmd[0] === 'Runtime.evaluate' && cmd[1].contextId === 3333), 'no self-test should be requested yet');
+                    assert(!commands.some(cmd => (
+                        cmd[0] === 'Runtime.evaluate' &&
+                        cmd[1].uniqueContextId === 'some_isolated_world' &&
+                        cmd[1].expression.startsWith('autoconsentReceiveMessage')
+                    )), 'no self-test should be requested yet');
 
                     bindingCalled.callback({
                         name: 'cdpAutoconsentSendMessage',
@@ -508,14 +528,18 @@ describe('CMPCollector', () => {
                             url: 'some-url',
                             cmp: 'superduperCMP',
                         }),
-                        executionContextId: 31337,
+                        executionContextId: 2,
                     });
 
-                    const selfTestRequest = commands.find(cmd => cmd[0] === 'Runtime.evaluate' && cmd[1].contextId === 3333)[1];
+                    const selfTestRequest = commands.find(cmd => (
+                        cmd[0] === 'Runtime.evaluate' &&
+                        cmd[1].uniqueContextId === 'some_isolated_world' &&
+                        cmd[1].expression.startsWith('autoconsentReceiveMessage')
+                    ))[1];
                     assert.deepStrictEqual(selfTestRequest,{
                         expression: `autoconsentReceiveMessage({ type: "selfTest" })`,
                         allowUnsafeEvalBlockedByCSP: true,
-                        contextId: 3333,
+                        uniqueContextId: 'some_isolated_world',
                     }, 'self-test request must be sent');
                 });
 
@@ -528,7 +552,7 @@ describe('CMPCollector', () => {
                             result: true,
                             url: 'some-url',
                         }),
-                        executionContextId: 31337,
+                        executionContextId: 2,
                     });
 
                     await collector.postLoad();
@@ -556,7 +580,7 @@ describe('CMPCollector', () => {
                             result: false,
                             url: 'some-url',
                         }),
-                        executionContextId: 31337,
+                        executionContextId: 2,
                     });
 
                     await collector.postLoad();
