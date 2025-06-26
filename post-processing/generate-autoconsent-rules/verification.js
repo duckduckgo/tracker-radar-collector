@@ -6,7 +6,7 @@ const fs = require('fs');
  * Run LLM to detect potential false positives and false negatives in button detection.
  * @param {import('./main').GlobalParams} globalParams
  */
-export async function verifyButtonTexts(globalParams) {
+async function verifyButtonTexts(globalParams) {
     const { openai, rejectButtonTextsFile, otherButtonTextsFile } = globalParams;
     const FalsePositiveSuggestions = z.object({
         potentiallyIncorrectRejectButtons: z.array(z.string()),
@@ -67,3 +67,7 @@ export async function verifyButtonTexts(globalParams) {
         console.error('Error classifying false negatives:', error);
     }
 }
+
+module.exports = {
+    verifyButtonTexts,
+};
