@@ -7,6 +7,8 @@ const scrapeScript = fs.readFileSync(
     'utf8'
 );
 
+const ISOLATED_WORLD_PREFIX = 'cookiepopupcollector_iw_for_';
+
 /**
  * @param {String|Error} e
  */
@@ -17,7 +19,8 @@ function isIgnoredEvalError(e) {
         error.includes('No frame for given id found') ||
         error.includes('Target closed.') ||
         error.includes('Session closed.') ||
-        error.includes('Cannot find context with specified id')
+        error.includes('Cannot find context with specified id') ||
+        error.includes('uniqueContextId not found')
     );
 }
 
@@ -37,7 +40,7 @@ class CookiePopupCollector extends BaseCollector {
         this._data = [];
         /**
          * maps executionContextId to CDPSession
-         * @type {Map<number, import('puppeteer-core').CDPSession>}
+         * @type {Map<import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId'], import('puppeteer-core').CDPSession>}
          */
         this.cdpSessions = new Map();
         this.log = options.log;
@@ -58,14 +61,16 @@ class CookiePopupCollector extends BaseCollector {
         session.on('Runtime.executionContextCreated', async ({context}) => {
             // ignore context created by puppeteer / our crawler
             if (!context.origin || context.origin === '://' || context.auxData.type !== 'default') {
+                if (context.auxData.type === 'isolated' && context.name.startsWith(ISOLATED_WORLD_PREFIX)) {
+                    this.cdpSessions.set(context.uniqueId, session);
+                }
                 return;
             }
             try {
-                const {executionContextId} = await session.send('Page.createIsolatedWorld', {
+                await session.send('Page.createIsolatedWorld', {
                     frameId: context.auxData.frameId,
-                    worldName: 'crawlercookiepopupcollector',
+                    worldName: `${ISOLATED_WORLD_PREFIX}${context.uniqueId}`,
                 });
-                this.cdpSessions.set(executionContextId, session);
             } catch (e) {
                 if (!isIgnoredEvalError(e)) {
                     this.log(`Error creating isolated world: ${e}`);
@@ -78,11 +83,11 @@ class CookiePopupCollector extends BaseCollector {
      * @returns {Promise<CookiePopupData[]>}
      */
     async getData() {
-        await Promise.all(Array.from(this.cdpSessions.entries()).map(async ([executionContextId, session]) => {
+        await Promise.all(Array.from(this.cdpSessions.entries()).map(async ([executionContextUniqueId, session]) => {
             try {
                 const evalResult = await session.send('Runtime.evaluate', {
                     expression: scrapeScript,
-                    contextId: executionContextId,
+                    uniqueContextId: executionContextUniqueId,
                     returnByValue: true,
                     allowUnsafeEvalBlockedByCSP: true,
                 });
