@@ -34,12 +34,13 @@ const ISOLATED_WORLD_PREFIX = 'cmpcollector_iw_for_';
 /**
  * @param {String|Error} e
  */
-function isIgnoredEvalError(e) {
+function isIgnoredCDPError(e) {
     // ignore evaluation errors (sometimes frames reload too fast)
     const error = (typeof e === 'string') ? e : e.message;
     return (
+        error.includes('TargetCloseError:') ||
         error.includes('No frame for given id found') ||
-        error.includes('Target closed.') ||
+        error.includes('Target closed') ||
         error.includes('Session closed.') ||
         error.includes('Cannot find context with specified id') ||
         error.includes('uniqueContextId not found')
@@ -126,29 +127,36 @@ class CMPCollector extends BaseCollector {
                     const pageWorldUniqueId = context.name.slice(ISOLATED_WORLD_PREFIX.length);
                     this.isolated2pageworld.set(context.uniqueId, pageWorldUniqueId);
                     this.cdpSessions.set(context.uniqueId, session);
-                    await session.send('Runtime.addBinding', {
-                        name: 'cdpAutoconsentSendMessage',
-                        executionContextName: context.name,
-                    });
+
                     session.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
                         if (name === 'cdpAutoconsentSendMessage' && executionContextId === context.id) {
                             try {
                                 const msg = JSON.parse(payload);
                                 await this.handleMessage(msg, context.uniqueId);
                             } catch (e) {
-                                if (!isIgnoredEvalError(e)) {
+                                if (!isIgnoredCDPError(e)) {
                                     this.log(`Could not handle autoconsent message ${payload}`, e);
                                 }
                             }
                         }
                     });
                     try {
+                        await session.send('Runtime.addBinding', {
+                            name: 'cdpAutoconsentSendMessage',
+                            executionContextName: context.name,
+                        });
+                    } catch (e) {
+                        if (!isIgnoredCDPError(e)) {
+                            this.log(`Error adding binding for ${context.uniqueId}: ${e}`);
+                        }
+                    }
+                    try {
                         await session.send('Runtime.evaluate', {
                             expression: contentScript,
                             uniqueContextId: context.uniqueId,
                         });
                     } catch (e) {
-                        if (!isIgnoredEvalError(e)) {
+                        if (!isIgnoredCDPError(e)) {
                             this.log(`Error evaluating content script in ${context.uniqueId}: ${e}`);
                         }
                     }
@@ -161,7 +169,7 @@ class CMPCollector extends BaseCollector {
                     worldName: `${ISOLATED_WORLD_PREFIX}${context.uniqueId}`,
                 });
             } catch (e) {
-                if (!isIgnoredEvalError(e)) {
+                if (!isIgnoredCDPError(e)) {
                     this.log(`Error creating isolated world for ${context.uniqueId}: ${e}`);
                 }
             }
@@ -264,8 +272,15 @@ class CMPCollector extends BaseCollector {
             // eslint-disable-next-line no-param-reassign
             maxTimes = 1;
         }
-        await waitFor(() => Boolean(this.findMessage(msg)), maxTimes, interval);
-        return this.findMessage(msg);
+        try {
+            await waitFor(() => Boolean(this.findMessage(msg)), maxTimes, interval);
+            return this.findMessage(msg);
+        } catch (e) {
+            if (!isIgnoredCDPError(e)) {
+                this.log(`Error waiting for message: ${e}`);
+            }
+            return null;
+        }
     }
 
     /**

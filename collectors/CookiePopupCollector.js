@@ -16,8 +16,9 @@ function isIgnoredEvalError(e) {
     // ignore evaluation errors (sometimes frames reload too fast)
     const error = (typeof e === 'string') ? e : e.message;
     return (
+        error.includes('TargetCloseError:') ||
         error.includes('No frame for given id found') ||
-        error.includes('Target closed.') ||
+        error.includes('Target closed') ||
         error.includes('Session closed.') ||
         error.includes('Cannot find context with specified id') ||
         error.includes('uniqueContextId not found')
