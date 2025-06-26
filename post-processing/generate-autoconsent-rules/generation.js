@@ -75,7 +75,17 @@ function generateAutoconsentRule({ region }, url, popup, button) {
         detectCmp: [{ exists: button.selector }],
         detectPopup: [{ visible: button.selector }],
         optIn: [],
-        optOut: [{ waitForThenClick: button.selector, comment: button.text }],
+        optOut: [
+            { wait: 500 },
+            { waitForThenClick: button.selector, comment: button.text },
+        ],
+        test: [
+            {
+                waitForVisible: button.selector,
+                timeout: 1000,
+                check: 'none',
+            },
+        ],
     };
 }
 
@@ -88,7 +98,7 @@ function generateAutoconsentRule({ region }, url, popup, button) {
  * @param {import('./main').AutoConsentCMPRule[]} matchingRules - Array of existing rules.
  * @returns {{newRules: import('./main').AutoConsentCMPRule[], rulesToOverride: import('./main').AutoConsentCMPRule[], reviewNotes: import('./main').ReviewNote[], keptCount: number}}
  */
-export function generateRulesForSite(globalParams, url, cookiePopups, matchingRules) {
+function generateRulesForSite(globalParams, url, cookiePopups, matchingRules) {
     const { region } = globalParams;
     /** @type {import('./main').AutoConsentCMPRule[]} */
     const newRules = [];
@@ -194,3 +204,7 @@ export function generateRulesForSite(globalParams, url, cookiePopups, matchingRu
     }
     return { newRules, rulesToOverride, reviewNotes, keptCount };
 }
+
+module.exports = {
+    generateRulesForSite,
+};
