@@ -287,7 +287,7 @@ class CMPCollector extends BaseCollector {
         }
 
         // was there a popup?
-        const found = await this.waitForMessage({type: 'popupFound'});
+        const found = await this.waitForMessage({type: 'popupFound'}, 10, 100);
         if (!found) {
             return;
         }
@@ -309,7 +309,7 @@ class CMPCollector extends BaseCollector {
         }
         const doneMsg = /** @type {DoneMessage} */ (await this.waitForMessage({
             type: 'autoconsentDone'
-        }));
+        }, 10, 100));
         if (!doneMsg) {
             return;
         }
@@ -319,7 +319,7 @@ class CMPCollector extends BaseCollector {
             // did self-test succeed?
             await this.waitForMessage({
                 type: 'selfTestResult'
-            });
+            }, 10, 100);
         }
     }
 
