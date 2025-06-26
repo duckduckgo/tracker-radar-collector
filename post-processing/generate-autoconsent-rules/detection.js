@@ -145,7 +145,7 @@ Examples of NON-cookie popup text:
  * @param {import('openai').OpenAI} openai
  * @returns {Promise<import('./main').ProcessedCookiePopup | null>}
  */
-export async function applyDetectionHeuristics(popup, openai) {
+async function applyDetectionHeuristics(popup, openai) {
     const popupText = popup.text?.trim();
     if (!popupText) {
         return null;
@@ -175,3 +175,6 @@ export async function applyDetectionHeuristics(popup, openai) {
     };
 }
 
+module.exports = {
+    applyDetectionHeuristics,
+};
