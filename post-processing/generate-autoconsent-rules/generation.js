@@ -6,18 +6,17 @@
  * @returns {boolean} True if buttons are the same.
  */
 function isSameRejectButton(newButton, existingRule) {
-    if (!existingRule.optOut || existingRule.optOut.length === 0) {
+    if (!existingRule.optOut) {
         return false;
     }
 
-    const existingOptOut = existingRule.optOut[0];
+    const existingOptOut = existingRule.optOut.find(optOut => optOut.waitForThenClick);
+    if (!existingOptOut) {
+        return false;
+    }
 
     // Compare selector
-    if (existingOptOut.waitForThenClick !== newButton.selector) {
-        return false;
-    }
-
-    return true;
+    return existingOptOut.waitForThenClick === newButton.selector;
 }
 
 /**
