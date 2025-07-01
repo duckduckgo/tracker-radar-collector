@@ -93,7 +93,9 @@ class CookiePopupCollector extends BaseCollector {
                 }
                 /** @type {ContentScriptResult} */
                 const result = evalResult.result.value;
-                this._data.push(result);
+                if (result.cleanedText || result.potentialPopups.length > 0) {
+                    this._data.push(result);
+                }
             } catch (e) {
                 if (!isIgnoredEvalError(e)) {
                     console.error('Error evaluating content script:', e);
