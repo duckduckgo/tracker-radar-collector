@@ -17,7 +17,7 @@ function getCollectorIds() {
 }
 
 /**
- * @param {string} id 
+ * @param {string} id
  * @returns {BaseCollector}
  */
 function createCollector(id) {
@@ -45,7 +45,7 @@ module.exports = {
  * @property {import('../collectors/RequestCollector').RequestData[]=} requests
  * @property {string=} screenshots
  * @property {import('../collectors/TargetCollector').TargetData[]=} targets
- * @property {import('../collectors/CookiePopupCollector').CookiePopupData[]=} cookiepopups
+ * @property {import('../collectors/CookiePopupCollector').CookiePopupCollectorResult=} cookiepopups
  */
 
 /**

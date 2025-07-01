@@ -32,7 +32,7 @@ class CookiePopupCollector extends BaseCollector {
      */
     init(options) {
         /**
-         * @type {CookiePopupData[]}
+         * @type {CookiePopupCollectorResult}
          */
         this._data = [];
         /**
@@ -75,9 +75,10 @@ class CookiePopupCollector extends BaseCollector {
     }
 
     /**
-     * @returns {Promise<CookiePopupData[]>}
+     * @returns {Promise<CookiePopupCollectorResult>}
      */
     async getData() {
+        // scrape data from all iframes
         await Promise.all(Array.from(this.cdpSessions.entries()).map(async ([executionContextId, session]) => {
             try {
                 const evalResult = await session.send('Runtime.evaluate', {
@@ -92,9 +93,7 @@ class CookiePopupCollector extends BaseCollector {
                 }
                 /** @type {ContentScriptResult} */
                 const result = evalResult.result.value;
-                for (const potentialPopup of result.potentialPopups) {
-                    this._data.push(potentialPopup);
-                }
+                this._data.push(result);
             } catch (e) {
                 if (!isIgnoredEvalError(e)) {
                     console.error('Error evaluating content script:', e);
@@ -110,6 +109,10 @@ module.exports = CookiePopupCollector;
 
 /**
  * @typedef ContentScriptResult
+ * @property {boolean} isTop
+ * @property {string} origin
+ * @property {string} cleanedText
+ * @property {ButtonData[]} buttons
  * @property {PopupData[]} potentialPopups
  */
 
@@ -118,8 +121,6 @@ module.exports = CookiePopupCollector;
  * @property {string} text
  * @property {string} selector
  * @property {ButtonData[]} buttons
- * @property {boolean} isTop
- * @property {string} origin
  */
 
 /**
@@ -129,9 +130,5 @@ module.exports = CookiePopupCollector;
  */
 
 /**
- * @typedef CookiePopupData
- * @property {string} text
- * @property {ButtonData[]} buttons
- * @property {boolean} isTop
- * @property {string} origin
+ * @typedef {ContentScriptResult[]} CookiePopupCollectorResult
  */
