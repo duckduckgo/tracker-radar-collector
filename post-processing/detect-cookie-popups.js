@@ -24,7 +24,7 @@ While cookie popups are primarily focused on obtaining consent for the use of co
 - consent for other technologies: some popups may also seek consent for other technologies that involve data processing, such as analytics tools, advertising networks, and social media plugins.
 - user preferences: they often allow users to manage their preferences regarding different types of data collection and processing activities.
 
-If the provided text does not look human-readable, for example if it contains only Javascript or CSS code, it might indicate the problem with data collection. Do not classify such cases as cookie popups.
+Note: If the provided text contains only code, it indicates the problem with data collection. Do not classify such cases as cookie popups.
 
 Examples of cookie popup text:
 - "This site uses cookies to improve your experience. By continuing to use our site, you agree to our cookie policy."
@@ -34,6 +34,7 @@ Examples of NON-cookie popup text:
 - "This site is for adults only. By pressing continue, you confirm that you are at least 18 years old."
 - "Help Contact Pricing Company Jobs Research Program Sitemap Privacy Settings Legal Notice Cookie Policy"
 - "Would you like to enable notifications to stay up to date?"
+- "function rn(){return\"EU\"===tn()}var on={};return{require:o,getLookUpTable:c,getListOfCookiesForDeletion:a,getGDPRFlag:g,getGDPRConsent:f,getGDPRConsentString:l,isCouplingMode:s"
     `;
 
     const CookieConsentNoticeClassification = z.object({
@@ -111,13 +112,23 @@ async function main() {
             continue;
         }
 
+        /** @type {import('../collectors/CookiePopupCollector.js').CookiePopupCollectorResult} */
+        const collectorResult = data.data.cookiepopups;
+
         let cookiePopupDetected = null;
-        for (const popup of data.data.cookiepopups) {
-            if (popup.cleanedText) {
-                popup.llmPopupDetected = await checkLLM(openai, popup.cleanedText);
-                console.log(filePath, popup.llmPopupDetected);
-                cookiePopupDetected = cookiePopupDetected || popup.llmPopupDetected;
+        for (const frameContext of collectorResult) {
+            let llmPopupDetected = false;
+            // ask LLM to detect cookie popups in the page text
+            if (frameContext.cleanedText &&
+                (frameContext.isTop || frameContext.buttons.length > 0) // simple heuristic to filter out utility iframes that often cause false positives
+            ) {
+                llmPopupDetected = await checkLLM(openai, frameContext.cleanedText);
+                console.log(filePath, llmPopupDetected);
+            } else {
+                llmPopupDetected = false;
             }
+            cookiePopupDetected = cookiePopupDetected || llmPopupDetected;
+            frameContext.llmPopupDetected = llmPopupDetected;
         }
 
         if (cookiePopupDetected !== null) {
