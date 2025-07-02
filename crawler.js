@@ -414,7 +414,7 @@ async function crawl(url, options) {
             extraExecutionTimeMs,
             collectorFlags: options.collectorFlags
         });
-        data = await wait(crawler.getSiteData(url), maxTotalTimeMs);
+        data = await wait(crawler.getSiteData(url), maxTotalTimeMs, `${url} timed out`);
     } catch(e) {
         log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));
         throw e;

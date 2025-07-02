@@ -29,19 +29,21 @@ window.autoconsentSendMessage = (msg) => {
 };
 ` + baseContentScript;
 
-const worldName = 'cmpcollector';
+const ISOLATED_WORLD_PREFIX = 'cmpcollector_iw_for_';
 
 /**
  * @param {String|Error} e
  */
-function isIgnoredEvalError(e) {
+function isIgnoredCDPError(e) {
     // ignore evaluation errors (sometimes frames reload too fast)
     const error = (typeof e === 'string') ? e : e.message;
     return (
+        error.includes('TargetCloseError:') ||
         error.includes('No frame for given id found') ||
-        error.includes('Target closed.') ||
+        error.includes('Target closed') ||
         error.includes('Session closed.') ||
-        error.includes('Cannot find context with specified id')
+        error.includes('Cannot find context with specified id') ||
+        error.includes('uniqueContextId not found')
     );
 }
 
@@ -59,16 +61,16 @@ class CMPCollector extends BaseCollector {
         this.autoAction = options.collectorFlags.autoconsentAction;
         /** @type {ContentScriptMessage[]} */
         this.receivedMsgs = [];
-        /** @type {number | null} */
+        /** @type {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId'] | null} */
         this.selfTestFrame = null;
         /**
-         * maps executionContextId to page world executionContextId
-         * @type {Map<number, number>}
+         * maps executionContextUniqueId to page world executionContextId
+         * @type {Map<import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId'], import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId']>}
          */
         this.isolated2pageworld = new Map();
         /**
-         * maps executionContextId to CDPSession
-         * @type {Map<number, import('puppeteer-core').CDPSession>}
+         * maps executionContextUniqueId to CDPSession
+         * @type {Map<import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId'], import('puppeteer-core').CDPSession>}
          */
         this.cdpSessions = new Map();
         /** @type {ScanResult} */
@@ -121,41 +123,56 @@ class CMPCollector extends BaseCollector {
         session.on('Runtime.executionContextCreated', async ({context}) => {
             // ignore context created by puppeteer / our crawler
             if (!context.origin || context.origin === '://' || context.auxData.type === 'isolated') {
+                if (context.auxData.type === 'isolated' && context.name.startsWith(ISOLATED_WORLD_PREFIX)) {
+                    const pageWorldUniqueId = context.name.slice(ISOLATED_WORLD_PREFIX.length);
+                    this.isolated2pageworld.set(context.uniqueId, pageWorldUniqueId);
+                    this.cdpSessions.set(context.uniqueId, session);
+
+                    session.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
+                        if (name === 'cdpAutoconsentSendMessage' && executionContextId === context.id) {
+                            try {
+                                const msg = JSON.parse(payload);
+                                await this.handleMessage(msg, context.uniqueId);
+                            } catch (e) {
+                                if (!isIgnoredCDPError(e)) {
+                                    this.log(`Could not handle autoconsent message ${payload}`, e);
+                                }
+                            }
+                        }
+                    });
+                    try {
+                        await session.send('Runtime.addBinding', {
+                            name: 'cdpAutoconsentSendMessage',
+                            executionContextName: context.name,
+                        });
+                    } catch (e) {
+                        if (!isIgnoredCDPError(e)) {
+                            this.log(`Error adding binding for ${context.uniqueId}: ${e}`);
+                        }
+                    }
+                    try {
+                        await session.send('Runtime.evaluate', {
+                            expression: contentScript,
+                            uniqueContextId: context.uniqueId,
+                        });
+                    } catch (e) {
+                        if (!isIgnoredCDPError(e)) {
+                            this.log(`Error evaluating content script in ${context.uniqueId}: ${e}`);
+                        }
+                    }
+                }
                 return;
             }
             try {
-                const {executionContextId} = await session.send('Page.createIsolatedWorld', {
+                await session.send('Page.createIsolatedWorld', {
                     frameId: context.auxData.frameId,
-                    worldName
-                });
-                this.isolated2pageworld.set(executionContextId, context.id);
-                this.cdpSessions.set(executionContextId, session);
-                await session.send('Runtime.evaluate', {
-                    expression: contentScript,
-                    contextId: executionContextId,
+                    worldName: `${ISOLATED_WORLD_PREFIX}${context.uniqueId}`,
                 });
             } catch (e) {
-                if (!isIgnoredEvalError(e)) {
-                    this.log(`Error evaluating content script: ${e}`);
+                if (!isIgnoredCDPError(e)) {
+                    this.log(`Error creating isolated world for ${context.uniqueId}: ${e}`);
                 }
             }
-        });
-
-        session.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
-            if (name === 'cdpAutoconsentSendMessage') {
-                try {
-                    const msg = JSON.parse(payload);
-                    await this.handleMessage(msg, executionContextId);
-                } catch (e) {
-                    if (!isIgnoredEvalError(e)) {
-                        this.log(`Could not handle autoconsent message ${payload}`, e);
-                    }
-                }
-            }
-        });
-        await session.send('Runtime.addBinding', {
-            name: 'cdpAutoconsentSendMessage',
-            executionContextName: worldName,
         });
     }
 
@@ -163,10 +180,10 @@ class CMPCollector extends BaseCollector {
      * Implements autoconsent messaging protocol
      *
      * @param {ContentScriptMessage} msg
-     * @param {number} executionContextId
+     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId']} executionContextUniqueId
      * @returns {Promise<void>}
      */
-    async handleMessage(msg, executionContextId) {
+    async handleMessage(msg, executionContextUniqueId) {
         this.receivedMsgs.push(msg);
         switch (msg.type) {
         case 'init': {
@@ -182,9 +199,9 @@ class CMPCollector extends BaseCollector {
                 detectRetries: 20,
                 isMainWorld: false
             };
-            await this.cdpSessions.get(executionContextId)?.send('Runtime.evaluate', {
+            await this.cdpSessions.get(executionContextUniqueId)?.send('Runtime.evaluate', {
                 expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(autoconsentConfig)} })`,
-                contextId: executionContextId,
+                uniqueContextId: executionContextUniqueId,
             });
             break;
         }
@@ -200,7 +217,7 @@ class CMPCollector extends BaseCollector {
         case 'optInResult':
         case 'optOutResult': {
             if (msg.scheduleSelfTest) {
-                this.selfTestFrame = executionContextId;
+                this.selfTestFrame = executionContextUniqueId;
             }
             break;
         }
@@ -209,23 +226,23 @@ class CMPCollector extends BaseCollector {
                 await this.cdpSessions.get(this.selfTestFrame)?.send('Runtime.evaluate', {
                     expression: `autoconsentReceiveMessage({ type: "selfTest" })`,
                     allowUnsafeEvalBlockedByCSP: true,
-                    contextId: this.selfTestFrame,
+                    uniqueContextId: this.selfTestFrame,
                 });
             }
             break;
         }
         case 'eval': {
             let evalResult = false;
-            const session = this.cdpSessions.get(executionContextId);
+            const session = this.cdpSessions.get(executionContextUniqueId);
             if (!session) {
-                this.log(`Received eval message for executionContextId ${executionContextId} but no session found`);
+                this.log(`Received eval message for executionContextUniqueId ${executionContextUniqueId} but no session found`);
                 break;
             }
             const result = await session.send('Runtime.evaluate', {
                 expression: msg.code,
                 returnByValue: true,
                 allowUnsafeEvalBlockedByCSP: true,
-                contextId: this.isolated2pageworld.get(executionContextId), // this must be done in page world
+                uniqueContextId: this.isolated2pageworld.get(executionContextUniqueId), // this must be done in page world
             });
             if (!result.exceptionDetails) {
                 evalResult = Boolean(result.result.value);
@@ -234,7 +251,7 @@ class CMPCollector extends BaseCollector {
             await session.send('Runtime.evaluate', {
                 expression: `autoconsentReceiveMessage({ id: "${msg.id}", type: "evalResp", result: ${JSON.stringify(evalResult)} })`,
                 allowUnsafeEvalBlockedByCSP: true,
-                contextId: executionContextId,
+                uniqueContextId: executionContextUniqueId,
             });
             break;
         }
@@ -270,7 +287,7 @@ class CMPCollector extends BaseCollector {
         }
 
         // was there a popup?
-        const found = await this.waitForMessage({type: 'popupFound'});
+        const found = await this.waitForMessage({type: 'popupFound'}, 10, 100);
         if (!found) {
             return;
         }
@@ -292,7 +309,7 @@ class CMPCollector extends BaseCollector {
         }
         const doneMsg = /** @type {DoneMessage} */ (await this.waitForMessage({
             type: 'autoconsentDone'
-        }));
+        }, 10, 100));
         if (!doneMsg) {
             return;
         }
@@ -302,7 +319,7 @@ class CMPCollector extends BaseCollector {
             // did self-test succeed?
             await this.waitForMessage({
                 type: 'selfTestResult'
-            });
+            }, 10, 100);
         }
     }
 
