@@ -428,7 +428,11 @@ async function crawl(url, options) {
     } finally {
         // only close the browser if it was created here and not debugging
         if (browser && !VISUAL_DEBUG) {
-            await browser.close();
+            try {
+                await wait(browser.close(), 5000, 'Browser close timed out');
+            } catch (e) {
+                // ignore
+            }
         }
     }
 

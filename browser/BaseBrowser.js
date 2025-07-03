@@ -6,6 +6,9 @@ class BaseBrowser {
         throw new Error('Not implemented');
     }
 
+    /**
+     * @returns {Promise<void>}
+     */
     close() {
         throw new Error('Not implemented');
     }
