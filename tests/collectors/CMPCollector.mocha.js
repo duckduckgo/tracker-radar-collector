@@ -1,6 +1,7 @@
 /* eslint-disable max-lines, func-names, prefer-arrow-callback */
 const CMPCollector = require('../../collectors/CMPCollector');
 const assert = require('assert');
+const sinon = require('sinon');
 
 /**
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
@@ -267,9 +268,11 @@ describe('CMPCollector', () => {
                         type: 'isolated',
                         frameId: 1,
                     },
-                    name: 'cmpcollector_iw_for_some_main_world',
+                    name: 'iw_for_cmps_some_main_world',
                 }
             });
+
+            console.error(listeners);
 
             bindingCalled = listeners.find(a => a.name === 'Runtime.bindingCalled');
             assert(bindingCalled, 'bindingCalled listener was set');
@@ -280,7 +283,7 @@ describe('CMPCollector', () => {
             assert.strictEqual(contentScriptEval.uniqueContextId, 'some_isolated_world');
             await collector.postLoad();
             const results = await collector.getData();
-            assert.deepStrictEqual(results, []);
+            assert.deepStrictEqual(results.cmps, []);
         });
 
         it('no CMP, but detected heuristic patterns', async function() {
@@ -325,7 +328,7 @@ describe('CMPCollector', () => {
 
             await collector.postLoad();
             const results = await collector.getData();
-            assert.deepStrictEqual(results, [{
+            assert.deepStrictEqual(results.cmps, [{
                 name: '',
                 final: false,
                 open: false,
@@ -354,7 +357,7 @@ describe('CMPCollector', () => {
 
             await collector.postLoad();
             const results = await collector.getData();
-            assert.deepStrictEqual(results, [{
+            assert.deepStrictEqual(results.cmps, [{
                 name: 'superduperCMP',
                 final: false,
                 open: false,
@@ -393,7 +396,7 @@ describe('CMPCollector', () => {
 
             await collector.postLoad();
             const results = await collector.getData();
-            assert.deepStrictEqual(results, [{
+            assert.deepStrictEqual(results.cmps, [{
                 name: 'superduperCMP',
                 final: false,
                 open: true,
@@ -446,7 +449,7 @@ describe('CMPCollector', () => {
                     });
                     await collector.postLoad();
                     const results = await collector.getData();
-                    assert.deepStrictEqual(results, [{
+                    assert.deepStrictEqual(results.cmps, [{
                         name: 'superduperCMP',
                         final: false,
                         open: true,
@@ -485,7 +488,7 @@ describe('CMPCollector', () => {
 
                     await collector.postLoad();
                     const results = await collector.getData();
-                    assert.deepStrictEqual(results, [{
+                    assert.deepStrictEqual(results.cmps, [{
                         name: 'superduperCMP',
                         final: true,
                         open: true,
@@ -557,7 +560,7 @@ describe('CMPCollector', () => {
 
                     await collector.postLoad();
                     const results = await collector.getData();
-                    assert.deepStrictEqual(results, [{
+                    assert.deepStrictEqual(results.cmps, [{
                         name: 'superduperCMP',
                         final: true,
                         open: true,
@@ -585,7 +588,7 @@ describe('CMPCollector', () => {
 
                     await collector.postLoad();
                     const results = await collector.getData();
-                    assert.deepStrictEqual(results, [{
+                    assert.deepStrictEqual(results.cmps, [{
                         name: 'superduperCMP',
                         final: true,
                         open: true,
@@ -599,6 +602,69 @@ describe('CMPCollector', () => {
                     }]);
                 });
             });
+        });
+    });
+
+    describe('scrape script', () => {
+        beforeEach(() => {
+            collector.cdpSessions = new Map();
+        });
+
+        it('should retrieve cookie popup data from the page', async () => {
+            const mockSession = {
+                send: sinon.stub(),
+                on: sinon.stub(),
+            };
+
+            const fakePopupData = {
+                potentialPopups: [
+                    {
+                        text: 'This website uses cookies',
+                        selector: 'div.cookie-banner',
+                        buttons: [{ text: 'Accept', selector: 'button.accept' }],
+                        isTop: true,
+                        origin: 'https://example.com'
+                    }
+                ]
+            };
+
+            mockSession.send.withArgs('Runtime.evaluate', sinon.match.any).resolves({
+                result: {
+                    type: 'object',
+                    value: fakePopupData,
+                }
+            });
+
+            // @ts-expect-error passing mock objects
+            collector.cdpSessions.set(1, mockSession);
+
+            const data = await collector.getData();
+            assert.deepStrictEqual(data.potentialPopups, fakePopupData.potentialPopups);
+        });
+
+        it('should handle evaluation errors gracefully', async () => {
+            const mockSession = {
+                send: sinon.stub(),
+                on: sinon.stub(),
+            };
+            mockSession.send.withArgs('Runtime.evaluate', sinon.match.any).resolves({
+                exceptionDetails: {
+                    exceptionId: 1,
+                    text: 'Uncaught',
+                    lineNumber: 1,
+                    columnNumber: 1,
+                    exception: {
+                        type: 'object',
+                        description: 'Something went wrong'
+                    }
+                },
+            });
+
+            // @ts-expect-error passing mock objects
+            collector.cdpSessions.set(1, mockSession);
+
+            const data = await collector.getData();
+            assert.strictEqual(data.potentialPopups.length, 0);
         });
     });
 });

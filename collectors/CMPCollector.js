@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 const fs = require('fs');
 const waitFor = require('../helpers/waitFor');
-const BaseCollector = require('./BaseCollector');
+const ContentScriptCollector = require('./ContentScriptCollector');
 
 /**
  * @typedef { import('./BaseCollector').CollectorInitOptions } CollectorInitOptions
@@ -29,7 +29,10 @@ window.autoconsentSendMessage = (msg) => {
 };
 ` + baseContentScript;
 
-const ISOLATED_WORLD_PREFIX = 'cmpcollector_iw_for_';
+const cookiePopupScrapeScript = fs.readFileSync(
+    require.resolve('./CookiePopups/scrapeScript.js'),
+    'utf8'
+);
 
 /**
  * @param {String|Error} e
@@ -47,7 +50,7 @@ function isIgnoredCDPError(e) {
     );
 }
 
-class CMPCollector extends BaseCollector {
+class CMPCollector extends ContentScriptCollector {
     id() {
         return 'cmps';
     }
@@ -56,7 +59,7 @@ class CMPCollector extends BaseCollector {
      * @param {CollectorInitOptions} options
      */
     init(options) {
-        this.log = options.log;
+        super.init(options);
         this.shortTimeouts = options.collectorFlags.shortTimeouts;
         this.autoAction = options.collectorFlags.autoconsentAction;
         /** @type {ContentScriptMessage[]} */
@@ -79,6 +82,8 @@ class CMPCollector extends BaseCollector {
             patterns: new Set([]),
             filterListMatched: false,
         };
+        /** @type {PopupData[]} */
+        this.cookiePopups = [];
     }
 
     /**
@@ -110,70 +115,42 @@ class CMPCollector extends BaseCollector {
 
     /**
      * @param {import('puppeteer-core').CDPSession} session
-     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
+     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription} context
      */
-    async addTarget(session, targetInfo) {
-        if (targetInfo.type !== 'page' && targetInfo.type !== 'iframe') {
-            return;
-        }
-
-        await session.send('Page.enable');
-        await session.send('Runtime.enable');
-
-        session.on('Runtime.executionContextCreated', async ({context}) => {
-            // ignore context created by puppeteer / our crawler
-            if (!context.origin || context.origin === '://' || context.auxData.type === 'isolated') {
-                if (context.auxData.type === 'isolated' && context.name.startsWith(ISOLATED_WORLD_PREFIX)) {
-                    const pageWorldUniqueId = context.name.slice(ISOLATED_WORLD_PREFIX.length);
-                    this.isolated2pageworld.set(context.uniqueId, pageWorldUniqueId);
-                    this.cdpSessions.set(context.uniqueId, session);
-
-                    session.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
-                        if (name === 'cdpAutoconsentSendMessage' && executionContextId === context.id) {
-                            try {
-                                const msg = JSON.parse(payload);
-                                await this.handleMessage(msg, context.uniqueId);
-                            } catch (e) {
-                                if (!isIgnoredCDPError(e)) {
-                                    this.log(`Could not handle autoconsent message ${payload}`, e);
-                                }
-                            }
-                        }
-                    });
-                    try {
-                        await session.send('Runtime.addBinding', {
-                            name: 'cdpAutoconsentSendMessage',
-                            executionContextName: context.name,
-                        });
-                    } catch (e) {
-                        if (!isIgnoredCDPError(e)) {
-                            this.log(`Error adding binding for ${context.uniqueId}: ${e}`);
-                        }
+    async onIsolatedWorldCreated(session, context) {
+        // FIXME: do not rely on non-unique executionContextId here!
+        session.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
+            if (name === 'cdpAutoconsentSendMessage' && executionContextId === context.id) {
+                try {
+                    const msg = JSON.parse(payload);
+                    await this.handleMessage(msg, context.uniqueId);
+                } catch (e) {
+                    if (!this.isIgnoredCdpError(e)) {
+                        this.log(`Could not handle autoconsent message ${payload}`, e);
                     }
-                    try {
-                        await session.send('Runtime.evaluate', {
-                            expression: contentScript,
-                            uniqueContextId: context.uniqueId,
-                        });
-                    } catch (e) {
-                        if (!isIgnoredCDPError(e)) {
-                            this.log(`Error evaluating content script in ${context.uniqueId}: ${e}`);
-                        }
-                    }
-                }
-                return;
-            }
-            try {
-                await session.send('Page.createIsolatedWorld', {
-                    frameId: context.auxData.frameId,
-                    worldName: `${ISOLATED_WORLD_PREFIX}${context.uniqueId}`,
-                });
-            } catch (e) {
-                if (!isIgnoredCDPError(e)) {
-                    this.log(`Error creating isolated world for ${context.uniqueId}: ${e}`);
                 }
             }
         });
+        try {
+            await session.send('Runtime.addBinding', {
+                name: 'cdpAutoconsentSendMessage',
+                executionContextName: context.name,
+            });
+        } catch (e) {
+            if (!this.isIgnoredCdpError(e)) {
+                this.log(`Error adding binding for ${context.uniqueId}: ${e}`);
+            }
+        }
+        try {
+            await session.send('Runtime.evaluate', {
+                expression: contentScript,
+                uniqueContextId: context.uniqueId,
+            });
+        } catch (e) {
+            if (!this.isIgnoredCdpError(e)) {
+                this.log(`Error evaluating content script in ${context.uniqueId}: ${e}`);
+            }
+        }
     }
 
     /**
@@ -324,11 +301,11 @@ class CMPCollector extends BaseCollector {
     }
 
     /**
-     * @returns {CMPResult[]}
+     * @returns {AutoconsentResult[]}
      */
-    collectResults() {
+    collectCMPResults() {
         /**
-         * @type {CMPResult[]}
+         * @type {AutoconsentResult[]}
          */
         const results = [];
 
@@ -354,7 +331,7 @@ class CMPCollector extends BaseCollector {
             }
             processedCmps.push(msg.cmp);
             /**
-             * @type {CMPResult}
+             * @type {AutoconsentResult}
              */
             const result = {
                 final: Boolean(doneMsg && doneMsg.cmp === msg.cmp),
@@ -393,13 +370,13 @@ class CMPCollector extends BaseCollector {
     /**
      * Called after the crawl to retrieve the data. Can be async, can throw errors.
      *
-     * @returns {Promise<CMPResult[]>}
+     * @returns {Promise<CMPCollectorResult>}
      */
     async getData() {
         await this.waitForFinish();
-        const results = this.collectResults();
-        if (this.scanResult.patterns.size > 0 && results.length === 0) {
-            results.push({
+        const cmps = this.collectCMPResults();
+        if (this.scanResult.patterns.size > 0 && cmps.length === 0) {
+            cmps.push({
                 final: false,
                 name: '',
                 open: false,
@@ -412,12 +389,49 @@ class CMPCollector extends BaseCollector {
                 filterListMatched: this.scanResult.filterListMatched,
             });
         }
-        return results;
+
+        /** @type {PopupData[]} */
+        const potentialPopups = [];
+        await Promise.all(Array.from(this.cdpSessions.entries()).map(async ([executionContextUniqueId, session]) => {
+            try {
+                const evalResult = await session.send('Runtime.evaluate', {
+                    expression: cookiePopupScrapeScript,
+                    uniqueContextId: executionContextUniqueId,
+                    returnByValue: true,
+                    allowUnsafeEvalBlockedByCSP: true,
+                });
+                if (evalResult.exceptionDetails) {
+                    this.log(`Error evaluating content script: ${evalResult.exceptionDetails.text}`);
+                    return;
+                }
+                /** @type {ScrapeScriptResult} */
+                const result = evalResult.result.value;
+                for (const potentialPopup of result.potentialPopups) {
+                    potentialPopups.push(potentialPopup);
+                }
+            } catch (e) {
+                if (!this.isIgnoredCdpError(e)) {
+                    console.error('Error evaluating content script:', e);
+                    this.log(`Error evaluating content script: ${e}`);
+                }
+            }
+        }));
+
+        return {
+            cmps,
+            potentialPopups,
+        };
     }
 }
 
 /**
- * @typedef CMPResult
+ * @typedef CMPCollectorResult
+ * @property {AutoconsentResult[]} cmps
+ * @property {PopupData[]} potentialPopups
+ */
+
+/**
+ * @typedef AutoconsentResult
  * @property {string} name
  * @property {boolean} final
  * @property {boolean} open
@@ -429,5 +443,26 @@ class CMPCollector extends BaseCollector {
  * @property {string[]} snippets
  * @property {boolean} filterListMatched
  */
+
+/**
+ * @typedef ScrapeScriptResult
+ * @property {PopupData[]} potentialPopups
+ */
+
+/**
+ * @typedef PopupData
+ * @property {string} text
+ * @property {string} selector
+ * @property {ButtonData[]} buttons
+ * @property {boolean} isTop
+ * @property {string} origin
+ */
+
+/**
+ * @typedef ButtonData
+ * @property {string} text
+ * @property {string} selector
+ */
+
 
 module.exports = CMPCollector;

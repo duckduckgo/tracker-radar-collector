@@ -141,7 +141,7 @@ Examples of NON-cookie popup text:
 
 /**
  * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
- * @param {import('./main').CookiePopupData} popup
+ * @param {import('./main').PopupData} popup
  * @param {import('openai').OpenAI} openai
  * @returns {Promise<import('./main').ProcessedCookiePopup | null>}
  */
