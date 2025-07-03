@@ -71,9 +71,9 @@ class Crawler {
         this.targets.set(targetInfo.targetId, {targetInfo, session});
         try {
             await this._onTargetAttached(session, targetInfo);
-            this.log(`${targetInfo.url} (${targetInfo.url}) target attached in ${timer.getElapsedTime()}s`);
+            this.log(`${targetInfo.targetId} (${targetInfo.url}) target attached in ${timer.getElapsedTime()}s`);
         } catch (e) {
-            this.log(chalk.yellow(`Could not attach to ${targetInfo.type} ${targetInfo.url}: ${e.message}`));
+            this.log(chalk.yellow(`Could not attach to ${targetInfo.type} ${targetInfo.targetId} (${targetInfo.url}) after ${timer.getElapsedTime()}s: ${e}`));
         }
     }
 
@@ -296,6 +296,7 @@ class Crawler {
      */
     async getSiteData(url) {
         const testStarted = Date.now();
+        const getSiteDataTimer = createTimer();
 
         const conn = this.browserConnection;
         conn.on('Target.targetCreated', this.onTargetCreated.bind(this));
@@ -306,6 +307,7 @@ class Crawler {
         conn.on('Target.targetCrashed', this.onTargetCrashed.bind(this));
 
         await this.initCollectors(url);
+        this.log(`init collectors took ${getSiteDataTimer.getElapsedTime()}s`);
 
         await conn.send('Target.setAutoAttach', {
             autoAttach: true,
@@ -319,9 +321,10 @@ class Crawler {
         });
 
         let timeout = false;
-
+        const navigateMainTargetTimer = createTimer();
         try {
             await this.navigateMainTarget(url.toString(), this.options.maxLoadTimeMs);
+            this.log(`navigate main target took ${navigateMainTargetTimer.getElapsedTime()}s`);
         } catch (e) {
             if (e instanceof TimeoutError) {
                 this.log(chalk.yellow(e.message));
@@ -337,14 +340,18 @@ class Crawler {
             }
         }
 
+        const postLoadCollectorsTimer = createTimer();
         await this.postLoadCollectors();
+        this.log(`post load collectors took ${postLoadCollectorsTimer.getElapsedTime()}s`);
 
         // give website a bit more time for things to settle
         await new Promise(resolve => {
             setTimeout(resolve, this.options.extraExecutionTimeMs);
         });
 
+        const getCollectorDataTimer = createTimer();
         const data = await this.getCollectorData();
+        this.log(`get collector data took ${getCollectorDataTimer.getElapsedTime()}s`);
 
         for (let target of this.targets.values()) {
             target.session.detach().catch(() => {/* ignore */});
@@ -392,7 +399,7 @@ async function crawl(url, options) {
 
     let data = null;
 
-    const maxLoadTimeMs = options.maxLoadTimeMs || 30000;
+    const maxLoadTimeMs = options.maxLoadTimeMs || 60000;
     const extraExecutionTimeMs = options.extraExecutionTimeMs || 2500;
     const maxTotalTimeMs = maxLoadTimeMs * 2;
 
