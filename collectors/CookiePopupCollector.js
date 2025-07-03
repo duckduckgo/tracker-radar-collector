@@ -117,6 +117,7 @@ module.exports = CookiePopupCollector;
  * @property {ButtonData[]} buttons
  * @property {PopupData[]} potentialPopups
  * @property {boolean} [llmPopupDetected]
+ * @property {boolean} [regexPopupDetected]
  */
 
 /**

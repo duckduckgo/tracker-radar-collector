@@ -6,6 +6,7 @@ const chalk =require('chalk');
 const { OpenAI } = require('openai');
 const { z } = require('zod');
 const { zodResponseFormat } = require('openai/helpers/zod');
+const { checkHeuristicPatterns } = require('./generate-autoconsent-rules/detection');
 
 /**
  * @param {import('openai').OpenAI} openai
@@ -99,7 +100,8 @@ async function main() {
         width: 30,
     });
 
-    let sitesWithPopups = 0;
+    let sitesWithPopupsLlm = 0;
+    let sitesWithPopupsRegex = 0;
 
     // TODO: parallelize this
     for (const page of pages) {
@@ -115,25 +117,30 @@ async function main() {
         /** @type {import('../collectors/CookiePopupCollector.js').CookiePopupCollectorResult} */
         const collectorResult = data.data.cookiepopups;
 
-        let cookiePopupDetected = null;
+        let cookiePopupDetectedLlm = null;
+        let cookiePopupDetectedRegex = null;
         for (const frameContext of collectorResult) {
             let llmPopupDetected = false;
+            let regexPopupDetected = false;
             // ask LLM to detect cookie popups in the page text
             if (frameContext.cleanedText &&
                 (frameContext.isTop || frameContext.buttons.length > 0) // simple heuristic to filter out utility iframes that often cause false positives
             ) {
                 llmPopupDetected = await checkLLM(openai, frameContext.cleanedText);
-                console.log(filePath, llmPopupDetected);
-            } else {
-                llmPopupDetected = false;
+                regexPopupDetected = checkHeuristicPatterns(frameContext.cleanedText);
             }
-            cookiePopupDetected = cookiePopupDetected || llmPopupDetected;
+            cookiePopupDetectedLlm = cookiePopupDetectedLlm || llmPopupDetected;
+            cookiePopupDetectedRegex = cookiePopupDetectedRegex || regexPopupDetected;
             frameContext.llmPopupDetected = llmPopupDetected;
+            frameContext.regexPopupDetected = regexPopupDetected;
         }
 
-        if (cookiePopupDetected !== null) {
-            if (cookiePopupDetected) {
-                sitesWithPopups++;
+        if (cookiePopupDetectedLlm !== null || cookiePopupDetectedRegex !== null) {
+            if (cookiePopupDetectedLlm) {
+                sitesWithPopupsLlm++;
+            }
+            if (cookiePopupDetectedRegex) {
+                sitesWithPopupsRegex++;
             }
             fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
         }
@@ -143,6 +150,8 @@ async function main() {
     }
 
     console.log('Done');
+    console.log(`Sites with LLM detected popups: ${sitesWithPopupsLlm} (${sitesWithPopupsLlm / pages.length * 100}%)`);
+    console.log(`Sites with regex detected popups: ${sitesWithPopupsRegex} (${sitesWithPopupsRegex / pages.length * 100}%)`);
 }
 
 main();
