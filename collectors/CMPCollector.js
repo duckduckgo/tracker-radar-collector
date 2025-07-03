@@ -68,8 +68,6 @@ class CMPCollector extends ContentScriptCollector {
             patterns: new Set([]),
             filterListMatched: false,
         };
-        /** @type {PopupData[]} */
-        this.cookiePopups = [];
     }
 
     /**
