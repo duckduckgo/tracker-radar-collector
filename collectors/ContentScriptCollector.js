@@ -50,6 +50,11 @@ class ContentScriptCollector extends BaseCollector {
             return;
         }
 
+        session.on('Runtime.executionContextDestroyed', async ({executionContextUniqueId}) => {
+            this.isolated2pageworld.delete(executionContextUniqueId);
+            this.cdpSessions.delete(executionContextUniqueId);
+        });
+
         // inject the content script into every frame in isolated world
         session.on('Runtime.executionContextCreated', async ({context}) => {
             // new isolated world for our content script
