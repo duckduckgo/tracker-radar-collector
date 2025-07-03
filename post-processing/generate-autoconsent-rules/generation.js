@@ -53,7 +53,7 @@ function generalizeDomain(domain) {
  * Generate an autoconsent rule from a reject button.
  * @param {import('./main').GlobalParams} globalParams
  * @param {string} url - The URL of the site.
- * @param {import('./main').CookiePopupData} popup - The popup object.
+ * @param {import('./main').PopupData} popup - The popup object.
  * @param {import('./main').ButtonData} button - The reject button object.
  * @returns {import('./main').AutoConsentCMPRule} The autoconsent rule.
  */

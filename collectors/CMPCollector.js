@@ -34,22 +34,6 @@ const cookiePopupScrapeScript = fs.readFileSync(
     'utf8'
 );
 
-/**
- * @param {String|Error} e
- */
-function isIgnoredCDPError(e) {
-    // ignore evaluation errors (sometimes frames reload too fast)
-    const error = (typeof e === 'string') ? e : e.message;
-    return (
-        error.includes('TargetCloseError:') ||
-        error.includes('No frame for given id found') ||
-        error.includes('Target closed') ||
-        error.includes('Session closed.') ||
-        error.includes('Cannot find context with specified id') ||
-        error.includes('uniqueContextId not found')
-    );
-}
-
 class CMPCollector extends ContentScriptCollector {
     id() {
         return 'cmps';
@@ -264,7 +248,7 @@ class CMPCollector extends ContentScriptCollector {
         }
 
         // was there a popup?
-        const found = await this.waitForMessage({type: 'popupFound'}, 10, 100);
+        const found = await this.waitForMessage({type: 'popupFound'}, /* maxTimes: */ 10, /* interval: */ 100);
         if (!found) {
             return;
         }

@@ -12,7 +12,7 @@ function isIgnoredCDPError(e) {
         error.includes('TargetCloseError:') ||
         error.includes('No frame for given id found') ||
         error.includes('Target closed') ||
-        error.includes('Session closed.') ||
+        error.includes('Session closed') ||
         error.includes('Cannot find context with specified id') ||
         error.includes('uniqueContextId not found')
     );
@@ -87,8 +87,10 @@ class ContentScriptCollector extends BaseCollector {
      * @abstract
      * @param {import('puppeteer-core').CDPSession} session
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription} context
+     * @returns {Promise<void>}
      */
-    async onIsolatedWorldCreated(session, context) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    onIsolatedWorldCreated(session, context) {
         throw new Error('Not implemented');
     }
 
