@@ -27,7 +27,7 @@ program
     .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
     .option('-a, --disable-anti-bot', 'disable anti bot detection protections injected to every frame')
     .option('--config <path>', 'crawl configuration file')
-    .option('--autoconsent-action <action>', 'dismiss cookie popups. Possible values: optOut, optIn. Works only when cmps collector is enabled.')
+    .option('--autoconsent-action <action>', 'dismiss cookie popups. Possible values: optOut, optIn. Works only when cookiepopups collector is enabled.')
     .option('--chromium-version <version_number>', 'use custom version of chromium')
     .option('--selenium-hub <url>', 'selenium hub endpoint to request browsers from')
     .parse(process.argv);
@@ -137,7 +137,7 @@ async function run({
      * @type {Array<Array<number>>}
      */
     let crawlTimes = [];
-    
+
     // eslint-disable-next-line arrow-parens
     const updateProgress = (/** @type {string} */site = '', /** @type {import('../crawler').CollectResult} */data) => {
         reporters.forEach(reporter => {
@@ -274,7 +274,7 @@ if (!config.urls || !config.output) {
                 dataCollectors: item.dataCollectors.map(id => createCollector(id))
             };
         }
-        
+
         return item;
     });
 

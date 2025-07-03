@@ -32,7 +32,7 @@ Available options:
 - `--chromium-version <version_number>` - use custom version of Chromium (e.g. "843427") instead of using the default
 - `--selenium-hub <url>` - If provided, browsers will be requested from selenium hub instead of spawning local processes (e.g. `--selenium-hub http://my-selenium-hub-host:4444`).
 - `--config <path>` - path to a config file that allows to set all the above settings (and more). Note that CLI flags have a higher priority than settings passed via config. You can find a sample config file in `tests/cli/sampleConfig.json`.
-- `--autoconsent-action <action>` - automatic autoconsent action (requires the `cmps` collector). Possible values: optIn, optOut
+- `--autoconsent-action <action>` - automatic autoconsent action (requires the `cookiepopups` collector). Possible values: optIn, optOut
 
 ### Use it as a module
 
@@ -97,7 +97,7 @@ const data = await crawler(new URL('https://example.com'), {
 ## Output format
 
 Each successfully crawled website will create a separate file named after the website (when using the CLI tool). Output data format is specified in `crawler.js` (see `CollectResult` type definition).
-Additionally, for each crawl `metadata.json` file will be created containing crawl configuration, system configuration and some high-level stats. 
+Additionally, for each crawl `metadata.json` file will be created containing crawl configuration, system configuration and some high-level stats.
 
 ## Data post-processing
 

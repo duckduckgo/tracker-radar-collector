@@ -1,5 +1,5 @@
 /* eslint-disable max-lines, func-names, prefer-arrow-callback */
-const CMPCollector = require('../../collectors/CMPCollector');
+const CookiePopupsCollector = require('../../collectors/CookiePopupsCollector');
 const assert = require('assert');
 const sinon = require('sinon');
 
@@ -44,16 +44,16 @@ const fakeCDPClient = {
     }
 };
 
-describe('CMPCollector', () => {
+describe('CookiePopupsCollector', () => {
     /**
-     * @type {CMPCollector}
+     * @type {CookiePopupsCollector}
      */
     let collector;
 
     beforeEach(async () => {
         commands.splice(0, commands.length);
         listeners.splice(0, listeners.length);
-        collector = new CMPCollector();
+        collector = new CookiePopupsCollector();
         // @ts-ignore no need to provide all params
         collector.init({
             log: () => {},

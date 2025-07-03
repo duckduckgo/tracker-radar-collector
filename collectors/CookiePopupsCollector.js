@@ -36,9 +36,9 @@ const cookiePopupScrapeScript = fs.readFileSync(
     'utf8'
 );
 
-class CMPCollector extends ContentScriptCollector {
+class CookiePopupsCollector extends ContentScriptCollector {
     id() {
-        return 'cmps';
+        return 'cookiepopups';
     }
 
     /**
@@ -354,7 +354,7 @@ class CMPCollector extends ContentScriptCollector {
     /**
      * Called after the crawl to retrieve the data. Can be async, can throw errors.
      *
-     * @returns {Promise<CMPCollectorResult>}
+     * @returns {Promise<CookiePopupsCollectorResult>}
      */
     async getData() {
         await this.waitForFinish();
@@ -409,7 +409,7 @@ class CMPCollector extends ContentScriptCollector {
 }
 
 /**
- * @typedef CMPCollectorResult
+ * @typedef CookiePopupsCollectorResult
  * @property {AutoconsentResult[]} cmps
  * @property {PopupData[]} potentialPopups
  */
@@ -449,4 +449,4 @@ class CMPCollector extends ContentScriptCollector {
  */
 
 
-module.exports = CMPCollector;
+module.exports = CookiePopupsCollector;

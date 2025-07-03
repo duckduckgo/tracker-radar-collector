@@ -203,7 +203,7 @@ function getUniqueSelector(el) {
 }
 
 /**
- * @returns {import('../CMPCollector').ScrapeScriptResult}
+ * @returns {import('../CookiePopupsCollector').ScrapeScriptResult}
  */
 function collectPotentialPopups() {
     const isFramed = window.top !== window || location.ancestorOrigins?.length > 0;
