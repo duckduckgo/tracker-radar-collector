@@ -51,6 +51,7 @@ class ContentScriptCollector extends BaseCollector {
         }
 
         session.on('Runtime.executionContextDestroyed', ({executionContextUniqueId}) => {
+            this.log(`context destroyed ${executionContextUniqueId}`);
             this.isolated2pageworld.delete(executionContextUniqueId);
             this.cdpSessions.delete(executionContextUniqueId);
         });

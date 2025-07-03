@@ -2,6 +2,8 @@
 const fs = require('fs');
 const waitFor = require('../helpers/waitFor');
 const ContentScriptCollector = require('./ContentScriptCollector');
+const { createTimer } = require('../helpers/timer');
+const { wait, TimeoutError } = require('../helpers/wait');
 
 /**
  * @typedef { import('./BaseCollector').CollectorInitOptions } CollectorInitOptions
@@ -347,26 +349,11 @@ class CookiePopupsCollector extends ContentScriptCollector {
      * @returns {Promise<CookiePopupsCollectorResult>}
      */
     async getData() {
-        await this.waitForFinish();
-        const cmps = this.collectCMPResults();
-        if (this.scanResult.patterns.size > 0 && cmps.length === 0) {
-            cmps.push({
-                final: false,
-                name: '',
-                open: false,
-                started: false,
-                succeeded: false,
-                selfTestFail: false,
-                errors: [],
-                patterns: Array.from(this.scanResult.patterns),
-                snippets: Array.from(this.scanResult.snippets),
-                filterListMatched: this.scanResult.filterListMatched,
-            });
-        }
-
         /** @type {PopupData[]} */
         const potentialPopups = [];
-        await Promise.all(Array.from(this.cdpSessions.entries()).map(async ([executionContextUniqueId, session]) => {
+        const scrapeScriptTimer = createTimer();
+        // launch all scrape tasks in parallel
+        const scrapeTasks = Array.from(this.cdpSessions.entries()).map(async ([executionContextUniqueId, session]) => {
             try {
                 const evalResult = await session.send('Runtime.evaluate', {
                     expression: cookiePopupScrapeScript,
@@ -385,12 +372,39 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 }
             } catch (e) {
                 if (!this.isIgnoredCdpError(e)) {
-                    console.error('Error evaluating content script:', e);
-                    this.log(`Error evaluating content script: ${e}`);
+                    this.log(`Error evaluating scrape script: ${e}`);
                 }
             }
-        }));
+        });
 
+        const waitForAutoconsentTimer = createTimer();
+        await this.waitForFinish(); // < 10s
+        this.log(`Waiting for Autoconsent took ${waitForAutoconsentTimer.getElapsedTime()}s`);
+        const cmps = this.collectCMPResults();
+        if (this.scanResult.patterns.size > 0 && cmps.length === 0) {
+            cmps.push({
+                final: false,
+                name: '',
+                open: false,
+                started: false,
+                succeeded: false,
+                selfTestFail: false,
+                errors: [],
+                patterns: Array.from(this.scanResult.patterns),
+                snippets: Array.from(this.scanResult.snippets),
+                filterListMatched: this.scanResult.filterListMatched,
+            });
+        }
+
+        // wait for all scrape tasks to finish, but limit the total time
+        try {
+            await wait(Promise.all(scrapeTasks), 20000, 'Scraping popups timed out');
+        } catch (e) {
+            if (e instanceof TimeoutError) {
+                this.log(e.message);
+            }
+        }
+        this.log(`Scraping ${scrapeTasks.length} frames took ${scrapeScriptTimer.getElapsedTime()}s`);
         return {
             cmps,
             potentialPopups,
