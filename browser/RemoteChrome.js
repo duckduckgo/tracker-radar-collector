@@ -98,7 +98,7 @@ class RemoteChrome extends BaseBrowser {
             try {
                 await this.connection.send('Browser.close');
             } catch (error) {
-                console.error('Error when closing browser connection', error);
+                console.error('Error when closing browser connection', error.message);
             }
             this.connection.dispose();
         }
