@@ -304,7 +304,7 @@ describe('CMPCollector', () => {
             ];
 
             bindingCalled.callback({
-                name: 'cdpAutoconsentSendMessage',
+                name: `cdpAutoconsentSendMessage_some_isolated_world`,
                 payload: JSON.stringify({
                     type: 'report',
                     url: 'some-url',
@@ -346,7 +346,7 @@ describe('CMPCollector', () => {
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
             assert.strictEqual(contentScriptEval.uniqueContextId, 'some_isolated_world');
             bindingCalled.callback({
-                name: 'cdpAutoconsentSendMessage',
+                name: `cdpAutoconsentSendMessage_some_isolated_world`,
                 payload: JSON.stringify({
                     type: 'cmpDetected',
                     url: 'some-url',
@@ -376,7 +376,7 @@ describe('CMPCollector', () => {
             const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
             assert.strictEqual(contentScriptEval.uniqueContextId, 'some_isolated_world');
             bindingCalled.callback({
-                name: 'cdpAutoconsentSendMessage',
+                name: `cdpAutoconsentSendMessage_some_isolated_world`,
                 payload: JSON.stringify({
                     type: 'cmpDetected',
                     url: 'some-url',
@@ -385,7 +385,7 @@ describe('CMPCollector', () => {
                 executionContextId: 2,
             });
             bindingCalled.callback({
-                name: 'cdpAutoconsentSendMessage',
+                name: `cdpAutoconsentSendMessage_some_isolated_world`,
                 payload: JSON.stringify({
                     type: 'popupFound',
                     url: 'some-url',
@@ -415,7 +415,7 @@ describe('CMPCollector', () => {
                 const contentScriptEval = commands.find(cmd => cmd[0] === 'Runtime.evaluate')[1];
                 assert.strictEqual(contentScriptEval.uniqueContextId, 'some_isolated_world');
                 bindingCalled.callback({
-                    name: 'cdpAutoconsentSendMessage',
+                    name: 'cdpAutoconsentSendMessage_some_isolated_world',
                     payload: JSON.stringify({
                         type: 'cmpDetected',
                         url: 'some-url',
@@ -424,7 +424,7 @@ describe('CMPCollector', () => {
                     executionContextId: 2,
                 });
                 bindingCalled.callback({
-                    name: 'cdpAutoconsentSendMessage',
+                    name: 'cdpAutoconsentSendMessage_some_isolated_world',
                     payload: JSON.stringify({
                         type: 'popupFound',
                         url: 'some-url',
@@ -437,7 +437,7 @@ describe('CMPCollector', () => {
             describe('no self-test', function() {
                 it('opt-out failure', async function() {
                     bindingCalled.callback({
-                        name: 'cdpAutoconsentSendMessage',
+                        name: 'cdpAutoconsentSendMessage_some_isolated_world',
                         payload: JSON.stringify({
                             type: 'optOutResult',
                             url: 'some-url',
@@ -465,7 +465,7 @@ describe('CMPCollector', () => {
 
                 it('opt-out success', async function() {
                     bindingCalled.callback({
-                        name: 'cdpAutoconsentSendMessage',
+                        name: 'cdpAutoconsentSendMessage_some_isolated_world',
                         payload: JSON.stringify({
                             type: 'optOutResult',
                             url: 'some-url',
@@ -477,7 +477,7 @@ describe('CMPCollector', () => {
                     });
 
                     bindingCalled.callback({
-                        name: 'cdpAutoconsentSendMessage',
+                        name: 'cdpAutoconsentSendMessage_some_isolated_world',
                         payload: JSON.stringify({
                             type: 'autoconsentDone',
                             url: 'some-url',
@@ -506,7 +506,7 @@ describe('CMPCollector', () => {
             describe('with self-test', function() {
                 beforeEach(() => {
                     bindingCalled.callback({
-                        name: 'cdpAutoconsentSendMessage',
+                        name: 'cdpAutoconsentSendMessage_some_isolated_world',
                         payload: JSON.stringify({
                             type: 'optOutResult',
                             url: 'some-url',
@@ -525,7 +525,7 @@ describe('CMPCollector', () => {
                     )), 'no self-test should be requested yet');
 
                     bindingCalled.callback({
-                        name: 'cdpAutoconsentSendMessage',
+                        name: 'cdpAutoconsentSendMessage_some_isolated_world',
                         payload: JSON.stringify({
                             type: 'autoconsentDone',
                             url: 'some-url',
@@ -548,7 +548,7 @@ describe('CMPCollector', () => {
 
                 it('self-test successful', async function() {
                     bindingCalled.callback({
-                        name: 'cdpAutoconsentSendMessage',
+                        name: 'cdpAutoconsentSendMessage_some_isolated_world',
                         payload: JSON.stringify({
                             type: 'selfTestResult',
                             cmp: 'superduperCMP',
@@ -576,7 +576,7 @@ describe('CMPCollector', () => {
 
                 it('self-test failure', async function() {
                     bindingCalled.callback({
-                        name: 'cdpAutoconsentSendMessage',
+                        name: 'cdpAutoconsentSendMessage_some_isolated_world',
                         payload: JSON.stringify({
                             type: 'selfTestResult',
                             cmp: 'superduperCMP',

@@ -23,9 +23,11 @@ const baseContentScript = fs.readFileSync(
     'utf8'
 );
 
-const contentScript = `
+const BINDING_NAME_PREFIX = 'cdpAutoconsentSendMessage_';
+
+const contentScriptTemplate = `
 window.autoconsentSendMessage = (msg) => {
-    window.cdpAutoconsentSendMessage(JSON.stringify(msg));
+    window.BINDING_NAME(JSON.stringify(msg));
 };
 ` + baseContentScript;
 
@@ -102,9 +104,9 @@ class CMPCollector extends ContentScriptCollector {
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription} context
      */
     async onIsolatedWorldCreated(session, context) {
-        // FIXME: do not rely on non-unique executionContextId here!
-        session.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
-            if (name === 'cdpAutoconsentSendMessage' && executionContextId === context.id) {
+        const bindingName = `${BINDING_NAME_PREFIX}${context.uniqueId}`;
+        session.on('Runtime.bindingCalled', async ({name, payload}) => {
+            if (name === bindingName) {
                 try {
                     const msg = JSON.parse(payload);
                     await this.handleMessage(msg, context.uniqueId);
@@ -117,22 +119,22 @@ class CMPCollector extends ContentScriptCollector {
         });
         try {
             await session.send('Runtime.addBinding', {
-                name: 'cdpAutoconsentSendMessage',
+                name: bindingName,
                 executionContextName: context.name,
             });
         } catch (e) {
             if (!this.isIgnoredCdpError(e)) {
-                this.log(`Error adding binding for ${context.uniqueId}: ${e}`);
+                this.log(`Error adding Autoconsent binding in ${context.uniqueId}: ${e}`);
             }
         }
         try {
             await session.send('Runtime.evaluate', {
-                expression: contentScript,
+                expression: contentScriptTemplate.replace('BINDING_NAME', bindingName),
                 uniqueContextId: context.uniqueId,
             });
         } catch (e) {
             if (!this.isIgnoredCdpError(e)) {
-                this.log(`Error evaluating content script in ${context.uniqueId}: ${e}`);
+                this.log(`Error injecting Autoconsent in ${context.uniqueId}: ${e}`);
             }
         }
     }
