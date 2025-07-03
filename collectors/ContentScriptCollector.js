@@ -45,12 +45,12 @@ class ContentScriptCollector extends BaseCollector {
      * @param {import('puppeteer-core').CDPSession} session
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
-    async addTarget(session, targetInfo) {
+    addTarget(session, targetInfo) {
         if (targetInfo.type !== 'page' && targetInfo.type !== 'iframe') {
             return;
         }
 
-        session.on('Runtime.executionContextDestroyed', async ({executionContextUniqueId}) => {
+        session.on('Runtime.executionContextDestroyed', ({executionContextUniqueId}) => {
             this.isolated2pageworld.delete(executionContextUniqueId);
             this.cdpSessions.delete(executionContextUniqueId);
         });
