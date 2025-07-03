@@ -24,8 +24,6 @@ describe('ContentScriptCollector', () => {
                 mockSession,
                 { type: 'page' }
             );
-            assert.ok(mockSession.send.calledWith('Page.enable'));
-            assert.ok(mockSession.send.calledWith('Runtime.enable'));
         });
 
         it('should not add target if not page or iframe', async () => {

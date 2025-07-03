@@ -268,11 +268,9 @@ describe('CookiePopupsCollector', () => {
                         type: 'isolated',
                         frameId: 1,
                     },
-                    name: 'iw_for_cmps_some_main_world',
+                    name: 'iw_for_cookiepopups_some_main_world',
                 }
             });
-
-            console.error(listeners);
 
             bindingCalled = listeners.find(a => a.name === 'Runtime.bindingCalled');
             assert(bindingCalled, 'bindingCalled listener was set');
