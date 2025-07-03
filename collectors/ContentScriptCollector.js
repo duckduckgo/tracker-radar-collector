@@ -50,9 +50,6 @@ class ContentScriptCollector extends BaseCollector {
             return;
         }
 
-        await session.send('Page.enable');
-        await session.send('Runtime.enable');
-
         // inject the content script into every frame in isolated world
         session.on('Runtime.executionContextCreated', async ({context}) => {
             // new isolated world for our content script
