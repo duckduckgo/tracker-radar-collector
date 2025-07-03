@@ -52,16 +52,6 @@ class CookiePopupsCollector extends ContentScriptCollector {
         this.receivedMsgs = [];
         /** @type {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId'] | null} */
         this.selfTestFrame = null;
-        /**
-         * maps executionContextUniqueId to page world executionContextId
-         * @type {Map<import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId'], import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId']>}
-         */
-        this.isolated2pageworld = new Map();
-        /**
-         * maps executionContextUniqueId to CDPSession
-         * @type {Map<import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId'], import('puppeteer-core').CDPSession>}
-         */
-        this.cdpSessions = new Map();
         /** @type {ScanResult} */
         this.scanResult = {
             snippets: new Set([]),
