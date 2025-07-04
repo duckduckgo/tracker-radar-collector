@@ -161,8 +161,9 @@ function getDocumentText() {
         return result;
     }
 
-    const text = document.documentElement.innerText + ' ' + collectShadowDOMText(document.documentElement);
-    return text.trim();
+    const visibleText = (document.body ?? document.documentElement).innerText;
+    const shadowText = collectShadowDOMText(document.documentElement);
+    return `${visibleText} ${shadowText}`.trim();
 }
 
 /**
