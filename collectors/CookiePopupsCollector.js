@@ -340,7 +340,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
     }
 
     /**
-     * @returns {Promise<PopupData[]>}
+     * @returns {Promise<ScrapeScriptResult[]>}
      */
     scrapePopups() {
         const scrapeScriptTimer = createTimer();
@@ -355,21 +355,21 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 });
                 if (evalResult.exceptionDetails) {
                     this.log(`Error evaluating content script: ${evalResult.exceptionDetails.text}`);
-                    return [];
+                    return null;
                 }
                 /** @type {ScrapeScriptResult} */
                 const result = evalResult.result.value;
-                return result.potentialPopups || [];
+                return result;
             } catch (e) {
                 if (!this.isIgnoredCdpError(e)) {
                     this.log(`Error evaluating scrape script: ${e}`);
                 }
-                return [];
+                return null;
             }
         });
         return Promise.all(scrapeTasks).then(results => {
             this.log(`Scraping ${scrapeTasks.length} frames took ${scrapeScriptTimer.getElapsedTime()}s`);
-            return results.flat();
+            return results.filter(Boolean);
         });
     }
 
@@ -380,7 +380,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
      */
     async getData() {
         // start scraping jobs early
-        const potentialPopupsPromise = this.scrapePopups();
+        const scrapedFramesPromise = this.scrapePopups();
 
         const waitForAutoconsentTimer = createTimer();
         await this.waitForAutoconsentFinish(); // < 10s
@@ -403,11 +403,11 @@ class CookiePopupsCollector extends ContentScriptCollector {
             });
         }
 
-        /** @type {PopupData[]} */
-        let potentialPopups = [];
+        /** @type {ScrapeScriptResult[]} */
+        let scrapedFrames = [];
         // wait for all scrape tasks to finish, but limit the total time
         try {
-            potentialPopups = await wait(potentialPopupsPromise, SCRAPE_TIMEOUT, 'Scraping popups timed out');
+            scrapedFrames = await wait(scrapedFramesPromise, SCRAPE_TIMEOUT, 'Scraping popups timed out');
         } catch (e) {
             if (e instanceof TimeoutError) {
                 this.log(e.message);
@@ -415,7 +415,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
         }
         return {
             cmps,
-            potentialPopups,
+            scrapedFrames,
         };
     }
 }
@@ -423,7 +423,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
 /**
  * @typedef CookiePopupsCollectorResult
  * @property {AutoconsentResult[]} cmps
- * @property {PopupData[]} potentialPopups
+ * @property {ScrapeScriptResult[]} scrapedFrames
  */
 
 /**
@@ -442,6 +442,10 @@ class CookiePopupsCollector extends ContentScriptCollector {
 
 /**
  * @typedef ScrapeScriptResult
+ * @property {boolean} isTop
+ * @property {string} origin
+ * @property {string} cleanedText
+ * @property {ButtonData[]} buttons
  * @property {PopupData[]} potentialPopups
  */
 
@@ -450,8 +454,6 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {string} text
  * @property {string} selector
  * @property {ButtonData[]} buttons
- * @property {boolean} isTop
- * @property {string} origin
  */
 
 /**
