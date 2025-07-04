@@ -7,6 +7,7 @@ const { OpenAI } = require('openai');
 const { z } = require('zod');
 const { zodResponseFormat } = require('openai/helpers/zod');
 const { checkHeuristicPatterns, classifyPopup } = require('./generate-autoconsent-rules/detection');
+const { verifyButtonTexts } = require('./generate-autoconsent-rules/verification');
 
 /**
  * @param {import('openai').OpenAI} openai
@@ -105,6 +106,9 @@ async function main() {
     let sitesWithDetectedPopupLlm = 0;
     let sitesWithDetectedPopupRegex = 0;
 
+    const rejectButtonTexts = new Set();
+    const otherButtonTexts = new Set();
+
     // TODO: parallelize this
     for (const page of pages) {
         const filePath = path.join(crawlDir, page);
@@ -137,6 +141,11 @@ async function main() {
                 }
                 if (popupClassificationResult.regexMatch) {
                     hasDetectedPopupRegex = true;
+                }
+                // Collect button texts for analysis
+                if (popupClassificationResult.llmMatch) {
+                    popup.rejectButtons.flatMap(button => button.text).forEach(b => rejectButtonTexts.add(b));
+                    popup.otherButtons.flatMap(button => button.text).forEach(b => otherButtonTexts.add(b));
                 }
             }
             let llmPopupDetected = false;
@@ -176,11 +185,26 @@ async function main() {
         });
     }
 
+    console.log('Saving button texts to files...');
+    const rejectButtonTextsFile = path.join(crawlDir, '..', 'reject-button-texts.txt');
+    const otherButtonTextsFile = path.join(crawlDir, '..', 'other-button-texts.txt');
+    await fs.promises.writeFile(rejectButtonTextsFile, Array.from(rejectButtonTexts).join('\n'));
+    await fs.promises.writeFile(otherButtonTextsFile, Array.from(otherButtonTexts).join('\n'));
+
+    console.log('Verifying button texts...');
+    await verifyButtonTexts({
+        openai,
+        rejectButtonTextsFile,
+        otherButtonTextsFile,
+    });
+
     console.log('Done');
     console.log(`Sites with LLM detected text (full text page): ${sitesWithPopupsLlm} (${sitesWithPopupsLlm / pages.length * 100}%)`);
     console.log(`Sites with regex detected popups (full text page): ${sitesWithPopupsRegex} (${sitesWithPopupsRegex / pages.length * 100}%)`);
     console.log(`Sites with LLM detected popups (popup elements): ${sitesWithDetectedPopupLlm} (${sitesWithDetectedPopupLlm / pages.length * 100}%)`);
     console.log(`Sites with regex detected popups (popup elements): ${sitesWithDetectedPopupRegex} (${sitesWithDetectedPopupRegex / pages.length * 100}%)`);
+    console.log(`Reject button texts (${rejectButtonTexts.size}) saved in ${rejectButtonTextsFile}`);
+    console.log(`Other button texts (${otherButtonTexts.size}) saved in ${otherButtonTextsFile}`);
 }
 
 main();

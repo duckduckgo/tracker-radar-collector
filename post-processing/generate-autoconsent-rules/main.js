@@ -199,7 +199,7 @@ async function processCookiePopupsForSite(globalParams, {finalUrl, cookiePopupsD
  * @returns {Promise<void>}
  */
 async function processFiles(globalParams, existingRules) {
-    const { crawlDir, region, rejectButtonTextsFile, otherButtonTextsFile, autoconsentManifestFile } = globalParams;
+    const { crawlDir, region, autoconsentManifestFile } = globalParams;
     let totalFiles = 0;
     let totalUnhandled = 0;
     let totalSitesWithNewRules = 0;
@@ -215,8 +215,6 @@ async function processFiles(globalParams, existingRules) {
 
     /** @type {Map<string, AutoconsentSiteManifest>} */
     const autoconsentManifest = new Map();
-    const rejectButtonTexts = new Set();
-    const otherButtonTexts = new Set();
 
     let dir;
     try {
@@ -292,8 +290,6 @@ async function processFiles(globalParams, existingRules) {
             }
         }
     }
-    await fs.promises.writeFile(rejectButtonTextsFile, Array.from(rejectButtonTexts).join('\n'));
-    await fs.promises.writeFile(otherButtonTextsFile, Array.from(otherButtonTexts).join('\n'));
 
     await fs.promises.writeFile(autoconsentManifestFile, JSON.stringify(Object.fromEntries(autoconsentManifest), null, 4));
 
@@ -306,8 +302,6 @@ async function processFiles(globalParams, existingRules) {
     console.log(`Generated ${totalRules} new rules for ${totalSitesWithNewRules} sites`);
     console.log(`Kept ${totalKeptRules} rules for ${totalSitesWithKeptRules} sites`);
     console.log(`Updated ${totalOverriddenRules} rules for ${totalSitesWithOverriddenRules} sites`);
-    console.log(`Reject button texts (${rejectButtonTexts.size}) saved in ${rejectButtonTextsFile}`);
-    console.log(`Other button texts (${otherButtonTexts.size}) saved in ${otherButtonTextsFile}`);
     console.log(`Actions manifest for ${autoconsentManifest.size} sites saved in ${autoconsentManifestFile}`);
 }
 
@@ -341,8 +335,6 @@ async function main() {
 
     const rulesDir = path.join(autoconsentDir, 'rules', 'generated');
     const testDir = path.join(autoconsentDir, 'tests', 'generated');
-    const rejectButtonTextsFile = path.join(crawlDir, 'reject-button-texts.txt');
-    const otherButtonTextsFile = path.join(crawlDir, 'other-button-texts.txt');
     const autoconsentManifestFile = path.join(crawlDir, '..', 'autoconsent-manifest.json');
 
     const openai = new OpenAI({
@@ -366,13 +358,10 @@ async function main() {
         testDir,
         autoconsentDir,
         region,
-        rejectButtonTextsFile,
-        otherButtonTextsFile,
         autoconsentManifestFile,
     };
 
     await processFiles(globalParams, existingRules);
-    await verifyButtonTexts(globalParams);
 }
 
 main();
@@ -443,8 +432,6 @@ main();
  *  testDir: string,
  *  autoconsentDir: string,
  *  region: string,
- *  rejectButtonTextsFile: string,
- *  otherButtonTextsFile: string,
  *  autoconsentManifestFile: string,
  * }} GlobalParams
  */
