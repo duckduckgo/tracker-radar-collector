@@ -5,20 +5,6 @@ const ContentScriptCollector = require('./ContentScriptCollector');
 const { createTimer } = require('../helpers/timer');
 const { wait, TimeoutError } = require('../helpers/wait');
 
-/**
- * @typedef { import('./BaseCollector').CollectorInitOptions } CollectorInitOptions
- * @typedef { import('@duckduckgo/autoconsent/lib/types').AutoAction } AutoAction
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/types').Config } AutoconsentConfig
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').DetectedMessage } DetectedMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').SelfTestResultMessage } SelfTestResultMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').ErrorMessage } ErrorMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage } OptOutResultMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage } OptInResultMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').DoneMessage } DoneMessage
- * @typedef { { snippets: Set<string>, patterns: Set<string>, filterListMatched: boolean } } ScanResult
- */
-
 // @ts-ignore
 const baseContentScript = fs.readFileSync(
     require.resolve('../node_modules/@duckduckgo/autoconsent/dist/autoconsent.playwright.js'),
@@ -26,6 +12,7 @@ const baseContentScript = fs.readFileSync(
 );
 
 const BINDING_NAME_PREFIX = 'cdpAutoconsentSendMessage_';
+const SCRAPE_TIMEOUT = 20000;
 
 const contentScriptTemplate = `
 window.autoconsentSendMessage = (msg) => {
@@ -232,7 +219,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
     /**
      * @returns {Promise<void>}
      */
-    async waitForFinish() {
+    async waitForAutoconsentFinish() {
         // check if anything was detected at all
         const detectedMsg = /** @type {DetectedMessage} */ (await this.waitForMessage({type: 'cmpDetected'}));
         if (!detectedMsg) {
@@ -344,13 +331,9 @@ class CookiePopupsCollector extends ContentScriptCollector {
     }
 
     /**
-     * Called after the crawl to retrieve the data. Can be async, can throw errors.
-     *
-     * @returns {Promise<CookiePopupsCollectorResult>}
+     * @returns {Promise<PopupData[]>}
      */
-    async getData() {
-        /** @type {PopupData[]} */
-        const potentialPopups = [];
+    scrapePopups() {
         const scrapeScriptTimer = createTimer();
         // launch all scrape tasks in parallel
         const scrapeTasks = Array.from(this.cdpSessions.entries()).map(async ([executionContextUniqueId, session]) => {
@@ -363,24 +346,39 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 });
                 if (evalResult.exceptionDetails) {
                     this.log(`Error evaluating content script: ${evalResult.exceptionDetails.text}`);
-                    return;
+                    return [];
                 }
                 /** @type {ScrapeScriptResult} */
                 const result = evalResult.result.value;
-                for (const potentialPopup of result.potentialPopups) {
-                    potentialPopups.push(potentialPopup);
-                }
+                return result.potentialPopups || [];
             } catch (e) {
                 if (!this.isIgnoredCdpError(e)) {
                     this.log(`Error evaluating scrape script: ${e}`);
                 }
+                return [];
             }
         });
+        return Promise.all(scrapeTasks).then(results => {
+            this.log(`Scraping ${scrapeTasks.length} frames took ${scrapeScriptTimer.getElapsedTime()}s`);
+            return results.flat();
+        });
+    }
+
+    /**
+     * Called after the crawl to retrieve the data. Can be async, can throw errors.
+     *
+     * @returns {Promise<CookiePopupsCollectorResult>}
+     */
+    async getData() {
+        // start scraping jobs early
+        const potentialPopupsPromise = this.scrapePopups();
 
         const waitForAutoconsentTimer = createTimer();
-        await this.waitForFinish(); // < 10s
+        await this.waitForAutoconsentFinish(); // < 10s
         this.log(`Waiting for Autoconsent took ${waitForAutoconsentTimer.getElapsedTime()}s`);
         const cmps = this.collectCMPResults();
+
+        // if no cmps were found, but there were heuristic matches, add a fake entry
         if (this.scanResult.patterns.size > 0 && cmps.length === 0) {
             cmps.push({
                 final: false,
@@ -396,15 +394,16 @@ class CookiePopupsCollector extends ContentScriptCollector {
             });
         }
 
+        /** @type {PopupData[]} */
+        let potentialPopups = [];
         // wait for all scrape tasks to finish, but limit the total time
         try {
-            await wait(Promise.all(scrapeTasks), 20000, 'Scraping popups timed out');
+            potentialPopups = await wait(potentialPopupsPromise, SCRAPE_TIMEOUT, 'Scraping popups timed out');
         } catch (e) {
             if (e instanceof TimeoutError) {
                 this.log(e.message);
             }
         }
-        this.log(`Scraping ${scrapeTasks.length} frames took ${scrapeScriptTimer.getElapsedTime()}s`);
         return {
             cmps,
             potentialPopups,
@@ -452,5 +451,18 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {string} selector
  */
 
+/**
+ * @typedef { import('./BaseCollector').CollectorInitOptions } CollectorInitOptions
+ * @typedef { import('@duckduckgo/autoconsent/lib/types').AutoAction } AutoAction
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/types').Config } AutoconsentConfig
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').DetectedMessage } DetectedMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').SelfTestResultMessage } SelfTestResultMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').ErrorMessage } ErrorMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage } OptOutResultMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage } OptInResultMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').DoneMessage } DoneMessage
+ * @typedef { { snippets: Set<string>, patterns: Set<string>, filterListMatched: boolean } } ScanResult
+ */
 
 module.exports = CookiePopupsCollector;
