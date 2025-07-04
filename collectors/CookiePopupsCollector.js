@@ -14,11 +14,17 @@ const baseContentScript = fs.readFileSync(
 const BINDING_NAME_PREFIX = 'cdpAutoconsentSendMessage_';
 const SCRAPE_TIMEOUT = 20000;
 
-const contentScriptTemplate = `
+/**
+ * @param {string} bindingName
+ * @returns {string}
+ */
+function getAutoconsentContentScript(bindingName) {
+    return `
 window.autoconsentSendMessage = (msg) => {
-    window.BINDING_NAME(JSON.stringify(msg));
+    window.${bindingName}(JSON.stringify(msg));
 };
 ` + baseContentScript;
+}
 
 const cookiePopupScrapeScript = fs.readFileSync(
     require.resolve('./CookiePopups/scrapeScript.js'),
@@ -106,7 +112,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
         }
         try {
             await session.send('Runtime.evaluate', {
-                expression: contentScriptTemplate.replace('BINDING_NAME', bindingName),
+                expression: getAutoconsentContentScript(bindingName),
                 uniqueContextId: context.uniqueId,
             });
         } catch (e) {
