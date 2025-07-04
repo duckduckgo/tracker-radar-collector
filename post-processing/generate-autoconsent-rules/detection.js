@@ -177,4 +177,5 @@ async function applyDetectionHeuristics(popup, openai) {
 
 module.exports = {
     applyDetectionHeuristics,
+    checkHeuristicPatterns,
 };
