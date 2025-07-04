@@ -141,7 +141,7 @@ Examples of NON-cookie popup text:
 
 /**
  * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
- * @param {import('./main').PopupData} popup
+ * @param {import('./types').PopupData} popup
  * @param {import('openai').OpenAI} openai
  * @returns {Promise<PopupClassificationResult>}
  */
@@ -154,9 +154,9 @@ async function classifyPopup(popup, openai) {
         llmMatch = await checkLLM(openai, popupText);
     }
 
-    /** @type {import('./main').ButtonData[]} */
+    /** @type {import('./types').ButtonData[]} */
     const rejectButtons = [];
-    /** @type {import('./main').ButtonData[]} */
+    /** @type {import('./types').ButtonData[]} */
     const otherButtons = [];
 
     popup.buttons.forEach(button => {
@@ -179,8 +179,8 @@ async function classifyPopup(popup, openai) {
  * @typedef {Object} PopupClassificationResult
  * @property {boolean} llmMatch
  * @property {boolean} regexMatch
- * @property {import('./main').ButtonData[]} rejectButtons
- * @property {import('./main').ButtonData[]} otherButtons
+ * @property {import('./types').ButtonData[]} rejectButtons
+ * @property {import('./types').ButtonData[]} otherButtons
  */
 
 module.exports = {

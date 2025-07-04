@@ -1,8 +1,7 @@
-
 /**
  * Compare if the same reject button is used in an existing rule.
- * @param {import('./main').ButtonData} newButton - The new button.
- * @param {import('./main').AutoConsentCMPRule} existingRule - The existing rule.
+ * @param {import('./types').ButtonData} newButton - The new button.
+ * @param {import('./types').AutoConsentCMPRule} existingRule - The existing rule.
  * @returns {boolean} True if buttons are the same.
  */
 function isSameRejectButton(newButton, existingRule) {
@@ -50,11 +49,11 @@ function generalizeDomain(domain) {
 
 /**
  * Generate an autoconsent rule from a reject button.
- * @param {import('./main').GlobalParams} globalParams
+ * @param {import('./types').GlobalParams} globalParams
  * @param {string} url - The URL of the site.
- * @param {import('../../collectors/CookiePopupsCollector').ScrapeScriptResult} frame - The frame object.
- * @param {import('./main').ButtonData} button - The reject button object.
- * @returns {import('./main').AutoConsentCMPRule} The autoconsent rule.
+ * @param {import('./types').ScrapeScriptResult} frame - The frame object.
+ * @param {import('./types').ButtonData} button - The reject button object.
+ * @returns {import('./types').AutoConsentCMPRule} The autoconsent rule.
  */
 function generateAutoconsentRule({ region }, url, frame, button) {
     const frameDomain = generalizeDomain(new URL(frame.origin).hostname);
@@ -91,19 +90,19 @@ function generateAutoconsentRule({ region }, url, frame, button) {
 
 /**
  * Analyze existing rules and generate new rules when necessary.
- * @param {import('./main').GlobalParams} globalParams
+ * @param {import('./types').GlobalParams} globalParams
  * @param {string} url - The URL being processed.
- * @param {import('../../collectors/CookiePopupsCollector').CookiePopupsCollectorResult} collectorResult - The collector result.
- * @param {import('./main').AutoConsentCMPRule[]} matchingRules - Array of existing rules.
- * @returns {{newRules: import('./main').AutoConsentCMPRule[], rulesToOverride: import('./main').AutoConsentCMPRule[], reviewNotes: import('./main').ReviewNote[], keptCount: number}}
+ * @param {import('./types').CookiePopupsCollectorResult} collectorResult - The collector result.
+ * @param {import('./types').AutoConsentCMPRule[]} matchingRules - Array of existing rules.
+ * @returns {{newRules: import('./types').AutoConsentCMPRule[], rulesToOverride: import('./types').AutoConsentCMPRule[], reviewNotes: import('./types').ReviewNote[], keptCount: number}}
  */
 function generateRulesForSite(globalParams, url, collectorResult, matchingRules) {
     const { region } = globalParams;
-    /** @type {import('./main').AutoConsentCMPRule[]} */
+    /** @type {import('./types').AutoConsentCMPRule[]} */
     const newRules = [];
-    /** @type {import('./main').AutoConsentCMPRule[]} */
+    /** @type {import('./types').AutoConsentCMPRule[]} */
     const rulesToOverride = [];
-    /** @type {import('./main').ReviewNote[]} */
+    /** @type {import('./types').ReviewNote[]} */
     const reviewNotes = [];
     let keptCount = 0;
 
