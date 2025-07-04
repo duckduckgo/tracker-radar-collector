@@ -359,7 +359,10 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 }
                 /** @type {ScrapeScriptResult} */
                 const result = evalResult.result.value;
-                return result;
+                if (result.cleanedText || result.potentialPopups.length > 0) {
+                    return result;
+                }
+                return null;
             } catch (e) {
                 if (!this.isIgnoredCdpError(e)) {
                     this.log(`Error evaluating scrape script: ${e}`);
