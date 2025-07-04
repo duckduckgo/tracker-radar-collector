@@ -143,7 +143,7 @@ async function processCookiePopupsForSite(globalParams, {finalUrl, collectorResu
 
     const matchingRules = findMatchingExistingRules(finalUrl, collectorResult, existingRules);
     console.log(`Detected ${llmConfirmedPopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`);
-    const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(globalParams, finalUrl, collectorResult, matchingRules);
+    const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(region, finalUrl, collectorResult, matchingRules);
 
     updatedExistingRules.push(...newRules);
     rulesToOverride.forEach(rule => {
