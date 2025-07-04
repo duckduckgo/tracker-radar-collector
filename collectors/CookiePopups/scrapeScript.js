@@ -1,28 +1,7 @@
 /* global window, document, HTMLElement, Node, NodeFilter, location */
 
 const BUTTON_LIKE_ELEMENT_SELECTOR = 'button, input[type="button"], input[type="submit"], a, [role="button"], [class*="button"]';
-const ELEMENT_TAGS_TO_SKIP = [
-    'SCRIPT',
-    'STYLE',
-    'NOSCRIPT',
-    'TEMPLATE',
-    'META',
-    'LINK',
-    'SVG',
-    'CANVAS',
-    'IFRAME',
-    'FRAME',
-    'FRAMESET',
-    'NOFRAMES',
-    'NOEMBED',
-    'AUDIO',
-    'VIDEO',
-    'SOURCE',
-    'TRACK',
-    'PICTURE',
-    'IMG',
-    'MAP',
-];
+const LIMIT_TEXT_LENGTH = 150000;
 
 /**
  * @param {HTMLElement} node
@@ -114,83 +93,45 @@ function getPopupLikeElements() {
 }
 
 function getDocumentText() {
-    let text = '';
-
     /**
      * @param {Node} root
      */
-    function traverseForText(root) {
+    function collectShadowDOMText(root) {
         const walker = document.createTreeWalker(
             root,
-            NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT,
+            NodeFilter.SHOW_ELEMENT,
             {
                 /**
                  * @param {Node} node
                  */
                 acceptNode(node) {
-                    if (node.nodeType === Node.TEXT_NODE) {
-                        // Only accept text nodes with non-whitespace content
-                        const text = node.textContent?.trim();
-                        return text ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
-                    } else if (node.nodeType === Node.ELEMENT_NODE) {
-                        const element = /** @type {HTMLElement} */ (node);
-                        if (ELEMENT_TAGS_TO_SKIP.includes(element.tagName.toUpperCase())) {
-                            return NodeFilter.FILTER_REJECT;
-                        }
-                        // Accept elements with shadow roots for special handling
-                        if (element.shadowRoot) {
-                            return NodeFilter.FILTER_ACCEPT;
-                        }
-                        // Skip other elements but continue traversing their children
-                        return NodeFilter.FILTER_SKIP;
+                    const element = /** @type {HTMLElement} */ (node);
+                    // Accept elements with shadow roots for special handling
+                    if (element.shadowRoot) {
+                        return NodeFilter.FILTER_ACCEPT;
                     }
-                    return NodeFilter.FILTER_REJECT;
+                    // Skip other elements but continue traversing their children
+                    return NodeFilter.FILTER_SKIP;
                 }
             }
         );
 
         let result = '';
         let node = walker.nextNode();
-        const processedButtons = new WeakSet();
 
         while (node) {
-            if (node.nodeType === Node.TEXT_NODE) {
-                // Handle text nodes - check if parent is a button-like element
-                let currentElement = node.parentElement;
-                let isInsideButton = false;
-
-                // Walk up the tree to find if we're inside a button-like element
-                while (currentElement && currentElement !== root) {
-                    if (isButtonLike(currentElement)) {
-                        isInsideButton = true;
-                        // If we haven't processed this button yet, add it with markup
-                        if (!processedButtons.has(currentElement)) {
-                            processedButtons.add(currentElement);
-                            const buttonText = currentElement.innerText.trim() || currentElement.getAttribute('aria-label')?.trim();
-                            if (buttonText) {
-                                result += ' ' + `<button>${buttonText}</button>`;
-                            }
-                        }
-                        break;
-                    }
-                    currentElement = currentElement.parentElement;
+            const element = /** @type {HTMLElement} */ (node);
+            let shadowText = '';
+            for (const child of element.shadowRoot.children) {
+                if (child instanceof HTMLElement) {
+                    shadowText += ' ' + child.innerText;
                 }
-
-                // If not inside a button, add the text directly
-                if (!isInsideButton) {
-                    const text = node.textContent?.trim();
-                    if (text) {
-                        result += ' ' + text;
-                    }
+                if (child.shadowRoot) {
+                    shadowText += ' ' + collectShadowDOMText(child);
                 }
-            } else if (node.nodeType === Node.ELEMENT_NODE) {
-                const element = /** @type {HTMLElement} */ (node);
-                if (element.shadowRoot) {
-                    const shadowText = traverseForText(element.shadowRoot);
-                    if (shadowText) {
-                        result += ' ' + shadowText;
-                    }
-                }
+            }
+            if (shadowText.trim()) {
+                result += ' ' + shadowText.trim();
             }
             node = walker.nextNode();
         }
@@ -198,16 +139,8 @@ function getDocumentText() {
         return result;
     }
 
-    text = traverseForText(document.documentElement);
+    const text = document.documentElement.innerText + ' ' + collectShadowDOMText(document.documentElement);
     return text.trim();
-}
-
-/**
- * @param {HTMLElement} el
- * @returns {boolean}
- */
-function isButtonLike(el) {
-    return el.matches(BUTTON_LIKE_ELEMENT_SELECTOR);
 }
 
 /**
@@ -402,7 +335,7 @@ function scrapePage() {
         isTop: !isFramed,
         origin: window.location.origin,
         buttons: getButtonData(document.documentElement),
-        cleanedText: getDocumentText(),
+        cleanedText: getDocumentText().slice(0, LIMIT_TEXT_LENGTH),
         potentialPopups: collectPotentialPopups(isFramed),
     };
 }
