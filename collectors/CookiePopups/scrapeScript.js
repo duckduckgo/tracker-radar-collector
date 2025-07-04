@@ -2,6 +2,28 @@
 
 const BUTTON_LIKE_ELEMENT_SELECTOR = 'button, input[type="button"], input[type="submit"], a, [role="button"], [class*="button"]';
 const LIMIT_TEXT_LENGTH = 150000;
+const ELEMENT_TAGS_TO_SKIP = [
+    'SCRIPT',
+    'STYLE',
+    'NOSCRIPT',
+    'TEMPLATE',
+    'META',
+    'LINK',
+    'SVG',
+    'CANVAS',
+    'IFRAME',
+    'FRAME',
+    'FRAMESET',
+    'NOFRAMES',
+    'NOEMBED',
+    'AUDIO',
+    'VIDEO',
+    'SOURCE',
+    'TRACK',
+    'PICTURE',
+    'IMG',
+    'MAP',
+];
 
 /**
  * @param {HTMLElement} node
@@ -123,7 +145,7 @@ function getDocumentText() {
             const element = /** @type {HTMLElement} */ (node);
             let shadowText = '';
             for (const child of element.shadowRoot.children) {
-                if (child instanceof HTMLElement) {
+                if (child instanceof HTMLElement && !ELEMENT_TAGS_TO_SKIP.includes(child.tagName)) {
                     shadowText += ' ' + child.innerText;
                 }
                 if (child.shadowRoot) {
