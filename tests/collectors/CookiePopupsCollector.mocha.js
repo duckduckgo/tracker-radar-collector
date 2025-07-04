@@ -637,7 +637,7 @@ describe('CookiePopupsCollector', () => {
             collector.cdpSessions.set(1, mockSession);
 
             const data = await collector.getData();
-            assert.deepStrictEqual(data.potentialPopups, fakePopupData.potentialPopups);
+            assert.deepStrictEqual(data.scrapedFrames.flatMap(frame => frame.potentialPopups), fakePopupData.potentialPopups);
         });
 
         it('should handle evaluation errors gracefully', async () => {
@@ -662,7 +662,7 @@ describe('CookiePopupsCollector', () => {
             collector.cdpSessions.set(1, mockSession);
 
             const data = await collector.getData();
-            assert.strictEqual(data.potentialPopups.length, 0);
+            assert.strictEqual(data.scrapedFrames.flatMap(frame => frame.potentialPopups).length, 0);
         });
     });
 });
