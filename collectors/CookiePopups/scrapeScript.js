@@ -89,12 +89,94 @@ function getPopupLikeElements() {
     return excludeContainers(found);
 }
 
+function getDocumentText() {
+    let text = '';
+
+    /**
+     * @param {ShadowRoot} root
+     */
+    function getShadowText(root) {
+        return traverseForText(root);
+    }
+
+    /**
+     * @param {Node} root
+     */
+    function traverseForText(root) {
+        const walker = document.createTreeWalker(
+            root,
+            NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
+            {
+                /**
+                 * @param {Node} node
+                 */
+                acceptNode(node) {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        // Only accept text nodes that are visible (not just whitespace)
+                        const text = node.textContent?.trim();
+                        return text ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+                    } else if (
+                        // Only accept shadowDOM elements
+                        node.nodeType === Node.ELEMENT_NODE &&
+                        /** @type {HTMLElement} */ (node).shadowRoot
+                    ) {
+                        return NodeFilter.FILTER_ACCEPT;
+                    } else {
+                        return NodeFilter.FILTER_SKIP;
+                    }
+                }
+            }
+        );
+
+        let result = '';
+        let node = walker.nextNode();
+
+        while (node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                // Add text content, but check if parent is visible
+                const parent = node.parentElement;
+                if (parent && isVisible(parent)) {
+                    const textContent = node.textContent?.trim();
+                    result += ' ' + textContent;
+                }
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                const element = /** @type {HTMLElement} */ (node);
+                const shadowText = getShadowText(element.shadowRoot);
+                if (shadowText) {
+                    result += ' ' + shadowText;
+                }
+            }
+            node = walker.nextNode();
+        }
+
+        return result;
+    }
+
+    text = traverseForText(document.documentElement);
+    return text.trim();
+}
+
 /**
  * @param {HTMLElement} el
  * @returns {HTMLElement[]}
  */
-function getButtons(el) {
+function getButtonLikeElements(el) {
     return Array.from(el.querySelectorAll('button, input[type="button"], input[type="submit"], a, [role="button"], [class*="button"]'));
+}
+
+/**
+ * Serialize all actionable buttons on the page
+ * @param {HTMLElement} el
+ * @returns {import('../CookiePopupsCollector').ButtonData[]}
+ */
+function getButtonData(el) {
+    const actionableButtons = excludeContainers(getButtonLikeElements(el))
+        .filter(b => isVisible(b) && !isDisabled(b));
+
+    return actionableButtons.map(b => ({
+        text: b.innerText,
+        selector: getUniqueSelector(b),
+    }));
 }
 
 /**
@@ -212,17 +294,10 @@ function getUniqueSelector(el) {
 }
 
 /**
- * @returns {import('../CookiePopupsCollector').ScrapeScriptResult}
+ * @param {boolean} isFramed
+ * @returns {import('../CookiePopupsCollector').PopupData[]}
  */
-function collectPotentialPopups() {
-    const isFramed = window.top !== window || location.ancestorOrigins?.length > 0;
-    // do not inspect frames that are more than one level deep
-    if (isFramed && window.parent && window.parent !== window.top) {
-        return {
-            potentialPopups: [],
-        };
-    }
-
+function collectPotentialPopups(isFramed) {
     let elements = [];
     if (!isFramed) {
         elements = getPopupLikeElements();
@@ -234,27 +309,48 @@ function collectPotentialPopups() {
         }
     }
 
+    /**
+     * @type {import('../CookiePopupsCollector').PopupData[]}
+     */
     const potentialPopups = [];
 
     // for each potential popup, get the buttons
     for (const el of elements) {
-        const buttons = excludeContainers(getButtons(el))
-            .filter(b => isVisible(b) && !isDisabled(b));
         if (el.innerText) {
             potentialPopups.push({
                 text: el.innerText,
                 selector: getUniqueSelector(el),
-                buttons: buttons.map(b => ({
-                    text: b.innerText,
-                    selector: getUniqueSelector(b),
-                })),
-                isTop: !isFramed,
-                origin: window.location.origin,
+                buttons: getButtonData(el),
             });
         }
     }
 
-    return { potentialPopups };
+    return potentialPopups;
 }
 
-collectPotentialPopups();
+/**
+ * @returns {import('../CookiePopupsCollector').ScrapeScriptResult}
+ */
+function scrapePage() {
+    const isFramed = window.top !== window || location.ancestorOrigins?.length > 0;
+    // do not inspect frames that are more than one level deep
+    if (isFramed && window.parent && window.parent !== window.top) {
+        return {
+            isTop: !isFramed,
+            origin: window.location.origin,
+            buttons: [],
+            cleanedText: '',
+            potentialPopups: [],
+        };
+    }
+
+    return {
+        isTop: !isFramed,
+        origin: window.location.origin,
+        buttons: getButtonData(document.documentElement),
+        cleanedText: getDocumentText(),
+        potentialPopups: collectPotentialPopups(isFramed),
+    };
+}
+
+scrapePage();
