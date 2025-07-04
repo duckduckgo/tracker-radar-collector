@@ -175,21 +175,6 @@ function getButtonLikeElements(el) {
 }
 
 /**
- * Serialize all actionable buttons on the page
- * @param {HTMLElement} el
- * @returns {import('../CookiePopupsCollector').ButtonData[]}
- */
-function getButtonData(el) {
-    const actionableButtons = excludeContainers(getButtonLikeElements(el))
-        .filter(b => isVisible(b) && !isDisabled(b));
-
-    return actionableButtons.map(b => ({
-        text: b.innerText,
-        selector: getUniqueSelector(b),
-    }));
-}
-
-/**
  * Naive selector escaping. Use with caution.
  * @param {string} selector
  * @returns {string}
@@ -301,6 +286,21 @@ function getUniqueSelector(el) {
     }
 
     return selector;
+}
+
+/**
+ * Serialize all actionable buttons on the page
+ * @param {HTMLElement} el
+ * @returns {import('../CookiePopupsCollector').ButtonData[]}
+ */
+function getButtonData(el) {
+    const actionableButtons = excludeContainers(getButtonLikeElements(el))
+        .filter(b => isVisible(b) && !isDisabled(b));
+
+    return actionableButtons.map(b => ({
+        text: b.innerText,
+        selector: getUniqueSelector(b),
+    }));
 }
 
 /**

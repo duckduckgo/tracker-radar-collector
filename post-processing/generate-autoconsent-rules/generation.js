@@ -225,7 +225,7 @@ function generateRulesForSite(region, url, collectorResult, matchingRules) {
 
     // go over all frames, all confirmed popups within them, and all reject buttons inside
     for (const frame of collectorResult.scrapedFrames) {
-        for (const popup of frame.potentialPopups.filter(popup => popup.llmMatch)) {
+        for (const popup of frame.potentialPopups.filter(p => p.llmMatch)) {
             for (const button of popup.rejectButtons) {
                 if (ruleForButtonExists(button, matchingRules, newRules, rulesToOverride)) {
                     // if there is an existing rule with the same reject button, do nothing

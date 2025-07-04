@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { Command } = require('commander');
 const ProgressBar = require('progress');
-const chalk =require('chalk');
+const chalk = require('chalk');
 const { OpenAI } = require('openai');
 const { z } = require('zod');
 const { zodResponseFormat } = require('openai/helpers/zod');
@@ -36,7 +36,7 @@ Examples of NON-cookie popup text:
 - "This site is for adults only. By pressing continue, you confirm that you are at least 18 years old."
 - "Help Contact Pricing Company Jobs Research Program Sitemap Privacy Settings Legal Notice Cookie Policy"
 - "Would you like to enable notifications to stay up to date?"
-- "function rn(){return\"EU\"===tn()}var on={};return{require:o,getLookUpTable:c,getListOfCookiesForDeletion:a,getGDPRFlag:g,getGDPRConsent:f,getGDPRConsentString:l,isCouplingMode:s"
+- "function rn(){return"EU"===tn()}var on={};return{require:o,getLookUpTable:c,getListOfCookiesForDeletion:a,getGDPRFlag:g,getGDPRConsent:f,getGDPRConsentString:l,isCouplingMode:s"
     `;
 
     const CookieConsentNoticeClassification = z.object({
@@ -130,6 +130,7 @@ async function main() {
         for (const frameContext of collectorResult.scrapedFrames) {
             for (let i = 0; i < frameContext.potentialPopups.length; i++) {
                 const popup = frameContext.potentialPopups[i];
+                // eslint-disable-next-line no-await-in-loop
                 const popupClassificationResult = await classifyPopup(popup, openai);
                 // Replace the popup data in place
                 frameContext.potentialPopups[i] = {
@@ -154,6 +155,7 @@ async function main() {
             if (frameContext.cleanedText &&
                 (frameContext.isTop || frameContext.buttons.length > 0) // simple heuristic to filter out utility iframes that often cause false positives
             ) {
+                // eslint-disable-next-line no-await-in-loop
                 llmPopupDetected = await checkLLM(openai, frameContext.cleanedText);
                 regexPopupDetected = checkHeuristicPatterns(frameContext.cleanedText);
             }
