@@ -459,6 +459,10 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {string} text
  * @property {string} selector
  * @property {ButtonData[]} buttons
+ * @property {boolean} [llmMatch]
+ * @property {boolean} [regexMatch]
+ * @property {ButtonData[]} [rejectButtons]
+ * @property {ButtonData[]} [otherButtons]
  */
 
 /**

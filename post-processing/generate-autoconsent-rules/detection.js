@@ -143,15 +143,16 @@ Examples of NON-cookie popup text:
  * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
  * @param {import('./main').PopupData} popup
  * @param {import('openai').OpenAI} openai
- * @returns {Promise<import('./main').ProcessedCookiePopup | null>}
+ * @returns {Promise<PopupClassificationResult>}
  */
-async function applyDetectionHeuristics(popup, openai) {
+async function classifyPopup(popup, openai) {
     const popupText = popup.text?.trim();
-    if (!popupText) {
-        return null;
+    let regexMatch = false;
+    let llmMatch = false;
+    if (popupText) {
+        regexMatch = checkHeuristicPatterns(popupText);
+        llmMatch = await checkLLM(openai, popupText);
     }
-    const regexMatch = checkHeuristicPatterns(popupText);
-    const llmMatch = await checkLLM(openai, popupText);
 
     /** @type {import('./main').ButtonData[]} */
     const rejectButtons = [];
@@ -167,7 +168,6 @@ async function applyDetectionHeuristics(popup, openai) {
     });
 
     return {
-        ...popup,
         llmMatch,
         regexMatch,
         rejectButtons,
@@ -175,7 +175,15 @@ async function applyDetectionHeuristics(popup, openai) {
     };
 }
 
+/**
+ * @typedef {Object} PopupClassificationResult
+ * @property {boolean} llmMatch
+ * @property {boolean} regexMatch
+ * @property {import('./main').ButtonData[]} rejectButtons
+ * @property {import('./main').ButtonData[]} otherButtons
+ */
+
 module.exports = {
-    applyDetectionHeuristics,
+    classifyPopup,
     checkHeuristicPatterns,
 };
