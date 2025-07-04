@@ -114,12 +114,12 @@ async function main() {
             continue;
         }
 
-        /** @type {import('../collectors/CookiePopupCollector.js').CookiePopupCollectorResult} */
+        /** @type {import('../collectors/CookiePopupsCollector.js').CookiePopupsCollectorResult} */
         const collectorResult = data.data.cookiepopups;
 
         let cookiePopupDetectedLlm = null;
         let cookiePopupDetectedRegex = null;
-        for (const frameContext of collectorResult) {
+        for (const frameContext of collectorResult.scrapedFrames) {
             let llmPopupDetected = false;
             let regexPopupDetected = false;
             // ask LLM to detect cookie popups in the page text
