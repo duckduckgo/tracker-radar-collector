@@ -2,9 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { OpenAI } = require('openai');
 const { Command } = require('commander');
-const { applyDetectionHeuristics } = require('./detection.js');
 const { generateRulesForSite } = require('./generation.js');
-const { verifyButtonTexts } = require('./verification.js');
 
 
 /**
@@ -22,16 +20,22 @@ generateCMPTests('${ruleName}', ${JSON.stringify(testUrls)}, {testOptIn: false, 
 /**
  * Find existing rules that match a given URL/domain.
  * @param {string} url - The URL to match against.
- * @param {ProcessedCookiePopup[]} cookiePopups - Array of processed cookie popups.
+ * @param {import('../../collectors/CookiePopupsCollector').CookiePopupsCollectorResult} collectorResult - Array of processed cookie popups.
  * @param {AutoConsentCMPRule[]} existingRules - Array of existing rules.
  * @returns {AutoConsentCMPRule[]} Array of matching existing rules.
  */
-function findMatchingExistingRules(url, cookiePopups, existingRules) {
+function findMatchingExistingRules(url, collectorResult, existingRules) {
     return existingRules.filter(rule => {
         if (rule.runContext && rule.runContext.urlPattern) {
             try {
                 const pattern = new RegExp(rule.runContext.urlPattern);
-                return pattern.test(url) || rule.vendorUrl === url || cookiePopups.some(popup => pattern.test(popup.origin));
+                // rule is a match iff:
+                // urlPattern matches the crawled site
+                return pattern.test(url) ||
+                    // OR vendorUrl matches the crawled site (this is more like a heuristic as vendorUrl is not used by Autoconsent)
+                    rule.vendorUrl === url ||
+                    // OR the rule matched a frame
+                    (rule.runContext?.frame && collectorResult.scrapedFrames.some(frame => pattern.test(frame.origin)));
             } catch {
                 // Invalid regex, skip
                 return false;
@@ -110,11 +114,10 @@ async function writeRuleFiles({rule, url, rulesDir, testDir, autoconsentDir, reg
  * @param {GlobalParams} globalParams
  * @param {{
  *  finalUrl: string, // URL of the site
- *  cookiePopupsData: import('../../collectors/CookiePopupsCollector').PopupData[], // raw cookie popup data
+ *  collectorResult: import('../../collectors/CookiePopupsCollector').CookiePopupsCollectorResult,
  *  existingRules: AutoConsentCMPRule[], // existing Autoconsent rules
  * }} params
  * @returns {Promise<{
- * processedCookiePopups: ProcessedCookiePopup[],
  * newRuleFiles: AutoconsentManifestFileData[],
  * updatedRuleFiles: AutoconsentManifestFileData[],
  * keptCount: number,
@@ -122,13 +125,8 @@ async function writeRuleFiles({rule, url, rulesDir, testDir, autoconsentDir, reg
  * updatedExistingRules: AutoConsentCMPRule[],
  * }>}
  */
-async function processCookiePopupsForSite(globalParams, {finalUrl, cookiePopupsData, existingRules}) {
-    const { openai, rulesDir, testDir, autoconsentDir, region } = globalParams;
-    // filter out popups that are not confirmed by LLM
-    /** @type {ProcessedCookiePopup[]} */
-    const processedCookiePopups = (
-        await Promise.all(cookiePopupsData.map(popup => applyDetectionHeuristics(popup, openai)))
-    ).filter(p => p && p.llmMatch);
+async function processCookiePopupsForSite(globalParams, {finalUrl, collectorResult, existingRules}) {
+    const { rulesDir, testDir, autoconsentDir, region } = globalParams;
 
     /** @type {AutoconsentManifestFileData[]} */
     const newRuleFiles = [];
@@ -137,13 +135,16 @@ async function processCookiePopupsForSite(globalParams, {finalUrl, cookiePopupsD
 
     const updatedExistingRules = structuredClone(existingRules);
 
-    if (processedCookiePopups.length === 0) {
-        return { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount: 0, reviewNotes: [], updatedExistingRules };
+    const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap(frame => frame.potentialPopups).filter(popup => popup.llmMatch);
+
+    // shortcut if no popups with llmMatch
+    if (llmConfirmedPopups.length === 0) {
+        return { newRuleFiles, updatedRuleFiles, keptCount: 0, reviewNotes: [], updatedExistingRules };
     }
 
-    const matchingRules = findMatchingExistingRules(finalUrl, processedCookiePopups, existingRules);
-    console.log(`Detected ${processedCookiePopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`);
-    const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(globalParams, finalUrl, processedCookiePopups, matchingRules);
+    const matchingRules = findMatchingExistingRules(finalUrl, collectorResult, existingRules);
+    console.log(`Detected ${llmConfirmedPopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`);
+    const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(globalParams, finalUrl, collectorResult, matchingRules);
 
     updatedExistingRules.push(...newRules);
     rulesToOverride.forEach(rule => {
@@ -183,7 +184,6 @@ async function processCookiePopupsForSite(globalParams, {finalUrl, cookiePopupsD
     }));
 
     return {
-        processedCookiePopups,
         newRuleFiles,
         updatedRuleFiles,
         keptCount,
@@ -245,25 +245,41 @@ async function processFiles(globalParams, existingRules) {
             continue;
         }
 
-        if (jsonData.data.cookiepopups?.potentialPopups && jsonData.data.cookiepopups.potentialPopups.length > 0) {
-            totalSitesWithPopups++;
+        /** @type {import('../../collectors/CookiePopupsCollector').CookiePopupsCollectorResult} */
+        const collectorResult = jsonData.data.cookiepopups;
+        if (!collectorResult) {
+            console.warn(`Skipping ${fileName}: no cookiepopups data`);
+            continue;
         }
 
-        if (hasKnownCmp(jsonData.data.cookiepopups.cmps)) {
+        if (collectorResult.scrapedFrames.length === 0) {
+            console.warn(`Skipping ${fileName}: no scraped frames data`);
+            continue;
+        }
+
+        totalSitesWithPopups++;
+
+        if (hasKnownCmp(collectorResult.cmps)) {
             totalSitesWithKnownCmps++;
         } else {
-            const { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount, reviewNotes, updatedExistingRules } = await processCookiePopupsForSite(globalParams, {
-                finalUrl: jsonData.finalUrl,
-                cookiePopupsData: jsonData.data.cookiepopups.potentialPopups || [],
-                existingRules: existingRulesAfter,
-            });
-            existingRulesAfter = updatedExistingRules;
-            if (processedCookiePopups.length > 0) {
+            const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap(frame => frame.potentialPopups).filter(popup => popup.llmMatch);
+            /** @type {AutoconsentManifestFileData[]} */
+            let newRuleFiles = [];
+            /** @type {AutoconsentManifestFileData[]} */
+            let updatedRuleFiles = [];
+            let keptCount = 0;
+            /** @type {ReviewNote[]} */
+            let reviewNotes = [];
+
+            if (llmConfirmedPopups.length > 0) {
                 totalUnhandled++;
+                const result = await processCookiePopupsForSite(globalParams, {
+                    finalUrl: jsonData.finalUrl,
+                    collectorResult,
+                    existingRules: existingRulesAfter,
+                });
+                ({ newRuleFiles, updatedRuleFiles, keptCount, reviewNotes, updatedExistingRules: existingRulesAfter } = result);
             }
-            // Collect button texts for analysis
-            processedCookiePopups.flatMap(popup => popup.rejectButtons.map(button => button.text)).forEach(b => rejectButtonTexts.add(b));
-            processedCookiePopups.flatMap(popup => popup.otherButtons.map(button => button.text)).forEach(b => otherButtonTexts.add(b));
 
             if (newRuleFiles.length > 0 || updatedRuleFiles.length > 0 || reviewNotes.length > 0) {
                 autoconsentManifest.set(fileName, {
