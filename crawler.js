@@ -430,7 +430,7 @@ async function crawl(url, options) {
         if (browser && !VISUAL_DEBUG) {
             try {
                 await wait(browser.close(), 5000, 'Browser close timed out');
-            } catch (e) {
+            } catch {
                 // ignore
             }
         }
