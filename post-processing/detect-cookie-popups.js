@@ -6,6 +6,7 @@ const chalk = require('chalk');
 const { OpenAI } = require('openai');
 const { z } = require('zod');
 const { zodResponseFormat } = require('openai/helpers/zod');
+const asyncLib = require('async');
 const { checkHeuristicPatterns, classifyPopup } = require('./generate-autoconsent-rules/detection');
 const { verifyButtonTexts } = require('./generate-autoconsent-rules/verification');
 
@@ -138,10 +139,12 @@ async function main() {
     program
         .description('Detect cookie popups in a crawl')
         .requiredOption('-d, --crawldir <dir>', 'Directory of crawl output to process')
+        .option('-p, --parallel <n>', 'Number of pages to process in parallel', '50')
         .parse(process.argv);
 
     const opts = program.opts();
     const crawlDir = opts.crawldir;
+    const parallel = parseInt(opts.parallel, 10);
 
     if (!process.env.OPENAI_API_KEY) {
         console.error('env variable OPENAI_API_KEY is not set');
@@ -173,15 +176,14 @@ async function main() {
     const rejectButtonTexts = new Set();
     const otherButtonTexts = new Set();
 
-    // TODO: parallelize this
-    for (const page of pages) {
+    await asyncLib.eachLimit(pages, parallel, async page => {
         const filePath = path.join(crawlDir, page);
-        const contents = fs.readFileSync(filePath, 'utf-8');
+        const contents = await fs.promises.readFile(filePath, 'utf-8');
         const data = JSON.parse(contents.toString());
 
         if (!data.data || !data.data.cookiepopups) {
             progressBar.tick({ page });
-            continue;
+            return;
         }
 
         /** @type {import('../collectors/CookiePopupsCollector.js').CookiePopupsCollectorResult} */
@@ -223,12 +225,12 @@ async function main() {
             }
 
             // update the crawl file asynchronously
-            fs.promises.writeFile(filePath, JSON.stringify(data, null, 2));
+            await fs.promises.writeFile(filePath, JSON.stringify(data, null, 2));
         }
         progressBar.tick({
             page,
         });
-    }
+    });
 
     console.log('Saving button texts to files...');
     const rejectButtonTextsFile = path.join(crawlDir, '..', 'reject-button-texts.txt');
