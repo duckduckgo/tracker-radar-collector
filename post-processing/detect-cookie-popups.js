@@ -69,6 +69,70 @@ Examples of NON-cookie popup text:
     return false;
 }
 
+/**
+ * @param {import('../collectors/CookiePopupsCollector.js').ScrapeScriptResult} frameContext
+ * @param {import('openai').OpenAI} openai
+ * @returns {Promise<{hasDetectedPopupLlm: boolean, hasDetectedPopupRegex: boolean, rejectButtonTexts: Set<string>, otherButtonTexts: Set<string>}>}
+ */
+async function classifyPotentialPopups(frameContext, openai) {
+    let hasDetectedPopupLlm = false;
+    let hasDetectedPopupRegex = false;
+    const rejectButtonTexts = new Set();
+    const otherButtonTexts = new Set();
+    for (let i = 0; i < frameContext.potentialPopups.length; i++) {
+        const popup = frameContext.potentialPopups[i];
+        // eslint-disable-next-line no-await-in-loop
+        const popupClassificationResult = await classifyPopup(popup, openai);
+        // Replace the popup data in place
+        frameContext.potentialPopups[i] = {
+            ...popup,
+            ...popupClassificationResult,
+        };
+        if (popupClassificationResult.llmMatch) {
+            hasDetectedPopupLlm = true;
+        }
+        if (popupClassificationResult.regexMatch) {
+            hasDetectedPopupRegex = true;
+        }
+        // Collect button texts for analysis
+        if (popupClassificationResult.llmMatch) {
+            popup.rejectButtons.flatMap(button => button.text).forEach(b => rejectButtonTexts.add(b));
+            popup.otherButtons.flatMap(button => button.text).forEach(b => otherButtonTexts.add(b));
+        }
+    }
+    return {
+        hasDetectedPopupLlm,
+        hasDetectedPopupRegex,
+        rejectButtonTexts,
+        otherButtonTexts,
+    };
+}
+
+/**
+ * @param {import('../collectors/CookiePopupsCollector.js').ScrapeScriptResult} frameContext
+ * @param {import('openai').OpenAI} openai
+ * @returns {Promise<{llmPopupDetected: boolean, regexPopupDetected: boolean}>}
+ */
+async function classifyDocument(frameContext, openai) {
+    let llmPopupDetected = false;
+    let regexPopupDetected = false;
+    // ask LLM to detect cookie popups in the page text
+    if (frameContext.cleanedText &&
+        (frameContext.isTop || frameContext.buttons.length > 0) // simple heuristic to filter out utility iframes that often cause false positives
+    ) {
+        // eslint-disable-next-line no-await-in-loop
+        llmPopupDetected = await checkLLM(openai, frameContext.cleanedText);
+        regexPopupDetected = checkHeuristicPatterns(frameContext.cleanedText);
+        // TODO: classify buttons (reject & other)
+    }
+    frameContext.llmPopupDetected = llmPopupDetected;
+    frameContext.regexPopupDetected = regexPopupDetected;
+    return {
+        llmPopupDetected,
+        regexPopupDetected,
+    };
+}
+
 async function main() {
     const program = new Command();
     program
@@ -127,42 +191,21 @@ async function main() {
         let cookiePopupDetectedRegex = false;
         let hasDetectedPopupLlm = false;
         let hasDetectedPopupRegex = false;
+
         for (const frameContext of collectorResult.scrapedFrames) {
-            for (let i = 0; i < frameContext.potentialPopups.length; i++) {
-                const popup = frameContext.potentialPopups[i];
-                // eslint-disable-next-line no-await-in-loop
-                const popupClassificationResult = await classifyPopup(popup, openai);
-                // Replace the popup data in place
-                frameContext.potentialPopups[i] = {
-                    ...popup,
-                    ...popupClassificationResult,
-                };
-                if (popupClassificationResult.llmMatch) {
-                    hasDetectedPopupLlm = true;
-                }
-                if (popupClassificationResult.regexMatch) {
-                    hasDetectedPopupRegex = true;
-                }
-                // Collect button texts for analysis
-                if (popupClassificationResult.llmMatch) {
-                    popup.rejectButtons.flatMap(button => button.text).forEach(b => rejectButtonTexts.add(b));
-                    popup.otherButtons.flatMap(button => button.text).forEach(b => otherButtonTexts.add(b));
-                }
-            }
-            let llmPopupDetected = false;
-            let regexPopupDetected = false;
-            // ask LLM to detect cookie popups in the page text
-            if (frameContext.cleanedText &&
-                (frameContext.isTop || frameContext.buttons.length > 0) // simple heuristic to filter out utility iframes that often cause false positives
-            ) {
-                // eslint-disable-next-line no-await-in-loop
-                llmPopupDetected = await checkLLM(openai, frameContext.cleanedText);
-                regexPopupDetected = checkHeuristicPatterns(frameContext.cleanedText);
-            }
-            cookiePopupDetectedLlm = cookiePopupDetectedLlm || llmPopupDetected;
-            cookiePopupDetectedRegex = cookiePopupDetectedRegex || regexPopupDetected;
-            frameContext.llmPopupDetected = llmPopupDetected;
-            frameContext.regexPopupDetected = regexPopupDetected;
+            // First, go over potential popups and classify them individually
+            // eslint-disable-next-line no-await-in-loop
+            const popupClassificationResult = await classifyPotentialPopups(frameContext, openai);
+            hasDetectedPopupLlm = hasDetectedPopupLlm || popupClassificationResult.hasDetectedPopupLlm;
+            hasDetectedPopupRegex = hasDetectedPopupRegex || popupClassificationResult.hasDetectedPopupRegex;
+            popupClassificationResult.rejectButtonTexts.forEach(b => rejectButtonTexts.add(b));
+            popupClassificationResult.otherButtonTexts.forEach(b => otherButtonTexts.add(b));
+
+            // Then, classify based on the full document text
+            // eslint-disable-next-line no-await-in-loop
+            const documentClassificationResult = await classifyDocument(frameContext, openai);
+            cookiePopupDetectedLlm = cookiePopupDetectedLlm || documentClassificationResult.llmPopupDetected;
+            cookiePopupDetectedRegex = cookiePopupDetectedRegex || documentClassificationResult.regexPopupDetected;
         }
 
         if (collectorResult.scrapedFrames.length > 0) {
@@ -179,7 +222,7 @@ async function main() {
                 sitesWithDetectedPopupRegex++;
             }
 
-            // do not wait for it to finish
+            // update the crawl file asynchronously
             fs.promises.writeFile(filePath, JSON.stringify(data, null, 2));
         }
         progressBar.tick({
