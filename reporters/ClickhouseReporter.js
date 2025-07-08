@@ -211,6 +211,8 @@ class ClickhouseReporter extends BaseReporter {
                 this.queue.elements.push([this.crawlId, pageId, data.data.elements.present, data.data.elements.visible]);
             }
             if (data.data.cookiepopups) {
+                const llmPopupDetected = data.data.cookiepopups.scrapedFrames.some(f => f.llmPopupDetected);
+                const regexPopupDetected = data.data.cookiepopups.scrapedFrames.some(f => f.regexPopupDetected);
                 const cmpRows = data.data.cookiepopups.cmps.map(c => [
                     this.crawlId,
                     pageId,
@@ -224,6 +226,8 @@ class ClickhouseReporter extends BaseReporter {
                     c.patterns || [],
                     c.snippets || [],
                     c.filterListMatched || false,
+                    llmPopupDetected,
+                    regexPopupDetected,
                 ]);
                 this.queue.cmps = this.queue.cmps.concat(cmpRows);
             }
