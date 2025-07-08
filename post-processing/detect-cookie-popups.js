@@ -97,8 +97,8 @@ async function classifyPotentialPopups(frameContext, openai) {
         }
         // Collect button texts for analysis
         if (popupClassificationResult.llmMatch) {
-            popup.rejectButtons.flatMap(button => button.text).forEach(b => rejectButtonTexts.add(b));
-            popup.otherButtons.flatMap(button => button.text).forEach(b => otherButtonTexts.add(b));
+            popupClassificationResult.rejectButtons.flatMap(button => button.text).forEach(b => rejectButtonTexts.add(b));
+            popupClassificationResult.otherButtons.flatMap(button => button.text).forEach(b => otherButtonTexts.add(b));
         }
     }
     return {
