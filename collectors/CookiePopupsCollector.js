@@ -87,7 +87,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription} context
      */
     async onIsolatedWorldCreated(session, context) {
-        const bindingName = `${BINDING_NAME_PREFIX}${context.uniqueId}`;
+        const bindingName = `${BINDING_NAME_PREFIX}${context.uniqueId.replace(/\W/g, '_')}`;
         session.on('Runtime.bindingCalled', async ({name, payload}) => {
             if (name === bindingName) {
                 try {
@@ -111,10 +111,13 @@ class CookiePopupsCollector extends ContentScriptCollector {
             }
         }
         try {
-            await session.send('Runtime.evaluate', {
+            const evalResult = await session.send('Runtime.evaluate', {
                 expression: getAutoconsentContentScript(bindingName),
                 uniqueContextId: context.uniqueId,
             });
+            if (evalResult.exceptionDetails) {
+                throw new Error(`Content script injection failed: ${evalResult.exceptionDetails.text}`);
+            }
         } catch (e) {
             if (!this.isIgnoredCdpError(e)) {
                 this.log(`Error injecting Autoconsent in ${context.uniqueId}: ${e}`);
