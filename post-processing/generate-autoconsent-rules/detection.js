@@ -140,6 +140,26 @@ Examples of NON-cookie popup text:
 }
 
 /**
+ * @param {import('./types').ButtonData[]} buttons
+ * @returns {{rejectButtons: import('./types').ButtonData[], otherButtons: import('./types').ButtonData[]}}
+ */
+function classifyButtons(buttons) {
+    const rejectButtons = [];
+    const otherButtons = [];
+    for (const button of buttons) {
+        if (isRejectButton(button.text)) {
+            rejectButtons.push(button);
+        } else {
+            otherButtons.push(button);
+        }
+    }
+    return {
+        rejectButtons,
+        otherButtons,
+    };
+}
+
+/**
  * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
  * @param {import('./types').PopupData} popup
  * @param {import('openai').OpenAI} openai
@@ -154,18 +174,7 @@ async function classifyPopup(popup, openai) {
         llmMatch = await checkLLM(openai, popupText);
     }
 
-    /** @type {import('./types').ButtonData[]} */
-    const rejectButtons = [];
-    /** @type {import('./types').ButtonData[]} */
-    const otherButtons = [];
-
-    popup.buttons.forEach(button => {
-        if (isRejectButton(button.text)) {
-            rejectButtons.push(button);
-        } else {
-            otherButtons.push(button);
-        }
-    });
+    const { rejectButtons, otherButtons } = classifyButtons(popup.buttons);
 
     return {
         llmMatch,
@@ -184,6 +193,7 @@ async function classifyPopup(popup, openai) {
  */
 
 module.exports = {
+    classifyButtons,
     classifyPopup,
     checkHeuristicPatterns,
 };

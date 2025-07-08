@@ -7,7 +7,7 @@ const { OpenAI } = require('openai');
 const { z } = require('zod');
 const { zodResponseFormat } = require('openai/helpers/zod');
 const asyncLib = require('async');
-const { checkHeuristicPatterns, classifyPopup } = require('./generate-autoconsent-rules/detection');
+const { checkHeuristicPatterns, classifyPopup, classifyButtons } = require('./generate-autoconsent-rules/detection');
 const { verifyButtonTexts } = require('./generate-autoconsent-rules/verification');
 
 /**
@@ -124,7 +124,9 @@ async function classifyDocument(frameContext, openai) {
         // eslint-disable-next-line no-await-in-loop
         llmPopupDetected = await checkLLM(openai, frameContext.cleanedText);
         regexPopupDetected = checkHeuristicPatterns(frameContext.cleanedText);
-        // TODO: classify buttons (reject & other)
+        const { rejectButtons, otherButtons } = classifyButtons(frameContext.buttons);
+        frameContext.rejectButtons = rejectButtons;
+        frameContext.otherButtons = otherButtons;
     }
     frameContext.llmPopupDetected = llmPopupDetected;
     frameContext.regexPopupDetected = regexPopupDetected;
