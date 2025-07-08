@@ -43,7 +43,7 @@ function findMatchingExistingRules(url, cookiePopups, existingRules) {
 
 /**
  * Determine if a site should be processed for cookie popup rules based on existing CMP detection.
- * @param {import('../../collectors/CMPCollector').CMPResult[]} cmps - The detected CMPs.
+ * @param {import('../../collectors/CookiePopupsCollector').AutoconsentResult[]} cmps - The detected CMPs.
  * @returns {boolean} True if the site should be processed (no known CMPs found).
  */
 function hasKnownCmp(cmps) {
@@ -110,7 +110,7 @@ async function writeRuleFiles({rule, url, rulesDir, testDir, autoconsentDir, reg
  * @param {GlobalParams} globalParams
  * @param {{
  *  finalUrl: string, // URL of the site
- *  cookiePopupsData: import('../../collectors/CookiePopupCollector').CookiePopupData[], // raw cookie popup data
+ *  cookiePopupsData: import('../../collectors/CookiePopupsCollector').PopupData[], // raw cookie popup data
  *  existingRules: AutoConsentCMPRule[], // existing Autoconsent rules
  * }} params
  * @returns {Promise<{
@@ -247,16 +247,16 @@ async function processFiles(globalParams, existingRules) {
             continue;
         }
 
-        if (jsonData.data.cookiepopups && jsonData.data.cookiepopups.length > 0) {
+        if (jsonData.data.cookiepopups?.potentialPopups && jsonData.data.cookiepopups.potentialPopups.length > 0) {
             totalSitesWithPopups++;
         }
 
-        if (hasKnownCmp(jsonData.data.cmps)) {
+        if (hasKnownCmp(jsonData.data.cookiepopups.cmps)) {
             totalSitesWithKnownCmps++;
         } else {
             const { processedCookiePopups, newRuleFiles, updatedRuleFiles, keptCount, reviewNotes, updatedExistingRules } = await processCookiePopupsForSite(globalParams, {
                 finalUrl: jsonData.finalUrl,
-                cookiePopupsData: jsonData.data.cookiepopups || [],
+                cookiePopupsData: jsonData.data.cookiepopups.potentialPopups || [],
                 existingRules: existingRulesAfter,
             });
             existingRulesAfter = updatedExistingRules;
@@ -380,19 +380,18 @@ main();
 /**
  * @typedef {{
  *  data: {
- *      cmps: import('../../collectors/CMPCollector').CMPResult[];
- *      cookiepopups: import('../../collectors/CookiePopupCollector').CookiePopupData[];
+ *      cookiepopups: import('../../collectors/CookiePopupsCollector').CookiePopupsCollectorResult;
  *  };
  *  finalUrl: string;
  * }} CrawlData
  */
 
 /**
- * @typedef {import('../../collectors/CookiePopupCollector').ButtonData} ButtonData
+ * @typedef {import('../../collectors/CookiePopupsCollector').ButtonData} ButtonData
  */
 
 /**
- * @typedef {import('../../collectors/CookiePopupCollector').CookiePopupData} CookiePopupData
+ * @typedef {import('../../collectors/CookiePopupsCollector').PopupData} PopupData
  */
 
 /**
@@ -400,7 +399,7 @@ main();
  */
 
 /**
- * @typedef {CookiePopupData & {
+ * @typedef {PopupData & {
  *  llmMatch: boolean;
  *  regexMatch: boolean;
  *  rejectButtons: ButtonData[];

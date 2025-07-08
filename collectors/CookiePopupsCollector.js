@@ -1,21 +1,9 @@
 /* eslint-disable max-lines */
 const fs = require('fs');
 const waitFor = require('../helpers/waitFor');
-const BaseCollector = require('./BaseCollector');
-
-/**
- * @typedef { import('./BaseCollector').CollectorInitOptions } CollectorInitOptions
- * @typedef { import('@duckduckgo/autoconsent/lib/types').AutoAction } AutoAction
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/types').Config } AutoconsentConfig
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').DetectedMessage } DetectedMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').SelfTestResultMessage } SelfTestResultMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').ErrorMessage } ErrorMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage } OptOutResultMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage } OptInResultMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').DoneMessage } DoneMessage
- * @typedef { { snippets: Set<string>, patterns: Set<string>, filterListMatched: boolean } } ScanResult
- */
+const ContentScriptCollector = require('./ContentScriptCollector');
+const { createTimer } = require('../helpers/timer');
+const { wait, TimeoutError } = require('../helpers/wait');
 
 // @ts-ignore
 const baseContentScript = fs.readFileSync(
@@ -23,54 +11,42 @@ const baseContentScript = fs.readFileSync(
     'utf8'
 );
 
-const contentScript = `
-window.autoconsentSendMessage = (msg) => {
-    window.cdpAutoconsentSendMessage(JSON.stringify(msg));
-};
-` + baseContentScript;
-
-const worldName = 'cmpcollector';
+const BINDING_NAME_PREFIX = 'cdpAutoconsentSendMessage_';
+const SCRAPE_TIMEOUT = 20000;
 
 /**
- * @param {String|Error} e
+ * @param {string} bindingName
+ * @returns {string}
  */
-function isIgnoredEvalError(e) {
-    // ignore evaluation errors (sometimes frames reload too fast)
-    const error = (typeof e === 'string') ? e : e.message;
-    return (
-        error.includes('No frame for given id found') ||
-        error.includes('Target closed.') ||
-        error.includes('Session closed.') ||
-        error.includes('Cannot find context with specified id')
-    );
+function getAutoconsentContentScript(bindingName) {
+    return `
+window.autoconsentSendMessage = (msg) => {
+    window.${bindingName}(JSON.stringify(msg));
+};
+` + baseContentScript;
 }
 
-class CMPCollector extends BaseCollector {
+const cookiePopupScrapeScript = fs.readFileSync(
+    require.resolve('./CookiePopups/scrapeScript.js'),
+    'utf8'
+);
+
+class CookiePopupsCollector extends ContentScriptCollector {
     id() {
-        return 'cmps';
+        return 'cookiepopups';
     }
 
     /**
      * @param {CollectorInitOptions} options
      */
     init(options) {
-        this.log = options.log;
+        super.init(options);
         this.shortTimeouts = options.collectorFlags.shortTimeouts;
         this.autoAction = options.collectorFlags.autoconsentAction;
         /** @type {ContentScriptMessage[]} */
         this.receivedMsgs = [];
-        /** @type {number | null} */
+        /** @type {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId'] | null} */
         this.selfTestFrame = null;
-        /**
-         * maps executionContextId to page world executionContextId
-         * @type {Map<number, number>}
-         */
-        this.isolated2pageworld = new Map();
-        /**
-         * maps executionContextId to CDPSession
-         * @type {Map<number, import('puppeteer-core').CDPSession>}
-         */
-        this.cdpSessions = new Map();
         /** @type {ScanResult} */
         this.scanResult = {
             snippets: new Set([]),
@@ -108,65 +84,52 @@ class CMPCollector extends BaseCollector {
 
     /**
      * @param {import('puppeteer-core').CDPSession} session
-     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
+     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription} context
      */
-    async addTarget(session, targetInfo) {
-        if (targetInfo.type !== 'page') {
-            return;
-        }
-
-        await session.send('Page.enable');
-        await session.send('Runtime.enable');
-
-        session.on('Runtime.executionContextCreated', async ({context}) => {
-            // ignore context created by puppeteer / our crawler
-            if (!context.origin || context.origin === '://' || context.auxData.type === 'isolated') {
-                return;
-            }
-            try {
-                const {executionContextId} = await session.send('Page.createIsolatedWorld', {
-                    frameId: context.auxData.frameId,
-                    worldName
-                });
-                this.isolated2pageworld.set(executionContextId, context.id);
-                this.cdpSessions.set(executionContextId, session);
-                await session.send('Runtime.evaluate', {
-                    expression: contentScript,
-                    contextId: executionContextId,
-                });
-            } catch (e) {
-                if (!isIgnoredEvalError(e)) {
-                    this.log(`Error evaluating content script: ${e}`);
-                }
-            }
-        });
-
-        session.on('Runtime.bindingCalled', async ({name, payload, executionContextId}) => {
-            if (name === 'cdpAutoconsentSendMessage') {
+    async onIsolatedWorldCreated(session, context) {
+        const bindingName = `${BINDING_NAME_PREFIX}${context.uniqueId}`;
+        session.on('Runtime.bindingCalled', async ({name, payload}) => {
+            if (name === bindingName) {
                 try {
                     const msg = JSON.parse(payload);
-                    await this.handleMessage(msg, executionContextId);
+                    await this.handleMessage(msg, context.uniqueId);
                 } catch (e) {
-                    if (!isIgnoredEvalError(e)) {
+                    if (!this.isIgnoredCdpError(e)) {
                         this.log(`Could not handle autoconsent message ${payload}`, e);
                     }
                 }
             }
         });
-        await session.send('Runtime.addBinding', {
-            name: 'cdpAutoconsentSendMessage',
-            executionContextName: worldName,
-        });
+        try {
+            await session.send('Runtime.addBinding', {
+                name: bindingName,
+                executionContextName: context.name,
+            });
+        } catch (e) {
+            if (!this.isIgnoredCdpError(e)) {
+                this.log(`Error adding Autoconsent binding in ${context.uniqueId}: ${e}`);
+            }
+        }
+        try {
+            await session.send('Runtime.evaluate', {
+                expression: getAutoconsentContentScript(bindingName),
+                uniqueContextId: context.uniqueId,
+            });
+        } catch (e) {
+            if (!this.isIgnoredCdpError(e)) {
+                this.log(`Error injecting Autoconsent in ${context.uniqueId}: ${e}`);
+            }
+        }
     }
 
     /**
      * Implements autoconsent messaging protocol
      *
      * @param {ContentScriptMessage} msg
-     * @param {number} executionContextId
+     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId']} executionContextUniqueId
      * @returns {Promise<void>}
      */
-    async handleMessage(msg, executionContextId) {
+    async handleMessage(msg, executionContextUniqueId) {
         this.receivedMsgs.push(msg);
         switch (msg.type) {
         case 'init': {
@@ -182,9 +145,9 @@ class CMPCollector extends BaseCollector {
                 detectRetries: 20,
                 isMainWorld: false
             };
-            await this.cdpSessions.get(executionContextId)?.send('Runtime.evaluate', {
+            await this.cdpSessions.get(executionContextUniqueId)?.send('Runtime.evaluate', {
                 expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(autoconsentConfig)} })`,
-                contextId: executionContextId,
+                uniqueContextId: executionContextUniqueId,
             });
             break;
         }
@@ -200,7 +163,7 @@ class CMPCollector extends BaseCollector {
         case 'optInResult':
         case 'optOutResult': {
             if (msg.scheduleSelfTest) {
-                this.selfTestFrame = executionContextId;
+                this.selfTestFrame = executionContextUniqueId;
             }
             break;
         }
@@ -209,23 +172,23 @@ class CMPCollector extends BaseCollector {
                 await this.cdpSessions.get(this.selfTestFrame)?.send('Runtime.evaluate', {
                     expression: `autoconsentReceiveMessage({ type: "selfTest" })`,
                     allowUnsafeEvalBlockedByCSP: true,
-                    contextId: this.selfTestFrame,
+                    uniqueContextId: this.selfTestFrame,
                 });
             }
             break;
         }
         case 'eval': {
             let evalResult = false;
-            const session = this.cdpSessions.get(executionContextId);
+            const session = this.cdpSessions.get(executionContextUniqueId);
             if (!session) {
-                this.log(`Received eval message for executionContextId ${executionContextId} but no session found`);
+                this.log(`Received eval message for executionContextUniqueId ${executionContextUniqueId} but no session found`);
                 break;
             }
             const result = await session.send('Runtime.evaluate', {
                 expression: msg.code,
                 returnByValue: true,
                 allowUnsafeEvalBlockedByCSP: true,
-                contextId: this.isolated2pageworld.get(executionContextId), // this must be done in page world
+                uniqueContextId: this.isolated2pageworld.get(executionContextUniqueId), // this must be done in page world
             });
             if (!result.exceptionDetails) {
                 evalResult = Boolean(result.result.value);
@@ -234,7 +197,7 @@ class CMPCollector extends BaseCollector {
             await session.send('Runtime.evaluate', {
                 expression: `autoconsentReceiveMessage({ id: "${msg.id}", type: "evalResp", result: ${JSON.stringify(evalResult)} })`,
                 allowUnsafeEvalBlockedByCSP: true,
-                contextId: executionContextId,
+                uniqueContextId: executionContextUniqueId,
             });
             break;
         }
@@ -262,7 +225,7 @@ class CMPCollector extends BaseCollector {
     /**
      * @returns {Promise<void>}
      */
-    async waitForFinish() {
+    async waitForAutoconsentFinish() {
         // check if anything was detected at all
         const detectedMsg = /** @type {DetectedMessage} */ (await this.waitForMessage({type: 'cmpDetected'}));
         if (!detectedMsg) {
@@ -270,7 +233,7 @@ class CMPCollector extends BaseCollector {
         }
 
         // was there a popup?
-        const found = await this.waitForMessage({type: 'popupFound'});
+        const found = await this.waitForMessage({type: 'popupFound'}, /* maxTimes: */ 10, /* interval: */ 100);
         if (!found) {
             return;
         }
@@ -292,7 +255,7 @@ class CMPCollector extends BaseCollector {
         }
         const doneMsg = /** @type {DoneMessage} */ (await this.waitForMessage({
             type: 'autoconsentDone'
-        }));
+        }, 10, 100));
         if (!doneMsg) {
             return;
         }
@@ -302,16 +265,16 @@ class CMPCollector extends BaseCollector {
             // did self-test succeed?
             await this.waitForMessage({
                 type: 'selfTestResult'
-            });
+            }, 10, 100);
         }
     }
 
     /**
-     * @returns {CMPResult[]}
+     * @returns {AutoconsentResult[]}
      */
-    collectResults() {
+    collectCMPResults() {
         /**
-         * @type {CMPResult[]}
+         * @type {AutoconsentResult[]}
          */
         const results = [];
 
@@ -337,7 +300,7 @@ class CMPCollector extends BaseCollector {
             }
             processedCmps.push(msg.cmp);
             /**
-             * @type {CMPResult}
+             * @type {AutoconsentResult}
              */
             const result = {
                 final: Boolean(doneMsg && doneMsg.cmp === msg.cmp),
@@ -374,15 +337,56 @@ class CMPCollector extends BaseCollector {
     }
 
     /**
+     * @returns {Promise<PopupData[]>}
+     */
+    scrapePopups() {
+        const scrapeScriptTimer = createTimer();
+        // launch all scrape tasks in parallel
+        const scrapeTasks = Array.from(this.cdpSessions.entries()).map(async ([executionContextUniqueId, session]) => {
+            try {
+                const evalResult = await session.send('Runtime.evaluate', {
+                    expression: cookiePopupScrapeScript,
+                    uniqueContextId: executionContextUniqueId,
+                    returnByValue: true,
+                    allowUnsafeEvalBlockedByCSP: true,
+                });
+                if (evalResult.exceptionDetails) {
+                    this.log(`Error evaluating content script: ${evalResult.exceptionDetails.text}`);
+                    return [];
+                }
+                /** @type {ScrapeScriptResult} */
+                const result = evalResult.result.value;
+                return result.potentialPopups || [];
+            } catch (e) {
+                if (!this.isIgnoredCdpError(e)) {
+                    this.log(`Error evaluating scrape script: ${e}`);
+                }
+                return [];
+            }
+        });
+        return Promise.all(scrapeTasks).then(results => {
+            this.log(`Scraping ${scrapeTasks.length} frames took ${scrapeScriptTimer.getElapsedTime()}s`);
+            return results.flat();
+        });
+    }
+
+    /**
      * Called after the crawl to retrieve the data. Can be async, can throw errors.
      *
-     * @returns {Promise<CMPResult[]>}
+     * @returns {Promise<CookiePopupsCollectorResult>}
      */
     async getData() {
-        await this.waitForFinish();
-        const results = this.collectResults();
-        if (this.scanResult.patterns.size > 0 && results.length === 0) {
-            results.push({
+        // start scraping jobs early
+        const potentialPopupsPromise = this.scrapePopups();
+
+        const waitForAutoconsentTimer = createTimer();
+        await this.waitForAutoconsentFinish(); // < 10s
+        this.log(`Waiting for Autoconsent took ${waitForAutoconsentTimer.getElapsedTime()}s`);
+        const cmps = this.collectCMPResults();
+
+        // if no cmps were found, but there were heuristic matches, add a fake entry
+        if (this.scanResult.patterns.size > 0 && cmps.length === 0) {
+            cmps.push({
                 final: false,
                 name: '',
                 open: false,
@@ -395,12 +399,32 @@ class CMPCollector extends BaseCollector {
                 filterListMatched: this.scanResult.filterListMatched,
             });
         }
-        return results;
+
+        /** @type {PopupData[]} */
+        let potentialPopups = [];
+        // wait for all scrape tasks to finish, but limit the total time
+        try {
+            potentialPopups = await wait(potentialPopupsPromise, SCRAPE_TIMEOUT, 'Scraping popups timed out');
+        } catch (e) {
+            if (e instanceof TimeoutError) {
+                this.log(e.message);
+            }
+        }
+        return {
+            cmps,
+            potentialPopups,
+        };
     }
 }
 
 /**
- * @typedef CMPResult
+ * @typedef CookiePopupsCollectorResult
+ * @property {AutoconsentResult[]} cmps
+ * @property {PopupData[]} potentialPopups
+ */
+
+/**
+ * @typedef AutoconsentResult
  * @property {string} name
  * @property {boolean} final
  * @property {boolean} open
@@ -413,4 +437,38 @@ class CMPCollector extends BaseCollector {
  * @property {boolean} filterListMatched
  */
 
-module.exports = CMPCollector;
+/**
+ * @typedef ScrapeScriptResult
+ * @property {PopupData[]} potentialPopups
+ */
+
+/**
+ * @typedef PopupData
+ * @property {string} text
+ * @property {string} selector
+ * @property {ButtonData[]} buttons
+ * @property {boolean} isTop
+ * @property {string} origin
+ */
+
+/**
+ * @typedef ButtonData
+ * @property {string} text
+ * @property {string} selector
+ */
+
+/**
+ * @typedef { import('./BaseCollector').CollectorInitOptions } CollectorInitOptions
+ * @typedef { import('@duckduckgo/autoconsent/lib/types').AutoAction } AutoAction
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/types').Config } AutoconsentConfig
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').DetectedMessage } DetectedMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').SelfTestResultMessage } SelfTestResultMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').ErrorMessage } ErrorMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage } OptOutResultMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage } OptInResultMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').DoneMessage } DoneMessage
+ * @typedef { { snippets: Set<string>, patterns: Set<string>, filterListMatched: boolean } } ScanResult
+ */
+
+module.exports = CookiePopupsCollector;

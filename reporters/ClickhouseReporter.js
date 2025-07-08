@@ -177,8 +177,7 @@ class ClickhouseReporter extends BaseReporter {
 
     /**
      * Called whenever site was crawled (either successfully or not)
-     * 
-     * @param {{site: string, failures: number, successes: number, urls: number, data: import('../crawler').CollectResult | undefined, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data 
+     * @param {{site: string, failures: number, successes: number, urls: number, data: import('../crawler').CollectResult | undefined, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data
      */
     update(data) {
         if (data.data) {
@@ -209,8 +208,8 @@ class ClickhouseReporter extends BaseReporter {
             if (data.data.elements) {
                 this.queue.elements.push([this.crawlId, pageId, data.data.elements.present, data.data.elements.visible]);
             }
-            if (data.data.cmps) {
-                const cmpRows = data.data.cmps.map(c => [
+            if (data.data.cookiepopups) {
+                const cmpRows = data.data.cookiepopups.cmps.map(c => [
                     this.crawlId,
                     pageId,
                     c.name,
