@@ -65,7 +65,9 @@ const TABLE_DEFINITIONS = [
         errors Array(String),
         patterns Array(String),
         snippets Array(String),
-        filterListMatched Bool
+        filterListMatched Bool,
+        llmPopupDetected Bool DEFAULT false,
+        regexPopupDetected Bool DEFAULT false
     ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, name)`,
     `CREATE TABLE IF NOT EXISTS apiSavedCalls ON CLUSTER 'ch-prod-cluster' (
