@@ -163,7 +163,7 @@ async function main() {
     });
 
     const pages = fs.readdirSync(crawlDir).filter(name => name.endsWith('.json') && name !== 'metadata.json');
-    const progressBar = new ProgressBar('[:bar] :percent ETA :etas :page', {
+    const progressBar = process.env.IS_CI ? null : new ProgressBar('[:bar] :percent ETA :etas :page', {
         complete: chalk.green('='),
         incomplete: ' ',
         total: pages.length,
@@ -178,13 +178,16 @@ async function main() {
     const rejectButtonTexts = new Set();
     const otherButtonTexts = new Set();
 
-    await asyncLib.eachLimit(pages, parallel, async page => {
+    await asyncLib.eachOfLimit(pages, parallel, async (page, /** @type {number} */ index) => {
+        if (!progressBar) {
+            console.log(`${index + 1}/${pages.length} : ${page}`);
+        }
         const filePath = path.join(crawlDir, page);
         const contents = await fs.promises.readFile(filePath, 'utf-8');
         const data = JSON.parse(contents.toString());
 
         if (!data.data || !data.data.cookiepopups) {
-            progressBar.tick({ page });
+            progressBar?.tick({ page });
             return;
         }
 
@@ -229,7 +232,7 @@ async function main() {
             // update the crawl file asynchronously
             await fs.promises.writeFile(filePath, JSON.stringify(data, null, 2));
         }
-        progressBar.tick({
+        progressBar?.tick({
             page,
         });
     });
