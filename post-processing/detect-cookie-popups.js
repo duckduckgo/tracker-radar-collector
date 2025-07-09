@@ -85,6 +85,7 @@ async function classifyPotentialPopups(frameContext, openai) {
         // eslint-disable-next-line no-await-in-loop
         const popupClassificationResult = await classifyPopup(popup, openai);
         // Replace the popup data in place
+        // eslint-disable-next-line require-atomic-updates
         frameContext.potentialPopups[i] = {
             ...popup,
             ...popupClassificationResult,

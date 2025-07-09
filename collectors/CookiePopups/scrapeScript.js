@@ -1,4 +1,4 @@
-/* global window, document, HTMLElement, Node, NodeFilter, location */
+/* global window, document, HTMLElement, Node, NodeFilter, location, NamedNodeMap, DOMTokenList, DOMException */
 
 const BUTTON_LIKE_ELEMENT_SELECTOR = 'button, input[type="button"], input[type="submit"], a, [role="button"], [class*="button"]';
 const LIMIT_TEXT_LENGTH = 150000;
@@ -140,7 +140,7 @@ function getDocumentText() {
 
         let result = '';
         let node;
-        while (node = walker.nextNode()) {
+        while ((node = walker.nextNode())) {
             const element = /** @type {HTMLElement} */ (node);
             let shadowText = '';
             for (const child of element.shadowRoot.children) {
