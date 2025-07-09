@@ -219,14 +219,15 @@ function getSelector(el, specificity) {
         }
 
         if (specificity.ids) {
-            if (element.id) {
-                localSelector += `#${insecureEscapeSelectorPart(element.id)}`;
+            // use getAttribute() instead of element.id to protect against DOM clobbering
+            if (element.getAttribute('id')) {
+                localSelector += `#${insecureEscapeSelectorPart(element.getAttribute('id'))}`;
             } else if (!element.hasAttribute('id')) { // do not add it for id attribute without a value
                 localSelector += `:not([id])`;
             }
         }
 
-        if (specificity.dataAttributes) {
+        if (specificity.dataAttributes && element.attributes instanceof NamedNodeMap) {
             const dataAttributes = Array.from(element.attributes).filter(a => a.name.startsWith('data-'));
             dataAttributes.forEach(a => {
                 const escapedValue = insecureEscapeSelectorPart(a.value);
@@ -234,7 +235,7 @@ function getSelector(el, specificity) {
             });
         }
 
-        if (specificity.classes) {
+        if (specificity.classes && element.classList instanceof DOMTokenList) {
             const classes = Array.from(element.classList);
             if (classes.length > 0) {
                 localSelector += `.${classes.map(c => insecureEscapeSelectorPart(c)).join('.')}`;
