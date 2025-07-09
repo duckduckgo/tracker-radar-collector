@@ -91,7 +91,7 @@ describe('CookiePopupsCollector', () => {
                 assert.deepStrictEqual(commands[0], ['Runtime.evaluate', {
                     expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify({
                         enabled: true,
-                        autoAction: 'optOut',
+                        autoAction: null,
                         disabledCmps: [],
                         enablePrehide: false,
                         enableCosmeticRules: true,
