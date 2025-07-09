@@ -180,7 +180,7 @@ function getButtonLikeElements(el) {
  * @returns {string}
  */
 function insecureEscapeSelectorPart(selector) {
-    return selector.replace(/[.*+?^${}()|[\]\\"]/g, '\\$&');
+    return selector.replace(/[ .*+?^${}()|[\]\\"]/g, '\\$&');
 }
 
 /**
