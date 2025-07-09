@@ -269,20 +269,27 @@ function getUniqueSelector(el) {
     };
     let selector = getSelector(el, specificity);
 
-    // verify that the selector is unique
-    if (document.querySelectorAll(selector).length > 1) {
-        specificity.dataAttributes = true;
-        selector = getSelector(el, specificity);
-    }
+    try {
+        // verify that the selector is unique
+        if (document.querySelectorAll(selector).length > 1) {
+            specificity.dataAttributes = true;
+            selector = getSelector(el, specificity);
+        }
 
-    if (document.querySelectorAll(selector).length > 1) {
-        specificity.classes = true;
-        selector = getSelector(el, specificity);
-    }
+        if (document.querySelectorAll(selector).length > 1) {
+            specificity.classes = true;
+            selector = getSelector(el, specificity);
+        }
 
-    if (document.querySelectorAll(selector).length > 1) {
-        specificity.absoluteOrder = true;
-        selector = getSelector(el, specificity);
+        if (document.querySelectorAll(selector).length > 1) {
+            specificity.absoluteOrder = true;
+            selector = getSelector(el, specificity);
+        }
+    } catch (e) {
+        console.error(`Error getting unique selector for`, el, e);
+        if (e instanceof DOMException && e.message.includes('is not a valid selector')) {
+            return 'cookiepopups-collector-selector-error';
+        }
     }
 
     return selector;

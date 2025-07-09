@@ -372,7 +372,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
                     allowUnsafeEvalBlockedByCSP: true,
                 });
                 if (evalResult.exceptionDetails) {
-                    this.log(`Error evaluating content script: ${evalResult.exceptionDetails.text}`);
+                    this.log(`Error evaluating scrape script: ${evalResult.exceptionDetails.text} ${evalResult.exceptionDetails.exception?.description}`);
                     return null;
                 }
                 /** @type {ScrapeScriptResult} */
