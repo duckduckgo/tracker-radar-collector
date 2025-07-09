@@ -139,9 +139,8 @@ function getDocumentText() {
         );
 
         let result = '';
-        let node = walker.nextNode();
-
-        while (node) {
+        let node;
+        while (node = walker.nextNode()) {
             const element = /** @type {HTMLElement} */ (node);
             let shadowText = '';
             for (const child of element.shadowRoot.children) {
@@ -155,7 +154,6 @@ function getDocumentText() {
             if (shadowText.trim()) {
                 result += ' ' + shadowText.trim();
             }
-            node = walker.nextNode();
         }
 
         return result;
