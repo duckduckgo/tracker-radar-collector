@@ -416,10 +416,9 @@ class CookiePopupsCollector extends ContentScriptCollector {
                     const emptyResult = /** @type {ScrapeScriptResult[]} */ ([]);
                     this.scrapeJobDeferred.resolve(emptyResult);
                     return emptyResult;
-                } else {
-                    this.scrapeJobDeferred.reject(e);
-                    throw e;
                 }
+                this.scrapeJobDeferred.reject(e);
+                throw e;
             }
         );
 
