@@ -143,7 +143,9 @@ class CookiePopupsCollector extends ContentScriptCollector {
             /** @type {Partial<AutoconsentConfig>} */
             const autoconsentConfig = {
                 enabled: true,
-                autoAction: null, // make sure it's never undefined. We'll send optOut/optIn command later
+                // we need to pass an explicit null here so that autoconsent doesn't use the default value ('optOut').
+                // Note that the opt-in/opt-out may still be triggered later based on this.autoAction.
+                autoAction: null,
                 disabledCmps: [],
                 enablePrehide: false,
                 enableCosmeticRules: true,
