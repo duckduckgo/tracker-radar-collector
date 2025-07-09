@@ -246,14 +246,14 @@ class CookiePopupsCollector extends ContentScriptCollector {
      */
     async waitForPopupFound() {
         // check if anything was detected at all
-        const detectedMsg = /** @type {DetectedMessage} */ (await this.waitForMessage({type: 'cmpDetected'}));
+        const detectedMsg = /** @type {DetectedMessage | null} */ (await this.waitForMessage({type: 'cmpDetected'}));
         if (!detectedMsg) {
             return null;
         }
 
         // was there a popup?
-        const found = await this.waitForMessage({type: 'popupFound'}, /* maxTimes: */ 10, /* interval: */ 100);
-        return /** @type {FoundMessage | null} */ (found);
+        const found = /** @type {FoundMessage | null} */ (await this.waitForMessage({type: 'popupFound'}, /* maxTimes: */ 10, /* interval: */ 100));
+        return found;
     }
 
     /**
@@ -365,6 +365,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
     scrapePopups() {
         const scrapeScriptTimer = createTimer();
         // launch all scrape tasks in parallel
+        /** @type {Promise<ScrapeScriptResult | null>[]} */
         const scrapeTasks = Array.from(this.cdpSessions.entries()).map(async ([executionContextUniqueId, session]) => {
             try {
                 const evalResult = await session.send('Runtime.evaluate', {
@@ -390,6 +391,8 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 return null;
             }
         });
+
+        // filter out null results
         return Promise.all(scrapeTasks).then(results => {
             this.log(`Scraping ${scrapeTasks.length} frames took ${scrapeScriptTimer.getElapsedTime()}s`);
             return results.filter(Boolean);
