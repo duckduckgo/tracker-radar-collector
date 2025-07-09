@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { OpenAI } = require('openai');
 const { Command } = require('commander');
 const { generateRulesForSite } = require('./generation.js');
 
@@ -352,9 +351,6 @@ async function main() {
     const testDir = path.join(autoconsentDir, 'tests', 'generated');
     const autoconsentManifestFile = path.join(crawlDir, '..', 'autoconsent-manifest.json');
 
-    const openai = new OpenAI({
-        apiKey: process.env.OPENAI_API_KEY,
-    });
     if (!fs.existsSync(testDir)) {
         await fs.promises.mkdir(testDir, { recursive: true });
     }
@@ -367,7 +363,6 @@ async function main() {
 
     /** @type {import('./types').GlobalParams} */
     const globalParams = {
-        openai,
         crawlDir,
         rulesDir,
         testDir,

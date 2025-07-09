@@ -46,7 +46,6 @@
 
 /**
  * @typedef {{
- *  openai: import('openai').OpenAI,
  *  crawlDir: string,
  *  rulesDir: string,
  *  testDir: string,

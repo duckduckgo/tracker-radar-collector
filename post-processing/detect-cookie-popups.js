@@ -140,7 +140,7 @@ async function main() {
     const program = new Command();
     program
         .description('Detect cookie popups in a crawl')
-        .requiredOption('-d, --crawldir <dir>', 'Directory of crawl output to process')
+        .requiredOption('-d, --crawldir <dir>', 'Directory of crawl output to process, e.g. "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2025-05-12/US/3p-crawl/"')
         .option('-p, --parallel <n>', 'Number of pages to process in parallel', '50')
         .parse(process.argv);
 
