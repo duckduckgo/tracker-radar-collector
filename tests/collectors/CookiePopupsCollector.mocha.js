@@ -255,6 +255,7 @@ describe('CookiePopupsCollector', () => {
                     origin: 'https://example.com/',
                     auxData: {
                         type: 'default',
+                        frameId: 'someframeid',
                     },
                 }
             });
@@ -266,9 +267,9 @@ describe('CookiePopupsCollector', () => {
                     origin: 'https://example.com/',
                     auxData: {
                         type: 'isolated',
-                        frameId: 1,
+                        frameId: 'someframeid',
                     },
-                    name: 'iw_for_cookiepopups_some_main_world',
+                    name: 'iw_for_cookiepopups_some_main_world_frameId_someframeid',
                 }
             });
 
