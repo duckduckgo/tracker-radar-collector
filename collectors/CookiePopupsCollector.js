@@ -168,7 +168,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 // wait for the scrape job to finish first
                 await this.scrapeJobDeferred.promise;
                 // trigger the autoconsent action (optOut/optIn)
-                this.log(`Cookie popup found, starting ${this.autoAction}`);
+                this.log(`Starting ${this.autoAction} for ${msg.cmp} in ${executionContextUniqueId} (${msg.url})`);
                 await this.cdpSessions.get(executionContextUniqueId)?.send('Runtime.evaluate', {
                     expression: `autoconsentReceiveMessage({ type: "${this.autoAction}" })`,
                     uniqueContextId: executionContextUniqueId,
@@ -181,6 +181,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
             break;
         case 'optInResult':
         case 'optOutResult': {
+            this.log(`${msg.type} ${msg.cmp} ${msg.result ? 'succeeded' : 'failed'} in ${executionContextUniqueId} (${msg.url})`);
             if (msg.scheduleSelfTest) {
                 this.selfTestFrame = executionContextUniqueId;
             }
@@ -425,9 +426,13 @@ class CookiePopupsCollector extends ContentScriptCollector {
             }
         );
 
+        const popupFoundTimer = createTimer();
         const popupFound = await this.waitForPopupFound();
+        this.log(`Waiting for popupFound took ${popupFoundTimer.getElapsedTime()}s`);
         if (popupFound) {
+            const autoconsentFinishTimer = createTimer();
             await this.waitForAutoconsentFinish(popupFound);
+            this.log(`Waiting for autoconsent finish took ${autoconsentFinishTimer.getElapsedTime()}s`);
         }
 
         const cmps = this.collectCMPResults();

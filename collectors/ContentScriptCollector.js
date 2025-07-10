@@ -61,7 +61,7 @@ class ContentScriptCollector extends BaseCollector {
             // new isolated world for our content script
             if (context.auxData.type === 'isolated' && context.name.startsWith(this.iwPrefix)) {
                 const pageWorldUniqueId = context.name.slice(this.iwPrefix.length);
-                this.log(`isolated world created ${context.uniqueId} for ${pageWorldUniqueId}`);
+                this.log(`isolated world created ${context.uniqueId} for cId ${pageWorldUniqueId}: fId ${context.auxData.frameId}`);
                 this.isolated2pageworld.set(context.uniqueId, pageWorldUniqueId);
                 this.cdpSessions.set(context.uniqueId, session);
                 await this.onIsolatedWorldCreated(session, context);
@@ -73,7 +73,7 @@ class ContentScriptCollector extends BaseCollector {
                 return;
             }
 
-            this.log(`creating isolated world for ${context.uniqueId}`);
+            this.log(`creating isolated world for cId ${context.uniqueId} fId ${context.auxData.frameId}`);
             // request an isolated world for this frame
             try {
                 await session.send('Page.createIsolatedWorld', {
