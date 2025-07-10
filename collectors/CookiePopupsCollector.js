@@ -55,9 +55,6 @@ class CookiePopupsCollector extends ContentScriptCollector {
             filterListMatched: false,
         };
 
-        /** @type {Map<import('devtools-protocol/types/protocol').Protocol.Page.FrameId, import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId']>} */
-        this.frame2isolatedWorld = new Map();
-
         /** @type {import('../helpers/deferred').Deferred<ScrapeScriptResult[]>} */
         this.scrapeJobDeferred = createDeferred();
     }
@@ -94,12 +91,6 @@ class CookiePopupsCollector extends ContentScriptCollector {
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription} context
      */
     async onIsolatedWorldCreated(session, context) {
-        if (this.frame2isolatedWorld.has(context.auxData.frameId)) {
-            this.log(`Skipping isolated world creation for fId ${context.auxData.frameId}`);
-            return;
-        }
-
-        this.frame2isolatedWorld.set(context.auxData.frameId, context.uniqueId);
         const bindingName = `${BINDING_NAME_PREFIX}${context.uniqueId.replace(/\W/g, '_')}`;
         session.on('Runtime.bindingCalled', async ({name, payload}) => {
             if (name === bindingName) {
