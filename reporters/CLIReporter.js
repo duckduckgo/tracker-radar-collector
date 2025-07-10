@@ -8,7 +8,7 @@ class CLIReporter extends BaseReporter {
     }
 
     /**
-     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options 
+     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options
      */
     init(options) {
         this.verbose = options.verbose;
@@ -30,7 +30,7 @@ class CLIReporter extends BaseReporter {
     }
 
     /**
-     * @param  {...any} msg 
+     * @param  {...any} msg
      */
     alwaysLog(...msg) {
         // eslint-disable-next-line no-console
@@ -38,7 +38,7 @@ class CLIReporter extends BaseReporter {
     }
 
     /**
-     * @param  {...any} msg 
+     * @param  {...any} msg
      */
     log(...msg) {
         if (this.verbose) {
@@ -48,7 +48,7 @@ class CLIReporter extends BaseReporter {
     }
 
     /**
-     * @param {{site: string, failures: number, successes: number, urls: number}} data 
+     * @param {{site: string, failures: number, successes: number, urls: number}} data
      */
     update(data) {
         const finished = data.failures + data.successes;
@@ -61,7 +61,7 @@ class CLIReporter extends BaseReporter {
             });
         } else {
             const currentTime = new Date().toUTCString();
-            this.alwaysLog(`${currentTime} | Finished: ${finished} | Failed: ${data.failures} | Total: ${data.urls}`);
+            this.alwaysLog(`${currentTime} | Finished: ${finished} | Failed: ${data.failures} | Total: ${data.urls} | Last: ${data.site}`);
         }
     }
 
