@@ -63,7 +63,7 @@ class CLIReporter extends BaseReporter {
                 site: data.site,
                 finished: `${finished} / ${data.urls}`,
                 fail: (data.failures / finished * 100).toFixed(1),
-                rate: rate
+                rate,
             });
         } else {
             this.alwaysLog(`${currentTime.toUTCString()} | Finished: ${finished} | Failed: ${data.failures} | Total: ${data.urls} | Rate: ${rate} sites/min | Last: ${data.site}`);
