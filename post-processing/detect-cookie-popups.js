@@ -122,9 +122,13 @@ async function classifyDocument(frameContext, openai) {
     if (frameContext.cleanedText &&
         (frameContext.isTop || frameContext.buttons.length > 0) // simple heuristic to filter out utility iframes that often cause false positives
     ) {
-        // TODO: we could potentially skip this step if we already have an LLM detected popup in the popup elements. This would save some OpenAI calls.
-        // eslint-disable-next-line no-await-in-loop
-        llmPopupDetected = await checkLLM(openai, frameContext.cleanedText);
+        // Skip LLM check if we already have an LLM detected popup in the popup elements. This saves some OpenAI calls.
+        if (frameContext.potentialPopups?.some(p => p.llmMatch)) {
+            llmPopupDetected = true;
+        } else {
+            // eslint-disable-next-line no-await-in-loop
+            llmPopupDetected = await checkLLM(openai, frameContext.cleanedText);
+        }
         regexPopupDetected = checkHeuristicPatterns(frameContext.cleanedText);
         const { rejectButtons, otherButtons } = classifyButtons(frameContext.buttons);
         frameContext.rejectButtons = rejectButtons;
