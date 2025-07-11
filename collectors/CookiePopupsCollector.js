@@ -264,12 +264,9 @@ class CookiePopupsCollector extends ContentScriptCollector {
      * @returns {Promise<void>}
      */
     async waitForAutoconsentFinish(popupFoundMsg) {
-        if (!this.autoAction) {
-            return;
-        }
-
-        // did we opt-out?
         const resultType = this.autoAction === 'optOut' ? 'optOutResult' : 'optInResult';
+
+        // some cmps take a while to opt-out/opt-in, allow up to 10s here
         const autoActionResult = /** @type {OptOutResultMessage|OptInResultMessage} */ (
             await this.waitForMessage(
                 {
@@ -279,7 +276,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 /* maxTimes: */ 20,
                 /* interval: */ 500
             )
-        ); // some cmps take a while to opt-out/opt-in, allow up to 10s here
+        );
         if (autoActionResult) {
             if (!autoActionResult.result) {
                 return;
@@ -437,7 +434,9 @@ class CookiePopupsCollector extends ContentScriptCollector {
         const popupFoundTimer = createTimer();
         const popupFound = await this.waitForPopupFound();
         this.log(`Waiting for popupFound took ${popupFoundTimer.getElapsedTime()}s`);
-        if (popupFound) {
+        if (popupFound && this.autoAction) {
+            // make sure we start waiting only after the scrape job is done
+            await this.scrapeJobDeferred.promise;
             const autoconsentFinishTimer = createTimer();
             await this.waitForAutoconsentFinish(popupFound);
             this.log(`Waiting for autoconsent finish took ${autoconsentFinishTimer.getElapsedTime()}s`);
