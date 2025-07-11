@@ -406,7 +406,8 @@ async function crawl(url, options) {
 
     const maxLoadTimeMs = options.maxLoadTimeMs || 60000;
     const extraExecutionTimeMs = options.extraExecutionTimeMs || 2500;
-    const maxTotalTimeMs = maxLoadTimeMs * 2;
+    const collectorExtraTimeMs = options.collectors.reduce((sum, collector) => sum + (collector.collectorExtraTimeMs || 0), 0);
+    const maxTotalTimeMs = maxLoadTimeMs * 2 + collectorExtraTimeMs;
 
     let emulateUserAgent = !options.seleniumHub && !VISUAL_DEBUG; // by default, override only when in headless mode
     if (options.emulateUserAgent === false) {

@@ -33,6 +33,8 @@ const cookiePopupScrapeScript = fs.readFileSync(
 );
 
 class CookiePopupsCollector extends ContentScriptCollector {
+    collectorExtraTimeMs = SCRAPE_TIMEOUT + 10000; // Autoconsent opt-out/opt-in and scraping can take a while
+
     id() {
         return 'cookiepopups';
     }
@@ -253,7 +255,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
         }
 
         // was there a popup?
-        const found = /** @type {FoundMessage | null} */ (await this.waitForMessage({type: 'popupFound'}, /* maxTimes: */ 10, /* interval: */ 100));
+        const found = /** @type {FoundMessage | null} */ (await this.waitForMessage({type: 'popupFound'}));
         return found;
     }
 
@@ -268,12 +270,18 @@ class CookiePopupsCollector extends ContentScriptCollector {
 
         // did we opt-out?
         const resultType = this.autoAction === 'optOut' ? 'optOutResult' : 'optInResult';
-        const autoActionDone = /** @type {OptOutResultMessage|OptInResultMessage} */ (await this.waitForMessage({
-            type: resultType,
-            cmp: popupFoundMsg.cmp
-        }));
-        if (autoActionDone) {
-            if (!autoActionDone.result) {
+        const autoActionResult = /** @type {OptOutResultMessage|OptInResultMessage} */ (
+            await this.waitForMessage(
+                {
+                    type: resultType,
+                    cmp: popupFoundMsg.cmp
+                },
+                /* maxTimes: */ 20,
+                /* interval: */ 500
+            )
+        ); // some cmps take a while to opt-out/opt-in, allow up to 10s here
+        if (autoActionResult) {
+            if (!autoActionResult.result) {
                 return;
             }
         }
