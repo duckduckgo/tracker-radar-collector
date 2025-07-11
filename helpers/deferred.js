@@ -1,5 +1,6 @@
 /**
- * @returns {{promise: Promise<any>, resolve: function, reject: function}}
+ * @template T
+ * @returns {Deferred<T>}
  */
 function createDeferred() {
     let resolve, reject;
@@ -11,5 +12,10 @@ function createDeferred() {
         reject
     };
 }
+
+/**
+ * @template T
+ * @typedef {{promise: Promise<T>, resolve: (value: T) => void, reject: (value: any) => void}} Deferred
+ */
 
 module.exports = createDeferred;

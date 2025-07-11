@@ -1,6 +1,7 @@
 const BaseCollector = require('./BaseCollector');
 
 const ISOLATED_WORLD_PREFIX = 'iw_for_';
+const ISOLATED_WORLD_SEPARATOR = '_frameId_';
 
 /**
  * @param {String|Error} e
@@ -60,8 +61,15 @@ class ContentScriptCollector extends BaseCollector {
         session.on('Runtime.executionContextCreated', async ({context}) => {
             // new isolated world for our content script
             if (context.auxData.type === 'isolated' && context.name.startsWith(this.iwPrefix)) {
-                const pageWorldUniqueId = context.name.slice(this.iwPrefix.length);
-                this.log(`isolated world created ${context.uniqueId} for ${pageWorldUniqueId}`);
+                // Chromium will create a new isolated context for each frame in the page, even the ones we already asked for.
+                // We need to filter those out and ignore.
+                const pageWorldUniqueId = context.name.slice(this.iwPrefix.length, context.name.indexOf(ISOLATED_WORLD_SEPARATOR));
+                const intendedFrameId = context.name.slice(context.name.indexOf(ISOLATED_WORLD_SEPARATOR) + ISOLATED_WORLD_SEPARATOR.length);
+                if (intendedFrameId !== context.auxData.frameId) {
+                    this.log(`Skipping isolated context for fId ${context.auxData.frameId} (waiting for fId ${intendedFrameId})`);
+                    return;
+                }
+                this.log(`isolated world created ${context.uniqueId} for cId ${pageWorldUniqueId}: fId ${context.auxData.frameId}`);
                 this.isolated2pageworld.set(context.uniqueId, pageWorldUniqueId);
                 this.cdpSessions.set(context.uniqueId, session);
                 await this.onIsolatedWorldCreated(session, context);
@@ -73,12 +81,12 @@ class ContentScriptCollector extends BaseCollector {
                 return;
             }
 
-            this.log(`creating isolated world for ${context.uniqueId}`);
+            this.log(`creating isolated world for cId ${context.uniqueId} fId ${context.auxData.frameId}`);
             // request an isolated world for this frame
             try {
                 await session.send('Page.createIsolatedWorld', {
                     frameId: context.auxData.frameId,
-                    worldName: `${this.iwPrefix}${context.uniqueId}`,
+                    worldName: `${this.iwPrefix}${context.uniqueId}${ISOLATED_WORLD_SEPARATOR}${context.auxData.frameId}`,
                 });
             } catch (e) {
                 if (!this.isIgnoredCdpError(e)) {

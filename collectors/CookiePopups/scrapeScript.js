@@ -1,4 +1,29 @@
-/* global window, document, HTMLElement, Node, NodeFilter, location */
+/* global window, document, HTMLElement, Node, NodeFilter, location, NamedNodeMap, DOMTokenList, DOMException */
+
+const BUTTON_LIKE_ELEMENT_SELECTOR = 'button, input[type="button"], input[type="submit"], a, [role="button"], [class*="button"]';
+const LIMIT_TEXT_LENGTH = 150000;
+const ELEMENT_TAGS_TO_SKIP = [
+    'SCRIPT',
+    'STYLE',
+    'NOSCRIPT',
+    'TEMPLATE',
+    'META',
+    'LINK',
+    'SVG',
+    'CANVAS',
+    'IFRAME',
+    'FRAME',
+    'FRAMESET',
+    'NOFRAMES',
+    'NOEMBED',
+    'AUDIO',
+    'VIDEO',
+    'SOURCE',
+    'TRACK',
+    'PICTURE',
+    'IMG',
+    'MAP',
+];
 
 /**
  * @param {HTMLElement} node
@@ -89,12 +114,62 @@ function getPopupLikeElements() {
     return excludeContainers(found);
 }
 
+function getDocumentText() {
+    /**
+     * @param {Node} root
+     */
+    function collectShadowDOMText(root) {
+        const walker = document.createTreeWalker(
+            root,
+            NodeFilter.SHOW_ELEMENT,
+            {
+                /**
+                 * @param {Node} node
+                 */
+                acceptNode(node) {
+                    const element = /** @type {HTMLElement} */ (node);
+                    // Accept elements with shadow roots for special handling
+                    if (element.shadowRoot) {
+                        return NodeFilter.FILTER_ACCEPT;
+                    }
+                    // Skip other elements but continue traversing their children
+                    return NodeFilter.FILTER_SKIP;
+                }
+            }
+        );
+
+        let result = '';
+        let node;
+        while ((node = walker.nextNode())) {
+            const element = /** @type {HTMLElement} */ (node);
+            let shadowText = '';
+            for (const child of element.shadowRoot.children) {
+                if (child instanceof HTMLElement && !ELEMENT_TAGS_TO_SKIP.includes(child.tagName)) {
+                    shadowText += ' ' + child.innerText;
+                }
+                if (child.shadowRoot) {
+                    shadowText += ' ' + collectShadowDOMText(child);
+                }
+            }
+            if (shadowText.trim()) {
+                result += ' ' + shadowText.trim();
+            }
+        }
+
+        return result;
+    }
+
+    const visibleText = (document.body ?? document.documentElement).innerText;
+    const shadowText = collectShadowDOMText(document.documentElement);
+    return `${visibleText} ${shadowText}`.trim();
+}
+
 /**
  * @param {HTMLElement} el
  * @returns {HTMLElement[]}
  */
-function getButtons(el) {
-    return Array.from(el.querySelectorAll('button, input[type="button"], input[type="submit"], a, [role="button"], [class*="button"]'));
+function getButtonLikeElements(el) {
+    return Array.from(el.querySelectorAll(BUTTON_LIKE_ELEMENT_SELECTOR));
 }
 
 /**
@@ -103,7 +178,7 @@ function getButtons(el) {
  * @returns {string}
  */
 function insecureEscapeSelectorPart(selector) {
-    return selector.replace(/[.*+?^${}()|[\]\\"]/g, '\\$&');
+    return selector.replace(/[ .*+?^${}()|[\]\\"]/g, '\\$&');
 }
 
 /**
@@ -142,14 +217,15 @@ function getSelector(el, specificity) {
         }
 
         if (specificity.ids) {
-            if (element.id) {
-                localSelector += `#${insecureEscapeSelectorPart(element.id)}`;
+            // use getAttribute() instead of element.id to protect against DOM clobbering
+            if (element.getAttribute('id')) {
+                localSelector += `#${insecureEscapeSelectorPart(element.getAttribute('id'))}`;
             } else if (!element.hasAttribute('id')) { // do not add it for id attribute without a value
                 localSelector += `:not([id])`;
             }
         }
 
-        if (specificity.dataAttributes) {
+        if (specificity.dataAttributes && element.attributes instanceof NamedNodeMap) {
             const dataAttributes = Array.from(element.attributes).filter(a => a.name.startsWith('data-'));
             dataAttributes.forEach(a => {
                 const escapedValue = insecureEscapeSelectorPart(a.value);
@@ -157,7 +233,7 @@ function getSelector(el, specificity) {
             });
         }
 
-        if (specificity.classes) {
+        if (specificity.classes && element.classList instanceof DOMTokenList) {
             const classes = Array.from(element.classList);
             if (classes.length > 0) {
                 localSelector += `.${classes.map(c => insecureEscapeSelectorPart(c)).join('.')}`;
@@ -192,37 +268,52 @@ function getUniqueSelector(el) {
     };
     let selector = getSelector(el, specificity);
 
-    // verify that the selector is unique
-    if (document.querySelectorAll(selector).length > 1) {
-        specificity.dataAttributes = true;
-        selector = getSelector(el, specificity);
-    }
+    try {
+        // verify that the selector is unique
+        if (document.querySelectorAll(selector).length > 1) {
+            specificity.dataAttributes = true;
+            selector = getSelector(el, specificity);
+        }
 
-    if (document.querySelectorAll(selector).length > 1) {
-        specificity.classes = true;
-        selector = getSelector(el, specificity);
-    }
+        if (document.querySelectorAll(selector).length > 1) {
+            specificity.classes = true;
+            selector = getSelector(el, specificity);
+        }
 
-    if (document.querySelectorAll(selector).length > 1) {
-        specificity.absoluteOrder = true;
-        selector = getSelector(el, specificity);
+        if (document.querySelectorAll(selector).length > 1) {
+            specificity.absoluteOrder = true;
+            selector = getSelector(el, specificity);
+        }
+    } catch (e) {
+        console.error(`Error getting unique selector for`, el, e);
+        if (e instanceof DOMException && e.message.includes('is not a valid selector')) {
+            return 'cookiepopups-collector-selector-error';
+        }
     }
 
     return selector;
 }
 
 /**
- * @returns {import('../CookiePopupsCollector').ScrapeScriptResult}
+ * Serialize all actionable buttons on the page
+ * @param {HTMLElement} el
+ * @returns {import('../CookiePopupsCollector').ButtonData[]}
  */
-function collectPotentialPopups() {
-    const isFramed = window.top !== window || location.ancestorOrigins?.length > 0;
-    // do not inspect frames that are more than one level deep
-    if (isFramed && window.parent && window.parent !== window.top) {
-        return {
-            potentialPopups: [],
-        };
-    }
+function getButtonData(el) {
+    const actionableButtons = excludeContainers(getButtonLikeElements(el))
+        .filter(b => isVisible(b) && !isDisabled(b));
 
+    return actionableButtons.map(b => ({
+        text: b.innerText,
+        selector: getUniqueSelector(b),
+    }));
+}
+
+/**
+ * @param {boolean} isFramed
+ * @returns {import('../CookiePopupsCollector').PopupData[]}
+ */
+function collectPotentialPopups(isFramed) {
     let elements = [];
     if (!isFramed) {
         elements = getPopupLikeElements();
@@ -234,27 +325,48 @@ function collectPotentialPopups() {
         }
     }
 
+    /**
+     * @type {import('../CookiePopupsCollector').PopupData[]}
+     */
     const potentialPopups = [];
 
     // for each potential popup, get the buttons
     for (const el of elements) {
-        const buttons = excludeContainers(getButtons(el))
-            .filter(b => isVisible(b) && !isDisabled(b));
         if (el.innerText) {
             potentialPopups.push({
                 text: el.innerText,
                 selector: getUniqueSelector(el),
-                buttons: buttons.map(b => ({
-                    text: b.innerText,
-                    selector: getUniqueSelector(b),
-                })),
-                isTop: !isFramed,
-                origin: window.location.origin,
+                buttons: getButtonData(el),
             });
         }
     }
 
-    return { potentialPopups };
+    return potentialPopups;
 }
 
-collectPotentialPopups();
+/**
+ * @returns {import('../CookiePopupsCollector').ScrapeScriptResult}
+ */
+function scrapePage() {
+    const isFramed = window.top !== window || location.ancestorOrigins?.length > 0;
+    // do not inspect frames that are more than one level deep
+    if (isFramed && window.parent && window.parent !== window.top) {
+        return {
+            isTop: !isFramed,
+            origin: window.location.origin,
+            buttons: [],
+            cleanedText: '',
+            potentialPopups: [],
+        };
+    }
+
+    return {
+        isTop: !isFramed,
+        origin: window.location.origin,
+        buttons: getButtonData(document.documentElement),
+        cleanedText: getDocumentText().slice(0, LIMIT_TEXT_LENGTH),
+        potentialPopups: collectPotentialPopups(isFramed),
+    };
+}
+
+scrapePage();

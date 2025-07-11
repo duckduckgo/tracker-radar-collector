@@ -91,7 +91,7 @@ describe('CookiePopupsCollector', () => {
                 assert.deepStrictEqual(commands[0], ['Runtime.evaluate', {
                     expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify({
                         enabled: true,
-                        autoAction: 'optOut',
+                        autoAction: null,
                         disabledCmps: [],
                         enablePrehide: false,
                         enableCosmeticRules: true,
@@ -255,6 +255,7 @@ describe('CookiePopupsCollector', () => {
                     origin: 'https://example.com/',
                     auxData: {
                         type: 'default',
+                        frameId: 'someframeid',
                     },
                 }
             });
@@ -266,9 +267,9 @@ describe('CookiePopupsCollector', () => {
                     origin: 'https://example.com/',
                     auxData: {
                         type: 'isolated',
-                        frameId: 1,
+                        frameId: 'someframeid',
                     },
-                    name: 'iw_for_cookiepopups_some_main_world',
+                    name: 'iw_for_cookiepopups_some_main_world_frameId_someframeid',
                 }
             });
 
@@ -637,7 +638,7 @@ describe('CookiePopupsCollector', () => {
             collector.cdpSessions.set(1, mockSession);
 
             const data = await collector.getData();
-            assert.deepStrictEqual(data.potentialPopups, fakePopupData.potentialPopups);
+            assert.deepStrictEqual(data.scrapedFrames.flatMap(frame => frame.potentialPopups), fakePopupData.potentialPopups);
         });
 
         it('should handle evaluation errors gracefully', async () => {
@@ -662,7 +663,7 @@ describe('CookiePopupsCollector', () => {
             collector.cdpSessions.set(1, mockSession);
 
             const data = await collector.getData();
-            assert.strictEqual(data.potentialPopups.length, 0);
+            assert.strictEqual(data.scrapedFrames.flatMap(frame => frame.potentialPopups).length, 0);
         });
     });
 });

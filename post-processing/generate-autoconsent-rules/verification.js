@@ -4,10 +4,13 @@ const fs = require('fs');
 
 /**
  * Run LLM to detect potential false positives and false negatives in button detection.
- * @param {import('./main').GlobalParams} globalParams
+ * @param {{
+ *  openai: import('openai').OpenAI,
+ *  rejectButtonTextsFile: string,
+ *  otherButtonTextsFile: string,
+ * }} params
  */
-async function verifyButtonTexts(globalParams) {
-    const { openai, rejectButtonTextsFile, otherButtonTextsFile } = globalParams;
+async function verifyButtonTexts({ openai, rejectButtonTextsFile, otherButtonTextsFile }) {
     const FalsePositiveSuggestions = z.object({
         potentiallyIncorrectRejectButtons: z.array(z.string()),
     });
