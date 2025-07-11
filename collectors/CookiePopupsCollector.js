@@ -14,6 +14,9 @@ const baseContentScript = fs.readFileSync(
 
 const BINDING_NAME_PREFIX = 'cdpAutoconsentSendMessage_';
 const SCRAPE_TIMEOUT = 20000;
+const OPTOUT_TIMEOUT = 30000;
+const DETECT_TIMEOUT = 5000;
+const FOUND_TIMEOUT = 5000;
 
 /**
  * @param {string} bindingName
@@ -33,7 +36,7 @@ const cookiePopupScrapeScript = fs.readFileSync(
 );
 
 class CookiePopupsCollector extends ContentScriptCollector {
-    collectorExtraTimeMs = SCRAPE_TIMEOUT + 10000; // Autoconsent opt-out/opt-in and scraping can take a while
+    collectorExtraTimeMs = SCRAPE_TIMEOUT + DETECT_TIMEOUT + FOUND_TIMEOUT + OPTOUT_TIMEOUT; // Autoconsent opt-out/opt-in and scraping can take a while
 
     id() {
         return 'cookiepopups';
@@ -232,10 +235,10 @@ class CookiePopupsCollector extends ContentScriptCollector {
     }
 
     /**
-     * @param {Partial<ContentScriptMessage>} msg
+     * @param {{msg: Partial<ContentScriptMessage>, maxTimes?: number, interval?: number}} params
      * @returns {Promise<ContentScriptMessage>}
      */
-    async waitForMessage(msg, maxTimes = 20, interval = 100) {
+    async waitForMessage({msg, maxTimes = 20, interval = 100}) {
         if (this.shortTimeouts) {
             // eslint-disable-next-line no-param-reassign
             maxTimes = 1;
@@ -249,13 +252,21 @@ class CookiePopupsCollector extends ContentScriptCollector {
      */
     async waitForPopupFound() {
         // check if anything was detected at all
-        const detectedMsg = /** @type {DetectedMessage | null} */ (await this.waitForMessage({type: 'cmpDetected'}));
+        const detectedMsg = /** @type {DetectedMessage | null} */ (await this.waitForMessage({
+            msg: {type: 'cmpDetected'},
+            maxTimes: DETECT_TIMEOUT / 200,
+            interval: 200,
+        }));
         if (!detectedMsg) {
             return null;
         }
 
         // was there a popup?
-        const found = /** @type {FoundMessage | null} */ (await this.waitForMessage({type: 'popupFound'}));
+        const found = /** @type {FoundMessage | null} */ (await this.waitForMessage({
+            msg: {type: 'popupFound'},
+            maxTimes: FOUND_TIMEOUT / 200,
+            interval: 200,
+        }));
         return found;
     }
 
@@ -266,16 +277,16 @@ class CookiePopupsCollector extends ContentScriptCollector {
     async waitForAutoconsentFinish(popupFoundMsg) {
         const resultType = this.autoAction === 'optOut' ? 'optOutResult' : 'optInResult';
 
-        // some cmps take a while to opt-out/opt-in, allow up to 10s here
+        // some cmps take a while to opt-out/opt-in, allow up to 30s here
         const autoActionResult = /** @type {OptOutResultMessage|OptInResultMessage} */ (
-            await this.waitForMessage(
-                {
+            await this.waitForMessage({
+                msg: {
                     type: resultType,
                     cmp: popupFoundMsg.cmp
                 },
-                /* maxTimes: */ 20,
-                /* interval: */ 500
-            )
+                maxTimes: OPTOUT_TIMEOUT / 1000,
+                interval: 1000,
+            })
         );
         if (autoActionResult) {
             if (!autoActionResult.result) {
@@ -283,8 +294,10 @@ class CookiePopupsCollector extends ContentScriptCollector {
             }
         }
         const doneMsg = /** @type {DoneMessage} */ (await this.waitForMessage({
-            type: 'autoconsentDone'
-        }, 10, 100));
+            msg: {type: 'autoconsentDone'},
+            maxTimes: 10,
+            interval: 100,
+        }));
         if (!doneMsg) {
             return;
         }
@@ -293,8 +306,10 @@ class CookiePopupsCollector extends ContentScriptCollector {
         if (this.selfTestFrame) {
             // did self-test succeed?
             await this.waitForMessage({
-                type: 'selfTestResult'
-            }, 10, 100);
+                msg: {type: 'selfTestResult'},
+                maxTimes: 10,
+                interval: 100,
+            });
         }
     }
 
