@@ -173,15 +173,6 @@ function getButtonLikeElements(el) {
 }
 
 /**
- * Naive selector escaping. Use with caution.
- * @param {string} selector
- * @returns {string}
- */
-function insecureEscapeSelectorPart(selector) {
-    return selector.replace(/[ .*+?^${}()|[\]\\"]/g, '\\$&');
-}
-
-/**
  * Get the selector for an element
  * @param {HTMLElement} el - The element to get the selector for
  * @param {{ order?: boolean, ids?: boolean, dataAttributes?: boolean, classes?: boolean, absoluteOrder?: boolean }} specificity - details to add to the selector
@@ -219,7 +210,7 @@ function getSelector(el, specificity) {
         if (specificity.ids) {
             // use getAttribute() instead of element.id to protect against DOM clobbering
             if (element.getAttribute('id')) {
-                localSelector += `#${insecureEscapeSelectorPart(element.getAttribute('id'))}`;
+                localSelector += `#${CSS.escape(element.getAttribute('id'))}`;
             } else if (!element.hasAttribute('id')) { // do not add it for id attribute without a value
                 localSelector += `:not([id])`;
             }
@@ -228,7 +219,7 @@ function getSelector(el, specificity) {
         if (specificity.dataAttributes && element.attributes instanceof NamedNodeMap) {
             const dataAttributes = Array.from(element.attributes).filter(a => a.name.startsWith('data-'));
             dataAttributes.forEach(a => {
-                const escapedValue = insecureEscapeSelectorPart(a.value);
+                const escapedValue = CSS.escape(a.value);
                 localSelector += `[${a.name}="${escapedValue}"]`;
             });
         }
@@ -236,7 +227,7 @@ function getSelector(el, specificity) {
         if (specificity.classes && element.classList instanceof DOMTokenList) {
             const classes = Array.from(element.classList);
             if (classes.length > 0) {
-                localSelector += `.${classes.map(c => insecureEscapeSelectorPart(c)).join('.')}`;
+                localSelector += `.${classes.map(c => CSS.escape(c)).join('.')}`;
             }
         }
 
