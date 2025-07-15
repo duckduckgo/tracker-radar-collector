@@ -309,7 +309,7 @@ function getUniqueSelector(el) {
  */
 function getButtonData(el) {
     const actionableButtons = excludeContainers(getButtonLikeElements(el))
-        .filter(b => isVisible(b) && !isDisabled(b));
+        .filter(b => isVisible(b) && !isDisabled(b) && b.innerText.trim());
 
     return actionableButtons.map(b => ({
         text: b.innerText,
