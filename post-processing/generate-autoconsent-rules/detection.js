@@ -140,34 +140,43 @@ Examples of NON-cookie popup text:
 }
 
 /**
- * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
- * @param {import('./main').PopupData} popup
- * @param {import('openai').OpenAI} openai
- * @returns {Promise<import('./main').ProcessedCookiePopup | null>}
+ * @param {import('./types').ButtonData[]} buttons
+ * @returns {{rejectButtons: import('./types').ButtonData[], otherButtons: import('./types').ButtonData[]}}
  */
-async function applyDetectionHeuristics(popup, openai) {
-    const popupText = popup.text?.trim();
-    if (!popupText) {
-        return null;
-    }
-    const regexMatch = checkHeuristicPatterns(popupText);
-    const llmMatch = await checkLLM(openai, popupText);
-
-    /** @type {import('./main').ButtonData[]} */
+function classifyButtons(buttons) {
     const rejectButtons = [];
-    /** @type {import('./main').ButtonData[]} */
     const otherButtons = [];
-
-    popup.buttons.forEach(button => {
+    for (const button of buttons) {
         if (isRejectButton(button.text)) {
             rejectButtons.push(button);
         } else {
             otherButtons.push(button);
         }
-    });
+    }
+    return {
+        rejectButtons,
+        otherButtons,
+    };
+}
+
+/**
+ * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
+ * @param {import('./types').PopupData} popup
+ * @param {import('openai').OpenAI} openai
+ * @returns {Promise<PopupClassificationResult>}
+ */
+async function classifyPopup(popup, openai) {
+    const popupText = popup.text?.trim();
+    let regexMatch = false;
+    let llmMatch = false;
+    if (popupText) {
+        regexMatch = checkHeuristicPatterns(popupText);
+        llmMatch = await checkLLM(openai, popupText);
+    }
+
+    const { rejectButtons, otherButtons } = classifyButtons(popup.buttons);
 
     return {
-        ...popup,
         llmMatch,
         regexMatch,
         rejectButtons,
@@ -175,6 +184,16 @@ async function applyDetectionHeuristics(popup, openai) {
     };
 }
 
+/**
+ * @typedef {Object} PopupClassificationResult
+ * @property {boolean} llmMatch
+ * @property {boolean} regexMatch
+ * @property {import('./types').ButtonData[]} rejectButtons
+ * @property {import('./types').ButtonData[]} otherButtons
+ */
+
 module.exports = {
-    applyDetectionHeuristics,
+    classifyButtons,
+    classifyPopup,
+    checkHeuristicPatterns,
 };

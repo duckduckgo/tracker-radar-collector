@@ -1,13 +1,18 @@
 class BaseCollector {
 
+    /**
+     * Override this to increase the total crawl time when this collector is enabled.
+     */
+    collectorExtraTimeMs = 0;
+
     id() {
         return 'base';
     }
 
     /**
      * Called before the crawl begins. Can be async, can throw errors.
-     * 
-     * @param {CollectorInitOptions} options 
+     *
+     * @param {CollectorInitOptions} options
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     init(options) {

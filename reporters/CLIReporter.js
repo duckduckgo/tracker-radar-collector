@@ -8,16 +8,17 @@ class CLIReporter extends BaseReporter {
     }
 
     /**
-     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options 
+     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options
      */
     init(options) {
         this.verbose = options.verbose;
+        this.startTime = options.startTime;
 
         this.alwaysLog(chalk.cyan(`Start time: ${options.startTime.toUTCString()}`));
         this.alwaysLog(chalk.cyan(`URLs to crawl: ${options.urls}`));
 
         // eslint-disable-next-line no-process-env
-        this.progressBar = (options.urls === 0 || process.env.IS_CI) ? null : new ProgressBar('[:bar] :percent :finished ETA :etas fail :fail% :site', {
+        this.progressBar = (options.urls === 0 || process.env.IS_CI) ? null : new ProgressBar('[:bar] :percent :finished ETA :etas fail :fail% rate :rate/min :site', {
             complete: chalk.green('='),
             incomplete: ' ',
             total: options.urls,
@@ -30,7 +31,7 @@ class CLIReporter extends BaseReporter {
     }
 
     /**
-     * @param  {...any} msg 
+     * @param  {...any} msg
      */
     alwaysLog(...msg) {
         // eslint-disable-next-line no-console
@@ -38,7 +39,7 @@ class CLIReporter extends BaseReporter {
     }
 
     /**
-     * @param  {...any} msg 
+     * @param  {...any} msg
      */
     log(...msg) {
         if (this.verbose) {
@@ -48,20 +49,24 @@ class CLIReporter extends BaseReporter {
     }
 
     /**
-     * @param {{site: string, failures: number, successes: number, urls: number}} data 
+     * @param {{site: string, failures: number, successes: number, urls: number}} data
      */
     update(data) {
         const finished = data.failures + data.successes;
+        const currentTime = new Date();
+        const elapsedMinutes = (currentTime.getTime() - this.startTime.getTime()) / (1000 * 60);
+        const rate = elapsedMinutes > 0 ? (finished / elapsedMinutes).toFixed(1) : '0.0';
+
         if (this.progressBar) {
             this.progressBar.total = data.urls;
             this.progressBar.tick({
                 site: data.site,
                 finished: `${finished} / ${data.urls}`,
-                fail: (data.failures / finished * 100).toFixed(1)
+                fail: (data.failures / finished * 100).toFixed(1),
+                rate,
             });
         } else {
-            const currentTime = new Date().toUTCString();
-            this.alwaysLog(`${currentTime} | Finished: ${finished} | Failed: ${data.failures} | Total: ${data.urls}`);
+            this.alwaysLog(`${currentTime.toUTCString()} | Finished: ${finished} | Failed: ${data.failures} | Total: ${data.urls} | Rate: ${rate} sites/min | Last: ${data.site}`);
         }
     }
 

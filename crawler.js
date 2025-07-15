@@ -63,17 +63,17 @@ class Crawler {
     async onTargetAttached(event) {
         const targetInfo = event.targetInfo;
         const session = this.browserConnection.session(event.sessionId);
-        this.log(`target attached ${targetInfo.targetId}: ${targetInfo.type} ${targetInfo.url}`);
+        this.log(`target attached tId ${targetInfo.targetId} type ${targetInfo.type} url ${targetInfo.url}`);
         const timer = createTimer();
         if (this.targets.has(targetInfo.targetId)) {
-            this.log(chalk.yellow(`Target ${targetInfo.targetId} already exists: old session: ${this.targets.get(targetInfo.targetId).session.id()}, new: ${session.id()}`));
+            this.log(chalk.yellow(`Target tId ${targetInfo.targetId} already exists: old session: ${this.targets.get(targetInfo.targetId).session.id()}, new: ${session.id()}`));
         }
         this.targets.set(targetInfo.targetId, {targetInfo, session});
         try {
             await this._onTargetAttached(session, targetInfo);
-            this.log(`${targetInfo.targetId} (${targetInfo.url}) target attached in ${timer.getElapsedTime()}s`);
+            this.log(`tId ${targetInfo.targetId} url ${targetInfo.url} target attached in ${timer.getElapsedTime()}s`);
         } catch (e) {
-            this.log(chalk.yellow(`Could not attach to ${targetInfo.type} ${targetInfo.targetId} (${targetInfo.url}) after ${timer.getElapsedTime()}s: ${e}`));
+            this.log(chalk.yellow(`Could not attach to tId ${targetInfo.targetId} type ${targetInfo.type} url ${targetInfo.url} after ${timer.getElapsedTime()}s: ${e}`));
         }
     }
 
@@ -106,9 +106,10 @@ class Crawler {
             session.on('Page.frameNavigated', e => {
                 if (!e.frame.parentId) {
                     if (this.mainPageFrame) {
-                        this.log(chalk.red(`Main frame changed: ${this.mainPageFrame.id} -> ${e.frame.id}`));
+                        this.log(chalk.red(`Main frame changed: fId ${this.mainPageFrame.id} -> fId ${e.frame.id}`));
                         this.mainPageFrame = e.frame;
                     } else {
+                        this.log(`Main frame: fId ${e.frame.id} ${JSON.stringify(e.frame)}`);
                         this.mainPageFrame = e.frame;
                         this._mainFrameDeferred.resolve(e.frame.id);
                     }
@@ -142,7 +143,7 @@ class Crawler {
         await session.send('Runtime.runIfWaitingForDebugger');
         if (this.mainPageTargetId === targetInfo.targetId) {
             this.mainPageAttached = true;
-            this.log(chalk.green(`main page target attached: ${targetInfo.targetId} ${targetInfo.url}`));
+            this.log(chalk.green(`main page target attached: tId ${targetInfo.targetId} url ${targetInfo.url}`));
             this._mainPageAttachedDeferred.resolve({targetInfo, session});
         }
     }
@@ -153,7 +154,7 @@ class Crawler {
     onTargetInfoChanged(event) {
         const target = this.targets.get(event.targetInfo.targetId);
         if (target) {
-            this.log(`${target.targetInfo.targetId} changed. old url: ${target.targetInfo.url}, new url: ${event.targetInfo.url}`);
+            this.log(`tId ${target.targetInfo.targetId} changed. old url: ${target.targetInfo.url}, new url: ${event.targetInfo.url}`);
             target.targetInfo = event.targetInfo;
         }
     }
@@ -162,7 +163,7 @@ class Crawler {
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.DetachedFromTargetEvent} event
      */
     onDetachedFromTarget(event) {
-        this.log(`detached from: ${event.targetId}; session: ${event.sessionId}`);
+        this.log(`detached from: tId ${event.targetId}; session: ${event.sessionId}`);
         this.targets.delete(event.targetId);
     }
 
@@ -170,7 +171,7 @@ class Crawler {
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetDestroyedEvent} event
      */
     onTargetDestroyed(event) {
-        this.log(`target ${event.targetId} destroyed`);
+        this.log(`target tId ${event.targetId} destroyed`);
         this.targets.delete(event.targetId);
     }
 
@@ -178,7 +179,7 @@ class Crawler {
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetCrashedEvent} event
      */
     onTargetCrashed(event) {
-        this.log(chalk.red(`target ${event.targetId} crashed: status ${event.status}, code ${event.errorCode}`));
+        this.log(chalk.red(`target tId ${event.targetId} crashed: status ${event.status}, code ${event.errorCode}`));
         if (this.mainPageTargetId === event.targetId) {
             this._navigationDeferred.reject(new Error(`Main target ${event.targetId} crashed`));
         }
@@ -190,7 +191,7 @@ class Crawler {
      */
     onTargetCreated(event) {
         const targetInfo = event.targetInfo;
-        this.log(`target created: ${targetInfo.targetId} ${targetInfo.type} ${targetInfo.url}`);
+        this.log(`target created: tId ${targetInfo.targetId} type ${targetInfo.type} url ${targetInfo.url}`);
         if (!this.mainPageTargetId && targetInfo.type === 'page') {
             this.mainPageTargetId = targetInfo.targetId;
         }
@@ -202,7 +203,7 @@ class Crawler {
      * @returns {Promise<void>}
      */
     async navigateMainTarget(url, timeoutMs) {
-        const {session} = await wait(this._mainPageAttachedDeferred.promise, timeoutMs, 'Main page target not found');
+        const {session, targetInfo} = await wait(this._mainPageAttachedDeferred.promise, timeoutMs, 'Main page target not found');
         await session.send('Page.navigate', {
             url: url.toString(),
         });
@@ -211,10 +212,14 @@ class Crawler {
          * @param {import('devtools-protocol/types/protocol').Protocol.Page.LifecycleEventEvent} e
          */
         const lifecycleHandler = async e => {
+            if (e.name === 'networkAlmostIdle') {
+                this.log(`networkAlmostIdle in fId ${e.frameId} tId ${targetInfo.targetId}`);
+            }
             if (e.name === 'networkIdle') {
+                this.log(`networkIdle in fId ${e.frameId} tId ${targetInfo.targetId}`);
                 await this._mainFrameDeferred.promise;
                 if (e.frameId === this.mainPageFrame.id) {
-                    this.log(chalk.green(`network idle in ${this.mainPageFrame.url}`));
+                    this.log(chalk.green(`network idle in the main frame ${this.mainPageFrame.url}`));
                     session.off('Page.lifecycleEvent', lifecycleHandler);
                     this._navigationDeferred.resolve();
                 }
@@ -401,7 +406,8 @@ async function crawl(url, options) {
 
     const maxLoadTimeMs = options.maxLoadTimeMs || 60000;
     const extraExecutionTimeMs = options.extraExecutionTimeMs || 2500;
-    const maxTotalTimeMs = maxLoadTimeMs * 2;
+    const collectorExtraTimeMs = options.collectors.reduce((sum, collector) => sum + (collector.collectorExtraTimeMs || 0), 0);
+    const maxTotalTimeMs = (maxLoadTimeMs * 2) + collectorExtraTimeMs;
 
     let emulateUserAgent = !options.seleniumHub && !VISUAL_DEBUG; // by default, override only when in headless mode
     if (options.emulateUserAgent === false) {

@@ -4,6 +4,7 @@ const waitFor = require('../helpers/waitFor');
 const ContentScriptCollector = require('./ContentScriptCollector');
 const { createTimer } = require('../helpers/timer');
 const { wait, TimeoutError } = require('../helpers/wait');
+const createDeferred = require('../helpers/deferred');
 
 // @ts-ignore
 const baseContentScript = fs.readFileSync(
@@ -13,6 +14,9 @@ const baseContentScript = fs.readFileSync(
 
 const BINDING_NAME_PREFIX = 'cdpAutoconsentSendMessage_';
 const SCRAPE_TIMEOUT = 20000;
+const OPTOUT_TIMEOUT = 30000;
+const DETECT_TIMEOUT = 5000;
+const FOUND_TIMEOUT = 5000;
 
 /**
  * @param {string} bindingName
@@ -32,6 +36,8 @@ const cookiePopupScrapeScript = fs.readFileSync(
 );
 
 class CookiePopupsCollector extends ContentScriptCollector {
+    collectorExtraTimeMs = SCRAPE_TIMEOUT + DETECT_TIMEOUT + FOUND_TIMEOUT + OPTOUT_TIMEOUT; // Autoconsent opt-out/opt-in and scraping can take a while
+
     id() {
         return 'cookiepopups';
     }
@@ -53,6 +59,9 @@ class CookiePopupsCollector extends ContentScriptCollector {
             patterns: new Set([]),
             filterListMatched: false,
         };
+
+        /** @type {import('../helpers/deferred').Deferred<ScrapeScriptResult[]>} */
+        this.scrapeJobDeferred = createDeferred();
     }
 
     /**
@@ -139,7 +148,9 @@ class CookiePopupsCollector extends ContentScriptCollector {
             /** @type {Partial<AutoconsentConfig>} */
             const autoconsentConfig = {
                 enabled: true,
-                autoAction: this.autoAction || null, // make sure it's never undefined
+                // we need to pass an explicit null here so that autoconsent doesn't use the default value ('optOut').
+                // Note that the opt-in/opt-out may still be triggered later based on this.autoAction.
+                autoAction: null,
                 disabledCmps: [],
                 enablePrehide: false,
                 enableCosmeticRules: true,
@@ -158,6 +169,16 @@ class CookiePopupsCollector extends ContentScriptCollector {
             if (msg.cmp === 'filterList') {
                 this.scanResult.filterListMatched = true;
             }
+            if (this.autoAction) {
+                // wait for the scrape job to finish first
+                await this.scrapeJobDeferred.promise;
+                // trigger the autoconsent action (optOut/optIn)
+                this.log(`Starting ${this.autoAction} for ${msg.cmp} in ${executionContextUniqueId} (${msg.url})`);
+                await this.cdpSessions.get(executionContextUniqueId)?.send('Runtime.evaluate', {
+                    expression: `autoconsentReceiveMessage({ type: "${this.autoAction}" })`,
+                    uniqueContextId: executionContextUniqueId,
+                });
+            }
             break;
         case 'report':
             msg.state.heuristicPatterns.forEach(x => this.scanResult.patterns.add(x));
@@ -165,6 +186,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
             break;
         case 'optInResult':
         case 'optOutResult': {
+            this.log(`${msg.type} ${msg.cmp} ${msg.result ? 'succeeded' : 'failed'} in ${executionContextUniqueId} (${msg.url})`);
             if (msg.scheduleSelfTest) {
                 this.selfTestFrame = executionContextUniqueId;
             }
@@ -213,10 +235,10 @@ class CookiePopupsCollector extends ContentScriptCollector {
     }
 
     /**
-     * @param {Partial<ContentScriptMessage>} msg
+     * @param {{msg: Partial<ContentScriptMessage>, maxTimes?: number, interval?: number}} params
      * @returns {Promise<ContentScriptMessage>}
      */
-    async waitForMessage(msg, maxTimes = 20, interval = 100) {
+    async waitForMessage({msg, maxTimes = 20, interval = 100}) {
         if (this.shortTimeouts) {
             // eslint-disable-next-line no-param-reassign
             maxTimes = 1;
@@ -226,39 +248,56 @@ class CookiePopupsCollector extends ContentScriptCollector {
     }
 
     /**
-     * @returns {Promise<void>}
+     * @returns {Promise<FoundMessage | null>}
      */
-    async waitForAutoconsentFinish() {
+    async waitForPopupFound() {
         // check if anything was detected at all
-        const detectedMsg = /** @type {DetectedMessage} */ (await this.waitForMessage({type: 'cmpDetected'}));
+        const detectedMsg = /** @type {DetectedMessage | null} */ (await this.waitForMessage({
+            msg: {type: 'cmpDetected'},
+            maxTimes: DETECT_TIMEOUT / 200,
+            interval: 200,
+        }));
         if (!detectedMsg) {
-            return;
+            return null;
         }
 
         // was there a popup?
-        const found = await this.waitForMessage({type: 'popupFound'}, /* maxTimes: */ 10, /* interval: */ 100);
-        if (!found) {
-            return;
-        }
-
-        if (!this.autoAction) {
-            return;
-        }
-
-        // did we opt-out?
-        const resultType = this.autoAction === 'optOut' ? 'optOutResult' : 'optInResult';
-        const autoActionDone = /** @type {OptOutResultMessage|OptInResultMessage} */ (await this.waitForMessage({
-            type: resultType,
-            cmp: detectedMsg.cmp
+        const found = /** @type {FoundMessage | null} */ (await this.waitForMessage({
+            msg: {type: 'popupFound'},
+            maxTimes: FOUND_TIMEOUT / 200,
+            interval: 200,
         }));
-        if (autoActionDone) {
-            if (!autoActionDone.result) {
+        return found;
+    }
+
+    /**
+     * @param {FoundMessage} popupFoundMsg
+     * @returns {Promise<void>}
+     */
+    async waitForAutoconsentFinish(popupFoundMsg) {
+        const resultType = this.autoAction === 'optOut' ? 'optOutResult' : 'optInResult';
+
+        // some cmps take a while to opt-out/opt-in, allow up to 30s here
+        const autoActionResult = /** @type {OptOutResultMessage|OptInResultMessage} */ (
+            await this.waitForMessage({
+                msg: {
+                    type: resultType,
+                    cmp: popupFoundMsg.cmp
+                },
+                maxTimes: OPTOUT_TIMEOUT / 1000,
+                interval: 1000,
+            })
+        );
+        if (autoActionResult) {
+            if (!autoActionResult.result) {
                 return;
             }
         }
         const doneMsg = /** @type {DoneMessage} */ (await this.waitForMessage({
-            type: 'autoconsentDone'
-        }, 10, 100));
+            msg: {type: 'autoconsentDone'},
+            maxTimes: 10,
+            interval: 100,
+        }));
         if (!doneMsg) {
             return;
         }
@@ -267,8 +306,10 @@ class CookiePopupsCollector extends ContentScriptCollector {
         if (this.selfTestFrame) {
             // did self-test succeed?
             await this.waitForMessage({
-                type: 'selfTestResult'
-            }, 10, 100);
+                msg: {type: 'selfTestResult'},
+                maxTimes: 10,
+                interval: 100,
+            });
         }
     }
 
@@ -340,11 +381,12 @@ class CookiePopupsCollector extends ContentScriptCollector {
     }
 
     /**
-     * @returns {Promise<PopupData[]>}
+     * @returns {Promise<ScrapeScriptResult[]>}
      */
     scrapePopups() {
         const scrapeScriptTimer = createTimer();
         // launch all scrape tasks in parallel
+        /** @type {Promise<ScrapeScriptResult | null>[]} */
         const scrapeTasks = Array.from(this.cdpSessions.entries()).map(async ([executionContextUniqueId, session]) => {
             try {
                 const evalResult = await session.send('Runtime.evaluate', {
@@ -354,22 +396,27 @@ class CookiePopupsCollector extends ContentScriptCollector {
                     allowUnsafeEvalBlockedByCSP: true,
                 });
                 if (evalResult.exceptionDetails) {
-                    this.log(`Error evaluating content script: ${evalResult.exceptionDetails.text}`);
-                    return [];
+                    this.log(`Error evaluating scrape script: ${evalResult.exceptionDetails.text} ${evalResult.exceptionDetails.exception?.description}`);
+                    return null;
                 }
                 /** @type {ScrapeScriptResult} */
                 const result = evalResult.result.value;
-                return result.potentialPopups || [];
+                if (result.cleanedText || result.potentialPopups.length > 0) {
+                    return result;
+                }
+                return null;
             } catch (e) {
                 if (!this.isIgnoredCdpError(e)) {
                     this.log(`Error evaluating scrape script: ${e}`);
                 }
-                return [];
+                return null;
             }
         });
+
+        // filter out null results
         return Promise.all(scrapeTasks).then(results => {
             this.log(`Scraping ${scrapeTasks.length} frames took ${scrapeScriptTimer.getElapsedTime()}s`);
-            return results.flat();
+            return results.filter(Boolean);
         });
     }
 
@@ -380,11 +427,36 @@ class CookiePopupsCollector extends ContentScriptCollector {
      */
     async getData() {
         // start scraping jobs early
-        const potentialPopupsPromise = this.scrapePopups();
+        const timeboxedScrapeJob = wait(this.scrapePopups(), SCRAPE_TIMEOUT, 'Scraping popups timed out').then(
+            // hook up this promise to the Deferred
+            scrapedFrames => {
+                this.scrapeJobDeferred.resolve(scrapedFrames);
+                return scrapedFrames;
+            },
+            e => {
+                if (e instanceof TimeoutError) {
+                    // do not fail the whole crawl on timeout
+                    this.log(e.message);
+                    const emptyResult = /** @type {ScrapeScriptResult[]} */ ([]);
+                    this.scrapeJobDeferred.resolve(emptyResult);
+                    return emptyResult;
+                }
+                this.scrapeJobDeferred.reject(e);
+                throw e;
+            }
+        );
 
-        const waitForAutoconsentTimer = createTimer();
-        await this.waitForAutoconsentFinish(); // < 10s
-        this.log(`Waiting for Autoconsent took ${waitForAutoconsentTimer.getElapsedTime()}s`);
+        const popupFoundTimer = createTimer();
+        const popupFound = await this.waitForPopupFound();
+        this.log(`Waiting for popupFound took ${popupFoundTimer.getElapsedTime()}s`);
+        if (popupFound && this.autoAction) {
+            // make sure we start waiting only after the scrape job is done
+            await this.scrapeJobDeferred.promise;
+            const autoconsentFinishTimer = createTimer();
+            await this.waitForAutoconsentFinish(popupFound);
+            this.log(`Waiting for autoconsent finish took ${autoconsentFinishTimer.getElapsedTime()}s`);
+        }
+
         const cmps = this.collectCMPResults();
 
         // if no cmps were found, but there were heuristic matches, add a fake entry
@@ -403,19 +475,10 @@ class CookiePopupsCollector extends ContentScriptCollector {
             });
         }
 
-        /** @type {PopupData[]} */
-        let potentialPopups = [];
-        // wait for all scrape tasks to finish, but limit the total time
-        try {
-            potentialPopups = await wait(potentialPopupsPromise, SCRAPE_TIMEOUT, 'Scraping popups timed out');
-        } catch (e) {
-            if (e instanceof TimeoutError) {
-                this.log(e.message);
-            }
-        }
+        const scrapedFrames = await timeboxedScrapeJob;
         return {
             cmps,
-            potentialPopups,
+            scrapedFrames,
         };
     }
 }
@@ -423,7 +486,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
 /**
  * @typedef CookiePopupsCollectorResult
  * @property {AutoconsentResult[]} cmps
- * @property {PopupData[]} potentialPopups
+ * @property {ScrapeScriptResult[]} scrapedFrames
  */
 
 /**
@@ -442,7 +505,15 @@ class CookiePopupsCollector extends ContentScriptCollector {
 
 /**
  * @typedef ScrapeScriptResult
+ * @property {boolean} isTop
+ * @property {string} origin
+ * @property {string} cleanedText
+ * @property {ButtonData[]} buttons
  * @property {PopupData[]} potentialPopups
+ * @property {boolean} [llmPopupDetected]
+ * @property {boolean} [regexPopupDetected]
+ * @property {ButtonData[]} [rejectButtons]
+ * @property {ButtonData[]} [otherButtons]
  */
 
 /**
@@ -450,8 +521,10 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {string} text
  * @property {string} selector
  * @property {ButtonData[]} buttons
- * @property {boolean} isTop
- * @property {string} origin
+ * @property {boolean} [llmMatch]
+ * @property {boolean} [regexMatch]
+ * @property {ButtonData[]} [rejectButtons]
+ * @property {ButtonData[]} [otherButtons]
  */
 
 /**
@@ -466,6 +539,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
  * @typedef { import('@duckduckgo/autoconsent/lib/types').Config } AutoconsentConfig
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').DetectedMessage } DetectedMessage
+ * @typedef { import('@duckduckgo/autoconsent/lib/messages').FoundMessage } FoundMessage
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').SelfTestResultMessage } SelfTestResultMessage
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').ErrorMessage } ErrorMessage
  * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage } OptOutResultMessage
