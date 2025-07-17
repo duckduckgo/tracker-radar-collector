@@ -1,4 +1,4 @@
-/* global window, document, HTMLElement, Node, NodeFilter, location, NamedNodeMap, DOMTokenList, DOMException */
+/* global window, document, HTMLElement, Node, NodeFilter, location, NamedNodeMap, DOMTokenList, DOMException, CSS */
 
 const BUTTON_LIKE_ELEMENT_SELECTOR = 'button, input[type="button"], input[type="submit"], a, [role="button"], [class*="button"]';
 const LIMIT_TEXT_LENGTH = 150000;
@@ -173,18 +173,9 @@ function getButtonLikeElements(el) {
 }
 
 /**
- * Naive selector escaping. Use with caution.
- * @param {string} selector
- * @returns {string}
- */
-function insecureEscapeSelectorPart(selector) {
-    return selector.replace(/[ .*+?^${}()|[\]\\"]/g, '\\$&');
-}
-
-/**
  * Get the selector for an element
  * @param {HTMLElement} el - The element to get the selector for
- * @param {{ order?: boolean, ids?: boolean, dataAttributes?: boolean, classes?: boolean, absoluteOrder?: boolean }} specificity - details to add to the selector
+ * @param {{ order?: boolean, ids?: boolean, dataAttributes?: boolean, classes?: boolean, absoluteOrder?: boolean, testid?: boolean }} specificity - details to add to the selector
  * @returns {string} The selector for the element
  */
 function getSelector(el, specificity) {
@@ -216,10 +207,10 @@ function getSelector(el, specificity) {
             }
         }
 
-        if (specificity.ids) {
+        if (specificity.ids && tagName !== 'body') {
             // use getAttribute() instead of element.id to protect against DOM clobbering
             if (element.getAttribute('id')) {
-                localSelector += `#${insecureEscapeSelectorPart(element.getAttribute('id'))}`;
+                localSelector += `#${CSS.escape(element.getAttribute('id'))}`;
             } else if (!element.hasAttribute('id')) { // do not add it for id attribute without a value
                 localSelector += `:not([id])`;
             }
@@ -228,15 +219,21 @@ function getSelector(el, specificity) {
         if (specificity.dataAttributes && element.attributes instanceof NamedNodeMap) {
             const dataAttributes = Array.from(element.attributes).filter(a => a.name.startsWith('data-'));
             dataAttributes.forEach(a => {
-                const escapedValue = insecureEscapeSelectorPart(a.value);
+                const escapedValue = CSS.escape(a.value);
                 localSelector += `[${a.name}="${escapedValue}"]`;
             });
+        } else if (specificity.testid) {
+            // data-testid is a common attribute used by testing frameworks to identify elements
+            const testid = element.getAttribute('data-testid');
+            if (testid) {
+                localSelector += `[data-testid="${CSS.escape(testid)}"]`;
+            }
         }
 
         if (specificity.classes && element.classList instanceof DOMTokenList) {
             const classes = Array.from(element.classList);
             if (classes.length > 0) {
-                localSelector += `.${classes.map(c => insecureEscapeSelectorPart(c)).join('.')}`;
+                localSelector += `.${classes.map(c => CSS.escape(c)).join('.')}`;
             }
         }
 
@@ -257,19 +254,30 @@ function getUniqueSelector(el) {
     // We need to strike a balance here. Selector has to be unique, but we want to avoid auto-generated (randomized) identifiers to make the it resilient. Assumptions:
     // - Classes are the most common thing to randomize, so we use them as the last resort.
     // - The general shape of the DOM doesn't change that much, so order is always preferred
-    // - data attributes can contain anything, so don't add them by default
-    // - IDs are often used on the popup containers, so are very useful. And they are definitely less commonly randomized than classes, but it's still possible, so we may want to change this logic later if we see randomized ids in the results.
+    // - data attributes can contain anything, so don't add them by default (except for data-testid, which is usually fine)
+    // - IDs are often used on the popup containers, so are very useful. Sometimes they are randomized too, but it's not as common.
     const specificity = {
+        testid: true,
+        ids: true,
         order: true,
-        ids: true, // consider disabling this by default for auto-generated IDs
         dataAttributes: false,
         classes: false,
         absoluteOrder: false,
     };
     let selector = getSelector(el, specificity);
 
+    // increase specificity until the selector is unique
     try {
-        // verify that the selector is unique
+        if (document.querySelectorAll(selector).length > 1) {
+            specificity.order = true;
+            selector = getSelector(el, specificity);
+        }
+
+        if (document.querySelectorAll(selector).length > 1) {
+            specificity.ids = true;
+            selector = getSelector(el, specificity);
+        }
+
         if (document.querySelectorAll(selector).length > 1) {
             specificity.dataAttributes = true;
             selector = getSelector(el, specificity);
@@ -301,7 +309,7 @@ function getUniqueSelector(el) {
  */
 function getButtonData(el) {
     const actionableButtons = excludeContainers(getButtonLikeElements(el))
-        .filter(b => isVisible(b) && !isDisabled(b));
+        .filter(b => isVisible(b) && !isDisabled(b) && b.innerText.trim());
 
     return actionableButtons.map(b => ({
         text: b.innerText,
