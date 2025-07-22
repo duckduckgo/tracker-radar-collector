@@ -257,10 +257,10 @@ async function main() {
     });
 
     console.log('Done');
-    console.log(`Sites with LLM detected text (full text page): ${sitesWithPopupsLlm} (${sitesWithPopupsLlm / pages.length * 100}%)`);
-    console.log(`Sites with regex detected popups (full text page): ${sitesWithPopupsRegex} (${sitesWithPopupsRegex / pages.length * 100}%)`);
-    console.log(`Sites with LLM detected popups (popup elements): ${sitesWithDetectedPopupLlm} (${sitesWithDetectedPopupLlm / pages.length * 100}%)`);
-    console.log(`Sites with regex detected popups (popup elements): ${sitesWithDetectedPopupRegex} (${sitesWithDetectedPopupRegex / pages.length * 100}%)`);
+    console.log(`Sites with LLM detected text (full text page): ${sitesWithPopupsLlm} (${(sitesWithPopupsLlm / pages.length * 100).toFixed(1)}%)`);
+    console.log(`Sites with regex detected popups (full text page): ${sitesWithPopupsRegex} (${(sitesWithPopupsRegex / pages.length * 100).toFixed(1)}%)`);
+    console.log(`Sites with LLM detected popups (popup elements): ${sitesWithDetectedPopupLlm} (${(sitesWithDetectedPopupLlm / pages.length * 100).toFixed(1)}%)`);
+    console.log(`Sites with regex detected popups (popup elements): ${sitesWithDetectedPopupRegex} (${(sitesWithDetectedPopupRegex / pages.length * 100).toFixed(1)}%)`);
     console.log(`Reject button texts (${rejectButtonTexts.size}) saved in ${rejectButtonTextsFile}`);
     console.log(`Other button texts (${otherButtonTexts.size}) saved in ${otherButtonTextsFile}`);
 }
