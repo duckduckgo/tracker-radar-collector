@@ -67,6 +67,9 @@ function cleanButtonText(buttonText) {
  * @returns {boolean}
  */
 function isRejectButton(buttonText) {
+    if (!buttonText) {
+        return false;
+    }
     const cleanedButtonText = cleanButtonText(buttonText);
     return !NEVER_MATCH_PATTERNS.some(p => p.test(cleanedButtonText)) &&
         REJECT_PATTERNS.some(p => {
