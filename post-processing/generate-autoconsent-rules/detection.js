@@ -1,5 +1,6 @@
 const { zodResponseFormat } = require('openai/helpers/zod');
 const { z } = require('zod');
+const { REJECT_PATTERNS, NEVER_MATCH_PATTERNS } = require('./button-patterns');
 
 
 /**
@@ -46,40 +47,10 @@ function checkHeuristicPatterns(allText) {
  * @returns {boolean}
  */
 function isRejectButton(buttonText) {
-    const REJECT_PATTERNS = [
-        // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject all non-essential cookies and continue", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close"
-        // note that "reject and subscribe" and "reject and pay" are excluded
-        /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*(and\s+(?!subscribe|pay)\w+)?\s*$/i,
-
-        // e.g. "i do not accept", "i do not accept cookies", "do not accept", "do not accept cookies"
-        /^\s*(i)?\s*do\s+not\s+accept\s*(cookies)?\s*$/i,
-
-        // e.g. "continue without accepting", "continue without agreeing", "continue without agreeing →"
-        /^\s*(continue|proceed|continue\s+browsing)\s+without\s+(accepting|agreeing|consent|cookies|tracking)(\s*→)?\s*$/i,
-
-        // e.g. "strictly necessary cookies only", "essential cookies only", "required only", "use necessary cookies only", "essentials only"
-        // note that "only" is required
-        /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essentials?|required)?\s*(cookies)?\s*only\s*$/i,
-
-        // e.g. "allow essential cookies", "allow necessary", "allow essentials", "allow essentials only"
-        // note that "essential" is required
-        /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essentials?|required)\s*(cookies)?\s*$/i,
-
-        // e.g. "accept only essential cookies", "use only necessary cookies", "allow only essential", "only essentials", "continue with only essential cookies"
-        // note that "only" is required
-        /^\s*(use|accept|allow|continue\s+with)?\s*only\s*(strictly)?\s*(necessary|essentials?|required)?\s*(cookies)?\s*$/i,
-
-        // e.g. "do not sell or share my personal information", "do not sell my personal information"
-        // often used in CCPA
-        /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*information\s*$/i,
-
-        // These are impactful, but look error-prone
-        // // e.g. "disagree"
-        // /^\s*(i)?\s*disagree\s*(and\s+close)?\s*$/i,
-        // // e.g. "i do not agree"
-        // /^\s*(i\s+)?do\s+not\s+agree\s*$/i,
-    ];
-    return REJECT_PATTERNS.some(p => p.test(buttonText));
+    return !NEVER_MATCH_PATTERNS.some(p => p.test(buttonText)) &&
+        REJECT_PATTERNS.some(p => {
+            return (p instanceof RegExp && p.test(buttonText)) || p === buttonText;
+        });
 }
 
 /**
