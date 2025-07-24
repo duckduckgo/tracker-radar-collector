@@ -189,8 +189,17 @@ async function main() {
             console.log(`${index + 1}/${pages.length} : ${page}`);
         }
         const filePath = path.join(crawlDir, page);
-        const contents = await fs.promises.readFile(filePath, 'utf-8');
-        const data = JSON.parse(contents.toString());
+
+        let contents;
+        let data;
+        try {
+            contents = await fs.promises.readFile(filePath, 'utf-8');
+            data = JSON.parse(contents.toString());
+        } catch (error) {
+            console.error(`Error reading or parsing file ${page}:`, error.message);
+            progressBar?.tick({ page });
+            return;
+        }
 
         if (!data.data || !data.data.cookiepopups) {
             progressBar?.tick({ page });
