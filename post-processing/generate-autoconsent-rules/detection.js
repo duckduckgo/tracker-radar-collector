@@ -44,12 +44,33 @@ function checkHeuristicPatterns(allText) {
 
 /**
  * @param {string} buttonText
+ * @returns {string}
+ */
+function cleanButtonText(buttonText) {
+    // lowercase
+    let result = buttonText.toLowerCase();
+    // remove special characters
+    result = result.replace(/[“”"\'/#&\[\]→✕×⟩❯><✗×‘’›«»]+/g, '');
+    // remove emojis
+    result = result.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u2600-\u26FF\u2700-\u27BF\u{1F900}-\u{1F9FF}\u{1FA70}-\u{1FAFF}]/gu, '');
+    // remove newlines
+    result = result.replace(/\n+/g, ' ');
+    // remove multiple spaces
+    result = result.replace(/\s+/g, ' ');
+    // strip whitespace around the text
+    result = result.trim();
+    return result;
+}
+
+/**
+ * @param {string} buttonText
  * @returns {boolean}
  */
 function isRejectButton(buttonText) {
-    return !NEVER_MATCH_PATTERNS.some(p => p.test(buttonText)) &&
+    const cleanedButtonText = cleanButtonText(buttonText);
+    return !NEVER_MATCH_PATTERNS.some(p => p.test(cleanedButtonText)) &&
         REJECT_PATTERNS.some(p => {
-            return (p instanceof RegExp && p.test(buttonText)) || p === buttonText;
+            return (p instanceof RegExp && p.test(cleanedButtonText)) || p === cleanedButtonText;
         });
 }
 
