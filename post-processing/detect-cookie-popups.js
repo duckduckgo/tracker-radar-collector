@@ -169,7 +169,7 @@ async function main() {
     });
 
     const pages = fs.readdirSync(crawlDir).filter(name => name.endsWith('.json') && name !== 'metadata.json');
-    const progressBar = process.env.IS_CI ? null : new ProgressBar('[:bar] :percent ETA :etas :page', {
+    const progressBar = process.env.IS_CI ? null : new ProgressBar('[:bar] :current/:total :percent ETA :etas rate :rate/s :page', {
         complete: chalk.green('='),
         incomplete: ' ',
         total: pages.length,
