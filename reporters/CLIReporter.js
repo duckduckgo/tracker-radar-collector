@@ -18,7 +18,7 @@ class CLIReporter extends BaseReporter {
         this.alwaysLog(chalk.cyan(`URLs to crawl: ${options.urls}`));
 
         // eslint-disable-next-line no-process-env
-        this.progressBar = (options.urls === 0 || process.env.IS_CI) ? null : new ProgressBar('[:bar] :percent :finished ETA :etas fail :fail% rate :rate/min :site', {
+        this.progressBar = (options.urls === 0 || process.env.IS_CI) ? null : new ProgressBar('[:bar] :percent :finished ETA :etas fail :fail% rate :ratePerMinute/min :site', {
             complete: chalk.green('='),
             incomplete: ' ',
             total: options.urls,
@@ -55,7 +55,7 @@ class CLIReporter extends BaseReporter {
         const finished = data.failures + data.successes;
         const currentTime = new Date();
         const elapsedMinutes = (currentTime.getTime() - this.startTime.getTime()) / (1000 * 60);
-        const rate = elapsedMinutes > 0 ? (finished / elapsedMinutes).toFixed(1) : '0.0';
+        const ratePerMinute = elapsedMinutes > 0 ? (finished / elapsedMinutes).toFixed(1) : '0.0';
 
         if (this.progressBar) {
             this.progressBar.total = data.urls;
@@ -63,10 +63,10 @@ class CLIReporter extends BaseReporter {
                 site: data.site,
                 finished: `${finished} / ${data.urls}`,
                 fail: (data.failures / finished * 100).toFixed(1),
-                rate,
+                ratePerMinute,
             });
         } else {
-            this.alwaysLog(`${currentTime.toUTCString()} | Finished: ${finished} | Failed: ${data.failures} | Total: ${data.urls} | Rate: ${rate} sites/min | Last: ${data.site}`);
+            this.alwaysLog(`${currentTime.toUTCString()} | Finished: ${finished} | Failed: ${data.failures} | Total: ${data.urls} | Rate: ${ratePerMinute} sites/min | Last: ${data.site}`);
         }
     }
 
