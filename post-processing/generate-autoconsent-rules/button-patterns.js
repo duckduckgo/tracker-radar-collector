@@ -421,43 +421,24 @@ const REJECT_PATTERNS_ITALIAN = [
     'negare tutti',
 ];
 
-const REJECT_PATTERNS_PORTUGUESE = [
-    'rejeitar',
-    'rejeitar todos',
-    'rejeitar cookies',
-    'recusar',
-    'rejeitar cookies não necessários',
-    'recusar cookies',
-    'negar',
-    'rejeitar tudo',
-    'rejeitar todos os cookies',
-    'rejeitar cookies opcionais',
-    'recusar tudo',
-    'continuar sem aceitar',
-    'recusar todos',
-    'rejeitar não necessários',
-    'não aceito',
-    'aceitar apenas necessários',
-    'aceitar apenas os necessários',
-    'aceitar somente cookies necessários',
-    'aceitar somente cookies obrigatórios',
-    'apenas cookies funcionais',
-    'apenas essenciais',
-    'apenas os necessários',
-    'bloquear todos os cookies não necessários',
-    'desativar cookies opcionais',
-    'recusar não essenciais',
-    'rejeitar cookies não essenciais',
-    'rejeitar todos os cookies não necessários',
-    'rejeitar tudo opcional',
-    'só os necessários',
-    'somente o necessário',
-    'somente os essenciais',
-    'utilizar apenas os cookies necessários',
-    'aceitar necessários',
-    'aceitar essenciais',
-    'permitir sólo necesarias',
-    'aceptar solo las esenciales',
+const REJECT_PATTERNS_BRAZILIAN_PORTUGUESE = [
+    // (deny)
+    /^\s*(rejeitar|recusar|desativar|bloquear|negar|não\s*aceito|não \s*aceitar)\s*$/si,
+
+    // (proceed) (without accepting)
+    /^\s*(continuar|prosseguir|seguir)\s*(sem\s*aceitar)\s*$/si,
+
+    // (deny) (everything) (optional)
+    /^\s*(rejeitar|recusar|desativar|bloquear|negar|não\s*aceito|não \s*aceitar)\s*(tudo|o)?\s*(opcional|(não[-\s](essencial|funcional|obrigatório|necessário)))?\s*$/si,
+
+    // (deny) (all) (the) (optional) (cookies)
+    /^\s*(rejeitar|recusar|desativar|bloquear|negar|não\s*aceito|não \s*aceitar)\s*(todos)?\s*(os)?\s*(cookies)?\s*(opcionais|(não[-\s](essenciais|funcionais|obrigatórios|necessários)))?\s*$/si,
+
+    // (accept) (only) (the) (essential)
+    /^\s*(aceitar|utilizar)?\s*(apenas|somente|só)?\s*(o)?\s*(essencial|funcional|obrigatório|necessário)\s*$/si,
+
+    // (accept) (only) (the) (essential) (cookies)
+    /^\s*(aceitar|utilizar)?\s*(apenas|somente|só)?\s*(os)?\s*(cookies)?\s*(essenciais|funcionais|obrigatórios|necessários)\s*$/si,
 ];
 
 const REJECT_PATTERNS_SPANISH = [
@@ -521,6 +502,7 @@ const REJECT_PATTERNS_SPANISH = [
     'cookies técnicas',
     'permitir solo cookies técnicas',
     'usar solo cookies técnicas',
+    'aceptar solo las esenciales',
 ];
 
 const REJECT_PATTERNS_SWEDISH = [
@@ -613,7 +595,7 @@ const REJECT_PATTERNS = [
     ...REJECT_PATTERNS_FRENCH,
     ...REJECT_PATTERNS_GERMAN,
     ...REJECT_PATTERNS_ITALIAN,
-    ...REJECT_PATTERNS_PORTUGUESE,
+    ...REJECT_PATTERNS_BRAZILIAN_PORTUGUESE,
     ...REJECT_PATTERNS_SPANISH,
     ...REJECT_PATTERNS_SWEDISH,
 ];
