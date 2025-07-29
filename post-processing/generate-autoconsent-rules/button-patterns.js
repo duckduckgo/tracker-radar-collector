@@ -581,9 +581,13 @@ const REJECT_PATTERNS_SWEDISH = [
     'använd enbart nödvändiga cookies',
     'enbart nödvändiga cookies',
     'godkänn nödvändiga kakor stäng',
-    'ok til nødvendige',
     'ok till nödvändiga',
     'strikt nödvändiga',
+    'fortsätt utan att godkänna',
+    'avböj alla cookies',
+    'jag accepterar endast grundläggande kakor',
+    'nej, jag avböjer',
+    'tillåt inte cookies',
 ];
 
 /**
