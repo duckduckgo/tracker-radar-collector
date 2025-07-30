@@ -237,7 +237,7 @@ function generateRulesForSite(region, url, collectorResult, matchingRules) {
     if (llmConfirmedPopups.length > 1 || llmConfirmedPopups[0].rejectButtons.length > 1) {
         console.warn('Multiple cookie popups or reject buttons found in', url);
         reviewNotes.push({
-            needsReview: false,
+            needsReview: false, // it's not a problem by itself, unless this leads to multiple _rules_ generated, but we check that separately.
             note: 'Multiple popups or reject buttons found',
             url,
             region,
