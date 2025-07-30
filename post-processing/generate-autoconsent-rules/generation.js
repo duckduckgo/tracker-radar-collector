@@ -119,6 +119,7 @@ function overrideExistingRegionRules({
     if (existingRulesWithSameRegion.length > 1) {
         console.warn('Multiple existing rules with the same region found for', url, region);
         reviewNotes.push({
+            needsReview: true,
             note: 'Multiple existing rules with the same region found, consider removing all but one',
             ruleNames: existingRulesWithSameRegion.map((rule) => rule.name),
             existingRules: matchingRules.map((rule) => rule.name),
@@ -131,6 +132,7 @@ function overrideExistingRegionRules({
     if (!ruleToOverride) {
         console.warn('Already overridden all existing rules for', url, region, 'creating a new one');
         reviewNotes.push({
+            needsReview: true,
             note: 'Already overridden all existing rules, creating a new one',
             ruleName: newRule.name,
             existingRules: existingRulesWithSameRegion.map((rule) => rule.name),
@@ -143,6 +145,7 @@ function overrideExistingRegionRules({
             name: ruleToOverride.name, // keep the existing rule name
         });
         reviewNotes.push({
+            needsReview: false,
             note: 'Overriding existing rule',
             ruleName: ruleToOverride.name,
             existingRules: matchingRules.map((rule) => rule.name),
@@ -177,6 +180,7 @@ function processRejectButton({ region, url, frame, button, matchingRules, newRul
         // add the first rule for this site
         newRules.push(newRule);
         reviewNotes.push({
+            needsReview: false,
             note: 'New rule added',
             ruleName: newRule.name,
         });
@@ -203,6 +207,7 @@ function processRejectButton({ region, url, frame, button, matchingRules, newRul
         // assume it's a new region-specific popup, but flag it for review
         newRules.push(newRule);
         reviewNotes.push({
+            needsReview: false,
             note: 'New region-specific popup',
             ruleName: newRule.name,
             existingRules: matchingRules.map((rule) => rule.name),
@@ -232,6 +237,7 @@ function generateRulesForSite(region, url, collectorResult, matchingRules) {
     if (llmConfirmedPopups.length > 1 || llmConfirmedPopups[0].rejectButtons.length > 1) {
         console.warn('Multiple cookie popups or reject buttons found in', url);
         reviewNotes.push({
+            needsReview: false,
             note: 'Multiple popups or reject buttons found',
             url,
             region,
@@ -254,6 +260,7 @@ function generateRulesForSite(region, url, collectorResult, matchingRules) {
 
     if (newRules.length > 1) {
         reviewNotes.push({
+            needsReview: true,
             note: 'Multiple new rules generated',
             ruleNames: newRules.map((rule) => rule.name),
         });

@@ -120,7 +120,8 @@ async function writeRuleFiles({ rule, url, rulesDir, testDir, autoconsentDir, re
  * Process cookie popups for a single site and generate/update rules.
  * @param {import('./types').GlobalParams} globalParams
  * @param {{
- *  finalUrl: string, // URL of the site
+ *  finalUrl: string, // final URL of the site
+ *  initialUrl: string, // initial URL of the site
  *  collectorResult: import('./types').CookiePopupsCollectorResult,
  *  existingRules: import('./types').AutoConsentCMPRule[], // existing Autoconsent rules
  * }} params
@@ -132,7 +133,7 @@ async function writeRuleFiles({ rule, url, rulesDir, testDir, autoconsentDir, re
  * updatedExistingRules: import('./types').AutoConsentCMPRule[],
  * }>}
  */
-async function processCookiePopupsForSite(globalParams, { finalUrl, collectorResult, existingRules }) {
+async function processCookiePopupsForSite(globalParams, { finalUrl, initialUrl, collectorResult, existingRules }) {
     const { rulesDir, testDir, autoconsentDir, region } = globalParams;
 
     /** @type {import('./types').AutoconsentManifestFileData[]} */
@@ -154,6 +155,21 @@ async function processCookiePopupsForSite(globalParams, { finalUrl, collectorRes
         `Detected ${llmConfirmedPopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`,
     );
     const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(region, finalUrl, collectorResult, matchingRules);
+    try {
+        const initialOrigin = new URL(initialUrl).origin;
+        const finalOrigin = new URL(finalUrl).origin;
+        if (initialOrigin !== finalOrigin) {
+            reviewNotes.push({
+                note: `Site changed origin: ${initialOrigin} -> ${finalOrigin}`,
+                needsReview: true,
+            });
+        }
+    } catch (err) {
+        reviewNotes.push({
+            note: `Failed to parse origin for ${initialUrl} or ${finalUrl}: ${err.message}`,
+            needsReview: true,
+        });
+    }
 
     updatedExistingRules.push(...newRules);
     rulesToOverride.forEach((rule) => {
@@ -294,6 +310,7 @@ async function processFiles(globalParams, existingRules) {
                 totalUnhandled++;
                 const result = await processCookiePopupsForSite(globalParams, {
                     finalUrl: jsonData.finalUrl,
+                    initialUrl: jsonData.initialUrl,
                     collectorResult,
                     existingRules: existingRulesAfter,
                 });
