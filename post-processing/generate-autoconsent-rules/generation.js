@@ -143,14 +143,25 @@ function overrideExistingRegionRules({
         rulesToOverride.push({
             ...newRule,
             name: ruleToOverride.name, // keep the existing rule name
+            reviewUpdates: ruleToOverride.reviewUpdates,
         });
-        reviewNotes.push({
-            needsReview: false,
-            note: 'Overriding existing rule',
-            ruleName: ruleToOverride.name,
-            existingRules: matchingRules.map((rule) => rule.name),
-            region,
-        });
+        if (ruleToOverride.reviewUpdates) {
+            reviewNotes.push({
+                needsReview: true,
+                note: 'Updated rule that has been manually edited before',
+                ruleName: ruleToOverride.name,
+                existingRules: matchingRules.map((rule) => rule.name),
+                region,
+            });
+        } else {
+            reviewNotes.push({
+                needsReview: false,
+                note: 'Overriding existing rule',
+                ruleName: ruleToOverride.name,
+                existingRules: matchingRules.map((rule) => rule.name),
+                region,
+            });
+        }
     }
 }
 
