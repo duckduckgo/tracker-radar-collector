@@ -312,7 +312,7 @@ function getButtonData(el) {
         .filter(b => isVisible(b) && !isDisabled(b) && b.innerText.trim());
 
     return actionableButtons.map(b => ({
-        text: b.innerText,
+        text: b.innerText ?? b.textContent ?? '',
         selector: getUniqueSelector(b),
     }));
 }
