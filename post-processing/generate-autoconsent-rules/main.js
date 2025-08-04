@@ -158,7 +158,11 @@ async function processCookiePopupsForSite(globalParams, { finalUrl, initialUrl, 
     try {
         const initialHost = new URL(initialUrl).host;
         const finalHost = new URL(finalUrl).host;
-        if (initialHost !== finalHost) {
+        if (initialHost !== finalHost &&
+            // ignore redirects from www. to non-www and vice versa
+            initialHost !== 'www.' + finalHost &&
+            finalHost !== 'www.' + initialHost
+        ) {
             reviewNotes.push({
                 note: `Site changed host: ${initialHost} -> ${finalHost}`,
                 needsReview: true,
