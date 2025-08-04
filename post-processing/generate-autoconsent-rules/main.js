@@ -156,17 +156,17 @@ async function processCookiePopupsForSite(globalParams, { finalUrl, initialUrl, 
     );
     const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(region, finalUrl, collectorResult, matchingRules);
     try {
-        const initialOrigin = new URL(initialUrl).origin;
-        const finalOrigin = new URL(finalUrl).origin;
-        if (initialOrigin !== finalOrigin) {
+        const initialHost = new URL(initialUrl).host;
+        const finalHost = new URL(finalUrl).host;
+        if (initialHost !== finalHost) {
             reviewNotes.push({
-                note: `Site changed origin: ${initialOrigin} -> ${finalOrigin}`,
+                note: `Site changed host: ${initialHost} -> ${finalHost}`,
                 needsReview: true,
             });
         }
     } catch (err) {
         reviewNotes.push({
-            note: `Failed to parse origin for ${initialUrl} or ${finalUrl}: ${err.message}`,
+            note: `Failed to parse URL for ${initialUrl} or ${finalUrl}: ${err.message}`,
             needsReview: true,
         });
     }
