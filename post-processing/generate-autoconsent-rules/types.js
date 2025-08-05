@@ -40,6 +40,8 @@
 /**
  * @typedef {{
  *  siteUrl: string;
+ *  matchedRules: string[];
+ *  llmConfirmedPopups: PopupData[];
  *  newlyCreatedRules: AutoconsentManifestFileData[];
  *  updatedRules: AutoconsentManifestFileData[];
  *  reviewNotes: ReviewNote[];
