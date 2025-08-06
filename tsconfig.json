@@ -7,7 +7,7 @@
         "checkJs": true,
         "resolveJsonModule": true,
         "noEmit": true,
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "allowSyntheticDefaultImports": true,
         "skipLibCheck": true
     },

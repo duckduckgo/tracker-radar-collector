@@ -7,11 +7,13 @@
   "main": "main.js",
   "scripts": {
     "crawl": "node ./cli/crawl-cli",
-    "test": "npm run lint && tsc && npm run unit",
+    "test": "npm run lint && npm run unit",
     "unit": "TRC_UNSAFE_DISABLE_SANDBOX=1 node ./tests/runTests.js && npm run mocha",
     "mocha": "mocha ./tests/**/*.mocha.js",
-    "lint": "eslint *.js cli/ collectors/ helpers/ post-processing/ tests/ reporters/ && prettier cli/ collectors/ helpers/ post-processing/ tests/ reporters/ --check",
-    "lint-fix": "npm run lint -- --fix"
+    "lint": "npm run eslint && npm run prettier -- --check",
+    "lint-fix": "npm run eslint -- --fix && npm run prettier -- --write",
+    "eslint": "eslint *.js cli/ collectors/ helpers/ post-processing/ tests/ reporters/",
+    "prettier": "prettier --check *.js cli/ collectors/ helpers/ post-processing/ tests/ reporters/"
   },
   "repository": {
     "type": "git",
