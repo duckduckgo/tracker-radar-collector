@@ -7,6 +7,10 @@ export default [
     ...ddgConfig,
 
     {
+        ignores: ['collectors/APICalls/breakpointScript.template.js'],
+    },
+
+    {
         languageOptions: {
             globals: {
                 ...globals.node,

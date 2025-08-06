@@ -1,12 +1,12 @@
 // @ts-nocheck
 /* eslint-disable no-undef */
-const stack = new Error().stack;
-if (typeof stack === 'string') {
+const stack = (new Error()).stack;
+if (typeof stack === "string") {
     const lines = stack.split('\n');
     const STACK_SOURCE_REGEX = /(\()?(https?:[^)]+):[0-9]+:[0-9]+(\))?/i;
     let url = null;
 
-    for (const line of lines) {
+    for (let line of lines) {
         const lineData = line.match(STACK_SOURCE_REGEX);
 
         if (lineData) {
@@ -20,7 +20,7 @@ if (typeof stack === 'string') {
             description: 'DESCRIPTION',
             stack,
             url,
-            ARGUMENT_COLLECTION,
+            ARGUMENT_COLLECTION
         };
         window.registerAPICall(JSON.stringify(data));
     }
