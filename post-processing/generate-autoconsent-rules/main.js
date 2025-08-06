@@ -33,6 +33,7 @@ function findMatchingExistingRules(url, collectorResult, existingRules) {
                     pattern.test(url) ||
                     // OR vendorUrl matches the crawled site (this is more like a heuristic as vendorUrl is not used by Autoconsent)
                     rule.vendorUrl === url ||
+                    rule._metadata?.vendorUrl === url ||
                     // OR the rule matched a frame
                     (rule.runContext?.frame && collectorResult.scrapedFrames.some((frame) => pattern.test(frame.origin)))
                 );

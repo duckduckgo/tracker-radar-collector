@@ -72,8 +72,10 @@ function generateAutoconsentRule(region, url, frame, button) {
     const ruleName = `auto_${region}_${topDomain}_${Math.random().toString(36).substring(2, 5)}`;
     return {
         name: ruleName,
-        vendorUrl: url,
         cosmetic: false,
+        _metadata: {
+            vendorUrl: url,
+        },
         runContext: {
             main: frame.isTop,
             frame: !frame.isTop,
@@ -143,9 +145,9 @@ function overrideExistingRegionRules({
         rulesToOverride.push({
             ...newRule,
             name: ruleToOverride.name, // keep the existing rule name
-            reviewUpdates: ruleToOverride.reviewUpdates,
+            _metadata: ruleToOverride._metadata,
         });
-        if (ruleToOverride.reviewUpdates) {
+        if (ruleToOverride._metadata?.reviewUpdates) {
             reviewNotes.push({
                 needsReview: true,
                 note: 'Updated rule that has been manually edited before',
