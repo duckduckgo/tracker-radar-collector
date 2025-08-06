@@ -3,7 +3,7 @@ const assert = require('assert');
 const sinon = require('sinon');
 
 /**
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
+ * @typedef { import('../../node_modules/@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
  */
 
 /**

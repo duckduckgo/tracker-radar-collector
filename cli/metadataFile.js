@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
-const package = require('../package.json');
+const packageJson = require('../package.json');
 const METADATA_FILE_NAME = 'metadata.json';
 
 /**
@@ -60,7 +60,7 @@ function createMetadataFile(
                     emulateMobile: emulateMobile || undefined,
                 },
                 environment: {
-                    projectVersion: package.version,
+                    projectVersion: packageJson.version,
                     hostname: os.hostname(),
                     cpus: os.cpus().length,
                     username: os.userInfo().username,

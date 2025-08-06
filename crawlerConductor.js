@@ -3,8 +3,8 @@ const cores = os.cpus().length;
 const chalk = require('chalk');
 const asyncLib = require('async');
 const crawl = require('./crawler');
-const {createTimer} = require('./helpers/timer');
-const {downloadChrome} = require('./helpers/chromiumDownload');
+const { createTimer } = require('./helpers/timer');
+const { downloadChrome } = require('./helpers/chromiumDownload');
 const notABot = require('./helpers/notABot');
 
 const MAX_NUMBER_OF_RETRIES = 2;
@@ -27,29 +27,26 @@ async function crawlAndSaveData({
     maxLoadTimeMs,
     extraExecutionTimeMs,
     collectorFlags,
-    seleniumHub
+    seleniumHub,
 }) {
     const url = new URL(urlString);
     /**
-     * @type {function(...any):void} 
+     * @type {function(...any):void}
      */
-    const prefixedLog = ((...msg) => {
+    const prefixedLog = (...msg) => {
         const now = new Date();
         const curTime = new Intl.DateTimeFormat('en-GB', {
             hour: '2-digit',
             minute: '2-digit',
-            second: '2-digit'
+            second: '2-digit',
         }).format(now);
-        log(
-            chalk.gray(`${curTime} ${url.hostname}:`),
-            ...msg
-        );
-    });
+        log(chalk.gray(`${curTime} ${url.hostname}:`), ...msg);
+    };
 
     const data = await crawl(url, {
         log: prefixedLog,
         // @ts-ignore
-        collectors: dataCollectors.map(collector => new collector.constructor()),
+        collectors: dataCollectors.map((collector) => new collector.constructor()),
         filterOutFirstParty,
         emulateMobile,
         proxyHost,
@@ -67,7 +64,7 @@ async function crawlAndSaveData({
 /**
  * @param {CrawlerConductorOptions} options
  */
-module.exports = async options => {
+module.exports = async (options) => {
     const log = options.logFunction || (() => {});
     const failureCallback = options.failureCallback || (() => {});
 
@@ -76,7 +73,7 @@ module.exports = async options => {
 
     // Increase number of listeners so we have at least one listener for each async process
     if (numberOfCrawlers > process.getMaxListeners()) {
-        const maxListeners = (numberOfCrawlers * 4) + 1;
+        const maxListeners = numberOfCrawlers * 4 + 1;
         process.setMaxListeners(maxListeners);
     }
     log(chalk.cyan(`Number of crawlers: ${numberOfCrawlers}\n`));
@@ -91,11 +88,11 @@ module.exports = async options => {
     const inProgress = new Set();
 
     await asyncLib.eachOfLimit(options.urls, numberOfCrawlers, (urlItem, idx, callback) => {
-        const urlString = (typeof urlItem === 'string') ? urlItem : urlItem.url;
+        const urlString = typeof urlItem === 'string' ? urlItem : urlItem.url;
         let dataCollectors = options.dataCollectors;
 
         // there can be a different set of collectors for every item
-        if ((typeof urlItem !== 'string') && urlItem.dataCollectors) {
+        if (typeof urlItem !== 'string' && urlItem.dataCollectors) {
             dataCollectors = urlItem.dataCollectors;
         }
 
@@ -111,7 +108,7 @@ module.exports = async options => {
             dataCallback: options.dataCallback,
             emulateMobile: options.emulateMobile,
             proxyHost: options.proxyHost,
-            antiBotDetection: (options.antiBotDetection !== false),
+            antiBotDetection: options.antiBotDetection !== false,
             executablePath,
             maxLoadTimeMs: options.maxLoadTimeMs,
             extraExecutionTimeMs: options.extraExecutionTimeMs,
@@ -119,10 +116,7 @@ module.exports = async options => {
             seleniumHub: options.seleniumHub,
         };
 
-        const task = crawlAndSaveData.bind(
-            null,
-            crawlAndSaveDataOptions,
-        );
+        const task = crawlAndSaveData.bind(null, crawlAndSaveDataOptions);
 
         asyncLib.retry(
             {
@@ -131,10 +125,10 @@ module.exports = async options => {
                 errorFilter: () => {
                     crawlAndSaveDataOptions.collectorFlags.enableAsyncStacktraces = false; // disable async stack traces because they sometimes are the cause of crash
                     return true;
-                }
+                },
             },
             task,
-            err => {
+            (err) => {
                 if (err) {
                     console.log(err);
                     log(chalk.red(`Max number of retries (${MAX_NUMBER_OF_RETRIES}) exceeded for "${urlString}".`));
@@ -145,7 +139,7 @@ module.exports = async options => {
                 inProgress.delete(urlString);
                 log(chalk.cyan(`In progress (${inProgress.size}): ${Array.from(inProgress).join(', ')}`));
                 callback();
-            }
+            },
         );
     });
 };

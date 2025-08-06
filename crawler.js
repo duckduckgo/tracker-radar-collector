@@ -1,42 +1,40 @@
- 
 const chalk = require('chalk');
-const {createTimer} = require('./helpers/timer');
+const { createTimer } = require('./helpers/timer');
 const createDeferred = require('./helpers/deferred');
-const {wait, TimeoutError} = require('./helpers/wait');
+const { wait, TimeoutError } = require('./helpers/wait');
 const tldts = require('tldts');
-const {DEFAULT_USER_AGENT, MOBILE_USER_AGENT, DEFAULT_VIEWPORT, MOBILE_VIEWPORT, VISUAL_DEBUG} = require('./constants');
+const { DEFAULT_USER_AGENT, MOBILE_USER_AGENT, DEFAULT_VIEWPORT, MOBILE_VIEWPORT, VISUAL_DEBUG } = require('./constants');
 const openBrowser = require('./browser/openBrowser');
 
 const targetFilter = [
     // see list of types in https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
 
     // these targets are disabled by default in CDP
-    {type: 'browser', exclude: true},
-    {type: 'tab', exclude: true},
+    { type: 'browser', exclude: true },
+    { type: 'tab', exclude: true },
 
     // main targets we're interested in
-    {type: 'page', exclude: false},
-    {type: 'iframe', exclude: false},
+    { type: 'page', exclude: false },
+    { type: 'iframe', exclude: false },
 
     // somewhat useful targets, but not sure if we actually need them
-    {type: 'worker', exclude: false},
-    {type: 'shared_worker', exclude: false},
-    {type: 'service_worker', exclude: false},
+    { type: 'worker', exclude: false },
+    { type: 'shared_worker', exclude: false },
+    { type: 'service_worker', exclude: false },
 
     // exclude other targets because we're not doing anything with them at the moment
-    {type: 'worklet', exclude: true},
-    {type: 'shared_storage_worklet', exclude: true},
-    {type: 'webview', exclude: true},
-    {type: 'other', exclude: true},
-    {type: 'auction_worklet', exclude: true},
-    {type: 'assistive_technology', exclude: true},
+    { type: 'worklet', exclude: true },
+    { type: 'shared_storage_worklet', exclude: true },
+    { type: 'webview', exclude: true },
+    { type: 'other', exclude: true },
+    { type: 'auction_worklet', exclude: true },
+    { type: 'assistive_technology', exclude: true },
 
     // allow all other unknown types
-    {}
+    {},
 ];
 
 class Crawler {
-
     /**
      * @param {GetSiteDataOptions} options
      */
@@ -66,14 +64,22 @@ class Crawler {
         this.log(`target attached tId ${targetInfo.targetId} type ${targetInfo.type} url ${targetInfo.url}`);
         const timer = createTimer();
         if (this.targets.has(targetInfo.targetId)) {
-            this.log(chalk.yellow(`Target tId ${targetInfo.targetId} already exists: old session: ${this.targets.get(targetInfo.targetId).session.id()}, new: ${session.id()}`));
+            this.log(
+                chalk.yellow(
+                    `Target tId ${targetInfo.targetId} already exists: old session: ${this.targets.get(targetInfo.targetId).session.id()}, new: ${session.id()}`,
+                ),
+            );
         }
-        this.targets.set(targetInfo.targetId, {targetInfo, session});
+        this.targets.set(targetInfo.targetId, { targetInfo, session });
         try {
             await this._onTargetAttached(session, targetInfo);
             this.log(`tId ${targetInfo.targetId} url ${targetInfo.url} target attached in ${timer.getElapsedTime()}s`);
         } catch (e) {
-            this.log(chalk.yellow(`Could not attach to tId ${targetInfo.targetId} type ${targetInfo.type} url ${targetInfo.url} after ${timer.getElapsedTime()}s: ${e}`));
+            this.log(
+                chalk.yellow(
+                    `Could not attach to tId ${targetInfo.targetId} type ${targetInfo.type} url ${targetInfo.url} after ${timer.getElapsedTime()}s: ${e}`,
+                ),
+            );
         }
     }
 
@@ -93,7 +99,7 @@ class Crawler {
 
         if (this.options.emulateUserAgent) {
             await session.send('Network.setUserAgentOverride', {
-                userAgent: this.options.emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT
+                userAgent: this.options.emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT,
             });
         }
 
@@ -103,7 +109,7 @@ class Crawler {
                     accept: false,
                 });
             });
-            session.on('Page.frameNavigated', e => {
+            session.on('Page.frameNavigated', (e) => {
                 if (!e.frame.parentId) {
                     if (this.mainPageFrame) {
                         this.log(chalk.red(`Main frame changed: fId ${this.mainPageFrame.id} -> fId ${e.frame.id}`));
@@ -117,14 +123,11 @@ class Crawler {
             });
             await session.send('Page.enable');
             await session.send('Inspector.enable');
-            await session.send('Page.setLifecycleEventsEnabled', {enabled: true});
-            await session.send(
-                'Emulation.setDeviceMetricsOverride',
-                this.options.emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT,
-            );
+            await session.send('Page.setLifecycleEventsEnabled', { enabled: true });
+            await session.send('Emulation.setDeviceMetricsOverride', this.options.emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT);
             if (this.options.runInEveryFrame) {
                 await session.send('Page.addScriptToEvaluateOnNewDocument', {
-                    source: `(${this.options.runInEveryFrame})()`
+                    source: `(${this.options.runInEveryFrame})()`,
                 });
             }
         }
@@ -133,10 +136,13 @@ class Crawler {
 
         for (const collector of this.collectors) {
             try {
-                 
                 await collector.addTarget(session, targetInfo);
             } catch (e) {
-                this.log(chalk.yellow(`${collector.id()} failed to attach to "${targetInfo.url}"`), chalk.gray(e.message), chalk.gray(e.stack));
+                this.log(
+                    chalk.yellow(`${collector.id()} failed to attach to "${targetInfo.url}"`),
+                    chalk.gray(e.message),
+                    chalk.gray(e.stack),
+                );
             }
         }
 
@@ -144,7 +150,7 @@ class Crawler {
         if (this.mainPageTargetId === targetInfo.targetId) {
             this.mainPageAttached = true;
             this.log(chalk.green(`main page target attached: tId ${targetInfo.targetId} url ${targetInfo.url}`));
-            this._mainPageAttachedDeferred.resolve({targetInfo, session});
+            this._mainPageAttachedDeferred.resolve({ targetInfo, session });
         }
     }
 
@@ -203,7 +209,7 @@ class Crawler {
      * @returns {Promise<void>}
      */
     async navigateMainTarget(url, timeoutMs) {
-        const {session, targetInfo} = await wait(this._mainPageAttachedDeferred.promise, timeoutMs, 'Main page target not found');
+        const { session, targetInfo } = await wait(this._mainPageAttachedDeferred.promise, timeoutMs, 'Main page target not found');
         await session.send('Page.navigate', {
             url: url.toString(),
         });
@@ -211,7 +217,7 @@ class Crawler {
         /**
          * @param {import('devtools-protocol/types/protocol').Protocol.Page.LifecycleEventEvent} e
          */
-        const lifecycleHandler = async e => {
+        const lifecycleHandler = async (e) => {
             if (e.name === 'networkAlmostIdle') {
                 this.log(`networkAlmostIdle in fId ${e.frameId} tId ${targetInfo.targetId}`);
             }
@@ -227,11 +233,7 @@ class Crawler {
         };
         session.on('Page.lifecycleEvent', lifecycleHandler);
 
-        await wait(
-            this._navigationDeferred.promise,
-            timeoutMs,
-            `Page navigation timeout`
-        );
+        await wait(this._navigationDeferred.promise, timeoutMs, `Page navigation timeout`);
     }
 
     /**
@@ -249,7 +251,6 @@ class Crawler {
         for (const collector of this.collectors) {
             const timer = createTimer();
             try {
-                 
                 await collector.init(collectorOptions);
                 this.log(`${collector.id()} init took ${timer.getElapsedTime()}s`);
             } catch (e) {
@@ -262,7 +263,6 @@ class Crawler {
         for (const collector of this.collectors) {
             const postLoadTimer = createTimer();
             try {
-                 
                 await collector.postLoad();
                 this.log(`${collector.id()} postLoad took ${postLoadTimer.getElapsedTime()}s`);
             } catch (e) {
@@ -280,10 +280,9 @@ class Crawler {
         for (const collector of this.collectors) {
             const getDataTimer = createTimer();
             try {
-                 
                 const collectorData = await collector.getData({
                     finalUrl,
-                    urlFilter: this.options.urlFilter && this.options.urlFilter.bind(null, finalUrl)
+                    urlFilter: this.options.urlFilter && this.options.urlFilter.bind(null, finalUrl),
                 });
                 data[collector.id()] = collectorData;
                 this.log(`getting ${collector.id()} data took ${getDataTimer.getElapsedTime()}s`);
@@ -334,9 +333,11 @@ class Crawler {
             if (e instanceof TimeoutError) {
                 this.log(chalk.yellow(e.message));
 
-                for (const {session, targetInfo} of this.targets.values()) {
+                for (const { session, targetInfo } of this.targets.values()) {
                     if (targetInfo.type === 'page') {
-                        session.send('Page.stopLoading').catch(() => {/* ignore */});
+                        session.send('Page.stopLoading').catch(() => {
+                            /* ignore */
+                        });
                     }
                 }
                 timeout = true;
@@ -350,7 +351,7 @@ class Crawler {
         this.log(`post load collectors took ${postLoadCollectorsTimer.getElapsedTime()}s`);
 
         // give website a bit more time for things to settle
-        await new Promise(resolve => {
+        await new Promise((resolve) => {
             setTimeout(resolve, this.options.extraExecutionTimeMs);
         });
 
@@ -359,7 +360,9 @@ class Crawler {
         this.log(`get collector data took ${getCollectorDataTimer.getElapsedTime()}s`);
 
         for (const target of this.targets.values()) {
-            target.session.detach().catch(() => {/* ignore */});
+            target.session.detach().catch(() => {
+                /* ignore */
+            });
         }
 
         const testFinished = Date.now();
@@ -371,7 +374,7 @@ class Crawler {
             timeout,
             testStarted,
             testFinished,
-            data
+            data,
         };
     }
 }
@@ -394,20 +397,17 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
  */
 async function crawl(url, options) {
     const log = options.log || (() => {});
-    const browser = options.browserConnection ? null : await openBrowser(
-        log,
-        options.proxyHost,
-        options.executablePath,
-        options.seleniumHub,
-    );
-    const browserConnection = options.browserConnection || await browser.getConnection();
+    const browser = options.browserConnection
+        ? null
+        : await openBrowser(log, options.proxyHost, options.executablePath, options.seleniumHub);
+    const browserConnection = options.browserConnection || (await browser.getConnection());
 
     let data = null;
 
     const maxLoadTimeMs = options.maxLoadTimeMs || 60000;
     const extraExecutionTimeMs = options.extraExecutionTimeMs || 2500;
     const collectorExtraTimeMs = options.collectors.reduce((sum, collector) => sum + (collector.collectorExtraTimeMs || 0), 0);
-    const maxTotalTimeMs = (maxLoadTimeMs * 2) + collectorExtraTimeMs;
+    const maxTotalTimeMs = maxLoadTimeMs * 2 + collectorExtraTimeMs;
 
     let emulateUserAgent = !options.seleniumHub && !VISUAL_DEBUG; // by default, override only when in headless mode
     if (options.emulateUserAgent === false) {
@@ -425,10 +425,10 @@ async function crawl(url, options) {
             runInEveryFrame: options.runInEveryFrame,
             maxLoadTimeMs,
             extraExecutionTimeMs,
-            collectorFlags: options.collectorFlags
+            collectorFlags: options.collectorFlags,
         });
         data = await wait(crawler.getSiteData(url), maxTotalTimeMs, `${url} timed out`);
-    } catch(e) {
+    } catch (e) {
         log(chalk.red('Crawl failed'), e.message, chalk.gray(e.stack));
         throw e;
     } finally {
@@ -453,7 +453,7 @@ async function crawl(url, options) {
  * @property {number} testStarted time when the crawl started (unix timestamp)
  * @property {number} testFinished time when the crawl finished (unix timestamp)
  * @property {import('./helpers/collectorsList').CollectorData} data object containing output from all collectors
-*/
+ */
 
 /**
  * @typedef {Object} CrawlerOptions

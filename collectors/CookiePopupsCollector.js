@@ -549,16 +549,16 @@ class CookiePopupsCollector extends ContentScriptCollector {
 
 /**
  * @typedef { import('./BaseCollector').CollectorInitOptions } CollectorInitOptions
- * @typedef { import('@duckduckgo/autoconsent/lib/types').AutoAction } AutoAction
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/types').Config } AutoconsentConfig
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').DetectedMessage } DetectedMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').FoundMessage } FoundMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').SelfTestResultMessage } SelfTestResultMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').ErrorMessage } ErrorMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptOutResultMessage } OptOutResultMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').OptInResultMessage } OptInResultMessage
- * @typedef { import('@duckduckgo/autoconsent/lib/messages').DoneMessage } DoneMessage
+ * @typedef { import('../node_modules/@duckduckgo/autoconsent/lib/types').AutoAction } AutoAction
+ * @typedef { import('../node_modules/@duckduckgo/autoconsent/lib/messages').ContentScriptMessage } ContentScriptMessage
+ * @typedef { import('../node_modules/@duckduckgo/autoconsent/lib/types').Config } AutoconsentConfig
+ * @typedef { import('../node_modules/@duckduckgo/autoconsent/lib/messages').DetectedMessage } DetectedMessage
+ * @typedef { import('../node_modules/@duckduckgo/autoconsent/lib/messages').FoundMessage } FoundMessage
+ * @typedef { import('../node_modules/@duckduckgo/autoconsent/lib/messages').SelfTestResultMessage } SelfTestResultMessage
+ * @typedef { import('../node_modules/@duckduckgo/autoconsent/lib/messages').ErrorMessage } ErrorMessage
+ * @typedef { import('../node_modules/@duckduckgo/autoconsent/lib/messages').OptOutResultMessage } OptOutResultMessage
+ * @typedef { import('../node_modules/@duckduckgo/autoconsent/lib/messages').OptInResultMessage } OptInResultMessage
+ * @typedef { import('../node_modules/@duckduckgo/autoconsent/lib/messages').DoneMessage } DoneMessage
  * @typedef { { snippets: Set<string>, patterns: Set<string>, filterListMatched: boolean } } ScanResult
  */
 
