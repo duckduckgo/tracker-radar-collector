@@ -310,6 +310,7 @@ async function processFiles(globalParams, existingRules) {
 
         const matchedRules = collectorResult.cmps.map(cmp => cmp.name.trim()).filter(name => name !== '');
         const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap(frame => frame.potentialPopups).filter(popup => popup.llmMatch);
+        const screenshot = jsonData.data.screenshots;
 
         if (hasKnownCmp(collectorResult.cmps)) {
             totalSitesWithKnownCmps++;
@@ -317,6 +318,7 @@ async function processFiles(globalParams, existingRules) {
                 siteUrl: jsonData.finalUrl,
                 matchedRules,
                 llmConfirmedPopups,
+                screenshot,
                 newlyCreatedRules: [],
                 updatedRules: [],
                 reviewNotes: [],
@@ -348,6 +350,7 @@ async function processFiles(globalParams, existingRules) {
                 siteUrl: jsonData.finalUrl,
                 matchedRules,
                 llmConfirmedPopups,
+                screenshot,
                 newlyCreatedRules: newRuleFiles,
                 updatedRules: updatedRuleFiles,
                 reviewNotes
