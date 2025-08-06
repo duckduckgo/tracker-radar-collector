@@ -1,7 +1,8 @@
 {
     "compilerOptions": {
         "target": "es2021",
-        "moduleResolution": "node",
+        "moduleResolution": "NodeNext",
+        "module": "NodeNext",
         "allowJs": true,
         "checkJs": true,
         "resolveJsonModule": true,
@@ -20,7 +21,5 @@
         "reporters/",
         "./*.js"
     ],
-    "exclude": [
-        "./node_modules/chalk/types/index.d.ts"
-    ]
+    "exclude": ["node_modules/*"]
 }
