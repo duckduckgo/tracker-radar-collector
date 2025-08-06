@@ -27,19 +27,18 @@ describe('APICallCollector', () => {
     let breakpointIdCnt;
 
     const fakeCDPClient = {
-        // eslint-disable-next-line arrow-parens
-        send: (/** @type {String} **/command, /** @type {any} **/ params) => {
+        send: (/** @type {String} **/ command, /** @type {any} **/ params) => {
             commands.push(command);
             if (command === 'Runtime.evaluate') {
                 return Promise.resolve({
                     result: {
-                        objectId: 1
-                    }
+                        objectId: 1,
+                    },
                 });
             } else if (command === 'Debugger.setBreakpointOnFunctionCall') {
                 if (params.condition.includes('Navigator.prototype.plugins')) {
                     return Promise.resolve({
-                        breakpointId: "7:76",
+                        breakpointId: '7:76',
                     });
                 }
                 return Promise.resolve({
@@ -48,10 +47,10 @@ describe('APICallCollector', () => {
             }
             return Promise.resolve();
         },
-        on: (/** @type {string} **/name, /** @type {function(object)} **/callback) => {
-            listeners.push({name, callback});
+        on: (/** @type {string} **/ name, /** @type {function(object)} **/ callback) => {
+            listeners.push({ name, callback });
             return Promise.resolve();
-        }
+        },
     };
 
     beforeEach(async () => {
@@ -61,28 +60,28 @@ describe('APICallCollector', () => {
         collector = new APICallCollector();
         // @ts-ignore no need to provide all params
         collector.init({
-            log: () => {}
+            log: () => {},
         });
 
         // @ts-ignore not a real CDP client
-        await collector.addTarget(fakeCDPClient, {type: 'page', url: 'https://example.com'});
+        await collector.addTarget(fakeCDPClient, { type: 'page', url: 'https://example.com' });
 
-        const executionContextCreated = listeners.find(a => a.name === 'Runtime.executionContextCreated');
+        const executionContextCreated = listeners.find((a) => a.name === 'Runtime.executionContextCreated');
         assert(executionContextCreated, 'executionContextCreated listener was set');
 
         await executionContextCreated.callback({
             context: {
                 id: 1,
                 origin: 'https://example.com/',
-                auxData: {}
-            }
+                auxData: {},
+            },
         });
     });
 
     it('should handle runtime call records', () => {
-        assert(commands.filter(c => c === 'Debugger.setBreakpointOnFunctionCall').length > 30, 'Breakpoints set');
+        assert(commands.filter((c) => c === 'Debugger.setBreakpointOnFunctionCall').length > 30, 'Breakpoints set');
 
-        const bindingCalled = listeners.find(a => a.name === 'Runtime.bindingCalled');
+        const bindingCalled = listeners.find((a) => a.name === 'Runtime.bindingCalled');
         assert(bindingCalled, 'bindingCalled listener was set');
 
         bindingCalled.callback({
@@ -92,7 +91,7 @@ describe('APICallCollector', () => {
                 stack: '<anonymous>:1:10\n(https://example.com/bad.js:1:23)',
                 args: [],
                 url: 'https://example.com/bad.js',
-            })
+            }),
         });
 
         // same call again
@@ -103,7 +102,7 @@ describe('APICallCollector', () => {
                 stack: '<anonymous>:1:10\n(https://example.com/bad.js:1:23)',
                 args: [],
                 url: 'https://example.com/bad.js',
-            })
+            }),
         });
 
         // different api, different script
@@ -114,7 +113,7 @@ describe('APICallCollector', () => {
                 stack: '(https://example.com/different.js:1:23)\n(https://example.com/different.js:2:23)',
                 args: [],
                 url: 'https://example.com/different.js',
-            })
+            }),
         });
 
         // API call that gets saved with arguments
@@ -125,7 +124,7 @@ describe('APICallCollector', () => {
                 stack: '(https://example.com/different.js:1:23)\n(https://example.com/different.js:2:23)',
                 args: ['uuid=123'],
                 url: 'https://example.com/different.js',
-            })
+            }),
         });
 
         // Some real-life stack example
@@ -133,54 +132,53 @@ describe('APICallCollector', () => {
             name: 'registerAPICall',
             payload: JSON.stringify({
                 description: 'Navigator.prototype.userAgent',
-                stack: 'Error\n' +
-                '    at eval (eval at <anonymous> (:25:46), <anonymous>:4:29)\n' +
-                '    at <anonymous>:25:46\n' +
-                '    at <anonymous>:37:3\n' +
-                '    at https://static.zdassets.com/ekr/snippet.js?key=0f2412b9-0d39-4b87-a4af-f7edd25c9d3a:1:8383\n' +
-                '    at https://static.zdassets.com/ekr/snippet.js?key=0f2412b9-0d39-4b87-a4af-f7edd25c9d3a:1:3779',
+                stack:
+                    'Error\n' +
+                    '    at eval (eval at <anonymous> (:25:46), <anonymous>:4:29)\n' +
+                    '    at <anonymous>:25:46\n' +
+                    '    at <anonymous>:37:3\n' +
+                    '    at https://static.zdassets.com/ekr/snippet.js?key=0f2412b9-0d39-4b87-a4af-f7edd25c9d3a:1:8383\n' +
+                    '    at https://static.zdassets.com/ekr/snippet.js?key=0f2412b9-0d39-4b87-a4af-f7edd25c9d3a:1:3779',
                 args: [],
                 url: 'https://static.zdassets.com/ekr/snippet.js',
-            })
+            }),
         });
 
-        const data = collector.getData({finalUrl: 'https://example.com/'});
+        const data = collector.getData({ finalUrl: 'https://example.com/' });
 
         assert.deepStrictEqual(data, {
             callStats: {
-                'https://example.com/bad.js': {'window.devicePixelRatio': 2},
-                'https://example.com/different.js': {'Navigator.prototype.userAgent': 1, 'Document.cookie setter': 1},
-                'https://static.zdassets.com/ekr/snippet.js': {'Navigator.prototype.userAgent': 1},
+                'https://example.com/bad.js': { 'window.devicePixelRatio': 2 },
+                'https://example.com/different.js': { 'Navigator.prototype.userAgent': 1, 'Document.cookie setter': 1 },
+                'https://static.zdassets.com/ekr/snippet.js': { 'Navigator.prototype.userAgent': 1 },
             },
             savedCalls: [
                 {
                     source: 'https://example.com/different.js',
                     description: 'Document.cookie setter',
-                    arguments: [
-                        'uuid=123'
-                    ]
+                    arguments: ['uuid=123'],
                 },
-            ]
+            ],
         });
     });
 
     it('should handle async stack traces', () => {
-        const debuggerPaused = listeners.find(a => a.name === 'Debugger.paused');
+        const debuggerPaused = listeners.find((a) => a.name === 'Debugger.paused');
         assert(debuggerPaused, 'Debugger.paused listener was set');
 
-        const scriptParsed = listeners.find(a => a.name === 'Debugger.scriptParsed');
+        const scriptParsed = listeners.find((a) => a.name === 'Debugger.scriptParsed');
         assert(scriptParsed, 'Debugger.scriptParsed listener was set');
 
         // Async stack example
         debuggerPaused.callback(pausedEventExample);
 
-        const data = collector.getData({finalUrl: 'https://example.com/'});
+        const data = collector.getData({ finalUrl: 'https://example.com/' });
 
         assert.deepStrictEqual(data, {
             callStats: {
-                'https://example.com/_nuxt/5f888f5.js': {'Navigator.prototype.plugins': 1},
+                'https://example.com/_nuxt/5f888f5.js': { 'Navigator.prototype.plugins': 1 },
             },
-            savedCalls: []
+            savedCalls: [],
         });
     });
 });

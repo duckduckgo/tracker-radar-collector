@@ -1,15 +1,14 @@
-/* eslint-disable max-lines */
 const path = require('path');
 const fs = require('fs');
 const chalk = require('chalk');
 const asyncLib = require('async');
 const runCrawlers = require('../crawlerConductor');
-const {program} = require('commander');
-const {getCollectorIds, createCollector} = require('../helpers/collectorsList');
-const {getReporterIds, createReporter} = require('../helpers/reportersList');
-const {metadataFileExists, createMetadataFile} = require('./metadataFile');
+const { program } = require('commander');
+const { getCollectorIds, createCollector } = require('../helpers/collectorsList');
+const { getReporterIds, createReporter } = require('../helpers/reportersList');
+const { metadataFileExists, createMetadataFile } = require('./metadataFile');
 const crawlConfig = require('./crawlConfig');
-const {createUniqueUrlName} = require('../helpers/hash');
+const { createUniqueUrlName } = require('../helpers/hash');
 
 program
     .option('-o, --output <path>', 'output folder')
@@ -18,16 +17,22 @@ program
     .option('-d, --data-collectors <list>', `comma separated list of data collectors: ${getCollectorIds().join(', ')} (all by default)`)
     .option('--reporters <list>', `comma separated list of reporters: ${getReporterIds().join(', ')}`)
     .option('-l, --log-path <path>', 'instructs reporters where all logs should be written to')
-    .option('-v, --verbose', 'instructs reporters to log additional information (e.g. for "cli" reporter progress bar will not be shown when verbose logging is enabled)')
+    .option(
+        '-v, --verbose',
+        'instructs reporters to log additional information (e.g. for "cli" reporter progress bar will not be shown when verbose logging is enabled)',
+    )
     .option('-c, --crawlers <number>', 'overwrite the default number of concurent crawlers')
     .option('-f, --force-overwrite', 'overwrite existing output files')
-    .option('-3, --only-3p', 'don\'t save any first-party data')
+    .option('-3, --only-3p', "don't save any first-party data")
     .option('-m, --mobile', 'emulate a mobile device')
     .option('-p, --proxy-config <host>', 'use an optional proxy configuration')
     .option('-r, --region-code <region>', 'optional 2 letter region code. Used for metadata only.')
     .option('-a, --disable-anti-bot', 'disable anti bot detection protections injected to every frame')
     .option('--config <path>', 'crawl configuration file')
-    .option('--autoconsent-action <action>', 'dismiss cookie popups. Possible values: optOut, optIn. Works only when cookiepopups collector is enabled.')
+    .option(
+        '--autoconsent-action <action>',
+        'dismiss cookie popups. Possible values: optOut, optIn. Works only when cookiepopups collector is enabled.',
+    )
     .option('--chromium-version <version_number>', 'use custom version of chromium')
     .option('--selenium-hub <url>', 'selenium hub endpoint to request browsers from')
     .parse(process.argv);
@@ -47,40 +52,42 @@ function createOutputPath(outputPath, url, fileType = 'json') {
  * @param {string} outputPath
  */
 function filterUrls(inputUrls, logFunction, outputPath) {
-    return asyncLib.filter(inputUrls, (item, filterCallback) => {
-        const urlString = (typeof item === 'string') ? item : item.url;
+    return asyncLib
+        .filter(inputUrls, (item, filterCallback) => {
+            const urlString = typeof item === 'string' ? item : item.url;
 
-        /**
-         * @type {URL}
-         */
-        let url;
+            /**
+             * @type {URL}
+             */
+            let url;
 
-        try {
-            url = new URL(urlString);
-        } catch {
-            logFunction(chalk.yellow('Invalid URL:'), urlString);
-            filterCallback(null, false);
-            return;
-        }
+            try {
+                url = new URL(urlString);
+            } catch {
+                logFunction(chalk.yellow('Invalid URL:'), urlString);
+                filterCallback(null, false);
+                return;
+            }
 
-        if (outputPath) {
-            // filter out entries for which result file already exists
-            const outputFile = createOutputPath(outputPath, url);
-            fs.access(outputFile, err => {
-                if (err) {
-                    filterCallback(null, true);
-                } else {
-                    logFunction(chalk.yellow(`Skipping "${urlString}" because output file already exists.`));
-                    filterCallback(null, false);
-                }
-            });
-            return;
-        }
-        filterCallback(null, true);
-    }).catch(err => {
-        logFunction(chalk.red(`Could not filter URL list: ${err}`));
-        throw err;
-    });
+            if (outputPath) {
+                // filter out entries for which result file already exists
+                const outputFile = createOutputPath(outputPath, url);
+                fs.access(outputFile, (err) => {
+                    if (err) {
+                        filterCallback(null, true);
+                    } else {
+                        logFunction(chalk.yellow(`Skipping "${urlString}" because output file already exists.`));
+                        filterCallback(null, false);
+                    }
+                });
+                return;
+            }
+            filterCallback(null, true);
+        })
+        .catch((err) => {
+            logFunction(chalk.red(`Could not filter URL list: ${err}`));
+            throw err;
+        });
 }
 
 /**
@@ -104,19 +111,19 @@ async function run({
     maxLoadTimeMs,
     extraExecutionTimeMs,
     collectorFlags,
-    seleniumHub
+    seleniumHub,
 }) {
     const startTime = new Date();
 
-    reporters.forEach(reporter => {
-        reporter.init({verbose, startTime, urls: inputUrls.length, logPath});
+    reporters.forEach((reporter) => {
+        reporter.init({ verbose, startTime, urls: inputUrls.length, logPath });
     });
 
     /**
      * @type {function(...any):void}
      */
     const log = (...msg) => {
-        reporters.forEach(reporter => {
+        reporters.forEach((reporter) => {
             reporter.log(...msg);
         });
     };
@@ -136,12 +143,11 @@ async function run({
     /**
      * @type {Array<Array<number>>}
      */
-    let crawlTimes = [];
+    const crawlTimes = [];
 
-    // eslint-disable-next-line arrow-parens
-    const updateProgress = (/** @type {string} */site = '', /** @type {import('../crawler').CollectResult} */data) => {
-        reporters.forEach(reporter => {
-            reporter.update({site, successes, failures, urls: urlsLength, data, crawlTimes, fatalError, numberOfCrawlers, regionCode});
+    const updateProgress = (/** @type {string} */ site = '', /** @type {import('../crawler').CollectResult} */ data) => {
+        reporters.forEach((reporter) => {
+            reporter.update({ site, successes, failures, urls: urlsLength, data, crawlTimes, fatalError, numberOfCrawlers, regionCode });
         });
     };
 
@@ -172,7 +178,7 @@ async function run({
     /**
      * @param {string} url
      */
-    const failureCallback = url => {
+    const failureCallback = (url) => {
         failures++;
         updateProgress(url);
     };
@@ -193,17 +199,17 @@ async function run({
             maxLoadTimeMs,
             extraExecutionTimeMs,
             collectorFlags,
-            seleniumHub
+            seleniumHub,
         });
         log(chalk.green('\n✅ Finished successfully.'));
-    } catch(e) {
+    } catch (e) {
         log(chalk.red('\n🚨 Fatal error.'), e);
         fatalError = e;
     }
 
     const endTime = new Date();
 
-    await Promise.all(reporters.map(reporter => reporter.cleanup({startTime, endTime, successes, failures, urls: urlsLength})));
+    await Promise.all(reporters.map((reporter) => reporter.cleanup({ startTime, endTime, successes, failures, urls: urlsLength })));
 
     createMetadataFile(outputPath, {
         startTime,
@@ -214,11 +220,11 @@ async function run({
         emulateMobile,
         proxyHost,
         regionCode,
-        dataCollectors: dataCollectors.map(c => c.id()),
+        dataCollectors: dataCollectors.map((c) => c.id()),
         successes,
         failures,
         urls: inputUrls.length,
-        skipped: inputUrls.length - urls.length
+        skipped: inputUrls.length - urls.length,
     });
 }
 
@@ -234,9 +240,9 @@ const collectorFlags = {
 let dataCollectors = null;
 
 if (config.dataCollectors) {
-    dataCollectors = config.dataCollectors.map(id => createCollector(id));
+    dataCollectors = config.dataCollectors.map((id) => createCollector(id));
 } else {
-    dataCollectors = getCollectorIds().map(id => createCollector(id));
+    dataCollectors = getCollectorIds().map((id) => createCollector(id));
 }
 
 /**
@@ -245,7 +251,7 @@ if (config.dataCollectors) {
 let reporters = null;
 
 if (config.reporters) {
-    reporters = config.reporters.map(id => createReporter(id));
+    reporters = config.reporters.map((id) => createReporter(id));
 } else {
     reporters = [createReporter('cli')];
 }
@@ -255,7 +261,6 @@ if (!config.urls || !config.output) {
 } else {
     if (fs.existsSync(config.output)) {
         if (metadataFileExists(config.output) && !config.forceOverwrite) {
-            // eslint-disable-next-line no-console
             console.log(chalk.red('Output folder already exists and contains metadata file.'), 'Use -f to overwrite.');
             process.exit(1);
         }
@@ -267,11 +272,11 @@ if (!config.urls || !config.output) {
      * @type {Array<string|{url:string, dataCollectors:BaseCollector[]}>}
      */
     // @ts-ignore typescript doesn't understand that all string[] will be converted to BaseCollector[]
-    const urls = config.urls.map(item => {
+    const urls = config.urls.map((item) => {
         if (typeof item !== 'string' && item.dataCollectors) {
             return {
                 url: item.url,
-                dataCollectors: item.dataCollectors.map(id => createCollector(id))
+                dataCollectors: item.dataCollectors.map((id) => createCollector(id)),
             };
         }
 
@@ -296,7 +301,7 @@ if (!config.urls || !config.output) {
         maxLoadTimeMs: config.maxLoadTimeMs,
         extraExecutionTimeMs: config.extraExecutionTimeMs,
         collectorFlags,
-        seleniumHub: config.seleniumHub
+        seleniumHub: config.seleniumHub,
     });
 }
 

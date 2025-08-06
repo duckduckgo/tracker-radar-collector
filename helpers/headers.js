@@ -1,20 +1,20 @@
 /**
  * @param {Object<string, string>} headers
  * @param {string[]} safelist
- * 
+ *
  * @returns {Object<string, string>|null}
  */
 function filterHeaders(headers, safelist) {
-    const lowerCaseSafelist = safelist.map(n => n.toLowerCase());
+    const lowerCaseSafelist = safelist.map((n) => n.toLowerCase());
     const matches = Object.keys(headers)
-        .filter(name => lowerCaseSafelist.includes(name.toLowerCase()))
+        .filter((name) => lowerCaseSafelist.includes(name.toLowerCase()))
         .sort((a, b) => a.localeCompare(b));
 
     /**
      * @type {Object<string, string>}
      */
     const output = {};
-    matches.forEach(name => {
+    matches.forEach((name) => {
         output[name] = headers[name];
     });
 
@@ -23,9 +23,9 @@ function filterHeaders(headers, safelist) {
 
 /**
  * Make sure all header names are trimmed and lowercase
- * 
- * @param {Object<string, string>} headers 
- * 
+ *
+ * @param {Object<string, string>} headers
+ *
  * @returns {Object<string, string>}
  */
 function normalizeHeaders(headers) {
@@ -34,7 +34,7 @@ function normalizeHeaders(headers) {
      */
     const normalized = {};
 
-    Object.keys(headers).forEach(name => {
+    Object.keys(headers).forEach((name) => {
         normalized[name.toLowerCase().trim()] = headers[name];
     });
 
@@ -43,5 +43,5 @@ function normalizeHeaders(headers) {
 
 module.exports = {
     filterHeaders,
-    normalizeHeaders
+    normalizeHeaders,
 };

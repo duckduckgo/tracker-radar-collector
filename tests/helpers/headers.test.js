@@ -1,10 +1,10 @@
-const {filterHeaders, normalizeHeaders} = require('../../helpers/headers');
+const { filterHeaders, normalizeHeaders } = require('../../helpers/headers');
 const assert = require('assert');
 
 const input = {
     ' set-cookie': 'a',
     'referer ': 'b',
-    'USER-AGENT': 'c'
+    'USER-AGENT': 'c',
 };
 
 const normalized = normalizeHeaders(input);

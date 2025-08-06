@@ -1,7 +1,7 @@
 const fs = require('fs');
 const URL = require('url').URL;
 const path = require('path');
-const {program} = require('commander');
+const { program } = require('commander');
 const chalk = require('chalk');
 const ProgressBar = require('progress');
 const tldts = require('tldts');
@@ -21,19 +21,18 @@ if (!opts.input || !opts.output) {
 
 const dataDir = opts.input;
 
-const dataFiles = fs.readdirSync(dataDir)
-    .filter(file => {
-        const resolvedPath = path.resolve(process.cwd(), `${dataDir}/${file}`);
-        const stat = fs.statSync(resolvedPath);
+const dataFiles = fs.readdirSync(dataDir).filter((file) => {
+    const resolvedPath = path.resolve(process.cwd(), `${dataDir}/${file}`);
+    const stat = fs.statSync(resolvedPath);
 
-        return stat && stat.isFile() && file.endsWith('.json') && file !== METADATA_FILE_NAME;
-    });
+    return stat && stat.isFile() && file.endsWith('.json') && file !== METADATA_FILE_NAME;
+});
 
 const progressBar = new ProgressBar('[:bar] :percent ETA :etas :file', {
     complete: chalk.green('='),
     incomplete: ' ',
     total: dataFiles.length,
-    width: 30
+    width: 30,
 });
 
 /**
@@ -45,8 +44,8 @@ const stats = {
         failingFiles: 0,
         timeouts: 0,
         totalTime: 0,
-        avgTime: 0
-    }
+        avgTime: 0,
+    },
 };
 
 /**
@@ -101,8 +100,8 @@ const apiPopularity = new Map();
  */
 const mostAPIsCalled = [];
 
-dataFiles.forEach(file => {
-    progressBar.tick({file});
+dataFiles.forEach((file) => {
+    progressBar.tick({ file });
 
     const resolvedPath = path.resolve(process.cwd(), `${dataDir}/${file}`);
     /**
@@ -131,14 +130,14 @@ dataFiles.forEach(file => {
 
     const finalURLTLD = tldts.getDomain(data.finalUrl);
 
-    Object.keys(data.data).forEach(sectionName => {
+    Object.keys(data.data).forEach((sectionName) => {
         // general stats
         if (!stats[sectionName]) {
             stats[sectionName] = {
                 failed: 0,
                 empty: 0,
                 totalEntries: 0,
-                avgEntries: 0
+                avgEntries: 0,
             };
         }
 
@@ -166,8 +165,6 @@ dataFiles.forEach(file => {
             const domains = new Set();
             const ips = new Set();
 
-            
-            // eslint-disable-next-line arrow-parens
             sectionData.forEach((/** @type {import('../collectors/RequestCollector').RequestData} */ request) => {
                 urls.add(request.url);
                 ips.add(request.remoteIPAddress);
@@ -181,38 +178,38 @@ dataFiles.forEach(file => {
                 }
             });
 
-            urls.forEach(url => {
+            urls.forEach((url) => {
                 const count = topRequests.get(url) || 0;
                 topRequests.set(url, count + 1);
             });
 
-            domains.forEach(domain => {
+            domains.forEach((domain) => {
                 const count = topDomains.get(domain) || 0;
                 topDomains.set(domain, count + 1);
             });
 
-            ips.forEach(ip => {
+            ips.forEach((ip) => {
                 const count = topIps.get(ip) || 0;
                 topIps.set(ip, count + 1);
             });
 
             // most/least 3p requests
             if (mostRequests === null || mostRequests.count < sectionData.length) {
-                mostRequests = {url: data.finalUrl, count: sectionData.length};
+                mostRequests = { url: data.finalUrl, count: sectionData.length };
             }
             if (leastRequests === null || leastRequests.count > sectionData.length) {
-                leastRequests = {url: data.finalUrl, count: sectionData.length};
+                leastRequests = { url: data.finalUrl, count: sectionData.length };
             }
         }
 
         if (sectionName === 'cookies') {
             // top cookie names
-            // eslint-disable-next-line arrow-parens
-            sectionData.forEach((/** @type {import('../collectors/CookieCollector').CookieData} */cookie) => {
+
+            sectionData.forEach((/** @type {import('../collectors/CookieCollector').CookieData} */ cookie) => {
                 const count = topCookieNames.get(cookie.name) || 0;
                 topCookieNames.set(cookie.name, count + 1);
 
-                const cookieDomain = (cookie.domain).startsWith('.') ? ('a' + cookie.domain) : cookie.domain;
+                const cookieDomain = cookie.domain.startsWith('.') ? 'a' + cookie.domain : cookie.domain;
                 const cookieTLD = tldts.getDomain(cookieDomain);
 
                 if (cookieTLD !== finalURLTLD) {
@@ -222,10 +219,10 @@ dataFiles.forEach(file => {
 
             // most/least cookies
             if (mostCookies === null || mostCookies.count < sectionData.length) {
-                mostCookies = {url: data.finalUrl, count: sectionData.length};
+                mostCookies = { url: data.finalUrl, count: sectionData.length };
             }
             if (leastCookies === null || leastCookies.count > sectionData.length) {
-                leastCookies = {url: data.finalUrl, count: sectionData.length};
+                leastCookies = { url: data.finalUrl, count: sectionData.length };
             }
         }
 
@@ -237,15 +234,15 @@ dataFiles.forEach(file => {
 
             // most targets
             if (mostTargets === null || mostTargets.count < sectionData.length) {
-                mostTargets = {url: data.finalUrl, count: sectionData.length};
+                mostTargets = { url: data.finalUrl, count: sectionData.length };
             }
         }
 
         if (sectionName === 'apis') {
-            Object.keys(sectionData.callStats).forEach(scriptName => {
+            Object.keys(sectionData.callStats).forEach((scriptName) => {
                 const calls = sectionData.callStats[scriptName];
 
-                Object.keys(calls).forEach(api => {
+                Object.keys(calls).forEach((api) => {
                     const count = apiPopularity.get(api) || 0;
                     apiPopularity.set(api, count + 1);
                 });
@@ -256,13 +253,21 @@ dataFiles.forEach(file => {
     });
 });
 
-stats.requests.topRequests = Array.from(topRequests).sort(([, aCount], [, bCount]) => bCount - aCount).slice(0, 50);
-stats.requests.topDomains = Array.from(topDomains).sort(([, aCount], [, bCount]) => bCount - aCount).slice(0, 50);
-stats.requests.topIPs = Array.from(topIps).sort(([, aCount], [, bCount]) => bCount - aCount).slice(0, 50);
+stats.requests.topRequests = Array.from(topRequests)
+    .sort(([, aCount], [, bCount]) => bCount - aCount)
+    .slice(0, 50);
+stats.requests.topDomains = Array.from(topDomains)
+    .sort(([, aCount], [, bCount]) => bCount - aCount)
+    .slice(0, 50);
+stats.requests.topIPs = Array.from(topIps)
+    .sort(([, aCount], [, bCount]) => bCount - aCount)
+    .slice(0, 50);
 stats.requests.mostRequests = mostRequests;
 stats.requests.leastRequests = leastRequests;
 
-stats.cookies.topCookieNames = Array.from(topCookieNames).sort(([, aCount], [, bCount]) => bCount - aCount).slice(0, 50);
+stats.cookies.topCookieNames = Array.from(topCookieNames)
+    .sort(([, aCount], [, bCount]) => bCount - aCount)
+    .slice(0, 50);
 stats.cookies.mostCookies = mostCookies;
 stats.cookies.leastCookies = leastCookies;
 stats.cookies.avgThirdParty = stats.cookies.totalThirdParty / stats.global.validFiles;

@@ -1,39 +1,35 @@
 class BaseReporter {
-
     id() {
         return 'base';
     }
 
     /**
      * Called once before crawling starts
-     * 
-     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options 
+     *
+     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    init(options) {
-    }
+    init(options) {}
 
     /**
      * Called whenever site was crawled (either successfully or not)
-     * 
-     * @param {{site: string, failures: number, successes: number, urls: number, data: import("../crawler").CollectResult | undefined, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data 
+     *
+     * @param {{site: string, failures: number, successes: number, urls: number, data: import("../crawler").CollectResult | undefined, crawlTimes: Array<Array<number>>, fatalError: Error, numberOfCrawlers: number, regionCode: string}} data
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    update(data) {
-    }
+    update(data) {}
 
     /**
      * Called whenever some message is meant to be logged (not every reporter has to support that)
-     * 
-     * @param  {...any} messages 
+     *
+     * @param  {...any} messages
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    log(...messages) {
-    }
+    log(...messages) {}
 
     /**
      * Called at the end of crawling, gives time for clean up (if needed)
-     * 
+     *
      * @param {{startTime: Date, endTime: Date, successes: number, failures: number, urls: number}} data
      * @returns {Promise<void>}
      */

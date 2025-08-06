@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+ 
 const chalk = require('chalk');
 const {createTimer} = require('./helpers/timer');
 const createDeferred = require('./helpers/deferred');
@@ -131,9 +131,9 @@ class Crawler {
 
         await session.send('Runtime.enable');
 
-        for (let collector of this.collectors) {
+        for (const collector of this.collectors) {
             try {
-                // eslint-disable-next-line no-await-in-loop
+                 
                 await collector.addTarget(session, targetInfo);
             } catch (e) {
                 this.log(chalk.yellow(`${collector.id()} failed to attach to "${targetInfo.url}"`), chalk.gray(e.message), chalk.gray(e.stack));
@@ -246,10 +246,10 @@ class Crawler {
             collectorFlags: this.options.collectorFlags,
         };
 
-        for (let collector of this.collectors) {
+        for (const collector of this.collectors) {
             const timer = createTimer();
             try {
-                // eslint-disable-next-line no-await-in-loop
+                 
                 await collector.init(collectorOptions);
                 this.log(`${collector.id()} init took ${timer.getElapsedTime()}s`);
             } catch (e) {
@@ -259,10 +259,10 @@ class Crawler {
     }
 
     async postLoadCollectors() {
-        for (let collector of this.collectors) {
+        for (const collector of this.collectors) {
             const postLoadTimer = createTimer();
             try {
-                // eslint-disable-next-line no-await-in-loop
+                 
                 await collector.postLoad();
                 this.log(`${collector.id()} postLoad took ${postLoadTimer.getElapsedTime()}s`);
             } catch (e) {
@@ -277,10 +277,10 @@ class Crawler {
          */
         const data = {};
         const finalUrl = this.mainPageFrame.url;
-        for (let collector of this.collectors) {
+        for (const collector of this.collectors) {
             const getDataTimer = createTimer();
             try {
-                // eslint-disable-next-line no-await-in-loop
+                 
                 const collectorData = await collector.getData({
                     finalUrl,
                     urlFilter: this.options.urlFilter && this.options.urlFilter.bind(null, finalUrl)
@@ -334,7 +334,7 @@ class Crawler {
             if (e instanceof TimeoutError) {
                 this.log(chalk.yellow(e.message));
 
-                for (let {session, targetInfo} of this.targets.values()) {
+                for (const {session, targetInfo} of this.targets.values()) {
                     if (targetInfo.type === 'page') {
                         session.send('Page.stopLoading').catch(() => {/* ignore */});
                     }
@@ -358,7 +358,7 @@ class Crawler {
         const data = await this.getCollectorData();
         this.log(`get collector data took ${getCollectorDataTimer.getElapsedTime()}s`);
 
-        for (let target of this.targets.values()) {
+        for (const target of this.targets.values()) {
             target.session.detach().catch(() => {/* ignore */});
         }
 

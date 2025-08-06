@@ -1,5 +1,4 @@
 class BaseCollector {
-
     /**
      * Override this to increase the total crawl time when this collector is enabled.
      */
@@ -15,8 +14,7 @@ class BaseCollector {
      * @param {CollectorInitOptions} options
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    init(options) {
-    }
+    init(options) {}
 
     /**
      * Called whenever new target becomes available (e.g. main page, iframe, web worker). Can be async, can throw errors.
@@ -25,8 +23,7 @@ class BaseCollector {
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    addTarget(session, targetInfo) {
-    }
+    addTarget(session, targetInfo) {}
 
     /**
      * Called after the page has loaded. Can be async, can throw errors.

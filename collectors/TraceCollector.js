@@ -7,7 +7,6 @@ const BaseCollector = require('./BaseCollector');
 const createDeferred = require('../helpers/deferred');
 
 class TraceCollector extends BaseCollector {
-
     id() {
         return 'trace';
     }
@@ -24,8 +23,8 @@ class TraceCollector extends BaseCollector {
     }
 
     /**
-    * @param {string} handle
-    */
+     * @param {string} handle
+     */
     async _readStream(handle) {
         let eof = false;
         const bufs = [];
@@ -34,12 +33,12 @@ class TraceCollector extends BaseCollector {
              * @type {{eof:boolean, data:string}}
              */
             // @ts-ignore oversimplified .send signature
-            // eslint-disable-next-line no-await-in-loop
-            const response = await this._cdpClient.send('IO.read', {handle});
+
+            const response = await this._cdpClient.send('IO.read', { handle });
             eof = response.eof;
             bufs.push(Buffer.from(response.data));
         }
-        await this._cdpClient.send('IO.close', {handle});
+        await this._cdpClient.send('IO.close', { handle });
         let resultBuffer = null;
         try {
             resultBuffer = Buffer.concat(bufs);
@@ -53,7 +52,7 @@ class TraceCollector extends BaseCollector {
      * @param {import('puppeteer-core').CDPSession} session
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     async addTarget(session, targetInfo) {
         if (targetInfo.type === 'page' && !this._tracing) {
             this._cdpClient = session;
@@ -108,7 +107,7 @@ class TraceCollector extends BaseCollector {
     async getData() {
         const deferred = createDeferred();
 
-        this._cdpClient.once('Tracing.tracingComplete', async event => {
+        this._cdpClient.once('Tracing.tracingComplete', async (event) => {
             try {
                 const buffer = await this._readStream(event.stream);
                 const string = buffer.toString('utf8');
@@ -120,17 +119,16 @@ class TraceCollector extends BaseCollector {
                 if (obj.traceEvents) {
                     // 'RunTask' events seem to be useless for our purposes so we are filtering them out to prserve space
                     // Ideally, we should avoid collecting them in the first place but we do need devtools.timeline category
-                    obj.traceEvents = obj.traceEvents
-                        .filter(e => e.name !== 'RunTask' || Object.keys(e.args).length > 0);
+                    obj.traceEvents = obj.traceEvents.filter((e) => e.name !== 'RunTask' || Object.keys(e.args).length > 0);
                 }
 
                 deferred.resolve(obj);
-            } catch(e) {
+            } catch (e) {
                 deferred.reject(e);
             }
         });
         await this._cdpClient.send('Tracing.end');
-        
+
         this._tracing = false;
 
         return deferred.promise;

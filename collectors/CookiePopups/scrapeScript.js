@@ -89,7 +89,7 @@ function excludeContainers(elements) {
 function getPopupLikeElements() {
     const walker = document.createTreeWalker(
         document.documentElement,
-        NodeFilter.SHOW_ELEMENT,      // visit only element nodes
+        NodeFilter.SHOW_ELEMENT, // visit only element nodes
         {
             /**
              * @param {HTMLElement} node
@@ -103,8 +103,8 @@ function getPopupLikeElements() {
                     return NodeFilter.FILTER_ACCEPT;
                 }
                 return NodeFilter.FILTER_SKIP;
-            }
-        }
+            },
+        },
     );
 
     const found = [];
@@ -119,24 +119,20 @@ function getDocumentText() {
      * @param {Node} root
      */
     function collectShadowDOMText(root) {
-        const walker = document.createTreeWalker(
-            root,
-            NodeFilter.SHOW_ELEMENT,
-            {
-                /**
-                 * @param {Node} node
-                 */
-                acceptNode(node) {
-                    const element = /** @type {HTMLElement} */ (node);
-                    // Accept elements with shadow roots for special handling
-                    if (element.shadowRoot) {
-                        return NodeFilter.FILTER_ACCEPT;
-                    }
-                    // Skip other elements but continue traversing their children
-                    return NodeFilter.FILTER_SKIP;
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, {
+            /**
+             * @param {Node} node
+             */
+            acceptNode(node) {
+                const element = /** @type {HTMLElement} */ (node);
+                // Accept elements with shadow roots for special handling
+                if (element.shadowRoot) {
+                    return NodeFilter.FILTER_ACCEPT;
                 }
-            }
-        );
+                // Skip other elements but continue traversing their children
+                return NodeFilter.FILTER_SKIP;
+            },
+        });
 
         let result = '';
         let node;
@@ -197,11 +193,9 @@ function getSelector(el, specificity) {
         if (specificity.order) {
             if (
                 specificity.absoluteOrder ||
-                (
-                    siblings.length > 1 &&
+                (siblings.length > 1 &&
                     parent !== document.body && // element order under <body> is often unstable.
-                    parent !== document.documentElement
-                )
+                    parent !== document.documentElement)
             ) {
                 localSelector += `:nth-child(${siblings.indexOf(element) + 1})`;
             }
@@ -211,14 +205,15 @@ function getSelector(el, specificity) {
             // use getAttribute() instead of element.id to protect against DOM clobbering
             if (element.getAttribute('id')) {
                 localSelector += `#${CSS.escape(element.getAttribute('id'))}`;
-            } else if (!element.hasAttribute('id')) { // do not add it for id attribute without a value
+            } else if (!element.hasAttribute('id')) {
+                // do not add it for id attribute without a value
                 localSelector += `:not([id])`;
             }
         }
 
         if (specificity.dataAttributes && element.attributes instanceof NamedNodeMap) {
-            const dataAttributes = Array.from(element.attributes).filter(a => a.name.startsWith('data-'));
-            dataAttributes.forEach(a => {
+            const dataAttributes = Array.from(element.attributes).filter((a) => a.name.startsWith('data-'));
+            dataAttributes.forEach((a) => {
                 const escapedValue = CSS.escape(a.value);
                 localSelector += `[${a.name}="${escapedValue}"]`;
             });
@@ -233,7 +228,7 @@ function getSelector(el, specificity) {
         if (specificity.classes && element.classList instanceof DOMTokenList) {
             const classes = Array.from(element.classList);
             if (classes.length > 0) {
-                localSelector += `.${classes.map(c => CSS.escape(c)).join('.')}`;
+                localSelector += `.${classes.map((c) => CSS.escape(c)).join('.')}`;
             }
         }
 
@@ -308,10 +303,11 @@ function getUniqueSelector(el) {
  * @returns {import('../CookiePopupsCollector').ButtonData[]}
  */
 function getButtonData(el) {
-    const actionableButtons = excludeContainers(getButtonLikeElements(el))
-        .filter(b => isVisible(b) && !isDisabled(b) && b.innerText.trim());
+    const actionableButtons = excludeContainers(getButtonLikeElements(el)).filter(
+        (b) => isVisible(b) && !isDisabled(b) && b.innerText.trim(),
+    );
 
-    return actionableButtons.map(b => ({
+    return actionableButtons.map((b) => ({
         text: b.innerText ?? b.textContent ?? '',
         selector: getUniqueSelector(b),
     }));

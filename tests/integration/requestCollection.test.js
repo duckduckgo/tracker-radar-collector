@@ -1,10 +1,10 @@
-const {crawler, RequestCollector} = require('../../main.js');
+const { crawler, RequestCollector } = require('../../main.js');
 const assert = require('assert');
 
 async function main() {
     const requestData = await crawler(new URL('https://privacy-test-pages.site/privacy-protections/request-blocking/?run'), {
         log: () => {},
-        collectors: [new RequestCollector()]
+        collectors: [new RequestCollector()],
     });
 
     // we are testing edge cases - requests that we missed in the past

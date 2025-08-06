@@ -1,29 +1,29 @@
 const REJECT_PATTERNS_ENGLISH = [
     // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject all non-essential cookies and continue", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close"
     // note that "reject and subscribe" and "reject and pay" are excluded
-    /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*$/si,
+    /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*$/is,
 
     // e.g. "i do not accept", "i do not accept cookies", "do not accept", "do not accept cookies"
-    /^\s*(i)?\s*do\s+not\s+accept\s*(cookies)?\s*$/si,
+    /^\s*(i)?\s*do\s+not\s+accept\s*(cookies)?\s*$/is,
 
     // e.g. "continue without accepting", "continue without agreeing", "continue without agreeing →"
-    /^\s*(continue|proceed|continue\s+browsing)\s+without\s+(accepting|agreeing|consent|cookies|tracking)(\s*→)?\s*$/si,
+    /^\s*(continue|proceed|continue\s+browsing)\s+without\s+(accepting|agreeing|consent|cookies|tracking)(\s*→)?\s*$/is,
 
     // e.g. "strictly necessary cookies only", "essential cookies only", "required only", "use necessary cookies only", "essentials only"
     // note that "only" is required
-    /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essentials?|required)?\s*(cookies)?\s*only\s*$/si,
+    /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essentials?|required)?\s*(cookies)?\s*only\s*$/is,
 
     // e.g. "allow essential cookies", "allow necessary", "allow essentials", "allow essentials only"
     // note that "essential" is required
-    /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essentials?|required)\s*(cookies)?\s*$/si,
+    /^\s*(use|accept|allow|continue\s+with)?\s*(strictly)?\s*(necessary|essentials?|required)\s*(cookies)?\s*$/is,
 
     // e.g. "accept only essential cookies", "use only necessary cookies", "allow only essential", "only essentials", "continue with only essential cookies"
     // note that "only" is required
-    /^\s*(use|accept|allow|continue\s+with)?\s*only\s*(strictly)?\s*(necessary|essentials?|required)?\s*(cookies)?\s*$/si,
+    /^\s*(use|accept|allow|continue\s+with)?\s*only\s*(strictly)?\s*(necessary|essentials?|required)?\s*(cookies)?\s*$/is,
 
     // e.g. "do not sell or share my personal information", "do not sell my personal information"
     // often used in CCPA
-    /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*information\s*$/si,
+    /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*information\s*$/is,
 
     // These are impactful, but look error-prone
     // // e.g. "disagree"
@@ -423,22 +423,22 @@ const REJECT_PATTERNS_ITALIAN = [
 
 const REJECT_PATTERNS_BRAZILIAN_PORTUGUESE = [
     // (deny)
-    /^\s*(rejeitar|recusar|desativar|bloquear|negar|não\s*aceito|não \s*aceitar)\s*$/si,
+    /^\s*(rejeitar|recusar|desativar|bloquear|negar|não\s*aceito|não \s*aceitar)\s*$/is,
 
     // (proceed) (without accepting)
-    /^\s*(continuar|prosseguir|seguir)\s*(sem\s*aceitar)\s*$/si,
+    /^\s*(continuar|prosseguir|seguir)\s*(sem\s*aceitar)\s*$/is,
 
     // (deny) (everything) (optional)
-    /^\s*(rejeitar|recusar|desativar|bloquear|negar|não\s*aceito|não \s*aceitar)\s*(tudo|o)?\s*(opcional|(não[-\s](essencial|funcional|obrigatório|necessário)))?\s*$/si,
+    /^\s*(rejeitar|recusar|desativar|bloquear|negar|não\s*aceito|não \s*aceitar)\s*(tudo|o)?\s*(opcional|(não[-\s](essencial|funcional|obrigatório|necessário)))?\s*$/is,
 
     // (deny) (all) (the) (optional) (cookies)
-    /^\s*(rejeitar|recusar|desativar|bloquear|negar|não\s*aceito|não \s*aceitar)\s*(todos)?\s*(os)?\s*(cookies)?\s*(opcionais|(não[-\s](essenciais|funcionais|obrigatórios|necessários)))?\s*$/si,
+    /^\s*(rejeitar|recusar|desativar|bloquear|negar|não\s*aceito|não \s*aceitar)\s*(todos)?\s*(os)?\s*(cookies)?\s*(opcionais|(não[-\s](essenciais|funcionais|obrigatórios|necessários)))?\s*$/is,
 
     // (accept) (only) (the) (essential)
-    /^\s*(aceitar|utilizar)?\s*(apenas|somente|só)?\s*(o)?\s*(essencial|funcional|obrigatório|necessário)\s*$/si,
+    /^\s*(aceitar|utilizar)?\s*(apenas|somente|só)?\s*(o)?\s*(essencial|funcional|obrigatório|necessário)\s*$/is,
 
     // (accept) (only) (the) (essential) (cookies)
-    /^\s*(aceitar|utilizar)?\s*(apenas|somente|só)?\s*(os)?\s*(cookies)?\s*(essenciais|funcionais|obrigatórios|necessários)\s*$/si,
+    /^\s*(aceitar|utilizar)?\s*(apenas|somente|só)?\s*(os)?\s*(cookies)?\s*(essenciais|funcionais|obrigatórios|necessários)\s*$/is,
 ];
 
 const REJECT_PATTERNS_SPANISH = [
@@ -605,16 +605,16 @@ const REJECT_PATTERNS = [
 ];
 
 const NEVER_MATCH_PATTERNS = [
-    /pay|subscribe/si,
-    /abonneer/si,
-    /abonnier/si,
-    /abonner/si,
-    /abbonati/si,
-    /iscriviti/si,
-    /abbonare/si,
-    /iscrivere/si,
-    /sostienici/si,
-    /suscribir/si,
+    /pay|subscribe/is,
+    /abonneer/is,
+    /abonnier/is,
+    /abonner/is,
+    /abbonati/is,
+    /iscriviti/is,
+    /abbonare/is,
+    /iscrivere/is,
+    /sostienici/is,
+    /suscribir/is,
 ];
 
 module.exports = {

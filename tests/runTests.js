@@ -1,7 +1,6 @@
-/* eslint-disable no-console, no-process-env */
 const path = require('path');
 const fs = require('fs');
-const {execSync} = require('child_process');
+const { execSync } = require('child_process');
 const MAX_ATTEMPTS = process.env.CI ? 3 : 1;
 
 /**
@@ -15,7 +14,7 @@ function fromDir(startPath) {
         const filename = path.join(startPath, files[i]);
         const stat = fs.lstatSync(filename);
         if (stat.isDirectory()) {
-            fromDir(filename).forEach(t => tests.push(t));
+            fromDir(filename).forEach((t) => tests.push(t));
         } else if (filename.indexOf('.test.js') >= 0) {
             tests.push(filename);
         }

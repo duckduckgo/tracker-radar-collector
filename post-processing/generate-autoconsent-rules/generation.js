@@ -9,7 +9,7 @@ function isSameRejectButton(newButton, existingRule) {
         return false;
     }
 
-    const existingOptOut = existingRule.optOut.find(optOut => optOut.waitForThenClick);
+    const existingOptOut = existingRule.optOut.find((optOut) => optOut.waitForThenClick);
     if (!existingOptOut) {
         return false;
     }
@@ -25,7 +25,7 @@ function isSameRejectButton(newButton, existingRule) {
  * @returns {boolean} True if a rule exists.
  */
 function ruleForButtonExists(button, ...ruleLists) {
-    return ruleLists.some(list => list.some(rule => isSameRejectButton(button, rule)));
+    return ruleLists.some((list) => list.some((rule) => isSameRejectButton(button, rule)));
 }
 
 /**
@@ -83,10 +83,7 @@ function generateAutoconsentRule(region, url, frame, button) {
         detectCmp: [{ exists: button.selector }],
         detectPopup: [{ visible: button.selector }],
         optIn: [],
-        optOut: [
-            { wait: 500 },
-            { waitForThenClick: button.selector, comment: button.text },
-        ],
+        optOut: [{ wait: 500 }, { waitForThenClick: button.selector, comment: button.text }],
         test: [
             {
                 waitForVisible: button.selector,
@@ -109,25 +106,34 @@ function generateAutoconsentRule(region, url, frame, button) {
  * @param {import('./types').AutoConsentCMPRule[]} context.newRules
  * @param {import('./types').ReviewNote[]} context.reviewNotes
  */
-function overrideExistingRegionRules({ newRule, existingRulesWithSameRegion, url, region, matchingRules, rulesToOverride, newRules, reviewNotes }) {
+function overrideExistingRegionRules({
+    newRule,
+    existingRulesWithSameRegion,
+    url,
+    region,
+    matchingRules,
+    rulesToOverride,
+    newRules,
+    reviewNotes,
+}) {
     if (existingRulesWithSameRegion.length > 1) {
         console.warn('Multiple existing rules with the same region found for', url, region);
         reviewNotes.push({
             note: 'Multiple existing rules with the same region found, consider removing all but one',
-            ruleNames: existingRulesWithSameRegion.map(rule => rule.name),
-            existingRules: matchingRules.map(rule => rule.name),
+            ruleNames: existingRulesWithSameRegion.map((rule) => rule.name),
+            existingRules: matchingRules.map((rule) => rule.name),
             region,
         });
     }
 
     // find an existing rule that we haven't overridden yet
-    const ruleToOverride = existingRulesWithSameRegion.find(rule => !rulesToOverride.some(r => r.name === rule.name));
+    const ruleToOverride = existingRulesWithSameRegion.find((rule) => !rulesToOverride.some((r) => r.name === rule.name));
     if (!ruleToOverride) {
         console.warn('Already overridden all existing rules for', url, region, 'creating a new one');
         reviewNotes.push({
             note: 'Already overridden all existing rules, creating a new one',
             ruleName: newRule.name,
-            existingRules: existingRulesWithSameRegion.map(rule => rule.name),
+            existingRules: existingRulesWithSameRegion.map((rule) => rule.name),
             region,
         });
         newRules.push(newRule);
@@ -139,7 +145,7 @@ function overrideExistingRegionRules({ newRule, existingRulesWithSameRegion, url
         reviewNotes.push({
             note: 'Overriding existing rule',
             ruleName: ruleToOverride.name,
-            existingRules: matchingRules.map(rule => rule.name),
+            existingRules: matchingRules.map((rule) => rule.name),
             region,
         });
     }
@@ -179,18 +185,27 @@ function processRejectButton({ region, url, frame, button, matchingRules, newRul
 
     // there were some existing rules for this site, but all of them use different selectors
     // this can happen for several reasons: site uses different popups in different regions, or the popup has changed since last crawl
-    const existingRulesWithSameRegion = matchingRules.filter(rule => parseRuleName(rule.name).region === region);
+    const existingRulesWithSameRegion = matchingRules.filter((rule) => parseRuleName(rule.name).region === region);
 
     if (existingRulesWithSameRegion.length > 0) {
         // if there is an existing rule with the same region, override it
-        overrideExistingRegionRules({ newRule, existingRulesWithSameRegion, url, region, matchingRules, rulesToOverride, newRules, reviewNotes });
+        overrideExistingRegionRules({
+            newRule,
+            existingRulesWithSameRegion,
+            url,
+            region,
+            matchingRules,
+            rulesToOverride,
+            newRules,
+            reviewNotes,
+        });
     } else {
         // assume it's a new region-specific popup, but flag it for review
         newRules.push(newRule);
         reviewNotes.push({
             note: 'New region-specific popup',
             ruleName: newRule.name,
-            existingRules: matchingRules.map(rule => rule.name),
+            existingRules: matchingRules.map((rule) => rule.name),
             region,
         });
     }
@@ -213,7 +228,7 @@ function generateRulesForSite(region, url, collectorResult, matchingRules) {
     const reviewNotes = [];
     let keptCount = 0;
 
-    const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap(frame => frame.potentialPopups).filter(popup => popup.llmMatch);
+    const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap((frame) => frame.potentialPopups).filter((popup) => popup.llmMatch);
     if (llmConfirmedPopups.length > 1 || llmConfirmedPopups[0].rejectButtons.length > 1) {
         console.warn('Multiple cookie popups or reject buttons found in', url);
         reviewNotes.push({
@@ -225,7 +240,7 @@ function generateRulesForSite(region, url, collectorResult, matchingRules) {
 
     // go over all frames, all confirmed popups within them, and all reject buttons inside
     for (const frame of collectorResult.scrapedFrames) {
-        for (const popup of frame.potentialPopups.filter(p => p.llmMatch)) {
+        for (const popup of frame.potentialPopups.filter((p) => p.llmMatch)) {
             for (const button of popup.rejectButtons) {
                 if (ruleForButtonExists(button, matchingRules, newRules, rulesToOverride)) {
                     // if there is an existing rule with the same reject button, do nothing
@@ -240,7 +255,7 @@ function generateRulesForSite(region, url, collectorResult, matchingRules) {
     if (newRules.length > 1) {
         reviewNotes.push({
             note: 'Multiple new rules generated',
-            ruleNames: newRules.map(rule => rule.name),
+            ruleNames: newRules.map((rule) => rule.name),
         });
     }
     return { newRules, rulesToOverride, reviewNotes, keptCount };

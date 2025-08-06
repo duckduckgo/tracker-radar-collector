@@ -1,4 +1,4 @@
-const {getAllInitiators} = require('../../helpers/initiators');
+const { getAllInitiators } = require('../../helpers/initiators');
 const assert = require('assert');
 
 /**
@@ -15,15 +15,15 @@ const input = {
                 lineNumber: 1,
                 columnNumber: 1,
                 scriptId: '1',
-                url: 'https://example.com/b.js'
+                url: 'https://example.com/b.js',
             },
             {
                 functionName: 'c',
                 lineNumber: 1,
                 columnNumber: 1,
                 scriptId: '2',
-                url: 'https://example.com/c.js'
-            }
+                url: 'https://example.com/c.js',
+            },
         ],
         parent: {
             callFrames: [
@@ -32,27 +32,31 @@ const input = {
                     lineNumber: 1,
                     columnNumber: 1,
                     scriptId: '3',
-                    url: 'https://example.com/d.js'
+                    url: 'https://example.com/d.js',
                 },
                 {
                     functionName: 'e',
                     lineNumber: 1,
                     columnNumber: 1,
                     scriptId: '4',
-                    url: 'https://example.com/e.js'
-                }
-            ]
-        }
-    }
+                    url: 'https://example.com/e.js',
+                },
+            ],
+        },
+    },
 };
 
 const output = getAllInitiators(input);
 
 assert(output instanceof Set, 'Output is a Set');
-assert.deepEqual(Array.from(output), [
-    'https://example.com/a.js',
-    'https://example.com/b.js',
-    'https://example.com/c.js',
-    'https://example.com/d.js',
-    'https://example.com/e.js'
-], 'All initiators were extracted and are in the right order.');
+assert.deepEqual(
+    Array.from(output),
+    [
+        'https://example.com/a.js',
+        'https://example.com/b.js',
+        'https://example.com/c.js',
+        'https://example.com/d.js',
+        'https://example.com/e.js',
+    ],
+    'All initiators were extracted and are in the right order.',
+);

@@ -11,19 +11,19 @@ const fakeCDPClient = {};
 collector.init();
 
 // @ts-ignore not a real CDP client
-collector.addTarget(fakeCDPClient, {type: 'page', url: 'http://example.com'});
+collector.addTarget(fakeCDPClient, { type: 'page', url: 'http://example.com' });
 // @ts-ignore not a real CDP client
-collector.addTarget(fakeCDPClient, {type: 'service_worker', url: 'http://example.com/sw.js'});
+collector.addTarget(fakeCDPClient, { type: 'service_worker', url: 'http://example.com/sw.js' });
 
 const targets = collector.getData();
 
 assert.deepStrictEqual(targets, [
     {
         type: 'page',
-        url: 'http://example.com'
+        url: 'http://example.com',
     },
     {
         type: 'service_worker',
-        url: 'http://example.com/sw.js'
-    }
+        url: 'http://example.com/sw.js',
+    },
 ]);

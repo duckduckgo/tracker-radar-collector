@@ -42,7 +42,7 @@ async function verifyButtonTexts({ openai, rejectButtonTextsFile, otherButtonTex
                     content: await fs.promises.readFile(rejectButtonTextsFile, 'utf8'),
                 },
             ],
-            // eslint-disable-next-line camelcase
+
             response_format: zodResponseFormat(FalsePositiveSuggestions, 'FalsePositiveSuggestions'),
         });
         const resultFalsePositive = completionFalsePositive.choices[0].message.parsed;
@@ -61,7 +61,7 @@ async function verifyButtonTexts({ openai, rejectButtonTextsFile, otherButtonTex
                     content: await fs.promises.readFile(otherButtonTextsFile, 'utf8'),
                 },
             ],
-            // eslint-disable-next-line camelcase
+
             response_format: zodResponseFormat(FalseNegativeSuggestions, 'FalseNegativeSuggestions'),
         });
         const resultFalseNegative = completionFalseNegative.choices[0].message.parsed;

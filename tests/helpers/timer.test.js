@@ -1,4 +1,4 @@
-const {createTimer} = require('../../helpers/timer');
+const { createTimer } = require('../../helpers/timer');
 const assert = require('assert');
 
 const timer = createTimer();
