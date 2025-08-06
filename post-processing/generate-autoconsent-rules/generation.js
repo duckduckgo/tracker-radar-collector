@@ -147,7 +147,7 @@ function overrideExistingRegionRules({
             name: ruleToOverride.name, // keep the existing rule name
             _metadata: ruleToOverride._metadata,
         });
-        if (ruleToOverride._metadata?.reviewUpdates) {
+        if (ruleToOverride._metadata?.manuallyReviewUpdates) {
             reviewNotes.push({
                 needsReview: true,
                 note: 'Updated rule that has been manually edited before',
