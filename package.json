@@ -10,7 +10,7 @@
     "test": "npm run lint && tsc && npm run unit",
     "unit": "TRC_UNSAFE_DISABLE_SANDBOX=1 node ./tests/runTests.js && npm run mocha",
     "mocha": "mocha ./tests/**/*.mocha.js",
-    "lint": "eslint *.js cli/ collectors/ helpers/ post-processing/ tests/ reporters/",
+    "lint": "eslint *.js cli/ collectors/ helpers/ post-processing/ tests/ reporters/ && prettier cli/ collectors/ helpers/ post-processing/ tests/ reporters/ --check",
     "lint-fix": "npm run lint -- --fix"
   },
   "repository": {
@@ -21,6 +21,7 @@
     "node": ">=18.0.0"
   },
   "devDependencies": {
+    "@duckduckgo/eslint-config": "github:duckduckgo/eslint-config#v0.1.0",
     "@types/async": "^3.2.24",
     "@types/debug": "^4.1.12",
     "@types/mocha": "^9.1.1",
@@ -30,14 +31,13 @@
     "@types/selenium-webdriver": "^4.1.28",
     "@types/sinon": "^17.0.4",
     "@types/ws": "^8.5.12",
-    "@typescript-eslint/eslint-plugin": "^8.3.0",
-    "@typescript-eslint/parser": "^8.3.0",
-    "eslint": "^8.34.0",
-    "eslint-plugin-mocha": "^10.0.5",
+    "eslint": "^9.32.0",
     "mocha": "^11.1.0",
     "mockery": "^2.1.0",
+    "prettier": "^3.6.2",
     "sinon": "^21.0.0",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.39.0"
   },
   "dependencies": {
     "@clickhouse/client": "^1.11.1",
