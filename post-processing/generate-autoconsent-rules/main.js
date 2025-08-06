@@ -164,13 +164,13 @@ async function processCookiePopupsForSite(globalParams, { finalUrl, initialUrl, 
             finalHost !== 'www.' + initialHost
         ) {
             reviewNotes.push({
-                note: `Site changed host: ${initialHost} -> ${finalHost}`,
+                note: `Site changed host: \`${initialHost}\` -> \`${finalHost}\``,
                 needsReview: true,
             });
         }
     } catch (err) {
         reviewNotes.push({
-            note: `Failed to parse URL for ${initialUrl} or ${finalUrl}: ${err.message}`,
+            note: `Failed to parse URL for \`${initialUrl}\` or \`${finalUrl}\`: \`${err.message}\``,
             needsReview: true,
         });
     }
