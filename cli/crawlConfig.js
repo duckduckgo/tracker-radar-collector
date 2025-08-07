@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 /**
- * @param {string} url 
+ * @param {string} url
  * @returns {string}
  */
 function addProtocolIfNeeded(url) {
@@ -13,8 +13,8 @@ function addProtocolIfNeeded(url) {
 
 /**
  * Looks at CLI flags, JSON config etc. to figure out the final crawl config
- * 
- * @param {{config?: string, verbose?: boolean, forceOverwrite?: boolean, only3p?: boolean, mobile?: boolean, disableAntiBot?: boolean, output?: string, logPath?: string, crawlers?: string, proxyConfig?: string, regionCode?: string, chromiumVersion?: string, seleniumHub?: string, dataCollectors?: string, reporters?: string, url?: string, inputList?: string}} flags 
+ *
+ * @param {{config?: string, verbose?: boolean, forceOverwrite?: boolean, only3p?: boolean, mobile?: boolean, disableAntiBot?: boolean, output?: string, logPath?: string, crawlers?: string, proxyConfig?: string, regionCode?: string, chromiumVersion?: string, seleniumHub?: string, dataCollectors?: string, reporters?: string, url?: string, inputList?: string}} flags
  * @returns {CrawlConfig}
  */
 function figureOut(flags) {
@@ -71,10 +71,16 @@ function figureOut(flags) {
 
     // array settings
     if (flags.dataCollectors) {
-        crawlConfig.dataCollectors = flags.dataCollectors.split(',').map(n => n.trim()).filter(n => n.length > 0);
+        crawlConfig.dataCollectors = flags.dataCollectors
+            .split(',')
+            .map((n) => n.trim())
+            .filter((n) => n.length > 0);
     }
     if (flags.reporters) {
-        crawlConfig.reporters = flags.reporters.split(',').map(n => n.trim()).filter(n => n.length > 0);
+        crawlConfig.reporters = flags.reporters
+            .split(',')
+            .map((n) => n.trim())
+            .filter((n) => n.length > 0);
     }
 
     /**
@@ -84,8 +90,13 @@ function figureOut(flags) {
 
     if (flags.url) {
         cliUrls = [flags.url];
-    } else if(flags.inputList) {
-        cliUrls = fs.readFileSync(flags.inputList).toString().split('\n').map(u => u.trim()).filter(u => Boolean(u));
+    } else if (flags.inputList) {
+        cliUrls = fs
+            .readFileSync(flags.inputList)
+            .toString()
+            .split('\n')
+            .map((u) => u.trim())
+            .filter((u) => Boolean(u));
     }
 
     if (cliUrls) {
@@ -96,15 +107,14 @@ function figureOut(flags) {
              * @type {Array<{url:string, dataCollectors:string[]}>}
              */
             // @ts-ignore typescript doesn't understand that we filtered out all strings
-            const urlsWithConfig = crawlConfig.urls.filter(i => (typeof i !== 'string'));
-            crawlConfig.urls = cliUrls.map(url => urlsWithConfig.find(i => i.url === url) || url);
+            const urlsWithConfig = crawlConfig.urls.filter((i) => typeof i !== 'string');
+            crawlConfig.urls = cliUrls.map((url) => urlsWithConfig.find((i) => i.url === url) || url);
         } else {
             crawlConfig.urls = cliUrls;
         }
     }
-    
 
-    crawlConfig.urls = crawlConfig.urls.map(item => {
+    crawlConfig.urls = crawlConfig.urls.map((item) => {
         if (typeof item === 'string') {
             return addProtocolIfNeeded(item);
         } else if (item.url) {
@@ -119,7 +129,7 @@ function figureOut(flags) {
 }
 
 module.exports = {
-    figureOut
+    figureOut,
 };
 
 /**

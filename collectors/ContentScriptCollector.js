@@ -8,7 +8,7 @@ const ISOLATED_WORLD_SEPARATOR = '_frameId_';
  */
 function isIgnoredCDPError(e) {
     // ignore evaluation errors (sometimes frames reload too fast)
-    const error = (typeof e === 'string') ? e : e.message;
+    const error = typeof e === 'string' ? e : e.message;
     return (
         error.includes('TargetCloseError:') ||
         error.includes('No frame for given id found') ||
@@ -51,20 +51,22 @@ class ContentScriptCollector extends BaseCollector {
             return;
         }
 
-        session.on('Runtime.executionContextDestroyed', ({executionContextUniqueId}) => {
+        session.on('Runtime.executionContextDestroyed', ({ executionContextUniqueId }) => {
             this.log(`context destroyed ${executionContextUniqueId}`);
             this.isolated2pageworld.delete(executionContextUniqueId);
             this.cdpSessions.delete(executionContextUniqueId);
         });
 
         // inject the content script into every frame in isolated world
-        session.on('Runtime.executionContextCreated', async ({context}) => {
+        session.on('Runtime.executionContextCreated', async ({ context }) => {
             // new isolated world for our content script
             if (context.auxData.type === 'isolated' && context.name.startsWith(this.iwPrefix)) {
                 // Chromium will create a new isolated context for each frame in the page, even the ones we already asked for.
                 // We need to filter those out and ignore.
                 const pageWorldUniqueId = context.name.slice(this.iwPrefix.length, context.name.indexOf(ISOLATED_WORLD_SEPARATOR));
-                const intendedFrameId = context.name.slice(context.name.indexOf(ISOLATED_WORLD_SEPARATOR) + ISOLATED_WORLD_SEPARATOR.length);
+                const intendedFrameId = context.name.slice(
+                    context.name.indexOf(ISOLATED_WORLD_SEPARATOR) + ISOLATED_WORLD_SEPARATOR.length,
+                );
                 if (intendedFrameId !== context.auxData.frameId) {
                     this.log(`Skipping isolated context for fId ${context.auxData.frameId} (waiting for fId ${intendedFrameId})`);
                     return;

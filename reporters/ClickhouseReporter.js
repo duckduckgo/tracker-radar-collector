@@ -1,9 +1,8 @@
-const {createClient} = require('@clickhouse/client');
+const { createClient } = require('@clickhouse/client');
 const os = require('os');
 const BaseReporter = require('./BaseReporter');
-const {createUniqueUrlName} = require('../helpers/hash');
+const { createUniqueUrlName } = require('../helpers/hash');
 
-// eslint-disable-next-line no-process-env
 const CLICKHOUSE_SERVER = process.env.CLICKHOUSE_SERVER || 'clickhouse';
 const DB = 'tracker_radar_crawls';
 const TABLE_DEFINITIONS = [
@@ -108,12 +107,11 @@ const TABLE_DEFINITIONS = [
  */
 function santizeCallArgs(args) {
     // in some cases call args have been stringified, so unwrap that first.
-    const argsArray = typeof args === 'string' ? JSON.parse(args) : (args || []);
+    const argsArray = typeof args === 'string' ? JSON.parse(args) : args || [];
     return argsArray.map((/** @type {string} */ s) => s.replace(/'/g, ''));
 }
 
 class ClickhouseReporter extends BaseReporter {
-
     id() {
         return 'clickhouse';
     }
@@ -128,7 +126,7 @@ class ClickhouseReporter extends BaseReporter {
             database: DB,
         });
         this.crawlId = `${new Date().toISOString()}-${os.hostname()}`;
-        this.ready = Promise.all(TABLE_DEFINITIONS.map(stmt => this.client.query({query: stmt})));
+        this.ready = Promise.all(TABLE_DEFINITIONS.map((stmt) => this.client.query({ query: stmt })));
         this.queue = {
             pages: [],
             requests: [],
@@ -152,11 +150,13 @@ class ClickhouseReporter extends BaseReporter {
             }
             await this.client.insert({
                 table: 'crawls',
-                values: [{
-                    crawlId: this.crawlId,
-                    name,
-                    region,
-                }],
+                values: [
+                    {
+                        crawlId: this.crawlId,
+                        name,
+                        region,
+                    },
+                ],
                 columns: ['crawlId', 'name', 'region'],
                 format: 'JSONEachRow',
             });
@@ -167,10 +167,11 @@ class ClickhouseReporter extends BaseReporter {
     async deleteCrawlData() {
         await this.ready;
         console.log(`Deleting all data for crawl ${this.crawlId}`);
-        const deletes = Object.keys(this.queue)
-            .map(table => this.client.query({
+        const deletes = Object.keys(this.queue).map((table) =>
+            this.client.query({
                 query: `ALTER TABLE ${table} DELETE WHERE crawlId = '${this.crawlId}'`,
-            }));
+            }),
+        );
         await Promise.all(deletes);
         await this.client.query({
             query: `ALTER TABLE crawls DELETE WHERE crawlId = '${this.crawlId}'`,
@@ -194,15 +195,34 @@ class ClickhouseReporter extends BaseReporter {
         // @ts-ignore
         const pageId = createUniqueUrlName(new URL(data.initialUrl));
         this.ready = this.ready.then(async () => {
-            this.queue.pages.push([this.crawlId, pageId, data.testStarted, data.testFinished, data.initialUrl, data.finalUrl, data.timeout]);
+            this.queue.pages.push([
+                this.crawlId,
+                pageId,
+                data.testStarted,
+                data.testFinished,
+                data.initialUrl,
+                data.finalUrl,
+                data.timeout,
+            ]);
             if (data.data.requests) {
                 const requestRows = data.data.requests.map((request, requestId) => [
-                    this.crawlId, pageId, requestId, request.url, request.method, request.type, request.status,
+                    this.crawlId,
+                    pageId,
+                    requestId,
+                    request.url,
+                    request.method,
+                    request.type,
+                    request.status,
                     // request.size,
                     typeof request.size === 'number' && request.size < 0 ? null : request.size, // FIXME: this is a hack for legacy data
-                    request.remoteIPAddress, JSON.stringify(request.responseHeaders || {}),
-                    request.responseBodyHash, request.failureReason, request.redirectedTo, request.redirectedFrom,
-                    request.initiators.map(u => u.replace(/'/g, '')), request.time || 0
+                    request.remoteIPAddress,
+                    JSON.stringify(request.responseHeaders || {}),
+                    request.responseBodyHash,
+                    request.failureReason,
+                    request.redirectedTo,
+                    request.redirectedFrom,
+                    request.initiators.map((u) => u.replace(/'/g, '')),
+                    request.time || 0,
                 ]);
 
                 this.queue.requests = this.queue.requests.concat(requestRows);
@@ -211,9 +231,9 @@ class ClickhouseReporter extends BaseReporter {
                 this.queue.elements.push([this.crawlId, pageId, data.data.elements.present, data.data.elements.visible]);
             }
             if (data.data.cookiepopups) {
-                const llmPopupDetected = data.data.cookiepopups.scrapedFrames.some(f => f.llmPopupDetected);
-                const regexPopupDetected = data.data.cookiepopups.scrapedFrames.some(f => f.regexPopupDetected);
-                const cmpRows = data.data.cookiepopups.cmps.map(c => [
+                const llmPopupDetected = data.data.cookiepopups.scrapedFrames.some((f) => f.llmPopupDetected);
+                const regexPopupDetected = data.data.cookiepopups.scrapedFrames.some((f) => f.regexPopupDetected);
+                const cmpRows = data.data.cookiepopups.cmps.map((c) => [
                     this.crawlId,
                     pageId,
                     c.name,
@@ -232,14 +252,28 @@ class ClickhouseReporter extends BaseReporter {
                 this.queue.cmps = this.queue.cmps.concat(cmpRows);
             }
             if (data.data.apis) {
-                const {callStats,savedCalls} = data.data.apis;
-                const callStatRows = Object.keys(callStats).map(source => [this.crawlId, pageId, source, JSON.stringify(callStats[source])]);
+                const { callStats, savedCalls } = data.data.apis;
+                const callStatRows = Object.keys(callStats).map((source) => [
+                    this.crawlId,
+                    pageId,
+                    source,
+                    JSON.stringify(callStats[source]),
+                ]);
                 this.queue.apiCallStats = this.queue.apiCallStats.concat(callStatRows);
-                const savedCallRows = savedCalls.map((c, i) => [this.crawlId, pageId, i, c.source, c.description, santizeCallArgs(c.arguments)]);
+                const savedCallRows = savedCalls.map((c, i) => [
+                    this.crawlId,
+                    pageId,
+                    i,
+                    c.source,
+                    c.description,
+                    santizeCallArgs(c.arguments),
+                ]);
                 this.queue.apiSavedCalls = this.queue.apiSavedCalls.concat(savedCallRows);
             }
             if (data.data.cookies) {
-                this.queue.cookies = this.queue.cookies.concat(data.data.cookies.map((c, i) => [this.crawlId, pageId, i, JSON.stringify(c)]));
+                this.queue.cookies = this.queue.cookies.concat(
+                    data.data.cookies.map((c, i) => [this.crawlId, pageId, i, JSON.stringify(c)]),
+                );
             }
             if (data.data.targets) {
                 this.queue.targets = this.queue.targets.concat(data.data.targets.map((t, i) => [this.crawlId, pageId, i, t.url, t.type]));
@@ -253,7 +287,7 @@ class ClickhouseReporter extends BaseReporter {
     }
 
     async commitQueue() {
-        const inserts = Object.keys(this.queue).map(async table => {
+        const inserts = Object.keys(this.queue).map(async (table) => {
             // @ts-ignore
             await this.client.insert({
                 table,

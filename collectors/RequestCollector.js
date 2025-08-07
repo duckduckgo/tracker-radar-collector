@@ -1,26 +1,34 @@
-/* eslint-disable max-lines */
-const {getAllInitiators} = require('../helpers/initiators');
-const {filterHeaders, normalizeHeaders} = require('../helpers/headers');
+const { getAllInitiators } = require('../helpers/initiators');
+const { filterHeaders, normalizeHeaders } = require('../helpers/headers');
 const BaseCollector = require('./BaseCollector');
 
 const URL = require('url').URL;
 const crypto = require('crypto');
-const {Buffer} = require('buffer');
+const { Buffer } = require('buffer');
 
-const DEFAULT_SAVE_HEADERS = ['etag', 'set-cookie', 'cache-control', 'expires', 'pragma', 'p3p', 'timing-allow-origin', 'access-control-allow-origin', 'accept-ch'];
+const DEFAULT_SAVE_HEADERS = [
+    'etag',
+    'set-cookie',
+    'cache-control',
+    'expires',
+    'pragma',
+    'p3p',
+    'timing-allow-origin',
+    'access-control-allow-origin',
+    'accept-ch',
+];
 
 class RequestCollector extends BaseCollector {
-
     /**
      * @param {{saveResponseHash?: boolean, saveHeaders?: Array<string>}} additionalOptions
      */
-    constructor(additionalOptions = {saveResponseHash: true, saveHeaders: DEFAULT_SAVE_HEADERS}) {
+    constructor(additionalOptions = { saveResponseHash: true, saveHeaders: DEFAULT_SAVE_HEADERS }) {
         super();
-        this._saveResponseHash = (additionalOptions.saveResponseHash === true);
+        this._saveResponseHash = additionalOptions.saveResponseHash === true;
         this._saveHeaders = DEFAULT_SAVE_HEADERS;
 
         if (additionalOptions.saveHeaders) {
-            this._saveHeaders = additionalOptions.saveHeaders.map(h => h.toLocaleLowerCase());
+            this._saveHeaders = additionalOptions.saveHeaders.map((h) => h.toLocaleLowerCase());
         }
     }
 
@@ -31,9 +39,7 @@ class RequestCollector extends BaseCollector {
     /**
      * @param {import('./BaseCollector').CollectorInitOptions} options
      */
-    init({
-        log,
-    }) {
+    init({ log }) {
         /**
          * @type {InternalRequestData[]}
          */
@@ -52,17 +58,17 @@ class RequestCollector extends BaseCollector {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async addTarget(session, targetInfo) {
         await session.send('Runtime.enable');
-        await session.send('Runtime.setAsyncCallStackDepth', {maxDepth: 32});
+        await session.send('Runtime.setAsyncCallStackDepth', { maxDepth: 32 });
 
         await session.send('Network.enable');
 
         await Promise.all([
-            session.on('Network.requestWillBeSent', r => this.handleRequest(r, session)),
-            session.on('Network.webSocketCreated', r => this.handleWebSocket(r)),
-            session.on('Network.responseReceived', r => this.handleResponse(r)),
-            session.on('Network.responseReceivedExtraInfo', r => this.handleResponseExtraInfo(r)),
-            session.on('Network.loadingFailed', r => this.handleFailedRequest(r, session)),
-            session.on('Network.loadingFinished', r => this.handleFinishedRequest(r, session))
+            session.on('Network.requestWillBeSent', (r) => this.handleRequest(r, session)),
+            session.on('Network.webSocketCreated', (r) => this.handleWebSocket(r)),
+            session.on('Network.responseReceived', (r) => this.handleResponse(r)),
+            session.on('Network.responseReceivedExtraInfo', (r) => this.handleResponseExtraInfo(r)),
+            session.on('Network.loadingFailed', (r) => this.handleFailedRequest(r, session)),
+            session.on('Network.loadingFinished', (r) => this.handleFinishedRequest(r, session)),
         ]);
     }
 
@@ -88,7 +94,7 @@ class RequestCollector extends BaseCollector {
     async getResponseBodyHash(id, cdp) {
         try {
             // @ts-ignore oversimplified .send signature
-            let {body, base64Encoded} = await cdp.send('Network.getResponseBody', {requestId: id});
+            let { body, base64Encoded } = await cdp.send('Network.getResponseBody', { requestId: id });
 
             if (base64Encoded) {
                 body = Buffer.from(body, 'base64').toString('utf-8');
@@ -105,13 +111,7 @@ class RequestCollector extends BaseCollector {
      * @param {CDPSession} cdp
      */
     handleRequest(data, cdp) {
-        const {
-            requestId: id,
-            type,
-            request,
-            redirectResponse,
-            timestamp: startTime,
-        } = data;
+        const { requestId: id, type, request, redirectResponse, timestamp: startTime } = data;
 
         let initiator = data.initiator;
         const url = request.url;
@@ -133,7 +133,7 @@ class RequestCollector extends BaseCollector {
         /**
          * @type {InternalRequestData}
          */
-        const requestData = {id, url, method, type, initiator, startTime};
+        const requestData = { id, url, method, type, initiator, startTime };
 
         // if request A gets redirected to B which gets redirected to C chrome will produce 4 events:
         // requestWillBeSent(A) requestWillBeSent(B) requestWillBeSent(C) responseReceived()
@@ -148,13 +148,16 @@ class RequestCollector extends BaseCollector {
                 this.handleResponse({
                     requestId: id,
                     type,
-                    response: redirectResponse
+                    response: redirectResponse,
                 });
-                this.handleFinishedRequest({
-                    requestId: id,
-                    timestamp: startTime,
-                    encodedDataLength: previousRequest.size,
-                }, cdp);
+                this.handleFinishedRequest(
+                    {
+                        requestId: id,
+                        timestamp: startTime,
+                        encodedDataLength: previousRequest.size,
+                    },
+                    cdp,
+                );
 
                 // initiators of redirects are useless (they point to the main document), copy initiator from original request
                 requestData.initiator = previousRequest.initiator;
@@ -171,7 +174,7 @@ class RequestCollector extends BaseCollector {
             const info = this._unmatched.get(id);
             this._unmatched.delete(id);
 
-            Object.keys(info).forEach(key => {
+            Object.keys(info).forEach((key) => {
                 // eslint-disable-next-line no-prototype-builtins
                 if (!requestData.hasOwnProperty(key)) {
                     // @ts-ignore
@@ -191,7 +194,7 @@ class RequestCollector extends BaseCollector {
             id: request.requestId,
             url: request.url,
             type: 'WebSocket',
-            initiator: request.initiator
+            initiator: request.initiator,
         });
     }
 
@@ -199,11 +202,7 @@ class RequestCollector extends BaseCollector {
      * @param {{ requestId: Protocol.Network.RequestId, type: Protocol.Network.ResourceType, response: Protocol.Network.Response }} data
      */
     handleResponse(data) {
-        const {
-            requestId: id,
-            type,
-            response
-        } = data;
+        const { requestId: id, type, response } = data;
         let request = this.findLastRequestWithId(id);
 
         if (!request) {
@@ -232,10 +231,7 @@ class RequestCollector extends BaseCollector {
      * @param {Protocol.Network.ResponseReceivedExtraInfoEvent} data
      */
     handleResponseExtraInfo(data) {
-        const {
-            requestId: id,
-            headers
-        } = data;
+        const { requestId: id, headers } = data;
         let request = this.findLastRequestWithId(id);
 
         if (!request) {
@@ -243,7 +239,7 @@ class RequestCollector extends BaseCollector {
             request = {
                 id,
                 url: '<unknown>',
-                type: 'Other'
+                type: 'Other',
             };
             this._unmatched.set(id, request);
         }
@@ -265,7 +261,7 @@ class RequestCollector extends BaseCollector {
             request = {
                 id: data.requestId,
                 url: '<unknown>',
-                type: data.type
+                type: data.type,
             };
             this._unmatched.set(data.requestId, request);
         }
@@ -290,7 +286,7 @@ class RequestCollector extends BaseCollector {
             request = {
                 id: data.requestId,
                 url: '<unknown>',
-                type: 'Other'
+                type: 'Other',
             };
             this._unmatched.set(data.requestId, request);
         }
@@ -307,13 +303,13 @@ class RequestCollector extends BaseCollector {
      * @param {{finalUrl: string, urlFilter?: function(string):boolean}} options
      * @returns {RequestData[]}
      */
-    getData({urlFilter}) {
+    getData({ urlFilter }) {
         if (this._unmatched.size > 0) {
             this._log(`⚠️ failed to match ${this._unmatched.size} events`);
         }
 
         return this._requests
-            .filter(request => {
+            .filter((request) => {
                 let url;
 
                 try {
@@ -329,7 +325,7 @@ class RequestCollector extends BaseCollector {
 
                 return urlFilter ? urlFilter(request.url) : true;
             })
-            .map(request => ({
+            .map((request) => ({
                 url: request.url,
                 method: request.method,
                 type: request.type,
@@ -342,7 +338,7 @@ class RequestCollector extends BaseCollector {
                 redirectedTo: request.redirectedTo,
                 redirectedFrom: request.redirectedFrom,
                 initiators: Array.from(getAllInitiators(request.initiator)),
-                time: (request.startTime && request.endTime) ? (request.endTime - request.startTime) : undefined
+                time: request.startTime && request.endTime ? request.endTime - request.startTime : undefined,
             }));
     }
 }

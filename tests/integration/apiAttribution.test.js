@@ -1,4 +1,4 @@
-const {crawler, APICallCollector} = require('../../main.js');
+const { crawler, APICallCollector } = require('../../main.js');
 const assert = require('assert');
 
 async function main() {
@@ -53,7 +53,7 @@ async function main() {
             errors.push(`Missing ${url} script`);
             continue;
         }
-        if (!apiData.data.apis.callStats[url]["Navigator.prototype.userAgent"]) {
+        if (!apiData.data.apis.callStats[url]['Navigator.prototype.userAgent']) {
             errors.push(`Missing a call from ${url} script`);
         }
     }

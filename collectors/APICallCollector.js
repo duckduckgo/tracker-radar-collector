@@ -3,7 +3,6 @@ const TrackerTracker = require('./APICalls/TrackerTracker');
 const URL = require('url').URL;
 
 class APICallCollector extends BaseCollector {
-
     id() {
         return 'apis';
     }
@@ -11,7 +10,7 @@ class APICallCollector extends BaseCollector {
     /**
      * @param {import('./BaseCollector').CollectorInitOptions} options
      */
-    init({log, collectorFlags}) {
+    init({ log, collectorFlags }) {
         /**
          * @type {Map<string, Map<string, number>>}
          */
@@ -37,14 +36,14 @@ class APICallCollector extends BaseCollector {
         session.on('Debugger.paused', this.onDebuggerPaused.bind(this, trackerTracker));
         session.on('Runtime.executionContextCreated', this.onExecutionContextCreated.bind(this, trackerTracker, session));
         session.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, trackerTracker));
-        await session.send('Runtime.addBinding', {name: 'registerAPICall'});
+        await session.send('Runtime.addBinding', { name: 'registerAPICall' });
 
         try {
             await trackerTracker.init({
                 log: this._log,
-                enableAsyncStacktraces: this._collectorFlags?.enableAsyncStacktraces
+                enableAsyncStacktraces: this._collectorFlags?.enableAsyncStacktraces,
             });
-        } catch(e) {
+        } catch (e) {
             this._log('TrackerTracker init failed.');
             throw e;
         }
@@ -71,7 +70,6 @@ class APICallCollector extends BaseCollector {
     async onScriptParsed(trackerTracker, params) {
         await trackerTracker.processScriptParsed(params);
     }
-
 
     /**
      * @param {{source: string, description: string}} breakpointInfo
@@ -111,7 +109,7 @@ class APICallCollector extends BaseCollector {
                 this._calls.push({
                     source: breakpoint.source,
                     description: breakpoint.description,
-                    arguments: breakpoint.arguments
+                    arguments: breakpoint.arguments,
                 });
             }
         }
@@ -124,7 +122,7 @@ class APICallCollector extends BaseCollector {
      */
     onDebuggerPaused(trackerTracker, params) {
         // resume asap
-        trackerTracker.sendCommand('Debugger.resume').catch(e => {
+        trackerTracker.sendCommand('Debugger.resume').catch((e) => {
             const error = typeof e === 'string' ? e : e.message;
 
             if (error.includes('Target closed.') || error.includes('Session closed.')) {
@@ -188,7 +186,7 @@ class APICallCollector extends BaseCollector {
      * @param {{finalUrl: string, urlFilter?: function(string):boolean}} options
      * @returns {{callStats: Object<string, APICallData>, savedCalls: SavedCall[]}}
      */
-    getData({urlFilter}) {
+    getData({ urlFilter }) {
         if (this._incompleteData) {
             throw new Error('Collected data might be incomplete because of an runtime error.');
         }
@@ -198,22 +196,20 @@ class APICallCollector extends BaseCollector {
          */
         const callStats = {};
 
-        this._stats
-            .forEach((calls, source) => {
-                if (!this.isAcceptableUrl(source, urlFilter)) {
-                    return;
-                }
+        this._stats.forEach((calls, source) => {
+            if (!this.isAcceptableUrl(source, urlFilter)) {
+                return;
+            }
 
-                callStats[source] = Array.from(calls)
-                    .reduce((/** @type {Object<string, number>} */result, [script, number]) => {
-                        result[script] = number;
-                        return result;
-                    }, {});
-            });
-    
+            callStats[source] = Array.from(calls).reduce((/** @type {Object<string, number>} */ result, [script, number]) => {
+                result[script] = number;
+                return result;
+            }, {});
+        });
+
         return {
             callStats,
-            savedCalls: this._calls.filter(call => this.isAcceptableUrl(call.source, urlFilter))
+            savedCalls: this._calls.filter((call) => this.isAcceptableUrl(call.source, urlFilter)),
         };
     }
 }

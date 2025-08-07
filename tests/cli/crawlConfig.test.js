@@ -5,15 +5,10 @@ const mockery = require('mockery');
 
 const mockConfigFile = JSON.parse(fs.readFileSync(path.join(__dirname, './sampleConfig.json')).toString());
 
-const mockList = [
-    'one.test',
-    'two.test',
-    'https://three.protocol.test',
-    'http://four.protocol.test'
-];
+const mockList = ['one.test', 'two.test', 'https://three.protocol.test', 'http://four.protocol.test'];
 
 mockery.enable({
-    warnOnUnregistered: false
+    warnOnUnregistered: false,
 });
 mockery.registerMock('fs', {
     readFileSync: (/** @type {string} */ filePath) => {
@@ -24,14 +19,14 @@ mockery.registerMock('fs', {
         }
 
         throw new Error('unknown mock path');
-    }
+    },
 });
 
 const crawlConfig = require('../../cli/crawlConfig');
 
 // test if all config options are passed from config
 const result1 = crawlConfig.figureOut({
-    config: 'config.json'
+    config: 'config.json',
 });
 
 assert(result1.output === mockConfigFile.output, "Correct value for 'output'");
@@ -50,12 +45,11 @@ assert(result1.extraExecutionTimeMs === mockConfigFile.extraExecutionTimeMs, "Co
 assert.deepStrictEqual(result1.dataCollectors, mockConfigFile.dataCollectors, "Correct value for 'dataCollectors'");
 assert.deepStrictEqual(result1.reporters, mockConfigFile.reporters, "Correct value for 'reporters'");
 
-assert.deepStrictEqual(result1.urls, [
-    "https://five.test",
-    "http://six.test",
-    {"url": "http://seven.test"},
-    {"url": "http://one.test", "dataCollectors": ["targets"]}
-], "Unexpected value for 'urls'");
+assert.deepStrictEqual(
+    result1.urls,
+    ['https://five.test', 'http://six.test', { url: 'http://seven.test' }, { url: 'http://one.test', dataCollectors: ['targets'] }],
+    "Unexpected value for 'urls'",
+);
 
 // test if CLI flags override config and if list.txt is merged with urls from config.json
 
@@ -74,7 +68,7 @@ const flags = {
     regionCode: 'KA',
     chromiumVersion: '987654',
     dataCollectors: 'targets,cookies',
-    reporters: 'html,file'
+    reporters: 'html,file',
 };
 
 const result2 = crawlConfig.figureOut(flags);
@@ -95,11 +89,15 @@ assert(result2.extraExecutionTimeMs === mockConfigFile.extraExecutionTimeMs, "Co
 assert.deepStrictEqual(result2.dataCollectors, ['targets', 'cookies'], "Correct value for 'dataCollectors'");
 assert.deepStrictEqual(result2.reporters, ['html', 'file'], "Correct value for 'reporters'");
 
-assert.deepStrictEqual(result2.urls, [
-    {'url': 'http://one.test', 'dataCollectors': ['targets']},
-    'http://two.test',
-    'https://three.protocol.test',
-    'http://four.protocol.test'
-], "Unexpected value for 'urls'");
+assert.deepStrictEqual(
+    result2.urls,
+    [
+        { url: 'http://one.test', dataCollectors: ['targets'] },
+        'http://two.test',
+        'https://three.protocol.test',
+        'http://four.protocol.test',
+    ],
+    "Unexpected value for 'urls'",
+);
 
 mockery.disable();

@@ -7,7 +7,7 @@
 async function waitFor(predicate, maxTimes, interval) {
     const result = await predicate();
     if (!result && maxTimes > 0) {
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(waitFor(predicate, maxTimes - 1, interval));
             }, interval);
@@ -15,6 +15,5 @@ async function waitFor(predicate, maxTimes, interval) {
     }
     return Promise.resolve(result);
 }
-
 
 module.exports = waitFor;

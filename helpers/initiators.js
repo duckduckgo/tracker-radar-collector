@@ -12,7 +12,7 @@ function getInitiatorsFromStack(stack) {
      */
     let parentInitiators = [];
 
-    stack.callFrames.forEach(frame => {
+    stack.callFrames.forEach((frame) => {
         if (frame.url) {
             currentInitiators.push(frame.url);
         }
@@ -41,13 +41,12 @@ function getAllInitiators(initiator) {
     }
 
     if (initiator.stack) {
-        getInitiatorsFromStack(initiator.stack)
-            .forEach(url => allInitiators.add(url));
+        getInitiatorsFromStack(initiator.stack).forEach((url) => allInitiators.add(url));
     }
 
     return allInitiators;
 }
 
 module.exports = {
-    getAllInitiators
+    getAllInitiators,
 };

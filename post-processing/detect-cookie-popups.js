@@ -57,7 +57,7 @@ Examples of NON-cookie popup text:
                     content: text,
                 },
             ],
-            // eslint-disable-next-line camelcase
+
             response_format: zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
         });
 
@@ -82,10 +82,10 @@ async function classifyPotentialPopups(frameContext, openai) {
     const otherButtonTexts = new Set();
     for (let i = 0; i < frameContext.potentialPopups.length; i++) {
         const popup = frameContext.potentialPopups[i];
-        // eslint-disable-next-line no-await-in-loop
+
         const popupClassificationResult = await classifyPopup(popup, openai);
         // Replace the popup data in place
-        // eslint-disable-next-line require-atomic-updates
+
         frameContext.potentialPopups[i] = {
             ...popup,
             ...popupClassificationResult,
@@ -98,8 +98,8 @@ async function classifyPotentialPopups(frameContext, openai) {
         }
         // Collect button texts for analysis
         if (popupClassificationResult.llmMatch) {
-            popupClassificationResult.rejectButtons.flatMap(button => button.text).forEach(b => rejectButtonTexts.add(b));
-            popupClassificationResult.otherButtons.flatMap(button => button.text).forEach(b => otherButtonTexts.add(b));
+            popupClassificationResult.rejectButtons.flatMap((button) => button.text).forEach((b) => rejectButtonTexts.add(b));
+            popupClassificationResult.otherButtons.flatMap((button) => button.text).forEach((b) => otherButtonTexts.add(b));
         }
     }
     return {
@@ -119,14 +119,14 @@ async function classifyDocument(frameContext, openai) {
     let llmPopupDetected = false;
     let regexPopupDetected = false;
     // ask LLM to detect cookie popups in the page text
-    if (frameContext.cleanedText &&
+    if (
+        frameContext.cleanedText &&
         (frameContext.isTop || frameContext.buttons.length > 0) // simple heuristic to filter out utility iframes that often cause false positives
     ) {
         // Skip LLM check if we already have an LLM detected popup in the popup elements. This saves some OpenAI calls.
-        if (frameContext.potentialPopups?.some(p => p.llmMatch)) {
+        if (frameContext.potentialPopups?.some((p) => p.llmMatch)) {
             llmPopupDetected = true;
         } else {
-            // eslint-disable-next-line no-await-in-loop
             llmPopupDetected = await checkLLM(openai, frameContext.cleanedText);
         }
         regexPopupDetected = checkHeuristicPatterns(frameContext.cleanedText);
@@ -146,7 +146,10 @@ async function main() {
     const program = new Command();
     program
         .description('Detect cookie popups in a crawl')
-        .requiredOption('-d, --crawldir <dir>', 'Directory of crawl output to process, e.g. "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2025-05-12/US/3p-crawl/"')
+        .requiredOption(
+            '-d, --crawldir <dir>',
+            'Directory of crawl output to process, e.g. "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2025-05-12/US/3p-crawl/"',
+        )
         .option('-p, --parallel <n>', 'Number of pages to process in parallel', '50')
         .parse(process.argv);
 
@@ -159,7 +162,7 @@ async function main() {
         process.exit(1);
     }
 
-    if (!await fs.existsSync(crawlDir)) {
+    if (!(await fs.existsSync(crawlDir))) {
         console.error('crawl directory does not exist:', crawlDir);
         process.exit(1);
     }
@@ -168,13 +171,15 @@ async function main() {
         apiKey: process.env.OPENAI_API_KEY,
     });
 
-    const pages = fs.readdirSync(crawlDir).filter(name => name.endsWith('.json') && name !== 'metadata.json');
-    const progressBar = process.env.IS_CI ? null : new ProgressBar('[:bar] :current/:total :percent ETA :etas rate :rate/s :page', {
-        complete: chalk.green('='),
-        incomplete: ' ',
-        total: pages.length,
-        width: 30,
-    });
+    const pages = fs.readdirSync(crawlDir).filter((name) => name.endsWith('.json') && name !== 'metadata.json');
+    const progressBar = process.env.IS_CI
+        ? null
+        : new ProgressBar('[:bar] :current/:total :percent ETA :etas rate :rate/s :page', {
+              complete: chalk.green('='),
+              incomplete: ' ',
+              total: pages.length,
+              width: 30,
+          });
 
     let sitesWithPopupsLlm = 0;
     let sitesWithPopupsRegex = 0;
@@ -216,15 +221,15 @@ async function main() {
 
         for (const frameContext of collectorResult.scrapedFrames) {
             // First, go over potential popups and classify them individually
-            // eslint-disable-next-line no-await-in-loop
+
             const popupClassificationResult = await classifyPotentialPopups(frameContext, openai);
             hasDetectedPopupLlm = hasDetectedPopupLlm || popupClassificationResult.hasDetectedPopupLlm;
             hasDetectedPopupRegex = hasDetectedPopupRegex || popupClassificationResult.hasDetectedPopupRegex;
-            popupClassificationResult.rejectButtonTexts.forEach(b => rejectButtonTexts.add(b));
-            popupClassificationResult.otherButtonTexts.forEach(b => otherButtonTexts.add(b));
+            popupClassificationResult.rejectButtonTexts.forEach((b) => rejectButtonTexts.add(b));
+            popupClassificationResult.otherButtonTexts.forEach((b) => otherButtonTexts.add(b));
 
             // Then, classify based on the full document text
-            // eslint-disable-next-line no-await-in-loop
+
             const documentClassificationResult = await classifyDocument(frameContext, openai);
             cookiePopupDetectedLlm = cookiePopupDetectedLlm || documentClassificationResult.llmPopupDetected;
             cookiePopupDetectedRegex = cookiePopupDetectedRegex || documentClassificationResult.regexPopupDetected;
@@ -266,10 +271,18 @@ async function main() {
     });
 
     console.log('Done');
-    console.log(`Sites with LLM detected text (full text page): ${sitesWithPopupsLlm} (${(sitesWithPopupsLlm / pages.length * 100).toFixed(1)}%)`);
-    console.log(`Sites with regex detected popups (full text page): ${sitesWithPopupsRegex} (${(sitesWithPopupsRegex / pages.length * 100).toFixed(1)}%)`);
-    console.log(`Sites with LLM detected popups (popup elements): ${sitesWithDetectedPopupLlm} (${(sitesWithDetectedPopupLlm / pages.length * 100).toFixed(1)}%)`);
-    console.log(`Sites with regex detected popups (popup elements): ${sitesWithDetectedPopupRegex} (${(sitesWithDetectedPopupRegex / pages.length * 100).toFixed(1)}%)`);
+    console.log(
+        `Sites with LLM detected text (full text page): ${sitesWithPopupsLlm} (${((sitesWithPopupsLlm / pages.length) * 100).toFixed(1)}%)`,
+    );
+    console.log(
+        `Sites with regex detected popups (full text page): ${sitesWithPopupsRegex} (${((sitesWithPopupsRegex / pages.length) * 100).toFixed(1)}%)`,
+    );
+    console.log(
+        `Sites with LLM detected popups (popup elements): ${sitesWithDetectedPopupLlm} (${((sitesWithDetectedPopupLlm / pages.length) * 100).toFixed(1)}%)`,
+    );
+    console.log(
+        `Sites with regex detected popups (popup elements): ${sitesWithDetectedPopupRegex} (${((sitesWithDetectedPopupRegex / pages.length) * 100).toFixed(1)}%)`,
+    );
     console.log(`Reject button texts (${rejectButtonTexts.size}) saved in ${rejectButtonTextsFile}`);
     console.log(`Other button texts (${otherButtonTexts.size}) saved in ${otherButtonTextsFile}`);
 }

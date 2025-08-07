@@ -1,16 +1,16 @@
-const {canDownload, install, Browser, resolveBuildId, detectBrowserPlatform, getInstalledBrowsers} = require('@puppeteer/browsers');
+const { canDownload, install, Browser, resolveBuildId, detectBrowserPlatform, getInstalledBrowsers } = require('@puppeteer/browsers');
 const ProgressBar = require('progress');
-const {CHROMIUM_DOWNLOAD_DIR} = require('../constants');
+const { CHROMIUM_DOWNLOAD_DIR } = require('../constants');
 const chalk = require('chalk');
 
 /**
- * @param {function} log 
+ * @param {function} log
  * @param {string=} buildId
  * @returns {Promise<string>} executable path of the downloaded Chromium
  */
 async function downloadChrome(log, buildId) {
     const platform = detectBrowserPlatform();
-    const finalBuildId = buildId || await resolveBuildId(Browser.CHROME, detectBrowserPlatform(), 'stable');
+    const finalBuildId = buildId || (await resolveBuildId(Browser.CHROME, detectBrowserPlatform(), 'stable'));
 
     const installOptions = {
         cacheDir: CHROMIUM_DOWNLOAD_DIR,
@@ -34,12 +34,12 @@ async function downloadChrome(log, buildId) {
     }
 
     log(chalk.blue(`⬇ Downloading Chrome build ${finalBuildId} for ${platform}...`));
-    const progressBar = new ProgressBar('[:bar] :percent ETA :etas', {total: 100, width: 30});
+    const progressBar = new ProgressBar('[:bar] :percent ETA :etas', { total: 100, width: 30 });
     const browser = await install({
         ...installOptions,
         downloadProgressCallback(downloadedBytes, totalBytes) {
             progressBar.update(downloadedBytes / totalBytes);
-        }
+        },
     });
     log(chalk.blue(`⬇ Downloaded Chrome build ${browser.buildId} for ${browser.platform} to ${browser.executablePath}`));
     return browser.executablePath;

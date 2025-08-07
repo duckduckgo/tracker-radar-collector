@@ -13,13 +13,15 @@ function wait(promise, maxMs, timeoutMessage = 'Operation timed out') {
             reject(new TimeoutError(timeoutMessage));
         }, maxMs);
 
-        promise.then(result => {
-            clearTimeout(timeout);
-            resolve(result);
-        }).catch(e => {
-            clearTimeout(timeout);
-            reject(e);
-        });
+        promise
+            .then((result) => {
+                clearTimeout(timeout);
+                resolve(result);
+            })
+            .catch((e) => {
+                clearTimeout(timeout);
+                reject(e);
+            });
     });
 }
 

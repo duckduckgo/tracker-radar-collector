@@ -2,18 +2,20 @@
  * @fileoverview Helper that provides IDs of all available collectors (based on the main.js file) and helps creating instances of collectors
  */
 const allExports = require('../main');
-const collectorClasses = Object.entries(allExports).filter(([name]) => name.endsWith('Collector')).map(([,collector]) => collector);
-const collectors = collectorClasses.map(CollectorClass => ({
+const collectorClasses = Object.entries(allExports)
+    .filter(([name]) => name.endsWith('Collector'))
+    .map(([, collector]) => collector);
+const collectors = collectorClasses.map((CollectorClass) => ({
     // @ts-ignore
-    id: (new CollectorClass()).id(),
-    Klass: CollectorClass
+    id: new CollectorClass().id(),
+    Klass: CollectorClass,
 }));
 
 /**
  * @returns {string[]}
  */
 function getCollectorIds() {
-    return collectors.map(({id}) => id);
+    return collectors.map(({ id }) => id);
 }
 
 /**
@@ -21,19 +23,19 @@ function getCollectorIds() {
  * @returns {BaseCollector}
  */
 function createCollector(id) {
-    const collector = collectors.find(c => c.id === id);
+    const collector = collectors.find((c) => c.id === id);
 
     if (!collector) {
         throw new Error(`Unknown collector id "${id}".`);
     }
 
     // @ts-ignore
-    return (new collector.Klass());
+    return new collector.Klass();
 }
 
 module.exports = {
     getCollectorIds,
-    createCollector
+    createCollector,
 };
 
 /**

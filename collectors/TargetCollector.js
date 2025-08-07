@@ -1,7 +1,6 @@
 const BaseCollector = require('./BaseCollector');
 
 class TargetCollector extends BaseCollector {
-
     id() {
         return 'targets';
     }
@@ -17,11 +16,11 @@ class TargetCollector extends BaseCollector {
      * @param {import('puppeteer-core').CDPSession} session
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     addTarget(session, targetInfo) {
         this._targets.push({
             type: targetInfo.type,
-            url: targetInfo.url
+            url: targetInfo.url,
         });
     }
 

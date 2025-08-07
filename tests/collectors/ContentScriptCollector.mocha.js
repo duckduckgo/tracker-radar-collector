@@ -8,9 +8,11 @@ describe('ContentScriptCollector', () => {
 
     beforeEach(() => {
         collector = new ContentScriptCollector();
-        collector.init(/** @type {any} */({
-            log: () => {},
-        }));
+        collector.init(
+            /** @type {any} */ ({
+                log: () => {},
+            }),
+        );
     });
 
     describe('addTarget', () => {
@@ -22,7 +24,7 @@ describe('ContentScriptCollector', () => {
             await collector.addTarget(
                 // @ts-expect-error passing mock objects
                 mockSession,
-                { type: 'page' }
+                { type: 'page' },
             );
         });
 
@@ -34,7 +36,7 @@ describe('ContentScriptCollector', () => {
             await collector.addTarget(
                 // @ts-expect-error passing mock objects
                 mockSession,
-                { type: 'other' }
+                { type: 'other' },
             );
             assert.ok(!mockSession.send.calledWith('Page.enable'));
         });

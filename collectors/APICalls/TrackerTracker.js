@@ -1,7 +1,6 @@
-/* eslint-disable max-lines */
 const fs = require('fs');
 const path = require('path');
-const MAX_ASYNC_CALL_STACK_DEPTH = 32;// max depth of async calls tracked
+const MAX_ASYNC_CALL_STACK_DEPTH = 32; // max depth of async calls tracked
 const allBreakpoints = require('./breakpoints.js');
 const URL = require('url').URL;
 const HTTP_URL_REGEX = /^https?:\/\//i;
@@ -95,19 +94,19 @@ class TrackerTracker {
     /**
      * @param {{log: function(...any): void, enableAsyncStacktraces: boolean}} options
      */
-    async init({log, enableAsyncStacktraces}) {
+    async init({ log, enableAsyncStacktraces }) {
         this._log = log;
         this._enableAsyncStacktraces = enableAsyncStacktraces;
 
         await this._send('Debugger.enable');
         await this._send('Runtime.enable');
         await this._send('Runtime.setAsyncCallStackDepth', {
-            maxDepth: MAX_ASYNC_CALL_STACK_DEPTH
+            maxDepth: MAX_ASYNC_CALL_STACK_DEPTH,
         });
     }
 
     /**
-     * @param {string} command 
+     * @param {string} command
      * @param {object} payload
      * @returns {Promise<object>}
      */
@@ -116,7 +115,7 @@ class TrackerTracker {
     }
 
     /**
-     * @param {string} url 
+     * @param {string} url
      */
     setMainURL(url) {
         this._mainURL = url;
@@ -137,7 +136,7 @@ class TrackerTracker {
             const result = await this._send('Runtime.evaluate', {
                 expression,
                 contextId,
-                silent: true
+                silent: true,
             });
 
             if (result.exceptionDetails) {
@@ -146,10 +145,13 @@ class TrackerTracker {
 
             const conditionScript = getBreakpointScript(breakpoint, description, this._enableAsyncStacktraces);
 
-            const cdpBreakpointResult = /** @type {import('devtools-protocol/types/protocol').Protocol.Debugger.SetBreakpointOnFunctionCallResponse} */ (await this._send('Debugger.setBreakpointOnFunctionCall', {
-                objectId: result.result.objectId,
-                condition: conditionScript
-            }));
+            const cdpBreakpointResult =
+                /** @type {import('devtools-protocol/types/protocol').Protocol.Debugger.SetBreakpointOnFunctionCallResponse} */ (
+                    await this._send('Debugger.setBreakpointOnFunctionCall', {
+                        objectId: result.result.objectId,
+                        condition: conditionScript,
+                    })
+                );
             this._idToBreakpoint.set(cdpBreakpointResult.breakpointId, {
                 cdpId: cdpBreakpointResult.breakpointId,
                 ...breakpoint,
@@ -160,8 +162,8 @@ class TrackerTracker {
                 ...breakpoint,
                 description, // save concrete description
             });
-        } catch(e) {
-            const error = (typeof e === 'string') ? e : e.message;
+        } catch (e) {
+            const error = typeof e === 'string' ? e : e.message;
             if (
                 !error.includes('Target closed') && // we don't care if tab was closed during this opperation
                 !error.includes('Session closed') && // we don't care if tab was closed during this opperation
@@ -178,26 +180,25 @@ class TrackerTracker {
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextId} contextId
      */
     async setupContextTracking(contextId = undefined) {
-        const allBreakpointsSet = allBreakpoints
-            .map(async ({proto, global, props, methods}) => {
-                const obj = global || `${proto}.prototype`;
-                const propPromises = props.map(async prop => {
-                    const expression = `Reflect.getOwnPropertyDescriptor(${obj}, '${prop.name}').${prop.setter === true ? 'set' : 'get'}`;
-                    const description = prop.description || `${obj}.${prop.name}`;
-                    await this._addBreakpoint(contextId, expression, description, prop);
-                });
-
-                await Promise.all(propPromises);
-
-                const methodPromises = methods.map(async method => {
-                    const expression = `Reflect.getOwnPropertyDescriptor(${obj}, '${method.name}').value`;
-                    const description = method.description || `${obj}.${method.name}`;
-                    await this._addBreakpoint(contextId, expression, description, method);
-                });
-    
-                await Promise.all(methodPromises);
+        const allBreakpointsSet = allBreakpoints.map(async ({ proto, global, props, methods }) => {
+            const obj = global || `${proto}.prototype`;
+            const propPromises = props.map(async (prop) => {
+                const expression = `Reflect.getOwnPropertyDescriptor(${obj}, '${prop.name}').${prop.setter === true ? 'set' : 'get'}`;
+                const description = prop.description || `${obj}.${prop.name}`;
+                await this._addBreakpoint(contextId, expression, description, prop);
             });
-        
+
+            await Promise.all(propPromises);
+
+            const methodPromises = methods.map(async (method) => {
+                const expression = `Reflect.getOwnPropertyDescriptor(${obj}, '${method.name}').value`;
+                const description = method.description || `${obj}.${method.name}`;
+                await this._addBreakpoint(contextId, expression, description, method);
+            });
+
+            await Promise.all(methodPromises);
+        });
+
         await Promise.all(allBreakpointsSet);
     }
 

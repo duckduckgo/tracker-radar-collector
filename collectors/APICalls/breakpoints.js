@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 /**
  * @type {{global?: string, proto?: string, props: PropertyBreakpoint[], methods: MethodBreakpoint[]}[]}
  */
@@ -6,58 +5,58 @@ const breakpoints = [
     {
         global: 'window',
         props: [
-            {name: 'devicePixelRatio'}, // screen
-            {name: 'localStorage'},
-            {name: 'sessionStorage'},
-            {name: 'indexedDB'},
-            {name: 'name'}, // can pottentially be used to link two tabs
-            {name: 'innerWidth'},
-            {name: 'innerHeight'},
-            {name: 'outerWidth'},
-            {name: 'outerHeight'},
-            {name: 'screenX'},
-            {name: 'screenY'},
-            {name: 'screenLeft'},
-            {name: 'screenTop'},
+            { name: 'devicePixelRatio' }, // screen
+            { name: 'localStorage' },
+            { name: 'sessionStorage' },
+            { name: 'indexedDB' },
+            { name: 'name' }, // can pottentially be used to link two tabs
+            { name: 'innerWidth' },
+            { name: 'innerHeight' },
+            { name: 'outerWidth' },
+            { name: 'outerHeight' },
+            { name: 'screenX' },
+            { name: 'screenY' },
+            { name: 'screenLeft' },
+            { name: 'screenTop' },
             // {name: 'ActiveXObject'}// not available in Chrome
         ],
         methods: [
             {
                 name: 'openDatabase',
-                test: 'openDatabase("test", "1.0", "test", 1024)'
+                test: 'openDatabase("test", "1.0", "test", 1024)',
             },
             {
                 name: 'matchMedia',
                 description: 'window.matchMedia("prefers-color-scheme")',
                 condition: 'arguments.length > 0 && arguments[0].includes("prefers-color-scheme")',
-                test: 'window.matchMedia("(prefers-color-scheme: dark)")'
+                test: 'window.matchMedia("(prefers-color-scheme: dark)")',
             },
             {
                 name: 'matchMedia',
                 description: 'window.matchMedia("prefers-reduced-motion")',
                 condition: 'arguments.length > 0 && arguments[0].includes("prefers-reduced-motion")',
-                test: 'window.matchMedia("(prefers-reduced-motion: reduce)")'
+                test: 'window.matchMedia("(prefers-reduced-motion: reduce)")',
             },
             {
                 name: 'matchMedia',
                 description: 'window.matchMedia("color-gamut")',
                 condition: 'arguments.length > 0 && arguments[0].includes("color-gamut")',
-                test: 'window.matchMedia("(color-gamut: rec2020)")'
+                test: 'window.matchMedia("(color-gamut: rec2020)")',
             },
             {
                 name: 'matchMedia',
                 description: 'window.matchMedia("pointer")',
                 condition: 'arguments.length > 0 && arguments[0].includes("pointer")',
-                test: 'window.matchMedia("(pointer: fine)")'
-            }
-        ]
+                test: 'window.matchMedia("(pointer: fine)")',
+            },
+        ],
     },
     {
         proto: 'BarProp',
         props: [
-            {name: 'visible', test: 'window.locationbar.visible'}// is locationbar, menubar, scrollbars are visible
+            { name: 'visible', test: 'window.locationbar.visible' }, // is locationbar, menubar, scrollbars are visible
         ],
-        methods: []
+        methods: [],
     },
     // {
     //     global: 'chrome',
@@ -70,10 +69,8 @@ const breakpoints = [
     // },
     {
         global: 'console',
-        props: [
-            {name: 'memory'}
-        ],
-        methods: []
+        props: [{ name: 'memory' }],
+        methods: [],
     },
     // {// not in Chromium
     //     global: 'chrome.app',
@@ -83,23 +80,22 @@ const breakpoints = [
     //     ]
     // },
     {
-        global: 'Reflect.getPrototypeOf(document.fonts)',// .prototype .__proto__ and getting method from global object dont' work here 
-        props: [
-        ],
+        global: 'Reflect.getPrototypeOf(document.fonts)', // .prototype .__proto__ and getting method from global object dont' work here
+        props: [],
         methods: [
             {
                 name: 'check',
                 description: 'document.fonts.check',
-                test: 'document.fonts.check("normal 10px Arial")'
-            }
-        ]
+                test: 'document.fonts.check("normal 10px Arial")',
+            },
+        ],
     },
     {
         proto: 'Performance',
         props: [
-            {name: 'memory'} // memory available to js (not the same as navigator.deviceMemory)
+            { name: 'memory' }, // memory available to js (not the same as navigator.deviceMemory)
         ],
-        methods: []
+        methods: [],
     },
     {
         proto: 'PerformanceTiming',
@@ -107,113 +103,101 @@ const breakpoints = [
             // can be used to get current time
             {
                 name: 'navigationStart',
-                test: 'performance.timing.navigationStart'
-            }
+                test: 'performance.timing.navigationStart',
+            },
         ],
-        methods: []
+        methods: [],
     },
     {
         proto: 'Document',
         props: [
-            {name: 'cookie', description: 'Document.cookie getter'},
-            {name: 'cookie', description: 'Document.cookie setter', setter: true, saveArguments: true},
+            { name: 'cookie', description: 'Document.cookie getter' },
+            { name: 'cookie', description: 'Document.cookie setter', setter: true, saveArguments: true },
             // {name: 'timeline'}, - not in Chromium
         ],
         methods: [
-            {name: 'interestCohort'} // FLoC
-        ]
+            { name: 'interestCohort' }, // FLoC
+        ],
     },
     {
         proto: 'CookieStore', // modern version of document.cookie
-        props: [
-        ],
-        methods: [
-            {name: 'get'},
-            {name: 'getAll'},
-            {name: 'set', saveArguments: true},
-        ]
+        props: [],
+        methods: [{ name: 'get' }, { name: 'getAll' }, { name: 'set', saveArguments: true }],
     },
     {
         proto: 'Navigator',
         props: [
-            {name: 'appName'}, // user agent & friends
-            {name: 'appCodeName'}, // user agent & friends
-            {name: 'appVersion'}, // user agent & friends
-            {name: 'mimeTypes'},
-            {name: 'cookieEnabled'},
-            {name: 'language'},
-            {name: 'languages'},
+            { name: 'appName' }, // user agent & friends
+            { name: 'appCodeName' }, // user agent & friends
+            { name: 'appVersion' }, // user agent & friends
+            { name: 'mimeTypes' },
+            { name: 'cookieEnabled' },
+            { name: 'language' },
+            { name: 'languages' },
             // {name: 'systemLanguage'}, // not available on Chrome
             // {name: 'userLanguage'}, // not available on Chrome
-            {name: 'userAgent'},
-            {name: 'plugins'},
-            {name: 'platform'},// user agent & friends
-            {name: 'doNotTrack'},
-            {name: 'hardwareConcurrency'},// number of cpu cores
-            {name: 'maxTouchPoints'},// capability of the trackpad/touchscreen
-            //{name: 'msMaxTouchPoints'}, Microsoft only
-            {name: 'mediaCapabilities'}, // codecs, mime types, display
-            {name: 'mediaDevices'}, // screens, cameras, microphones
-            {name: 'mimeTypes'}, //reveals instlled plugins
-            {name: 'deviceMemory'}, // memory in Gb
-            {name: 'connection'}, // changes over time
-            {name: 'onLine'},
-            {name: 'keyboard'},
-            {name: 'permissions'},
-            {name: 'presentation'}, //TODO nees double checking
-            {name: 'product'},
-            {name: 'productSub'},
-            {name: 'storage'},
-            {name: 'vendor'},
-            {name: 'vendorSub'},
-            {name: 'webdriver'},
-            {name: 'webkitPersistentStorage'},
-            {name: 'webkitTemporaryStorage'},
+            { name: 'userAgent' },
+            { name: 'plugins' },
+            { name: 'platform' }, // user agent & friends
+            { name: 'doNotTrack' },
+            { name: 'hardwareConcurrency' }, // number of cpu cores
+            { name: 'maxTouchPoints' }, // capability of the trackpad/touchscreen
+            // {name: 'msMaxTouchPoints'}, Microsoft only
+            { name: 'mediaCapabilities' }, // codecs, mime types, display
+            { name: 'mediaDevices' }, // screens, cameras, microphones
+            { name: 'mimeTypes' }, // reveals instlled plugins
+            { name: 'deviceMemory' }, // memory in Gb
+            { name: 'connection' }, // changes over time
+            { name: 'onLine' },
+            { name: 'keyboard' },
+            { name: 'permissions' },
+            { name: 'presentation' }, // TODO nees double checking
+            { name: 'product' },
+            { name: 'productSub' },
+            { name: 'storage' },
+            { name: 'vendor' },
+            { name: 'vendorSub' },
+            { name: 'webdriver' },
+            { name: 'webkitPersistentStorage' },
+            { name: 'webkitTemporaryStorage' },
             // {name: 'xr'},   //VR access - not in Chromium
         ],
         methods: [
-            {name: 'getBattery'},
-            {name: 'getGamepads'},
+            { name: 'getBattery' },
+            { name: 'getGamepads' },
             // {name: 'getUserMedia'},
-            {name: 'javaEnabled'},
-            {name: 'requestMediaKeySystemAccess'} // Encrypted Media Extensions API
-        ]
+            { name: 'javaEnabled' },
+            { name: 'requestMediaKeySystemAccess' }, // Encrypted Media Extensions API
+        ],
     },
     {
         proto: 'NavigatorUAData',
-        props: [
-           {name: 'brands'},
-           {name: 'platform'}
-        ],
+        props: [{ name: 'brands' }, { name: 'platform' }],
         methods: [
-            {name: 'getHighEntropyValues'} // request for high entropy information about browser/OS
-        ]
+            { name: 'getHighEntropyValues' }, // request for high entropy information about browser/OS
+        ],
     },
     {
         proto: 'MediaDevices',
-        props: [
-        ],
-        methods: [
-            {name: 'enumerateDevices'}
-        ]
+        props: [],
+        methods: [{ name: 'enumerateDevices' }],
     },
     {
         proto: 'Screen',
         props: [
-            {name: 'width'},
-            {name: 'height'},
-            {name: 'availWidth'},
-            {name: 'availHeight'},
-            {name: 'colorDepth'},
-            {name: 'pixelDepth'},
-            {name: 'availLeft'},
-            {name: 'availTop'},
-            {name: 'orientation'}
+            { name: 'width' },
+            { name: 'height' },
+            { name: 'availWidth' },
+            { name: 'availHeight' },
+            { name: 'colorDepth' },
+            { name: 'pixelDepth' },
+            { name: 'availLeft' },
+            { name: 'availTop' },
+            { name: 'orientation' },
             // {name: 'deviceXDPI'},// not available on Chrome
             // {name: 'deviceYDPI'},// not available on Chrome
         ],
-        methods: [
-        ]
+        methods: [],
     },
     // {
     //     global: 'screen.__proto__',
@@ -224,44 +208,42 @@ const breakpoints = [
     // },
     {
         proto: 'HTMLCanvasElement',
-        props: [
-        ],
+        props: [],
         methods: [
             // toDataURL is an obvious way of getting the fingerprint, but there are other ways (e.g. reading pixel data or creating a blob), that's why we track all canvas usage
             {
                 name: 'constructor',
-                test: 'document.createElement("canvas")'
+                test: 'document.createElement("canvas")',
             },
             {
                 name: 'toDataURL',
-                test: 'var c = document.createElement("canvas"); c.toDataURL()'
+                test: 'var c = document.createElement("canvas"); c.toDataURL()',
             },
             {
                 name: 'toBlob',
-                test: 'var c = document.createElement("canvas"); c.toBlob()'
-            }
-        ]
+                test: 'var c = document.createElement("canvas"); c.toBlob()',
+            },
+        ],
     },
     {
         proto: 'CanvasRenderingContext2D',
-        props: [
-        ],
+        props: [],
         methods: [
             // used to detect fonts
             {
                 name: 'measureText',
-                test: 'var c = document.createElement("canvas"); var ctx = c.getContext("2d"); ctx.measureText("txt");'
+                test: 'var c = document.createElement("canvas"); var ctx = c.getContext("2d"); ctx.measureText("txt");',
             },
             {
                 name: 'getImageData',
-                test: 'var c = document.createElement("canvas"); var ctx = c.getContext("2d"); ctx.getImageData();'
+                test: 'var c = document.createElement("canvas"); var ctx = c.getContext("2d"); ctx.getImageData();',
             },
             // used to detect canvas winding
             {
                 name: 'isPointInPath',
-                test: 'var c = document.createElement("canvas"); var ctx = c.getContext("2d"); ctx.rect(10, 10, 100, 100); ctx.fill(); ctx.isPointInPath(30, 70);'
-            }
-        ]
+                test: 'var c = document.createElement("canvas"); var ctx = c.getContext("2d"); ctx.rect(10, 10, 100, 100); ctx.fill(); ctx.isPointInPath(30, 70);',
+            },
+        ],
     },
     {
         proto: 'HTMLMediaElement',
@@ -269,19 +251,18 @@ const breakpoints = [
         methods: [
             {
                 name: 'canPlayType',
-                test: 'var v = document.createElement("video"); v.canPlayType("nope");'
-            }
-        ]
+                test: 'var v = document.createElement("video"); v.canPlayType("nope");',
+            },
+        ],
     },
     {
         proto: 'Date',
-        props: [
-        ],
+        props: [],
         methods: [
             // getting timezone is obvious when done via getTimezoneOffset, but it can be parsed out from `getTime`, so we track it
-            {name: 'getTime'},
-            {name: 'getTimezoneOffset'}
-        ]
+            { name: 'getTime' },
+            { name: 'getTimezoneOffset' },
+        ],
     },
     {
         proto: 'WebGLRenderingContext',
@@ -316,29 +297,29 @@ const breakpoints = [
         methods: [
             {
                 name: 'getSupportedExtensions',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getSupportedExtensions()'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getSupportedExtensions()',
             },
             {
                 name: 'getExtension',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getExtension("")'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getExtension("")',
             },
             {
                 name: 'getParameter',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getParameter("")'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getParameter("")',
             },
             {
                 name: 'getShaderPrecisionFormat',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getShaderPrecisionFormat(WebGLRenderingContext.FRAGMENT_SHADER, WebGLRenderingContext.LOW_FLOAT)'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getShaderPrecisionFormat(WebGLRenderingContext.FRAGMENT_SHADER, WebGLRenderingContext.LOW_FLOAT)',
             },
             {
                 name: 'getContextAttributes',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getContextAttributes()'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl").getContextAttributes()',
             },
             {
                 name: 'readPixels',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl").readPixels(0, 0, 1, 1, WebGLRenderingContext.RGBA, WebGLRenderingContext.UNSIGNED_BYTE, new Uint8Array(4))'
-            }
-        ]
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl").readPixels(0, 0, 1, 1, WebGLRenderingContext.RGBA, WebGLRenderingContext.UNSIGNED_BYTE, new Uint8Array(4))',
+            },
+        ],
     },
     {
         proto: 'WebGL2RenderingContext',
@@ -373,29 +354,29 @@ const breakpoints = [
         methods: [
             {
                 name: 'getSupportedExtensions',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getSupportedExtensions()'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getSupportedExtensions()',
             },
             {
                 name: 'getExtension',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getExtension("")'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getExtension("")',
             },
             {
                 name: 'getParameter',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getParameter("")'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getParameter("")',
             },
             {
                 name: 'getShaderPrecisionFormat',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getShaderPrecisionFormat(WebGLRenderingContext.FRAGMENT_SHADER, WebGLRenderingContext.LOW_FLOAT)'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getShaderPrecisionFormat(WebGLRenderingContext.FRAGMENT_SHADER, WebGLRenderingContext.LOW_FLOAT)',
             },
             {
                 name: 'getContextAttributes',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getContextAttributes()'
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").getContextAttributes()',
             },
             {
                 name: 'readPixels',
-                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").readPixels(0, 0, 1, 1, WebGLRenderingContext.RGBA, WebGLRenderingContext.UNSIGNED_BYTE, new Uint8Array(4))'
-            }
-        ]
+                test: 'var c = document.createElement("canvas"); c.getContext("webgl2").readPixels(0, 0, 1, 1, WebGLRenderingContext.RGBA, WebGLRenderingContext.UNSIGNED_BYTE, new Uint8Array(4))',
+            },
+        ],
     },
     {
         proto: 'OfflineAudioContext',
@@ -403,9 +384,9 @@ const breakpoints = [
         methods: [
             {
                 name: 'constructor',
-                test: 'new OfflineAudioContext(2, 512, 96000)'
-            },// web audio
-        ]
+                test: 'new OfflineAudioContext(2, 512, 96000)',
+            }, // web audio
+        ],
     },
     {
         proto: 'AudioBuffer',
@@ -413,17 +394,17 @@ const breakpoints = [
         methods: [
             {
                 name: 'getChannelData',
-                test: 'var a = new AudioBuffer({length: 512, sampleRate: 8000}); a.getChannelData(0)'
-            }// web audio
-        ]
+                test: 'var a = new AudioBuffer({length: 512, sampleRate: 8000}); a.getChannelData(0)',
+            }, // web audio
+        ],
     },
     {
         proto: 'AudioWorkletNode',
         props: [],
         methods: [
             // possibly there is some other method better suited here - needs more research
-            {name: 'constructor'}// web audio
-        ]
+            { name: 'constructor' }, // web audio
+        ],
     },
     {
         proto: 'RTCPeerConnection',
@@ -431,19 +412,19 @@ const breakpoints = [
         methods: [
             // possibly there is some other method better suited here - needs more research
             {
-                name: 'constructor'
-            }// leaking ip
-        ]
+                name: 'constructor',
+            }, // leaking ip
+        ],
     },
     {
         proto: 'RTCPeerConnectionIceEvent',
         props: [
             {
-                name: 'candidate',// leaking ip
-                test: 'var c = new RTCPeerConnection({iceServers: [{urls: "stun:stun.l.google.com:19302?transport=udp"}]}, {optional: [{RtpDataChannels: !0}]}); c.onicecandidate = e => console.log(e.candidate); c.createDataChannel(""); c.createOffer(a => {c.setLocalDescription(a, () => {}, () => {})}, () => {});'
-            }
+                name: 'candidate', // leaking ip
+                test: 'var c = new RTCPeerConnection({iceServers: [{urls: "stun:stun.l.google.com:19302?transport=udp"}]}, {optional: [{RtpDataChannels: !0}]}); c.onicecandidate = e => console.log(e.candidate); c.createDataChannel(""); c.createOffer(a => {c.setLocalDescription(a, () => {}, () => {})}, () => {});',
+            },
         ],
-        methods: []
+        methods: [],
     },
     {
         proto: 'SharedWorker', // can be used to talk between tabs - not sure how unsafe that is
@@ -452,9 +433,9 @@ const breakpoints = [
             // possibly there is some other method better suited here - needs more research
             {
                 name: 'constructor',
-                test: 'new SharedWorker("script.js")'
-            }// talking contexts
-        ]
+                test: 'new SharedWorker("script.js")',
+            }, // talking contexts
+        ],
     },
     {
         proto: 'BroadcastChannel', // can be used to talk between tabs - not sure how unsafe that is
@@ -463,51 +444,52 @@ const breakpoints = [
             // possibly there is some other method better suited here - needs more research
             {
                 name: 'constructor',
-                test: 'new BroadcastChannel("test")'
-            }// talking contexts
-        ]
+                test: 'new BroadcastChannel("test")',
+            }, // talking contexts
+        ],
     },
     {
         proto: 'Intl.DateTimeFormat',
         props: [],
         methods: [
-            {name: 'resolvedOptions'}// timezone
-        ]
+            { name: 'resolvedOptions' }, // timezone
+        ],
     },
-    {// works only on mobile
+    {
+        // works only on mobile
         proto: 'TouchEvent',
         props: [],
         methods: [
             {
                 name: 'constructor',
-                test: 'document.createEvent("TouchEvent")'
-            }// testing touch capabilities
-        ]
+                test: 'document.createEvent("TouchEvent")',
+            }, // testing touch capabilities
+        ],
     },
     {
         proto: 'Event',
         props: [
-            {name: 'timeStamp'}// behavioral fingerprinting
+            { name: 'timeStamp' }, // behavioral fingerprinting
         ],
-        methods: []
+        methods: [],
     },
     {
         proto: 'KeyboardEvent',
         props: [
-            {name: 'code'},// behavioral fingerprinting, keyboard layout
-            {name: 'keyCode'},// behavioral fingerprinting, keyboard layout
+            { name: 'code' }, // behavioral fingerprinting, keyboard layout
+            { name: 'keyCode' }, // behavioral fingerprinting, keyboard layout
         ],
-        methods: []
+        methods: [],
     },
     {
-        global: 'MediaSource',//it's a global because it's a static method
+        global: 'MediaSource', // it's a global because it's a static method
         props: [],
         methods: [
             {
                 name: 'isTypeSupported',
-                test: 'MediaSource.isTypeSupported("test")'
-            } // codecs
-        ]
+                test: 'MediaSource.isTypeSupported("test")',
+            }, // codecs
+        ],
     },
     // { not in chromium
     //     global: 'Bluetooth',
@@ -520,34 +502,29 @@ const breakpoints = [
     //     ]
     // },
     {
-        global: 'speechSynthesis.__proto__',// both .prototype and getting method from global object don't work here 
+        global: 'speechSynthesis.__proto__', // both .prototype and getting method from global object don't work here
         props: [],
         methods: [
             {
                 name: 'getVoices',
-                test: 'speechSynthesis.getVoices()'
-            }
-        ]
-    },
-    {
-        proto: 'Touch',// behavioral fingerprinting,
-        props: [
-            {name: 'force'},
-            {name: 'radiusX'},
-            {name: 'radiusY'},
-            {name: 'rotationAngle'}
+                test: 'speechSynthesis.getVoices()',
+            },
         ],
-        methods: []
     },
     {
-        global: 'URL',//it's a global because it's a static method
+        proto: 'Touch', // behavioral fingerprinting,
+        props: [{ name: 'force' }, { name: 'radiusX' }, { name: 'radiusY' }, { name: 'rotationAngle' }],
+        methods: [],
+    },
+    {
+        global: 'URL', // it's a global because it's a static method
         props: [],
         methods: [
             {
                 name: 'createObjectURL',
-                test: 'URL.createObjectURL(new Blob())'
-            }// it can pottentially allow tabs to talk with each other
-        ]
+                test: 'URL.createObjectURL(new Blob())',
+            }, // it can pottentially allow tabs to talk with each other
+        ],
     },
     {
         proto: 'CSSStyleDeclaration',
@@ -559,9 +536,9 @@ const breakpoints = [
                 name: 'setProperty',
                 condition: 'arguments.length > 0 && arguments[0].toLowerCase() === "fontfamily"',
                 description: 'CSSStyleDeclaration.setProperty("fontFamily",…)',
-                test: 'document.body.style.setProperty("fontFamily", "Arial")'
-            }
-        ]
+                test: 'document.body.style.setProperty("fontFamily", "Arial")',
+            },
+        ],
     },
     {
         proto: 'Element',
@@ -569,55 +546,38 @@ const breakpoints = [
         methods: [
             {
                 name: 'getClientRects',
-                test: 'document.body.getClientRects()'
-            }
-        ]
+                test: 'document.body.getClientRects()',
+            },
+        ],
     },
     {
         proto: 'WheelEvent',
-        props: [
-            {name: 'deltaX'},
-            {name: 'deltaY'},
-            {name: 'deltaZ'}
-        ],
-        methods: []
+        props: [{ name: 'deltaX' }, { name: 'deltaY' }, { name: 'deltaZ' }],
+        methods: [],
     },
     {
         proto: 'Sensor',
-        props: [
-        ],
-        methods: [
-            {name: 'constructor'},
-            {name: 'start'}
-        ]
+        props: [],
+        methods: [{ name: 'constructor' }, { name: 'start' }],
     },
     {
         proto: 'DeviceOrientationEvent',
-        props: [
-            {name: 'alpha'},
-            {name: 'beta'},
-            {name: 'gamma'},
-            {name: 'absolute'},
-        ],
-        methods: []
+        props: [{ name: 'alpha' }, { name: 'beta' }, { name: 'gamma' }, { name: 'absolute' }],
+        methods: [],
     },
     {
         proto: 'DeviceMotionEvent',
-        props: [
-            {name: 'acceleration'},
-            {name: 'accelerationIncludingGravity'},
-            {name: 'rotationRate'}
-        ],
-        methods: []
+        props: [{ name: 'acceleration' }, { name: 'accelerationIncludingGravity' }, { name: 'rotationRate' }],
+        methods: [],
     },
     {
         proto: 'Animation',
         props: [
-            {name: 'currentTime'},
-            {name: 'startTime'},
+            { name: 'currentTime' },
+            { name: 'startTime' },
             // {name: 'timeline'}, //not in Chromium
         ],
-        methods: []
+        methods: [],
     },
     // { - eval is a function, we need an object here
     //     global: 'eval',
@@ -631,11 +591,9 @@ const breakpoints = [
     //     ]
     // },
     {
-        global: 'Notification',//it's a global because it's a static method
-        props: [
-            {name: 'permission'},
-        ],
-        methods: []
+        global: 'Notification', // it's a global because it's a static method
+        props: [{ name: 'permission' }],
+        methods: [],
     },
     // {// not in Chromium
     //     proto: 'AmbientLightSensor',
@@ -648,14 +606,8 @@ const breakpoints = [
     // },
     {
         proto: 'Gyroscope',
-        props: [
-            {name: 'x'},
-            {name: 'y'},
-            {name: 'z'}
-        ],
-        methods: [
-            {name: 'constructor'}
-        ]
+        props: [{ name: 'x' }, { name: 'y' }, { name: 'z' }],
+        methods: [{ name: 'constructor' }],
     },
     // {// not in Chromium
     //     proto: 'Magnetometer',
@@ -682,7 +634,7 @@ module.exports = breakpoints;
  * @property {string=} cdpId - optional breakpointID from CDP
  */
 
- /**
+/**
  * @typedef PropertyBreakpoint
  * @property {string} name - name of the property
  * @property {string=} test - test expression that should trigger given breakpoint
@@ -693,6 +645,6 @@ module.exports = breakpoints;
  * @property {string=} cdpId - optional breakpointID from CDP
  */
 
- /**
-  * @typedef {MethodBreakpoint | PropertyBreakpoint} Breakpoint
-  */
+/**
+ * @typedef {MethodBreakpoint | PropertyBreakpoint} Breakpoint
+ */

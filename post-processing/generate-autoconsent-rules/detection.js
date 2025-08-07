@@ -2,7 +2,6 @@ const { zodResponseFormat } = require('openai/helpers/zod');
 const { z } = require('zod');
 const { REJECT_PATTERNS, NEVER_MATCH_PATTERNS } = require('./button-patterns');
 
-
 /**
  * @param {string} allText
  * @returns {boolean}
@@ -52,7 +51,10 @@ function cleanButtonText(buttonText) {
     // remove special characters
     result = result.replace(/[“”"'/#&[\]→✕×⟩❯><✗×‘’›«»]+/g, '');
     // remove emojis
-    result = result.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u2600-\u26FF\u2700-\u27BF\u{1F900}-\u{1F9FF}\u{1FA70}-\u{1FAFF}]/gu, '');
+    result = result.replace(
+        /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u2600-\u26FF\u2700-\u27BF\u{1F900}-\u{1F9FF}\u{1FA70}-\u{1FAFF}]/gu,
+        '',
+    );
     // remove newlines
     result = result.replace(/\n+/g, ' ');
     // remove multiple spaces
@@ -71,8 +73,10 @@ function isRejectButton(buttonText) {
         return false;
     }
     const cleanedButtonText = cleanButtonText(buttonText);
-    return !NEVER_MATCH_PATTERNS.some(p => p.test(cleanedButtonText)) &&
-        REJECT_PATTERNS.some(p => (p instanceof RegExp && p.test(cleanedButtonText)) || p === cleanedButtonText);
+    return (
+        !NEVER_MATCH_PATTERNS.some((p) => p.test(cleanedButtonText)) &&
+        REJECT_PATTERNS.some((p) => (p instanceof RegExp && p.test(cleanedButtonText)) || p === cleanedButtonText)
+    );
 }
 
 /**
@@ -119,7 +123,7 @@ Examples of NON-cookie popup text:
                     content: text,
                 },
             ],
-            // eslint-disable-next-line camelcase
+
             response_format: zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
         });
 

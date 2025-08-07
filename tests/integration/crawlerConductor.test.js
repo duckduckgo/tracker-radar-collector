@@ -1,12 +1,12 @@
 const runCrawlers = require('../../crawlerConductor');
 const assert = require('assert');
-const {createCollector} = require('../../helpers/collectorsList');
+const { createCollector } = require('../../helpers/collectorsList');
 
 const testURLs = [
     'https://example.com/',
     'https://duck.com/',
     'https://privacy-test-pages.site/tracker-reporting/1major-via-script.html',
-    'https://fingerprintjs.com/demo/'
+    'https://fingerprintjs.com/demo/',
 ];
 
 /**
@@ -38,26 +38,28 @@ async function main() {
         logFunction: () => {},
         dataCollectors: [createCollector('requests'), createCollector('cookies'), createCollector('targets'), createCollector('apis')],
         numberOfCrawlers: 2,
-        failureCallback: (url, error) => errors.push({url, error: error.message}),
+        failureCallback: (url, error) => errors.push({ url, error: error.message }),
         // @ts-ignore
         dataCallback: (url, output) => data.push(output),
         filterOutFirstParty: false,
         emulateMobile: false,
-        proxyHost: null
+        proxyHost: null,
     });
 
     if (errors.length > 0) {
-        // eslint-disable-next-line no-console
         console.error(errors);
         assert(false, `${errors.length} page(s) failed to be crawled`);
     }
 
     /// example.com tests
-    const exampleCom = data.find(d => d.initialUrl === 'https://example.com/');
+    const exampleCom = data.find((d) => d.initialUrl === 'https://example.com/');
     commonTests(exampleCom, 'example.com');
 
-    assert(exampleCom.finalUrl === exampleCom.initialUrl, `example.com does not redirect, final and initial urls should be the same ${exampleCom.finalUrl} !== ${exampleCom.initialUrl}`);
-    const exampleNonFaviconRequests = exampleCom.data.requests.filter(r => !r.url.endsWith('/favicon.ico'));
+    assert(
+        exampleCom.finalUrl === exampleCom.initialUrl,
+        `example.com does not redirect, final and initial urls should be the same ${exampleCom.finalUrl} !== ${exampleCom.initialUrl}`,
+    );
+    const exampleNonFaviconRequests = exampleCom.data.requests.filter((r) => !r.url.endsWith('/favicon.ico'));
     assert(exampleNonFaviconRequests.length === 1, 'example.com does not load any subresources, should only have one request');
     assert(exampleNonFaviconRequests[0].url === 'https://example.com/', 'example.com should have only one request to https://example.com/');
 
@@ -66,10 +68,13 @@ async function main() {
     assert(exampleCom.data.targets.length === 1, 'example.com does have only one target - main frame');
     assert(exampleCom.data.targets[0].type === 'page', 'example.com does have only one target - main frame');
 
-    assert(Object.keys(exampleCom.data.apis.callStats).length === 0, 'example.com does not execute any JavaScript, API call stats should be empty');
+    assert(
+        Object.keys(exampleCom.data.apis.callStats).length === 0,
+        'example.com does not execute any JavaScript, API call stats should be empty',
+    );
 
     /// duck.com tests
-    const duckCom = data.find(d => d.initialUrl === 'https://duck.com/');
+    const duckCom = data.find((d) => d.initialUrl === 'https://duck.com/');
     commonTests(duckCom, 'duck.com');
 
     assert(duckCom.finalUrl !== duckCom.initialUrl, 'duck.com redirects, final url should be different than initial url');
@@ -79,10 +84,15 @@ async function main() {
     assert(duckCom.data.requests[0].redirectedTo === 'https://duckduckgo.com/', 'first request should redirect to "duckduckgo.com"');
 
     const firstParty = ['improving.duckduckgo.com', 'duckduckgo.com', 'duck.com'];
-    // eslint-disable-next-line arrow-parens
-    const thirdPartyRequsts = duckCom.data.requests.filter((/** @type {{url:string}} **/ r) => !firstParty.includes(new URL(r.url).hostname));
-    // eslint-disable-next-line arrow-parens
-    assert(thirdPartyRequsts.length === 0, `there should be no third party requests on duckduckgo.com (found: ${thirdPartyRequsts.map((/** @type {{url:string}} **/ r) => r.url).join(',')}).`);
+
+    const thirdPartyRequsts = duckCom.data.requests.filter(
+        (/** @type {{url:string}} **/ r) => !firstParty.includes(new URL(r.url).hostname),
+    );
+
+    assert(
+        thirdPartyRequsts.length === 0,
+        `there should be no third party requests on duckduckgo.com (found: ${thirdPartyRequsts.map((/** @type {{url:string}} **/ r) => r.url).join(',')}).`,
+    );
 
     assert(duckCom.data.cookies.length === 0, 'duck.com does not set any cookies by default');
 
@@ -91,21 +101,32 @@ async function main() {
     assert(Object.keys(duckCom.data.apis.callStats).length > 0, 'duck.com does execute some JS and callStats should NOT be empty');
 
     /// https://privacy-test-pages.site/tracker-reporting/1major-via-script.html tests
-    const privacyTestPages1 = data.find(d => d.initialUrl === 'https://privacy-test-pages.site/tracker-reporting/1major-via-script.html');
+    const privacyTestPages1 = data.find((d) => d.initialUrl === 'https://privacy-test-pages.site/tracker-reporting/1major-via-script.html');
     commonTests(privacyTestPages1, 'privacy-test-pages/1major-via-script');
 
-    const privacyTestPages1NonFaviconRequests = privacyTestPages1.data.requests.filter(r => !r.url.endsWith('/favicon.ico'));
-    assert(privacyTestPages1NonFaviconRequests.length === 2, 'privacy-test-pages/1major-via-script does load one subresource and one main page document');
-    assert(privacyTestPages1NonFaviconRequests[1].url === 'https://doubleclick.net/tracker.js', 'subresource loaded should be "https://doubleclick.net/tracker.js"');
-    assert(privacyTestPages1NonFaviconRequests[1].failureReason.includes('ERR_BLOCKED_BY_ORB'), `subresource loaded should report an error: got ${privacyTestPages1NonFaviconRequests[1].status}`);
+    const privacyTestPages1NonFaviconRequests = privacyTestPages1.data.requests.filter((r) => !r.url.endsWith('/favicon.ico'));
+    assert(
+        privacyTestPages1NonFaviconRequests.length === 2,
+        'privacy-test-pages/1major-via-script does load one subresource and one main page document',
+    );
+    assert(
+        privacyTestPages1NonFaviconRequests[1].url === 'https://doubleclick.net/tracker.js',
+        'subresource loaded should be "https://doubleclick.net/tracker.js"',
+    );
+    assert(
+        privacyTestPages1NonFaviconRequests[1].failureReason.includes('ERR_BLOCKED_BY_ORB'),
+        `subresource loaded should report an error: got ${privacyTestPages1NonFaviconRequests[1].status}`,
+    );
 
     /// https://fingerprintjs.com/demo/ tests
-    const fingerprintjs = data.find(d => d.initialUrl === 'https://fingerprintjs.com/demo/');
+    const fingerprintjs = data.find((d) => d.initialUrl === 'https://fingerprintjs.com/demo/');
     commonTests(fingerprintjs, 'fingerprintjs.com');
 
     assert(fingerprintjs.data.requests.length > 10, 'fingerprintjs.com does load multiple subresources');
-    // eslint-disable-next-line arrow-parens
-    const fingerprintjsThirdPartyRequsts = fingerprintjs.data.requests.filter((/** @type {{url:string}} **/ r) => !new URL(r.url).hostname.endsWith('fingerprintjs.com'));
+
+    const fingerprintjsThirdPartyRequsts = fingerprintjs.data.requests.filter(
+        (/** @type {{url:string}} **/ r) => !new URL(r.url).hostname.endsWith('fingerprintjs.com'),
+    );
     assert(fingerprintjsThirdPartyRequsts.length > 2, `fingerprintjs.com loads multiple third parties`);
 
     /**
@@ -113,7 +134,7 @@ async function main() {
      */
     const apis = [];
     const scripts = Object.keys(fingerprintjs.data.apis.callStats);
-    scripts.forEach(src => Object.keys(fingerprintjs.data.apis.callStats[src]).forEach(api => apis.push(api)));
+    scripts.forEach((src) => Object.keys(fingerprintjs.data.apis.callStats[src]).forEach((api) => apis.push(api)));
     assert(apis.length > 15, 'fingerprintjs.com demo script touches over 15 APIs');
     assert(apis.includes('HTMLCanvasElement.prototype.toDataURL'), 'fingerprintjs.com demo script touches canvas API');
 

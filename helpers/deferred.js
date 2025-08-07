@@ -4,12 +4,16 @@
  */
 function createDeferred() {
     let resolve, reject;
-    const promise = new Promise((res, rej) => {resolve = res; reject = rej;});
+    // eslint-disable-next-line promise/param-names
+    const promise = new Promise((res, rej) => {
+        resolve = res;
+        reject = rej;
+    });
 
     return {
         promise,
         resolve,
-        reject
+        reject,
     };
 }
 
