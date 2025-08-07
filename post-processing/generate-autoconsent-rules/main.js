@@ -17,12 +17,13 @@ generateCMPTests('${ruleName}', ${JSON.stringify(testUrls)}, {testOptIn: false, 
 
 /**
  * Find existing rules that match a given URL/domain.
- * @param {string} url - The URL to match against.
+ * @param {string} initialUrl - The URL of the initial page.
+ * @param {string} finalUrl - The URL of the final page (after load redirects).
  * @param {import('./types').CookiePopupsCollectorResult} collectorResult - Array of processed cookie popups.
  * @param {import('./types').AutoConsentCMPRule[]} existingRules - Array of existing rules.
  * @returns {import('./types').AutoConsentCMPRule[]} Array of matching existing rules.
  */
-function findMatchingExistingRules(url, collectorResult, existingRules) {
+function findMatchingExistingRules(initialUrl, finalUrl, collectorResult, existingRules) {
     return existingRules.filter((rule) => {
         if (rule.runContext && rule.runContext.urlPattern) {
             try {
@@ -30,9 +31,13 @@ function findMatchingExistingRules(url, collectorResult, existingRules) {
                 // rule is a match iff:
                 // urlPattern matches the crawled site
                 return (
-                    pattern.test(url) ||
+                    pattern.test(initialUrl) ||
+                    pattern.test(finalUrl) ||
                     // OR vendorUrl matches the crawled site (this is more like a heuristic as vendorUrl is not used by Autoconsent)
-                    rule.vendorUrl === url ||
+                    rule.vendorUrl === initialUrl ||
+                    rule.vendorUrl === finalUrl ||
+                    rule._metadata?.vendorUrl === initialUrl ||
+                    rule._metadata?.vendorUrl === finalUrl ||
                     // OR the rule matched a frame
                     (rule.runContext?.frame && collectorResult.scrapedFrames.some((frame) => pattern.test(frame.origin)))
                 );
@@ -120,7 +125,8 @@ async function writeRuleFiles({ rule, url, rulesDir, testDir, autoconsentDir, re
  * Process cookie popups for a single site and generate/update rules.
  * @param {import('./types').GlobalParams} globalParams
  * @param {{
- *  finalUrl: string, // URL of the site
+ *  finalUrl: string, // final URL of the site
+ *  initialUrl: string, // initial URL of the site
  *  collectorResult: import('./types').CookiePopupsCollectorResult,
  *  existingRules: import('./types').AutoConsentCMPRule[], // existing Autoconsent rules
  * }} params
@@ -132,7 +138,7 @@ async function writeRuleFiles({ rule, url, rulesDir, testDir, autoconsentDir, re
  * updatedExistingRules: import('./types').AutoConsentCMPRule[],
  * }>}
  */
-async function processCookiePopupsForSite(globalParams, { finalUrl, collectorResult, existingRules }) {
+async function processCookiePopupsForSite(globalParams, { finalUrl, initialUrl, collectorResult, existingRules }) {
     const { rulesDir, testDir, autoconsentDir, region } = globalParams;
 
     /** @type {import('./types').AutoconsentManifestFileData[]} */
@@ -149,11 +155,37 @@ async function processCookiePopupsForSite(globalParams, { finalUrl, collectorRes
         return { newRuleFiles, updatedRuleFiles, keptCount: 0, reviewNotes: [], updatedExistingRules };
     }
 
-    const matchingRules = findMatchingExistingRules(finalUrl, collectorResult, existingRules);
+    const matchingRules = findMatchingExistingRules(initialUrl, finalUrl, collectorResult, existingRules);
     console.log(
         `Detected ${llmConfirmedPopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`,
     );
-    const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(region, finalUrl, collectorResult, matchingRules);
+    const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(
+        region,
+        initialUrl,
+        finalUrl,
+        collectorResult,
+        matchingRules,
+    );
+    try {
+        const initialHost = new URL(initialUrl).host;
+        const finalHost = new URL(finalUrl).host;
+        if (
+            initialHost !== finalHost &&
+            // ignore redirects from www. to non-www and vice versa
+            initialHost !== 'www.' + finalHost &&
+            finalHost !== 'www.' + initialHost
+        ) {
+            reviewNotes.push({
+                note: `Site changed host: \`${initialHost}\` -> \`${finalHost}\``,
+                needsReview: true,
+            });
+        }
+    } catch (err) {
+        reviewNotes.push({
+            note: `Failed to parse URL for \`${initialUrl}\` or \`${finalUrl}\`: \`${err.message}\``,
+            needsReview: true,
+        });
+    }
 
     updatedExistingRules.push(...newRules);
     rulesToOverride.forEach((rule) => {
@@ -294,6 +326,7 @@ async function processFiles(globalParams, existingRules) {
                 totalUnhandled++;
                 const result = await processCookiePopupsForSite(globalParams, {
                     finalUrl: jsonData.finalUrl,
+                    initialUrl: jsonData.initialUrl,
                     collectorResult,
                     existingRules: existingRulesAfter,
                 });

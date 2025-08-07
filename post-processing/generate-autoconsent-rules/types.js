@@ -3,6 +3,7 @@
  *  data: {
  *      cookiepopups: import('../../collectors/CookiePopupsCollector').CookiePopupsCollectorResult;
  *  };
+ *  initialUrl: string;
  *  finalUrl: string;
  * }} CrawlData
  */
@@ -19,6 +20,7 @@
 /**
  * @typedef {{
  *  note: string;
+ *  needsReview: boolean;
  *  url?: string;
  *  region?: string;
  *  ruleName?: string;
