@@ -101,7 +101,7 @@ function generateAutoconsentRule(region, url, frame, button) {
  * @param {object} context - The context.
  * @param {import('./types').AutoConsentCMPRule} context.newRule
  * @param {import('./types').AutoConsentCMPRule[]} context.existingRulesWithSameRegion
- * @param {string} context.url
+ * @param {string} context.initialUrl
  * @param {string} context.region
  * @param {import('./types').AutoConsentCMPRule[]} context.matchingRules
  * @param {import('./types').AutoConsentCMPRule[]} context.rulesToOverride
@@ -111,7 +111,7 @@ function generateAutoconsentRule(region, url, frame, button) {
 function overrideExistingRegionRules({
     newRule,
     existingRulesWithSameRegion,
-    url,
+    initialUrl,
     region,
     matchingRules,
     rulesToOverride,
@@ -119,7 +119,7 @@ function overrideExistingRegionRules({
     reviewNotes,
 }) {
     if (existingRulesWithSameRegion.length > 1) {
-        console.warn('Multiple existing rules with the same region found for', url, region);
+        console.warn('Multiple existing rules with the same region found for', initialUrl, region);
         reviewNotes.push({
             needsReview: true,
             note: 'Multiple existing rules with the same region found, consider removing all but one',
@@ -132,7 +132,7 @@ function overrideExistingRegionRules({
     // find an existing rule that we haven't overridden yet
     const ruleToOverride = existingRulesWithSameRegion.find((rule) => !rulesToOverride.some((r) => r.name === rule.name));
     if (!ruleToOverride) {
-        console.warn('Already overridden all existing rules for', url, region, 'creating a new one');
+        console.warn('Already overridden all existing rules for', initialUrl, region, 'creating a new one');
         reviewNotes.push({
             needsReview: true,
             note: 'Already overridden all existing rules, creating a new one',
@@ -145,7 +145,7 @@ function overrideExistingRegionRules({
         rulesToOverride.push({
             ...newRule,
             name: ruleToOverride.name, // keep the existing rule name
-            _metadata: ruleToOverride._metadata,
+            _metadata: ruleToOverride._metadata, // keep the existing metadata
         });
         if (ruleToOverride._metadata?.manuallyReviewUpdates) {
             reviewNotes.push({
@@ -172,7 +172,8 @@ function overrideExistingRegionRules({
  * override an existing one, or do nothing.
  * @param {object} context - The context for processing the button.
  * @param {string} context.region
- * @param {string} context.url
+ * @param {string} context.initialUrl
+ * @param {string} context.finalUrl
  * @param {import('./types').ScrapeScriptResult} context.frame
  * @param {import('./types').ButtonData} context.button
  * @param {import('./types').AutoConsentCMPRule[]} context.matchingRules
@@ -180,12 +181,12 @@ function overrideExistingRegionRules({
  * @param {import('./types').AutoConsentCMPRule[]} context.rulesToOverride
  * @param {import('./types').ReviewNote[]} context.reviewNotes
  */
-function processRejectButton({ region, url, frame, button, matchingRules, newRules, rulesToOverride, reviewNotes }) {
+function processRejectButton({ region, initialUrl, frame, button, matchingRules, newRules, rulesToOverride, reviewNotes }) {
     let newRule;
     try {
-        newRule = generateAutoconsentRule(region, url, frame, button);
+        newRule = generateAutoconsentRule(region, initialUrl, frame, button);
     } catch (err) {
-        console.error(`Error generating rule for ${url} (${frame.origin})`, err);
+        console.error(`Error generating rule for ${initialUrl} (${frame.origin})`, err);
         return;
     }
 
@@ -209,7 +210,7 @@ function processRejectButton({ region, url, frame, button, matchingRules, newRul
         overrideExistingRegionRules({
             newRule,
             existingRulesWithSameRegion,
-            url,
+            initialUrl,
             region,
             matchingRules,
             rulesToOverride,
@@ -232,12 +233,13 @@ function processRejectButton({ region, url, frame, button, matchingRules, newRul
 /**
  * Analyze existing rules and generate new rules when necessary.
  * @param {string} region
- * @param {string} url - The URL being processed.
+ * @param {string} initialUrl - The URL of the initial page.
+ * @param {string} finalUrl - The URL of the final page (after load redirects).
  * @param {import('./types').CookiePopupsCollectorResult} collectorResult - The collector result.
  * @param {import('./types').AutoConsentCMPRule[]} matchingRules - Array of existing rules.
  * @returns {{newRules: import('./types').AutoConsentCMPRule[], rulesToOverride: import('./types').AutoConsentCMPRule[], reviewNotes: import('./types').ReviewNote[], keptCount: number}}
  */
-function generateRulesForSite(region, url, collectorResult, matchingRules) {
+function generateRulesForSite(region, initialUrl, finalUrl, collectorResult, matchingRules) {
     /** @type {import('./types').AutoConsentCMPRule[]} */
     const newRules = [];
     /** @type {import('./types').AutoConsentCMPRule[]} */
@@ -248,11 +250,11 @@ function generateRulesForSite(region, url, collectorResult, matchingRules) {
 
     const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap((frame) => frame.potentialPopups).filter((popup) => popup.llmMatch);
     if (llmConfirmedPopups.length > 1 || llmConfirmedPopups[0].rejectButtons.length > 1) {
-        console.warn('Multiple cookie popups or reject buttons found in', url);
+        console.warn('Multiple cookie popups or reject buttons found in', initialUrl);
         reviewNotes.push({
             needsReview: false, // it's not a problem by itself, unless this leads to multiple _rules_ generated, but we check that separately.
             note: 'Multiple popups or reject buttons found',
-            url,
+            url: initialUrl,
             region,
         });
     }
@@ -266,7 +268,7 @@ function generateRulesForSite(region, url, collectorResult, matchingRules) {
                     keptCount++;
                     continue;
                 }
-                processRejectButton({ region, url, frame, button, matchingRules, newRules, rulesToOverride, reviewNotes });
+                processRejectButton({ region, initialUrl, finalUrl, frame, button, matchingRules, newRules, rulesToOverride, reviewNotes });
             }
         }
     }
