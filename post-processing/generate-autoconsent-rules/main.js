@@ -31,10 +31,13 @@ function findMatchingExistingRules(initialUrl, finalUrl, collectorResult, existi
                 // rule is a match iff:
                 // urlPattern matches the crawled site
                 return (
-                    pattern.test(initialUrl) || pattern.test(finalUrl) ||
+                    pattern.test(initialUrl) ||
+                    pattern.test(finalUrl) ||
                     // OR vendorUrl matches the crawled site (this is more like a heuristic as vendorUrl is not used by Autoconsent)
-                    rule.vendorUrl === initialUrl || rule.vendorUrl === finalUrl ||
-                    rule._metadata?.vendorUrl === initialUrl || rule._metadata?.vendorUrl === finalUrl ||
+                    rule.vendorUrl === initialUrl ||
+                    rule.vendorUrl === finalUrl ||
+                    rule._metadata?.vendorUrl === initialUrl ||
+                    rule._metadata?.vendorUrl === finalUrl ||
                     // OR the rule matched a frame
                     (rule.runContext?.frame && collectorResult.scrapedFrames.some((frame) => pattern.test(frame.origin)))
                 );
@@ -156,7 +159,13 @@ async function processCookiePopupsForSite(globalParams, { finalUrl, initialUrl, 
     console.log(
         `Detected ${llmConfirmedPopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`,
     );
-    const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(region, initialUrl, finalUrl, collectorResult, matchingRules);
+    const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(
+        region,
+        initialUrl,
+        finalUrl,
+        collectorResult,
+        matchingRules,
+    );
     try {
         const initialHost = new URL(initialUrl).host;
         const finalHost = new URL(finalUrl).host;
