@@ -308,8 +308,10 @@ async function processFiles(globalParams, existingRules) {
 
         totalSitesWithPopups++;
 
-        const matchedRules = collectorResult.cmps.map(cmp => cmp.name.trim()).filter(name => name !== '');
-        const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap(frame => frame.potentialPopups).filter(popup => popup.llmMatch);
+        const matchedRules = collectorResult.cmps.map((cmp) => cmp.name.trim()).filter((name) => name !== '');
+        const llmConfirmedPopups = collectorResult.scrapedFrames
+            .flatMap((frame) => frame.potentialPopups)
+            .filter((popup) => popup.llmMatch);
         const screenshot = jsonData.data.screenshots;
 
         if (hasKnownCmp(collectorResult.cmps)) {
@@ -353,7 +355,7 @@ async function processFiles(globalParams, existingRules) {
                 screenshot,
                 newlyCreatedRules: newRuleFiles,
                 updatedRules: updatedRuleFiles,
-                reviewNotes
+                reviewNotes,
             });
 
             if (newRuleFiles.length > 0 || keptCount > 0 || updatedRuleFiles.length > 0) {
