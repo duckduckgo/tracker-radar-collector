@@ -2,6 +2,7 @@
  * @typedef {{
  *  data: {
  *      cookiepopups: import('../../collectors/CookiePopupsCollector').CookiePopupsCollectorResult;
+ *      screenshots?: string;
  *  };
  *  initialUrl: string;
  *  finalUrl: string;
@@ -40,6 +41,9 @@
 /**
  * @typedef {{
  *  siteUrl: string;
+ *  matchedRules: string[];
+ *  llmConfirmedPopups: PopupData[];
+ *  screenshot: string;
  *  newlyCreatedRules: AutoconsentManifestFileData[];
  *  updatedRules: AutoconsentManifestFileData[];
  *  reviewNotes: ReviewNote[];
