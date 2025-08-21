@@ -308,8 +308,23 @@ async function processFiles(globalParams, existingRules) {
 
         totalSitesWithPopups++;
 
+        const matchedRules = collectorResult.cmps.map((cmp) => cmp.name.trim()).filter((name) => name !== '');
+        const llmConfirmedPopups = collectorResult.scrapedFrames
+            .flatMap((frame) => frame.potentialPopups)
+            .filter((popup) => popup.llmMatch);
+        const screenshot = jsonData.data.screenshots;
+
         if (hasKnownCmp(collectorResult.cmps)) {
             totalSitesWithKnownCmps++;
+            autoconsentManifest.set(fileName, {
+                siteUrl: jsonData.finalUrl,
+                matchedRules,
+                llmConfirmedPopups,
+                screenshot,
+                newlyCreatedRules: [],
+                updatedRules: [],
+                reviewNotes: [],
+            });
         } else {
             const llmConfirmedPopups = collectorResult.scrapedFrames
                 .flatMap((frame) => frame.potentialPopups)
@@ -333,14 +348,15 @@ async function processFiles(globalParams, existingRules) {
                 ({ newRuleFiles, updatedRuleFiles, keptCount, reviewNotes, updatedExistingRules: existingRulesAfter } = result);
             }
 
-            if (newRuleFiles.length > 0 || updatedRuleFiles.length > 0 || reviewNotes.length > 0) {
-                autoconsentManifest.set(fileName, {
-                    siteUrl: jsonData.finalUrl,
-                    newlyCreatedRules: newRuleFiles,
-                    updatedRules: updatedRuleFiles,
-                    reviewNotes,
-                });
-            }
+            autoconsentManifest.set(fileName, {
+                siteUrl: jsonData.finalUrl,
+                matchedRules,
+                llmConfirmedPopups,
+                screenshot,
+                newlyCreatedRules: newRuleFiles,
+                updatedRules: updatedRuleFiles,
+                reviewNotes,
+            });
 
             if (newRuleFiles.length > 0 || keptCount > 0 || updatedRuleFiles.length > 0) {
                 if (newRuleFiles.length > 0) {
