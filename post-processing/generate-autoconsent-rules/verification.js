@@ -9,6 +9,7 @@ const fs = require('fs');
  *  rejectButtonTextsFile: string,
  *  otherButtonTextsFile: string,
  * }} params
+ * @returns {Promise<{ falsePositive: { potentiallyIncorrectRejectButtons?: string[] }, falseNegative: { potentiallyMissedRejectButtons?: string[] } }>}
  */
 async function verifyButtonTexts({ openai, rejectButtonTextsFile, otherButtonTextsFile }) {
     const FalsePositiveSuggestions = z.object({
@@ -17,6 +18,10 @@ async function verifyButtonTexts({ openai, rejectButtonTextsFile, otherButtonTex
     const FalseNegativeSuggestions = z.object({
         potentiallyMissedRejectButtons: z.array(z.string()),
     });
+    const results = {
+        falsePositive: {},
+        falseNegative: {},
+    };
 
     const systemPromptFalsePositive = `
     You are a helpful assistant that reviews the results of button text classification.
@@ -47,6 +52,7 @@ async function verifyButtonTexts({ openai, rejectButtonTextsFile, otherButtonTex
         });
         const resultFalsePositive = completionFalsePositive.choices[0].message.parsed;
         console.log(resultFalsePositive);
+        results.falsePositive = resultFalsePositive;
     } catch (error) {
         console.error('Error classifying false positives:', error);
     }
@@ -66,9 +72,11 @@ async function verifyButtonTexts({ openai, rejectButtonTextsFile, otherButtonTex
         });
         const resultFalseNegative = completionFalseNegative.choices[0].message.parsed;
         console.log(resultFalseNegative);
+        results.falseNegative = resultFalseNegative;
     } catch (error) {
         console.error('Error classifying false negatives:', error);
     }
+    return results;
 }
 
 module.exports = {

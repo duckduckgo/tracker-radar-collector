@@ -264,11 +264,12 @@ async function main() {
     await fs.promises.writeFile(otherButtonTextsFile, Array.from(otherButtonTexts).join('\n'));
 
     console.log('Verifying button texts...');
-    await verifyButtonTexts({
+    const verificationResults = await verifyButtonTexts({
         openai,
         rejectButtonTextsFile,
         otherButtonTextsFile,
     });
+    await fs.promises.writeFile(path.join(crawlDir, '..', 'verification-results.json'), JSON.stringify(verificationResults, null, 2));
 
     console.log('Done');
     console.log(
