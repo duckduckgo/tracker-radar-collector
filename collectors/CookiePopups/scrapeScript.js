@@ -304,7 +304,12 @@ function getUniqueSelector(el) {
  */
 function getButtonData(el) {
     const actionableButtons = excludeContainers(getButtonLikeElements(el)).filter(
-        (b) => isVisible(b) && !isDisabled(b) && b.innerText.trim(),
+        (b) =>
+            isVisible(b) &&
+            !isDisabled(b) &&
+            (b.innerText.trim() ||
+                // <input> values do not appear in innerText
+                (b instanceof HTMLInputElement && b.type in ['submit', 'button'] && b.value?.trim())),
     );
 
     return actionableButtons.map((b) => ({
