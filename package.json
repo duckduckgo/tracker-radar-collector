@@ -50,7 +50,7 @@
     "commander": "^13.1.0",
     "openai": "^4.103.0",
     "progress": "^2.0.3",
-    "puppeteer": "^24.7.1",
+    "puppeteer": "^24.22.3",
     "selenium-webdriver": "^4.31.0",
     "tldts": "^7.0.4",
     "zod": "^3.25.32"
