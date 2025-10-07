@@ -149,7 +149,9 @@ async function processCookiePopupsForSite(globalParams, { finalUrl, initialUrl, 
     const updatedExistingRules = structuredClone(existingRules);
 
     // const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap((frame) => frame.potentialPopups).filter((popup) => popup.llmMatch);
-    const regexConfirmedPopups = collectorResult.scrapedFrames.flatMap((frame) => frame.potentialPopups).filter((popup) => popup.regexMatch);
+    const regexConfirmedPopups = collectorResult.scrapedFrames
+        .flatMap((frame) => frame.potentialPopups)
+        .filter((popup) => popup.regexMatch);
 
     // shortcut if no popups with llmMatch
     // if (llmConfirmedPopups.length === 0) {

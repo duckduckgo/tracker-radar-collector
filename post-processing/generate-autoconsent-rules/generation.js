@@ -249,7 +249,9 @@ function generateRulesForSite(region, initialUrl, finalUrl, collectorResult, mat
     let keptCount = 0;
 
     // const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap((frame) => frame.potentialPopups).filter((popup) => popup.llmMatch);
-    const regexConfirmedPopups = collectorResult.scrapedFrames.flatMap((frame) => frame.potentialPopups).filter((popup) => popup.regexMatch);
+    const regexConfirmedPopups = collectorResult.scrapedFrames
+        .flatMap((frame) => frame.potentialPopups)
+        .filter((popup) => popup.regexMatch);
     // if (llmConfirmedPopups.length > 1 || llmConfirmedPopups[0].rejectButtons.length > 1) {
     if (regexConfirmedPopups.length > 1 || regexConfirmedPopups[0].rejectButtons.length > 1) {
         console.warn('Multiple cookie popups or reject buttons found in', initialUrl);
