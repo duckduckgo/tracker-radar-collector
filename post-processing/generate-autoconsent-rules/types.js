@@ -42,7 +42,8 @@
  * @typedef {{
  *  siteUrl: string;
  *  matchedRules: string[];
- *  llmConfirmedPopups: PopupData[];
+ *  _llmConfirmedPopups?: PopupData[];
+ *  regexConfirmedPopups: PopupData[];
  *  screenshot: string;
  *  newlyCreatedRules: AutoconsentManifestFileData[];
  *  updatedRules: AutoconsentManifestFileData[];

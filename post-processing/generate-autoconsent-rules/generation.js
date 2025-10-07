@@ -248,8 +248,10 @@ function generateRulesForSite(region, initialUrl, finalUrl, collectorResult, mat
     const reviewNotes = [];
     let keptCount = 0;
 
-    const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap((frame) => frame.potentialPopups).filter((popup) => popup.llmMatch);
-    if (llmConfirmedPopups.length > 1 || llmConfirmedPopups[0].rejectButtons.length > 1) {
+    // const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap((frame) => frame.potentialPopups).filter((popup) => popup.llmMatch);
+    const regexConfirmedPopups = collectorResult.scrapedFrames.flatMap((frame) => frame.potentialPopups).filter((popup) => popup.regexMatch);
+    // if (llmConfirmedPopups.length > 1 || llmConfirmedPopups[0].rejectButtons.length > 1) {
+    if (regexConfirmedPopups.length > 1 || regexConfirmedPopups[0].rejectButtons.length > 1) {
         console.warn('Multiple cookie popups or reject buttons found in', initialUrl);
         reviewNotes.push({
             needsReview: false, // it's not a problem by itself, unless this leads to multiple _rules_ generated, but we check that separately.
@@ -261,7 +263,8 @@ function generateRulesForSite(region, initialUrl, finalUrl, collectorResult, mat
 
     // go over all frames, all confirmed popups within them, and all reject buttons inside
     for (const frame of collectorResult.scrapedFrames) {
-        for (const popup of frame.potentialPopups.filter((p) => p.llmMatch)) {
+        // for (const popup of frame.potentialPopups.filter((p) => p.llmMatch)) {
+        for (const popup of frame.potentialPopups.filter((p) => p.regexMatch)) {
             for (const button of popup.rejectButtons) {
                 if (ruleForButtonExists(button, matchingRules, newRules, rulesToOverride)) {
                     // if there is an existing rule with the same reject button, do nothing

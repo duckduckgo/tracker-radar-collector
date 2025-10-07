@@ -148,16 +148,19 @@ async function processCookiePopupsForSite(globalParams, { finalUrl, initialUrl, 
 
     const updatedExistingRules = structuredClone(existingRules);
 
-    const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap((frame) => frame.potentialPopups).filter((popup) => popup.llmMatch);
+    // const llmConfirmedPopups = collectorResult.scrapedFrames.flatMap((frame) => frame.potentialPopups).filter((popup) => popup.llmMatch);
+    const regexConfirmedPopups = collectorResult.scrapedFrames.flatMap((frame) => frame.potentialPopups).filter((popup) => popup.regexMatch);
 
     // shortcut if no popups with llmMatch
-    if (llmConfirmedPopups.length === 0) {
+    // if (llmConfirmedPopups.length === 0) {
+    if (regexConfirmedPopups.length === 0) {
         return { newRuleFiles, updatedRuleFiles, keptCount: 0, reviewNotes: [], updatedExistingRules };
     }
 
     const matchingRules = findMatchingExistingRules(initialUrl, finalUrl, collectorResult, existingRules);
     console.log(
-        `Detected ${llmConfirmedPopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`,
+        // `Detected ${llmConfirmedPopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`,
+        `Detected ${regexConfirmedPopups.length} unhandled cookie popup(s) on ${finalUrl} (matched ${matchingRules.length} existing rules)`,
     );
     const { newRules, rulesToOverride, reviewNotes, keptCount } = generateRulesForSite(
         region,
@@ -309,9 +312,12 @@ async function processFiles(globalParams, existingRules) {
         totalSitesWithPopups++;
 
         const matchedRules = collectorResult.cmps.map((cmp) => cmp.name.trim()).filter((name) => name !== '');
-        const llmConfirmedPopups = collectorResult.scrapedFrames
+        // const llmConfirmedPopups = collectorResult.scrapedFrames
+        //     .flatMap((frame) => frame.potentialPopups)
+        //     .filter((popup) => popup.llmMatch);
+        const regexConfirmedPopups = collectorResult.scrapedFrames
             .flatMap((frame) => frame.potentialPopups)
-            .filter((popup) => popup.llmMatch);
+            .filter((popup) => popup.regexMatch);
         const screenshot = jsonData.data.screenshots;
 
         if (hasKnownCmp(collectorResult.cmps)) {
@@ -319,16 +325,20 @@ async function processFiles(globalParams, existingRules) {
             autoconsentManifest.set(fileName, {
                 siteUrl: jsonData.finalUrl,
                 matchedRules,
-                llmConfirmedPopups,
+                // llmConfirmedPopups,
+                regexConfirmedPopups,
                 screenshot,
                 newlyCreatedRules: [],
                 updatedRules: [],
                 reviewNotes: [],
             });
         } else {
-            const llmConfirmedPopups = collectorResult.scrapedFrames
+            // const llmConfirmedPopups = collectorResult.scrapedFrames
+            //     .flatMap((frame) => frame.potentialPopups)
+            //     .filter((popup) => popup.llmMatch);
+            const regexConfirmedPopups = collectorResult.scrapedFrames
                 .flatMap((frame) => frame.potentialPopups)
-                .filter((popup) => popup.llmMatch);
+                .filter((popup) => popup.regexMatch);
             /** @type {import('./types').AutoconsentManifestFileData[]} */
             let newRuleFiles = [];
             /** @type {import('./types').AutoconsentManifestFileData[]} */
@@ -337,7 +347,8 @@ async function processFiles(globalParams, existingRules) {
             /** @type {import('./types').ReviewNote[]} */
             let reviewNotes = [];
 
-            if (llmConfirmedPopups.length > 0) {
+            // if (llmConfirmedPopups.length > 0) {
+            if (regexConfirmedPopups.length > 0) {
                 totalUnhandled++;
                 const result = await processCookiePopupsForSite(globalParams, {
                     finalUrl: jsonData.finalUrl,
@@ -351,7 +362,8 @@ async function processFiles(globalParams, existingRules) {
             autoconsentManifest.set(fileName, {
                 siteUrl: jsonData.finalUrl,
                 matchedRules,
-                llmConfirmedPopups,
+                // llmConfirmedPopups,
+                regexConfirmedPopups,
                 screenshot,
                 newlyCreatedRules: newRuleFiles,
                 updatedRules: updatedRuleFiles,
