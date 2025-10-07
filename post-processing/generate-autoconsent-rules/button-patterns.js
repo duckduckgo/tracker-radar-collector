@@ -590,6 +590,13 @@ const REJECT_PATTERNS_SWEDISH = [
     'tillåt inte cookies',
 ];
 
+// Extra patterns for this run, provided via environment variable, comma-separated
+const REJECT_PATTERNS_EXTRA = process.env.REJECT_PATTERNS_EXTRA
+    ? process.env.REJECT_PATTERNS_EXTRA.split(',')
+          .map((s) => s.trim())
+          .filter(Boolean)
+    : [];
+
 /**
  * @type {Array<string|RegExp>}
  */
@@ -602,6 +609,7 @@ const REJECT_PATTERNS = [
     ...REJECT_PATTERNS_BRAZILIAN_PORTUGUESE,
     ...REJECT_PATTERNS_SPANISH,
     ...REJECT_PATTERNS_SWEDISH,
+    ...REJECT_PATTERNS_EXTRA,
 ];
 
 const NEVER_MATCH_PATTERNS = [
