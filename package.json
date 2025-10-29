@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@clickhouse/client": "^1.11.1",
-    "@duckduckgo/autoconsent": "^14.11.0",
+    "@duckduckgo/autoconsent": "^14.34.0",
     "@types/commander": "^2.12.0",
     "async": "^3.2.6",
     "chalk": "^4.1.2",
