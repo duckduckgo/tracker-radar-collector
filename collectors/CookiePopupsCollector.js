@@ -4,6 +4,8 @@ const ContentScriptCollector = require('./ContentScriptCollector');
 const { createTimer } = require('../helpers/timer');
 const { wait, TimeoutError } = require('../helpers/wait');
 const createDeferred = require('../helpers/deferred');
+const rules = require('@duckduckgo/autoconsent/rules/rules.json');
+const stringifiedRules = JSON.stringify(rules);
 
 // @ts-ignore
 const baseContentScript = fs.readFileSync(
@@ -158,7 +160,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
                     isMainWorld: false,
                 };
                 await this.cdpSessions.get(executionContextUniqueId)?.send('Runtime.evaluate', {
-                    expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(autoconsentConfig)} })`,
+                    expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(autoconsentConfig)}, rules: ${stringifiedRules} })`,
                     uniqueContextId: executionContextUniqueId,
                 });
                 break;
