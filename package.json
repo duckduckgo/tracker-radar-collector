@@ -30,7 +30,7 @@
     "@types/mockery": "^1.4.33",
     "@types/node": "^24.7.2",
     "@types/progress": "^2.0.7",
-    "@types/selenium-webdriver": "^4.1.28",
+    "@types/selenium-webdriver": "^4.35.3",
     "@types/sinon": "^17.0.4",
     "@types/ws": "^8.18.1",
     "eslint": "^9.37.0",
@@ -51,7 +51,7 @@
     "openai": "^4.103.0",
     "progress": "^2.0.3",
     "puppeteer": "^24.7.1",
-    "selenium-webdriver": "^4.31.0",
+    "selenium-webdriver": "^4.38.0",
     "tldts": "^7.0.4",
     "zod": "^3.25.32"
   }
