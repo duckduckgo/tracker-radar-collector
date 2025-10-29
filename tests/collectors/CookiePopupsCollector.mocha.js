@@ -1,4 +1,6 @@
 const CookiePopupsCollector = require('../../collectors/CookiePopupsCollector');
+const rules = require('@duckduckgo/autoconsent/rules/rules.json');
+const stringifiedRules = JSON.stringify(rules);
 const assert = require('assert');
 const sinon = require('sinon');
 
@@ -99,7 +101,7 @@ describe('CookiePopupsCollector', () => {
                             enableHeuristicDetection: true,
                             detectRetries: 20,
                             isMainWorld: false,
-                        })} })`,
+                        })}, rules: ${stringifiedRules} })`,
                         uniqueContextId: '1111',
                     },
                 ]);
