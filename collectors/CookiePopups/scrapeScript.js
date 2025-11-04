@@ -1,5 +1,5 @@
 /* global window, document, HTMLElement, Node, NodeFilter, location, NamedNodeMap, DOMTokenList, DOMException, CSS */
-
+{ // wrap in curly braces to avoid global scope pollution
 const BUTTON_LIKE_ELEMENT_SELECTOR = 'button, input[type="button"], input[type="submit"], a, [role="button"], [class*="button"]';
 const LIMIT_TEXT_LENGTH = 150000;
 const ELEMENT_TAGS_TO_SKIP = [
@@ -379,3 +379,4 @@ function scrapePage() {
 }
 
 scrapePage();
+}
