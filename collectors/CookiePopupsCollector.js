@@ -416,6 +416,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
     async settingButtonFlow(session, executionContextUniqueId, settingsButtons, result) {
         // FIXME: handle case of multiple settings buttons
         const settingsButton = settingsButtons[0];
+        this.log(`Triggering settings flow for ${executionContextUniqueId} with button ${settingsButton.selector}`);
         await session.send('Runtime.evaluate', {
             expression: `document.querySelector('${settingsButton.selector}').click()`,
             allowUnsafeEvalBlockedByCSP: true,
@@ -423,8 +424,8 @@ class CookiePopupsCollector extends ContentScriptCollector {
         });
         // give the settings a couple seconds to load
         await (new Promise((resolve) => setTimeout(resolve, WAIT_FOR_SETTINGS_LOAD_MS)));
-        // scrape the new page state
-        const settingsResult = await this.scrapeSingleContext([executionContextUniqueId, session]);
+        // scrape the new page state, disallow recursive settings flow
+        const settingsResult = await this.scrapeSingleContext(executionContextUniqueId, session, false);
         if (settingsResult) {
             settingsResult.beforeSettings = result;
         }
@@ -433,11 +434,12 @@ class CookiePopupsCollector extends ContentScriptCollector {
 
 
     /**
-     * @param {[import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId'], import('puppeteer-core').CDPSession]} context
+     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId']} executionContextUniqueId
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {boolean} canTriggerSettingsFlow
      * @returns {Promise<ScrapeScriptResult | null>}
      */
-    async scrapeSingleContext(context) {
-        const [executionContextUniqueId, session] = context;
+    async scrapeSingleContext(executionContextUniqueId, session, canTriggerSettingsFlow) {
         try {
             const evalResult = await session.send('Runtime.evaluate', {
                 expression: cookiePopupScrapeScript,
@@ -482,7 +484,8 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 result.llmPopupDetected = llmPopupDetected;
                 result.regexPopupDetected = regexPopupDetected;
 
-                if (result.llmPopupDetected && !hasRejectButtons && settingsButtons.length > 0) {
+                this.log(`result.llmPopupDetected: ${result.llmPopupDetected}, hasRejectButtons: ${hasRejectButtons}, settingsButtons.length: ${settingsButtons.length}`);
+                if (canTriggerSettingsFlow && result.llmPopupDetected && !hasRejectButtons && settingsButtons.length > 0) {
                     // if there's no one-click reject button, try to click the settings button
                     return this.settingButtonFlow(session, executionContextUniqueId, settingsButtons, result);
                 }
@@ -504,7 +507,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
         const scrapeScriptTimer = createTimer();
         // launch all scrape tasks in parallel
         /** @type {Promise<ScrapeScriptResult | null>[]} */
-        const scrapeTasks = Array.from(this.cdpSessions.entries()).map(this.scrapeSingleContext.bind(this));
+        const scrapeTasks = Array.from(this.cdpSessions.entries()).map(([executionContextUniqueId, session]) => this.scrapeSingleContext(executionContextUniqueId, session, true));
 
         // filter out null results
         return Promise.all(scrapeTasks).then((results) => {
