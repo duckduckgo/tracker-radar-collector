@@ -1,3 +1,4 @@
+// FIXME: these are duplicated in Autoconsent
 const REJECT_PATTERNS_ENGLISH = [
     // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject all non-essential cookies and continue", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close"
     // note that "reject and subscribe" and "reject and pay" are excluded
