@@ -612,7 +612,7 @@ const REJECT_PATTERNS = [
     ...REJECT_PATTERNS_EXTRA,
 ];
 
-const NEVER_MATCH_PATTERNS = [
+const REJECT_NEVER_MATCH_PATTERNS = [
     /pay|subscribe/is,
     /abonneer/is,
     /abonnier/is,
@@ -625,7 +625,108 @@ const NEVER_MATCH_PATTERNS = [
     /suscribir/is,
 ];
 
+
+const SETTINGS_NEVER_MATCH_PATTERNS = [
+    // Use Recommended Settings
+    // OK to use our recommended settings
+    /recommended/i,
+    // Save preferences and the like
+    /save|submit|close|accept|agree/i,
+];
+
+const SETTINGS_PATTERNS = [
+    // Adjust cookie settings
+    // Adjust settings
+    // Advanced Settings
+    // Change cookie settings
+    // Change my preferences
+    // Change Preferences
+    // Change Settings
+    // Change your cookie settings
+    // Choose Cookies
+    // Customise Cookies
+    // Customise my choices
+    // Customise settings
+    // Customize Choices
+    // Customize cookie settings
+    // Customize Cookies
+    // Customize Cookies Settings
+    // Customize Preferences
+    // Customize settings
+    // Customize your choice
+    // Manage Choices
+    // Manage Consent Preferences
+    // Manage Cookie & Tracking Settings
+    // Manage Cookie Preferences
+    // Manage Cookie Settings
+    // Manage Cookies
+    // Manage Cookies
+    // Manage Cookies Settings
+    // Manage Individual preferences
+    // Manage My Cookies
+    // Manage my preferences
+    // Manage My Preferences
+    // MANAGE MY SETTINGS
+    // Manage opt out preferences
+    // Manage options
+    // Manage or reject Cookies
+    // Manage Preferences
+    // Manage privacy settings
+    // Manage Settings
+    // manage specific collection and sharing preferences
+    // Manage Your Cookies
+    // Manage your preferences
+    // Manage Your Privacy Choices
+    // Manage your privacy settings
+    // Set Choices
+    // Set preferences
+    // Set your choices
+    // View Cookies Settings
+    // View options
+    // View preferences
+    /^(?:ad|choose|adjust|customize|customise|change|set|manage|configure|view).{0,100}(?:your)?.{0,100}(?:cookie)?.{0,100}(?:cookie|cookies|settings|preferences|choices?|options)$/i,
+
+    // CONFIGURE
+    // Customise
+    // Customize
+    // Manage
+    /^(?:adjust|customize|customise|manage|configure)$/i,
+
+    // Consent Preferences
+    // Consent Settings
+    // Cookie Choices
+    // Cookie Consent Options
+    // cookie preferences
+    // Cookie Preferences
+    // Cookie Setting
+    // Cookie Settings
+    // Cookie/Consent Preferences
+    // Cookies Preferences
+    // Cookies Settings
+    // CUSTOM SETTINGS
+    // Customise my choices
+    // Customise settings
+    // Customize Choices
+    // Customize cookie settings
+    // Customize Cookies Settings
+    // Customize Preferences
+    // Customize settings
+    // MORE OPTIONS
+    /^(?:(?:cookie\s+)?consent|cookie|custom|more).{0,100}(?:preferences|settings?|choices|options)$/i,
+
+    // My settings
+    // Options
+    // Preferences
+    // Settings
+    // Your Privacy Choices
+    /^((?:my|your).{0,100})?(?:settings|preferences|choices|options)$/i,
+    'let me choose',
+    'show purposes',
+];
+
 module.exports = {
     REJECT_PATTERNS,
-    NEVER_MATCH_PATTERNS,
+    REJECT_NEVER_MATCH_PATTERNS,
+    SETTINGS_PATTERNS,
+    SETTINGS_NEVER_MATCH_PATTERNS,
 };

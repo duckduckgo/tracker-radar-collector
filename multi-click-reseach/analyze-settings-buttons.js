@@ -8,7 +8,7 @@ const { OpenAI } = require('openai');
 const { z } = require('zod');
 const { zodResponseFormat } = require('openai/helpers/zod');
 const asyncLib = require('async');
-const { isSettingsButton, cleanButtonText } = require('./option-buttons-regexes.js');
+const { isSettingsButton, cleanButtonText } = require('../post-processing/generate-autoconsent-rules/detection.js');
 
 /**
  * Check if a button text is a settings/preferences button using LLM

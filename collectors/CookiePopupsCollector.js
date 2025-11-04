@@ -1,4 +1,6 @@
+const { OpenAI } = require('openai');
 const fs = require('fs');
+const { classifyPopup } = require('../post-processing/generate-autoconsent-rules/detection');
 const waitFor = require('../helpers/waitFor');
 const ContentScriptCollector = require('./ContentScriptCollector');
 const { createTimer } = require('../helpers/timer');
@@ -18,6 +20,7 @@ const SCRAPE_TIMEOUT = 20000;
 const OPTOUT_TIMEOUT = 30000;
 const DETECT_TIMEOUT = 5000;
 const FOUND_TIMEOUT = 5000;
+const WAIT_FOR_SETTINGS_LOAD_MS = 2000;
 
 /**
  * @param {string} bindingName
@@ -34,6 +37,15 @@ window.autoconsentSendMessage = (msg) => {
 }
 
 const cookiePopupScrapeScript = fs.readFileSync(require.resolve('./CookiePopups/scrapeScript.js'), 'utf8');
+
+if (!process.env.OPENAI_API_KEY) {
+    console.error('Error: OPENAI_API_KEY environment variable is not set.');
+    console.error('Please set it or remove the --check-false-negatives flag.');
+    process.exit(1);
+}
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+});
 
 class CookiePopupsCollector extends ContentScriptCollector {
     collectorExtraTimeMs = SCRAPE_TIMEOUT + DETECT_TIMEOUT + FOUND_TIMEOUT + OPTOUT_TIMEOUT; // Autoconsent opt-out/opt-in and scraping can take a while
@@ -395,39 +407,104 @@ class CookiePopupsCollector extends ContentScriptCollector {
     }
 
     /**
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId']} executionContextUniqueId
+     * @param {ButtonData[]} settingsButtons
+     * @param {ScrapeScriptResult} result
+     * @returns {Promise<ScrapeScriptResult>}
+     */
+    async settingButtonFlow(session, executionContextUniqueId, settingsButtons, result) {
+        // FIXME: handle case of multiple settings buttons
+        const settingsButton = settingsButtons[0];
+        await session.send('Runtime.evaluate', {
+            expression: `document.querySelector('${settingsButton.selector}').click()`,
+            allowUnsafeEvalBlockedByCSP: true,
+            uniqueContextId: executionContextUniqueId,
+        });
+        // give the settings a couple seconds to load
+        await (new Promise((resolve) => setTimeout(resolve, WAIT_FOR_SETTINGS_LOAD_MS)));
+        // scrape the new page state
+        const settingsResult = await this.scrapeSingleContext([executionContextUniqueId, session]);
+        if (settingsResult) {
+            settingsResult.beforeSettings = result;
+        }
+        return settingsResult;
+    }
+
+
+    /**
+     * @param {[import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId'], import('puppeteer-core').CDPSession]} context
+     * @returns {Promise<ScrapeScriptResult | null>}
+     */
+    async scrapeSingleContext(context) {
+        const [executionContextUniqueId, session] = context;
+        try {
+            const evalResult = await session.send('Runtime.evaluate', {
+                expression: cookiePopupScrapeScript,
+                uniqueContextId: executionContextUniqueId,
+                returnByValue: true,
+                allowUnsafeEvalBlockedByCSP: true,
+            });
+            if (evalResult.exceptionDetails) {
+                this.log(
+                    `Error evaluating scrape script: ${evalResult.exceptionDetails.text} ${evalResult.exceptionDetails.exception?.description}`,
+                );
+                return null;
+            }
+            /** @type {ScrapeScriptResult} */
+            const result = evalResult.result.value;
+            if (result.cleanedText || result.potentialPopups.length > 0) {
+                // classify popups and buttons with LLM/regex
+                let llmPopupDetected = false;
+                let regexPopupDetected = false;
+                let hasRejectButtons = false;
+                const settingsButtons = [];
+                for (const popup of result.potentialPopups) {
+                    const popupClassificationResult = await classifyPopup(popup, openai);
+                    popup.llmMatch = popupClassificationResult.llmMatch;
+                    popup.regexMatch = popupClassificationResult.regexMatch;
+                    popup.rejectButtons = popupClassificationResult.rejectButtons;
+                    popup.settingsButtons = popupClassificationResult.settingsButtons;
+                    if (popupClassificationResult.rejectButtons.length > 0) {
+                        hasRejectButtons = true;
+                    }
+                    if (popupClassificationResult.settingsButtons.length > 0) {
+                        settingsButtons.push(...popupClassificationResult.settingsButtons);
+                    }
+                    popup.otherButtons = popupClassificationResult.otherButtons;
+                    if (popupClassificationResult.llmMatch) {
+                        llmPopupDetected = true;
+                    }
+                    if (popupClassificationResult.regexMatch) {
+                        regexPopupDetected = true;
+                    }
+                }
+                result.llmPopupDetected = llmPopupDetected;
+                result.regexPopupDetected = regexPopupDetected;
+
+                if (result.llmPopupDetected && !hasRejectButtons && settingsButtons.length > 0) {
+                    // if there's no one-click reject button, try to click the settings button
+                    return this.settingButtonFlow(session, executionContextUniqueId, settingsButtons, result);
+                }
+                return result;
+            }
+            return null;
+        } catch (e) {
+            if (!this.isIgnoredCdpError(e)) {
+                this.log(`Error evaluating scrape script: ${e}`);
+            }
+            return null;
+        }
+    }
+
+    /**
      * @returns {Promise<ScrapeScriptResult[]>}
      */
     scrapePopups() {
         const scrapeScriptTimer = createTimer();
         // launch all scrape tasks in parallel
         /** @type {Promise<ScrapeScriptResult | null>[]} */
-        const scrapeTasks = Array.from(this.cdpSessions.entries()).map(async ([executionContextUniqueId, session]) => {
-            try {
-                const evalResult = await session.send('Runtime.evaluate', {
-                    expression: cookiePopupScrapeScript,
-                    uniqueContextId: executionContextUniqueId,
-                    returnByValue: true,
-                    allowUnsafeEvalBlockedByCSP: true,
-                });
-                if (evalResult.exceptionDetails) {
-                    this.log(
-                        `Error evaluating scrape script: ${evalResult.exceptionDetails.text} ${evalResult.exceptionDetails.exception?.description}`,
-                    );
-                    return null;
-                }
-                /** @type {ScrapeScriptResult} */
-                const result = evalResult.result.value;
-                if (result.cleanedText || result.potentialPopups.length > 0) {
-                    return result;
-                }
-                return null;
-            } catch (e) {
-                if (!this.isIgnoredCdpError(e)) {
-                    this.log(`Error evaluating scrape script: ${e}`);
-                }
-                return null;
-            }
-        });
+        const scrapeTasks = Array.from(this.cdpSessions.entries()).map(this.scrapeSingleContext.bind(this));
 
         // filter out null results
         return Promise.all(scrapeTasks).then((results) => {
@@ -529,7 +606,9 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {boolean} [llmPopupDetected]
  * @property {boolean} [regexPopupDetected]
  * @property {ButtonData[]} [rejectButtons]
+ * @property {ButtonData[]} [settingsButtons]
  * @property {ButtonData[]} [otherButtons]
+ * @property {ScrapeScriptResult} [beforeSettings]
  */
 
 /**
@@ -540,6 +619,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {boolean} [llmMatch]
  * @property {boolean} [regexMatch]
  * @property {ButtonData[]} [rejectButtons]
+ * @property {ButtonData[]} [settingsButtons]
  * @property {ButtonData[]} [otherButtons]
  */
 
