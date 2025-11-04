@@ -1,0 +1,3322 @@
+Settings Button Analysis Results
+Generated: 2025-11-04T09:32:39.145Z
+
+======================================================================
+STATISTICS
+======================================================================
+
+OVERALL:
+  Total sites processed: 9988
+
+SITES WITH llmMatch=true AND NO REJECT BUTTONS:
+  Sites with llmMatch=true and empty rejectButtons: 1118
+  Percentage of total: 11.19%
+
+SETTINGS BUTTON COVERAGE:
+  Sites with settings button found: 450
+  Percentage of llmMatch-no-reject sites: 40.25%
+
+CMP RULE COVERAGE (for sites with settings button):
+  Sites with settings button WITHOUT existing CMP rule: 73
+  Sites with settings button WITH existing CMP rule: 377
+  Percentage without CMP rule: 16.22%
+
+REJECT BUTTON AVAILABILITY (for llmMatch-no-reject sites):
+  Sites with NO reject button anywhere: 1115
+  Percentage without any reject: 99.73%
+
+CMP NAMES FOUND (for sites with settings button and CMP):
+   284 | Onetrust
+    10 | Complianz opt-out
+     8 | ketch
+     8 | Sourcepoint-frame
+     8 | TrustArc-top
+     4 | Cybotcookiebot
+     4 | cookieconsent3
+     3 | osano
+     3 | cc-banner-springer
+     3 | civic-cookie-control
+     3 | com_didomi.io
+     3 | cookieyes
+     2 | stripchat.com
+     2 | quantcast
+     2 | pandectes
+     2 | Termly
+     2 | Complianz optin
+     2 | cookiehub
+     2 | Sirdata
+     2 | Complianz banner
+     1 | cookieconsent2
+     1 | hu-manity
+     1 | com_optanon
+     1 | eu-cookie-compliance-banner
+     1 | Tealium
+     1 | Moove
+     1 | Klaro
+     1 | transcend
+     1 | depop
+     1 | Evidon
+     1 | bswhealth
+     1 | ct-ultimate-gdpr
+     1 | ring
+     1 | cookiefirst.com
+     1 | ouraring
+     1 | ok
+     1 | termsfeed
+     1 | aws.amazon.com
+     1 | cookie-script
+     1 | iubenda
+
+SETTINGS BUTTON TEXTS (sorted by frequency):
+    87 | cookie settings
+    64 | cookies settings
+    43 | cookie preferences
+    39 | manage cookies
+    38 | manage preferences
+    27 | your privacy choices
+    19 | customize
+    18 | manage cookie preferences
+    15 | settings
+    13 | preferences
+    11 | customize settings
+    11 | manage settings
+    10 | change settings
+     8 | more options
+     7 | manage
+     6 | manage cookie settings
+     4 | options
+     4 | manage your privacy choices
+     4 | configure
+     3 | customize cookies
+     2 | manage or reject cookies
+     2 | change your cookie settings
+     2 | adjust your cookie settings
+     2 | set your choices
+     2 | manage my preferences
+     2 | manage cookie tracking settings
+     2 | manage cookies settings
+     2 | your state-specific privacy choices
+     1 | ad choices
+     1 | choose cookies
+     1 | view cookies settings
+     1 | change cookie settings
+     1 | customize cookies settings
+     1 | cookies preferences
+     1 | manage consent preferences
+     1 | customized settings
+     1 | custom settings
+     1 | more details and options
+     1 | my settings
+     1 | manage choices
+     1 | manage your cookies
+     1 | cookies setting
+     1 | consent settings
+     1 | manage your preferences
+     1 | adjust cookie settings
+     1 | manage your privacy settings
+     1 | manage my cookies
+     1 | set your preferences
+     1 | view cookies
+     1 | customize cookie settings
+     1 | manage options
+     1 | change my preferences
+     1 | configure my privacy choices
+
+======================================================================
+DETAILED RESULTS: Sites with Settings Buttons
+======================================================================
+
+URL: https://xhamsterlive.com/
+CMP: stripchat.com
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage
+    Selector: body > div#body > div:nth-child(3):not([id]) > div:not([id]) > div:nth-child(7):not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.ups.com/global
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.zoominfo.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.zennioptical.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.youporn.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#cookie_consent_wrapper > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button#consent_manage_btn
+
+URL: https://www.yeti.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.yarnspirations.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.yalemedicine.org/
+CMP: cookieconsent2
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MANAGE COOKIES
+    Selector: body > div#cc--main > div#cc_div > div:nth-child(1)#cm > div#c-inr > div:nth-child(2)#c-bns > button:nth-child(1)#c-s-bn
+
+URL: https://www.xxlreloading.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings
+    Selector: body > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.wyze.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#wyze-cookie-banner > div:not([id]) > a:nth-child(3):not([id])
+
+URL: https://www.wral.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.wingstop.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.wine-searcher.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div:not([id]) > div:not([id]) > div:not([id]) > p:nth-child(3):not([id]) > a:nth-child(1):not([id])
+
+URL: https://www.whistleout.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.wgbh.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(4)#onetrust-pc-btn-handler
+
+URL: https://www.weatherbug.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Ad Choices
+    Selector: body > bottom-section-display:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(1):not([id]) > span:not([id]) > a:nth-child(2):not([id])
+
+URL: https://www.warbyparker.com/
+CMP: ketch
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#lanyard_root > div:not([id]) > div#ketch-banner > div#ketch-consent-banner > div:nth-child(2):not([id]) > div:nth-child(2)#ketch-banner-buttons-container-standard > button#ketch-banner-button-primary
+
+URL: https://www.walmart.ca/en
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookie settings
+    Selector: body > div#__next > div:nth-child(1):not([id])[data-testid="layout-container"] > section:nth-child(3):not([id]) > footer:nth-child(3):not([id]) > div:not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.viz.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.victoriassecret.com/us/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: PREFERENCES
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.vanderbilt.edu/
+CMP: hu-manity
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div#hu > div#hu-outer-wrapper > div:not([id]) > div:not([id]) > div#hu-cookies > div:nth-child(3)#hu-cookies-footer > div:not([id]) > div:nth-child(2):not([id]) > ul:nth-child(1)#hu-legal-links > li:not([id]) > button:not([id])
+
+URL: https://www.usg.com/content/usgcom/en.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.wolterskluwer.com/en/solutions/uptodate
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.ups.com/us/en/home
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.united.com/
+CMP: Complianz opt-out
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie preferences
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(2)#securitiCmpCookiePrefBtn
+
+URL: https://www.umc.org/en/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.ulta.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.uclahealth.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div:nth-child(1)#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.uchicagomedicine.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.twinspires.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.turkishairlines.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change settings
+    Selector: body > div#__next > div:not([id]) > main:not([id]) > div:not([id]) > div:nth-child(7):not([id]) > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(3)#changeCookiesSettingsButton
+
+URL: https://www.tube8.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#cookie_consent_wrapper > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button#consent_manage_btn
+
+URL: https://www.trustpilot.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.trustedreviews.com/
+CMP: quantcast
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MORE OPTIONS
+    Selector: body > div#qc-cmp2-container > div#qc-cmp2-main > div:not([id]) > div#qc-cmp2-ui > div:nth-child(2):not([id]) > div:not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.triumphmotorcycles.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIE PREFERENCES
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.tp-link.com/us/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: your privacy choices
+    Selector: body > div#tp-cookie-banner > div:not([id]) > div:not([id]) > div:not([id]) > p:nth-child(1):not([id]) > a:not([id])
+
+URL: https://www.todays-golfer.com/
+CMP: Sourcepoint-frame
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Options
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(4):not([id]) > div:not([id]) > button:nth-child(1):not([id])
+  - Text: Options
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(4):not([id]) > div:not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.thumbzilla.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize Cookies
+    Selector: body > div#globalCookieBanner > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.thule.com/en-us/
+CMP: Cybotcookiebot
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div#CybotCookiebotDialog > div:not([id]) > div:nth-child(4)#CybotCookiebotDialogFooter > div:nth-child(1):not([id]) > div#CybotCookiebotDialogBodyButtons > div:nth-child(2)#CybotCookiebotDialogBodyButtonsWrapper > button:nth-child(2)#CybotCookiebotDialogBodyLevelButtonCustomize
+
+URL: https://www.thetrainline.com/en-us
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Choose Cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.theproscloset.com/
+CMP: pandectes
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Preferences
+    Selector: body > div#pandectes-banner > div:not([id]) > div:nth-child(3):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.thenude.com/
+CMP: com_optanon
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(4):not([id]) > div:nth-child(3):not([id]) > div:not([id]) > button:not([id])
+
+URL: https://www.thegreatcoursesplus.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > aside:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.thechurchnews.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.theblaze.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: View Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.tacobell.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIE PREFERENCES
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.synchrony.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIE SETTINGS
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.sutterhealth.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.support.xerox.com/
+CMP: TrustArc-top
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MANAGE COOKIES
+    Selector: body > div#consent_blackbar > div:nth-child(3)#truste-consent-track > div#truste-consent-content > div:nth-child(2)#truste-consent-buttons > button:nth-child(3)#truste-show-consent
+
+URL: https://www.streetsideclassics.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(3)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(3)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.starbucks.com/
+CMP: TrustArc-top
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change cookie settings
+    Selector: body > div#consent_blackbar > div:nth-child(3)#truste-consent-track > div#truste-consent-content > div:nth-child(3)#truste-consent-buttons > button:nth-child(1)#truste-show-consent
+
+URL: https://www.ssactivewear.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.splashlearn.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div:not([id]) > div#ez-cookie-notification > div:nth-child(2):not([id]) > a:nth-child(1)#notificationManagerLink
+
+URL: https://www.southwire.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: "Your Privacy Choices"
+    Selector: body > div:not([id]) > div:nth-child(2)#cookie-notification > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > a:nth-child(1):not([id])
+
+URL: https://www.sothebys.com/en/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.songkick.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.smith-wesson.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.sltrib.com/
+CMP: osano
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div:not([id]) > div:nth-child(2)#f8b1a1e7-5fd6-498b-a990-fe5271b6890c > div:nth-child(3):not([id]) > button:not([id])
+
+URL: https://www.sleepfoundation.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.skyatnightmagazine.com/
+CMP: Sourcepoint-frame
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MORE OPTIONS
+    Selector: body > div:not([id]) > div:nth-child(2)#notice > div:nth-child(3):not([id]) > div:nth-child(1):not([id]) > button:not([id])
+
+URL: https://www.skinsafeproducts.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(3)#onetrust-banner-sdk > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.simplepractice.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookie settings
+    Selector: body > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.sigmaaldrich.com/US/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.shootingtimes.com/
+CMP: ketch
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#lanyard_root > div:not([id]) > div#ketch-banner > div#ketch-consent-banner > div:nth-child(2):not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div#banner-description > p:not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.sherdog.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#cookieNotice > div:nth-child(3):not([id]) > a:nth-child(2):not([id])
+
+URL: https://www.sex.com/en
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage or reject Cookies
+    Selector: body > div:not([id]) > div:nth-child(1):not([id]) > div#radix-«Rlpd6nb» > div:nth-child(5):not([id]) > button:nth-child(2):not([id])[data-testid="customize-cookie-button"]
+
+URL: https://www.se.com/ww/en/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change your cookie settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.scientificamerican.com/
+CMP: cc-banner-springer
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage preferences
+    Selector: body > dialog:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > p:nth-child(4):not([id]) > button:not([id])
+
+URL: https://www.saturdaydownsouth.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIE SETTINGS
+    Selector: body > div:not([id]) > div#truendo_container > div:nth-child(2):not([id]) > div:not([id]) > div:nth-child(1):not([id]) > p:nth-child(2):not([id]) > a:nth-child(2):not([id])
+
+URL: https://www.sandals.com/
+CMP: ketch
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change Settings
+    Selector: body > div#lanyard_root > div:not([id]) > div#ketch-banner > div#ketch-consent-banner > div:not([id]) > div:nth-child(2)#ketch-banner-buttons-container-standard > button:nth-child(1)#ketch-banner-button-secondary
+  - Text: Your Privacy Choices
+    Selector: body > div#lanyard_root > div:not([id]) > div#ketch-banner > div#ketch-consent-banner > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#banner-description > p:not([id]) > a:not([id])
+
+URL: https://www.royalcaribbean.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.roguefitness.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#app-wrapper > div#app > div:nth-child(3)#cookie-agree > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(2):not([id]) > span:not([id])
+
+URL: https://www.rockymountaineer.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div#CybotCookiebotDialog > div:not([id]) > div:nth-child(4)#CybotCookiebotDialogFooter > div:nth-child(1):not([id]) > div#CybotCookiebotDialogBodyButtons > div:nth-child(2)#CybotCookiebotDialogBodyButtonsWrapper > button:nth-child(2)#CybotCookiebotDialogBodyLevelButtonCustomize
+
+URL: https://www.rheem.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#CybotCookiebotDialog > div:not([id]) > div:nth-child(4)#CybotCookiebotDialogFooter > div:nth-child(1):not([id]) > div#CybotCookiebotDialogBodyButtons > div:nth-child(2)#CybotCookiebotDialogBodyButtonsWrapper > button:nth-child(2)#CybotCookiebotDialogBodyLevelButtonCustomize
+
+URL: https://www.redtube.net/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#cookie_consent_wrapper > div:not([id]) > div:nth-child(3):not([id]) > button#consent_manage_btn
+
+URL: https://www.redtube.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#cookie_consent_wrapper > div:not([id]) > div:nth-child(3):not([id]) > button#consent_manage_btn
+
+URL: https://www.rci.com/pre-rci/us/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.rbcroyalbank.com/personal.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+  - Text: Manage Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.rbauction.com/
+CMP: TrustArc-top
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#__next > span:not([id]) > div:nth-child(5)#consent_blackbar > div:nth-child(3)#truste-consent-track > div#truste-consent-content > div:nth-child(1)#truste-consent-text > a:nth-child(1):not([id])
+
+URL: https://www.raymourflanigan.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.ramtrucks.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.radiotimes.com/
+CMP: Sourcepoint-frame
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MORE OPTIONS
+    Selector: body > div:not([id]) > div:nth-child(2)#notice > div:nth-child(3):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.quantumfiber.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.quakeroats.com/
+CMP: Complianz opt-out
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(2)#securitiCmpCookiePrefBtn
+
+URL: https://www.qrcode-monkey.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.qr-code-generator.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIE SETTINGS
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.qnap.com/en-us
+CMP: cookieconsent3
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage preferences
+    Selector: body > div#cc-main > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > div:not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.qatarairways.com/en-us/homepage.html
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie preferences
+    Selector: body > div:not([id]) > div:nth-child(6):not([id]) > div:not([id]) > div:nth-child(18)#cookiebarNew > div:not([id]) > div:not([id]) > div:not([id]) > div#cookie-container > div#cookie-id > div:nth-child(2):not([id]) > div:not([id]) > a:nth-child(1)#cookie-show-options
+
+URL: https://www.prudential.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.properstar.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings
+    Selector: body > main#app > div:nth-child(5):not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.prnewswire.com/
+CMP: cookieconsent3
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#cc-main > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > div:not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.principal.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.princess.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: SETTINGS
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.prestomusic.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage settings
+    Selector: body > aside#cookie-flash-message > div:not([id]) > div:nth-child(2):not([id]) > form:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.pornhub.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize Cookies
+    Selector: body > div#globalCookieBanner > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.pof.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.podbean.com/
+CMP: Termly
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Preferences
+    Selector: body > div#termly-code-snippet-support > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+  - Text: Preferences
+    Selector: body > div#termly-code-snippet-support > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > span:nth-child(2):not([id])[data-testid="preferences-link"]
+
+URL: https://www.pluggedin.com/
+CMP: Cybotcookiebot
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div#CybotCookiebotDialog > div:not([id]) > div:nth-child(4)#CybotCookiebotDialogFooter > div:nth-child(1):not([id]) > div#CybotCookiebotDialogBodyButtons > div:nth-child(2)#CybotCookiebotDialogBodyButtonsWrapper > button:nth-child(2)#CybotCookiebotDialogBodyLevelButtonCustomize
+
+URL: https://www.plannedparenthood.org/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie settings
+    Selector: body > div#cookieBanner > div:not([id]) > div:nth-child(3):not([id]) > pp-link:nth-child(1)#openCookieBannerSettings > a:not([id])
+
+URL: https://www.pizzahut.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MANAGE
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.pillsbury.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.phonak.com/en-us
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.performancebike.com/
+CMP: Cybotcookiebot
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div#CybotCookiebotDialog > div:not([id]) > div:nth-child(4)#CybotCookiebotDialogFooter > div:nth-child(1):not([id]) > div#CybotCookiebotDialogBodyButtons > div:nth-child(2)#CybotCookiebotDialogBodyButtonsWrapper > button:nth-child(2)#CybotCookiebotDialogBodyLevelButtonCustomize
+  - Text: Customize
+    Selector: body > div#CybotCookiebotDialog > div:not([id]) > div:nth-child(4)#CybotCookiebotDialogFooter > div:nth-child(1):not([id]) > div#CybotCookiebotDialogBodyButtons > div:nth-child(2)#CybotCookiebotDialogBodyButtonsWrapper > button:nth-child(2)#CybotCookiebotDialogBodyLevelButtonCustomize
+
+URL: https://www.pennmedicine.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(3)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.penguinrandomhouse.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#__tealiumGDPRecModal > div#prh_privacy_prompt > div:nth-child(2):not([id]) > a:nth-child(1):not([id])
+
+URL: https://www.penfed.org/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie preferences
+    Selector: body > div:not([id]) > div:nth-child(3):not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > button:nth-child(1)#cmp-custom-permissions
+
+URL: https://www.peerspace.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#cookie-consent-container > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > p:nth-child(2):not([id]) > button:not([id])
+
+URL: https://www.pearson.com/en-us.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.pbssocal.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Consent Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.papamurphys.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(3)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.papajohns.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIES SETTINGS
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.pandaexpress.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.oxygen.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.oxfordlearnersdictionaries.com/us/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.overdrive.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: adjust your cookie settings
+    Selector: body > div:not([id]) > div:not([id]) > p:nth-child(1):not([id]) > a:nth-child(2):not([id])
+
+URL: https://www.ourtime.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.osmosis.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.officedepot.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > div:nth-child(2)#onetrust-pc-btn-container > button#onetrust-pc-btn-handler
+
+URL: https://www.nvidia.com/en-us/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.numberguru.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.nowfoods.com/
+CMP: eu-cookie-compliance-banner
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div#sliding-popup > div#accept-cookie-banner > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2)#popup-buttons > button:nth-child(3):not([id])
+
+URL: https://www.nobelprize.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.ni.com/en.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.nhl.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(1)#onetrust-group-container > div:nth-child(2)#onetrust-policy > div#onetrust-policy-text > a:nth-child(3):not([id])
+
+URL: https://www.newsweek.com/
+CMP: ketch
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#lanyard_root > div:not([id]) > div#ketch-banner > div#ketch-consent-banner > div:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2)#ketch-banner-buttons-container-compact > button:nth-child(2)#ketch-banner-button-secondary
+
+URL: https://www.newark.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.networksolutions.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div:not([id]) > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.nerdwallet.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.neighborwho.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.ncsasports.org/
+CMP: ketch
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#lanyard_root > div:not([id]) > div#ketch-banner > div#ketch-consent-banner > div:nth-child(2):not([id]) > div:nth-child(2)#ketch-banner-buttons-container-standard > button:nth-child(1)#ketch-banner-button-secondary
+
+URL: https://www.ncl.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div#onetrust-group-container > div:nth-child(2)#onetrust-policy > p#onetrust-policy-text > a:nth-child(1):not([id])
+
+URL: https://www.nature.org/en-us/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIES SETTINGS
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.nature.com/
+CMP: cc-banner-springer
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage preferences
+    Selector: body > dialog:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > p:nth-child(4):not([id]) > button:not([id])
+
+URL: https://www.nasdaq.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.nascar.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.nada.org/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customized settings
+    Selector: body > div:not([id]) > div#main-layout-container > main:nth-child(2)#main > div:nth-child(2):not([id]) > div:not([id]) > div:nth-child(3)#cookies_ui_block- > div#cookiesjsr > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > ul:nth-child(2):not([id]) > li:not([id]) > a:not([id])
+
+URL: https://www.synchrony.com/marketplace
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIE SETTINGS
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.mutualofomaha.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div#onetrust-group-container > div:nth-child(2)#onetrust-policy > div#onetrust-policy-text > a:nth-child(3):not([id])
+
+URL: https://www.musixmatch.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+  - Text: Manage cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://us.msi.com/
+CMP: civic-cookie-control
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings
+    Selector: body > div#ccc > div:nth-child(3)#ccc-notify > div:nth-child(2):not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.mpb.com/en-us
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.motorcyclenews.com/
+CMP: Sourcepoint-frame
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Options
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(4):not([id]) > div:not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.mopar.com/en-us.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(3)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.monrovia.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: CUSTOM SETTINGS
+    Selector: body > aside:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.mlb.com/milb
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.michaels.com/
+CMP: Complianz opt-out
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(2)#securitiCmpCookiePrefBtn
+
+URL: https://www.mheducation.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.metart.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(3)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.merrell.com/US/en/home
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.medtronic.com/en-us/index.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: More details and options
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.mcdonalds.com/us/en-us.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.mazdausa.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MANAGE PREFERENCES
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.mayoclinicproceedings.org/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.maurices.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.match.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.lufthansa.com/us/en/homepage
+CMP: Tealium
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: My settings
+    Selector: body > div#__tealiumGDPRcpPrefs > div:nth-child(2)#cm-dial-v211 > div#cm_v230 > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > div:nth-child(2):not([id]) > button:nth-child(1)#cm-descToggle
+
+URL: https://www.loft.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(1)#onetrust-group-container > div#onetrust-policy > div:nth-child(2)#onetrust-policy-text > a:nth-child(1):not([id])
+
+URL: https://www.livingspaces.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div:not([id]) > div:nth-child(12)#data-privacy-banner > div:not([id]) > span:nth-child(1):not([id]) > a:nth-child(3):not([id])
+
+URL: https://www.livejasmin.com/en/girls
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage or reject Cookies
+    Selector: body > div#consent_modal[data-testid="Over18ModalVariant1Modal"] > div:nth-child(2):not([id])[data-testid="Over18ModalVariant1Content"] > button:nth-child(4):not([id])[data-testid="ButtonStyledButton"]
+
+URL: https://www.lippert.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Choices
+    Selector: body > div:not([id]) > div:nth-child(60)#am-cookie-bar > div:not([id]) > div:not([id]) > div:not([id]) > article:not([id]) > div:nth-child(2):not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.lincoln.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.liftmaster.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.lifeway.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.lidl.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.lennar.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.lehmans.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.landroverusa.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MANAGE SETTINGS
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.landmarktheatres.com/
+CMP: com_didomi.io
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie settings
+    Selector: body > div#didomi-host > div:not([id]) > div#didomi-popup > div:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > div:nth-child(3)#buttons > button:nth-child(1)#didomi-notice-do-not-sell-button
+
+URL: https://www.la-z-boy.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > div:nth-child(3):not([id]) > button#onetrust-pc-btn-handler
+  - Text: Manage Cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > div:nth-child(3):not([id]) > button#onetrust-pc-btn-handler
+
+URL: https://www.ksl.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.kraftheinz.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://healthy.kaiserpermanente.org/front-door
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.klarna.com/us/?grs=%2F&grr=https%3A%2F%2Fwww.klarna.com%2F
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+  - Text: Change settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.kink.com/
+CMP: cookieyes
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.keystonerv.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.kanopy.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: adjust your cookie settings
+    Selector: body > div#__nuxt > div#__layout > div:not([id]) > div:nth-child(3):not([id]) > div:nth-child(5):not([id]) > div:not([id]) > div:nth-child(2):not([id]) > p:nth-child(2):not([id]) > button:nth-child(2):not([id])
+
+URL: https://healthy.kaiserpermanente.org/front-door
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.juniper.net/
+CMP: TrustArc-top
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#consent_blackbar > div:nth-child(3)#truste-consent-track > div#truste-consent-content > div:nth-child(2)#truste-consent-buttons > a:nth-child(2)#truste-show-consent
+
+URL: https://www.jstor.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.jonesroadbeauty.com/
+CMP: Complianz optin
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Preferences
+    Selector: body > div:not([id]) > div#csm-wrapper > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.johnnyseeds.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIE SETTINGS
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.jobs-ups.com/us/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.jetpens.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Preferences
+    Selector: body > div#cp-wrapper > div:nth-child(1)#cp-small > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.jetbrains.com/
+CMP: cookiehub
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Settings
+    Selector: body > div:not([id]) > div:not([id]) > div#ch2-dialog > div:nth-child(3):not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.jeep.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(3)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.jayco.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.irishtimes.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MANAGE SETTINGS
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.interstatebatteries.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div#banner-0 > div:not([id]) > div:nth-child(3):not([id]) > button:nth-child(3)#sp-customize
+
+URL: https://www.interactivebrokers.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize Settings
+    Selector: body > div#cookie-modal > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > div:not([id]) > div:not([id]) > p:not([id]) > button:nth-child(1)#gdpr-customize-settings
+
+URL: https://www.inova.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.image-line.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > a:nth-child(1)#cookie-settings
+
+URL: https://www.icruise.com/
+CMP: cookieconsent3
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage preferences
+    Selector: body > div#cc-main > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button:not([id])
+
+URL: https://www.ibtimes.com/
+CMP: Sirdata
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Set your choices
+    Selector: body > div#sd-cmp > div:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.ibtimes.co.uk/
+CMP: Sirdata
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Set your choices
+    Selector: body > div#sd-cmp > div:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(3):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.ibm.com/us-en
+CMP: TrustArc-top
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: More options
+    Selector: body > div#consent_blackbar > div:nth-child(4)#truste-consent-track > div:not([id]) > div:nth-child(2)#truste-consent-content > div:nth-child(1):not([id]) > div:nth-child(2)#truste-consent-buttons > button:nth-child(2)#truste-consent-show-button
+  - Text: cookie preferences
+    Selector: body > div#consent_blackbar > div:nth-child(4)#truste-consent-track > div:not([id]) > div:nth-child(2)#truste-consent-content > div:nth-child(1):not([id]) > div:nth-child(1):not([id]) > div:nth-child(1):not([id]) > div#truste-consent-text > span:nth-child(2):not([id]) > span:nth-child(2):not([id]) > button:nth-child(2)#truste-show-consent
+
+URL: https://www.hyundaiusa.com/us/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.humblebundle.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: More Options
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.hostinger.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie settings
+    Selector: body > div#__nuxt > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > button:nth-child(3):not([id]) > span:nth-child(2):not([id])
+
+URL: https://www.hopkinsmedicine.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.honda.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.homedepot.ca/en/home.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.hollandamerica.com/en/us
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.hobbylobby.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.hillsdale.edu/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.henryusa.com/
+CMP: Moove
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: settings
+    Selector: body > aside#moove_gdpr_cookie_info_bar > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > p:nth-child(2):not([id]) > button:not([id])
+
+URL: https://www.hanes.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage My Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.hallmark.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.gunsandammo.com/
+CMP: ketch
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#lanyard_root > div:not([id]) > div#ketch-banner > div#ketch-consent-banner > div:nth-child(2):not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div#banner-description > p:not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.gun-tests.com/
+CMP: Complianz banner
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings
+    Selector: body > div#cmplz-cookiebanner-container > div:not([id]) > div:nth-child(7):not([id]) > ul:not([id]) > li:nth-child(1):not([id]) > a:not([id])
+
+URL: https://www.greatclips.com/?variantName=dotexperiment-5b28bb264a-variant-2&redirect=true
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.govplanet.com/
+CMP: TrustArc-top
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#consent_blackbar > div:nth-child(3)#truste-consent-track > div#truste-consent-content > div:nth-child(1)#truste-consent-text > a:nth-child(1):not([id])
+  - Text: Cookie Preferences
+    Selector: body > div#teconsent > a:nth-child(2)#icon-id009883792687258264
+
+URL: https://www.goodyear.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.sportsengine.com/motion/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.golfnow.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.gigabyte.com/
+CMP: cookieyes
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.gibson.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.gianteagle.com/
+CMP: Klaro
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#klaro > div:not([id]) > div#klaro-cookie-notice > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > button:nth-child(2):not([id])
+  - Text: Cookie Settings
+    Selector: body > div#klaro > div:not([id]) > div#klaro-cookie-notice > div:not([id]) > p:nth-child(1):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.genesis.com/us/en/home
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.generac.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.gemini.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage
+    Selector: body > section#cookiePolicyAgreement > div:nth-child(2):not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.geappliances.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.geappliances.com/ge/parts
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.gaf.com/en-us
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.ft.com/
+CMP: Sourcepoint-frame
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: manage cookies
+    Selector: body > div:not([id]) > div:nth-child(2)#notice > div:nth-child(3):not([id]) > p:not([id]) > a:nth-child(3):not([id])
+
+URL: https://www.fourseasons.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIE PREFERENCES
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.ford.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.fooducate.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.focusonthefamily.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div#CybotCookiebotDialog > div:not([id]) > div:nth-child(4)#CybotCookiebotDialogFooter > div:nth-child(1):not([id]) > div#CybotCookiebotDialogBodyButtons > div:nth-child(2)#CybotCookiebotDialogBodyButtonsWrapper > button:nth-child(2)#CybotCookiebotDialogBodyLevelButtonCustomize
+
+URL: https://www.flooranddecor.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.flightaware.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.flagstar.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage My Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.finra.org/
+CMP: Complianz opt-out
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(2)#securitiCmpCookiePrefBtn
+
+URL: https://www.fatquartershop.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.fashionnova.com/
+CMP: transcend
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div:not([id]) > span:nth-child(1):not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.fandango.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.extraspace.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MANAGE PREFERENCES
+    Selector: body > div#__next > div:nth-child(4):not([id]) > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.express-scripts.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.everbank.com/
+CMP: Complianz opt-out
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIE SETTINGS
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(2)#securitiCmpCookiePrefBtn
+
+URL: https://www.entrepreneur.com/
+CMP: osano
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div:not([id]) > div:nth-child(2)#f5b695a1-14eb-47e3-a2ac-7738c3dbea1f > div:nth-child(3):not([id]) > button:not([id])
+
+URL: https://www.emirates.com/us/english/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.emerson.com/global
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.elgato.com/us/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie & Tracking Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.efirstbank.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.edinarealty.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.economist.com/
+CMP: Sourcepoint-frame
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage your cookies
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(3):not([id]) > p:not([id]) > a:nth-child(3):not([id])
+
+URL: https://www.eaton.com/country.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.dyson.com/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.dsw.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookie preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.druryhotels.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.drberg.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Setting
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div:nth-child(1)#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.dodgeandcox.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.dillards.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.dhl.com/us-en/home.html?locale=true
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Consent Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.deseret.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.depop.com/
+CMP: depop
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage
+    Selector: body > div:not([id]) > div:nth-child(4):not([id])[data-testid="cookieBanner"] > div:nth-child(2):not([id]) > button:nth-child(1):not([id])[data-testid="cookieBanner__manageCookiesButton"] > span:not([id])
+
+URL: https://www.deltafaucet.com/
+CMP: Complianz opt-out
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(1)#securitiCmpCookiePrefBtn
+
+URL: https://www.dealerrater.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIE PREFERENCES
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.datanyze.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.dairyqueen.com/en-us/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.curtmfg.com/
+CMP: TrustArc-top
+Has reject button elsewhere: Yes
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div:not([id]) > div:nth-child(11):not([id]) > div:nth-child(10)#teconsent > a:nth-child(2)#icon-id03707176439259213
+
+URL: https://www.culvers.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.cricketwireless.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage your preferences
+    Selector: body > div#bannerWrapper > div#banner > div:nth-child(2)#contentRow > div:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > button:nth-child(3)#manageCookie
+
+URL: https://www.corsair.com/us/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie & Tracking Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.comptia.org/en-us/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.commonsensemedia.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Adjust cookie settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.collinsdictionary.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.coindesk.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.cmegroup.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.clover.com/
+CMP: Evidon
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#_evidon_banner > button:nth-child(4)#_evidon-option-button
+
+URL: https://www.classical-music.com/
+CMP: Sourcepoint-frame
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MORE OPTIONS
+    Selector: body > div:not([id]) > div:nth-child(2)#notice > div:nth-child(3):not([id]) > div:nth-child(1):not([id]) > button:not([id])
+
+URL: https://www.cisco.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div#onetrust-group-container > div:nth-child(2)#onetrust-policy > div#onetrust-policy-text > div:nth-child(2):not([id]) > a:nth-child(2):not([id])
+
+URL: https://www.cigna.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.christianpost.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.christianbook.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your State-Specific Privacy Choices
+    Selector: body > div#container > div:nth-child(3)#main-frame > div:nth-child(3):not([id]) > div:nth-child(4):not([id]) > a:nth-child(2):not([id])
+
+URL: https://www.chipotle.com/
+CMP: ketch
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#lanyard_root > div:not([id]) > div#ketch-banner > div#ketch-consent-banner > div:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2)#ketch-banner-buttons-container-compact > button:nth-child(3)#ketch-banner-button-tertiary
+
+URL: https://www.chefstore.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.chamberlain.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.chairish.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#js-cookie-banner > div:not([id]) > span:nth-child(1):not([id]) > button:not([id])
+
+URL: https://www.centurylink.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.cell.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.celebritycruises.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.cdw.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+  - Text: Manage Cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(1)#onetrust-group-container > div:nth-child(2)#onetrust-policy > div#onetrust-policy-text > a:nth-child(2):not([id])
+
+URL: https://www.cbre.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.cat.com/global-selector.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.cars.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.carnival.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MANAGE COOKIE SETTINGS
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.carecredit.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIE SETTINGS
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.carandclassic.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.c-span.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.businesswire.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(3)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.budget.com/en/home
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.bswhealth.com/
+CMP: bswhealth
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#bsw-consentCookie > div:not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.brownells.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.bobcat.com/na/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.blueshieldca.com/en/home
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.bluehost.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div:not([id]) > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.big5sportinggoods.com/store/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.biblio.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage your privacy settings
+    Selector: body > div#cookie-disclaimer > div:not([id]) > p:nth-child(2):not([id]) > a:not([id])
+
+URL: https://www.bettycrocker.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.betterworldbooks.com/
+CMP: Cybotcookiebot
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage My Cookies
+    Selector: body > div#CybotCookiebotDialog > div:not([id]) > div:nth-child(3)#CybotCookiebotDialogTabContent > div:nth-child(1)#CybotCookiebotDialogBody > div:nth-child(2):not([id]) > div:nth-child(2)#CybotCookiebotDialogBodyEdgeMoreDetails > a#CybotCookiebotDialogBodyEdgeMoreDetailsLink
+
+URL: https://www.bestwestern.com/en_US.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.belkin.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.behr.com/consumer
+CMP: Complianz opt-out
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(1)#securitiCmpCookiePrefBtn
+
+URL: https://www.beenverified.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.bbcgoodfood.com/
+CMP: Sourcepoint-frame
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MORE OPTIONS
+    Selector: body > div:not([id]) > div:nth-child(2)#notice > div:nth-child(3):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.bbb.org/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > iabbb-cookies-message:not([id]) > section:nth-child(1):not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.barnesandnoble.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.avis.com/en/home
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.avalara.com/us/en/index.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > div:nth-child(4):not([id]) > button#onetrust-pc-btn-handler
+
+URL: https://www.availity.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > div:nth-child(2)#onetrust-pc-btn-container > button#onetrust-pc-btn-handler
+
+URL: https://www.atlasobscura.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div:nth-child(1)#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.athenahealth.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.astound.com/
+CMP: cookieyes
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: CUSTOMIZE
+    Selector: body > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.artsy.net/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#root > div:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.se.com/ww/en/brands/apc-country-selector/?ref_url=/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change your cookie settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.apa.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Configure
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.anntaylor.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(1)#onetrust-group-container > div#onetrust-policy > div:nth-child(2)#onetrust-policy-text > a:nth-child(1):not([id])
+
+URL: https://www.analog.com/en/index.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.americanbar.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(3)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.amd.com/en.html
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.amainhobbies.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div#CybotCookiebotDialog > div:not([id]) > div:nth-child(4)#CybotCookiebotDialogFooter > div:nth-child(1):not([id]) > div#CybotCookiebotDialogBodyButtons > div:nth-child(2)#CybotCookiebotDialogBodyButtonsWrapper > button:nth-child(2)#CybotCookiebotDialogBodyLevelButtonCustomize
+  - Text: Customize
+    Selector: body > div#CybotCookiebotDialog > div:not([id]) > div:nth-child(4)#CybotCookiebotDialogFooter > div:nth-child(1):not([id]) > div#CybotCookiebotDialogBodyButtons > div:nth-child(2)#CybotCookiebotDialogBodyButtonsWrapper > button:nth-child(2)#CybotCookiebotDialogBodyLevelButtonCustomize
+
+URL: https://www.ama-assn.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.allegiantair.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.alignable.com/
+CMP: osano
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div:not([id]) > div:nth-child(2)#a6d0937e-3446-48ba-88f9-96259d997d75 > div:nth-child(2):not([id]) > a:nth-child(2):not([id])
+
+URL: https://www.aldi.us/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.ala.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.akc.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.airstream.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.aircraftspruce.com/
+CMP: ketch
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize Settings
+    Selector: body > div#lanyard_root > div:not([id]) > div#ketch-banner > div#ketch-consent-banner > div:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2)#ketch-banner-buttons-container-compact > button:nth-child(2)#ketch-banner-button-secondary
+
+URL: https://www.ahajournals.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.adp.com/
+CMP: Complianz opt-out
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Set Your Preferences
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(3)#securitiCmpCookiePrefBtn
+
+URL: https://www.adoptapet.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.acura.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.1stdibs.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://weedmaps.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage
+    Selector: body > div#__next > div:nth-child(1):not([id])[data-testid="notification"] > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://www.vsco.co/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: YOUR PRIVACY CHOICES
+
+    Selector: body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(1):not([id])
+
+URL: https://vortexoptics.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MANAGE COOKIES
+    Selector: body > aside:not([id]) > div:nth-child(1):not([id]) > div:nth-child(3):not([id]) > div:nth-child(2):not([id]) > button:nth-child(2):not([id])
+
+URL: https://usafacts.org/
+CMP: Termly
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Preferences
+    Selector: body > div#termly-code-snippet-support > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+  - Text: Preferences
+    Selector: body > div#termly-code-snippet-support > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > span:nth-child(2):not([id])[data-testid="preferences-link"]
+
+URL: https://us.puma.com/us/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://us.msi.com/
+CMP: civic-cookie-control
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings
+    Selector: body > div#ccc > div:nth-child(3)#ccc-notify > div:nth-child(2):not([id]) > button:nth-child(2):not([id])
+
+URL: https://us.boden.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MANAGE COOKIES
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://www.ulta.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://topclassactions.com/
+CMP: ct-ultimate-gdpr
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change Settings
+    Selector: body > div#ct-ultimate-gdpr-cookie-popup > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(3)#ct-ultimate-gdpr-cookie-change-settings
+
+URL: https://timex.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: View Cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://tidal.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div:nth-child(1)#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://theonion.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings
+    Selector: body > div#consent-banner-main > div#consent-banner-wall > div:nth-child(1)#consent-banner-modal > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(1):not([id])
+
+URL: https://support.lenovo.com/us/en/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#_evidon-barrier-wrapper > div:nth-child(2)#_evidon-banner > div:nth-child(1)#_evidon-banner-content > div:nth-child(5):not([id]) > button:nth-child(1)#_evidon-banner-cookiebutton
+
+URL: https://supercell.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://stripchat.com/
+CMP: stripchat.com
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage
+    Selector: body > div#body > div:nth-child(3):not([id]) > div:not([id]) > div:nth-child(7):not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://stores.barnesandnoble.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+  - Text: Manage Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://stores.aldi.us/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://store.mopar.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(3)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://skims.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: PREFERENCES
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://shop.kubotausa.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > div:nth-child(3)#onetrust-pc-btn-container > button#onetrust-pc-btn-handler
+
+URL: https://search.worldcat.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize cookie settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://savagearms.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#becookiebarid > div#becookiebarpanelid > div#becookie_desktop_outerdiv > div#becookie_desktop_content > div:not([id]) > div:nth-child(2):not([id]) > p:nth-child(2)#beconsentpref-actions > button:nth-child(3)#becookiebarprefbuttonid
+
+URL: https://salons.greatclips.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://sailboatdata.com/
+CMP: Complianz banner
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage options
+    Selector: body > div#cmplz-cookiebanner-container > div:nth-child(2):not([id]) > div:nth-child(6):not([id]) > a:nth-child(5):not([id])
+
+URL: https://sage-advices.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#cookie-law-info-bar > span:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(1):not([id])
+
+URL: https://www.roomstogo.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Options
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > div:nth-child(3):not([id]) > button#onetrust-pc-btn-handler
+
+URL: https://riverside.com/
+CMP: cookiehub
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie settings
+    Selector: body > div:not([id]) > div:not([id]) > div#ch2-dialog > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://ring.com/
+CMP: ring
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Settings
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://retrobowlofficial.com/
+CMP: quantcast
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MORE OPTIONS
+    Selector: body > div#qc-cmp2-container > div#qc-cmp2-main > div:not([id]) > div#qc-cmp2-ui > div:nth-child(2):not([id]) > div:not([id]) > button:nth-child(1):not([id])
+
+URL: https://religionnews.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#cookie-law-info-bar > span:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(1):not([id])
+
+URL: https://psycnet.apa.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Configure
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.hopkinsmedicine.org/profiles
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.geappliances.com/ge/appliances.htm
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://printify.com/
+CMP: cookiefirst.com
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > dialog:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > button:not([id])
+
+URL: https://powersports.honda.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://powerequipment.honda.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.papajohns.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIES SETTINGS
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://ouraring.com/
+CMP: ouraring
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookies
+    Selector: body > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(2):not([id])
+  - Text: Manage cookies
+    Selector: body > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > p:nth-child(2):not([id]) > button:nth-child(2)#open-consent
+
+URL: https://orcid.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://online.hillsdale.edu/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://ok.ru/dk?st.cmd=anonymMain&cmd=PopLayer&st.layer.cmd=PopLayerClose
+CMP: ok
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Configure
+    Selector: body > div#hook_Block_BodySwitcher > div:nth-child(3)#topPanel > div:nth-child(3):not([id]) > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.officedepot.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > div:nth-child(2)#onetrust-pc-btn-container > button#onetrust-pc-btn-handler
+
+URL: https://oemdrivers.com/
+CMP: termsfeed
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change my preferences
+    Selector: body > div:not([id]) > div#termsfeed-com---nb > div:not([id]) > div:nth-child(3):not([id]) > button:nth-child(2):not([id])
+
+URL: https://news.gallup.com/home.aspx
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: MANAGE PREFERENCES
+    Selector: body > section#gcb_6f8f3 > dialog:not([id]) > section:nth-child(2):not([id]) > form:nth-child(3):not([id]) > div:nth-child(2):not([id]) > a:nth-child(2):not([id])
+
+URL: https://newrepublic.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.neighborwho.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://nb.fidelity.com/static/mybenefits/netbenefitslogin/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://myturbotax.intuit.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://mydoctor.kaiserpermanente.org/ncal/home/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://muzzle-loaders.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Preferences
+    Selector: body > div#consent_container > div:nth-child(1)#gdpr_banner > div:nth-child(2):not([id]) > div:nth-child(2)#preference
+
+URL: https://www.mpb.com/en-us
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.merrell.com/US/en/home
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://massinitiative.org/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#cookie-law-info-bar > span:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(1):not([id])
+
+URL: https://marketplace.akc.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://maps.roadtrippers.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://mailchimp.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://lustery.com/
+CMP: cookieconsent3
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div#cc-main > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(2):not([id]) > div:not([id]) > button:nth-child(2):not([id])
+
+URL: https://accounts.principal.com/oauth2/aus8xm6hson7W0A385d7/v1/authorize?response_type=code&client_id=Tzs5Rup3AXjUDya9qzzUY2uL8SuN4qvS&redirect_uri=https%3A%2F%2Fcredentials.principal.com%2Fportal%2Fapi%2Fauth%2Fcallback%2Fokta&scope=openid+profile+offline_access&state=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIiwia2lkIjoiRmtPMTlZM0xJNE5QX1pMOVkyTzBsTkE1T0Z6OUlja2dwT2t0bHNDbDkwM1hiSTNFbWE4WTNRQ1JJNGdjTGxRMzQwMll6ekRuRHhXNG9uWjhVMWNPV3cifQ..HZblTSoN4QyTeWHkz46EVQ.ysv4ss5ND1vYYukT0KsVSIZE7GMqUCYqM5dVEs6dovyIGvpyda7JBCCy291sEmkhMxUsZvek17aqEnYeghjn2_qvtC11e0JCfeX-3o_XG3s0b5BkuKoJvyADAyGhbyqQwZMg0Cq-siGFJt4A76FCs2aJwkUn-AA9gScl0ltHuKmj8J1atg1_WUtRVdVH84DT.MVjqAEZPznUoG3PiSC5zQIDACfdWzcB5KG97H8XF-tM&code_challenge=vP5eturKN3pRfO0g-5juk24BK6SEEsoK8IBPbJUk2wA&code_challenge_method=S256
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://locations.michaels.com/
+CMP: Complianz opt-out
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(2)#securitiCmpCookiePrefBtn
+
+URL: https://www.livingspaces.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Preferences
+    Selector: body > div:not([id]) > div:nth-child(12)#data-privacy-banner > div:not([id]) > span:nth-child(1):not([id]) > a:nth-child(3):not([id])
+
+URL: https://littlethings.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://linktr.ee/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://link.springer.com/
+CMP: cc-banner-springer
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage preferences
+    Selector: body > dialog:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > p:nth-child(4):not([id]) > button:not([id])
+
+URL: https://lancasterarchery.com/
+CMP: pandectes
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Preferences
+    Selector: body > div#pandectes-banner > div:not([id]) > div:nth-child(3):not([id]) > button:nth-child(1):not([id])
+
+URL: https://kick.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie settings
+    Selector: body > div:not([id]) > div:nth-child(5):not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://lww.com/pages/default.aspx
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://jamanetwork.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://insiderx.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.iherb.com/
+CMP: TrustArc-top
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Settings
+    Selector: body > header:not([id]) > div:nth-child(1)#universal-branded-header > div:nth-child(2):not([id]) > div:nth-child(2)#consent_blackbar > div:nth-child(3)#truste-consent-track > div#truste-banner-wrapper > div#truste-consent-content > div:nth-child(2)#truste-consent-buttons > button:nth-child(3)#truste-show-consent-onclick
+
+URL: https://hondanews.com/en-US
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.hobbylobby.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://hibid.com/
+CMP: com_didomi.io
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Configure My Privacy Choices
+    Selector: body > div#didomi-host > div:not([id]) > div:not([id]) > div#didomi-notice[data-testid="notice"] > div:not([id]) > div:nth-child(2)#buttons > button:nth-child(1)#didomi-notice-learn-more-button
+
+URL: https://help.splunk.com/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div#onetrust-group-container > div:nth-child(2)#onetrust-policy > div#onetrust-policy-text > div:nth-child(2):not([id]) > a:nth-child(2):not([id])
+
+URL: https://healthy.kaiserpermanente.org/front-door
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://health.aws.amazon.com/health/status
+CMP: aws.amazon.com
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie preferences
+    Selector: body > div#app-root > div:not([id]) > div:nth-child(4):not([id]) > div:nth-child(2):not([id]) > div:not([id]) > div#shd-footer-items-group-right > div:not([id]) > div:nth-child(4):not([id]) > a#shd-footer-cookie-prefs
+
+URL: https://giphy.com/
+CMP: com_didomi.io
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies
+    Selector: body > div#didomi-host > div:not([id]) > div#didomi-notice > div:nth-child(2):not([id]) > div:nth-child(2)#buttons > button:nth-child(1)#didomi-notice-do-not-sell-button
+
+URL: https://games.washingtonpost.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(3)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://forums.elderscrollsonline.com/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: COOKIE PREFERENCES
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://forum-en.msi.com/index.php
+CMP: civic-cookie-control
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Preferences
+    Selector: body > div#ccc > div:nth-child(3)#ccc-notify > div:nth-child(2):not([id]) > button:nth-child(2):not([id])
+
+URL: https://www.ford.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://foamfanatic.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#cookie-law-info-bar > span:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(1):not([id])
+
+URL: https://www.flooranddecor.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://fee.org/
+CMP: cookie-script
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text:  MANAGE COOKIES
+    Selector: body > div#cookiescript_injected_wrapper > div#cookiescript_injected > div:nth-child(5)#cookiescript_manage_wrap
+
+URL: https://fawesome.tv/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage
+    Selector: body > div:not([id]) > div:nth-child(2)#gdpr_cookie_info_bar-wr > div:nth-child(1):not([id]) > div:nth-child(3):not([id]) > button:nth-child(2):not([id])
+
+URL: https://elements.envato.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage preferences
+    Selector: body > div#CybotCookiebotDialog > div:not([id]) > div:nth-child(4)#CybotCookiebotDialogFooter > div:nth-child(1):not([id]) > div#CybotCookiebotDialogBodyButtons > div:nth-child(2)#CybotCookiebotDialogBodyButtonsWrapper > button:nth-child(2)#CybotCookiebotDialogBodyLevelButtonCustomize
+
+URL: https://education.ti.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage preferences
+    Selector: body > div#tiGDPRecModal > div:nth-child(2):not([id]) > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(1)#consent_pref_center
+
+URL: https://editorial.rottentomatoes.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.dyson.com/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://www.dsw.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookie preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://documentation.meraki.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div#onetrust-group-container > div:nth-child(2)#onetrust-policy > div#onetrust-policy-text > div:nth-child(2):not([id]) > a:nth-child(2):not([id])
+
+URL: https://docs.nvidia.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.dillards.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://dictionary.cambridge.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://developer.nvidia.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://coolors.co/
+CMP: iubenda
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage cookies
+    Selector: body > div#iubenda-cs-banner > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(4):not([id]) > div:nth-child(1):not([id]) > button:not([id])
+
+URL: https://concretecaptain.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#cookie-law-info-bar > span:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(1):not([id])
+
+URL: https://community.tp-link.com/us/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: your privacy choices
+    Selector: body > div#__nuxt > div:nth-child(2)#__layout > div:not([id]) > div:nth-child(4)#tp-cookie-banner > div:nth-child(1):not([id]) > div:not([id]) > p:nth-child(1):not([id]) > a:not([id])
+
+URL: https://community.splunk.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div#onetrust-group-container > div:nth-child(2)#onetrust-policy > div#onetrust-policy-text > div:nth-child(2):not([id]) > a:nth-child(2):not([id])
+
+URL: https://community.cisco.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Change Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div#onetrust-group-container > div:nth-child(2)#onetrust-policy > div#onetrust-policy-text > div:nth-child(2):not([id]) > a:nth-child(2):not([id])
+
+URL: https://community.acer.com/en
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://clubwyndham.wyndhamdestinations.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.christianbook.com/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your State-Specific Privacy Choices
+    Selector: body > div#container > div:nth-child(3)#main-frame > div:nth-child(3):not([id]) > div:nth-child(4):not([id]) > a:nth-child(2):not([id])
+
+URL: https://centurylink.net/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://www.cdw.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+  - Text: Manage Cookies
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(1)#onetrust-group-container > div:nth-child(2)#onetrust-policy > div#onetrust-policy-text > a:nth-child(2):not([id])
+
+URL: https://cafemom.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://bruntworkwear.com/
+CMP: Complianz optin
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Preferences
+    Selector: body > div:not([id]) > div#csm-wrapper > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://brokercheck.finra.org/
+CMP: Complianz opt-out
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize
+    Selector: body > div:not([id]) > div:nth-child(2):not([id]) > a:nth-child(2)#securitiCmpCookiePrefBtn
+
+URL: https://birdeye.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(2)#onetrust-pc-btn-handler
+
+URL: https://bigten.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookies Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://automobiles.honda.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Manage Cookie Preferences
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button#onetrust-pc-btn-handler
+
+URL: https://athome.fandango.com/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Your Privacy Choices
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://ascopubs.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://apastyle.apa.org/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Configure
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://adblockplus.org/
+CMP: (none)
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Settings   
+    Selector: body > div#cookiebar > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > ul:not([id]) > li:nth-child(2):not([id]) > button:nth-child(1):not([id])
+
+URL: https://acorn.tv/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Customize Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
+
+URL: https://1v1.lol/
+CMP: Onetrust
+Has reject button elsewhere: No
+Settings buttons found:
+  - Text: Cookie Settings
+    Selector: body > div#onetrust-consent-sdk > div:nth-child(2)#onetrust-banner-sdk > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2)#onetrust-button-group-parent > div#onetrust-button-group > button:nth-child(1)#onetrust-pc-btn-handler
