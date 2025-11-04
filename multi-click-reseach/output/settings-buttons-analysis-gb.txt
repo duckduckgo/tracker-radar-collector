@@ -1,5 +1,5 @@
 Settings Button Analysis Results
-Generated: 2025-11-04T09:29:51.786Z
+Generated: 2025-11-04T13:02:53.144Z
 
 ======================================================================
 STATISTICS
@@ -142,6 +142,85 @@ SETTINGS BUTTON TEXTS (sorted by frequency):
      1 | customise preferences
      1 | customise my cookies
      1 | manage your cookies
+
+POTENTIAL FALSE NEGATIVES (LLM matched, regex didn't):
+Total unique button texts: 68
+
+    18 | privacy settings
+    16 | continue
+    13 | more info
+    10 | privacy manager
+     6 | reject and manage
+     5 | english
+     4 | privacy center
+     4 | more
+     3 | save settings
+     3 | edit settings
+     3 | no, manage cookies
+     3 | save preferences
+     3 | accept recommended settings
+     2 | review your privacy settings
+     2 | no, customize settings
+     2 | edit preferences
+     2 | select your cookie preferences
+     2 | no, take me to cookie settings
+     2 | no, customise
+     2 | configuración de cookies
+     2 | let me choose my cookies
+     2 | update cookie preferences
+     2 | newid gosodiadau cwcis
+     2 | select cookies
+     2 | show cookie preferences
+     2 | more details
+     1 | let me choose which cookies i want
+     1 | show settings
+     1 | manage consents
+     1 | tomtom.comcookies
+     1 | update settings
+     1 | view our cookie policy and update your preferences any time here
+     1 | edit cookie settings
+     1 | individual cookies settings
+     1 | podrobné nastavení
+     1 | go to settings
+     1 | no, see settings
+     1 | find out more and manage your cookies
+     1 | confirm cookie settings
+     1 | edit cookie preferences
+     1 | manage selection
+     1 | you can find out more in our privacy policy and cookie policy and manage the choices available to you at any time by going to privacy settings at the bottom of any page.
+     1 | learn more and customise
+     1 | no, take me to cookies settings
+     1 | no, take me to settings
+     1 | manage tracking
+     1 | manage consent
+     1 | reject all or customise choices
+     1 | review cookie settings
+     1 | learn more and customize
+     1 | no, manage settings
+     1 | customise ..
+     1 | learn more about cookies manage your cookie settings
+     1 | no, review settings
+     1 | cookie preference centre
+     1 | tailor your experience
+     1 | configuration
+     1 | cookie settings page
+     1 | adjust settings...
+     1 | update privacy settings
+     1 | more informations
+     1 | see options
+     1 | settings reject
+     1 | learn more and manage cookies
+     1 | set your preferences here
+     1 | customize reject all accept all
+     1 | manage access
+     1 | see purposes and manage privacy choices
+
+LLM CACHE STATISTICS:
+  Concurrency limit: 10
+  API calls made: 608
+  Cache hits: 2129
+  Total checks: 2737
+  Cache hit rate: 77.8%
 
 ======================================================================
 DETAILED RESULTS: Sites with Settings Buttons

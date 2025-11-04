@@ -4,13 +4,90 @@ const fs = require('fs').promises;
 const fsSync = require('fs');
 const path = require('path');
 const { program } = require('commander');
+const { OpenAI } = require('openai');
+const { z } = require('zod');
+const { zodResponseFormat } = require('openai/helpers/zod');
+const asyncLib = require('async');
 const { isSettingsButton, cleanButtonText } = require('./option-buttons-regexes.js');
+
+/**
+ * Check if a button text is a settings/preferences button using LLM
+ * @param {import('openai').OpenAI} openai
+ * @param {string} buttonText
+ * @returns {Promise<boolean>}
+ */
+async function checkSettingsButtonLLM(openai, buttonText) {
+    const systemPrompt = `
+You are an expert in web application user interfaces and cookie consent dialogs. You are given a text from a button found in a cookie popup. Your task is to determine whether this button is a "settings" or "preferences" button that would allow users to customize their cookie/privacy preferences.
+
+A settings/preferences button typically:
+- Allows users to manage or customize their cookie/privacy settings
+- Opens a dialog where users can choose which types of cookies to accept/reject
+- Provides access to more detailed consent options
+- May be labeled with words like: "settings", "preferences", "customize", "manage", "options", "choices", "configure", etc.
+
+Examples of settings button text:
+- "Cookie Settings"
+- "Manage Preferences"
+- "Customize Cookies"
+- "Show Purposes"
+- "More Options"
+- "Settings"
+- "Preferences"
+- "Manage Cookies"
+- "Change Settings"
+
+Examples of NON-settings button text:
+- "Accept All"
+- "Reject All"
+- "I Agree"
+- "Continue"
+- "Close"
+- "Learn More"
+- "Privacy Policy"
+- "Save"
+- "Submit"
+
+Note: Focus on whether the button opens settings/preferences, not whether it saves or applies them.
+`;
+
+    const SettingsButtonClassification = z.object({
+        isSettingsButton: z.boolean(),
+    });
+
+    try {
+        const completion = await openai.beta.chat.completions.parse({
+            // model: 'gpt-5-nano-2025-08-07',
+            model: 'gpt-4.1-nano-2025-04-14',
+            messages: [
+                {
+                    role: 'system',
+                    content: systemPrompt,
+                },
+                {
+                    role: 'user',
+                    content: buttonText,
+                },
+            ],
+            response_format: zodResponseFormat(SettingsButtonClassification, 'SettingsButtonClassification'),
+        });
+
+        const result = completion.choices[0].message.parsed;
+        return result?.isSettingsButton ?? false;
+    } catch (error) {
+        console.error(`Error classifying button text "${buttonText}":`, error.message);
+    }
+
+    return false;
+}
 
 /**
  * Analyze cookie popups to find settings button opportunities
  */
 class SettingsButtonAnalyzer {
-    constructor() {
+    constructor(openai = null, concurrencyLimit = 10) {
+        this.openai = openai;
+        this.concurrencyLimit = concurrencyLimit;
         this.stats = {
             totalSites: 0,
             sitesWithLlmMatchNoReject: 0,
@@ -21,8 +98,12 @@ class SettingsButtonAnalyzer {
             sitesWithLlmMatch: 0,
             settingsButtonTexts: new Map(),
             cmpNamesFound: new Map(),
+            potentialFalseNegatives: new Map(), // buttons that LLM thinks are settings but regex didn't match
+            llmChecksPerformed: 0, // total number of LLM API calls made
+            llmCacheHits: 0, // number of times we used cached results
         };
         this.detailedResults = [];
+        this.llmCache = new Map(); // Cache for LLM results: cleanedText -> boolean
     }
 
     /**
@@ -71,6 +152,42 @@ class SettingsButtonAnalyzer {
     }
 
     /**
+     * Check multiple buttons with LLM in parallel
+     * @param {Array<{originalText: string, cleanedText: string}>} buttons - Buttons to check
+     * @returns {Promise<void>}
+     */
+    async checkButtonsWithLLMParallel(buttons) {
+        // Deduplicate by cleaned text to avoid checking the same text multiple times
+        const uniqueButtons = Array.from(
+            new Map(buttons.map(b => [b.cleanedText, b])).values()
+        );
+
+        console.log(`Checking ${uniqueButtons.length} unique button texts with LLM (${this.concurrencyLimit} concurrent)...`);
+
+        await asyncLib.mapLimit(
+            uniqueButtons,
+            this.concurrencyLimit,
+            async (button) => {
+                this.stats.llmChecksPerformed++;
+                const matchedByLLM = await checkSettingsButtonLLM(this.openai, button.originalText);
+
+                // Cache the result
+                this.llmCache.set(button.cleanedText, matchedByLLM);
+
+                // Update stats if it's a potential false negative
+                if (matchedByLLM) {
+                    // Count how many times this cleaned text appears in the original buttons array
+                    const occurrences = buttons.filter(b => b.cleanedText === button.cleanedText).length;
+                    this.stats.potentialFalseNegatives.set(
+                        button.cleanedText,
+                        (this.stats.potentialFalseNegatives.get(button.cleanedText) || 0) + occurrences
+                    );
+                }
+            }
+        );
+    }
+
+    /**
      * Process a JSON file and analyze for settings button opportunities
      * @param {string} filePath - Path to JSON file
      * @returns {Promise<void>}
@@ -94,6 +211,7 @@ class SettingsButtonAnalyzer {
             let siteHasSettingsButton = false;
             let siteHasLlmMatch = false;
             const settingsButtonsFound = [];
+            const buttonsToCheckWithLLM = []; // Collect buttons that need LLM checking
 
             // Iterate through scraped frames
             for (const frame of data.data.cookiepopups.scrapedFrames) {
@@ -111,26 +229,64 @@ class SettingsButtonAnalyzer {
 
                             // Look for settings buttons in otherButtons
                             if (popup.otherButtons) {
+                                let foundByRegex = false;
                                 for (const button of popup.otherButtons) {
-                                    if (button.text && isSettingsButton(button.text)) {
-                                        siteHasSettingsButton = true;
-                                        settingsButtonsFound.push({
-                                            text: button.text,
-                                            selector: button.selector
-                                        });
+                                    if (button.text) {
+                                        const matchedByRegex = isSettingsButton(button.text);
 
-                                        // Track frequency of settings button texts
-                                        const text = cleanButtonText(button.text);
-                                        this.stats.settingsButtonTexts.set(
-                                            text,
-                                            (this.stats.settingsButtonTexts.get(text) || 0) + 1
-                                        );
+                                        if (matchedByRegex) {
+                                            foundByRegex = true;
+                                            siteHasSettingsButton = true;
+                                            settingsButtonsFound.push({
+                                                text: button.text,
+                                                selector: button.selector
+                                            });
+
+                                            // Track frequency of settings button texts
+                                            const text = cleanButtonText(button.text);
+                                            this.stats.settingsButtonTexts.set(
+                                                text,
+                                                (this.stats.settingsButtonTexts.get(text) || 0) + 1
+                                            );
+                                        }
+                                    }
+                                }
+
+                                // Collect buttons for LLM checking if no regex match found
+                                if (this.openai && !foundByRegex) {
+                                    for (const button of popup.otherButtons) {
+                                        if (button.text) {
+                                            const text = cleanButtonText(button.text);
+
+                                            // Check cache first
+                                            if (this.llmCache.has(text)) {
+                                                this.stats.llmCacheHits++;
+                                                const matchedByLLM = this.llmCache.get(text);
+                                                if (matchedByLLM) {
+                                                    this.stats.potentialFalseNegatives.set(
+                                                        text,
+                                                        (this.stats.potentialFalseNegatives.get(text) || 0) + 1
+                                                    );
+                                                }
+                                            } else {
+                                                // Add to list for parallel checking
+                                                buttonsToCheckWithLLM.push({
+                                                    originalText: button.text,
+                                                    cleanedText: text
+                                                });
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                 }
+            }
+
+            // Check all collected buttons with LLM in parallel
+            if (buttonsToCheckWithLLM.length > 0) {
+                await this.checkButtonsWithLLMParallel(buttonsToCheckWithLLM);
             }
 
             // Update site-level stats
@@ -202,12 +358,27 @@ class SettingsButtonAnalyzer {
 
                     // Progress reporting for large datasets
                     if (processedCount % 500 === 0) {
-                        console.log(`Processed ${processedCount} files...`);
+                        if (this.openai) {
+                            console.log(`Processed ${processedCount} files... (${this.stats.llmChecksPerformed} API calls, ${this.stats.llmCacheHits} cache hits)`);
+                        } else {
+                            console.log(`Processed ${processedCount} files...`);
+                        }
                     }
                 }
             }
 
-            console.log(`\nCompleted processing ${processedCount} files total.\n`);
+            console.log(`\nCompleted processing ${processedCount} files total.`);
+            if (this.openai) {
+                console.log(`LLM API calls made: ${this.stats.llmChecksPerformed}`);
+                console.log(`Cache hits: ${this.stats.llmCacheHits}`);
+                console.log(`Total checks (API + cache): ${this.stats.llmChecksPerformed + this.stats.llmCacheHits}`);
+                const cacheHitRate = this.stats.llmCacheHits + this.stats.llmChecksPerformed > 0
+                    ? ((this.stats.llmCacheHits / (this.stats.llmCacheHits + this.stats.llmChecksPerformed)) * 100).toFixed(1)
+                    : 0;
+                console.log(`Cache hit rate: ${cacheHitRate}%\n`);
+            } else {
+                console.log();
+            }
 
         } catch (error) {
             console.error(`Error reading directory ${directory}:`, error.message);
@@ -274,6 +445,36 @@ class SettingsButtonAnalyzer {
             console.log();
         }
 
+        // Potential false negatives
+        if (this.stats.potentialFalseNegatives.size > 0) {
+            console.log('POTENTIAL FALSE NEGATIVES (LLM matched, regex didn\'t):');
+            console.log(`  Total unique button texts: ${this.stats.potentialFalseNegatives.size}`);
+            const sortedFN = Array.from(this.stats.potentialFalseNegatives.entries())
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 20);
+            for (const [text, count] of sortedFN) {
+                console.log(`  ${count.toString().padStart(4)} | ${text}`);
+            }
+            if (this.stats.potentialFalseNegatives.size > 20) {
+                console.log(`  ... and ${this.stats.potentialFalseNegatives.size - 20} more (see output file)`);
+            }
+            console.log();
+        }
+
+        // LLM cache statistics
+        if (this.openai) {
+            console.log('LLM CACHE STATISTICS:');
+            console.log(`  Concurrency limit: ${this.concurrencyLimit}`);
+            console.log(`  API calls made: ${this.stats.llmChecksPerformed}`);
+            console.log(`  Cache hits: ${this.stats.llmCacheHits}`);
+            console.log(`  Total checks: ${this.stats.llmChecksPerformed + this.stats.llmCacheHits}`);
+            const cacheHitRate = this.stats.llmCacheHits + this.stats.llmChecksPerformed > 0
+                ? ((this.stats.llmCacheHits / (this.stats.llmCacheHits + this.stats.llmChecksPerformed)) * 100).toFixed(1)
+                : 0;
+            console.log(`  Cache hit rate: ${cacheHitRate}%`);
+            console.log();
+        }
+
         console.log('='.repeat(70));
     }
 
@@ -335,6 +536,33 @@ class SettingsButtonAnalyzer {
             output.push('');
         }
 
+        // Add potential false negatives
+        if (this.stats.potentialFalseNegatives.size > 0) {
+            output.push('POTENTIAL FALSE NEGATIVES (LLM matched, regex didn\'t):');
+            output.push(`Total unique button texts: ${this.stats.potentialFalseNegatives.size}`);
+            output.push('');
+            const sortedFN = Array.from(this.stats.potentialFalseNegatives.entries())
+                .sort((a, b) => b[1] - a[1]);
+            for (const [text, count] of sortedFN) {
+                output.push(`  ${count.toString().padStart(4)} | ${text}`);
+            }
+            output.push('');
+        }
+
+        // Add LLM cache statistics
+        if (this.openai) {
+            output.push('LLM CACHE STATISTICS:');
+            output.push(`  Concurrency limit: ${this.concurrencyLimit}`);
+            output.push(`  API calls made: ${this.stats.llmChecksPerformed}`);
+            output.push(`  Cache hits: ${this.stats.llmCacheHits}`);
+            output.push(`  Total checks: ${this.stats.llmChecksPerformed + this.stats.llmCacheHits}`);
+            const cacheHitRate = this.stats.llmCacheHits + this.stats.llmChecksPerformed > 0
+                ? ((this.stats.llmCacheHits / (this.stats.llmCacheHits + this.stats.llmChecksPerformed)) * 100).toFixed(1)
+                : 0;
+            output.push(`  Cache hit rate: ${cacheHitRate}%`);
+            output.push('');
+        }
+
         // Add detailed results
         if (this.detailedResults.length > 0) {
             output.push('='.repeat(70));
@@ -371,6 +599,8 @@ program
     .version('1.0.0')
     .argument('<directory>', 'Path to directory containing JSON crawl files')
     .option('-o, --output <path>', 'Save results to file', './settings-buttons-analysis.txt')
+    .option('--check-false-negatives', 'Use OpenAI to check for potential false negatives (requires OPENAI_API_KEY env var)')
+    .option('-c, --concurrency <number>', 'Number of concurrent LLM API calls (default: 10)', '10')
     .helpOption('-h, --help', 'Show this help message')
     .parse();
 
@@ -381,6 +611,14 @@ async function main() {
     const options = program.opts();
     const directory = program.args[0];
     const outputPath = options.output;
+    const checkFalseNegatives = options.checkFalseNegatives;
+    const concurrency = parseInt(options.concurrency, 10);
+
+    // Validate concurrency
+    if (isNaN(concurrency) || concurrency < 1) {
+        console.error('Error: Concurrency must be a positive integer.');
+        process.exit(1);
+    }
 
     // Check if directory exists
     if (!fsSync.existsSync(directory)) {
@@ -393,16 +631,34 @@ async function main() {
         process.exit(1);
     }
 
+    // Initialize OpenAI client if false negatives check is requested
+    let openai = null;
+    if (checkFalseNegatives) {
+        if (!process.env.OPENAI_API_KEY) {
+            console.error('Error: OPENAI_API_KEY environment variable is not set.');
+            console.error('Please set it or remove the --check-false-negatives flag.');
+            process.exit(1);
+        }
+        openai = new OpenAI({
+            apiKey: process.env.OPENAI_API_KEY,
+        });
+        console.log('OpenAI client initialized for false negative detection.');
+    }
+
     console.log('='.repeat(70));
     console.log('Settings Button Analyzer');
     console.log('='.repeat(70));
     console.log(`Directory: ${directory}`);
     console.log(`Output file: ${outputPath}`);
+    console.log(`Check false negatives: ${checkFalseNegatives ? 'Yes' : 'No'}`);
+    if (checkFalseNegatives) {
+        console.log(`LLM concurrency limit: ${concurrency}`);
+    }
     console.log('='.repeat(70));
     console.log();
 
     try {
-        const analyzer = new SettingsButtonAnalyzer();
+        const analyzer = new SettingsButtonAnalyzer(openai, concurrency);
         await analyzer.processDirectory(directory);
         analyzer.outputResults();
         await analyzer.saveResults(outputPath);
