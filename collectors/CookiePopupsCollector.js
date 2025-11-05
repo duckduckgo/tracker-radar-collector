@@ -407,6 +407,46 @@ class CookiePopupsCollector extends ContentScriptCollector {
     }
 
     /**
+     * Classify all popups and buttons with LLM/regex (in-place)
+     * @param {ScrapeScriptResult} result
+     * @param {import('openai').OpenAI} openai
+     * @returns {Promise<{rejectButtons: ButtonData[], settingsButtons: ButtonData[]}>}
+     */
+    async classifyPopupsInScrapeResult(result, openai) {
+        let llmPopupDetected = false;
+        let regexPopupDetected = false;
+        const rejectButtons = [];
+        const settingsButtons = [];
+        if (result.potentialPopups.length > 0) {
+            // classify popups and buttons with LLM/regex
+            for (const popup of result.potentialPopups) {
+                const popupClassificationResult = await classifyPopup(popup, openai);
+                popup.llmMatch = popupClassificationResult.llmMatch;
+                popup.regexMatch = popupClassificationResult.regexMatch;
+                popup.rejectButtons = popupClassificationResult.rejectButtons;
+                popup.settingsButtons = popupClassificationResult.settingsButtons;
+                if (popupClassificationResult.rejectButtons.length > 0) {
+                    rejectButtons.push(...popupClassificationResult.rejectButtons);
+                }
+                if (popupClassificationResult.settingsButtons.length > 0) {
+                    settingsButtons.push(...popupClassificationResult.settingsButtons);
+                }
+                popup.otherButtons = popupClassificationResult.otherButtons;
+                if (popupClassificationResult.llmMatch) {
+                    llmPopupDetected = true;
+                }
+                if (popupClassificationResult.regexMatch) {
+                    regexPopupDetected = true;
+                }
+            }
+        }
+        result.llmPopupDetected = llmPopupDetected;
+        result.regexPopupDetected = regexPopupDetected;
+        this.log(`result.llmPopupDetected: ${result.llmPopupDetected}, rejectButtons.length: ${rejectButtons.length}, settingsButtons.length: ${settingsButtons.length}`);
+        return { rejectButtons, settingsButtons };
+    }
+
+    /**
      * @param {import('puppeteer-core').CDPSession} session
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId']} executionContextUniqueId
      * @param {ButtonData[]} settingsButtons
@@ -428,6 +468,18 @@ class CookiePopupsCollector extends ContentScriptCollector {
         const settingsResult = await this.scrapeSingleContext(executionContextUniqueId, session, false);
         if (settingsResult) {
             settingsResult.beforeSettings = result;
+            const { rejectButtons, settingsButtons } = await this.classifyPopupsInScrapeResult(settingsResult, openai);
+            if (rejectButtons.length > 0) {
+                // FIXME: handle case of multiple reject buttons
+                const rejectButton = rejectButtons[0];
+                this.log(`Clicking reject button in the settings page: ${rejectButton.selector} in ${executionContextUniqueId}`);
+                // if there is a reject button in the settings page, click it
+                await session.send('Runtime.evaluate', {
+                    expression: `document.querySelector('${rejectButton.selector}').click()`,
+                    allowUnsafeEvalBlockedByCSP: true,
+                    uniqueContextId: executionContextUniqueId,
+                });
+            }
         }
 
         return settingsResult;
@@ -457,36 +509,8 @@ class CookiePopupsCollector extends ContentScriptCollector {
             /** @type {ScrapeScriptResult} */
             const result = evalResult.result.value;
             if (result.cleanedText || result.potentialPopups.length > 0) {
-                // classify popups and buttons with LLM/regex
-                let llmPopupDetected = false;
-                let regexPopupDetected = false;
-                let hasRejectButtons = false;
-                const settingsButtons = [];
-                for (const popup of result.potentialPopups) {
-                    const popupClassificationResult = await classifyPopup(popup, openai);
-                    popup.llmMatch = popupClassificationResult.llmMatch;
-                    popup.regexMatch = popupClassificationResult.regexMatch;
-                    popup.rejectButtons = popupClassificationResult.rejectButtons;
-                    popup.settingsButtons = popupClassificationResult.settingsButtons;
-                    if (popupClassificationResult.rejectButtons.length > 0) {
-                        hasRejectButtons = true;
-                    }
-                    if (popupClassificationResult.settingsButtons.length > 0) {
-                        settingsButtons.push(...popupClassificationResult.settingsButtons);
-                    }
-                    popup.otherButtons = popupClassificationResult.otherButtons;
-                    if (popupClassificationResult.llmMatch) {
-                        llmPopupDetected = true;
-                    }
-                    if (popupClassificationResult.regexMatch) {
-                        regexPopupDetected = true;
-                    }
-                }
-                result.llmPopupDetected = llmPopupDetected;
-                result.regexPopupDetected = regexPopupDetected;
-
-                this.log(`result.llmPopupDetected: ${result.llmPopupDetected}, hasRejectButtons: ${hasRejectButtons}, settingsButtons.length: ${settingsButtons.length}`);
-                if (canTriggerSettingsFlow && result.llmPopupDetected && !hasRejectButtons && settingsButtons.length > 0) {
+                const { rejectButtons, settingsButtons } = await this.classifyPopupsInScrapeResult(result, openai);
+                if (canTriggerSettingsFlow && result.llmPopupDetected && rejectButtons.length === 0 && settingsButtons.length > 0) {
                     // if there's no one-click reject button, try to click the settings button
                     return this.settingsFlow(session, executionContextUniqueId, settingsButtons, result);
                 }
@@ -610,7 +634,6 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {boolean} [llmPopupDetected]
  * @property {boolean} [regexPopupDetected]
  * @property {ButtonData[]} [rejectButtons]
- * @property {ButtonData[]} [settingsButtons]
  * @property {ButtonData[]} [otherButtons]
  * @property {ScrapeScriptResult} [beforeSettings]
  */
