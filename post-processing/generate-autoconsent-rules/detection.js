@@ -1,6 +1,6 @@
 const { zodResponseFormat } = require('openai/helpers/zod');
 const { z } = require('zod');
-const { REJECT_PATTERNS, REJECT_NEVER_MATCH_PATTERNS, SETTINGS_PATTERNS, SETTINGS_NEVER_MATCH_PATTERNS } = require('./button-patterns');
+const { REJECT_PATTERNS, REJECT_NEVER_MATCH_PATTERNS, SETTINGS_PATTERNS, SETTINGS_NEVER_MATCH_PATTERNS, SAVE_PATTERNS } = require('./button-patterns');
 
 // FIXME: the detection patterns are defined both in autoconsent codebase and here. We should consolidate them in one place.
 /**
@@ -160,6 +160,18 @@ function isSettingsButton(buttonText) {
 }
 
 /**
+ * @param {string} buttonText
+ * @returns {boolean}
+ */
+function isSaveButton(buttonText) {
+    if (!buttonText) {
+        return false;
+    }
+
+    const cleanedButtonText = cleanButtonText(buttonText);
+    return SAVE_PATTERNS.some((p) => (p instanceof RegExp && p.test(cleanedButtonText)) || p === cleanedButtonText);
+}
+/**
  * @param {import('openai').OpenAI} openai
  * @param {string} text
  * @returns {Promise<boolean>}
@@ -218,17 +230,20 @@ Examples of NON-cookie popup text:
 
 /**
  * @param {import('./types').ButtonData[]} buttons
- * @returns {{rejectButtons: import('./types').ButtonData[], settingsButtons: import('./types').ButtonData[], otherButtons: import('./types').ButtonData[]}}
+ * @returns {{rejectButtons: import('./types').ButtonData[], settingsButtons: import('./types').ButtonData[], saveButtons: import('./types').ButtonData[], otherButtons: import('./types').ButtonData[]}}
  */
 function classifyButtons(buttons) {
     const rejectButtons = [];
     const settingsButtons = [];
+    const saveButtons = [];
     const otherButtons = [];
     for (const button of buttons) {
         if (isRejectButton(button.text)) {
             rejectButtons.push(button);
         } else if (isSettingsButton(button.text)) {
             settingsButtons.push(button);
+        } else if (isSaveButton(button.text)) {
+            saveButtons.push(button);
         } else {
             otherButtons.push(button);
         }
@@ -236,6 +251,7 @@ function classifyButtons(buttons) {
     return {
         rejectButtons,
         settingsButtons,
+        saveButtons,
         otherButtons,
     };
 }
@@ -255,13 +271,14 @@ async function classifyPopup(popup, openai) {
         llmMatch = await checkLLM(openai, popupText);
     }
 
-    const { rejectButtons, settingsButtons, otherButtons } = classifyButtons(popup.buttons);
+    const { rejectButtons, settingsButtons, saveButtons, otherButtons } = classifyButtons(popup.buttons);
 
     return {
         llmMatch,
         regexMatch,
         rejectButtons,
         settingsButtons,
+        saveButtons,
         otherButtons,
     };
 }
@@ -272,6 +289,7 @@ async function classifyPopup(popup, openai) {
  * @property {boolean} regexMatch
  * @property {import('./types').ButtonData[]} rejectButtons
  * @property {import('./types').ButtonData[]} settingsButtons
+ * @property {import('./types').ButtonData[]} saveButtons
  * @property {import('./types').ButtonData[]} otherButtons
  */
 
@@ -282,4 +300,5 @@ module.exports = {
     cleanButtonText,
     isRejectButton,
     isSettingsButton,
+    isSaveButton,
 };

@@ -722,6 +722,26 @@ const SETTINGS_PATTERNS = [
     /^((?:my|your).{0,100})?(?:settings|preferences|choices|options)$/i,
     'let me choose',
     'show purposes',
+    'privacy settings',
+    'privacy manager',
+    'reject and manage',
+    'edit settings',
+    'no, manage cookies',
+    'no, customize settings',
+    'edit preferences',
+    'select your cookie preferences',
+    'no, take me to cookie settings',
+    'no, customise',
+    'let me choose my cookies',
+    'update cookie preferences',
+    'show cookie preferences',
+    'edit cookie settings',
+];
+
+const SAVE_PATTERNS = [
+    /^(?:confirm|save|set|submit).{0,100}(?:my|cookie)*.{0,100}(?:preferences|settings|choices|options)?.{0,100}(?:and|&)?.{0,100}(?:close|continue)?$/i,
+    'accept selection',
+    'accept selected',
 ];
 
 module.exports = {
@@ -729,4 +749,5 @@ module.exports = {
     REJECT_NEVER_MATCH_PATTERNS,
     SETTINGS_PATTERNS,
     SETTINGS_NEVER_MATCH_PATTERNS,
+    SAVE_PATTERNS,
 };

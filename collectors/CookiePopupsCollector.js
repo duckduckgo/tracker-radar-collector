@@ -410,12 +410,13 @@ class CookiePopupsCollector extends ContentScriptCollector {
      * Classify all popups and buttons with LLM/regex (in-place)
      * @param {ScrapeScriptResult} result
      * @param {import('openai').OpenAI} openai
-     * @returns {Promise<{rejectButtons: ButtonData[], settingsButtons: ButtonData[]}>}
+     * @returns {Promise<{rejectButtons: ButtonData[], saveButtons: ButtonData[], settingsButtons: ButtonData[]}>}
      */
     async classifyPopupsInScrapeResult(result, openai) {
         let llmPopupDetected = false;
         let regexPopupDetected = false;
         const rejectButtons = [];
+        const saveButtons = [];
         const settingsButtons = [];
         if (result.potentialPopups.length > 0) {
             // classify popups and buttons with LLM/regex
@@ -424,13 +425,11 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 popup.llmMatch = popupClassificationResult.llmMatch;
                 popup.regexMatch = popupClassificationResult.regexMatch;
                 popup.rejectButtons = popupClassificationResult.rejectButtons;
+                popup.saveButtons = popupClassificationResult.saveButtons;
                 popup.settingsButtons = popupClassificationResult.settingsButtons;
-                if (popupClassificationResult.rejectButtons.length > 0) {
-                    rejectButtons.push(...popupClassificationResult.rejectButtons);
-                }
-                if (popupClassificationResult.settingsButtons.length > 0) {
-                    settingsButtons.push(...popupClassificationResult.settingsButtons);
-                }
+                rejectButtons.push(...popupClassificationResult.rejectButtons);
+                settingsButtons.push(...popupClassificationResult.settingsButtons);
+                saveButtons.push(...popupClassificationResult.saveButtons);
                 popup.otherButtons = popupClassificationResult.otherButtons;
                 if (popupClassificationResult.llmMatch) {
                     llmPopupDetected = true;
@@ -442,8 +441,8 @@ class CookiePopupsCollector extends ContentScriptCollector {
         }
         result.llmPopupDetected = llmPopupDetected;
         result.regexPopupDetected = regexPopupDetected;
-        this.log(`result.llmPopupDetected: ${result.llmPopupDetected}, rejectButtons.length: ${rejectButtons.length}, settingsButtons.length: ${settingsButtons.length}`);
-        return { rejectButtons, settingsButtons };
+        this.log(`result.llmPopupDetected: ${result.llmPopupDetected}, rejectButtons.length: ${rejectButtons.length}, saveButtons.length: ${saveButtons.length}, settingsButtons.length: ${settingsButtons.length}`);
+        return { rejectButtons, saveButtons, settingsButtons };
     }
 
     /**
@@ -468,7 +467,23 @@ class CookiePopupsCollector extends ContentScriptCollector {
         const settingsResult = await this.scrapeSingleContext(executionContextUniqueId, session, false);
         if (settingsResult) {
             settingsResult.beforeSettings = result;
-            const { rejectButtons, settingsButtons } = await this.classifyPopupsInScrapeResult(settingsResult, openai);
+            const { rejectButtons, saveButtons } = await this.classifyPopupsInScrapeResult(settingsResult, openai);
+            for (const popup of settingsResult.potentialPopups) {
+                for (const toggle of popup.toggles) {
+                    if (toggle.isDisabled) {
+                        continue;
+                    }
+                    if (toggle.type === 'checkbox' && toggle.isChecked || toggle.type === 'radio' && !toggle.isChecked) {
+                        this.log(`Clicking ${toggle.type} "${toggle.labelApprox}" in the settings page: ${toggle.selector} in ${executionContextUniqueId} document.querySelector('${toggle.selector}').click()`);
+                        const clickResult = await session.send('Runtime.evaluate', {
+                            expression: `document.querySelector('${toggle.selector}').click()`,
+                            allowUnsafeEvalBlockedByCSP: true,
+                            uniqueContextId: executionContextUniqueId,
+                        });
+                        this.log(`Click result: ${JSON.stringify(clickResult)}`);
+                    }
+                }
+            }
             if (rejectButtons.length > 0) {
                 // FIXME: handle case of multiple reject buttons
                 const rejectButton = rejectButtons[0];
@@ -476,6 +491,17 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 // if there is a reject button in the settings page, click it
                 await session.send('Runtime.evaluate', {
                     expression: `document.querySelector('${rejectButton.selector}').click()`,
+                    allowUnsafeEvalBlockedByCSP: true,
+                    uniqueContextId: executionContextUniqueId,
+                });
+            }
+            if (saveButtons.length > 0) {
+                // FIXME: handle case of multiple save buttons
+                const saveButton = saveButtons[0];
+                this.log(`Clicking save button in the settings page: ${saveButton.selector} in ${executionContextUniqueId}`);
+                // if there is a save button in the settings page, click it
+                await session.send('Runtime.evaluate', {
+                    expression: `document.querySelector('${saveButton.selector}').click()`,
                     allowUnsafeEvalBlockedByCSP: true,
                     uniqueContextId: executionContextUniqueId,
                 });
@@ -634,6 +660,8 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {boolean} [llmPopupDetected]
  * @property {boolean} [regexPopupDetected]
  * @property {ButtonData[]} [rejectButtons]
+ * @property {ButtonData[]} [settingsButtons]
+ * @property {ButtonData[]} [saveButtons]
  * @property {ButtonData[]} [otherButtons]
  * @property {ScrapeScriptResult} [beforeSettings]
  */
@@ -648,6 +676,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {boolean} [regexMatch]
  * @property {ButtonData[]} [rejectButtons]
  * @property {ButtonData[]} [settingsButtons]
+ * @property {ButtonData[]} [saveButtons]
  * @property {ButtonData[]} [otherButtons]
  */
 
