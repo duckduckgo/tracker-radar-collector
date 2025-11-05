@@ -402,8 +402,8 @@ function getLabelForInput(input) {
         const name = input.getAttribute('name')?.trim();
         if (name) return name;
 
-        // Method 10: Class name
-        return input.className?.trim() ?? '';
+        // Method 10: ID and class name
+        return input.id?.trim() || input.className?.trim() || '';
     } catch (e) {
         console.error(`Error getting label for input`, input, e);
         return '';
