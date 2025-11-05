@@ -24,6 +24,7 @@ const ELEMENT_TAGS_TO_SKIP = [
     'IMG',
     'MAP',
 ];
+const TOGGLE_SELECTOR = 'input[type=checkbox], input[aria-checked], input[type=radio][value=false]';
 
 /**
  * @param {HTMLElement} node
@@ -35,6 +36,24 @@ function isVisible(node) {
     }
     const style = window.getComputedStyle(node);
     if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') {
+        return false;
+    }
+    if (style.position === 'fixed' && style.display !== 'none') {
+        // fixed elements may be visible even if the parent is not
+        return true;
+    }
+    if (node.offsetParent) {
+        return true;
+    }
+    return false;
+}
+
+/**
+ * @param {HTMLElement} node
+ * @returns {boolean}
+ */
+function isVisibleAndInViewport(node) {
+    if (!isVisible(node)) {
         return false;
     }
     const rect = node.getBoundingClientRect();
@@ -99,7 +118,7 @@ function getPopupLikeElements() {
                     return NodeFilter.FILTER_SKIP;
                 }
                 const cssPosition = window.getComputedStyle(node).position;
-                if ((cssPosition === 'fixed' || cssPosition === 'sticky') && isVisible(node)) {
+                if ((cssPosition === 'fixed' || cssPosition === 'sticky') && isVisibleAndInViewport(node)) {
                     return NodeFilter.FILTER_ACCEPT;
                 }
                 return NodeFilter.FILTER_SKIP;
@@ -319,6 +338,90 @@ function getButtonData(el) {
 }
 
 /**
+ * @param {HTMLInputElement} input
+ * @returns {string}
+ */
+function getLabelForInput(input) {
+    try {
+        // Method 1: Standard label with 'for' attribute
+        if (input.id) {
+            const labelByFor = /** @type {HTMLLabelElement} */ (document.querySelector(`label[for="${CSS.escape(input.id)}"]`));
+            if (labelByFor) {
+                return labelByFor.innerText.trim();
+            }
+        }
+
+        // Method 2: Wrapping label
+        const wrappingLabel = input.closest('label');
+        if (wrappingLabel?.innerText) {
+            return wrappingLabel.innerText.trim();
+        }
+
+        // Method 3: aria-label
+        const ariaLabel = input.getAttribute('aria-label');
+        if (ariaLabel) return ariaLabel.trim();
+
+        // Method 4: aria-labelledby
+        const labelledBy = input.getAttribute('aria-labelledby');
+        if (labelledBy) {
+            const ids = labelledBy.split(/\s+/);
+            const texts = ids.map(id => document.getElementById(id)?.innerText).filter(Boolean);
+            if (texts.length > 0) return texts.join(' ').trim();
+        }
+
+        // Method 5: Title attribute
+        const title = input.getAttribute('title');
+        if (title) return title.trim();
+
+        // Method 6: Adjacent siblings (next first, then previous)
+        const nextSibling = /** @type {HTMLElement} */ (input.nextElementSibling);
+        if (nextSibling && nextSibling.innerText) {
+            return nextSibling.innerText.trim();
+        }
+
+        const prevSibling = /** @type {HTMLElement} */ (input.previousElementSibling);
+        if (prevSibling && prevSibling.innerText) {
+            return prevSibling.innerText.trim();
+        }
+
+        // Method 7: Parent text (less reliable)
+        if (input.parentElement && input.parentElement.innerText) {
+            return input.parentElement.innerText.trim();
+        }
+
+        // Method 8: Placeholder (not ideal but better than nothing)
+        const placeholder = input.getAttribute('placeholder')?.trim();
+        if (placeholder) return placeholder;
+
+        // Method 9: Name attribute as last resort
+        const name = input.getAttribute('name')?.trim();
+        if (name) return name;
+
+        // Method 10: Class name
+        return input.className?.trim() ?? '';
+    } catch (e) {
+        console.error(`Error getting label for input`, input, e);
+        return '';
+    }
+}
+
+/**
+ * @param {HTMLElement} el
+ * @returns {import('../CookiePopupsCollector').ToggleData[]}
+ */
+function getToggleData(el) {
+    return Array.from(el.querySelectorAll(TOGGLE_SELECTOR))
+        .filter(isVisible)
+        .map((/** @type {HTMLInputElement} */ t) => ({
+            type: /** @type {'checkbox' | 'radio'} */ (t.type),
+            labelApprox: getLabelForInput(t),
+            isChecked: t.checked,
+            isDisabled: t.disabled,
+            selector: getUniqueSelector(t),
+        }));
+}
+
+/**
  * @param {boolean} isFramed
  * @returns {import('../CookiePopupsCollector').PopupData[]}
  */
@@ -329,7 +432,7 @@ function collectPotentialPopups(isFramed) {
     } else {
         // for iframes, just take the whole document
         const doc = document.body || document.documentElement;
-        if (doc && isVisible(doc) && doc.innerText) {
+        if (doc && isVisibleAndInViewport(doc) && doc.innerText) {
             elements.push(doc);
         }
     }
@@ -346,6 +449,7 @@ function collectPotentialPopups(isFramed) {
                 text: el.innerText,
                 selector: getUniqueSelector(el),
                 buttons: getButtonData(el),
+                toggles: getToggleData(el),
             });
         }
     }

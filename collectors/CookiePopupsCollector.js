@@ -619,6 +619,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {string} text
  * @property {string} selector
  * @property {ButtonData[]} buttons
+ * @property {ToggleData[]} toggles
  * @property {boolean} [llmMatch]
  * @property {boolean} [regexMatch]
  * @property {ButtonData[]} [rejectButtons]
@@ -629,6 +630,15 @@ class CookiePopupsCollector extends ContentScriptCollector {
 /**
  * @typedef ButtonData
  * @property {string} text
+ * @property {string} selector
+ */
+
+/**
+ * @typedef ToggleData
+ * @property {'checkbox' | 'radio'} type
+ * @property {string} labelApprox
+ * @property {boolean} isChecked
+ * @property {boolean} isDisabled
  * @property {string} selector
  */
 
