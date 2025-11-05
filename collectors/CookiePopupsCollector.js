@@ -413,7 +413,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
      * @param {ScrapeScriptResult} result
      * @returns {Promise<ScrapeScriptResult>}
      */
-    async settingButtonFlow(session, executionContextUniqueId, settingsButtons, result) {
+    async settingsFlow(session, executionContextUniqueId, settingsButtons, result) {
         // FIXME: handle case of multiple settings buttons
         const settingsButton = settingsButtons[0];
         this.log(`Triggering settings flow for ${executionContextUniqueId} with button ${settingsButton.selector}`);
@@ -429,6 +429,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
         if (settingsResult) {
             settingsResult.beforeSettings = result;
         }
+
         return settingsResult;
     }
 
@@ -487,7 +488,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 this.log(`result.llmPopupDetected: ${result.llmPopupDetected}, hasRejectButtons: ${hasRejectButtons}, settingsButtons.length: ${settingsButtons.length}`);
                 if (canTriggerSettingsFlow && result.llmPopupDetected && !hasRejectButtons && settingsButtons.length > 0) {
                     // if there's no one-click reject button, try to click the settings button
-                    return this.settingButtonFlow(session, executionContextUniqueId, settingsButtons, result);
+                    return this.settingsFlow(session, executionContextUniqueId, settingsButtons, result);
                 }
                 return result;
             }
