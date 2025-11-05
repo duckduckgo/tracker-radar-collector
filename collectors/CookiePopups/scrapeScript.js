@@ -209,6 +209,11 @@ function getSelector(el, specificity) {
         const tagName = element.tagName.toLowerCase();
         let localSelector = tagName;
 
+        if (localSelector === 'input' && element.getAttribute('type')) {
+            // for inputs, record the type
+            localSelector += `[type="${CSS.escape(element.getAttribute('type'))}"]`;
+        }
+
         if (specificity.order) {
             if (
                 specificity.absoluteOrder ||

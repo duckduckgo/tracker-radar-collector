@@ -59,6 +59,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
      */
     init(options) {
         super.init(options);
+        this.options = options;
         this.shortTimeouts = options.collectorFlags.shortTimeouts;
         this.autoAction = options.collectorFlags.autoconsentAction;
         /** @type {ContentScriptMessage[]} */
@@ -74,6 +75,10 @@ class CookiePopupsCollector extends ContentScriptCollector {
 
         /** @type {import('../helpers/deferred').Deferred<ScrapeScriptResult[]>} */
         this.scrapeJobDeferred = createDeferred();
+
+        /** @type {import('../node_modules/@duckduckgo/autoconsent/lib/rules').AutoConsentCMPRule | undefined} */
+        this.multiClickAutoconsentRule = undefined;
+        this.autoconsentRuleReady = false;
     }
 
     /**
@@ -445,6 +450,27 @@ class CookiePopupsCollector extends ContentScriptCollector {
         return { rejectButtons, saveButtons, settingsButtons };
     }
 
+    bootstrapAutoconsentRule() {
+        this.multiClickAutoconsentRule = {
+            name: `auto_REGION_${this.options.url.hostname}_${Math.random().toString(36).substring(2, 5)}`,
+            cosmetic: false,
+            _metadata: {
+                vendorUrl: this.options.url.toString(),
+            },
+            runContext: {
+                main: true,
+                frame: false,
+                urlPattern: `^https?://(www\\.)?${this.options.url.hostname.replace(/\./g, '\\.')}/`,
+            },
+            "prehideSelectors": [],
+            detectCmp: [],
+            detectPopup: [],
+            optIn: [],
+            optOut: [],
+            test: [],
+        };
+    }
+
     /**
      * @param {import('puppeteer-core').CDPSession} session
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription['uniqueId']} executionContextUniqueId
@@ -453,8 +479,16 @@ class CookiePopupsCollector extends ContentScriptCollector {
      * @returns {Promise<ScrapeScriptResult>}
      */
     async settingsFlow(session, executionContextUniqueId, settingsButtons, result) {
+        this.bootstrapAutoconsentRule();
         // FIXME: handle case of multiple settings buttons
         const settingsButton = settingsButtons[0];
+
+        // add the settings button to the autoconsent rule
+        this.multiClickAutoconsentRule.detectCmp.push({ exists: settingsButton.selector });
+        this.multiClickAutoconsentRule.detectPopup.push({ visible: settingsButton.selector });
+        this.multiClickAutoconsentRule.optOut.push({ waitForThenClick: settingsButton.selector, comment: settingsButton.text });
+        this.multiClickAutoconsentRule.test.push({ waitForVisible: settingsButton.selector, timeout: 1000, check: 'none' });
+
         this.log(`Triggering settings flow for ${executionContextUniqueId} with button ${settingsButton.selector}`);
         await session.send('Runtime.evaluate', {
             expression: `document.querySelector('${settingsButton.selector}').click()`,
@@ -474,6 +508,9 @@ class CookiePopupsCollector extends ContentScriptCollector {
                         continue;
                     }
                     if (toggle.type === 'checkbox' && toggle.isChecked || toggle.type === 'radio' && !toggle.isChecked) {
+                        // add the toggle to the autoconsent rule
+                        this.multiClickAutoconsentRule.optOut.push({ waitForThenClick: toggle.selector, comment: toggle.labelApprox });
+
                         this.log(`Clicking ${toggle.type} "${toggle.labelApprox}" in the settings page: ${toggle.selector} in ${executionContextUniqueId} document.querySelector('${toggle.selector}').click()`);
                         const clickResult = await session.send('Runtime.evaluate', {
                             expression: `document.querySelector('${toggle.selector}').click()`,
@@ -487,6 +524,13 @@ class CookiePopupsCollector extends ContentScriptCollector {
             if (rejectButtons.length > 0) {
                 // FIXME: handle case of multiple reject buttons
                 const rejectButton = rejectButtons[0];
+
+                // add the reject button to the autoconsent rule
+                this.multiClickAutoconsentRule.optOut.push({ waitForThenClick: rejectButton.selector, comment: rejectButton.text });
+                this.multiClickAutoconsentRule.test.push({ waitForVisible: rejectButton.selector, timeout: 1000, check: 'none' });
+                // there's a chance that the reject button will finish the flow
+                this.autoconsentRuleReady = true;
+
                 this.log(`Clicking reject button in the settings page: ${rejectButton.selector} in ${executionContextUniqueId}`);
                 // if there is a reject button in the settings page, click it
                 await session.send('Runtime.evaluate', {
@@ -498,6 +542,13 @@ class CookiePopupsCollector extends ContentScriptCollector {
             if (saveButtons.length > 0) {
                 // FIXME: handle case of multiple save buttons
                 const saveButton = saveButtons[0];
+
+                // add the save button to the autoconsent rule
+                this.multiClickAutoconsentRule.optOut.push({ waitForThenClick: saveButton.selector, comment: saveButton.text });
+                this.multiClickAutoconsentRule.test.push({ waitForVisible: saveButton.selector, timeout: 1000, check: 'none' });
+                // the save button will finish the flow
+                this.autoconsentRuleReady = true;
+
                 this.log(`Clicking save button in the settings page: ${saveButton.selector} in ${executionContextUniqueId}`);
                 // if there is a save button in the settings page, click it
                 await session.send('Runtime.evaluate', {
@@ -626,6 +677,8 @@ class CookiePopupsCollector extends ContentScriptCollector {
         return {
             cmps,
             scrapedFrames,
+            autoconsentRule: this.multiClickAutoconsentRule,
+            autoconsentRuleReady: this.autoconsentRuleReady,
         };
     }
 }
@@ -634,6 +687,8 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @typedef CookiePopupsCollectorResult
  * @property {AutoconsentResult[]} cmps
  * @property {ScrapeScriptResult[]} scrapedFrames
+ * @property {import('../node_modules/@duckduckgo/autoconsent/lib/rules').AutoConsentCMPRule} autoconsentRule
+ * @property {boolean} autoconsentRuleReady
  */
 
 /**
