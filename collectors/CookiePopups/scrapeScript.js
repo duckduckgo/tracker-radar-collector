@@ -24,7 +24,7 @@ const ELEMENT_TAGS_TO_SKIP = [
     'IMG',
     'MAP',
 ];
-const TOGGLE_SELECTOR = 'input[type=checkbox], input[aria-checked], input[type=radio][value=false]';
+const TOGGLE_SELECTOR = 'input[type=checkbox], input[aria-checked], input[type=radio][value=false], button[role="switch"]';
 
 /**
  * @param {HTMLElement} node
@@ -418,9 +418,9 @@ function getToggleData(el) {
     return Array.from(el.querySelectorAll(TOGGLE_SELECTOR))
         .filter(toggle => toggle.isConnected)
         .map((/** @type {HTMLInputElement} */ t) => ({
-            type: /** @type {'checkbox' | 'radio'} */ (t.type),
+            type: /** @type {'checkbox' | 'radio'} */ (t.type === 'button' ? 'checkbox' : t.type),
             labelApprox: getLabelForInput(t),
-            isChecked: t.checked,
+            isChecked: t.checked ?? t.getAttribute('aria-checked') === 'true',
             isDisabled: t.disabled,
             selector: getUniqueSelector(t),
         }));
