@@ -416,7 +416,7 @@ function getLabelForInput(input) {
  */
 function getToggleData(el) {
     return Array.from(el.querySelectorAll(TOGGLE_SELECTOR))
-        .filter(isVisible)
+        .filter(toggle => toggle.isConnected)
         .map((/** @type {HTMLInputElement} */ t) => ({
             type: /** @type {'checkbox' | 'radio'} */ (t.type),
             labelApprox: getLabelForInput(t),
