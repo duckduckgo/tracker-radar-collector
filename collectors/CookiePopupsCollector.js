@@ -589,7 +589,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 const { rejectButtons, settingsButtons } = await this.classifyPopupsInScrapeResult(result, openai);
                 if (canTriggerSettingsFlow && result.llmPopupDetected && rejectButtons.length === 0 && settingsButtons.length > 0) {
                     // if there's no one-click reject button, try to click the settings button
-                    return this.settingsFlow(session, executionContextUniqueId, settingsButtons, result);
+                    return await this.settingsFlow(session, executionContextUniqueId, settingsButtons, result);
                 }
                 return result;
             }
