@@ -417,13 +417,22 @@ function getLabelForInput(input) {
 function getToggleData(el) {
     return Array.from(el.querySelectorAll(TOGGLE_SELECTOR))
         .filter(toggle => toggle.isConnected)
-        .map((/** @type {HTMLInputElement} */ t) => ({
-            type: /** @type {'checkbox' | 'radio'} */ (t.type === 'button' ? 'checkbox' : t.type),
-            labelApprox: getLabelForInput(t),
-            isChecked: t.checked ?? t.getAttribute('aria-checked') === 'true',
-            isDisabled: t.disabled,
-            selector: getUniqueSelector(t),
-        }));
+        .map((/** @type {HTMLInputElement} */ t) => {
+            let checkedSelectorSuffix = '';
+            if (typeof t.checked === 'boolean') {
+                checkedSelectorSuffix = t.checked ? `:checked` : `:not(:checked)`;
+            } else if (t.getAttribute('aria-checked')) {
+                checkedSelectorSuffix = `[aria-checked="${t.getAttribute('aria-checked')}"]`;
+            }
+            const selector = getUniqueSelector(t) + checkedSelectorSuffix;
+            return {
+                type: /** @type {'checkbox' | 'radio'} */ (t.type === 'button' ? 'checkbox' : t.type),
+                labelApprox: getLabelForInput(t),
+                isChecked: t.checked ?? t.getAttribute('aria-checked') === 'true',
+                isDisabled: t.disabled,
+                selector,
+            };
+        });
 }
 
 /**
