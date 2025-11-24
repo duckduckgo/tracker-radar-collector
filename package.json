@@ -48,7 +48,7 @@
     "async": "^3.2.6",
     "chalk": "^4.1.2",
     "commander": "^13.1.0",
-    "openai": "^4.103.0",
+    "openai": "^6.9.1",
     "progress": "^2.0.3",
     "puppeteer": "^24.7.1",
     "selenium-webdriver": "^4.31.0",
