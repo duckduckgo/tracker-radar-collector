@@ -156,6 +156,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
                     enableCosmeticRules: true,
                     enableFilterList: false,
                     enableHeuristicDetection: true,
+                    enableHeuristicAction: true,
                     detectRetries: 20,
                     isMainWorld: false,
                 };
