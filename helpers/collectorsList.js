@@ -47,6 +47,9 @@ module.exports = {
  * @property {import('../collectors/RequestCollector').RequestData[]=} requests
  * @property {string=} screenshots
  * @property {import('../collectors/TargetCollector').TargetData[]=} targets
+ *
+ * Add har collector data type
+ * @property {import('../collectors/HarCollector').HARData | string=} har
  */
 
 /**

@@ -170,6 +170,13 @@ async function run({
             data.data.screenshots = screenshotFilename;
         }
 
+        // Move HAR to its own file and only keep the path in the JSON data
+        if (data.data.har) {
+            const harFilename = createOutputPath(outputPath, url, 'har');
+            fs.writeFileSync(harFilename, JSON.stringify(data.data.har, null, 2));
+            data.data.har = harFilename;
+        }
+
         updateProgress(url.toString(), data);
 
         fs.writeFileSync(outputFile, JSON.stringify(data, null, 2));
