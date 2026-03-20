@@ -4,8 +4,9 @@ const ContentScriptCollector = require('./ContentScriptCollector');
 const { createTimer } = require('../helpers/timer');
 const { wait, TimeoutError } = require('../helpers/wait');
 const createDeferred = require('../helpers/deferred');
-const rules = require('@duckduckgo/autoconsent/rules/rules.json');
-const stringifiedRules = JSON.stringify(rules);
+const { filterCompactRules } = require('@duckduckgo/autoconsent');
+const compactRules = require('@duckduckgo/autoconsent/rules/compact-rules.json');
+const { consentomatic } = require('@duckduckgo/autoconsent/rules/consentomatic.json');
 
 // @ts-ignore
 const baseContentScript = fs.readFileSync(
@@ -62,6 +63,22 @@ class CookiePopupsCollector extends ContentScriptCollector {
 
         /** @type {import('../helpers/deferred').Deferred<ScrapeScriptResult[]>} */
         this.scrapeJobDeferred = createDeferred();
+
+        /** @type {Set<string>} */
+        this.mainFrameIds = new Set();
+        /** @type {Map<string, { frameId: string, isMainFrame: boolean }>} */
+        this.contextFrameInfo = new Map();
+    }
+
+    /**
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
+     */
+    addTarget(session, targetInfo) {
+        if (targetInfo.type === 'page') {
+            this.mainFrameIds.add(targetInfo.targetId);
+        }
+        super.addTarget(session, targetInfo);
     }
 
     /**
@@ -96,6 +113,14 @@ class CookiePopupsCollector extends ContentScriptCollector {
      * @param {import('devtools-protocol/types/protocol').Protocol.Runtime.ExecutionContextDescription} context
      */
     async onIsolatedWorldCreated(session, context) {
+        const frameId = context.auxData?.frameId;
+        if (frameId) {
+            this.contextFrameInfo.set(context.uniqueId, {
+                frameId,
+                isMainFrame: this.mainFrameIds.has(frameId),
+            });
+        }
+
         const bindingName = `${BINDING_NAME_PREFIX}${context.uniqueId.replace(/\W/g, '_')}`;
         session.on('Runtime.bindingCalled', async ({ name, payload }) => {
             if (name === bindingName) {
@@ -160,8 +185,25 @@ class CookiePopupsCollector extends ContentScriptCollector {
                     detectRetries: 20,
                     isMainWorld: false,
                 };
+                const frameInfo = this.contextFrameInfo.get(executionContextUniqueId);
+                const isMainFrame = frameInfo?.isMainFrame ?? true;
+                const frameUrl = msg.url || '';
+                /** @type {import('../node_modules/@duckduckgo/autoconsent/lib/types').RuleBundle} */
+                const filteredRules = {
+                    autoconsent: [],
+                    consentomatic,
+                };
+                if (compactRules.index) {
+                    filteredRules.compact = filterCompactRules(
+                        /** @type {import('../node_modules/@duckduckgo/autoconsent/lib/encoding').IndexedCMPRuleset} */
+                        (compactRules),
+                        { url: frameUrl, mainFrame: isMainFrame },
+                    );
+                } else {
+                    filteredRules.compact = compactRules;
+                }
                 await this.cdpSessions.get(executionContextUniqueId)?.send('Runtime.evaluate', {
-                    expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(autoconsentConfig)}, rules: ${stringifiedRules} })`,
+                    expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(autoconsentConfig)}, rules: ${JSON.stringify(filteredRules)} })`,
                     uniqueContextId: executionContextUniqueId,
                 });
                 break;

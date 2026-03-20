@@ -1,6 +1,7 @@
 const CookiePopupsCollector = require('../../collectors/CookiePopupsCollector');
-const rules = require('@duckduckgo/autoconsent/rules/rules.json');
-const stringifiedRules = JSON.stringify(rules);
+const { filterCompactRules } = require('@duckduckgo/autoconsent');
+const compactRules = require('@duckduckgo/autoconsent/rules/compact-rules.json');
+const { consentomatic } = require('@duckduckgo/autoconsent/rules/consentomatic.json');
 const assert = require('assert');
 const sinon = require('sinon');
 
@@ -68,7 +69,7 @@ describe('CookiePopupsCollector', () => {
             },
         });
         // @ts-expect-error not a real CDP client
-        await collector.addTarget(fakeCDPClient, { type: 'page', url: 'https://example.com' });
+        await collector.addTarget(fakeCDPClient, { type: 'page', url: 'https://example.com', targetId: 'someframeid' });
         // @ts-expect-error passing mock objects
         collector.cdpSessions.set('1111', fakeCDPClient);
         // @ts-expect-error passing mock objects
@@ -77,31 +78,77 @@ describe('CookiePopupsCollector', () => {
 
     describe('handleMessage', () => {
         describe('init ', () => {
-            it('should respond with initResp', async () => {
+            it('should respond with initResp with filtered compact rules', async () => {
                 /**
                  * @type {ContentScriptMessage}
                  */
                 const msg = {
                     type: 'init',
-                    url: 'some-url',
+                    url: 'https://example.com/',
                 };
+                collector.contextFrameInfo.set('1111', { frameId: 'someframeid', isMainFrame: true });
                 commands.splice(0, commands.length);
                 await collector.handleMessage(msg, '1111');
                 assert.strictEqual(commands.length, 1);
+                const expectedConfig = {
+                    enabled: true,
+                    autoAction: null,
+                    disabledCmps: [],
+                    enablePrehide: false,
+                    enableCosmeticRules: true,
+                    enableFilterList: false,
+                    enableHeuristicDetection: true,
+                    enableHeuristicAction: true,
+                    detectRetries: 20,
+                    isMainWorld: false,
+                };
+                const expectedRules = {
+                    autoconsent: [],
+                    consentomatic,
+                    compact: filterCompactRules(compactRules, { url: 'https://example.com/', mainFrame: true }),
+                };
                 assert.deepStrictEqual(commands[0], [
                     'Runtime.evaluate',
                     {
-                        expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify({
-                            enabled: true,
-                            autoAction: null,
-                            disabledCmps: [],
-                            enablePrehide: false,
-                            enableCosmeticRules: true,
-                            enableFilterList: false,
-                            enableHeuristicDetection: true,
-                            detectRetries: 20,
-                            isMainWorld: false,
-                        })}, rules: ${stringifiedRules} })`,
+                        expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(expectedConfig)}, rules: ${JSON.stringify(expectedRules)} })`,
+                        uniqueContextId: '1111',
+                    },
+                ]);
+            });
+
+            it('should filter rules for sub-frames', async () => {
+                /**
+                 * @type {ContentScriptMessage}
+                 */
+                const msg = {
+                    type: 'init',
+                    url: 'https://consent.example.com/iframe',
+                };
+                collector.contextFrameInfo.set('1111', { frameId: 'subframeid', isMainFrame: false });
+                commands.splice(0, commands.length);
+                await collector.handleMessage(msg, '1111');
+                assert.strictEqual(commands.length, 1);
+                const expectedConfig = {
+                    enabled: true,
+                    autoAction: null,
+                    disabledCmps: [],
+                    enablePrehide: false,
+                    enableCosmeticRules: true,
+                    enableFilterList: false,
+                    enableHeuristicDetection: true,
+                    enableHeuristicAction: true,
+                    detectRetries: 20,
+                    isMainWorld: false,
+                };
+                const expectedRules = {
+                    autoconsent: [],
+                    consentomatic,
+                    compact: filterCompactRules(compactRules, { url: 'https://consent.example.com/iframe', mainFrame: false }),
+                };
+                assert.deepStrictEqual(commands[0], [
+                    'Runtime.evaluate',
+                    {
+                        expression: `autoconsentReceiveMessage({ type: "initResp", config: ${JSON.stringify(expectedConfig)}, rules: ${JSON.stringify(expectedRules)} })`,
                         uniqueContextId: '1111',
                     },
                 ]);
