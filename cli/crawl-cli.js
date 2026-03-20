@@ -187,7 +187,8 @@ async function run({
      */
     const failureCallback = (url) => {
         failures++;
-        updateProgress(url);
+        // Add null to avoid checker generating error
+        updateProgress(url, null);
     };
 
     try {
