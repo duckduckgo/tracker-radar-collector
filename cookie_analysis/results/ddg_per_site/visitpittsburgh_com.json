@@ -1,0 +1,28 @@
+{
+  "site": "visitpittsburgh.com",
+  "url": "https://www.visitpittsburgh.com/",
+  "timestamp": "2026-03-22T10:43:18.705218",
+  "click": {
+    "x": 237,
+    "y": 604
+  },
+  "before_accept": {
+    "total_requests": 298,
+    "blocked_requests": 19,
+    "blocked_domains": [
+      "connect.facebook.net",
+      "ib.adnxs.com",
+      "px.ads.linkedin.com",
+      "securepubads.g.doubleclick.net",
+      "tag.yieldoptimizer.com",
+      "www.googletagmanager.com",
+      "www.instagram.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

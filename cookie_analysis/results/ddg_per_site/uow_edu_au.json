@@ -1,0 +1,29 @@
+{
+  "site": "uow.edu.au",
+  "url": "https://www.uow.edu.au/",
+  "timestamp": "2026-03-22T10:41:51.769108",
+  "click": {
+    "x": 1206,
+    "y": 819
+  },
+  "before_accept": {
+    "total_requests": 68,
+    "blocked_requests": 14,
+    "blocked_domains": [
+      "analytics.tiktok.com",
+      "connect.facebook.net",
+      "munchkin.marketo.net",
+      "servedby.flashtalking.com",
+      "siteimproveanalytics.com",
+      "tags.srv.stackadapt.com",
+      "www.googletagmanager.com",
+      "www.redditstatic.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

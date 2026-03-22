@@ -1,0 +1,34 @@
+{
+  "site": "scad.edu",
+  "url": "https://www.scad.edu/",
+  "timestamp": "2026-03-22T10:43:35.831806",
+  "click": {
+    "x": 53,
+    "y": 864
+  },
+  "before_accept": {
+    "total_requests": 201,
+    "blocked_requests": 19,
+    "blocked_domains": [
+      "12289349.fls.doubleclick.net",
+      "ad.doubleclick.net",
+      "analytics.tiktok.com",
+      "connect.facebook.net",
+      "e.acuityplatform.com",
+      "pixel.tapad.com",
+      "tr.snapchat.com",
+      "tr6.snapchat.com",
+      "www.facebook.com",
+      "www.google-analytics.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 1,
+    "new_blocked_requests": 1,
+    "new_blocked_domains": [
+      "www.googletagmanager.com"
+    ]
+  },
+  "status": "analyzed"
+}

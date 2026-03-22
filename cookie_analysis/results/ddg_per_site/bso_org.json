@@ -1,0 +1,50 @@
+{
+  "site": "bso.org",
+  "url": "https://www.bso.org/",
+  "timestamp": "2026-03-22T10:43:01.124106",
+  "click": {
+    "x": 97,
+    "y": 827
+  },
+  "before_accept": {
+    "total_requests": 134,
+    "blocked_requests": 49,
+    "blocked_domains": [
+      "aa.agkn.com",
+      "alb.reddit.com",
+      "analytics.google.com",
+      "analytics.tiktok.com",
+      "bat.bing.com",
+      "cm.teads.tv",
+      "connect.facebook.net",
+      "diffuser-cdn.app-us1.com",
+      "fid.agkn.com",
+      "go.affec.tv",
+      "googleads.g.doubleclick.net",
+      "i.liadm.com",
+      "i.simpli.fi",
+      "ib.adnxs.com",
+      "l.teads.tv",
+      "pixel-config.reddit.com",
+      "px.ads.linkedin.com",
+      "px.mountain.com",
+      "sc-static.net",
+      "stats.g.doubleclick.net",
+      "storage.cloud.kargo.com",
+      "t.teads.tv",
+      "trkn.us",
+      "www.clarity.ms",
+      "www.google.com",
+      "www.googleadservices.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 3,
+    "new_blocked_requests": 1,
+    "new_blocked_domains": [
+      "px.ads.linkedin.com"
+    ]
+  },
+  "status": "analyzed"
+}

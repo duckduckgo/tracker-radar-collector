@@ -1,0 +1,39 @@
+{
+  "site": "garnethill.com",
+  "url": "https://www.garnethill.com/",
+  "timestamp": "2026-03-22T10:45:20.412238",
+  "click": {
+    "x": 1358,
+    "y": 796
+  },
+  "before_accept": {
+    "total_requests": 166,
+    "blocked_requests": 24,
+    "blocked_domains": [
+      "6236767.collect.igodigital.com",
+      "aa.agkn.com",
+      "bat.bing.com",
+      "c.go-mpulse.net",
+      "cdn.attn.tv",
+      "connect.facebook.net",
+      "d-code.liadm.com",
+      "dx.mountain.com",
+      "e8evpjnv.micpn.com",
+      "garnethill-us.attn.tv",
+      "garnethillspa.btttag.com",
+      "libraries.unbxdapi.com",
+      "static.hotjar.com",
+      "t.contentsquare.net",
+      "track.sv.rkdms.com",
+      "utt.impactcdn.com",
+      "www.google-analytics.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

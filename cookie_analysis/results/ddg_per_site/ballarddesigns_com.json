@@ -1,0 +1,44 @@
+{
+  "site": "ballarddesigns.com",
+  "url": "https://www.ballarddesigns.com/",
+  "timestamp": "2026-03-22T10:34:21.026024",
+  "click": {
+    "x": 1373,
+    "y": 789
+  },
+  "before_accept": {
+    "total_requests": 215,
+    "blocked_requests": 31,
+    "blocked_domains": [
+      "6236764.collect.igodigital.com",
+      "aa.agkn.com",
+      "analytics.tiktok.com",
+      "ballarddesigns-us.attn.tv",
+      "ballarddesignsspa.btttag.com",
+      "bat.bing.com",
+      "c.go-mpulse.net",
+      "cdn.attn.tv",
+      "cdn.taboola.com",
+      "connect.facebook.net",
+      "d-code.liadm.com",
+      "d.adroll.com",
+      "dx.mountain.com",
+      "ib.adnxs.com",
+      "libraries.unbxdapi.com",
+      "qxv619dr.micpn.com",
+      "s.adroll.com",
+      "t.channeladvisor.com",
+      "t.contentsquare.net",
+      "track.sv.rkdms.com",
+      "www.google-analytics.com",
+      "www.googletagmanager.com",
+      "www.mczbf.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

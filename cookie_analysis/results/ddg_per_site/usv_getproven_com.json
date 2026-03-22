@@ -1,0 +1,23 @@
+{
+  "site": "usv.getproven.com",
+  "url": "https://usv.getproven.com/auth",
+  "timestamp": "2026-03-22T10:49:10.275660",
+  "click": {
+    "x": 510,
+    "y": 411
+  },
+  "before_accept": {
+    "total_requests": 194,
+    "blocked_requests": 2,
+    "blocked_domains": [
+      "www.clarity.ms",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

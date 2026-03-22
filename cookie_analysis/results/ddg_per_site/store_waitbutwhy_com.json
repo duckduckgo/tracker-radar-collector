@@ -1,0 +1,23 @@
+{
+  "site": "store.waitbutwhy.com",
+  "url": "https://store.waitbutwhy.com/",
+  "timestamp": "2026-03-22T10:38:01.305522",
+  "click": {
+    "x": 983,
+    "y": 612
+  },
+  "before_accept": {
+    "total_requests": 210,
+    "blocked_requests": 3,
+    "blocked_domains": [
+      "shopify-widget.route.com",
+      "www.facebook.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 6,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

@@ -1,0 +1,22 @@
+{
+  "site": "copaamerica.com",
+  "url": "https://copaamerica.com/en/match-schedule/",
+  "timestamp": "2026-03-22T10:37:26.579483",
+  "click": {
+    "x": 697,
+    "y": 575
+  },
+  "before_accept": {
+    "total_requests": 103,
+    "blocked_requests": 0,
+    "blocked_domains": []
+  },
+  "after_accept": {
+    "total_new_requests": 1,
+    "new_blocked_requests": 1,
+    "new_blocked_domains": [
+      "www.google-analytics.com"
+    ]
+  },
+  "status": "analyzed"
+}

@@ -1,0 +1,30 @@
+{
+  "site": "schoolhouse.com",
+  "url": "https://schoolhouse.com/",
+  "timestamp": "2026-03-22T10:34:03.187177",
+  "click": {
+    "x": 945,
+    "y": 575
+  },
+  "before_accept": {
+    "total_requests": 261,
+    "blocked_requests": 31,
+    "blocked_domains": [
+      "api.config-security.com",
+      "cdn.attn.tv",
+      "conf.config-security.com",
+      "connect.facebook.net",
+      "pixel-sync.sitescout.com",
+      "pixel.sitescout.com",
+      "px.ads.linkedin.com",
+      "sb.scorecardresearch.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 1,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

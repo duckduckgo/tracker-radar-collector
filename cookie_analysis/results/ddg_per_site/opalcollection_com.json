@@ -1,0 +1,30 @@
+{
+  "site": "opalcollection.com",
+  "url": "https://www.opalcollection.com/",
+  "timestamp": "2026-03-22T10:44:10.021738",
+  "click": {
+    "x": 1319,
+    "y": 818
+  },
+  "before_accept": {
+    "total_requests": 126,
+    "blocked_requests": 8,
+    "blocked_domains": [
+      "alb.reddit.com",
+      "analytics.tiktok.com",
+      "connect.facebook.net",
+      "pixel-config.reddit.com",
+      "pixel-sync.sitescout.com",
+      "pixel.sitescout.com",
+      "trc-events.taboola.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 1,
+    "new_blocked_requests": 1,
+    "new_blocked_domains": [
+      "trc-events.taboola.com"
+    ]
+  },
+  "status": "analyzed"
+}

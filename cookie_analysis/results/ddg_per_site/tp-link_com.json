@@ -1,0 +1,20 @@
+{
+  "site": "tp-link.com",
+  "url": "https://www.tp-link.com/",
+  "timestamp": "2026-03-22T10:47:58.060724",
+  "click": {
+    "x": 1308,
+    "y": 842
+  },
+  "before_accept": {
+    "total_requests": 71,
+    "blocked_requests": 0,
+    "blocked_domains": []
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

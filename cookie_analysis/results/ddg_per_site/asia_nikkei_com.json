@@ -1,0 +1,31 @@
+{
+  "site": "asia.nikkei.com",
+  "url": "https://asia.nikkei.com/",
+  "timestamp": "2026-03-22T10:48:16.597771",
+  "click": {
+    "x": 870,
+    "y": 880
+  },
+  "before_accept": {
+    "total_requests": 261,
+    "blocked_requests": 15,
+    "blocked_domains": [
+      "amplify.outbrain.com",
+      "bat.bing.com",
+      "cdn.cxense.com",
+      "connect.facebook.net",
+      "platform.twitter.com",
+      "px.ads.linkedin.com",
+      "s.yimg.jp",
+      "static.chartbeat.com",
+      "www.googletagmanager.com",
+      "www3.doubleclick.net"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

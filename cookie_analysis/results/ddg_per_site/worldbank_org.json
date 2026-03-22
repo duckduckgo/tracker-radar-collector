@@ -1,0 +1,31 @@
+{
+  "site": "worldbank.org",
+  "url": "https://www.worldbank.org/",
+  "timestamp": "2026-03-22T10:47:23.361219",
+  "click": {
+    "x": 1409,
+    "y": 841
+  },
+  "before_accept": {
+    "total_requests": 129,
+    "blocked_requests": 13,
+    "blocked_domains": [
+      "connect.facebook.net",
+      "dpm.demdex.net",
+      "px.ads.linkedin.com",
+      "script.crazyegg.com",
+      "worldbank.tt.omtrdc.net",
+      "worldbankgroup.sc.omtrdc.net",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 2,
+    "new_blocked_requests": 2,
+    "new_blocked_domains": [
+      "dpm.demdex.net",
+      "px.ads.linkedin.com"
+    ]
+  },
+  "status": "analyzed"
+}

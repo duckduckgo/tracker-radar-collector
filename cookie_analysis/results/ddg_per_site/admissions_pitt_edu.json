@@ -1,0 +1,32 @@
+{
+  "site": "admissions.pitt.edu",
+  "url": "https://admissions.pitt.edu/",
+  "timestamp": "2026-03-22T10:46:48.570765",
+  "click": {
+    "x": 1305,
+    "y": 833
+  },
+  "before_accept": {
+    "total_requests": 86,
+    "blocked_requests": 17,
+    "blocked_domains": [
+      "action.media6degrees.com",
+      "analytics.tiktok.com",
+      "connect.facebook.net",
+      "js.ipredictive.com",
+      "px.ads.linkedin.com",
+      "sc-static.net",
+      "tags.srv.stackadapt.com",
+      "trkn.us",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 1,
+    "new_blocked_requests": 1,
+    "new_blocked_domains": [
+      "px.ads.linkedin.com"
+    ]
+  },
+  "status": "analyzed"
+}

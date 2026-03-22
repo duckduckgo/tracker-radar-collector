@@ -1,0 +1,20 @@
+{
+  "site": "spencer.org",
+  "url": "https://www.spencer.org/",
+  "timestamp": "2026-03-22T10:40:39.661590",
+  "click": {
+    "x": 1208,
+    "y": 867
+  },
+  "before_accept": {
+    "total_requests": 29,
+    "blocked_requests": 0,
+    "blocked_domains": []
+  },
+  "after_accept": {
+    "total_new_requests": 1,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

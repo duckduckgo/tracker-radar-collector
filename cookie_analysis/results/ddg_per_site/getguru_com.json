@@ -1,0 +1,41 @@
+{
+  "site": "getguru.com",
+  "url": "https://www.getguru.com/",
+  "timestamp": "2026-03-22T10:43:52.997863",
+  "click": {
+    "x": 1363,
+    "y": 841
+  },
+  "before_accept": {
+    "total_requests": 169,
+    "blocked_requests": 27,
+    "blocked_domains": [
+      "alb.reddit.com",
+      "analytics.ahrefs.com",
+      "analytics.google.com",
+      "bat.bing.com",
+      "connect.facebook.net",
+      "edge.fullstory.com",
+      "googleads.g.doubleclick.net",
+      "js.zi-scripts.com",
+      "pi.pardot.com",
+      "ppt2emy7nkbhu3nf4fatqm5rpe0ymllj.lambda-url.us-east-1.on.aws",
+      "px.ads.linkedin.com",
+      "rs.fullstory.com",
+      "stats.g.doubleclick.net",
+      "tracking-api.g2.com",
+      "www.google.com",
+      "www.googleadservices.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 2,
+    "new_blocked_requests": 2,
+    "new_blocked_domains": [
+      "alb.reddit.com",
+      "px.ads.linkedin.com"
+    ]
+  },
+  "status": "analyzed"
+}

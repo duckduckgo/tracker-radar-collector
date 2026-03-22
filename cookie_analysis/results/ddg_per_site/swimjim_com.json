@@ -1,0 +1,23 @@
+{
+  "site": "swimjim.com",
+  "url": "https://www.swimjim.com/",
+  "timestamp": "2026-03-22T10:40:21.787187",
+  "click": {
+    "x": 997,
+    "y": 612
+  },
+  "before_accept": {
+    "total_requests": 113,
+    "blocked_requests": 3,
+    "blocked_domains": [
+      "analytics.google.com",
+      "www.google.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 85,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

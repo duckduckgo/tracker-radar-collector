@@ -1,0 +1,36 @@
+{
+  "site": "foratravel.com",
+  "url": "https://www.foratravel.com/",
+  "timestamp": "2026-03-22T10:40:04.592186",
+  "click": {
+    "x": 975,
+    "y": 876
+  },
+  "before_accept": {
+    "total_requests": 309,
+    "blocked_requests": 50,
+    "blocked_domains": [
+      "analytics.tiktok.com",
+      "api.segment.io",
+      "bat.bing.com",
+      "connect.facebook.net",
+      "dx.mountain.com",
+      "js.hs-analytics.net",
+      "js.hs-banner.com",
+      "js.zi-scripts.com",
+      "px.ads.linkedin.com",
+      "rum-static.pingdom.net",
+      "rum.browser-intake-datadoghq.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 3,
+    "new_blocked_requests": 3,
+    "new_blocked_domains": [
+      "px.ads.linkedin.com",
+      "rum.browser-intake-datadoghq.com"
+    ]
+  },
+  "status": "analyzed"
+}

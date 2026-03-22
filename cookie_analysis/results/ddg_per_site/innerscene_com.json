@@ -1,0 +1,31 @@
+{
+  "site": "innerscene.com",
+  "url": "https://www.innerscene.com/",
+  "timestamp": "2026-03-22T10:36:34.007601",
+  "click": {
+    "x": 1033,
+    "y": 816
+  },
+  "before_accept": {
+    "total_requests": 111,
+    "blocked_requests": 14,
+    "blocked_domains": [
+      "connect.facebook.net",
+      "px.ads.linkedin.com",
+      "static.cloudflareinsights.com",
+      "us-assets.i.posthog.com",
+      "us.i.posthog.com",
+      "www.clarity.ms",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 2,
+    "new_blocked_requests": 2,
+    "new_blocked_domains": [
+      "px.ads.linkedin.com",
+      "us.i.posthog.com"
+    ]
+  },
+  "status": "analyzed"
+}

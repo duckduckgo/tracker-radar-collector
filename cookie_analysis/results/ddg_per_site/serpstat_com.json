@@ -1,0 +1,25 @@
+{
+  "site": "serpstat.com",
+  "url": "https://serpstat.com/",
+  "timestamp": "2026-03-22T10:37:08.795663",
+  "click": {
+    "x": 1308,
+    "y": 844
+  },
+  "before_accept": {
+    "total_requests": 64,
+    "blocked_requests": 9,
+    "blocked_domains": [
+      "connect.facebook.net",
+      "dev.visualwebsiteoptimizer.com",
+      "www.dwin1.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 6,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

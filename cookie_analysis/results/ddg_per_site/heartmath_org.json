@@ -1,0 +1,27 @@
+{
+  "site": "heartmath.org",
+  "url": "https://www.heartmath.org/",
+  "timestamp": "2026-03-22T10:39:47.800965",
+  "click": {
+    "x": 475,
+    "y": 584
+  },
+  "before_accept": {
+    "total_requests": 139,
+    "blocked_requests": 12,
+    "blocked_domains": [
+      "connect.facebook.net",
+      "pi.pardot.com",
+      "px.ads.linkedin.com",
+      "script.crazyegg.com",
+      "static.cloudflareinsights.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

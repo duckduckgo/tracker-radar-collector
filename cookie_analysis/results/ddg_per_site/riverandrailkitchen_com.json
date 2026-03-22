@@ -1,0 +1,20 @@
+{
+  "site": "riverandrailkitchen.com",
+  "url": "https://riverandrailkitchen.com/",
+  "timestamp": "2026-03-22T10:50:41.718442",
+  "click": {
+    "x": 852,
+    "y": 589
+  },
+  "before_accept": {
+    "total_requests": 42,
+    "blocked_requests": 0,
+    "blocked_domains": []
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

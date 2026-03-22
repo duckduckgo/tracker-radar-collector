@@ -1,0 +1,26 @@
+{
+  "site": "caribbeancinemas.com",
+  "url": "https://home.caribbeancinemas.com/",
+  "timestamp": "2026-03-22T10:39:28.184281",
+  "click": {
+    "x": 607,
+    "y": 614
+  },
+  "before_accept": {
+    "total_requests": 128,
+    "blocked_requests": 3,
+    "blocked_domains": [
+      "analytics.google.com",
+      "cm.g.doubleclick.net",
+      "securepubads.g.doubleclick.net"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 16,
+    "new_blocked_requests": 1,
+    "new_blocked_domains": [
+      "analytics.google.com"
+    ]
+  },
+  "status": "analyzed"
+}

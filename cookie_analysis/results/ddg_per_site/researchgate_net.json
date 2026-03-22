@@ -1,0 +1,17 @@
+{
+  "site": "researchgate.net",
+  "url": "https://www.researchgate.net/",
+  "timestamp": "2026-03-22T10:34:50.860757",
+  "before_accept": {
+    "total_requests": 71,
+    "blocked_requests": 0,
+    "blocked_domains": []
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "no_popup",
+  "note": "No cookie popup visible with DDG extension active"
+}

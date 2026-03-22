@@ -1,0 +1,1889 @@
+[
+  {
+    "site": "fashionnova.com",
+    "url": "https://www.fashionnova.com/",
+    "timestamp": "2026-03-22T10:32:00.721234",
+    "click": {
+      "x": 968,
+      "y": 605
+    },
+    "before_accept": {
+      "total_requests": 224,
+      "blocked_requests": 14,
+      "blocked_domains": [
+        "a26979700476.cdn.optimizely.com",
+        "bat.bing.com",
+        "cdn.attn.tv",
+        "fashionnova-us.attn.tv",
+        "j.northbeam.io",
+        "logx.optimizely.com",
+        "monorail-edge.shopifysvc.com",
+        "tag.wknd.ai",
+        "tags.creativecdn.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 39,
+      "new_blocked_requests": 2,
+      "new_blocked_domains": [
+        "fashionnova-us.attn.tv",
+        "monorail-edge.shopifysvc.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "rwguildgalleryny.com",
+    "url": "https://rwguildgalleryny.com/",
+    "timestamp": "2026-03-22T10:32:18.118446",
+    "click": {
+      "x": 1259,
+      "y": 858
+    },
+    "before_accept": {
+      "total_requests": 115,
+      "blocked_requests": 1,
+      "blocked_domains": [
+        "www.google-analytics.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 5,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "carraghersnyc.com",
+    "url": "https://www.carraghersnyc.com/",
+    "timestamp": "2026-03-22T10:32:35.702254",
+    "click": {
+      "x": 76,
+      "y": 843
+    },
+    "before_accept": {
+      "total_requests": 92,
+      "blocked_requests": 2,
+      "blocked_domains": [
+        "connect.facebook.net",
+        "www.google-analytics.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "goodliferesorts.guestybookings.com",
+    "url": "https://goodliferesorts.guestybookings.com/en",
+    "timestamp": "2026-03-22T10:32:52.898029",
+    "click": {
+      "x": 1219,
+      "y": 820
+    },
+    "before_accept": {
+      "total_requests": 70,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 1,
+      "new_blocked_requests": 1,
+      "new_blocked_domains": [
+        "connect.facebook.net"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "modani.com",
+    "url": "https://modani.com/",
+    "timestamp": "2026-03-22T10:33:10.768444",
+    "click": {
+      "x": 208,
+      "y": 831
+    },
+    "before_accept": {
+      "total_requests": 540,
+      "blocked_requests": 25,
+      "blocked_domains": [
+        "a.usbrowserspeed.com",
+        "aa.agkn.com",
+        "b.applovin.com",
+        "bat.bing.com",
+        "cdn.attn.tv",
+        "cdn.taboola.com",
+        "d-code.liadm.com",
+        "monorail-edge.shopifysvc.com",
+        "track.sv.rkdms.com",
+        "trkapi.impact.com",
+        "www.clarity.ms",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 7,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "ciee.org",
+    "url": "https://www.ciee.org/",
+    "timestamp": "2026-03-22T10:33:28.090854",
+    "click": {
+      "x": 1129,
+      "y": 819
+    },
+    "before_accept": {
+      "total_requests": 88,
+      "blocked_requests": 16,
+      "blocked_domains": [
+        "analytics-ipv6.tiktokw.us",
+        "analytics.tiktok.com",
+        "ciee.evergage.com",
+        "js-agent.newrelic.com",
+        "px.ads.linkedin.com",
+        "www.facebook.com",
+        "www.google-analytics.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 4,
+      "new_blocked_requests": 4,
+      "new_blocked_domains": [
+        "analytics.tiktok.com",
+        "px.ads.linkedin.com",
+        "www.facebook.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "80.lv",
+    "url": "https://80.lv/",
+    "timestamp": "2026-03-22T10:33:45.782103",
+    "click": {
+      "x": 900,
+      "y": 584
+    },
+    "before_accept": {
+      "total_requests": 71,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 95,
+      "new_blocked_requests": 2,
+      "new_blocked_domains": [
+        "googleads.g.doubleclick.net",
+        "www.googletagmanager.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "schoolhouse.com",
+    "url": "https://schoolhouse.com/",
+    "timestamp": "2026-03-22T10:34:03.187177",
+    "click": {
+      "x": 945,
+      "y": 575
+    },
+    "before_accept": {
+      "total_requests": 261,
+      "blocked_requests": 31,
+      "blocked_domains": [
+        "api.config-security.com",
+        "cdn.attn.tv",
+        "conf.config-security.com",
+        "connect.facebook.net",
+        "pixel-sync.sitescout.com",
+        "pixel.sitescout.com",
+        "px.ads.linkedin.com",
+        "sb.scorecardresearch.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 1,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "ballarddesigns.com",
+    "url": "https://www.ballarddesigns.com/",
+    "timestamp": "2026-03-22T10:34:21.026024",
+    "click": {
+      "x": 1373,
+      "y": 789
+    },
+    "before_accept": {
+      "total_requests": 215,
+      "blocked_requests": 31,
+      "blocked_domains": [
+        "6236764.collect.igodigital.com",
+        "aa.agkn.com",
+        "analytics.tiktok.com",
+        "ballarddesigns-us.attn.tv",
+        "ballarddesignsspa.btttag.com",
+        "bat.bing.com",
+        "c.go-mpulse.net",
+        "cdn.attn.tv",
+        "cdn.taboola.com",
+        "connect.facebook.net",
+        "d-code.liadm.com",
+        "d.adroll.com",
+        "dx.mountain.com",
+        "ib.adnxs.com",
+        "libraries.unbxdapi.com",
+        "qxv619dr.micpn.com",
+        "s.adroll.com",
+        "t.channeladvisor.com",
+        "t.contentsquare.net",
+        "track.sv.rkdms.com",
+        "www.google-analytics.com",
+        "www.googletagmanager.com",
+        "www.mczbf.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "food52.com",
+    "url": "https://food52.com/",
+    "timestamp": "2026-03-22T10:34:38.031538",
+    "click": {
+      "x": 940,
+      "y": 575
+    },
+    "before_accept": {
+      "total_requests": 1447,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 795,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "researchgate.net",
+    "url": "https://www.researchgate.net/",
+    "timestamp": "2026-03-22T10:34:50.860757",
+    "before_accept": {
+      "total_requests": 71,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "no_popup",
+    "note": "No cookie popup visible with DDG extension active"
+  },
+  {
+    "site": "danco.com",
+    "url": "https://www.danco.com/",
+    "timestamp": "2026-03-22T10:35:08.048878",
+    "click": {
+      "x": 852,
+      "y": 868
+    },
+    "before_accept": {
+      "total_requests": 135,
+      "blocked_requests": 1,
+      "blocked_domains": [
+        "analytics.google.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 4,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "humandx.org",
+    "url": "https://www.humandx.org/",
+    "timestamp": "2026-03-22T10:35:24.950912",
+    "click": {
+      "x": 1383,
+      "y": 858
+    },
+    "before_accept": {
+      "total_requests": 109,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "vowels.net",
+    "url": "https://vowels.net/",
+    "timestamp": "2026-03-22T10:35:42.375294",
+    "click": {
+      "x": 713,
+      "y": 842
+    },
+    "before_accept": {
+      "total_requests": 159,
+      "blocked_requests": 8,
+      "blocked_domains": [
+        "connect.facebook.net",
+        "www.google.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 5,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "shopquarters.com",
+    "url": "https://shopquarters.com/",
+    "timestamp": "2026-03-22T10:35:59.722986",
+    "click": {
+      "x": 893,
+      "y": 612
+    },
+    "before_accept": {
+      "total_requests": 117,
+      "blocked_requests": 4,
+      "blocked_domains": [
+        "connect.facebook.net",
+        "lantern.roeyecdn.com",
+        "www.dwin1.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 6,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "scworld.com",
+    "url": "https://www.scworld.com/",
+    "timestamp": "2026-03-22T10:36:16.951692",
+    "click": {
+      "x": 1195,
+      "y": 847
+    },
+    "before_accept": {
+      "total_requests": 187,
+      "blocked_requests": 31,
+      "blocked_domains": [
+        "a.usbrowserspeed.com",
+        "cm.g.doubleclick.net",
+        "connect.facebook.net",
+        "e7eae64238b073e4b7ff7c83557b5700.safeframe.googlesyndication.com",
+        "ep1.adtrafficquality.google",
+        "googleads.g.doubleclick.net",
+        "ib.adnxs.com",
+        "in.ml314.com",
+        "insight.adsrvr.org",
+        "js.zi-scripts.com",
+        "ml314.com",
+        "munchkin.marketo.net",
+        "pagead2.googlesyndication.com",
+        "pixel.mathtag.com",
+        "px.ads.linkedin.com",
+        "secure.adnxs.com",
+        "securepubads.g.doubleclick.net",
+        "stats.g.doubleclick.net"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 1,
+      "new_blocked_requests": 1,
+      "new_blocked_domains": [
+        "px.ads.linkedin.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "innerscene.com",
+    "url": "https://www.innerscene.com/",
+    "timestamp": "2026-03-22T10:36:34.007601",
+    "click": {
+      "x": 1033,
+      "y": 816
+    },
+    "before_accept": {
+      "total_requests": 111,
+      "blocked_requests": 14,
+      "blocked_domains": [
+        "connect.facebook.net",
+        "px.ads.linkedin.com",
+        "static.cloudflareinsights.com",
+        "us-assets.i.posthog.com",
+        "us.i.posthog.com",
+        "www.clarity.ms",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 2,
+      "new_blocked_requests": 2,
+      "new_blocked_domains": [
+        "px.ads.linkedin.com",
+        "us.i.posthog.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "mls.therealest.com",
+    "url": "https://mls.therealest.com/",
+    "timestamp": "2026-03-22T10:36:51.093846",
+    "click": {
+      "x": 878,
+      "y": 612
+    },
+    "before_accept": {
+      "total_requests": 185,
+      "blocked_requests": 3,
+      "blocked_domains": [
+        "connect.facebook.net",
+        "script.hotjar.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 92,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "serpstat.com",
+    "url": "https://serpstat.com/",
+    "timestamp": "2026-03-22T10:37:08.795663",
+    "click": {
+      "x": 1308,
+      "y": 844
+    },
+    "before_accept": {
+      "total_requests": 64,
+      "blocked_requests": 9,
+      "blocked_domains": [
+        "connect.facebook.net",
+        "dev.visualwebsiteoptimizer.com",
+        "www.dwin1.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 6,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "copaamerica.com",
+    "url": "https://copaamerica.com/en/match-schedule/",
+    "timestamp": "2026-03-22T10:37:26.579483",
+    "click": {
+      "x": 697,
+      "y": 575
+    },
+    "before_accept": {
+      "total_requests": 103,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 1,
+      "new_blocked_requests": 1,
+      "new_blocked_domains": [
+        "www.google-analytics.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "wecoach.gg",
+    "url": "https://wecoach.gg/coaches/valorant",
+    "timestamp": "2026-03-22T10:37:43.844730",
+    "click": {
+      "x": 74,
+      "y": 584
+    },
+    "before_accept": {
+      "total_requests": 72,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "store.waitbutwhy.com",
+    "url": "https://store.waitbutwhy.com/",
+    "timestamp": "2026-03-22T10:38:01.305522",
+    "click": {
+      "x": 983,
+      "y": 612
+    },
+    "before_accept": {
+      "total_requests": 210,
+      "blocked_requests": 3,
+      "blocked_domains": [
+        "shopify-widget.route.com",
+        "www.facebook.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 6,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "osf.io",
+    "url": "https://osf.io/",
+    "timestamp": "2026-03-22T10:38:19.034890",
+    "click": {
+      "x": 928,
+      "y": 69
+    },
+    "before_accept": {
+      "total_requests": 82,
+      "blocked_requests": 8,
+      "blocked_domains": [
+        "bam.nr-data.net",
+        "js-agent.newrelic.com",
+        "www.clarity.ms",
+        "www.googletagmanager.com",
+        "www.youtube.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "acct.ezpassde.com",
+    "url": "https://acct.ezpassde.com/Login.aspx",
+    "timestamp": "2026-03-22T10:38:36.214631",
+    "click": {
+      "x": 998,
+      "y": 450
+    },
+    "before_accept": {
+      "total_requests": 38,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 1,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "emerson.edu",
+    "url": "https://emerson.edu/",
+    "timestamp": "2026-03-22T10:38:53.222563",
+    "click": {
+      "x": 1257,
+      "y": 868
+    },
+    "before_accept": {
+      "total_requests": 62,
+      "blocked_requests": 1,
+      "blocked_domains": [
+        "analytics.google.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 5,
+      "new_blocked_requests": 5,
+      "new_blocked_domains": [
+        "px.ads.linkedin.com",
+        "tags.srv.stackadapt.com",
+        "www.facebook.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "davidson.edu",
+    "url": "https://www.davidson.edu/",
+    "timestamp": "2026-03-22T10:39:10.558214",
+    "click": {
+      "x": 1022,
+      "y": 853
+    },
+    "before_accept": {
+      "total_requests": 71,
+      "blocked_requests": 9,
+      "blocked_domains": [
+        "analytics.google.com",
+        "connect.facebook.net",
+        "googleads.g.doubleclick.net",
+        "stats.g.doubleclick.net",
+        "www.google-analytics.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 2,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "caribbeancinemas.com",
+    "url": "https://home.caribbeancinemas.com/",
+    "timestamp": "2026-03-22T10:39:28.184281",
+    "click": {
+      "x": 607,
+      "y": 614
+    },
+    "before_accept": {
+      "total_requests": 128,
+      "blocked_requests": 3,
+      "blocked_domains": [
+        "analytics.google.com",
+        "cm.g.doubleclick.net",
+        "securepubads.g.doubleclick.net"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 16,
+      "new_blocked_requests": 1,
+      "new_blocked_domains": [
+        "analytics.google.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "heartmath.org",
+    "url": "https://www.heartmath.org/",
+    "timestamp": "2026-03-22T10:39:47.800965",
+    "click": {
+      "x": 475,
+      "y": 584
+    },
+    "before_accept": {
+      "total_requests": 139,
+      "blocked_requests": 12,
+      "blocked_domains": [
+        "connect.facebook.net",
+        "pi.pardot.com",
+        "px.ads.linkedin.com",
+        "script.crazyegg.com",
+        "static.cloudflareinsights.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "foratravel.com",
+    "url": "https://www.foratravel.com/",
+    "timestamp": "2026-03-22T10:40:04.592186",
+    "click": {
+      "x": 975,
+      "y": 876
+    },
+    "before_accept": {
+      "total_requests": 309,
+      "blocked_requests": 50,
+      "blocked_domains": [
+        "analytics.tiktok.com",
+        "api.segment.io",
+        "bat.bing.com",
+        "connect.facebook.net",
+        "dx.mountain.com",
+        "js.hs-analytics.net",
+        "js.hs-banner.com",
+        "js.zi-scripts.com",
+        "px.ads.linkedin.com",
+        "rum-static.pingdom.net",
+        "rum.browser-intake-datadoghq.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 3,
+      "new_blocked_requests": 3,
+      "new_blocked_domains": [
+        "px.ads.linkedin.com",
+        "rum.browser-intake-datadoghq.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "swimjim.com",
+    "url": "https://www.swimjim.com/",
+    "timestamp": "2026-03-22T10:40:21.787187",
+    "click": {
+      "x": 997,
+      "y": 612
+    },
+    "before_accept": {
+      "total_requests": 113,
+      "blocked_requests": 3,
+      "blocked_domains": [
+        "analytics.google.com",
+        "www.google.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 85,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "spencer.org",
+    "url": "https://www.spencer.org/",
+    "timestamp": "2026-03-22T10:40:39.661590",
+    "click": {
+      "x": 1208,
+      "y": 867
+    },
+    "before_accept": {
+      "total_requests": 29,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 1,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "hatchshowprint.com",
+    "url": "https://www.hatchshowprint.com/",
+    "timestamp": "2026-03-22T10:40:58.634866",
+    "click": {
+      "x": 1132,
+      "y": 795
+    },
+    "before_accept": {
+      "total_requests": 93,
+      "blocked_requests": 15,
+      "blocked_domains": [
+        "analytics.tiktok.com",
+        "connect.facebook.net",
+        "px.ads.linkedin.com",
+        "sc-static.net",
+        "static.sojern.com",
+        "tags.srv.stackadapt.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 17,
+      "new_blocked_requests": 1,
+      "new_blocked_domains": [
+        "px.ads.linkedin.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "spermidinelife.us",
+    "url": "https://spermidinelife.us/",
+    "timestamp": "2026-03-22T10:41:16.291116",
+    "click": {
+      "x": 1066,
+      "y": 868
+    },
+    "before_accept": {
+      "total_requests": 235,
+      "blocked_requests": 16,
+      "blocked_domains": [
+        "alb.reddit.com",
+        "analytics.google.com",
+        "cdn.attn.tv",
+        "connect.facebook.net",
+        "d-code.liadm.com",
+        "dsum-sec.casalemedia.com",
+        "events.attentivemobile.com",
+        "spermidinelife-us.attn.tv",
+        "stats.g.doubleclick.net",
+        "www.google.com",
+        "www.googleadservices.com",
+        "www.googleoptimize.com",
+        "www.googletagmanager.com",
+        "x.bidswitch.net"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 13,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "summerdiscovery.com",
+    "url": "https://www.summerdiscovery.com/",
+    "timestamp": "2026-03-22T10:41:33.359689",
+    "click": {
+      "x": 900,
+      "y": 569
+    },
+    "before_accept": {
+      "total_requests": 189,
+      "blocked_requests": 21,
+      "blocked_domains": [
+        "12704595.fls.doubleclick.net",
+        "aa.agkn.com",
+        "ad.doubleclick.net",
+        "fid.agkn.com",
+        "googleads.g.doubleclick.net",
+        "i.liadm.com",
+        "sp.analytics.yahoo.com",
+        "tags.srv.stackadapt.com",
+        "www.facebook.com",
+        "www.google-analytics.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 3,
+      "new_blocked_requests": 2,
+      "new_blocked_domains": [
+        "tags.srv.stackadapt.com",
+        "www.google-analytics.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "uow.edu.au",
+    "url": "https://www.uow.edu.au/",
+    "timestamp": "2026-03-22T10:41:51.769108",
+    "click": {
+      "x": 1206,
+      "y": 819
+    },
+    "before_accept": {
+      "total_requests": 68,
+      "blocked_requests": 14,
+      "blocked_domains": [
+        "analytics.tiktok.com",
+        "connect.facebook.net",
+        "munchkin.marketo.net",
+        "servedby.flashtalking.com",
+        "siteimproveanalytics.com",
+        "tags.srv.stackadapt.com",
+        "www.googletagmanager.com",
+        "www.redditstatic.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "posthog.com",
+    "url": "https://posthog.com/",
+    "timestamp": "2026-03-22T10:42:09.029011",
+    "click": {
+      "x": 988,
+      "y": 518
+    },
+    "before_accept": {
+      "total_requests": 120,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 33,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "meetboston.com",
+    "url": "https://www.meetboston.com/",
+    "timestamp": "2026-03-22T10:42:26.304887",
+    "click": {
+      "x": 594,
+      "y": 840
+    },
+    "before_accept": {
+      "total_requests": 373,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 1,
+      "new_blocked_requests": 1,
+      "new_blocked_domains": [
+        "analytics.google.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "poconomountains.com",
+    "url": "https://www.poconomountains.com/",
+    "timestamp": "2026-03-22T10:42:43.860999",
+    "click": {
+      "x": 1039,
+      "y": 424
+    },
+    "before_accept": {
+      "total_requests": 305,
+      "blocked_requests": 30,
+      "blocked_domains": [
+        "analytics.tiktok.com",
+        "bat.bing.com",
+        "c.amazon-adsystem.com",
+        "cdn.mouseflow.com",
+        "collector-51300.us.tvsquared.com",
+        "connect.facebook.net",
+        "pixel-a.basis.net",
+        "pixel.sitescout.com",
+        "pixel.zprk.io",
+        "static.ads-twitter.com",
+        "tag.yieldoptimizer.com",
+        "tags.srv.stackadapt.com",
+        "tags.w55c.net",
+        "wsmcdn.audioeye.com",
+        "www.clarity.ms",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 1,
+      "new_blocked_requests": 1,
+      "new_blocked_domains": [
+        "static.hotjar.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "bso.org",
+    "url": "https://www.bso.org/",
+    "timestamp": "2026-03-22T10:43:01.124106",
+    "click": {
+      "x": 97,
+      "y": 827
+    },
+    "before_accept": {
+      "total_requests": 134,
+      "blocked_requests": 49,
+      "blocked_domains": [
+        "aa.agkn.com",
+        "alb.reddit.com",
+        "analytics.google.com",
+        "analytics.tiktok.com",
+        "bat.bing.com",
+        "cm.teads.tv",
+        "connect.facebook.net",
+        "diffuser-cdn.app-us1.com",
+        "fid.agkn.com",
+        "go.affec.tv",
+        "googleads.g.doubleclick.net",
+        "i.liadm.com",
+        "i.simpli.fi",
+        "ib.adnxs.com",
+        "l.teads.tv",
+        "pixel-config.reddit.com",
+        "px.ads.linkedin.com",
+        "px.mountain.com",
+        "sc-static.net",
+        "stats.g.doubleclick.net",
+        "storage.cloud.kargo.com",
+        "t.teads.tv",
+        "trkn.us",
+        "www.clarity.ms",
+        "www.google.com",
+        "www.googleadservices.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 3,
+      "new_blocked_requests": 1,
+      "new_blocked_domains": [
+        "px.ads.linkedin.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "visitpittsburgh.com",
+    "url": "https://www.visitpittsburgh.com/",
+    "timestamp": "2026-03-22T10:43:18.705218",
+    "click": {
+      "x": 237,
+      "y": 604
+    },
+    "before_accept": {
+      "total_requests": 298,
+      "blocked_requests": 19,
+      "blocked_domains": [
+        "connect.facebook.net",
+        "ib.adnxs.com",
+        "px.ads.linkedin.com",
+        "securepubads.g.doubleclick.net",
+        "tag.yieldoptimizer.com",
+        "www.googletagmanager.com",
+        "www.instagram.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "scad.edu",
+    "url": "https://www.scad.edu/",
+    "timestamp": "2026-03-22T10:43:35.831806",
+    "click": {
+      "x": 53,
+      "y": 864
+    },
+    "before_accept": {
+      "total_requests": 201,
+      "blocked_requests": 19,
+      "blocked_domains": [
+        "12289349.fls.doubleclick.net",
+        "ad.doubleclick.net",
+        "analytics.tiktok.com",
+        "connect.facebook.net",
+        "e.acuityplatform.com",
+        "pixel.tapad.com",
+        "tr.snapchat.com",
+        "tr6.snapchat.com",
+        "www.facebook.com",
+        "www.google-analytics.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 1,
+      "new_blocked_requests": 1,
+      "new_blocked_domains": [
+        "www.googletagmanager.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "getguru.com",
+    "url": "https://www.getguru.com/",
+    "timestamp": "2026-03-22T10:43:52.997863",
+    "click": {
+      "x": 1363,
+      "y": 841
+    },
+    "before_accept": {
+      "total_requests": 169,
+      "blocked_requests": 27,
+      "blocked_domains": [
+        "alb.reddit.com",
+        "analytics.ahrefs.com",
+        "analytics.google.com",
+        "bat.bing.com",
+        "connect.facebook.net",
+        "edge.fullstory.com",
+        "googleads.g.doubleclick.net",
+        "js.zi-scripts.com",
+        "pi.pardot.com",
+        "ppt2emy7nkbhu3nf4fatqm5rpe0ymllj.lambda-url.us-east-1.on.aws",
+        "px.ads.linkedin.com",
+        "rs.fullstory.com",
+        "stats.g.doubleclick.net",
+        "tracking-api.g2.com",
+        "www.google.com",
+        "www.googleadservices.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 2,
+      "new_blocked_requests": 2,
+      "new_blocked_domains": [
+        "alb.reddit.com",
+        "px.ads.linkedin.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "opalcollection.com",
+    "url": "https://www.opalcollection.com/",
+    "timestamp": "2026-03-22T10:44:10.021738",
+    "click": {
+      "x": 1319,
+      "y": 818
+    },
+    "before_accept": {
+      "total_requests": 126,
+      "blocked_requests": 8,
+      "blocked_domains": [
+        "alb.reddit.com",
+        "analytics.tiktok.com",
+        "connect.facebook.net",
+        "pixel-config.reddit.com",
+        "pixel-sync.sitescout.com",
+        "pixel.sitescout.com",
+        "trc-events.taboola.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 1,
+      "new_blocked_requests": 1,
+      "new_blocked_domains": [
+        "trc-events.taboola.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "cymbiotika.com",
+    "url": "https://cymbiotika.com/",
+    "timestamp": "2026-03-22T10:44:26.871328",
+    "click": {
+      "x": 1106,
+      "y": 858
+    },
+    "before_accept": {
+      "total_requests": 1,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "risingshadow.net",
+    "url": "https://www.risingshadow.net/",
+    "timestamp": "2026-03-22T10:44:45.087666",
+    "click": {
+      "x": 767,
+      "y": 876
+    },
+    "before_accept": {
+      "total_requests": 51,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "extrabux.com",
+    "url": "https://www.extrabux.com/",
+    "timestamp": "2026-03-22T10:45:02.629997",
+    "click": {
+      "x": 505,
+      "y": 608
+    },
+    "before_accept": {
+      "total_requests": 74,
+      "blocked_requests": 1,
+      "blocked_domains": [
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "garnethill.com",
+    "url": "https://www.garnethill.com/",
+    "timestamp": "2026-03-22T10:45:20.412238",
+    "click": {
+      "x": 1358,
+      "y": 796
+    },
+    "before_accept": {
+      "total_requests": 166,
+      "blocked_requests": 24,
+      "blocked_domains": [
+        "6236767.collect.igodigital.com",
+        "aa.agkn.com",
+        "bat.bing.com",
+        "c.go-mpulse.net",
+        "cdn.attn.tv",
+        "connect.facebook.net",
+        "d-code.liadm.com",
+        "dx.mountain.com",
+        "e8evpjnv.micpn.com",
+        "garnethill-us.attn.tv",
+        "garnethillspa.btttag.com",
+        "libraries.unbxdapi.com",
+        "static.hotjar.com",
+        "t.contentsquare.net",
+        "track.sv.rkdms.com",
+        "utt.impactcdn.com",
+        "www.google-analytics.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "seventeen.com",
+    "url": "https://seventeen.com/",
+    "timestamp": "2026-03-22T10:45:37.702323",
+    "click": {
+      "x": 860,
+      "y": 584
+    },
+    "before_accept": {
+      "total_requests": 133,
+      "blocked_requests": 13,
+      "blocked_domains": [
+        "a40c3af92d0284b59bb10f9751a21840.safeframe.googlesyndication.com",
+        "ep1.adtrafficquality.google",
+        "p1.parsely.com",
+        "pagead2.googlesyndication.com",
+        "s.skimresources.com",
+        "securepubads.g.doubleclick.net",
+        "www.google-analytics.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 47,
+      "new_blocked_requests": 4,
+      "new_blocked_domains": [
+        "api.parsely.com",
+        "p1.parsely.com",
+        "www.google-analytics.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "platt.com",
+    "url": "https://www.platt.com/",
+    "timestamp": "2026-03-22T10:45:55.418102",
+    "click": {
+      "x": 1289,
+      "y": 858
+    },
+    "before_accept": {
+      "total_requests": 77,
+      "blocked_requests": 7,
+      "blocked_domains": [
+        "js.zi-scripts.com",
+        "origin.acuityplatform.com",
+        "t.contentsquare.net",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "build.com",
+    "url": "https://www.build.com/",
+    "timestamp": "2026-03-22T10:46:13.031063",
+    "click": {
+      "x": 77,
+      "y": 838
+    },
+    "before_accept": {
+      "total_requests": 331,
+      "blocked_requests": 1,
+      "blocked_domains": [
+        "imgs.signifyd.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 7,
+      "new_blocked_requests": 4,
+      "new_blocked_domains": [
+        "www.facebook.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "tufts.edu",
+    "url": "https://www.tufts.edu/",
+    "timestamp": "2026-03-22T10:46:30.472987",
+    "click": {
+      "x": 1285,
+      "y": 854
+    },
+    "before_accept": {
+      "total_requests": 187,
+      "blocked_requests": 22,
+      "blocked_domains": [
+        "analytics.google.com",
+        "arttrk.com",
+        "connect.facebook.net",
+        "googleads.g.doubleclick.net",
+        "js.ipredictive.com",
+        "px.ads.linkedin.com",
+        "stats.g.doubleclick.net",
+        "track.hubspot.com",
+        "www.google.com",
+        "www.googletagmanager.com",
+        "www.redditstatic.com",
+        "www.youtube.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 6,
+      "new_blocked_requests": 3,
+      "new_blocked_domains": [
+        "analytics.google.com",
+        "px.ads.linkedin.com",
+        "track.hubspot.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "admissions.pitt.edu",
+    "url": "https://admissions.pitt.edu/",
+    "timestamp": "2026-03-22T10:46:48.570765",
+    "click": {
+      "x": 1305,
+      "y": 833
+    },
+    "before_accept": {
+      "total_requests": 86,
+      "blocked_requests": 17,
+      "blocked_domains": [
+        "action.media6degrees.com",
+        "analytics.tiktok.com",
+        "connect.facebook.net",
+        "js.ipredictive.com",
+        "px.ads.linkedin.com",
+        "sc-static.net",
+        "tags.srv.stackadapt.com",
+        "trkn.us",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 1,
+      "new_blocked_requests": 1,
+      "new_blocked_domains": [
+        "px.ads.linkedin.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "westjet.com",
+    "url": "https://www.westjet.com/en-ca",
+    "timestamp": "2026-03-22T10:47:06.169490",
+    "click": {
+      "x": 1104,
+      "y": 863
+    },
+    "before_accept": {
+      "total_requests": 187,
+      "blocked_requests": 2,
+      "blocked_domains": [
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 2,
+      "new_blocked_requests": 2,
+      "new_blocked_domains": [
+        "www.facebook.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "worldbank.org",
+    "url": "https://www.worldbank.org/",
+    "timestamp": "2026-03-22T10:47:23.361219",
+    "click": {
+      "x": 1409,
+      "y": 841
+    },
+    "before_accept": {
+      "total_requests": 129,
+      "blocked_requests": 13,
+      "blocked_domains": [
+        "connect.facebook.net",
+        "dpm.demdex.net",
+        "px.ads.linkedin.com",
+        "script.crazyegg.com",
+        "worldbank.tt.omtrdc.net",
+        "worldbankgroup.sc.omtrdc.net",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 2,
+      "new_blocked_requests": 2,
+      "new_blocked_domains": [
+        "dpm.demdex.net",
+        "px.ads.linkedin.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "endocrine.org",
+    "url": "https://endocrine.org/",
+    "timestamp": "2026-03-22T10:47:40.901073",
+    "click": {
+      "x": 1211,
+      "y": 857
+    },
+    "before_accept": {
+      "total_requests": 105,
+      "blocked_requests": 11,
+      "blocked_domains": [
+        "aim-tag.hcn.health",
+        "connect.facebook.net",
+        "mviewwebtes.112.2o7.net",
+        "s.adroll.com",
+        "static.addtoany.com",
+        "static.ads-twitter.com",
+        "tags.crwdcntrl.net",
+        "tracking.magnetmail.net",
+        "www.clarity.ms",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 7,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "tp-link.com",
+    "url": "https://www.tp-link.com/",
+    "timestamp": "2026-03-22T10:47:58.060724",
+    "click": {
+      "x": 1308,
+      "y": 842
+    },
+    "before_accept": {
+      "total_requests": 71,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "asia.nikkei.com",
+    "url": "https://asia.nikkei.com/",
+    "timestamp": "2026-03-22T10:48:16.597771",
+    "click": {
+      "x": 870,
+      "y": 880
+    },
+    "before_accept": {
+      "total_requests": 261,
+      "blocked_requests": 15,
+      "blocked_domains": [
+        "amplify.outbrain.com",
+        "bat.bing.com",
+        "cdn.cxense.com",
+        "connect.facebook.net",
+        "platform.twitter.com",
+        "px.ads.linkedin.com",
+        "s.yimg.jp",
+        "static.chartbeat.com",
+        "www.googletagmanager.com",
+        "www3.doubleclick.net"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "scmp.com",
+    "url": "https://www.scmp.com/",
+    "timestamp": "2026-03-22T10:48:34.356411",
+    "click": {
+      "x": 685,
+      "y": 600
+    },
+    "before_accept": {
+      "total_requests": 250,
+      "blocked_requests": 43,
+      "blocked_domains": [
+        "api.cxense.com",
+        "cdn.cxense.com",
+        "cdn.optimizely.com",
+        "cm.g.doubleclick.net",
+        "connect.facebook.net",
+        "d40b1c20e13affc5ea1a19cc22a77750.safeframe.googlesyndication.com",
+        "ep1.adtrafficquality.google",
+        "fundingchoicesmessages.google.com",
+        "micro.rubiconproject.com",
+        "pagead2.googlesyndication.com",
+        "px.ads.linkedin.com",
+        "sb.scorecardresearch.com",
+        "securepubads.g.doubleclick.net",
+        "static.criteo.net",
+        "tags.creativecdn.com",
+        "tags.crwdcntrl.net",
+        "tags.srv.stackadapt.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 69,
+      "new_blocked_requests": 5,
+      "new_blocked_domains": [
+        "comcluster.cxense.com",
+        "px.ads.linkedin.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "lafollette.wisc.edu",
+    "url": "https://lafollette.wisc.edu/",
+    "timestamp": "2026-03-22T10:48:52.739906",
+    "click": {
+      "x": 1254,
+      "y": 832
+    },
+    "before_accept": {
+      "total_requests": 52,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "usv.getproven.com",
+    "url": "https://usv.getproven.com/auth",
+    "timestamp": "2026-03-22T10:49:10.275660",
+    "click": {
+      "x": 510,
+      "y": 411
+    },
+    "before_accept": {
+      "total_requests": 194,
+      "blocked_requests": 2,
+      "blocked_domains": [
+        "www.clarity.ms",
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "aceodds.com",
+    "url": "https://www.aceodds.com/",
+    "timestamp": "2026-03-22T10:49:27.566802",
+    "click": {
+      "x": 769,
+      "y": 867
+    },
+    "before_accept": {
+      "total_requests": 34,
+      "blocked_requests": 1,
+      "blocked_domains": [
+        "aceodds.matomo.cloud"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "hearinghealthfoundation.org",
+    "url": "https://hearinghealthfoundation.org/",
+    "timestamp": "2026-03-22T10:49:45.159429",
+    "click": {
+      "x": 1371,
+      "y": 853
+    },
+    "before_accept": {
+      "total_requests": 208,
+      "blocked_requests": 8,
+      "blocked_domains": [
+        "connect.facebook.net",
+        "googleads.g.doubleclick.net",
+        "www.googletagmanager.com",
+        "www.youtube.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "cyberpower.com",
+    "url": "https://www.cyberpower.com/GLOBAL/en",
+    "timestamp": "2026-03-22T10:50:07.061098",
+    "click": {
+      "x": 1307,
+      "y": 859
+    },
+    "before_accept": {
+      "total_requests": 297,
+      "blocked_requests": 3,
+      "blocked_domains": [
+        "www.googletagmanager.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "petrapalusova.com",
+    "url": "https://petrapalusova.com/",
+    "timestamp": "2026-03-22T10:50:24.637846",
+    "click": {
+      "x": 1372,
+      "y": 865
+    },
+    "before_accept": {
+      "total_requests": 82,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "riverandrailkitchen.com",
+    "url": "https://riverandrailkitchen.com/",
+    "timestamp": "2026-03-22T10:50:41.718442",
+    "click": {
+      "x": 852,
+      "y": 589
+    },
+    "before_accept": {
+      "total_requests": 42,
+      "blocked_requests": 0,
+      "blocked_domains": []
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "mooremerkowitztile.com",
+    "url": "https://mooremerkowitztile.com/",
+    "timestamp": "2026-03-22T10:50:59.360137",
+    "click": {
+      "x": 1382,
+      "y": 862
+    },
+    "before_accept": {
+      "total_requests": 98,
+      "blocked_requests": 10,
+      "blocked_domains": [
+        "bat.bing.com",
+        "googleads.g.doubleclick.net",
+        "px.ads.linkedin.com",
+        "track.hubspot.com",
+        "www.google.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 2,
+      "new_blocked_requests": 2,
+      "new_blocked_domains": [
+        "px.ads.linkedin.com",
+        "track.hubspot.com"
+      ]
+    },
+    "status": "analyzed"
+  },
+  {
+    "site": "stamma.org",
+    "url": "https://stamma.org/",
+    "timestamp": "2026-03-22T10:51:12.511180",
+    "before_accept": {
+      "total_requests": 172,
+      "blocked_requests": 5,
+      "blocked_domains": [
+        "static.hotjar.com",
+        "www.youtube.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "no_popup",
+    "note": "No cookie popup visible with DDG extension active"
+  },
+  {
+    "site": "electricgeneratorsdirect.com",
+    "url": "https://www.electricgeneratorsdirect.com/",
+    "timestamp": "2026-03-22T10:51:25.689612",
+    "before_accept": {
+      "total_requests": 126,
+      "blocked_requests": 1,
+      "blocked_domains": [
+        "www.google-analytics.com"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_domains": []
+    },
+    "status": "no_popup",
+    "note": "No cookie popup visible with DDG extension active"
+  },
+  {
+    "site": "esquire.com",
+    "url": "https://www.esquire.com/",
+    "timestamp": "2026-03-22T10:51:43.046018",
+    "click": {
+      "x": 860,
+      "y": 600
+    },
+    "before_accept": {
+      "total_requests": 320,
+      "blocked_requests": 10,
+      "blocked_domains": [
+        "analytics.google.com",
+        "dt.adsafeprotected.com",
+        "k.p-n.io"
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 102,
+      "new_blocked_requests": 15,
+      "new_blocked_domains": [
+        "accounts.google.com",
+        "analytics.google.com",
+        "api.parsely.com",
+        "api.permutive.com",
+        "dt.adsafeprotected.com",
+        "p1.parsely.com",
+        "pagead2.googlesyndication.com",
+        "static.cloudflareinsights.com",
+        "tpsc-uw1.doubleverify.com",
+        "www.google.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "status": "analyzed"
+  }
+]

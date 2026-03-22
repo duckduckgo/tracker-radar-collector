@@ -1,0 +1,26 @@
+{
+  "site": "emerson.edu",
+  "url": "https://emerson.edu/",
+  "timestamp": "2026-03-22T10:38:53.222563",
+  "click": {
+    "x": 1257,
+    "y": 868
+  },
+  "before_accept": {
+    "total_requests": 62,
+    "blocked_requests": 1,
+    "blocked_domains": [
+      "analytics.google.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 5,
+    "new_blocked_requests": 5,
+    "new_blocked_domains": [
+      "px.ads.linkedin.com",
+      "tags.srv.stackadapt.com",
+      "www.facebook.com"
+    ]
+  },
+  "status": "analyzed"
+}

@@ -1,0 +1,29 @@
+{
+  "site": "mooremerkowitztile.com",
+  "url": "https://mooremerkowitztile.com/",
+  "timestamp": "2026-03-22T10:50:59.360137",
+  "click": {
+    "x": 1382,
+    "y": 862
+  },
+  "before_accept": {
+    "total_requests": 98,
+    "blocked_requests": 10,
+    "blocked_domains": [
+      "bat.bing.com",
+      "googleads.g.doubleclick.net",
+      "px.ads.linkedin.com",
+      "track.hubspot.com",
+      "www.google.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 2,
+    "new_blocked_requests": 2,
+    "new_blocked_domains": [
+      "px.ads.linkedin.com",
+      "track.hubspot.com"
+    ]
+  },
+  "status": "analyzed"
+}

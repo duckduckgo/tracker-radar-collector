@@ -1,0 +1,26 @@
+{
+  "site": "osf.io",
+  "url": "https://osf.io/",
+  "timestamp": "2026-03-22T10:38:19.034890",
+  "click": {
+    "x": 928,
+    "y": 69
+  },
+  "before_accept": {
+    "total_requests": 82,
+    "blocked_requests": 8,
+    "blocked_domains": [
+      "bam.nr-data.net",
+      "js-agent.newrelic.com",
+      "www.clarity.ms",
+      "www.googletagmanager.com",
+      "www.youtube.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

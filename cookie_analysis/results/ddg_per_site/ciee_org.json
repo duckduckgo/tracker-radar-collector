@@ -1,0 +1,32 @@
+{
+  "site": "ciee.org",
+  "url": "https://www.ciee.org/",
+  "timestamp": "2026-03-22T10:33:28.090854",
+  "click": {
+    "x": 1129,
+    "y": 819
+  },
+  "before_accept": {
+    "total_requests": 88,
+    "blocked_requests": 16,
+    "blocked_domains": [
+      "analytics-ipv6.tiktokw.us",
+      "analytics.tiktok.com",
+      "ciee.evergage.com",
+      "js-agent.newrelic.com",
+      "px.ads.linkedin.com",
+      "www.facebook.com",
+      "www.google-analytics.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 4,
+    "new_blocked_requests": 4,
+    "new_blocked_domains": [
+      "analytics.tiktok.com",
+      "px.ads.linkedin.com",
+      "www.facebook.com"
+    ]
+  },
+  "status": "analyzed"
+}

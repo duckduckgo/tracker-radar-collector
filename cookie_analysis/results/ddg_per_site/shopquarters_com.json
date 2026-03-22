@@ -1,0 +1,25 @@
+{
+  "site": "shopquarters.com",
+  "url": "https://shopquarters.com/",
+  "timestamp": "2026-03-22T10:35:59.722986",
+  "click": {
+    "x": 893,
+    "y": 612
+  },
+  "before_accept": {
+    "total_requests": 117,
+    "blocked_requests": 4,
+    "blocked_domains": [
+      "connect.facebook.net",
+      "lantern.roeyecdn.com",
+      "www.dwin1.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 6,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

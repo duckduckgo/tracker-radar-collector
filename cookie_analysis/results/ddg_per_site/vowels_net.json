@@ -1,0 +1,24 @@
+{
+  "site": "vowels.net",
+  "url": "https://vowels.net/",
+  "timestamp": "2026-03-22T10:35:42.375294",
+  "click": {
+    "x": 713,
+    "y": 842
+  },
+  "before_accept": {
+    "total_requests": 159,
+    "blocked_requests": 8,
+    "blocked_domains": [
+      "connect.facebook.net",
+      "www.google.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 5,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

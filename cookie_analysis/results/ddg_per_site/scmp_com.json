@@ -1,0 +1,42 @@
+{
+  "site": "scmp.com",
+  "url": "https://www.scmp.com/",
+  "timestamp": "2026-03-22T10:48:34.356411",
+  "click": {
+    "x": 685,
+    "y": 600
+  },
+  "before_accept": {
+    "total_requests": 250,
+    "blocked_requests": 43,
+    "blocked_domains": [
+      "api.cxense.com",
+      "cdn.cxense.com",
+      "cdn.optimizely.com",
+      "cm.g.doubleclick.net",
+      "connect.facebook.net",
+      "d40b1c20e13affc5ea1a19cc22a77750.safeframe.googlesyndication.com",
+      "ep1.adtrafficquality.google",
+      "fundingchoicesmessages.google.com",
+      "micro.rubiconproject.com",
+      "pagead2.googlesyndication.com",
+      "px.ads.linkedin.com",
+      "sb.scorecardresearch.com",
+      "securepubads.g.doubleclick.net",
+      "static.criteo.net",
+      "tags.creativecdn.com",
+      "tags.crwdcntrl.net",
+      "tags.srv.stackadapt.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 69,
+    "new_blocked_requests": 5,
+    "new_blocked_domains": [
+      "comcluster.cxense.com",
+      "px.ads.linkedin.com"
+    ]
+  },
+  "status": "analyzed"
+}

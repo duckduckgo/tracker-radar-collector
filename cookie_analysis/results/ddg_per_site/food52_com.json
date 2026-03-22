@@ -1,0 +1,20 @@
+{
+  "site": "food52.com",
+  "url": "https://food52.com/",
+  "timestamp": "2026-03-22T10:34:38.031538",
+  "click": {
+    "x": 940,
+    "y": 575
+  },
+  "before_accept": {
+    "total_requests": 1447,
+    "blocked_requests": 0,
+    "blocked_domains": []
+  },
+  "after_accept": {
+    "total_new_requests": 795,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

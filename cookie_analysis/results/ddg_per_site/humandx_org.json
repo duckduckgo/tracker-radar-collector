@@ -1,0 +1,20 @@
+{
+  "site": "humandx.org",
+  "url": "https://www.humandx.org/",
+  "timestamp": "2026-03-22T10:35:24.950912",
+  "click": {
+    "x": 1383,
+    "y": 858
+  },
+  "before_accept": {
+    "total_requests": 109,
+    "blocked_requests": 0,
+    "blocked_domains": []
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

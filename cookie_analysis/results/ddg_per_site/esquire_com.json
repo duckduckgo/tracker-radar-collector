@@ -1,0 +1,36 @@
+{
+  "site": "esquire.com",
+  "url": "https://www.esquire.com/",
+  "timestamp": "2026-03-22T10:51:43.046018",
+  "click": {
+    "x": 860,
+    "y": 600
+  },
+  "before_accept": {
+    "total_requests": 320,
+    "blocked_requests": 10,
+    "blocked_domains": [
+      "analytics.google.com",
+      "dt.adsafeprotected.com",
+      "k.p-n.io"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 102,
+    "new_blocked_requests": 15,
+    "new_blocked_domains": [
+      "accounts.google.com",
+      "analytics.google.com",
+      "api.parsely.com",
+      "api.permutive.com",
+      "dt.adsafeprotected.com",
+      "p1.parsely.com",
+      "pagead2.googlesyndication.com",
+      "static.cloudflareinsights.com",
+      "tpsc-uw1.doubleverify.com",
+      "www.google.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "status": "analyzed"
+}

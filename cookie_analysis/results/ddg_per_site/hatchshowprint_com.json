@@ -1,0 +1,30 @@
+{
+  "site": "hatchshowprint.com",
+  "url": "https://www.hatchshowprint.com/",
+  "timestamp": "2026-03-22T10:40:58.634866",
+  "click": {
+    "x": 1132,
+    "y": 795
+  },
+  "before_accept": {
+    "total_requests": 93,
+    "blocked_requests": 15,
+    "blocked_domains": [
+      "analytics.tiktok.com",
+      "connect.facebook.net",
+      "px.ads.linkedin.com",
+      "sc-static.net",
+      "static.sojern.com",
+      "tags.srv.stackadapt.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 17,
+    "new_blocked_requests": 1,
+    "new_blocked_domains": [
+      "px.ads.linkedin.com"
+    ]
+  },
+  "status": "analyzed"
+}

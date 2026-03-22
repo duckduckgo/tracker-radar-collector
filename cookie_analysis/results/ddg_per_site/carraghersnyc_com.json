@@ -1,0 +1,23 @@
+{
+  "site": "carraghersnyc.com",
+  "url": "https://www.carraghersnyc.com/",
+  "timestamp": "2026-03-22T10:32:35.702254",
+  "click": {
+    "x": 76,
+    "y": 843
+  },
+  "before_accept": {
+    "total_requests": 92,
+    "blocked_requests": 2,
+    "blocked_domains": [
+      "connect.facebook.net",
+      "www.google-analytics.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

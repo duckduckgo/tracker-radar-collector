@@ -1,0 +1,33 @@
+{
+  "site": "modani.com",
+  "url": "https://modani.com/",
+  "timestamp": "2026-03-22T10:33:10.768444",
+  "click": {
+    "x": 208,
+    "y": 831
+  },
+  "before_accept": {
+    "total_requests": 540,
+    "blocked_requests": 25,
+    "blocked_domains": [
+      "a.usbrowserspeed.com",
+      "aa.agkn.com",
+      "b.applovin.com",
+      "bat.bing.com",
+      "cdn.attn.tv",
+      "cdn.taboola.com",
+      "d-code.liadm.com",
+      "monorail-edge.shopifysvc.com",
+      "track.sv.rkdms.com",
+      "trkapi.impact.com",
+      "www.clarity.ms",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 7,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

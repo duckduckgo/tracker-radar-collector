@@ -1,0 +1,32 @@
+{
+  "site": "seventeen.com",
+  "url": "https://seventeen.com/",
+  "timestamp": "2026-03-22T10:45:37.702323",
+  "click": {
+    "x": 860,
+    "y": 584
+  },
+  "before_accept": {
+    "total_requests": 133,
+    "blocked_requests": 13,
+    "blocked_domains": [
+      "a40c3af92d0284b59bb10f9751a21840.safeframe.googlesyndication.com",
+      "ep1.adtrafficquality.google",
+      "p1.parsely.com",
+      "pagead2.googlesyndication.com",
+      "s.skimresources.com",
+      "securepubads.g.doubleclick.net",
+      "www.google-analytics.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 47,
+    "new_blocked_requests": 4,
+    "new_blocked_domains": [
+      "api.parsely.com",
+      "p1.parsely.com",
+      "www.google-analytics.com"
+    ]
+  },
+  "status": "analyzed"
+}

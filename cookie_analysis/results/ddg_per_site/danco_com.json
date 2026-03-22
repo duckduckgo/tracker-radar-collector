@@ -1,0 +1,22 @@
+{
+  "site": "danco.com",
+  "url": "https://www.danco.com/",
+  "timestamp": "2026-03-22T10:35:08.048878",
+  "click": {
+    "x": 852,
+    "y": 868
+  },
+  "before_accept": {
+    "total_requests": 135,
+    "blocked_requests": 1,
+    "blocked_domains": [
+      "analytics.google.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 4,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

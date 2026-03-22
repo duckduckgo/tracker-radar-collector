@@ -1,0 +1,19 @@
+{
+  "site": "electricgeneratorsdirect.com",
+  "url": "https://www.electricgeneratorsdirect.com/",
+  "timestamp": "2026-03-22T10:51:25.689612",
+  "before_accept": {
+    "total_requests": 126,
+    "blocked_requests": 1,
+    "blocked_domains": [
+      "www.google-analytics.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "no_popup",
+  "note": "No cookie popup visible with DDG extension active"
+}

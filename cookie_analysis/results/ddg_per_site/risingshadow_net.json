@@ -1,0 +1,20 @@
+{
+  "site": "risingshadow.net",
+  "url": "https://www.risingshadow.net/",
+  "timestamp": "2026-03-22T10:44:45.087666",
+  "click": {
+    "x": 767,
+    "y": 876
+  },
+  "before_accept": {
+    "total_requests": 51,
+    "blocked_requests": 0,
+    "blocked_domains": []
+  },
+  "after_accept": {
+    "total_new_requests": 0,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

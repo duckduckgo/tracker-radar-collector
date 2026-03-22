@@ -1,0 +1,41 @@
+{
+  "site": "scworld.com",
+  "url": "https://www.scworld.com/",
+  "timestamp": "2026-03-22T10:36:16.951692",
+  "click": {
+    "x": 1195,
+    "y": 847
+  },
+  "before_accept": {
+    "total_requests": 187,
+    "blocked_requests": 31,
+    "blocked_domains": [
+      "a.usbrowserspeed.com",
+      "cm.g.doubleclick.net",
+      "connect.facebook.net",
+      "e7eae64238b073e4b7ff7c83557b5700.safeframe.googlesyndication.com",
+      "ep1.adtrafficquality.google",
+      "googleads.g.doubleclick.net",
+      "ib.adnxs.com",
+      "in.ml314.com",
+      "insight.adsrvr.org",
+      "js.zi-scripts.com",
+      "ml314.com",
+      "munchkin.marketo.net",
+      "pagead2.googlesyndication.com",
+      "pixel.mathtag.com",
+      "px.ads.linkedin.com",
+      "secure.adnxs.com",
+      "securepubads.g.doubleclick.net",
+      "stats.g.doubleclick.net"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 1,
+    "new_blocked_requests": 1,
+    "new_blocked_domains": [
+      "px.ads.linkedin.com"
+    ]
+  },
+  "status": "analyzed"
+}

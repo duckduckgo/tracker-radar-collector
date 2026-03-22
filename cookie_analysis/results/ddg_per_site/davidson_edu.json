@@ -1,0 +1,27 @@
+{
+  "site": "davidson.edu",
+  "url": "https://www.davidson.edu/",
+  "timestamp": "2026-03-22T10:39:10.558214",
+  "click": {
+    "x": 1022,
+    "y": 853
+  },
+  "before_accept": {
+    "total_requests": 71,
+    "blocked_requests": 9,
+    "blocked_domains": [
+      "analytics.google.com",
+      "connect.facebook.net",
+      "googleads.g.doubleclick.net",
+      "stats.g.doubleclick.net",
+      "www.google-analytics.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 2,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

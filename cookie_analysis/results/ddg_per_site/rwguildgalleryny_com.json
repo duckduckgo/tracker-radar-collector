@@ -1,0 +1,22 @@
+{
+  "site": "rwguildgalleryny.com",
+  "url": "https://rwguildgalleryny.com/",
+  "timestamp": "2026-03-22T10:32:18.118446",
+  "click": {
+    "x": 1259,
+    "y": 858
+  },
+  "before_accept": {
+    "total_requests": 115,
+    "blocked_requests": 1,
+    "blocked_domains": [
+      "www.google-analytics.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 5,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

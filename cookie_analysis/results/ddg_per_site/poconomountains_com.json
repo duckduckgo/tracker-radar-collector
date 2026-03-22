@@ -1,0 +1,39 @@
+{
+  "site": "poconomountains.com",
+  "url": "https://www.poconomountains.com/",
+  "timestamp": "2026-03-22T10:42:43.860999",
+  "click": {
+    "x": 1039,
+    "y": 424
+  },
+  "before_accept": {
+    "total_requests": 305,
+    "blocked_requests": 30,
+    "blocked_domains": [
+      "analytics.tiktok.com",
+      "bat.bing.com",
+      "c.amazon-adsystem.com",
+      "cdn.mouseflow.com",
+      "collector-51300.us.tvsquared.com",
+      "connect.facebook.net",
+      "pixel-a.basis.net",
+      "pixel.sitescout.com",
+      "pixel.zprk.io",
+      "static.ads-twitter.com",
+      "tag.yieldoptimizer.com",
+      "tags.srv.stackadapt.com",
+      "tags.w55c.net",
+      "wsmcdn.audioeye.com",
+      "www.clarity.ms",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 1,
+    "new_blocked_requests": 1,
+    "new_blocked_domains": [
+      "static.hotjar.com"
+    ]
+  },
+  "status": "analyzed"
+}

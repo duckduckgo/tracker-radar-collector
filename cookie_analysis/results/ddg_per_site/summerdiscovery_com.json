@@ -1,0 +1,35 @@
+{
+  "site": "summerdiscovery.com",
+  "url": "https://www.summerdiscovery.com/",
+  "timestamp": "2026-03-22T10:41:33.359689",
+  "click": {
+    "x": 900,
+    "y": 569
+  },
+  "before_accept": {
+    "total_requests": 189,
+    "blocked_requests": 21,
+    "blocked_domains": [
+      "12704595.fls.doubleclick.net",
+      "aa.agkn.com",
+      "ad.doubleclick.net",
+      "fid.agkn.com",
+      "googleads.g.doubleclick.net",
+      "i.liadm.com",
+      "sp.analytics.yahoo.com",
+      "tags.srv.stackadapt.com",
+      "www.facebook.com",
+      "www.google-analytics.com",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 3,
+    "new_blocked_requests": 2,
+    "new_blocked_domains": [
+      "tags.srv.stackadapt.com",
+      "www.google-analytics.com"
+    ]
+  },
+  "status": "analyzed"
+}

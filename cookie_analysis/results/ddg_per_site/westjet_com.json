@@ -1,0 +1,24 @@
+{
+  "site": "westjet.com",
+  "url": "https://www.westjet.com/en-ca",
+  "timestamp": "2026-03-22T10:47:06.169490",
+  "click": {
+    "x": 1104,
+    "y": 863
+  },
+  "before_accept": {
+    "total_requests": 187,
+    "blocked_requests": 2,
+    "blocked_domains": [
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 2,
+    "new_blocked_requests": 2,
+    "new_blocked_domains": [
+      "www.facebook.com"
+    ]
+  },
+  "status": "analyzed"
+}

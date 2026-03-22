@@ -1,0 +1,31 @@
+{
+  "site": "endocrine.org",
+  "url": "https://endocrine.org/",
+  "timestamp": "2026-03-22T10:47:40.901073",
+  "click": {
+    "x": 1211,
+    "y": 857
+  },
+  "before_accept": {
+    "total_requests": 105,
+    "blocked_requests": 11,
+    "blocked_domains": [
+      "aim-tag.hcn.health",
+      "connect.facebook.net",
+      "mviewwebtes.112.2o7.net",
+      "s.adroll.com",
+      "static.addtoany.com",
+      "static.ads-twitter.com",
+      "tags.crwdcntrl.net",
+      "tracking.magnetmail.net",
+      "www.clarity.ms",
+      "www.googletagmanager.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 7,
+    "new_blocked_requests": 0,
+    "new_blocked_domains": []
+  },
+  "status": "analyzed"
+}

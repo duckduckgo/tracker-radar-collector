@@ -1,0 +1,24 @@
+{
+  "site": "build.com",
+  "url": "https://www.build.com/",
+  "timestamp": "2026-03-22T10:46:13.031063",
+  "click": {
+    "x": 77,
+    "y": 838
+  },
+  "before_accept": {
+    "total_requests": 331,
+    "blocked_requests": 1,
+    "blocked_domains": [
+      "imgs.signifyd.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 7,
+    "new_blocked_requests": 4,
+    "new_blocked_domains": [
+      "www.facebook.com"
+    ]
+  },
+  "status": "analyzed"
+}

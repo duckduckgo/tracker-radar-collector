@@ -1,0 +1,37 @@
+{
+  "site": "tufts.edu",
+  "url": "https://www.tufts.edu/",
+  "timestamp": "2026-03-22T10:46:30.472987",
+  "click": {
+    "x": 1285,
+    "y": 854
+  },
+  "before_accept": {
+    "total_requests": 187,
+    "blocked_requests": 22,
+    "blocked_domains": [
+      "analytics.google.com",
+      "arttrk.com",
+      "connect.facebook.net",
+      "googleads.g.doubleclick.net",
+      "js.ipredictive.com",
+      "px.ads.linkedin.com",
+      "stats.g.doubleclick.net",
+      "track.hubspot.com",
+      "www.google.com",
+      "www.googletagmanager.com",
+      "www.redditstatic.com",
+      "www.youtube.com"
+    ]
+  },
+  "after_accept": {
+    "total_new_requests": 6,
+    "new_blocked_requests": 3,
+    "new_blocked_domains": [
+      "analytics.google.com",
+      "px.ads.linkedin.com",
+      "track.hubspot.com"
+    ]
+  },
+  "status": "analyzed"
+}
