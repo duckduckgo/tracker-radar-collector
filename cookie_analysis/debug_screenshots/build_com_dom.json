@@ -1,0 +1,165 @@
+[
+  {
+    "tag": "div",
+    "classes": "banner_ads ads ad adsbox doubleclick ad-placement carbon-ads pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links",
+    "id": "adbox",
+    "text": "",
+    "rect": {
+      "x": -1000,
+      "y": -1000,
+      "w": 100,
+      "h": 100
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "span",
+    "classes": "cc-message",
+    "id": "cookieconsent:desc",
+    "text": "We use cookies to ensure fast, reliable, and secure operations, and to give you the best possible experience when using our website. We use both session-based cookies and persistent cookies. We also allow the use of third-party cookies by certain authorized third parties with whom we execute marketing campaigns. If your browser/device has enabled the Global Privacy Control signal, this website acknowledges it. For more information, please refer to our Privacy Policy and Cookie Policy.",
+    "rect": {
+      "x": 38,
+      "y": 535,
+      "w": 288,
+      "h": 273
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "cc-link",
+        "id": "",
+        "href": "https://privacy-central.securiti.ai/#/notices/3bc35d9b-eee7-48b6-8e11-792486e0c08e/custom_e85bc50d-1",
+        "x": 210,
+        "y": 776
+      },
+      {
+        "tag": "a",
+        "text": "Cookie Policy.",
+        "ariaLabel": "",
+        "classes": "cc-link",
+        "id": "",
+        "href": "https://privacy-central.securiti.ai/#/notices/3bc35d9b-eee7-48b6-8e11-792486e0c08e/custom_6c1f5146-b",
+        "x": 86,
+        "y": 797
+      }
+    ],
+    "matchedSelector": "[id*=\"cookie\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "cc-window cc-floating cc-type-hybrid cc-theme-block cc-bottom cc-left cc-color-override-8871847 ",
+    "id": "",
+    "text": "We use cookies to ensure fast, reliable, and secure operations, and to give you the best possible experience when using our website. We use both session-based cookies and persistent cookies. We also allow the use of third-party cookies by certain authorized third parties with whom we execute marketing campaigns. If your browser/device has enabled the Global Privacy Control signal, this website acknowledges it. For more information, please refer to our Privacy Policy and Cookie Policy.\n          ",
+    "rect": {
+      "x": 14,
+      "y": 511,
+      "w": 336,
+      "h": 375
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "cc-link",
+        "id": "",
+        "href": "https://privacy-central.securiti.ai/#/notices/3bc35d9b-eee7-48b6-8e11-792486e0c08e/custom_e85bc50d-1",
+        "x": 210,
+        "y": 776
+      },
+      {
+        "tag": "a",
+        "text": "Cookie Policy.",
+        "ariaLabel": "",
+        "classes": "cc-link",
+        "id": "",
+        "href": "https://privacy-central.securiti.ai/#/notices/3bc35d9b-eee7-48b6-8e11-792486e0c08e/custom_6c1f5146-b",
+        "x": 86,
+        "y": 797
+      },
+      {
+        "tag": "a",
+        "text": "Dismiss",
+        "ariaLabel": "",
+        "classes": "cc-btn cc-allow cc-btn-format",
+        "id": "",
+        "href": "",
+        "x": 77,
+        "y": 838
+      },
+      {
+        "tag": "span",
+        "text": "",
+        "ariaLabel": "Close banner",
+        "classes": "cc-close cc-close-banner-btn",
+        "id": "",
+        "href": null,
+        "x": 334,
+        "y": 527
+      },
+      {
+        "tag": "span",
+        "text": "",
+        "ariaLabel": "Close banner",
+        "classes": "cc-close cc-close-banner-btn",
+        "id": "",
+        "x": 334,
+        "y": 527,
+        "isClose": true
+      }
+    ],
+    "matchedSelector": "[role=\"dialog\"]"
+  },
+  {
+    "tag": "div",
+    "classes": "cc-compliance cc-highlight cc-regular",
+    "id": "",
+    "text": "DismissCookie Preferences Icon Online Privacy Choices",
+    "rect": {
+      "x": 14,
+      "y": 822,
+      "w": 336,
+      "h": 40
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Dismiss",
+        "ariaLabel": "",
+        "classes": "cc-btn cc-allow cc-btn-format",
+        "id": "",
+        "href": "",
+        "x": 77,
+        "y": 838
+      },
+      {
+        "tag": "span",
+        "text": "",
+        "ariaLabel": "Close banner",
+        "classes": "cc-close cc-close-banner-btn",
+        "id": "",
+        "href": null,
+        "x": 334,
+        "y": 527
+      },
+      {
+        "tag": "span",
+        "text": "",
+        "ariaLabel": "Close banner",
+        "classes": "cc-close cc-close-banner-btn",
+        "id": "",
+        "x": 334,
+        "y": 527,
+        "isClose": true
+      }
+    ],
+    "matchedSelector": ".cc-compliance"
+  }
+]

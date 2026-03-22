@@ -1,0 +1,68 @@
+{
+  "site": "getguru.com",
+  "url": "https://www.getguru.com/",
+  "timestamp": "2026-03-22T10:19:16.712650",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/getguru_com.png",
+  "total_requests": 220,
+  "blocked_requests_count": 1,
+  "blocked_requests": [
+    {
+      "url": "https://rs.fullstory.com/rec/bundle/v2?OrgId=o-22C3GR-na1&UserId=b44d821d-a8fc-49e3-abd8-07b6168bb39a&SessionId=6ef13535-fe3f-4bfd-9855-3ab3e8e51069&PageId=23790d03-5876-49a9-b43d-98fe7e8ba09a&Seq=2&ClientTime=1774174754339&CompiledVersion=ba8d0ae9b2475df54a314b35ab93d9d8a76336f3&PageStart=1774174749272&PrevBundleTime=1774174751891&LastActivity=4834&IsNewSession=true&ContentEncoding=gzip",
+      "domain": "rs.fullstory.com"
+    }
+  ],
+  "blocked_domains": [
+    "rs.fullstory.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "privacy-cookie",
+      "id": "",
+      "text": "We use cookies to give our users a better experience. \u00a0By using this site, you agree to our Privacy Policy.Okay",
+      "rect": {
+        "x": 1085,
+        "y": 802,
+        "w": 320,
+        "h": 78
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "text-link-black",
+          "id": "",
+          "x": 1235,
+          "y": 858,
+          "w": 79,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Okay",
+          "ariaLabel": "",
+          "classes": "cookie-button w-button",
+          "id": "privacy-ok",
+          "x": 1363,
+          "y": 841,
+          "w": 61,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "tag": "a",
+      "classes": "cookie-button w-button",
+      "id": "privacy-ok",
+      "text": "Okay",
+      "rect": {
+        "x": 1332,
+        "y": 819,
+        "w": 61,
+        "h": 44
+      },
+      "buttons": []
+    }
+  ]
+}

@@ -1,0 +1,755 @@
+{
+  "site": "petrapalusova.com",
+  "url": "https://petrapalusova.com/",
+  "timestamp": "2026-03-22T10:24:43.984481",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/petrapalusova_com.png",
+  "total_requests": 82,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": [
+    {
+      "tag": "section",
+      "classes": "gdpr-cookie-banner BOTTOM legacy-light bar full-styling",
+      "id": "",
+      "text": "By using this website, you agree to the use of cookies, which helps run the website effectively.Accept",
+      "rect": {
+        "x": 0,
+        "y": 829,
+        "w": 1425,
+        "h": 71
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+          "id": "",
+          "x": 1372,
+          "y": 865,
+          "w": 66,
+          "h": 43
+        }
+      ]
+    },
+    {
+      "tag": "p",
+      "classes": "disclaimer-text sqs-cookie-banner-v2-text",
+      "id": "",
+      "text": "By using this website, you agree to the use of cookies, which helps run the website effectively.",
+      "rect": {
+        "x": 20,
+        "y": 854,
+        "w": 508,
+        "h": 21
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "button-group sqs-cookie-banner-v2-cta-container",
+      "id": "",
+      "text": "Accept",
+      "rect": {
+        "x": 1339,
+        "y": 843,
+        "w": 66,
+        "h": 43
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+          "id": "",
+          "x": 1372,
+          "y": 865,
+          "w": 66,
+          "h": 43
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+      "id": "",
+      "text": "Accept",
+      "rect": {
+        "x": 1339,
+        "y": 843,
+        "w": 66,
+        "h": 43
+      },
+      "buttons": []
+    },
+    {
+      "tag": "body",
+      "classes": "tweak-site-width-option-full-background tweak-icon-weight-hairline tweak-site-ajax-loading-enable tweak-site-ajax-loading-bar-show ancillary-header-top-left-layout-horizontal ancillary-header-top-center-layout-horizontal ancillary-header-top-right-layout-horizontal ancillary-header-bottom-left-layou",
+      "id": "collection-61b06ca8bc9fd25cabc67a76",
+      "text": "By using this website, you agree to the use of cookies, which helps run the website effectively.Accept\n\n    \n\n    \n  \n\n    \n      \n    \n        \n          \n            Petra Palusova\n          \n        \n      \n    \n    \n        \n          \n          \n        \n        \n          \n          \n        \n        \n          \n          \n        \n        \n          \n          \n        \n        \n          \n          \n        \n        \n          \n          \n        \n        \n          \n          \n        \n",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 4182
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+          "id": "",
+          "x": 1372,
+          "y": 865,
+          "w": 66,
+          "h": 43
+        },
+        {
+          "tag": "a",
+          "text": "About",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-title",
+          "id": "",
+          "x": 601,
+          "y": 93,
+          "w": 46,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Background",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99370,
+          "y": 139,
+          "w": 104,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Philosophy",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99370,
+          "y": 160,
+          "w": 104,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Agency",
+          "ariaLabel": "",
+          "classes": "Header-nav-item",
+          "id": "",
+          "x": 666,
+          "y": 93,
+          "w": 54,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Work",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-title",
+          "id": "",
+          "x": 729,
+          "y": 93,
+          "w": 41,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Articles",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99235,
+          "y": 139,
+          "w": 109,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Publications",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99235,
+          "y": 160,
+          "w": 109,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Bookshelf",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-title",
+          "id": "",
+          "x": 807,
+          "y": 93,
+          "w": 83,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Books I read",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99181,
+          "y": 139,
+          "w": 106,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Explorables",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99181,
+          "y": 160,
+          "w": 106,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Petra Palusova",
+          "ariaLabel": "",
+          "classes": "Header-branding",
+          "id": "",
+          "x": 713,
+          "y": 51,
+          "w": 213,
+          "h": 50
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Search",
+          "classes": "Header-search-form-submit",
+          "id": "",
+          "x": 1345,
+          "y": 79,
+          "w": 21,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Read",
+          "ariaLabel": "",
+          "classes": "sqs-button-element--primary",
+          "id": "",
+          "x": 384,
+          "y": 633,
+          "w": 93,
+          "h": 37
+        },
+        {
+          "tag": "button",
+          "text": "SUBSCRIBE",
+          "ariaLabel": "",
+          "classes": "\n            newsletter-form-button\n            sqs-system-button\n            sqs-editable-button-layout\n            sqs-editable-button-style\n            sqs-editable-button-shape\n            sqs-button-element--primary\n          ",
+          "id": "",
+          "x": 513,
+          "y": 817,
+          "w": 159,
+          "h": 49
+        },
+        {
+          "tag": "a",
+          "text": "After Generative AI: Agentic Intelligence and the Systems of Delegated Action",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 1036,
+          "y": 208,
+          "w": 393,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "The Anatomy of Continuity in Modern Business",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 1006,
+          "y": 408,
+          "w": 334,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "Recursive Strategy: How Intelligent Systems Think Through Us",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 1036,
+          "y": 569,
+          "w": 394,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "How the East Does Tech: Lessons from a World Western Logic Can\u2019t Fully Map",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 1023,
+          "y": 729,
+          "w": 367,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "Browse more articles \u2192",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 920,
+          "y": 892,
+          "w": 161,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n                \n                  sqs-block-image-link\n                \n                image-inset",
+          "id": "yui_3_17_2_1_1774175069969_87",
+          "x": 218,
+          "y": 1109,
+          "w": 296,
+          "h": 197
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n                \n                  sqs-block-image-link\n                \n                image-inset",
+          "id": "yui_3_17_2_1_1774175069969_101",
+          "x": 548,
+          "y": 1109,
+          "w": 296,
+          "h": 197
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n                \n                  sqs-block-image-link\n                \n                image-inset",
+          "id": "yui_3_17_2_1_1774175069969_111",
+          "x": 878,
+          "y": 1109,
+          "w": 296,
+          "h": 197
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n                \n                  sqs-block-image-link\n                \n                image-inset",
+          "id": "yui_3_17_2_1_1774175069969_121",
+          "x": 1207,
+          "y": 1109,
+          "w": 296,
+          "h": 197
+        },
+        {
+          "tag": "a",
+          "text": "PHILOSOPHY [ \u2192 ]",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 171,
+          "y": 1603,
+          "w": 127,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "AGENCY  [ \u2192 ]",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 169,
+          "y": 2324,
+          "w": 88,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "LINKEDIN [ \u2192 ]",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 713,
+          "y": 3405,
+          "w": 88,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "LINKTREE [ \u2192 ]",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 713,
+          "y": 3440,
+          "w": 90,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "CONTACT [ \u2192 ]",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 713,
+          "y": 3475,
+          "w": 89,
+          "h": 17
+        },
+        {
+          "tag": "button",
+          "text": "Sign Up",
+          "ariaLabel": "",
+          "classes": "\n            newsletter-form-button\n            sqs-system-button\n            sqs-editable-button-layout\n            sqs-editable-button-style\n            sqs-editable-button-shape\n            sqs-button-element--primary\n          ",
+          "id": "",
+          "x": 839,
+          "y": 3804,
+          "w": 135,
+          "h": 49
+        },
+        {
+          "tag": "a",
+          "text": "About",
+          "ariaLabel": "",
+          "classes": "Footer-nav-folder-item",
+          "id": "",
+          "x": 125,
+          "y": 4030,
+          "w": 110,
+          "h": 18
+        },
+        {
+          "tag": "a",
+          "text": "Terms",
+          "ariaLabel": "",
+          "classes": "Footer-nav-folder-item",
+          "id": "",
+          "x": 125,
+          "y": 4047,
+          "w": 110,
+          "h": 18
+        },
+        {
+          "tag": "a",
+          "text": "Privacy",
+          "ariaLabel": "",
+          "classes": "Footer-nav-folder-item",
+          "id": "",
+          "x": 125,
+          "y": 4065,
+          "w": 110,
+          "h": 18
+        },
+        {
+          "tag": "a",
+          "text": "Contact",
+          "ariaLabel": "",
+          "classes": "Footer-nav-folder-item",
+          "id": "",
+          "x": 275,
+          "y": 4030,
+          "w": 110,
+          "h": 18
+        },
+        {
+          "tag": "a",
+          "text": "Linktree",
+          "ariaLabel": "",
+          "classes": "Footer-nav-folder-item",
+          "id": "",
+          "x": 275,
+          "y": 4047,
+          "w": 110,
+          "h": 18
+        },
+        {
+          "tag": "a",
+          "text": "LinkedIn",
+          "ariaLabel": "",
+          "classes": "Footer-nav-folder-item",
+          "id": "",
+          "x": 275,
+          "y": 4065,
+          "w": 110,
+          "h": 18
+        },
+        {
+          "tag": "a",
+          "text": "Articles",
+          "ariaLabel": "",
+          "classes": "Footer-nav-folder-item",
+          "id": "",
+          "x": 425,
+          "y": 4030,
+          "w": 110,
+          "h": 18
+        },
+        {
+          "tag": "a",
+          "text": "Publications",
+          "ariaLabel": "",
+          "classes": "Footer-nav-folder-item",
+          "id": "",
+          "x": 425,
+          "y": 4047,
+          "w": 110,
+          "h": 18
+        },
+        {
+          "tag": "a",
+          "text": "Industry bits",
+          "ariaLabel": "",
+          "classes": "Footer-nav-folder-item",
+          "id": "",
+          "x": 425,
+          "y": 4065,
+          "w": 110,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "tag": "header",
+      "classes": "Header Header--bottom Header--overlay",
+      "id": "",
+      "text": "About\n\n      \n        \n          \n            Background\n          \n        \n          \n            Philosophy\n          \n        \n      \n    Agency\n\n      Work\n\n      \n        \n          \n            Articles\n          \n        \n          \n            Publications\n          \n        \n      \n    \n\n      Bookshelf\n\n      \n        \n          \n            Books I read\n          \n        \n          \n            Explorables\n          \n        \n      \n    \n  \n\n              \n                \n         ",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 132
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "About",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-title",
+          "id": "",
+          "x": 601,
+          "y": 93,
+          "w": 46,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Background",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99370,
+          "y": 139,
+          "w": 104,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Philosophy",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99370,
+          "y": 160,
+          "w": 104,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Agency",
+          "ariaLabel": "",
+          "classes": "Header-nav-item",
+          "id": "",
+          "x": 666,
+          "y": 93,
+          "w": 54,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Work",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-title",
+          "id": "",
+          "x": 729,
+          "y": 93,
+          "w": 41,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Articles",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99235,
+          "y": 139,
+          "w": 109,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Publications",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99235,
+          "y": 160,
+          "w": 109,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Bookshelf",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-title",
+          "id": "",
+          "x": 807,
+          "y": 93,
+          "w": 83,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Books I read",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99181,
+          "y": 139,
+          "w": 106,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Explorables",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99181,
+          "y": 160,
+          "w": 106,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Petra Palusova",
+          "ariaLabel": "",
+          "classes": "Header-branding",
+          "id": "",
+          "x": 713,
+          "y": 51,
+          "w": 213,
+          "h": 50
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Search",
+          "classes": "Header-search-form-submit",
+          "id": "",
+          "x": 1345,
+          "y": 79,
+          "w": 21,
+          "h": 21
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 368,
+        "y": 184,
+        "w": 438,
+        "h": 438
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 70,
+        "y": 1010,
+        "w": 296,
+        "h": 197
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 400,
+        "y": 1010,
+        "w": 296,
+        "h": 197
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 730,
+        "y": 1010,
+        "w": 296,
+        "h": 197
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 1059,
+        "y": 1010,
+        "w": 296,
+        "h": 197
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 445,
+        "y": 2167,
+        "w": 250,
+        "h": 250
+      },
+      "buttons": []
+    }
+  ]
+}

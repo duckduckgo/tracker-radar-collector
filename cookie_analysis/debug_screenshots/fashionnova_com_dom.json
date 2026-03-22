@@ -1,0 +1,1128 @@
+[
+  {
+    "tag": "div",
+    "classes": "relative w-full pb-[calc(100%/var(--banner-image-aspect-ratio-mobile))] md:pb-[calc(100%/var(--banner-image-aspect-ratio-desktop))]",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 0,
+      "y": 1222,
+      "w": 1425,
+      "h": 562
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "relative w-full pb-[calc(100%/var(--banner-image-aspect-ratio-mobile))] md:pb-[calc(100%/var(--banner-image-aspect-ratio-desktop))]",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 0,
+      "y": 2172,
+      "w": 1425,
+      "h": 562
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "relative w-full pb-[calc(100%/var(--banner-image-aspect-ratio-mobile))] md:pb-[calc(100%/var(--banner-image-aspect-ratio-desktop))]",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 0,
+      "y": 2733,
+      "w": 1425,
+      "h": 561
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "relative w-full pb-[calc(100%/var(--banner-image-aspect-ratio-mobile))] md:pb-[calc(100%/var(--banner-image-aspect-ratio-desktop))]",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 0,
+      "y": 4144,
+      "w": 1425,
+      "h": 245
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "body",
+    "classes": "flex min-h-screen w-full flex-col overflow-x-hidden !p-0 bx-client-overlay",
+    "id": "",
+    "text": "WOMENPLUS+CURVEMENNEWSPORTKIDSBEAUTYSearch within Women's Clothing\ud83c\uddfa\ud83c\uddf8WOMENPLUS+CURVEMENNEWSPORTKIDSBEAUTYNew InClothingNovadealsDressesMatching SetsTopsGraphicsJeansSwimJumpsuits & RompersShoesFormal ShopBottomsAccessoriesLingerie & SleepJackets & SweatersSaleNova LuxeSportSearch within Women's ClothingTHE TREND REPORTSunday\u2019s BestProm Queen EnergyResort EscapeSpring EssentialsShop By BrandShop By CategoryDressesMatching SetsTopsBottomsAccessoriesShoesBodyCTRLShop the LatestFor YouNew InSaleDre",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 1425,
+      "h": 13550
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "flex items-center active",
+        "id": "",
+        "href": "/",
+        "x": 124,
+        "y": 30
+      },
+      {
+        "tag": "a",
+        "text": "WOMEN",
+        "ariaLabel": "",
+        "classes": "cursor-pointer",
+        "id": "",
+        "href": "/",
+        "x": 273,
+        "y": 30
+      },
+      {
+        "tag": "a",
+        "text": "PLUS+CURVE",
+        "ariaLabel": "",
+        "classes": "cursor-pointer",
+        "id": "",
+        "href": "/pages/curve",
+        "x": 357,
+        "y": 30
+      },
+      {
+        "tag": "a",
+        "text": "MEN",
+        "ariaLabel": "",
+        "classes": "cursor-pointer",
+        "id": "",
+        "href": "/pages/men",
+        "x": 430,
+        "y": 30
+      },
+      {
+        "tag": "a",
+        "text": "NEWSPORT",
+        "ariaLabel": "",
+        "classes": "cursor-pointer",
+        "id": "",
+        "href": "/pages/nova",
+        "x": 483,
+        "y": 30
+      },
+      {
+        "tag": "a",
+        "text": "KIDS",
+        "ariaLabel": "",
+        "classes": "cursor-pointer",
+        "id": "",
+        "href": "/pages/novakids",
+        "x": 536,
+        "y": 30
+      },
+      {
+        "tag": "a",
+        "text": "BEAUTY",
+        "ariaLabel": "",
+        "classes": "cursor-pointer",
+        "id": "",
+        "href": "/pages/beauty",
+        "x": 593,
+        "y": 30
+      },
+      {
+        "tag": "div",
+        "text": "Search within Women's Clothing",
+        "ariaLabel": "Search bar",
+        "classes": "relative h-full w-full cursor-text",
+        "id": "",
+        "href": null,
+        "x": 954,
+        "y": 30
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "ariaLabel": "Search",
+        "classes": "relative flex",
+        "id": "",
+        "href": null,
+        "x": 756,
+        "y": 30
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "ariaLabel": "Search By Image",
+        "classes": "absolute right-0 top-0 flex h-full items-center bg-neutral-100 pl-2",
+        "id": "",
+        "href": null,
+        "x": 1144,
+        "y": 30
+      },
+      {
+        "tag": "button",
+        "text": "\ud83c\uddfa\ud83c\uddf8",
+        "ariaLabel": "Selected Country: United States",
+        "classes": "relative w-10 h-11 p-2 flex items-center justify-center before:absolute before:inset-0 before:m-auto before:size-8 before:rounded-full before:transition-all before:-z-10 hover:before:bg-neutral-300 ac",
+        "id": "",
+        "href": null,
+        "x": 1213,
+        "y": 30
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "Recently Viewed",
+        "classes": "relative w-10 h-11 p-2 flex items-center justify-center before:absolute before:inset-0 before:m-auto before:size-8 before:rounded-full before:transition-all before:-z-10 hover:before:bg-neutral-300 ac",
+        "id": "",
+        "href": "/pages/recently-viewed",
+        "x": 1253,
+        "y": 30
+      },
+      {
+        "tag": "div",
+        "text": "",
+        "ariaLabel": "Tooltip button",
+        "classes": "relative w-10 h-11 p-2 flex items-center justify-center before:absolute before:inset-0 before:m-auto before:size-8 before:rounded-full before:transition-all before:-z-10 hover:before:bg-neutral-300 ac",
+        "id": "",
+        "href": null,
+        "x": 1293,
+        "y": 30
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "Go to wishlist page",
+        "classes": "relative  relative w-10 h-11 p-2 flex items-center justify-center before:absolute before:inset-0 before:m-auto before:size-8 before:rounded-full before:transition-all before:-z-10 hover:before:bg-neut",
+        "id": "",
+        "href": "/pages/wishlist",
+        "x": 1333,
+        "y": 30
+      },
+      {
+        "tag": "div",
+        "text": "",
+        "ariaLabel": "Tooltip button",
+        "classes": "relative w-10 h-11 p-2 flex items-center justify-center before:absolute before:inset-0 before:m-auto before:size-8 before:rounded-full before:transition-all before:-z-10 hover:before:bg-neutral-300 ac",
+        "id": "",
+        "href": null,
+        "x": 1373,
+        "y": 30
+      },
+      {
+        "tag": "a",
+        "text": "New In",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400 ml-4 lgHeader:ml-0",
+        "id": "",
+        "href": "/collections/new?division=women",
+        "x": 53,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Clothing",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/women?division=women",
+        "x": 129,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Novadeals",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/womens-novadeals?division=women",
+        "x": 220,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Dresses",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/dresses?division=women",
+        "x": 306,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Matching Sets",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/matching-sets?division=women",
+        "x": 404,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Tops",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/all-tops?division=women",
+        "x": 492,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Graphics",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/graphic-tops?division=women",
+        "x": 561,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Jeans",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/jeans?division=women",
+        "x": 635,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Swim",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/swimwear?division=women",
+        "x": 694,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Jumpsuits & Rompers",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/rompers-and-jumpsuits?division=women",
+        "x": 803,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Shoes",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/shoes?division=women",
+        "x": 916,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Formal Shop",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/formal-shop?division=women",
+        "x": 1003,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Bottoms",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/bottoms?division=women",
+        "x": 1099,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Accessories",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/accessories?division=women",
+        "x": 1193,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Lingerie & Sleep",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/lingerie?division=women",
+        "x": 1310,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Jackets & Sweaters",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/jackets?division=women",
+        "x": 1450,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Sale",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/sale?division=women",
+        "x": 1553,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Nova Luxe",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400",
+        "id": "",
+        "href": "/collections/luxe?division=women",
+        "x": 1625,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "Sport",
+        "ariaLabel": "",
+        "classes": "flex cursor-pointer items-center justify-center rounded-full lgHeader:h-7 lgHeader:px-3 lgHeader:hover:bg-neutral-300 lgHeader:active:bg-neutral-400 mr-4 lgHeader:mr-0",
+        "id": "",
+        "href": "/pages/nova",
+        "x": 1703,
+        "y": 72
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "ariaLabel": "Scroll button",
+        "classes": "pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full hover:bg-neutral-300",
+        "id": "",
+        "href": null,
+        "x": 1389,
+        "y": 72
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.fashionnova.com/collections/new",
+        "x": 713,
+        "y": 377
+      },
+      {
+        "tag": "a",
+        "text": "Sunday\u2019s Best",
+        "ariaLabel": "",
+        "classes": "group relative flex w-full flex-grow flex-col",
+        "id": "",
+        "href": "/collections/pretty-pastels",
+        "x": 247,
+        "y": 964
+      },
+      {
+        "tag": "a",
+        "text": "Prom Queen Energy",
+        "ariaLabel": "",
+        "classes": "group relative flex w-full flex-grow flex-col",
+        "id": "",
+        "href": "/collections/party-shop",
+        "x": 557,
+        "y": 964
+      },
+      {
+        "tag": "a",
+        "text": "Resort Escape",
+        "ariaLabel": "",
+        "classes": "group relative flex w-full flex-grow flex-col",
+        "id": "",
+        "href": "/collections/womens-nova-resort",
+        "x": 868,
+        "y": 964
+      },
+      {
+        "tag": "a",
+        "text": "Spring Essentials",
+        "ariaLabel": "",
+        "classes": "group relative flex w-full flex-grow flex-col",
+        "id": "",
+        "href": "/collections/spring-essentials",
+        "x": 1178,
+        "y": 964
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.fashionnova.com/pages/men",
+        "x": 199,
+        "y": 2004
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.fashionnova.com/pages/nova",
+        "x": 404,
+        "y": 2004
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.fashionnova.com/pages/curve",
+        "x": 610,
+        "y": 2004
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.fashionnova.com/pages/novakids",
+        "x": 815,
+        "y": 2004
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.fashionnova.com/collections/novasculpt",
+        "x": 1021,
+        "y": 2004
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.fashionnova.com/collections/luxe",
+        "x": 1227,
+        "y": 2004
+      },
+      {
+        "tag": "a",
+        "text": "Dresses",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/collections/dresses",
+        "x": 299,
+        "y": 3744
+      },
+      {
+        "tag": "a",
+        "text": "Matching Sets",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/collections/matching-sets",
+        "x": 713,
+        "y": 3590
+      },
+      {
+        "tag": "a",
+        "text": "Tops",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/collections/all-tops",
+        "x": 713,
+        "y": 3898
+      },
+      {
+        "tag": "a",
+        "text": "Bottoms",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/collections/bottoms",
+        "x": 1023,
+        "y": 3590
+      },
+      {
+        "tag": "a",
+        "text": "Accessories",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/collections/accessories",
+        "x": 1230,
+        "y": 3590
+      },
+      {
+        "tag": "a",
+        "text": "Shoes",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/collections/shoes",
+        "x": 1023,
+        "y": 3898
+      },
+      {
+        "tag": "a",
+        "text": "BodyCTRL",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/collections/body-ctrl",
+        "x": 1230,
+        "y": 3898
+      },
+      {
+        "tag": "button",
+        "text": "For You",
+        "ariaLabel": "",
+        "classes": "body-sm h-8 whitespace-nowrap rounded-full border px-4 font-semibold leading-4 transition-colors duration-300 border-neutral-900 bg-neutral-900 text-neutral-100",
+        "id": "",
+        "href": null,
+        "x": 145,
+        "y": 4478
+      },
+      {
+        "tag": "button",
+        "text": "New In",
+        "ariaLabel": "",
+        "classes": "body-sm h-8 whitespace-nowrap rounded-full border px-4 font-semibold leading-4 transition-colors duration-300 border-neutral-500 bg-neutral-100 text-neutral-900",
+        "id": "",
+        "href": null,
+        "x": 241,
+        "y": 4478
+      },
+      {
+        "tag": "button",
+        "text": "Sale",
+        "ariaLabel": "",
+        "classes": "body-sm h-8 whitespace-nowrap rounded-full border px-4 font-semibold leading-4 transition-colors duration-300 border-neutral-500 bg-neutral-100 text-neutral-900",
+        "id": "",
+        "href": null,
+        "x": 317,
+        "y": 4478
+      },
+      {
+        "tag": "button",
+        "text": "Dresses",
+        "ariaLabel": "",
+        "classes": "body-sm h-8 whitespace-nowrap rounded-full border px-4 font-semibold leading-4 transition-colors duration-300 border-neutral-500 bg-neutral-100 text-neutral-900",
+        "id": "",
+        "href": null,
+        "x": 396,
+        "y": 4478
+      },
+      {
+        "tag": "button",
+        "text": "Jeans",
+        "ariaLabel": "",
+        "classes": "body-sm h-8 whitespace-nowrap rounded-full border px-4 font-semibold leading-4 transition-colors duration-300 border-neutral-500 bg-neutral-100 text-neutral-900",
+        "id": "",
+        "href": null,
+        "x": 480,
+        "y": 4478
+      },
+      {
+        "tag": "button",
+        "text": "Sets",
+        "ariaLabel": "",
+        "classes": "body-sm h-8 whitespace-nowrap rounded-full border px-4 font-semibold leading-4 transition-colors duration-300 border-neutral-500 bg-neutral-100 text-neutral-900",
+        "id": "",
+        "href": null,
+        "x": 553,
+        "y": 4478
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "ariaLabel": "Back to Top",
+        "classes": "fixed right-[15px] z-50 mb-[env(safe-area-inset-bottom)] flex h-[40px] w-[40px] items-center justify-center rounded-full bg-neutral-100 transition-all duration-300 [box-shadow:0_0_6px_0_rgb(var(--neut",
+        "id": "",
+        "href": null,
+        "x": 1390,
+        "y": 790
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "Download on the App Store",
+        "classes": "group mr-3 focus:outline-none",
+        "id": "",
+        "href": "https://apps.apple.com/us/app/fashion-nova/id1367363988",
+        "x": 120,
+        "y": 13206
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "Download on the Google Play Store",
+        "classes": "group mr-3 focus:outline-none",
+        "id": "",
+        "href": "https://play.google.com/store/apps/details?id=co.tapcart.app.npQt0DXZpj&hl=en_US&gl=US&pli=1",
+        "x": 260,
+        "y": 13206
+      },
+      {
+        "tag": "a",
+        "text": "Help Center",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "/pages/help-center",
+        "x": 433,
+        "y": 13203
+      },
+      {
+        "tag": "a",
+        "text": "Track Order",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "/pages/track-order",
+        "x": 433,
+        "y": 13236
+      },
+      {
+        "tag": "a",
+        "text": "Shipping Info",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "/pages/help-center?hcUrl=%2Fen-US%2Fshipping-options-prices-and-times-637543",
+        "x": 433,
+        "y": 13269
+      },
+      {
+        "tag": "a",
+        "text": "Returns",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "/pages/help-center?hcUrl=%2Fen-US%2Four-return-policy-and-process-637538",
+        "x": 433,
+        "y": 13302
+      },
+      {
+        "tag": "a",
+        "text": "Contact Us",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "/pages/help-center",
+        "x": 433,
+        "y": 13335
+      },
+      {
+        "tag": "a",
+        "text": "Careers",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "/pages/careers",
+        "x": 563,
+        "y": 13203
+      },
+      {
+        "tag": "a",
+        "text": "About",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "/pages/about-us",
+        "x": 563,
+        "y": 13236
+      },
+      {
+        "tag": "a",
+        "text": "Stores",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "/pages/locations",
+        "x": 563,
+        "y": 13269
+      },
+      {
+        "tag": "a",
+        "text": "Want to Collab?",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "https://babe.nova-influencer.com/collab",
+        "x": 563,
+        "y": 13302
+      },
+      {
+        "tag": "a",
+        "text": "Size Guide",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "/pages/size-guide",
+        "x": 725,
+        "y": 13203
+      },
+      {
+        "tag": "a",
+        "text": "Sitemap",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "/pages/sitemap",
+        "x": 725,
+        "y": 13236
+      },
+      {
+        "tag": "a",
+        "text": "Gift Cards",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "/products/gift-cards",
+        "x": 725,
+        "y": 13269
+      },
+      {
+        "tag": "a",
+        "text": "Check Gift Card Balance",
+        "ariaLabel": "",
+        "classes": "block py-1.5 text-[13px] leading-[21px] text-neutral-600 ring-0 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "/pages/gift-card-balance",
+        "x": 725,
+        "y": 13302
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "group mr-5 flex h-10 w-10 items-center justify-center focus:outline-none xxs:mr-1 xs:mr-3 md:justify-start",
+        "id": "",
+        "href": "https://www.instagram.com/fashionnova",
+        "x": 959,
+        "y": 13451
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "group mr-5 flex h-10 w-10 items-center justify-center focus:outline-none xxs:mr-1 xs:mr-3 md:justify-start",
+        "id": "",
+        "href": "https://www.tiktok.com/@fashionnova",
+        "x": 1011,
+        "y": 13451
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "group mr-5 flex h-10 w-10 items-center justify-center focus:outline-none xxs:mr-1 xs:mr-3 md:justify-start",
+        "id": "",
+        "href": "https://www.youtube.com/fashionnova",
+        "x": 1063,
+        "y": 13451
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "group mr-5 flex h-10 w-10 items-center justify-center focus:outline-none xxs:mr-1 xs:mr-3 md:justify-start",
+        "id": "",
+        "href": "https://www.snapchat.com/add/fashionnova",
+        "x": 1115,
+        "y": 13451
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "group mr-5 flex h-10 w-10 items-center justify-center focus:outline-none xxs:mr-1 xs:mr-3 md:justify-start",
+        "id": "",
+        "href": "https://www.facebook.com/FashionNova",
+        "x": 1167,
+        "y": 13451
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "group mr-5 flex h-10 w-10 items-center justify-center focus:outline-none xxs:mr-1 xs:mr-3 md:justify-start",
+        "id": "",
+        "href": "https://www.pinterest.com/fashionnova",
+        "x": 1219,
+        "y": 13451
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "ariaLabel": "Submit",
+        "classes": "absolute right-4 top-[0.625rem] flex h-10 w-10 items-center justify-center rounded-full bg-neutral-300 duration-200 hover:bg-neutral-400",
+        "id": "",
+        "href": null,
+        "x": 1329,
+        "y": 13215
+      },
+      {
+        "tag": "a",
+        "text": "Terms of Service",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/pages/terms-of-service",
+        "x": 1260,
+        "y": 13267
+      },
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/pages/privacy-policy",
+        "x": 975,
+        "y": 13283
+      },
+      {
+        "tag": "a",
+        "text": "Terms",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.fashionnova.com/pages/terms-of-service",
+        "x": 1199,
+        "y": 13391
+      },
+      {
+        "tag": "a",
+        "text": "Privacy",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.fashionnova.com/pages/privacy-policy",
+        "x": 1247,
+        "y": 13391
+      },
+      {
+        "tag": "a",
+        "text": "Promo T&Cs",
+        "ariaLabel": "",
+        "classes": "px-2 text-xs text-neutral-600 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "https://www.fashionnova.com/pages/promo-terms-and-conditions",
+        "x": 853,
+        "y": 13527
+      },
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "px-2 text-xs text-neutral-600 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "https://www.fashionnova.com/pages/privacy-policy",
+        "x": 938,
+        "y": 13527
+      },
+      {
+        "tag": "a",
+        "text": "Terms of Service",
+        "ariaLabel": "",
+        "classes": "px-2 text-xs text-neutral-600 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "https://www.fashionnova.com/pages/terms-of-service",
+        "x": 1033,
+        "y": 13527
+      },
+      {
+        "tag": "a",
+        "text": "CA Supply Chains Act",
+        "ariaLabel": "",
+        "classes": "px-2 text-xs text-neutral-600 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": "https://www.fashionnova.com/pages/ca-supply-chains-act",
+        "x": 1150,
+        "y": 13527
+      },
+      {
+        "tag": "button",
+        "text": "Your privacy choices",
+        "ariaLabel": "",
+        "classes": "flex items-center justify-center px-2 text-xs text-neutral-600 hover:text-neutral-100 focus:text-neutral-100 focus:outline-none dark:hover:text-neutral-900 focus:dark:text-neutral-900",
+        "id": "",
+        "href": null,
+        "x": 1290,
+        "y": 13527
+      },
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "text-blue-300 underline hover:underline",
+        "id": "",
+        "href": "/pages/privacy-policy",
+        "x": 592,
+        "y": 860
+      },
+      {
+        "tag": "button",
+        "text": "Your Privacy Choices",
+        "ariaLabel": "",
+        "classes": "text-blue-300 underline hover:underline",
+        "id": "",
+        "href": null,
+        "x": 755,
+        "y": 860
+      },
+      {
+        "tag": "button",
+        "text": "OK",
+        "ariaLabel": "",
+        "classes": "h-[32px] w-full rounded-3xl border-neutral-100 bg-neutral-100 text-neutral-900 transition-all hover:border hover:bg-[rgb(var(--neutral-100-rgb)/0)] hover:text-neutral-100 md:w-[152px]",
+        "id": "",
+        "href": null,
+        "x": 1362,
+        "y": 852
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "bx-ally-tab-decoy",
+        "id": "",
+        "href": null,
+        "x": 1,
+        "y": 13550
+      },
+      {
+        "tag": "button",
+        "text": "close dialog",
+        "ariaLabel": "",
+        "classes": "bx-close bx-close-link bx-close-inside",
+        "id": "bx-close-inside-3238624",
+        "href": null,
+        "x": 946,
+        "y": 217
+      },
+      {
+        "tag": "button",
+        "text": "Get My offer",
+        "ariaLabel": "",
+        "classes": "bx-button",
+        "id": "",
+        "href": null,
+        "x": 713,
+        "y": 640
+      },
+      {
+        "tag": "button",
+        "text": "I don't want my mystery offer",
+        "ariaLabel": "I don't want my mystery offer; close the dialog",
+        "classes": "bx-button",
+        "id": "",
+        "href": null,
+        "x": 713,
+        "y": 687
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "bx-ally-tab-decoy",
+        "id": "",
+        "href": null,
+        "x": 1,
+        "y": 13550
+      },
+      {
+        "tag": "button",
+        "text": "close dialog",
+        "ariaLabel": "",
+        "classes": "bx-close bx-close-link bx-close-inside",
+        "id": "bx-close-inside-3238624",
+        "x": 946,
+        "y": 217,
+        "isClose": true
+      },
+      {
+        "tag": "svg",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "[object SVGAnimatedString]",
+        "id": "",
+        "x": 946,
+        "y": 217,
+        "isClose": true
+      },
+      {
+        "tag": "g",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "[object SVGAnimatedString]",
+        "id": "",
+        "x": 946,
+        "y": 217,
+        "isClose": true
+      },
+      {
+        "tag": "path",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "[object SVGAnimatedString]",
+        "id": "",
+        "x": 946,
+        "y": 217,
+        "isClose": true
+      },
+      {
+        "tag": "path",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "[object SVGAnimatedString]",
+        "id": "",
+        "x": 946,
+        "y": 217,
+        "isClose": true
+      },
+      {
+        "tag": "button",
+        "text": "I don't want my mystery offer",
+        "ariaLabel": "I don't want my mystery offer; close the dialog",
+        "classes": "bx-button",
+        "id": "",
+        "x": 713,
+        "y": 687,
+        "isClose": true
+      }
+    ],
+    "matchedSelector": "[class*=\"overlay\" i]"
+  }
+]

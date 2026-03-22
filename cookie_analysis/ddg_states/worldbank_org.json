@@ -1,0 +1,585 @@
+{
+  "site": "worldbank.org",
+  "url": "https://www.worldbank.org/",
+  "timestamp": "2026-03-22T10:22:12.061952",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/worldbank_org.png",
+  "total_requests": 127,
+  "blocked_requests_count": 13,
+  "blocked_requests": [
+    {
+      "url": "https://dpm.demdex.net/id?d_visid_ver=5.5.0&d_fieldgroup=MC&d_rtbd=json&d_ver=2&d_orgid=1E7B833554B8360D0A4C98A5%40AdobeOrg&d_nsid=0&ts=1774174922877",
+      "domain": "dpm.demdex.net"
+    },
+    {
+      "url": "https://worldbankgroup.sc.omtrdc.net/id?d_visid_ver=5.5.0&d_fieldgroup=A&mcorgid=1E7B833554B8360D0A4C98A5%40AdobeOrg&mid=59822926303532463641835680232799345748&ts=1774174922895",
+      "domain": "worldbankgroup.sc.omtrdc.net"
+    },
+    {
+      "url": "https://dpm.demdex.net/id?d_visid_ver=5.5.0&d_fieldgroup=AAM&d_rtbd=json&d_ver=2&d_orgid=1E7B833554B8360D0A4C98A5%40AdobeOrg&d_nsid=0&d_mid=59822926303532463641835680232799345748&ts=1774174922898",
+      "domain": "dpm.demdex.net"
+    },
+    {
+      "url": "https://worldbank.tt.omtrdc.net/m2/worldbank/mbox/json?mbox=target-global-mbox&mboxSession=d2e31c5129884f8d80643a706704f202&mboxPC=&mboxPage=b8ab89bc464a4a5497065a044040970d&mboxRid=07deb6ede25c4ccaaa5cc1200964a0ad&mboxVersion=1.8.3&mboxCount=1&mboxTime=1774160522913&mboxHost=www.worldbank.org&mboxURL=https%3A%2F%2Fwww.worldbank.org%2Fext%2Fen%2Fhome&mboxReferrer=&browserHeight=900&browserWidth=1425&browserTimeOffset=-240&screenHeight=900&screenWidth=1440&colorDepth=24&devicePixelRatio=1.0000000577419996&screenOrientation=landscape&webGLRenderer=ANGLE%20%28Google%2C%20Vulkan%201.3.0%20%28SwiftShader%20Device%20%28Subzero%29%20%280x0000C0DE%29%29%2C%20SwiftShader%20driver%29&PageName=homepage&mboxMCSDID=4292816D363A81EE-0CCEA2C4BABD64E6&vst.trk=worldbankgroup.sc.omtrdc.net&vst.trks=worldbankgroup.sc.omtrdc.net&mboxMCGVID=59822926303532463641835680232799345748",
+      "domain": "worldbank.tt.omtrdc.net"
+    },
+    {
+      "url": "https://dpm.demdex.net/id?d_visid_ver=5.5.0&d_fieldgroup=AAM&d_rtbd=json&d_ver=2&d_orgid=1E7B833554B8360D0A4C98A5%40AdobeOrg&d_nsid=0&d_mid=59822926303532463641835680232799345748&ts=1774174922929",
+      "domain": "dpm.demdex.net"
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-972661263",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://script.crazyegg.com/pages/scripts/0058/1350.js",
+      "domain": "script.crazyegg.com"
+    },
+    {
+      "url": "https://dpm.demdex.net/id?d_visid_ver=5.5.0&d_fieldgroup=AAM&d_rtbd=json&d_ver=2&d_orgid=1E7B833554B8360D0A4C98A5%40AdobeOrg&d_nsid=0&d_mid=59822926303532463641835680232799345748&ts=1774174923114",
+      "domain": "dpm.demdex.net"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=1113290&time=1774174923176&li_adsId=1a9d3738-a9df-4e69-9cda-993f8c39fdbb&url=https%3A%2F%2Fwww.worldbank.org%2Fext%2Fen%2Fhome",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=fetch&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/insight_tag_errors.gif?v=2&pid=1113290&error=version%3A%20285%20%7C%20WebsiteActions-285-TypeError%3A%20Failed%20to%20fetch%3B%20ErrorData%3A%20%7B%22domain%22%3A%22worldbank.org%22%2C%22requestFetcher%22%3A%22fetch-keepalive%22%2C%22body%22%3A%22H4sIAAAAAAAAA1WPQWvbQBCF%2F4qY86rqKits7y2lrRHkEGqTHEopI2tsD17NbnZHSU3Ifw9qoNDj4z0%2BvvcKiccC%2Fqe19qbdfP5loBwyJ32gXDgK%2BHbdGVCeCLxdrZxduU17Y9fWwBgnZAEPLzGHcUC5fIr5BAbmHMDDWTUV3zT%2FtQ390YakOceJwEDCE%2B1ZA4GHx2VXfUG5VNsc51TVVS9KWVA5CobqKz1TiGkiUVPdx2fKeq1Qxmo3F0UWHDiwXsHACw2FlXZ8Egw%2F6Gmmov0IHqxzbrR2VR%2FWXVdb6zb10Lau7rpj2%2BJmfSS3aHHZZ5QSUGkEf8RQyEDg7%2FhBgSVsGUU%2FwsTlAP4VUhl2ikrga%2Fe2UO5YLjT2cpvSP8yZJvAyh2Cg%2FPXbX9Ny%2F%2F52%2B%2B33Q7%2Fr9%2FD2DlBijXyWAQAA%22%7D&href=https%3A%2F%2Fwww.worldbank.org%2Fext%2Fen%2Fhome",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=beacon&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    }
+  ],
+  "blocked_domains": [
+    "connect.facebook.net",
+    "dpm.demdex.net",
+    "px.ads.linkedin.com",
+    "script.crazyegg.com",
+    "worldbank.tt.omtrdc.net",
+    "worldbankgroup.sc.omtrdc.net",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "section",
+      "classes": "cookie-tooltip",
+      "id": "",
+      "text": "This site uses cookies to optimize functionality and give you the best possible experience. If you continue to navigate this website beyond this page, cookies will be placed on your browser.Click Here to learn more about cookies.\u00d7",
+      "rect": {
+        "x": 0,
+        "y": 825,
+        "w": 1425,
+        "h": 75
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Click Here to learn more about cookies.",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 616,
+          "y": 871,
+          "w": 256,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "\u00d7",
+          "ariaLabel": "Close cookies policy notification",
+          "classes": "close accept-consent",
+          "id": "",
+          "x": 1409,
+          "y": 841,
+          "w": 32,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "section default lp-heading-container overlay-cards-container",
+      "id": "",
+      "text": "OUR PRIORITIES \n          \n          \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            https://delivery-p136806-e1377844.adobeaemcloud.com/adobe/assets/urn:aaid:aem:b20e7ccd-0538-477c-a588-9509486e1029/original/as/Jobs Loop v01 784x5030.png\n          JobsWhy jobs? Because they\u2019re the surest path out of poverty for individuals and communitie",
+      "rect": {
+        "x": 0,
+        "y": 1090,
+        "w": 1425,
+        "h": 676
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Learn More",
+          "ariaLabel": "Learn More",
+          "classes": "button card-link",
+          "id": "",
+          "x": 70,
+          "y": 1598,
+          "w": 83,
+          "h": 33
+        },
+        {
+          "tag": "button",
+          "text": "Play/Pause video",
+          "ariaLabel": "",
+          "classes": "controll-button lp lp-play",
+          "id": "",
+          "x": 765,
+          "y": 1607,
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand AgriConnect helps small-scale farmers build thriving agribusinesses\u2014creating jobs, feeding mo",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 967,
+          "y": 1609,
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Mission 300 is connecting homes, communities and businesses in Africa to electricity, creatin",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 1173,
+          "y": 1609,
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Good health empowers people, creates jobs, and drives economic growth",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 1379,
+          "y": 1609,
+          "w": 32,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "overlay-cards-wrapper",
+      "id": "",
+      "text": "https://delivery-p136806-e1377844.adobeaemcloud.com/adobe/assets/urn:aaid:aem:b20e7ccd-0538-477c-a588-9509486e1029/original/as/Jobs Loop v01 784x5030.png\n          JobsWhy jobs? Because they\u2019re the surest path out of poverty for individuals and communities.Learn MorePlay/Pause video\n          \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n          ",
+      "rect": {
+        "x": 0,
+        "y": 1182,
+        "w": 1425,
+        "h": 503
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Learn More",
+          "ariaLabel": "Learn More",
+          "classes": "button card-link",
+          "id": "",
+          "x": 70,
+          "y": 1598,
+          "w": 83,
+          "h": 33
+        },
+        {
+          "tag": "button",
+          "text": "Play/Pause video",
+          "ariaLabel": "",
+          "classes": "controll-button lp lp-play",
+          "id": "",
+          "x": 765,
+          "y": 1607,
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand AgriConnect helps small-scale farmers build thriving agribusinesses\u2014creating jobs, feeding mo",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 967,
+          "y": 1609,
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Mission 300 is connecting homes, communities and businesses in Africa to electricity, creatin",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 1173,
+          "y": 1609,
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Good health empowers people, creates jobs, and drives economic growth",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 1379,
+          "y": 1609,
+          "w": 32,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "overlay-cards block",
+      "id": "",
+      "text": "https://delivery-p136806-e1377844.adobeaemcloud.com/adobe/assets/urn:aaid:aem:b20e7ccd-0538-477c-a588-9509486e1029/original/as/Jobs Loop v01 784x5030.png\n          JobsWhy jobs? Because they\u2019re the surest path out of poverty for individuals and communities.Learn MorePlay/Pause video\n          \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n          ",
+      "rect": {
+        "x": 0,
+        "y": 1182,
+        "w": 1425,
+        "h": 503
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Learn More",
+          "ariaLabel": "Learn More",
+          "classes": "button card-link",
+          "id": "",
+          "x": 70,
+          "y": 1598,
+          "w": 83,
+          "h": 33
+        },
+        {
+          "tag": "button",
+          "text": "Play/Pause video",
+          "ariaLabel": "",
+          "classes": "controll-button lp lp-play",
+          "id": "",
+          "x": 765,
+          "y": 1607,
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand AgriConnect helps small-scale farmers build thriving agribusinesses\u2014creating jobs, feeding mo",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 967,
+          "y": 1609,
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Mission 300 is connecting homes, communities and businesses in Africa to electricity, creatin",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 1173,
+          "y": 1609,
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Good health empowers people, creates jobs, and drives economic growth",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 1379,
+          "y": 1609,
+          "w": 32,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "overlay-card",
+      "id": "",
+      "text": "https://delivery-p136806-e1377844.adobeaemcloud.com/adobe/assets/urn:aaid:aem:b20e7ccd-0538-477c-a588-9509486e1029/original/as/Jobs Loop v01 784x5030.png\n          JobsWhy jobs? Because they\u2019re the surest path out of poverty for individuals and communities.Learn MorePlay/Pause video",
+      "rect": {
+        "x": 0,
+        "y": 1182,
+        "w": 807,
+        "h": 503
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Learn More",
+          "ariaLabel": "Learn More",
+          "classes": "button card-link",
+          "id": "",
+          "x": 70,
+          "y": 1598,
+          "w": 83,
+          "h": 33
+        },
+        {
+          "tag": "button",
+          "text": "Play/Pause video",
+          "ariaLabel": "",
+          "classes": "controll-button lp lp-play",
+          "id": "",
+          "x": 765,
+          "y": 1607,
+          "w": 28,
+          "h": 28
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "overlay-card collapsed",
+      "id": "",
+      "text": "https://delivery-p136806-e1377785.adobeaemcloud.com/adobe/assets/urn:aaid:aem:011ad93e-0fea-4c9a-bb56-820433fd07ee/original/as/Agri Loop v01 1032x5030.png\n          AgriConnectAgriConnect helps small-scale farmers build thriving agribusinesses\u2014creating jobs, feeding more people, and improving economies.Learn MorePlay/Pause video",
+      "rect": {
+        "x": 811,
+        "y": 1182,
+        "w": 203,
+        "h": 503
+      },
+      "buttons": [
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand AgriConnect helps small-scale farmers build thriving agribusinesses\u2014creating jobs, feeding mo",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 967,
+          "y": 1609,
+          "w": 32,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "overlay-card collapsed",
+      "id": "",
+      "text": "https://delivery-p136806-e1377844.adobeaemcloud.com/adobe/assets/urn:aaid:aem:39068b5a-5c85-49a5-bcfe-46523cbe0cd0/original/as/Energy Loop 01 231x5030.png\n          Mission 300Mission 300 is connecting homes, communities and businesses in Africa to electricity, creating jobs and opportunities.Learn MorePlay/Pause video",
+      "rect": {
+        "x": 1018,
+        "y": 1182,
+        "w": 202,
+        "h": 503
+      },
+      "buttons": [
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Mission 300 is connecting homes, communities and businesses in Africa to electricity, creatin",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 1173,
+          "y": 1609,
+          "w": 32,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "overlay-card collapsed",
+      "id": "",
+      "text": "https://delivery-p136806-e1377844.adobeaemcloud.com/adobe/assets/urn:aaid:aem:e3353be8-64b0-449e-aea8-70ebadfeec7d/original/as/Health Loop v01 280x5030.png\n          Health WorksGood health empowers people, creates jobs, and drives economic growthLearn MorePlay/Pause video",
+      "rect": {
+        "x": 1224,
+        "y": 1182,
+        "w": 202,
+        "h": 503
+      },
+      "buttons": [
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Good health empowers people, creates jobs, and drives economic growth",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 1379,
+          "y": 1609,
+          "w": 32,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "section overlay-carousel-card-container overlay-cards-container",
+      "id": "",
+      "text": "PartnershipsCombining knowledge, experience, and innovative thinking to deliver meaningful results and improve lives.Learn More\n          \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n          Project ProcurementConnecting borrowers and suppliers to opportunities that move communities and countries forward.Learn More",
+      "rect": {
+        "x": 0,
+        "y": 6190,
+        "w": 1425,
+        "h": 443
+      },
+      "buttons": [
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Combining knowledge, experience, and innovative thinking to deliver meaningful results and im",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 640,
+          "y": 6416,
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Connecting borrowers and suppliers to opportunities that move communities and countries forwa",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 1297,
+          "y": 6416,
+          "w": 32,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "overlay-cards-wrapper",
+      "id": "",
+      "text": "PartnershipsCombining knowledge, experience, and innovative thinking to deliver meaningful results and improve lives.Learn More\n          \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n          Project ProcurementConnecting borrowers and suppliers to opportunities that move communities and countries forward.Learn More",
+      "rect": {
+        "x": 0,
+        "y": 6190,
+        "w": 1425,
+        "h": 347
+      },
+      "buttons": [
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Combining knowledge, experience, and innovative thinking to deliver meaningful results and im",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 640,
+          "y": 6416,
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Connecting borrowers and suppliers to opportunities that move communities and countries forwa",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 1297,
+          "y": 6416,
+          "w": 32,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "overlay-cards block",
+      "id": "",
+      "text": "PartnershipsCombining knowledge, experience, and innovative thinking to deliver meaningful results and improve lives.Learn More\n          \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n            \n          Project ProcurementConnecting borrowers and suppliers to opportunities that move communities and countries forward.Learn More",
+      "rect": {
+        "x": 72,
+        "y": 6190,
+        "w": 1281,
+        "h": 347
+      },
+      "buttons": [
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Combining knowledge, experience, and innovative thinking to deliver meaningful results and im",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 640,
+          "y": 6416,
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Connecting borrowers and suppliers to opportunities that move communities and countries forwa",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 1297,
+          "y": 6416,
+          "w": 32,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "overlay-card collapsed",
+      "id": "",
+      "text": "PartnershipsCombining knowledge, experience, and innovative thinking to deliver meaningful results and improve lives.Learn More",
+      "rect": {
+        "x": 72,
+        "y": 6190,
+        "w": 625,
+        "h": 347
+      },
+      "buttons": [
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Combining knowledge, experience, and innovative thinking to deliver meaningful results and im",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 640,
+          "y": 6416,
+          "w": 32,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "overlay-card collapsed",
+      "id": "",
+      "text": "Project ProcurementConnecting borrowers and suppliers to opportunities that move communities and countries forward.Learn More",
+      "rect": {
+        "x": 729,
+        "y": 6190,
+        "w": 625,
+        "h": 347
+      },
+      "buttons": [
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "Expand Connecting borrowers and suppliers to opportunities that move communities and countries forwa",
+          "classes": "expand-btn",
+          "id": "",
+          "x": 1297,
+          "y": 6416,
+          "w": 32,
+          "h": 32
+        }
+      ]
+    }
+  ]
+}

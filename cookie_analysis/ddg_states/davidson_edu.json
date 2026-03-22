@@ -1,0 +1,1040 @@
+{
+  "site": "davidson.edu",
+  "url": "https://www.davidson.edu/",
+  "timestamp": "2026-03-22T10:15:07.693823",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/davidson_edu.png",
+  "total_requests": 77,
+  "blocked_requests_count": 14,
+  "blocked_requests": [
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/17507200899/?random=1774174498560&cv=11&fst=1774174498560&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9228184226z879141492za20gzb79141492zd79141492xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938469~116024733~117384406~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.davidson.edu%2F&frm=0&tiba=Davidson%20College%20%7C%20Davidson&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=782176961.1774174498&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=AW-473393188&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-W1PYXVKHF3&gtm=45je63i0v889085977z879141492za20gzb79141492zd79141492&_p=1774174498051&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=413460415.1774174499&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAGA&_s=1&tag_exp=103116026~103200004~115616985~115938466~115938468~116024733~117484252&sid=1774174498&sct=1&seg=0&dl=https%3A%2F%2Fwww.davidson.edu%2F&dt=Davidson%20College%20%7C%20Davidson&en=page_view&_fv=1&_nsi=1&_ss=1&tfd=1053",
+      "domain": "analytics.google.com"
+    },
+    {
+      "url": "https://stats.g.doubleclick.net/g/collect?v=2&tid=G-W1PYXVKHF3&cid=413460415.1774174499&gtm=45je63i0v889085977z879141492za20gzb79141492zd79141492&aip=1&dma=0&gcd=13l3l3l3l1l1&npa=0&frm=0&tag_exp=103116026~103200004~115616985~115938466~115938468~116024733~117484252",
+      "domain": "stats.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-C3DPVTLNT6&gtm=45je63i0v889085977z879141492za20gzb79141492zd79141492&_p=1774174498051&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=413460415.1774174499&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_s=1&tag_exp=103116026~103200004~115616985~115938466~115938468~116024733~117484252&sid=1774174498&sct=1&seg=0&dl=https%3A%2F%2Fwww.davidson.edu%2F&dt=Davidson%20College%20%7C%20Davidson&en=page_view&_fv=1&_ss=1&tfd=1057",
+      "domain": "www.google-analytics.com"
+    },
+    {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-HBX8S6XLPX&gtm=45je63i0v889085977z879141492za20gzb79141492zd79141492&_p=1774174498051&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=413460415.1774174499&ul=en-us&are=1&frm=0&pscdl=noapi&_geo=1&_rdi=1&_s=1&tag_exp=103116026~103200004~115616985~115938466~115938468~116024733~117484252&sid=1774174498&sct=1&seg=0&dl=https%3A%2F%2Fwww.davidson.edu%2F&dt=Davidson%20College%20%7C%20Davidson&en=page_view&_fv=1&_ss=1&tfd=1059",
+      "domain": "www.google-analytics.com"
+    },
+    {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-MEE71S9PH0&gtm=45je63i0v889085977z879141492za20gzb79141492zd79141492&_p=1774174498051&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=413460415.1774174499&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_s=1&tag_exp=103116026~103200004~115616985~115938466~115938468~116024733~117484252&sid=1774174498&sct=1&seg=0&dl=https%3A%2F%2Fwww.davidson.edu%2F&dt=Davidson%20College%20%7C%20Davidson&en=page_view&_fv=1&_ss=1&tfd=1061",
+      "domain": "www.google-analytics.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/17507200899/?random=1774174498560&cv=11&fst=1774174498560&fmt=3&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9228184226z879141492za20gzb79141492zd79141492xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938469~116024733~117384406~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.davidson.edu%2F&frm=0&tiba=Davidson%20College%20%7C%20Davidson&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=782176961.1774174498&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.facebook.com/tr/?id=452594295542829&ev=PageView&dl=https%3A%2F%2Fwww.davidson.edu%2F&rl=&if=false&ts=1774174498710&sw=1440&sh=900&v=2.9.281&r=stable&ec=0&o=12318&fbp=fb.1.1774174498706.776844628761470171&cs_est=true&ler=empty&cdl=API_unavailable&pmd[title]=Davidson%20College%20%7C%20Davidson&pmd[locale]=en&plt=792.4000000059605&it=1774174498516&coo=false&expv2[0]=pl1&expv2[1]=el3&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im1&expv2[6]=hf1&rqm=GET",
+      "domain": "www.facebook.com"
+    },
+    {
+      "url": "https://www.facebook.com/privacy_sandbox/pixel/register/trigger/?id=452594295542829&ev=PageView&dl=https%3A%2F%2Fwww.davidson.edu%2F&rl=&if=false&ts=1774174498710&sw=1440&sh=900&v=2.9.281&r=stable&ec=0&o=12318&fbp=fb.1.1774174498706.776844628761470171&cs_est=true&ler=empty&cdl=API_unavailable&pmd[title]=Davidson%20College%20%7C%20Davidson&pmd[locale]=en&plt=792.4000000059605&it=1774174498516&coo=false&expv2[0]=pl1&expv2[1]=el3&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im1&expv2[6]=hf1&rqm=FGET",
+      "domain": "www.facebook.com"
+    },
+    {
+      "url": "https://www.facebook.com/tr/?id=452594295542829&ev=ViewContent&dl=https%3A%2F%2Fwww.davidson.edu%2F&rl=&if=false&ts=1774174498715&cd[content_name]=Davidson%20College&cd[content_type]=home&cd[content_ids]=%5B%2215200%22%5D&sw=1440&sh=900&v=2.9.281&r=stable&ec=1&o=12318&fbp=fb.1.1774174498706.776844628761470171&ler=empty&cdl=API_unavailable&pmd[locale]=en&plt=792.4000000059605&it=1774174498516&coo=false&expv2[0]=pl1&expv2[1]=el3&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im1&expv2[6]=hf1&rqm=GET",
+      "domain": "www.facebook.com"
+    },
+    {
+      "url": "https://www.facebook.com/privacy_sandbox/pixel/register/trigger/?id=452594295542829&ev=ViewContent&dl=https%3A%2F%2Fwww.davidson.edu%2F&rl=&if=false&ts=1774174498715&cd[content_name]=Davidson%20College&cd[content_type]=home&cd[content_ids]=%5B%2215200%22%5D&sw=1440&sh=900&v=2.9.281&r=stable&ec=1&o=12318&fbp=fb.1.1774174498706.776844628761470171&ler=empty&cdl=API_unavailable&pmd[locale]=en&plt=792.4000000059605&it=1774174498516&coo=false&expv2[0]=pl1&expv2[1]=el3&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im1&expv2[6]=hf1&rqm=FGET",
+      "domain": "www.facebook.com"
+    },
+    {
+      "url": "https://connect.facebook.net/signals/config/2328952030854809?v=2.9.281&r=stable&domain=www.davidson.edu&hme=7561e8db2489737df4c74b634c943d82cefbf4e67acc7fda2493ff919471f0aa&ex_m=101%2C194%2C143%2C22%2C69%2C70%2C136%2C65%2C64%2C11%2C151%2C87%2C16%2C130%2C123%2C72%2C75%2C129%2C148%2C153%2C8%2C4%2C5%2C7%2C6%2C3%2C88%2C98%2C154%2C159%2C208%2C59%2C175%2C176%2C52%2C264%2C30%2C71%2C220%2C219%2C218%2C23%2C32%2C100%2C58%2C10%2C60%2C94%2C95%2C96%2C102%2C126%2C31%2C29%2C128%2C125%2C124%2C144%2C73%2C147%2C145%2C146%2C47%2C57%2C119%2C15%2C150%2C42%2C251%2C252%2C250%2C26%2C27%2C28%2C45%2C137%2C74%2C109%2C18%2C20%2C41%2C37%2C39%2C38%2C80%2C89%2C93%2C107%2C135%2C138%2C43%2C108%2C24%2C21%2C115%2C66%2C35%2C140%2C139%2C141%2C132%2C131%2C25%2C34%2C56%2C106%2C149%2C67%2C17%2C142%2C111%2C78%2C63%2C19%2C82%2C83%2C112%2C81%2C33%2C280%2C201%2C190%2C191%2C189%2C283%2C275%2C49%2C202%2C104%2C127%2C77%2C117%2C51%2C44%2C46%2C110%2C116%2C122%2C55%2C61%2C50%2C53%2C97%2C152%2C1%2C120%2C14%2C118%2C12%2C2%2C54%2C90%2C62%2C114%2C86%2C85%2C155%2C156%2C91%2C92%2C9%2C121%2C99%2C48%2C133%2C84%2C76%2C68%2C113%2C103%2C40%2C134%2C0%2C79%2C36%2C105%2C13%2C157%2C217%2C216%2C211%2C213%2C214%2C215%2C212%2C200%2C210%2C221%2C182%2C179%2C180%2C174%2C178%2C181%2C177%2C172%2C303%2C266%2C185%2C204%2C173%2C171%2C199%2C223%2C195%2C165%2C166%2C161%2C167%2C164%2C162%2C163%2C160%2C158%2C169%2C170%2C168%2C253%2C302%2C183",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/a?v=3&t=l&pid=1407014492&rv=63i0&tag_exp=103116026~103200004~115616985~115938466~115938468~116024733~117484252&u=AAAAAAAAAAQAACAQ&ut=Ag&h=Ag&gtm=45je63i0v889085977za20gzb79141492zd79141492&cl=3.14.0&ccid=89085977&cid=G-W1PYXVKHF3&l=L429.S71.B38.E205.I772.TC67.HTC0.F756.C5~gtm.init_consent.S1.V0.E43~gtm.init.S0.V0.E49.TS5ogt1pdatav2.TI10.TE0.TS5ccdgaadslink.TI34.TE0.TS5ogtgooglesignals.TI33.TE0.TS5ccdgaregscope.TI32.TE0.TS5ccdemdownload.TI31.TE0.TS5ccdemoutboundclick.TI30.TE0.TS5ccdempageview.TI29.TE0.TS5ccdemscroll.TI28.TE0.TS5ccdemsitesearch.TI27.TE0.TS5ccdemvideo.TI26.TE0.TS5ccdconversionmarking.TI25.TE0.TS5ogteventcreate.TI23.TE0.TS5ccdgafirst.TI60.TE0.TS5setproductsettings.TI72.TE0.TS5ogteventcreate.TI22.TE0.TS5ccdgaregscope.TI71.TE0.TS5ccdgaregscope.TI46.TE0.TS5ccdgaregscope.TI58.TE0.TS5ccdemdownload.TI45.TE0.TS5ccdemform.TI69.TE0.TS5ogteventcreate.TI19.TE0.TS5ccdemform.TI56.TE0.TS5ogteventcreate.TI18.TE0.TS5ogteventcreate.TI17.TE0.TS5ccdempageview.TI42.TE0.TS5ogteventcreate.TI16.TE0.TS5ccdemscroll.TI41.TE0.TS5ccdemsitesearch.TI65.TE0.TS5ogteventcreate.TI15.TE0.TS5ccdemsitesearch.TI40.TE0.TS5ccdemvideo.TI64.TE0.TS5ccdemvideo.TI39.TE0.TS5ccdautoredact.TI13.TE0.TS5ccdconversionmarking.TI38.TE0.TS5ccdautoredact.TI62.TE0.TS5ccdgafirst.TI36.TE39.TS5setproductsettings.TI35.TE39.TS5ogteventcreate.TI24.TE36.TS5ccdgafirst.TI73.TE36.TS5ccdgafirst.TI48.TE36.TS5setproductsettings.TI47.TE36.TS5setproductsettings.TI59.TE36.TS5ogteventcreate.TI21.TE36.TS5ccdemdownload.TI70.TE35.TS5ogteventcreate.TI20.TE35.TS5ccdemdownload.TI57.TE35.TS5ccdemform.TI44.TE34.TS5ccdemoutboundclick.TI68.TE34.TS5ccdemoutboundclick.TI43.TE34.TS5ccdemoutboundclick.TI55.TE34.TS5ccdempageview.TI67.TE34.TS5ccdempageview.TI54.TE34.TS5ccdemscroll.TI66.TE34.TS5ccdemscroll.TI53.TE34.TS5ccdemsitesearch.TI52.TE33.TS5ogteventcreate.TI14.TE33.TS5ccdemvideo.TI51.TE33.TS5ccdconversionmarking.TI63.TE33.TS5ccdconversionmarking.TI50.TE33.TS5ccdgalast.TI12.TE33.TS5ccdgalast.TI37.TE33.TS5ccdgalast.TI49.TE33",
+      "domain": "www.googletagmanager.com"
+    }
+  ],
+  "blocked_domains": [
+    "analytics.google.com",
+    "connect.facebook.net",
+    "googleads.g.doubleclick.net",
+    "stats.g.doubleclick.net",
+    "www.facebook.com",
+    "www.google-analytics.com",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "body",
+      "classes": "eu-cookie-compliance-popup-open eu-cookie-compliance-status-null",
+      "id": "",
+      "text": "Skip to main site navigation\n      Skip to main content\n    \n    <img src=\"https://www.facebook.com/tr?id=452594295542829&amp;ev=PageView&amp;noscript=1\" alt=\"\" height=\"1\" width=\"1\" /><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-TNVJDTJ\"\n                  height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe>\n\n      \n    \n\n\n\n\n  \n  \n    \n      \n\n\n  \n\n\n\n      \n  \n    \n      \n    \n  \n\n\n\n  \n  \n\n\n\n      \n      Skip to main site navigation\n      Skip to main content\n    ",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 7335
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Skip to main site navigation",
+          "ariaLabel": "",
+          "classes": "element-invisible element-focusable",
+          "id": "",
+          "x": 1,
+          "y": 1,
+          "w": 1,
+          "h": 1
+        },
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "ariaLabel": "",
+          "classes": "element-invisible element-focusable",
+          "id": "",
+          "x": 1,
+          "y": 1,
+          "w": 1,
+          "h": 1
+        },
+        {
+          "tag": "a",
+          "text": "Skip to main site navigation",
+          "ariaLabel": "",
+          "classes": "visually-hidden element-focusable",
+          "id": "",
+          "x": 1,
+          "y": 1,
+          "w": 1,
+          "h": 1
+        },
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "ariaLabel": "",
+          "classes": "visually-hidden element-focusable",
+          "id": "",
+          "x": 1,
+          "y": 1,
+          "w": 1,
+          "h": 1
+        },
+        {
+          "tag": "button",
+          "text": "Open the search panel",
+          "ariaLabel": "",
+          "classes": " site-search__toggle button-toggle",
+          "id": "site-search--button-toggle",
+          "x": 1328,
+          "y": 59,
+          "w": 34,
+          "h": 38
+        },
+        {
+          "tag": "a",
+          "text": "Request Info",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 158,
+          "y": 59,
+          "w": 170,
+          "h": 45
+        },
+        {
+          "tag": "a",
+          "text": "Visit",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 282,
+          "y": 59,
+          "w": 79,
+          "h": 45
+        },
+        {
+          "tag": "a",
+          "text": "Apply",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 366,
+          "y": 59,
+          "w": 90,
+          "h": 45
+        },
+        {
+          "tag": "a",
+          "text": "Visit the homepage",
+          "ariaLabel": "",
+          "classes": "site-header__logo--desktop",
+          "id": "",
+          "x": 713,
+          "y": 59,
+          "w": 140,
+          "h": 89
+        },
+        {
+          "tag": "a",
+          "text": "Give",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 903,
+          "y": 59,
+          "w": 66,
+          "h": 47
+        },
+        {
+          "tag": "a",
+          "text": "News & Events",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1044,
+          "y": 59,
+          "w": 153,
+          "h": 47
+        },
+        {
+          "tag": "button",
+          "text": "Click to open",
+          "ariaLabel": "Toggle the Resources For menu",
+          "classes": "menu-item__button",
+          "id": "toggle-the-resources-for-menu--button",
+          "x": 1291,
+          "y": 58,
+          "w": 20,
+          "h": 19
+        },
+        {
+          "tag": "a",
+          "text": "Academics",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 301,
+          "y": 147,
+          "w": 140,
+          "h": 59
+        },
+        {
+          "tag": "button",
+          "text": "Click to open",
+          "ariaLabel": "Toggle the Academics menu",
+          "classes": "menu-item__button",
+          "id": "toggle-the-academics-menu--button",
+          "x": 393,
+          "y": 147,
+          "w": 45,
+          "h": 59
+        },
+        {
+          "tag": "a",
+          "text": "Admission & Aid",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 530,
+          "y": 147,
+          "w": 208,
+          "h": 59
+        },
+        {
+          "tag": "button",
+          "text": "Click to open",
+          "ariaLabel": "Toggle the Admission &amp; Aid menu",
+          "classes": "menu-item__button",
+          "id": "toggle-the-admission-&amp;-aid-menu--button",
+          "x": 657,
+          "y": 147,
+          "w": 45,
+          "h": 59
+        },
+        {
+          "tag": "a",
+          "text": "Campus Life",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 768,
+          "y": 147,
+          "w": 158,
+          "h": 59
+        },
+        {
+          "tag": "button",
+          "text": "Click to open",
+          "ariaLabel": "Toggle the Campus Life menu",
+          "classes": "menu-item__button",
+          "id": "toggle-the-campus-life-menu--button",
+          "x": 870,
+          "y": 147,
+          "w": 45,
+          "h": 59
+        },
+        {
+          "tag": "a",
+          "text": "About",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 950,
+          "y": 147,
+          "w": 96,
+          "h": 59
+        },
+        {
+          "tag": "button",
+          "text": "Click to open",
+          "ariaLabel": "Toggle the About menu",
+          "classes": "menu-item__button",
+          "id": "toggle-the-about-menu--button",
+          "x": 1020,
+          "y": 147,
+          "w": 45,
+          "h": 59
+        },
+        {
+          "tag": "a",
+          "text": "Athletics",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1124,
+          "y": 147,
+          "w": 141,
+          "h": 59
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "hero-slide--image",
+          "id": "",
+          "x": 220,
+          "y": 601,
+          "w": 432,
+          "h": 768
+        },
+        {
+          "tag": "a",
+          "text": "Financial Wellness",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 220,
+          "y": 999,
+          "w": 232,
+          "h": 53
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "hero-slide--image",
+          "id": "",
+          "x": 604,
+          "y": 542,
+          "w": 320,
+          "h": 570
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "hero-slide--image",
+          "id": "",
+          "x": 933,
+          "y": 502,
+          "w": 320,
+          "h": 570
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "hero-slide--image",
+          "id": "",
+          "x": 1261,
+          "y": 542,
+          "w": 320,
+          "h": 570
+        },
+        {
+          "tag": "a",
+          "text": "Explore Our Impact",
+          "ariaLabel": "",
+          "classes": "btn",
+          "id": "",
+          "x": 252,
+          "y": 1491,
+          "w": 239,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "Fast Facts",
+          "ariaLabel": "",
+          "classes": "btn",
+          "id": "",
+          "x": 852,
+          "y": 1873,
+          "w": 159,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "Academics",
+          "ariaLabel": "",
+          "classes": "btn",
+          "id": "",
+          "x": 1031,
+          "y": 1873,
+          "w": 167,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "Find Your Major",
+          "ariaLabel": "",
+          "classes": "link-arrow",
+          "id": "",
+          "x": 953,
+          "y": 2149,
+          "w": 172,
+          "h": 44
+        },
+        {
+          "tag": "button",
+          "text": "Pause",
+          "ariaLabel": "",
+          "classes": " video-play-button button-toggle",
+          "id": "hero-video--button-toggle",
+          "x": 1321,
+          "y": 3106,
+          "w": 80,
+          "h": 45
+        },
+        {
+          "tag": "a",
+          "text": "Student Experience",
+          "ariaLabel": "",
+          "classes": "btn btn--ghost",
+          "id": "",
+          "x": 266,
+          "y": 3264,
+          "w": 242,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "Request Info",
+          "ariaLabel": "",
+          "classes": "btn",
+          "id": "",
+          "x": 230,
+          "y": 3861,
+          "w": 179,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "Visit",
+          "ariaLabel": "",
+          "classes": "btn",
+          "id": "",
+          "x": 387,
+          "y": 3861,
+          "w": 104,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "Apply",
+          "ariaLabel": "",
+          "classes": "btn",
+          "id": "",
+          "x": 513,
+          "y": 3861,
+          "w": 116,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "Financial Aid",
+          "ariaLabel": "",
+          "classes": "link-arrow",
+          "id": "",
+          "x": 320,
+          "y": 4137,
+          "w": 135,
+          "h": 44
+        },
+        {
+          "tag": "a",
+          "text": "All News",
+          "ariaLabel": "",
+          "classes": "link-arrow link-arrow-padding",
+          "id": "",
+          "x": 179,
+          "y": 4542,
+          "w": 93,
+          "h": 44
+        },
+        {
+          "tag": "a",
+          "text": "\u2018She Is Not a Footnote\u2019: National Women\u2019s History Museum Spotlights Pioneers, Changemakers",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1057,
+          "y": 4700,
+          "w": 449,
+          "h": 153
+        },
+        {
+          "tag": "button",
+          "text": "Go to the previous slide.",
+          "ariaLabel": "",
+          "classes": "slider-navigation__prev",
+          "id": "",
+          "x": 25,
+          "y": 5181,
+          "w": 66,
+          "h": 66
+        },
+        {
+          "tag": "button",
+          "text": "Go to the next slide.",
+          "ariaLabel": "",
+          "classes": "slider-navigation__next",
+          "id": "",
+          "x": 1400,
+          "y": 5181,
+          "w": 66,
+          "h": 66
+        },
+        {
+          "tag": "a",
+          "text": "Davidson College Secures $47 Million to Launch the D.G. and Harriet Wall Martin Institute for Public Good",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": -93,
+          "y": 5349,
+          "w": 348,
+          "h": 76
+        },
+        {
+          "tag": "a",
+          "text": "Why the World Can\u2019t Stop Talking About \u2018Sinners\u2019",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 286,
+          "y": 5336,
+          "w": 307,
+          "h": 50
+        },
+        {
+          "tag": "a",
+          "text": "\u2018Rally\u2019 Reinvents Pickleball Experience: Alum Brings a Hospitality Bent to a Booming Sport",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 706,
+          "y": 5349,
+          "w": 347,
+          "h": 76
+        },
+        {
+          "tag": "a",
+          "text": "Davidson College Featured in The Atlantic: \"Don\u2019t Call It \u2018Intelligence\u2019\"",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1098,
+          "y": 5349,
+          "w": 332,
+          "h": 76
+        },
+        {
+          "tag": "a",
+          "text": "Why \u2018One Battle After Another\u2019 Is Even More Radical Than It Looks",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1510,
+          "y": 5336,
+          "w": 354,
+          "h": 50
+        },
+        {
+          "tag": "a",
+          "text": "Presidents Give Voice to the Enduring Values That Have Guided Davidson College Across Time",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1907,
+          "y": 5349,
+          "w": 348,
+          "h": 76
+        },
+        {
+          "tag": "a",
+          "text": "All Events",
+          "ariaLabel": "",
+          "classes": "link-arrow",
+          "id": "",
+          "x": 188,
+          "y": 5779,
+          "w": 110,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "Annabel Semans, soprano",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1098,
+          "y": 5722,
+          "w": 282,
+          "h": 23
+        },
+        {
+          "tag": "a",
+          "text": "French Film Showing - Le r\u00e8gne animal",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1103,
+          "y": 5866,
+          "w": 292,
+          "h": 50
+        },
+        {
+          "tag": "a",
+          "text": "Public Health Ethics & Wastewater Surveillance by Prof. Kata Chillag, Ph.D.",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1107,
+          "y": 6036,
+          "w": 302,
+          "h": 76
+        },
+        {
+          "tag": "a",
+          "text": "Kendrick K. Kelley Lecture in Historical Studies",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1090,
+          "y": 6206,
+          "w": 266,
+          "h": 50
+        },
+        {
+          "tag": "a",
+          "text": "Request Information",
+          "ariaLabel": "",
+          "classes": "btn btn--ghost",
+          "id": "",
+          "x": 248,
+          "y": 6811,
+          "w": 376,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "Plan Your Visit",
+          "ariaLabel": "",
+          "classes": "btn btn--ghost",
+          "id": "",
+          "x": 248,
+          "y": 6880,
+          "w": 376,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "Apply to Davidson",
+          "ariaLabel": "",
+          "classes": "btn btn--ghost",
+          "id": "",
+          "x": 248,
+          "y": 6949,
+          "w": 376,
+          "h": 53
+        },
+        {
+          "tag": "a",
+          "text": "Visit the homepage",
+          "ariaLabel": "",
+          "classes": "site-footer__logo",
+          "id": "",
+          "x": 233,
+          "y": 7102,
+          "w": 200,
+          "h": 126
+        },
+        {
+          "tag": "a",
+          "text": "Work at Davidson",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 613,
+          "y": 7049,
+          "w": 129,
+          "h": 43
+        },
+        {
+          "tag": "a",
+          "text": "Maps & Directions",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 616,
+          "y": 7084,
+          "w": 134,
+          "h": 43
+        },
+        {
+          "tag": "a",
+          "text": "Contact Us",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 590,
+          "y": 7119,
+          "w": 82,
+          "h": 43
+        },
+        {
+          "tag": "a",
+          "text": "Social Hub",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 789,
+          "y": 7049,
+          "w": 81,
+          "h": 43
+        },
+        {
+          "tag": "a",
+          "text": "Directories",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 789,
+          "y": 7084,
+          "w": 80,
+          "h": 43
+        },
+        {
+          "tag": "a",
+          "text": "Instagram",
+          "ariaLabel": "",
+          "classes": "instagram",
+          "id": "",
+          "x": 1047,
+          "y": 7058,
+          "w": 28,
+          "h": 38
+        },
+        {
+          "tag": "a",
+          "text": "Facebook",
+          "ariaLabel": "",
+          "classes": "facebook",
+          "id": "",
+          "x": 1101,
+          "y": 7058,
+          "w": 32,
+          "h": 38
+        },
+        {
+          "tag": "a",
+          "text": "Youtube",
+          "ariaLabel": "",
+          "classes": "youtube",
+          "id": "",
+          "x": 1159,
+          "y": 7058,
+          "w": 36,
+          "h": 38
+        },
+        {
+          "tag": "a",
+          "text": "LinkedIn",
+          "ariaLabel": "",
+          "classes": "linkedin",
+          "id": "",
+          "x": 1215,
+          "y": 7058,
+          "w": 28,
+          "h": 38
+        },
+        {
+          "tag": "a",
+          "text": "TikTok",
+          "ariaLabel": "",
+          "classes": "tiktok",
+          "id": "",
+          "x": 1267,
+          "y": 7058,
+          "w": 28,
+          "h": 38
+        },
+        {
+          "tag": "a",
+          "text": "(704) 894-2000",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1097,
+          "y": 7156,
+          "w": 129,
+          "h": 45
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 600,
+          "y": 7285,
+          "w": 96,
+          "h": 19
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Service",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 740,
+          "y": 7285,
+          "w": 116,
+          "h": 19
+        },
+        {
+          "tag": "a",
+          "text": "Accessibility",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 875,
+          "y": 7285,
+          "w": 86,
+          "h": 19
+        },
+        {
+          "tag": "a",
+          "text": "Policy Library",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 999,
+          "y": 7285,
+          "w": 95,
+          "h": 19
+        },
+        {
+          "tag": "a",
+          "text": "Data Privacy Statement",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 845,
+          "y": 852,
+          "w": 181,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1022,
+          "y": 853,
+          "w": 93,
+          "h": 53
+        }
+      ]
+    },
+    {
+      "tag": "article",
+      "classes": "cookie-compliance-popup global-padding global-padding--default gray--dark",
+      "id": "",
+      "text": "This website uses cookies to improve your experience.\u00a0\u00a0Data Privacy Statement\n\n\n                          \n            \n              \n              \n                OK",
+      "rect": {
+        "x": 0,
+        "y": 805,
+        "w": 1425,
+        "h": 95
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Data Privacy Statement",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 845,
+          "y": 852,
+          "w": 181,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1022,
+          "y": 853,
+          "w": 93,
+          "h": 53
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default",
+      "id": "",
+      "text": "This website uses cookies to improve your experience.\u00a0\u00a0Data Privacy Statement\n\n\n                          \n            \n              \n              \n                OK",
+      "rect": {
+        "x": 0,
+        "y": 805,
+        "w": 1425,
+        "h": 95
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Data Privacy Statement",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 845,
+          "y": 852,
+          "w": 181,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1022,
+          "y": 853,
+          "w": 93,
+          "h": 53
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "popup-content info eu-cookie-compliance-content",
+      "id": "",
+      "text": "This website uses cookies to improve your experience.\u00a0\u00a0Data Privacy Statement\n\n\n                          \n            \n              \n              \n                OK",
+      "rect": {
+        "x": 143,
+        "y": 821,
+        "w": 1140,
+        "h": 63
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Data Privacy Statement",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 845,
+          "y": 852,
+          "w": 181,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1022,
+          "y": 853,
+          "w": 93,
+          "h": 53
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "eu-cookie-compliance-message",
+      "id": "popup-text",
+      "text": "This website uses cookies to improve your experience.\u00a0\u00a0Data Privacy Statement\n\n\n                          \n            \n              \n              \n                OK",
+      "rect": {
+        "x": 143,
+        "y": 821,
+        "w": 1140,
+        "h": 63
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Data Privacy Statement",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 845,
+          "y": 852,
+          "w": 181,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1022,
+          "y": 853,
+          "w": 93,
+          "h": 53
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "agree-button eu-cookie-compliance-default-button",
+      "id": "",
+      "text": "OK",
+      "rect": {
+        "x": 975,
+        "y": 826,
+        "w": 93,
+        "h": 53
+      },
+      "buttons": []
+    }
+  ]
+}

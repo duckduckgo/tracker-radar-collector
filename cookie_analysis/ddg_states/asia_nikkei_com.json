@@ -1,0 +1,251 @@
+{
+  "site": "asia.nikkei.com",
+  "url": "https://asia.nikkei.com/",
+  "timestamp": "2026-03-22T10:22:55.828437",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/asia_nikkei_com.png",
+  "total_requests": 313,
+  "blocked_requests_count": 52,
+  "blocked_requests": [
+    {
+      "url": "https://marketingplatform.google.com/about/enterprise/",
+      "domain": "marketingplatform.google.com"
+    },
+    {
+      "url": "https://www.facebook.com/tr/?id=1076130949081971&ev=PageView&dl=https%3A%2F%2Fasia.nikkei.com%2F&rl=&if=false&ts=1774174966639&sw=1440&sh=900&v=2.9.281&r=stable&ec=0&o=12318&fbp=fb.1.1774174966630.23715133764008459&hmd=2dcdc3fd81ddf82ce72c4d0e&pl=https%3A%2F%2Fasia.nikkei.com&cs_est=true&ler=empty&cdl=API_unavailable&pmd[title]=Nikkei%20Asia%20-%20Business%2C%20Politics%2C%20Economy%20and%20Tech%20News%20%26%20Analysis&pmd[locale]=en_GB&pmd[keywords]=nikkei%2C%20asian%2C%20review%2C%20publication%2C%20insight%2C%20business%2C%20asia%2C%20Asia300%2C%20asian%20business%2C%20asia%20insights%2C%20asian%20finance%2C%20asian%20economy%2C%20asian%20political%20news%2C%20asian%20analysis%2C%20asia%20focused%2C%20for%20asia%2C%20by%20asia%2C%20asian%20news%20in%20english%2C%20Nikkei%20Asian%20Review%2C%20Nikkei%20Asia%2C%20asia.nikkei.com%2C%20NAR&pmd[description]=Japan%2C%20China%2C%20India%20and%20Southeast%20Asia%20news%20and%20expert%20analysis%20published%20by%20Nikkei%2C%20an%20award-winning%20independent%20provider%20of%20quality%20journalism.&plt=929.2999999970198&it=1774174966259&coo=false&expv2[0]=pl0&expv2[1]=el2&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im1&expv2[6]=hf1&rqm=GET",
+      "domain": "www.facebook.com"
+    },
+    {
+      "url": "https://www.facebook.com/privacy_sandbox/pixel/register/trigger/?id=1076130949081971&ev=PageView&dl=https%3A%2F%2Fasia.nikkei.com%2F&rl=&if=false&ts=1774174966639&sw=1440&sh=900&v=2.9.281&r=stable&ec=0&o=12318&fbp=fb.1.1774174966630.23715133764008459&hmd=2dcdc3fd81ddf82ce72c4d0e&pl=https%3A%2F%2Fasia.nikkei.com&cs_est=true&ler=empty&cdl=API_unavailable&pmd[title]=Nikkei%20Asia%20-%20Business%2C%20Politics%2C%20Economy%20and%20Tech%20News%20%26%20Analysis&pmd[locale]=en_GB&pmd[keywords]=nikkei%2C%20asian%2C%20review%2C%20publication%2C%20insight%2C%20business%2C%20asia%2C%20Asia300%2C%20asian%20business%2C%20asia%20insights%2C%20asian%20finance%2C%20asian%20economy%2C%20asian%20political%20news%2C%20asian%20analysis%2C%20asia%20focused%2C%20for%20asia%2C%20by%20asia%2C%20asian%20news%20in%20english%2C%20Nikkei%20Asian%20Review%2C%20Nikkei%20Asia%2C%20asia.nikkei.com%2C%20NAR&pmd[description]=Japan%2C%20China%2C%20India%20and%20Southeast%20Asia%20news%20and%20expert%20analysis%20published%20by%20Nikkei%2C%20an%20award-winning%20independent%20provider%20of%20quality%20journalism.&plt=929.2999999970198&it=1774174966259&coo=false&expv2[0]=pl0&expv2[1]=el2&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im1&expv2[6]=hf1&rqm=FGET",
+      "domain": "www.facebook.com"
+    },
+    {
+      "url": "https://www.google-analytics.com/j/collect?v=1&_v=j102&a=1987620252&t=pageview&_s=1&dl=https%3A%2F%2Fasia.nikkei.com%2F&ul=en-us&dt=Nikkei%20Asia%20-%20Business%2C%20Politics%2C%20Economy%20and%20Tech%20News%20%26%20Analysis&sr=1440x900&vp=1425x900&_u=YEBAAAABAAAAACAAI~&jid=68417088&gjid=1474717546&cid=1070534589.1774174967&tid=UA-44606671-1&_gid=1546016212.1774174967&_r=1&_slc=1&cd1=false&cd2=A1&cd4=3keAb0xYpj&z=1443925074",
+      "domain": "www.google-analytics.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-5H36ZEETNT",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://cm.g.doubleclick.net/partnerpixels?gdpr=0&url=https%3A%2F%2Fasia.nikkei.com%2F",
+      "domain": "cm.g.doubleclick.net"
+    },
+    {
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxVkMszUSneOlHARYgShOPPfvV21liZlDe5o8SyRwXNicOVw5IRIvCE45KZVz--ciJIUff6Cl8EysfWT00ZKtHQWkF86mYRdh3m_FhQolIXomRNIVI89Gg9mgBrN8hAT5q9Qq5Luug==",
+      "domain": "fundingchoicesmessages.google.com"
+    },
+    {
+      "url": "https://0d8dad8b6c3b669823fb0badeb3820b7.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html",
+      "domain": "0d8dad8b6c3b669823fb0badeb3820b7.safeframe.googlesyndication.com"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=2288273993091698&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Leader_board&enc_prev_ius=0%2F1&prev_iu_szs=970x250%7C728x90&ifi=1&dids=NikkeiFT_PC_Leader_board&adfs=2430524570&sfv=1-0-45&sc=1&cookie_enabled=1&abxe=1&dt=1774174966821&lmt=1774174966&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=1&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=0x0&msz=0x0&fws=132&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2344108917&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=2288273993091698&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_1&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=2&dids=NikkeiFT_PC_Advertorial_1&adfs=3722148926&sfv=1-0-45&sc=1&cookie_enabled=1&abxe=1&dt=1774174966828&lmt=1774174966&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=2&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=370592595&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=2288273993091698&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_2&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=3&dids=NikkeiFT_PC_Advertorial_2&adfs=1842314586&sfv=1-0-45&sc=1&cookie_enabled=1&abxe=1&dt=1774174966831&lmt=1774174966&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=3&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2682846241&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=2288273993091698&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_3&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=4&dids=NikkeiFT_PC_Advertorial_3&adfs=3573570145&sfv=1-0-45&sc=1&cookie_enabled=1&abxe=1&dt=1774174966838&lmt=1774174966&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=4&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2447503111&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=2288273993091698&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_4&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=5&dids=NikkeiFT_PC_Advertorial_4&adfs=1642398495&sfv=1-0-45&sc=1&cookie_enabled=1&abxe=1&dt=1774174966840&lmt=1774174966&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=5&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2895556018&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=2288273993091698&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_5&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=6&dids=NikkeiFT_PC_Advertorial_5&adfs=1884254824&sfv=1-0-45&sc=1&cookie_enabled=1&abxe=1&dt=1774174966842&lmt=1774174966&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=6&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2017323609&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=2288273993091698&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Upper_Medium_rectangle&enc_prev_ius=0%2F1&prev_iu_szs=300x250&ifi=7&dids=705t5szmjth&adfs=3503919483&sfv=1-0-45&sc=1&cookie_enabled=1&abxe=1&dt=1774174966844&lmt=1774174966&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=7&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=300x0&msz=300x0&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=790514831&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxVkMszUSneOlHARYgShOPPfvV21liZlDe5o8SyRwXNicOVw5IRIvCE45KZVz--ciJIUff6Cl8EysfWT00ZKtHQWkF86mYRdh3m_FhQolIXomRNIVI89Gg9mgBrN8hAT5q9Qq5Luug==",
+      "domain": "fundingchoicesmessages.google.com"
+    },
+    {
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxVkMszUSneOlHARYgShOPPfvV21liZlDe5o8SyRwXNicOVw5IRIvCE45KZVz--ciJIUff6Cl8EysfWT00ZKtHQWkF86mYRdh3m_FhQolIXomRNIVI89Gg9mgBrN8hAT5q9Qq5Luug==",
+      "domain": "fundingchoicesmessages.google.com"
+    },
+    {
+      "url": "https://amplify.outbrain.com/cp/obtp.js",
+      "domain": "amplify.outbrain.com"
+    },
+    {
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxU-eM6cD5sOcOOU_gOi0TduDkS_seTXP7UxGjK4P9al6-BVn5KLRbuFSW7IMFulphTm8jhx3Oo3IYssWnTp5B7GW2F-utSpPdmDmLYT4zXF181dfyX6tUnv5b8fGV8EtsXlwOzk3w==",
+      "domain": "fundingchoicesmessages.google.com"
+    },
+    {
+      "url": "https://cdn.cxense.com/sp1.html",
+      "domain": "cdn.cxense.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-5H36ZEETNT&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://bat.bing.com/bat.js",
+      "domain": "bat.bing.com"
+    },
+    {
+      "url": "https://s.yimg.jp/images/listing/tool/cv/ytag.js",
+      "domain": "s.yimg.jp"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=G-5H36ZEETNT&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=104326&time=1774174967132&li_adsId=7616b772-012f-4aeb-943b-cc67d16d1f32&url=https%3A%2F%2Fasia.nikkei.com%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=fetch&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/insight_tag_errors.gif?v=2&pid=104326&error=version%3A%20285%20%7C%20WebsiteActions-285-TypeError%3A%20Failed%20to%20fetch%3B%20ErrorData%3A%20%7B%22domain%22%3A%22asia.nikkei.com%22%2C%22requestFetcher%22%3A%22fetch-keepalive%22%2C%22body%22%3A%22H4sIAAAAAAAAA12PQWvCQBBG%2F8oyh542akyapHtLwUqgiNTgpZQySUYd3GzSzAYR8b8XFXro8fHg8X0X6LkRMJ%2FhLI7myZcGqQfu%2FZYG4c6BmWfPGjy3BCZM0zhM45ckDeNEQ9O1yA4MoDBOHB%2BPxJO6a0HDOFgwcPC%2BFzOd%2FvNT0NDjnkr2lsDA6m5ULowqUK%2BjsCMRrdadZc%2B1aLWoO9e1Z4WuUSXVB7Wik6gnlTu0Z2EBDSeqhD1teO%2FQftDPSOKLBgxUTYRVlmEQ7aIqyKqaAsrSONiFySzMZhHWaQUaWMoBnVj01IDZoRXSYPkNHxW4wZLR%2BQe0LDWYC%2FRSbTx6AhPE11vlnd2RmsLlff%2BXOVALxo3WapD7vvLc346v8%2BXie1tsihKuvyM64VeIAQAA%22%7D&href=https%3A%2F%2Fasia.nikkei.com%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://mab.chartbeat.com/mab_strategy/headline_testing/get_strategy/?host=asia.nikkei.com&domain=asia.nikkei.com&path=%2F",
+      "domain": "mab.chartbeat.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=beacon&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxVkMszUSneOlHARYgShOPPfvV21liZlDe5o8SyRwXNicOVw5IRIvCE45KZVz--ciJIUff6Cl8EysfWT00ZKtHQWkF86mYRdh3m_FhQolIXomRNIVI89Gg9mgBrN8hAT5q9Qq5Luug==",
+      "domain": "fundingchoicesmessages.google.com"
+    },
+    {
+      "url": "https://pagead2.googlesyndication.com/pagead/ping?e=1",
+      "domain": "pagead2.googlesyndication.com"
+    },
+    {
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxVkMszUSneOlHARYgShOPPfvV21liZlDe5o8SyRwXNicOVw5IRIvCE45KZVz--ciJIUff6Cl8EysfWT00ZKtHQWkF86mYRdh3m_FhQolIXomRNIVI89Gg9mgBrN8hAT5q9Qq5Luug==",
+      "domain": "fundingchoicesmessages.google.com"
+    },
+    {
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxVkMszUSneOlHARYgShOPPfvV21liZlDe5o8SyRwXNicOVw5IRIvCE45KZVz--ciJIUff6Cl8EysfWT00ZKtHQWkF86mYRdh3m_FhQolIXomRNIVI89Gg9mgBrN8hAT5q9Qq5Luug==",
+      "domain": "fundingchoicesmessages.google.com"
+    },
+    {
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxVkMszUSneOlHARYgShOPPfvV21liZlDe5o8SyRwXNicOVw5IRIvCE45KZVz--ciJIUff6Cl8EysfWT00ZKtHQWkF86mYRdh3m_FhQolIXomRNIVI89Gg9mgBrN8hAT5q9Qq5Luug==",
+      "domain": "fundingchoicesmessages.google.com"
+    },
+    {
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxU8-kYotyS_8nzmsIRVLG0wZpD-HS7aHx8iIsYKDnrn6zVTd7BrMK_k_C8Cu6k31mKniQeHfpoQ8ph-lcabs8FjnC4Pq5Pf6tu21BETYVWHhY2LCsZQXcO23NHzCpH-1MrSgZA5Sw==",
+      "domain": "fundingchoicesmessages.google.com"
+    },
+    {
+      "url": "https://ep1.adtrafficquality.google/getconfig/sodar?sv=200&tid=gpt&tv=m202603190101&st=env&sjk=561236289761138",
+      "domain": "ep1.adtrafficquality.google"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=3705419485328385&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Leader_board&enc_prev_ius=0%2F1&prev_iu_szs=970x250%7C728x90&ifi=1&dids=NikkeiFT_PC_Leader_board&adfs=2430524570&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174967870&lmt=1774174967&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=1&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=0x0&msz=0x0&fws=132&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2344108917&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=745356950311867&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_1&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=2&dids=NikkeiFT_PC_Advertorial_1&adfs=3722148926&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174967875&lmt=1774174967&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=2&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=370592595&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=1710872262104857&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_2&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=3&dids=NikkeiFT_PC_Advertorial_2&adfs=1842314586&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174967880&lmt=1774174967&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=3&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2682846241&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=3373912350214611&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_3&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=4&dids=NikkeiFT_PC_Advertorial_3&adfs=3573570145&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174967883&lmt=1774174967&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=4&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2447503111&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=472973483756026&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_4&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=5&dids=NikkeiFT_PC_Advertorial_4&adfs=1642398495&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174967887&lmt=1774174967&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=5&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2895556018&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=1327780515281595&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_5&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=6&dids=NikkeiFT_PC_Advertorial_5&adfs=1884254824&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174967890&lmt=1774174967&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=6&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2017323609&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=1954408892982525&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Upper_Medium_rectangle&enc_prev_ius=0%2F1&prev_iu_szs=300x250&ifi=7&dids=705t5szmjth&adfs=3503919483&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174967894&lmt=1774174967&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=7&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=300x0&msz=300x0&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=790514831&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://pagead2.googlesyndication.com/pagead/ping?e=1",
+      "domain": "pagead2.googlesyndication.com"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=277368626557828&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Leader_board&enc_prev_ius=0%2F1&prev_iu_szs=970x250%7C728x90&ifi=1&dids=NikkeiFT_PC_Leader_board&adfs=2430524570&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174968898&lmt=1774174968&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=1&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=0x0&msz=0x0&fws=132&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2344108917&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=2081322518088228&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_1&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=2&dids=NikkeiFT_PC_Advertorial_1&adfs=3722148926&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174968903&lmt=1774174968&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=2&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=370592595&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=143488250321650&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_2&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=3&dids=NikkeiFT_PC_Advertorial_2&adfs=1842314586&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174968906&lmt=1774174968&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=3&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2682846241&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=1491473155627248&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_3&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=4&dids=NikkeiFT_PC_Advertorial_3&adfs=3573570145&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174968909&lmt=1774174968&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=4&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2447503111&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=3559687932537492&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_4&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=5&dids=NikkeiFT_PC_Advertorial_4&adfs=1642398495&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174968912&lmt=1774174968&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=5&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2895556018&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=4046953577875788&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Advertorial_5&enc_prev_ius=0%2F1&prev_iu_szs=320x50&fluid=height&ifi=6&dids=NikkeiFT_PC_Advertorial_5&adfs=1884254824&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174968915&lmt=1774174968&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=6&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=252x232&msz=232x232&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=2017323609&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=561236289761138&correlator=75446409413253&eid=31097345&output=ldjh&gdfp_req=1&vrg=202603190101&ptt=17&impl=fif&gdpr=0&iu_parts=7049%2CNikkeiFT_PC_Upper_Medium_rectangle&enc_prev_ius=0%2F1&prev_iu_szs=300x250&ifi=7&dids=705t5szmjth&adfs=3503919483&sfv=1-0-45&eri=65&sc=1&cookie_enabled=1&abxe=1&dt=1774174968918&lmt=1774174968&adxs=-12245933&adys=-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=-1&ucis=7&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fasia.nikkei.com%2F&vis=1&psz=300x0&msz=300x0&fws=4&ohw=1425&dlt=1774174965920&idt=648&cust_params=swgt%3Dno%26path%3D%252F&adks=790514831&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://pagead2.googlesyndication.com/pagead/ping?e=1",
+      "domain": "pagead2.googlesyndication.com"
+    }
+  ],
+  "blocked_domains": [
+    "0d8dad8b6c3b669823fb0badeb3820b7.safeframe.googlesyndication.com",
+    "amplify.outbrain.com",
+    "bat.bing.com",
+    "cdn.cxense.com",
+    "cm.g.doubleclick.net",
+    "ep1.adtrafficquality.google",
+    "fundingchoicesmessages.google.com",
+    "mab.chartbeat.com",
+    "marketingplatform.google.com",
+    "pagead2.googlesyndication.com",
+    "px.ads.linkedin.com",
+    "s.yimg.jp",
+    "securepubads.g.doubleclick.net",
+    "www.facebook.com",
+    "www.google-analytics.com",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "",
+      "id": "pianoj_ribbon_cookie",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 822,
+        "w": 1425,
+        "h": 78
+      },
+      "buttons": []
+    }
+  ]
+}

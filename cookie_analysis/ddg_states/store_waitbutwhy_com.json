@@ -1,0 +1,2224 @@
+{
+  "site": "store.waitbutwhy.com",
+  "url": "https://store.waitbutwhy.com/",
+  "timestamp": "2026-03-22T10:14:12.105145",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/store_waitbutwhy_com.png",
+  "total_requests": 298,
+  "blocked_requests_count": 3,
+  "blocked_requests": [
+    {
+      "url": "https://api2.amplitude.com/2/httpapi",
+      "domain": "api2.amplitude.com"
+    },
+    {
+      "url": "https://api2.amplitude.com/2/httpapi",
+      "domain": "api2.amplitude.com"
+    },
+    {
+      "url": "https://api2.amplitude.com/2/httpapi",
+      "domain": "api2.amplitude.com"
+    }
+  ],
+  "blocked_domains": [
+    "api2.amplitude.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "p",
+      "classes": "modal_price",
+      "id": "",
+      "text": "$ 20.00",
+      "rect": {
+        "x": 745,
+        "y": 841,
+        "w": 491,
+        "h": 40
+      },
+      "buttons": []
+    },
+    {
+      "tag": "p",
+      "classes": "modal_price",
+      "id": "",
+      "text": "$ 20.00",
+      "rect": {
+        "x": 190,
+        "y": 1400,
+        "w": 491,
+        "h": 40
+      },
+      "buttons": []
+    },
+    {
+      "tag": "p",
+      "classes": "modal_price",
+      "id": "",
+      "text": "$ 90.00  $ 105.00 \n                      \n                        You Save  14% ($ 15.00)",
+      "rect": {
+        "x": 745,
+        "y": 2479,
+        "w": 491,
+        "h": 72
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "WBW Plushie Bundle Pack \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 158,
+        "y": 298,
+        "w": 175,
+        "h": 175
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "WBW Plushie Bundle Pack",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 245,
+          "y": 385,
+          "w": 175,
+          "h": 175
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Instant Gratification Monkey Plush Toy \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 343,
+        "y": 298,
+        "w": 175,
+        "h": 175
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Instant Gratification Monkey Plush Toy",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 430,
+          "y": 385,
+          "w": 175,
+          "h": 175
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "The Panic Monster Plush Toy \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 528,
+        "y": 298,
+        "w": 175,
+        "h": 175
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "The Panic Monster Plush Toy",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 615,
+          "y": 385,
+          "w": 175,
+          "h": 175
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "The Mammoth Plush Toy \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 713,
+        "y": 298,
+        "w": 175,
+        "h": 175
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "The Mammoth Plush Toy",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 800,
+          "y": 385,
+          "w": 175,
+          "h": 175
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Instant Gratification Monkey Dad Hat \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 898,
+        "y": 298,
+        "w": 175,
+        "h": 175
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Instant Gratification Monkey Dad Hat",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 985,
+          "y": 385,
+          "w": 175,
+          "h": 175
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Posts Buttons (5-Pack) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 1083,
+        "y": 298,
+        "w": 175,
+        "h": 175
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Posts Buttons (5-Pack)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1170,
+          "y": 385,
+          "w": 175,
+          "h": 175
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "WBW Button Collection (10-Pack) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 1268,
+        "y": 298,
+        "w": 175,
+        "h": 175
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "WBW Button Collection (10-Pack)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1355,
+          "y": 385,
+          "w": 175,
+          "h": 175
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Vintage Instant Gratification Monkey Men's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Black / Small Black / Medium Black / Large Black / XL Black / 2XL Black / 3XL Maroon / Small Maroon / Medium Maroon / Large Maroon / XL Maroon / 2XL Maroon / 3XL Navy Blue / Small Navy Blue / Medium Navy Blue / Large Navy Blue / XL Navy Blue / 2XL Navy Blue / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Black     Maroon     Navy Blue  \n    \n  \n    \n    \n  \n    \n    \n  ",
+      "rect": {
+        "x": -27,
+        "y": 298,
+        "w": 175,
+        "h": 175
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Vintage Instant Gratification Monkey Men's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 60,
+          "y": 385,
+          "w": 175,
+          "h": 175
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Life Calendar (24in x 36in) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:       Calendar Pack  1 Calendar 3 Pack 5 Pack 10 Pack 20 Pack 50 Pack 100 Pack \n        \n          \n\n\n\n\n\n\n\n\n\n\n Calendar Pack   \n            1 Calendar    \n            3 Pack    \n            5 Pack    \n            10 Pack    \n            20 Pack    \n            50 Pack    \n            100 Pack \n    \n  \n  Qty      Add to Cart",
+      "rect": {
+        "x": 163,
+        "y": 3602,
+        "w": 212,
+        "h": 318
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Life Calendar (24in x 36in)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 269,
+          "y": 3761,
+          "w": 212,
+          "h": 318
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Wrapping Paper Packs - Assorted WBW Designs (18\" x 24\" Sheets) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:       Size  3-pack (18x24 sheets) 6-pack (18x24 sheets) 12-pack (18-24 sheets) 24-pack (18x24 sheets) 48-pack (18x24 sheets) \n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            3-pack (18x24 sheets)    \n            6-pack (18x24 sheets)    \n            12-pack (18-24 sheets)    \n            24-pack (18x24 sheets)    \n            48-pack (18x24 sheets) \n    \n ",
+      "rect": {
+        "x": 385,
+        "y": 3602,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Wrapping Paper Packs - Assorted WBW Designs (18\" x 24\" Sheets)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 491,
+          "y": 3708,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "A Perspective On Time Poster by Wait But Why (18\"x24\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 607,
+        "y": 3602,
+        "w": 212,
+        "h": 237
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "A Perspective On Time Poster by Wait But Why (18\"x24\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 713,
+          "y": 3721,
+          "w": 212,
+          "h": 237
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "One in a Million Poster (24\"x24\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 829,
+        "y": 3602,
+        "w": 212,
+        "h": 237
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "One in a Million Poster (24\"x24\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 935,
+          "y": 3721,
+          "w": 212,
+          "h": 237
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "A Perspective On Time Poster by Visual.ly (8\"x77\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 1051,
+        "y": 3602,
+        "w": 212,
+        "h": 237
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "A Perspective On Time Poster by Visual.ly (8\"x77\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1157,
+          "y": 3721,
+          "w": 212,
+          "h": 237
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "A Perspective On Time Poster by Wait But Why (8\"x77\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 1273,
+        "y": 3602,
+        "w": 212,
+        "h": 237
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "A Perspective On Time Poster by Wait But Why (8\"x77\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1379,
+          "y": 3721,
+          "w": 212,
+          "h": 237
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "How (and Why) SpaceX Will Colonize Mars Article Poster (By Litographs) (24\"x36\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 1495,
+        "y": 3602,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "How (and Why) SpaceX Will Colonize Mars Article Poster (By Litographs) (24\"x36\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1601,
+          "y": 3708,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "The Fermi Paradox Article Poster (By Litographs) (18\"x24\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 1717,
+        "y": 3602,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "The Fermi Paradox Article Poster (By Litographs) (18\"x24\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1823,
+          "y": 3708,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Religion for the Nonreligious Article Poster (By Litographs) (18\"x24\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 1939,
+        "y": 3602,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Religion for the Nonreligious Article Poster (By Litographs) (18\"x24\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2045,
+          "y": 3708,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Taming the Mammoth Article Poster (By Litographs) (18\"x24\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 2161,
+        "y": 3602,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Taming the Mammoth Article Poster (By Litographs) (18\"x24\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2267,
+          "y": 3708,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Dark Playground Poster (18\"x24\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:",
+      "rect": {
+        "x": 2383,
+        "y": 3602,
+        "w": 212,
+        "h": 237
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Dark Playground Poster (18\"x24\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2489,
+          "y": 3721,
+          "w": 212,
+          "h": 237
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Procrastination Series Poster (By Litographs) (18\"x24\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:",
+      "rect": {
+        "x": 2605,
+        "y": 3602,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Procrastination Series Poster (By Litographs) (18\"x24\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2711,
+          "y": 3708,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Life is a Picture, But You Live in a Pixel Article Poster (By Litographs) (24\"x36\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:",
+      "rect": {
+        "x": 2827,
+        "y": 3602,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Life is a Picture, But You Live in a Pixel Article Poster (By Litographs) (24\"x36\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2933,
+          "y": 3708,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Life Mountain Poster - Diagram (24\"x18\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:",
+      "rect": {
+        "x": 3049,
+        "y": 3602,
+        "w": 212,
+        "h": 237
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Life Mountain Poster - Diagram (24\"x18\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 3155,
+          "y": 3721,
+          "w": 212,
+          "h": 237
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Life Mountain Poster - Bare (24\"x18\") \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 3271,
+        "y": 3602,
+        "w": 212,
+        "h": 237
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Life Mountain Poster - Bare (24\"x18\")",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 3377,
+          "y": 3721,
+          "w": 212,
+          "h": 237
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Wrapping Paper Packs - WBW Comic Strip (18\" x 24\" Sheets) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:       Size  3-pack (18x24 sheets) 6-pack (18x24 sheets) 12-pack (18-24 sheets) 24-pack (18x24 sheets) 48-pack (18x24 sheets) \n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            3-pack (18x24 sheets)    \n            6-pack (18x24 sheets)    \n            12-pack (18-24 sheets)    \n            24-pack (18x24 sheets)    \n            48-pack (18x24 sheets) \n    \n  \n  Q",
+      "rect": {
+        "x": 3493,
+        "y": 3602,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Wrapping Paper Packs - WBW Comic Strip (18\" x 24\" Sheets)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 3599,
+          "y": 3708,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Wrapping Paper Packs - You Live in a Pixel (18\" x 24\" Sheets) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:       Size  3-pack (18x24 sheets) 6-pack (18x24 sheets) 12-pack (18-24 sheets) 24-pack (18x24 sheets) 48-pack (18x24 sheets) \n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            3-pack (18x24 sheets)    \n            6-pack (18x24 sheets)    \n            12-pack (18-24 sheets)    \n            24-pack (18x24 sheets)    \n            48-pack (18x24 sheets) \n    \n  ",
+      "rect": {
+        "x": 3715,
+        "y": 3602,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Wrapping Paper Packs - You Live in a Pixel (18\" x 24\" Sheets)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 3821,
+          "y": 3708,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Wrapping Paper Packs - WBW Characters (18\" x 24\" Sheets) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:       Size  3-pack (18x24 sheets) 6-pack (18x24 sheets) 12-pack (18-24 sheets) 24-pack (18x24 sheets) 48-pack (18x24 sheets) \n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            3-pack (18x24 sheets)    \n            6-pack (18x24 sheets)    \n            12-pack (18-24 sheets)    \n            24-pack (18x24 sheets)    \n            48-pack (18x24 sheets) \n    \n  \n  Qt",
+      "rect": {
+        "x": 3937,
+        "y": 3602,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Wrapping Paper Packs - WBW Characters (18\" x 24\" Sheets)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 4043,
+          "y": 3708,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Life Paths Postcard \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": -59,
+        "y": 3602,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Life Paths Postcard",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 47,
+          "y": 3708,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Instant Gratification Monkey Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL Baby Blue / 3XL Silver / Small Sil",
+      "rect": {
+        "x": 163,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Instant Gratification Monkey Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 269,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Panic Monster Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL Baby Blue / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL White / Small White / Medium White / Large White / XL White / 2XL White / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Baby Blue     Heather Grey     White  \n    \n  \n    \n    \n  ",
+      "rect": {
+        "x": 385,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Panic Monster Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 491,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Mammoth Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL White / Small White / Medium White / Large White / XL White / 2XL White / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Heather Grey     White  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n      ",
+      "rect": {
+        "x": 607,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Mammoth Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 713,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Wizard Brain Men's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL Baby Blue / 3XL Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   White     Baby Blue     Tan  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n   ",
+      "rect": {
+        "x": 829,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Wizard Brain Men's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 935,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Wait But Why Logo Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL Silver / Small Silver / Medium Silver / Large Silver / XL Silver / 2XL Silver / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   White  ",
+      "rect": {
+        "x": 1051,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Wait But Why Logo Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1157,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Jack and Lucy Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL Baby Blue / 3XL Silver / Small Silver / Medium Si",
+      "rect": {
+        "x": 1273,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Jack and Lucy Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1379,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "King Logo Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Silver / Small Silver / Medium Silver / Large Silver / XL Silver / 2XL Silver / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Tan     Heather",
+      "rect": {
+        "x": 1495,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "King Logo Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1601,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Happiness = Reality - Expectations Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Silver / Small Silver / Medium Silver / Large Silver / XL Silver / 2XL Silver / 3XL Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL Baby Blue / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL White / Small White / Medium White / Large White / XL White / 2XL White ",
+      "rect": {
+        "x": 1717,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Happiness = Reality - Expectations Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1823,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Idea Man Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL Baby Blue / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color ",
+      "rect": {
+        "x": 1939,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Idea Man Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2045,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "The Rocketman Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   White     Heather Grey     Tan  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n  ",
+      "rect": {
+        "x": 2161,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "The Rocketman Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2267,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Truthism Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL Baby Blue / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL Silver / Small Silver / Medium Silver / Large Silver / XL Silver / 2XL Silver / 3XL White / Small White / Medium Whi",
+      "rect": {
+        "x": 2383,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Truthism Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2489,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Pluto Has Feelings Too Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL Baby Blue / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Silver / Small Silver / ",
+      "rect": {
+        "x": 2605,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Pluto Has Feelings Too Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2711,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Animals Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL Silver / Small Silver / Medium Silver / Large Silver / XL Silver / 2XL Silver / 3XL White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Baby Blue / Small Baby Blue / Medium Baby Blue / Large Ba",
+      "rect": {
+        "x": 2827,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Animals Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2933,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Vintage Instant Gratification Monkey Men's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Black / Small Black / Medium Black / Large Black / XL Black / 2XL Black / 3XL Maroon / Small Maroon / Medium Maroon / Large Maroon / XL Maroon / 2XL Maroon / 3XL Navy Blue / Small Navy Blue / Medium Navy Blue / Large Navy Blue / XL Navy Blue / 2XL Navy Blue / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Black     Maroon     Navy Blue  \n    \n  \n    \n    \n  \n    \n    \n  ",
+      "rect": {
+        "x": 3049,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Vintage Instant Gratification Monkey Men's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 3155,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Vintage Mammoth Men's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Black / Small Black / Medium Black / Large Black / XL Black / 2XL Black / 3XL Forest Green / Small Forest Green / Medium Forest Green / Large Forest Green / XL Forest Green / 2XL Forest Green / 3XL Royal Blue / Small Royal Blue / Medium Royal Blue / Large Royal Blue / XL Royal Blue / 2XL Royal Blue / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Black     Forest Green     Royal Blue  \n    \n",
+      "rect": {
+        "x": 3271,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Vintage Mammoth Men's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 3377,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Y Chromosomal Adam Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Silver / Small Silver / Medium Silver / Large Silver / XL Silver / 2XL Silver / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Tan   ",
+      "rect": {
+        "x": 3493,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Y Chromosomal Adam Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 3599,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Today with Balloon Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL White / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   White  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL    \n            3XL \n    \n  \n  Qty      Add to Cart",
+      "rect": {
+        "x": 3715,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Today with Balloon Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 3821,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Flow \u2013\u00a0Monkey on Back Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL Baby Blue / 3XL Silver / Small Silver / M",
+      "rect": {
+        "x": 3937,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Flow \u2013\u00a0Monkey on Back Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 4043,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "I Didn't Choose This Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Silver / Small Silver / Medium Silver / Large Silver / XL Silver / 2XL Silver / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Tan ",
+      "rect": {
+        "x": 4159,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "I Didn't Choose This Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 4265,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "I am an Elephant Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Silver / Small Silver / Medium Silver / Large Silver / XL Silver / 2XL Silver / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL Tan / Small Tan / Medium Tan / Large Tan / XL Tan / 2XL Tan / 3XL White / Small White / Medium White / Large White / XL White / 2XL White / 3XL Baby Blue / Small Baby Blue / Medium Baby Blue /",
+      "rect": {
+        "x": 4381,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "I am an Elephant Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 4487,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Danger Zone Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL Baby Blue / 3XL Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL Silver / Small Silver / Medium Silver / Large Silver / XL Silver / 2XL Silver / 3XL White / Small White / Medium White / Large White / XL White / 2XL White / 3XL \n        \n       ",
+      "rect": {
+        "x": 4603,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Danger Zone Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 4709,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Cooks Men's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL White / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   White  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL    \n            3XL \n    \n  \n  Qty      Add to Cart",
+      "rect": {
+        "x": -59,
+        "y": 4221,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Cooks Men's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 47,
+          "y": 4327,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Wait But Why Logo Hoodie \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Heather Grey  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL  ",
+      "rect": {
+        "x": 158,
+        "y": 4753,
+        "w": 267,
+        "h": 267
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Wait But Why Logo Hoodie",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 291,
+          "y": 4887,
+          "w": 267,
+          "h": 267
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Today with Balloon Hoodie \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Heather Grey  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL ",
+      "rect": {
+        "x": 435,
+        "y": 4753,
+        "w": 267,
+        "h": 267
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Today with Balloon Hoodie",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 569,
+          "y": 4887,
+          "w": 267,
+          "h": 267
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Panic Monster Hoodie \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Heather Grey  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL    \n ",
+      "rect": {
+        "x": 713,
+        "y": 4753,
+        "w": 267,
+        "h": 267
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Panic Monster Hoodie",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 846,
+          "y": 4887,
+          "w": 267,
+          "h": 267
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Instant Gratification Monkey Hoodie \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Heather Grey  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n      ",
+      "rect": {
+        "x": 990,
+        "y": 4753,
+        "w": 267,
+        "h": 267
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Instant Gratification Monkey Hoodie",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1124,
+          "y": 4887,
+          "w": 267,
+          "h": 267
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Animals Hoodie \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Heather Grey  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL    \n       ",
+      "rect": {
+        "x": 1268,
+        "y": 4753,
+        "w": 267,
+        "h": 267
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Animals Hoodie",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1401,
+          "y": 4887,
+          "w": 267,
+          "h": 267
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Happiness = Reality - Expectations Crewneck Sweatshirt \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Heather Grey / Small Heather Grey / Medium Heather Grey / Large Heather Grey / XL Heather Grey / 2XL Heather Grey / 3XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Heather Grey  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n      ",
+      "rect": {
+        "x": -120,
+        "y": 4753,
+        "w": 267,
+        "h": 267
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Happiness = Reality - Expectations Crewneck Sweatshirt",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 14,
+          "y": 4887,
+          "w": 267,
+          "h": 267
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Instant Gratification Monkey Women's V-Neck Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   White  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL \n    \n  \n  Qty      Add to Cart",
+      "rect": {
+        "x": 163,
+        "y": 5341,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Instant Gratification Monkey Women's V-Neck Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 269,
+          "y": 5447,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Panic Monster Women's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL White / Small White / Medium White / Large White / XL White / 2XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Baby Blue     White  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n         ",
+      "rect": {
+        "x": 385,
+        "y": 5341,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Panic Monster Women's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 491,
+          "y": 5447,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Happiness = Reality - Expectations Women's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Light Pink / Small Light Pink / Medium Light Pink / Large Light Pink / XL Light Pink / 2XL Ash / Small Ash / Medium Ash / Large Ash / XL Ash / 2XL Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL White / Small White / Medium White / Large White / XL White / 2XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Light Pink     Ash     Baby Blu",
+      "rect": {
+        "x": 607,
+        "y": 5341,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Happiness = Reality - Expectations Women's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 713,
+          "y": 5447,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Animals Women's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL Ash / Small Ash / Medium Ash / Large Ash / XL Ash / 2XL Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   White     Ash     Baby Blue  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small ",
+      "rect": {
+        "x": 829,
+        "y": 5341,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Animals Women's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 935,
+          "y": 5447,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Wait But Why Logo Women's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL Ash / Small Ash / Medium Ash / Large Ash / XL Ash / 2XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   White     Ash  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL \n    \n",
+      "rect": {
+        "x": 1051,
+        "y": 5341,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Wait But Why Logo Women's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1157,
+          "y": 5447,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Mammoth Women's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   White  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL \n    \n  \n  Qty      Add to Cart",
+      "rect": {
+        "x": 1273,
+        "y": 5341,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Mammoth Women's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1379,
+          "y": 5447,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Pluto Has Feelings Too Women's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Ash / Small Ash / Medium Ash / Large Ash / XL Ash / 2XL White / Small White / Medium White / Large White / XL White / 2XL Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Ash     White     Baby Blue  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n   ",
+      "rect": {
+        "x": 1495,
+        "y": 5341,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Pluto Has Feelings Too Women's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1601,
+          "y": 5447,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Vintage Instant Gratification Monkey Women's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Black / Small Black / Medium Black / Large Black / XL Black / 2XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Black  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL \n    \n  \n  Qty      Add to Cart",
+      "rect": {
+        "x": 1717,
+        "y": 5341,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Vintage Instant Gratification Monkey Women's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1823,
+          "y": 5447,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Today with Balloon Women's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Vintage Red / Small Vintage Red / Medium Vintage Red / Large Vintage Red / XL Vintage Red / 2XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Vintage Red  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL \n    \n  \n  Qty      Add to Cart",
+      "rect": {
+        "x": 1939,
+        "y": 5341,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Today with Balloon Women's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2045,
+          "y": 5447,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "I Didn't Choose This Women's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL Ash / Small Ash / Medium Ash / Large Ash / XL Ash / 2XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   White     Ash  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL \n  ",
+      "rect": {
+        "x": 2161,
+        "y": 5341,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "I Didn't Choose This Women's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2267,
+          "y": 5447,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "King Logo Women's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        White / Small White / Medium White / Large White / XL White / 2XL Ash / Small Ash / Medium Ash / Large Ash / XL Ash / 2XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   White     Ash  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            Small    \n            Medium    \n            Large    \n            XL    \n            2XL \n    \n  \n    \n",
+      "rect": {
+        "x": 2383,
+        "y": 5341,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "King Logo Women's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 2489,
+          "y": 5447,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Flow \u2013\u00a0Monkey on Back Women's Tee \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Ash / Small Ash / Medium Ash / Large Ash / XL Ash / 2XL White / Small White / Medium White / Large White / XL White / 2XL Baby Blue / Small Baby Blue / Medium Baby Blue / Large Baby Blue / XL Baby Blue / 2XL \n        \n          \n\n\n\n\n\n\n\n\n\n\n Color   Ash     White     Baby Blue  \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n    \n    \n  \n\n\n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n    ",
+      "rect": {
+        "x": -59,
+        "y": 5341,
+        "w": 212,
+        "h": 212
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Flow \u2013\u00a0Monkey on Back Women's Tee",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 47,
+          "y": 5447,
+          "w": 212,
+          "h": 212
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Christmas Greeting Card \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:       Packs  2-pack Single Card 5-pack 10-pack \n        \n          \n\n\n\n\n\n\n\n\n\n\n Packs   \n            2-pack    \n            Single Card    \n            5-pack    \n            10-pack \n    \n  \n  Qty      Add to Cart",
+      "rect": {
+        "x": 158,
+        "y": 5873,
+        "w": 267,
+        "h": 267
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Christmas Greeting Card",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 291,
+          "y": 6007,
+          "w": 267,
+          "h": 267
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Hanukkah Greeting Card \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:       Packs  2-pack Single Card 5-pack 10-pack \n        \n          \n\n\n\n\n\n\n\n\n\n\n Packs   \n            2-pack    \n            Single Card    \n            5-pack    \n            10-pack \n    \n  \n  Qty      Add to Cart",
+      "rect": {
+        "x": 435,
+        "y": 5873,
+        "w": 267,
+        "h": 267
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Hanukkah Greeting Card",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 569,
+          "y": 6007,
+          "w": 267,
+          "h": 267
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Snow Greeting Card \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:       Packs  2-pack Single Card 5-pack 10-pack \n        \n          \n\n\n\n\n\n\n\n\n\n\n Packs   \n            2-pack    \n            Single Card    \n            5-pack    \n            10-pack \n    \n  \n  Qty      Add to Cart",
+      "rect": {
+        "x": 713,
+        "y": 5873,
+        "w": 267,
+        "h": 267
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Snow Greeting Card",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 846,
+          "y": 6007,
+          "w": 267,
+          "h": 267
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Wrapping Paper Packs - Assorted WBW Designs (18\" x 24\" Sheets) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:       Size  3-pack (18x24 sheets) 6-pack (18x24 sheets) 12-pack (18-24 sheets) 24-pack (18x24 sheets) 48-pack (18x24 sheets) \n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            3-pack (18x24 sheets)    \n            6-pack (18x24 sheets)    \n            12-pack (18-24 sheets)    \n            24-pack (18x24 sheets)    \n            48-pack (18x24 sheets) \n    \n ",
+      "rect": {
+        "x": 990,
+        "y": 5873,
+        "w": 267,
+        "h": 267
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Wrapping Paper Packs - Assorted WBW Designs (18\" x 24\" Sheets)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1124,
+          "y": 6007,
+          "w": 267,
+          "h": 267
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Wrapping Paper Packs - WBW Characters (18\" x 24\" Sheets) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:       Size  3-pack (18x24 sheets) 6-pack (18x24 sheets) 12-pack (18-24 sheets) 24-pack (18x24 sheets) 48-pack (18x24 sheets) \n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            3-pack (18x24 sheets)    \n            6-pack (18x24 sheets)    \n            12-pack (18-24 sheets)    \n            24-pack (18x24 sheets)    \n            48-pack (18x24 sheets) \n    \n  \n  Qt",
+      "rect": {
+        "x": 1268,
+        "y": 5873,
+        "w": 267,
+        "h": 267
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Wrapping Paper Packs - WBW Characters (18\" x 24\" Sheets)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1401,
+          "y": 6007,
+          "w": 267,
+          "h": 267
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Wrapping Paper Packs - You Live in a Pixel (18\" x 24\" Sheets) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:       Size  3-pack (18x24 sheets) 6-pack (18x24 sheets) 12-pack (18-24 sheets) 24-pack (18x24 sheets) 48-pack (18x24 sheets) \n        \n          \n\n\n\n\n\n\n\n\n\n\n Size   \n            3-pack (18x24 sheets)    \n            6-pack (18x24 sheets)    \n            12-pack (18-24 sheets)    \n            24-pack (18x24 sheets)    \n            48-pack (18x24 sheets) \n    \n  ",
+      "rect": {
+        "x": -120,
+        "y": 5873,
+        "w": 267,
+        "h": 267
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Wrapping Paper Packs - You Live in a Pixel (18\" x 24\" Sheets)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 14,
+          "y": 6007,
+          "w": 267,
+          "h": 267
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Wait But Why Buttons (5-Pack) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 163,
+        "y": 6461,
+        "w": 360,
+        "h": 360
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Wait But Why Buttons (5-Pack)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 343,
+          "y": 6641,
+          "w": 360,
+          "h": 360
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "WBW Button Collection (10-Pack) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 533,
+        "y": 6461,
+        "w": 360,
+        "h": 360
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "WBW Button Collection (10-Pack)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 713,
+          "y": 6641,
+          "w": 360,
+          "h": 360
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "thumbnail-overlay",
+      "id": "",
+      "text": "Posts Buttons (5-Pack) \n    \n      \n\n\n  Quick View\n\n     Notify me when this product is available:        Qty      Add to Cart",
+      "rect": {
+        "x": 903,
+        "y": 6461,
+        "w": 360,
+        "h": 360
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Posts Buttons (5-Pack)",
+          "ariaLabel": "",
+          "classes": "hidden-product-link",
+          "id": "",
+          "x": 1083,
+          "y": 6641,
+          "w": 360,
+          "h": 360
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cc-window cc-banner cc-type-info cc-theme-block cc-bottom cc-color-override--732197953 ",
+      "id": "cookies-banner",
+      "text": "We only collect user information that is relevant to store orders and customer satisfaction or otherwise allows us to operate the WBW store.Cookie Policy \n                    \n                    \n                        Ok",
+      "rect": {
+        "x": 0,
+        "y": 836,
+        "w": 1425,
+        "h": 50
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Cookie Policy",
+          "ariaLabel": "",
+          "classes": "priread cc-link",
+          "id": "",
+          "x": 933,
+          "y": 861,
+          "w": 90,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Deny",
+          "classes": "deny_color  ",
+          "id": "",
+          "x": 1354,
+          "y": 861,
+          "w": 1,
+          "h": 1
+        }
+      ]
+    },
+    {
+      "tag": "span",
+      "classes": "cc-message",
+      "id": "cookieconsent:desc",
+      "text": "We only collect user information that is relevant to store orders and customer satisfaction or otherwise allows us to operate the WBW store.Cookie Policy",
+      "rect": {
+        "x": 25,
+        "y": 851,
+        "w": 1309,
+        "h": 21
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Cookie Policy",
+          "ariaLabel": "",
+          "classes": "priread cc-link",
+          "id": "",
+          "x": 933,
+          "y": 861,
+          "w": 90,
+          "h": 21
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cc-window cc-banner cc-type-info cc-theme-block cc-bottom cc-color-override--732197953 ",
+      "id": "cookies-banner",
+      "text": "We only collect user information that is relevant to store orders and customer satisfaction or otherwise allows us to operate the WBW store.Cookie Policy \n                    \n                    \n                        Ok",
+      "rect": {
+        "x": 0,
+        "y": 836,
+        "w": 1425,
+        "h": 50
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Cookie Policy",
+          "ariaLabel": "",
+          "classes": "priread cc-link",
+          "id": "",
+          "x": 933,
+          "y": 861,
+          "w": 90,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Deny",
+          "classes": "deny_color  ",
+          "id": "",
+          "x": 1354,
+          "y": 861,
+          "w": 1,
+          "h": 1
+        }
+      ]
+    },
+    {
+      "tag": "span",
+      "classes": "cc-message",
+      "id": "cookieconsent:desc",
+      "text": "We only collect user information that is relevant to store orders and customer satisfaction or otherwise allows us to operate the WBW store.Cookie Policy",
+      "rect": {
+        "x": 25,
+        "y": 851,
+        "w": 1309,
+        "h": 21
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Cookie Policy",
+          "ariaLabel": "",
+          "classes": "priread cc-link",
+          "id": "",
+          "x": 933,
+          "y": 861,
+          "w": 90,
+          "h": 21
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cc-window cc-banner cc-type-info cc-theme-block cc-bottom cc-color-override--732197953 ",
+      "id": "cookies-banner",
+      "text": "We only collect user information that is relevant to store orders and customer satisfaction or otherwise allows us to operate the WBW store.Cookie Policy \n                    \n                    \n                        Ok",
+      "rect": {
+        "x": 0,
+        "y": 836,
+        "w": 1425,
+        "h": 50
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Cookie Policy",
+          "ariaLabel": "",
+          "classes": "priread cc-link",
+          "id": "",
+          "x": 933,
+          "y": 861,
+          "w": 90,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Deny",
+          "classes": "deny_color  ",
+          "id": "",
+          "x": 1354,
+          "y": 861,
+          "w": 1,
+          "h": 1
+        }
+      ]
+    },
+    {
+      "tag": "span",
+      "classes": "cc-message",
+      "id": "cookieconsent:desc",
+      "text": "We only collect user information that is relevant to store orders and customer satisfaction or otherwise allows us to operate the WBW store.Cookie Policy",
+      "rect": {
+        "x": 25,
+        "y": 851,
+        "w": 1309,
+        "h": 21
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Cookie Policy",
+          "ariaLabel": "",
+          "classes": "priread cc-link",
+          "id": "",
+          "x": 933,
+          "y": 861,
+          "w": 90,
+          "h": 21
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cc-compliance",
+      "id": "",
+      "text": "Ok",
+      "rect": {
+        "x": 1334,
+        "y": 845,
+        "w": 66,
+        "h": 32
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Deny",
+          "classes": "deny_color  ",
+          "id": "",
+          "x": 1354,
+          "y": 861,
+          "w": 1,
+          "h": 1
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cc-compliance",
+      "id": "",
+      "text": "Ok",
+      "rect": {
+        "x": 1334,
+        "y": 845,
+        "w": 66,
+        "h": 32
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Deny",
+          "classes": "deny_color  ",
+          "id": "",
+          "x": 1354,
+          "y": 861,
+          "w": 1,
+          "h": 1
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cc-compliance",
+      "id": "",
+      "text": "Ok",
+      "rect": {
+        "x": 1334,
+        "y": 845,
+        "w": 66,
+        "h": 32
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Deny",
+          "classes": "deny_color  ",
+          "id": "",
+          "x": 1354,
+          "y": 861,
+          "w": 1,
+          "h": 1
+        }
+      ]
+    }
+  ]
+}

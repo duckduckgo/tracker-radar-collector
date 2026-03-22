@@ -1,0 +1,48 @@
+{
+  "site": "humandx.org",
+  "url": "https://www.humandx.org/",
+  "timestamp": "2026-03-22T10:12:02.195633",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/humandx_org.png",
+  "total_requests": 107,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "CookieConsent",
+      "id": "",
+      "text": "By using our site, you give consent to cookies (see our Privacy Policy).\u2715",
+      "rect": {
+        "x": 0,
+        "y": 816,
+        "w": 1425,
+        "h": 84
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "sc-crrszt sc-gTgzoy eNaZoM etzlvs",
+          "id": "",
+          "x": 464,
+          "y": 857,
+          "w": 96,
+          "h": 16
+        },
+        {
+          "tag": "button",
+          "text": "\u2715",
+          "ariaLabel": "Accept cookies",
+          "classes": "",
+          "id": "rcc-confirm-button",
+          "x": 1383,
+          "y": 858,
+          "w": 36,
+          "h": 36
+        }
+      ]
+    }
+  ]
+}

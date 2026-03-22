@@ -1,0 +1,11 @@
+{
+  "site": "posthog.com",
+  "url": "https://posthog.com/",
+  "timestamp": "2026-03-22T10:17:40.106901",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/posthog_com.png",
+  "total_requests": 142,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": []
+}

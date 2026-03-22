@@ -1,0 +1,897 @@
+[
+  {
+    "tag": "body",
+    "classes": "eu-cookie-compliance-popup-open eu-cookie-compliance-status-null",
+    "id": "",
+    "text": "Skip to main site navigation\n      Skip to main content\n    \n    <img src=\"https://www.facebook.com/tr?id=452594295542829&amp;ev=PageView&amp;noscript=1\" alt=\"\" height=\"1\" width=\"1\" /><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-TNVJDTJ\"\n                  height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe>\n\n      \n    \n\n\n\n\n  \n  \n    \n      \n\n\n  \n\n\n\n      \n  \n    \n      \n    \n  \n\n\n\n  \n  \n\n\n\n      \n      Skip to main site navigation\n      Skip to main content\n    ",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 1425,
+      "h": 7335
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Skip to main site navigation",
+        "ariaLabel": "",
+        "classes": "element-invisible element-focusable",
+        "id": "",
+        "href": "#main-menu",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "tag": "a",
+        "text": "Skip to main content",
+        "ariaLabel": "",
+        "classes": "element-invisible element-focusable",
+        "id": "",
+        "href": "#main-content",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "tag": "a",
+        "text": "Skip to main site navigation",
+        "ariaLabel": "",
+        "classes": "visually-hidden element-focusable",
+        "id": "",
+        "href": "#main-menu",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "tag": "a",
+        "text": "Skip to main content",
+        "ariaLabel": "",
+        "classes": "visually-hidden element-focusable",
+        "id": "",
+        "href": "#main-content",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "tag": "button",
+        "text": "Open the search panel",
+        "ariaLabel": "",
+        "classes": " site-search__toggle button-toggle",
+        "id": "site-search--button-toggle",
+        "href": null,
+        "x": 1328,
+        "y": 59
+      },
+      {
+        "tag": "a",
+        "text": "Request Info",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://admission.davidson.edu/register/requestinfo",
+        "x": 158,
+        "y": 59
+      },
+      {
+        "tag": "a",
+        "text": "Visit",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/admission-and-financial-aid/visit",
+        "x": 282,
+        "y": 59
+      },
+      {
+        "tag": "a",
+        "text": "Apply",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/admission-and-financial-aid/apply",
+        "x": 366,
+        "y": 59
+      },
+      {
+        "tag": "a",
+        "text": "Visit the homepage",
+        "ariaLabel": "",
+        "classes": "site-header__logo--desktop",
+        "id": "",
+        "href": "/",
+        "x": 713,
+        "y": 59
+      },
+      {
+        "tag": "a",
+        "text": "Give",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/giving",
+        "x": 903,
+        "y": 59
+      },
+      {
+        "tag": "a",
+        "text": "News & Events",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/news-events",
+        "x": 1044,
+        "y": 59
+      },
+      {
+        "tag": "button",
+        "text": "Click to open",
+        "ariaLabel": "Toggle the Resources For menu",
+        "classes": "menu-item__button",
+        "id": "toggle-the-resources-for-menu--button",
+        "href": null,
+        "x": 1291,
+        "y": 58
+      },
+      {
+        "tag": "a",
+        "text": "Academics",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/academics",
+        "x": 301,
+        "y": 147
+      },
+      {
+        "tag": "button",
+        "text": "Click to open",
+        "ariaLabel": "Toggle the Academics menu",
+        "classes": "menu-item__button",
+        "id": "toggle-the-academics-menu--button",
+        "href": null,
+        "x": 393,
+        "y": 147
+      },
+      {
+        "tag": "a",
+        "text": "Admission & Aid",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/admission-and-financial-aid",
+        "x": 530,
+        "y": 147
+      },
+      {
+        "tag": "button",
+        "text": "Click to open",
+        "ariaLabel": "Toggle the Admission &amp; Aid menu",
+        "classes": "menu-item__button",
+        "id": "toggle-the-admission-&amp;-aid-menu--button",
+        "href": null,
+        "x": 657,
+        "y": 147
+      },
+      {
+        "tag": "a",
+        "text": "Campus Life",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/campus-life",
+        "x": 768,
+        "y": 147
+      },
+      {
+        "tag": "button",
+        "text": "Click to open",
+        "ariaLabel": "Toggle the Campus Life menu",
+        "classes": "menu-item__button",
+        "id": "toggle-the-campus-life-menu--button",
+        "href": null,
+        "x": 870,
+        "y": 147
+      },
+      {
+        "tag": "a",
+        "text": "About",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/about",
+        "x": 950,
+        "y": 147
+      },
+      {
+        "tag": "button",
+        "text": "Click to open",
+        "ariaLabel": "Toggle the About menu",
+        "classes": "menu-item__button",
+        "id": "toggle-the-about-menu--button",
+        "href": null,
+        "x": 1020,
+        "y": 147
+      },
+      {
+        "tag": "a",
+        "text": "Athletics",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/node/15796",
+        "x": 1124,
+        "y": 147
+      },
+      {
+        "tag": "div",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "hero-slide--image",
+        "id": "",
+        "href": null,
+        "x": 220,
+        "y": 601
+      },
+      {
+        "tag": "a",
+        "text": "Financial Wellness",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/campus-life/financial-wellness",
+        "x": 220,
+        "y": 999
+      },
+      {
+        "tag": "div",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "hero-slide--image",
+        "id": "",
+        "href": null,
+        "x": 604,
+        "y": 542
+      },
+      {
+        "tag": "div",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "hero-slide--image",
+        "id": "",
+        "href": null,
+        "x": 933,
+        "y": 502
+      },
+      {
+        "tag": "div",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "hero-slide--image",
+        "id": "",
+        "href": null,
+        "x": 1261,
+        "y": 542
+      },
+      {
+        "tag": "a",
+        "text": "Explore Our Impact",
+        "ariaLabel": "",
+        "classes": "btn",
+        "id": "",
+        "href": "https://www.apublicgood.com",
+        "x": 252,
+        "y": 1491
+      },
+      {
+        "tag": "a",
+        "text": "Fast Facts",
+        "ariaLabel": "",
+        "classes": "btn",
+        "id": "",
+        "href": "/about/fast-facts",
+        "x": 852,
+        "y": 1873
+      },
+      {
+        "tag": "a",
+        "text": "Academics",
+        "ariaLabel": "",
+        "classes": "btn",
+        "id": "",
+        "href": "/academics",
+        "x": 1031,
+        "y": 1873
+      },
+      {
+        "tag": "a",
+        "text": "Find Your Major",
+        "ariaLabel": "",
+        "classes": "link-arrow",
+        "id": "",
+        "href": "https://www.davidson.edu/majors-minors-programs",
+        "x": 953,
+        "y": 2149
+      },
+      {
+        "tag": "button",
+        "text": "Pause",
+        "ariaLabel": "",
+        "classes": " video-play-button button-toggle",
+        "id": "hero-video--button-toggle",
+        "href": null,
+        "x": 1321,
+        "y": 3106
+      },
+      {
+        "tag": "a",
+        "text": "Student Experience",
+        "ariaLabel": "",
+        "classes": "btn btn--ghost",
+        "id": "",
+        "href": "/campus-life",
+        "x": 266,
+        "y": 3264
+      },
+      {
+        "tag": "a",
+        "text": "Request Info",
+        "ariaLabel": "",
+        "classes": "btn",
+        "id": "",
+        "href": "https://admission.davidson.edu/register/requestinfo",
+        "x": 230,
+        "y": 3861
+      },
+      {
+        "tag": "a",
+        "text": "Visit",
+        "ariaLabel": "",
+        "classes": "btn",
+        "id": "",
+        "href": "/admission-and-financial-aid/visit",
+        "x": 387,
+        "y": 3861
+      },
+      {
+        "tag": "a",
+        "text": "Apply",
+        "ariaLabel": "",
+        "classes": "btn",
+        "id": "",
+        "href": "/admission-and-financial-aid/apply",
+        "x": 513,
+        "y": 3861
+      },
+      {
+        "tag": "a",
+        "text": "Financial Aid",
+        "ariaLabel": "",
+        "classes": "link-arrow",
+        "id": "",
+        "href": "/admission-and-financial-aid/financial-aid",
+        "x": 320,
+        "y": 4137
+      },
+      {
+        "tag": "a",
+        "text": "All News",
+        "ariaLabel": "",
+        "classes": "link-arrow link-arrow-padding",
+        "id": "",
+        "href": "/news",
+        "x": 179,
+        "y": 4542
+      },
+      {
+        "tag": "a",
+        "text": "\u2018She Is Not a Footnote\u2019: National Women\u2019s History Museum Spotlights Pioneers, Changemakers",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/news/2026/03/19/snational-womens-history-museum",
+        "x": 1057,
+        "y": 4700
+      },
+      {
+        "tag": "button",
+        "text": "Go to the previous slide.",
+        "ariaLabel": "",
+        "classes": "slider-navigation__prev",
+        "id": "",
+        "href": null,
+        "x": 25,
+        "y": 5181
+      },
+      {
+        "tag": "button",
+        "text": "Go to the next slide.",
+        "ariaLabel": "",
+        "classes": "slider-navigation__next",
+        "id": "",
+        "href": null,
+        "x": 1400,
+        "y": 5181
+      },
+      {
+        "tag": "a",
+        "text": "Davidson College Secures $47 Million to Launch the D.G. and Harriet Wall Martin Institute for Public Good",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/news/2026/02/26/davidson-college-secures-47-million-launch-martin-institute-public-good",
+        "x": -93,
+        "y": 5349
+      },
+      {
+        "tag": "a",
+        "text": "Why the World Can\u2019t Stop Talking About \u2018Sinners\u2019",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/news/2026/03/11/why-world-cant-stop-talking-about-sinners",
+        "x": 286,
+        "y": 5336
+      },
+      {
+        "tag": "a",
+        "text": "\u2018Rally\u2019 Reinvents Pickleball Experience: Alum Brings a Hospitality Bent to a Booming Sport",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/news/2026/03/06/rally-reinvents-pickleball-experience-alum-brings-hospitality-bent-booming-sport",
+        "x": 706,
+        "y": 5349
+      },
+      {
+        "tag": "a",
+        "text": "Davidson College Featured in The Atlantic: \"Don\u2019t Call It \u2018Intelligence\u2019\"",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.theatlantic.com/ideas/2026/03/intelligence-concept/686121/?gift=zA4B3-LJJMShu5hSOdxPkuGw",
+        "x": 1098,
+        "y": 5349
+      },
+      {
+        "tag": "a",
+        "text": "Why \u2018One Battle After Another\u2019 Is Even More Radical Than It Looks",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/news/2026/03/05/why-one-battle-after-another-even-more-radical-it-looks",
+        "x": 1510,
+        "y": 5336
+      },
+      {
+        "tag": "a",
+        "text": "Presidents Give Voice to the Enduring Values That Have Guided Davidson College Across Time",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/news/2026/02/27/presidents-give-voice-enduring-values-have-guided-davidson-college-across-time",
+        "x": 1907,
+        "y": 5349
+      },
+      {
+        "tag": "a",
+        "text": "All Events",
+        "ariaLabel": "",
+        "classes": "link-arrow",
+        "id": "",
+        "href": "https://www.davidson.edu/events",
+        "x": 188,
+        "y": 5779
+      },
+      {
+        "tag": "a",
+        "text": "Annabel Semans, soprano",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/events/annabel-semans-soprano",
+        "x": 1098,
+        "y": 5722
+      },
+      {
+        "tag": "a",
+        "text": "French Film Showing - Le r\u00e8gne animal",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/events/french-film-showing-le-regne-animal",
+        "x": 1103,
+        "y": 5866
+      },
+      {
+        "tag": "a",
+        "text": "Public Health Ethics & Wastewater Surveillance by Prof. Kata Chillag, Ph.D.",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/events/public-health-ethics-wastewater-surveillance-prof-kata-chillag-phd",
+        "x": 1107,
+        "y": 6036
+      },
+      {
+        "tag": "a",
+        "text": "Kendrick K. Kelley Lecture in Historical Studies",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/events/kendrick-k-kelley-lecture-historical-studies",
+        "x": 1090,
+        "y": 6206
+      },
+      {
+        "tag": "a",
+        "text": "Request Information",
+        "ariaLabel": "",
+        "classes": "btn btn--ghost",
+        "id": "",
+        "href": "https://admission.davidson.edu/register/requestinfo",
+        "x": 248,
+        "y": 6811
+      },
+      {
+        "tag": "a",
+        "text": "Plan Your Visit",
+        "ariaLabel": "",
+        "classes": "btn btn--ghost",
+        "id": "",
+        "href": "/admission-and-financial-aid/visit",
+        "x": 248,
+        "y": 6880
+      },
+      {
+        "tag": "a",
+        "text": "Apply to Davidson",
+        "ariaLabel": "",
+        "classes": "btn btn--ghost",
+        "id": "",
+        "href": "/admission-and-financial-aid/apply",
+        "x": 248,
+        "y": 6949
+      },
+      {
+        "tag": "a",
+        "text": "Visit the homepage",
+        "ariaLabel": "",
+        "classes": "site-footer__logo",
+        "id": "",
+        "href": "/",
+        "x": 233,
+        "y": 7102
+      },
+      {
+        "tag": "a",
+        "text": "Work at Davidson",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/offices-and-services/human-resources/work-davidson",
+        "x": 613,
+        "y": 7049
+      },
+      {
+        "tag": "a",
+        "text": "Maps & Directions",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/about/maps-and-directions",
+        "x": 616,
+        "y": 7084
+      },
+      {
+        "tag": "a",
+        "text": "Contact Us",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/about/contact-us",
+        "x": 590,
+        "y": 7119
+      },
+      {
+        "tag": "a",
+        "text": "Social Hub",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/social-hub",
+        "x": 789,
+        "y": 7049
+      },
+      {
+        "tag": "a",
+        "text": "Directories",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/about/contact-us/directories",
+        "x": 789,
+        "y": 7084
+      },
+      {
+        "tag": "a",
+        "text": "Instagram",
+        "ariaLabel": "",
+        "classes": "instagram",
+        "id": "",
+        "href": "https://www.instagram.com/davidsoncollege",
+        "x": 1047,
+        "y": 7058
+      },
+      {
+        "tag": "a",
+        "text": "Facebook",
+        "ariaLabel": "",
+        "classes": "facebook",
+        "id": "",
+        "href": "https://www.facebook.com/davidsoncollege.nc/",
+        "x": 1101,
+        "y": 7058
+      },
+      {
+        "tag": "a",
+        "text": "Youtube",
+        "ariaLabel": "",
+        "classes": "youtube",
+        "id": "",
+        "href": "https://www.youtube.com/channel/UCO-VaiReXakQWdCIhgyReLg",
+        "x": 1159,
+        "y": 7058
+      },
+      {
+        "tag": "a",
+        "text": "LinkedIn",
+        "ariaLabel": "",
+        "classes": "linkedin",
+        "id": "",
+        "href": "https://www.linkedin.com/school/davidson-college/",
+        "x": 1215,
+        "y": 7058
+      },
+      {
+        "tag": "a",
+        "text": "TikTok",
+        "ariaLabel": "",
+        "classes": "tiktok",
+        "id": "",
+        "href": "https://www.tiktok.com/@davidsoncollege.nc",
+        "x": 1267,
+        "y": 7058
+      },
+      {
+        "tag": "a",
+        "text": "(704) 894-2000",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "tel:7048942000",
+        "x": 1097,
+        "y": 7156
+      },
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.davidson.edu/offices-and-services/technology-innovation/it-guidelines-policies/data-priv",
+        "x": 600,
+        "y": 7285
+      },
+      {
+        "tag": "a",
+        "text": "Terms of Service",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.davidson.edu/offices-and-services/technology-innovation/it-guidelines-policies/davidson-",
+        "x": 740,
+        "y": 7285
+      },
+      {
+        "tag": "a",
+        "text": "Accessibility",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.davidson.edu/accessibility",
+        "x": 875,
+        "y": 7285
+      },
+      {
+        "tag": "a",
+        "text": "Policy Library",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://sites.google.com/davidson.edu/policies",
+        "x": 999,
+        "y": 7285
+      },
+      {
+        "tag": "a",
+        "text": "Data Privacy Statement",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/offices-and-services/technology-innovation/it-guidelines-policies/data-privacy-statement",
+        "x": 845,
+        "y": 852
+      },
+      {
+        "tag": "button",
+        "text": "OK",
+        "ariaLabel": "",
+        "classes": "agree-button eu-cookie-compliance-default-button",
+        "id": "",
+        "href": null,
+        "x": 1022,
+        "y": 853
+      }
+    ],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  },
+  {
+    "tag": "article",
+    "classes": "cookie-compliance-popup global-padding global-padding--default gray--dark",
+    "id": "",
+    "text": "This website uses cookies to improve your experience.\u00a0\u00a0Data Privacy Statement\n\n\n                          \n            \n              \n              \n                OK",
+    "rect": {
+      "x": 0,
+      "y": 805,
+      "w": 1425,
+      "h": 95
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Data Privacy Statement",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/offices-and-services/technology-innovation/it-guidelines-policies/data-privacy-statement",
+        "x": 845,
+        "y": 852
+      },
+      {
+        "tag": "button",
+        "text": "OK",
+        "ariaLabel": "",
+        "classes": "agree-button eu-cookie-compliance-default-button",
+        "id": "",
+        "href": null,
+        "x": 1022,
+        "y": 853
+      }
+    ],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default",
+    "id": "",
+    "text": "This website uses cookies to improve your experience.\u00a0\u00a0Data Privacy Statement\n\n\n                          \n            \n              \n              \n                OK",
+    "rect": {
+      "x": 0,
+      "y": 805,
+      "w": 1425,
+      "h": 95
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Data Privacy Statement",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/offices-and-services/technology-innovation/it-guidelines-policies/data-privacy-statement",
+        "x": 845,
+        "y": 852
+      },
+      {
+        "tag": "button",
+        "text": "OK",
+        "ariaLabel": "",
+        "classes": "agree-button eu-cookie-compliance-default-button",
+        "id": "",
+        "href": null,
+        "x": 1022,
+        "y": 853
+      }
+    ],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "popup-content info eu-cookie-compliance-content",
+    "id": "",
+    "text": "This website uses cookies to improve your experience.\u00a0\u00a0Data Privacy Statement\n\n\n                          \n            \n              \n              \n                OK",
+    "rect": {
+      "x": 143,
+      "y": 821,
+      "w": 1140,
+      "h": 63
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Data Privacy Statement",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/offices-and-services/technology-innovation/it-guidelines-policies/data-privacy-statement",
+        "x": 845,
+        "y": 852
+      },
+      {
+        "tag": "button",
+        "text": "OK",
+        "ariaLabel": "",
+        "classes": "agree-button eu-cookie-compliance-default-button",
+        "id": "",
+        "href": null,
+        "x": 1022,
+        "y": 853
+      }
+    ],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "eu-cookie-compliance-message",
+    "id": "popup-text",
+    "text": "This website uses cookies to improve your experience.\u00a0\u00a0Data Privacy Statement\n\n\n                          \n            \n              \n              \n                OK",
+    "rect": {
+      "x": 143,
+      "y": 821,
+      "w": 1140,
+      "h": 63
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Data Privacy Statement",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/offices-and-services/technology-innovation/it-guidelines-policies/data-privacy-statement",
+        "x": 845,
+        "y": 852
+      },
+      {
+        "tag": "button",
+        "text": "OK",
+        "ariaLabel": "",
+        "classes": "agree-button eu-cookie-compliance-default-button",
+        "id": "",
+        "href": null,
+        "x": 1022,
+        "y": 853
+      }
+    ],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  },
+  {
+    "tag": "button",
+    "classes": "agree-button eu-cookie-compliance-default-button",
+    "id": "",
+    "text": "OK",
+    "rect": {
+      "x": 975,
+      "y": 826,
+      "w": 93,
+      "h": 53
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  }
+]

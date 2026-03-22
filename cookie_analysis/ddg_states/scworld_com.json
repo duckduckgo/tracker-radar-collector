@@ -1,0 +1,500 @@
+{
+  "site": "scworld.com",
+  "url": "https://www.scworld.com/",
+  "timestamp": "2026-03-22T10:12:45.037522",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/scworld_com.png",
+  "total_requests": 160,
+  "blocked_requests_count": 27,
+  "blocked_requests": [
+    {
+      "url": "https://cm.g.doubleclick.net/partnerpixels?url=https%3A%2F%2Fwww.scworld.com%2F",
+      "domain": "cm.g.doubleclick.net"
+    },
+    {
+      "url": "https://secure.adnxs.com/bounce?%2Fpx%3Fid%3D1771423%26t%3D2",
+      "domain": "secure.adnxs.com"
+    },
+    {
+      "url": "https://secure.adnxs.com/bounce?%2Fpx%3Fid%3D1938668%26t%3D2",
+      "domain": "secure.adnxs.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=694082&time=1774174355579&li_adsId=e5a9b2e8-ae63-4e8b-a4c0-bdb9cb42b494&url=https%3A%2F%2Fwww.scworld.com%2F&tm=gtmv2",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=fetch&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/insight_tag_errors.gif?v=2&pid=694082&error=version%3A%20285%20%7C%20WebsiteActions-285-TypeError%3A%20Failed%20to%20fetch%3B%20ErrorData%3A%20%7B%22domain%22%3A%22scworld.com%22%2C%22requestFetcher%22%3A%22fetch-keepalive%22%2C%22body%22%3A%22H4sIAAAAAAAAA02PUWvCMBRG%2F0q5z%2BmstdWaN5FNCtsYtriHMUbaXPWyNM1yU4o4%2F%2Ftwwtjj4YPD%2Bc7gSDPIt%2FkyS4r0XQC3nlzYoWfqLci0yAUE6hDkdLHIpotsluf5IhOg%2B06RBQncjr03%2Bq7tOxAweAMSjiE4lpPJv20CApw6YE3BIEhYnxr0jO3gKZyiZxxZRKtRec0iesWGrPIsIqyGrqPAItoio%2FLtMfqOqnX0hJoUCBixYQpY0cEqs8WvATmUGiTsC50kybyIdVroWOllEqNukxj3M2yTBjGdzUEAce2VZaMCapB7ZRgFGHpQNwtcYUPKhht0xC3IMzhuqqACgoyzy9XySPYTdWlXzv1pjtiBtIMxAvi3rz656%2FOX1eb%2BY1dWZQ2XHzBdCXaBAQAA%22%7D&href=https%3A%2F%2Fwww.scworld.com%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=beacon&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://connect.facebook.net/signals/config/627071788269487?v=2.9.281&r=stable&domain=www.scworld.com&hme=7561e8db2489737df4c74b634c943d82cefbf4e67acc7fda2493ff919471f0aa&ex_m=101%2C194%2C143%2C22%2C69%2C70%2C136%2C65%2C64%2C11%2C151%2C87%2C16%2C130%2C123%2C72%2C75%2C129%2C148%2C153%2C8%2C4%2C5%2C7%2C6%2C3%2C88%2C98%2C154%2C159%2C208%2C59%2C175%2C176%2C52%2C264%2C30%2C71%2C220%2C219%2C218%2C23%2C32%2C100%2C58%2C10%2C60%2C94%2C95%2C96%2C102%2C126%2C31%2C29%2C128%2C125%2C124%2C144%2C73%2C147%2C145%2C146%2C47%2C57%2C119%2C15%2C150%2C42%2C251%2C252%2C250%2C26%2C27%2C28%2C45%2C137%2C74%2C109%2C18%2C20%2C41%2C37%2C39%2C38%2C80%2C89%2C93%2C107%2C135%2C138%2C43%2C108%2C24%2C21%2C115%2C66%2C35%2C140%2C139%2C141%2C132%2C131%2C25%2C34%2C56%2C106%2C149%2C67%2C17%2C142%2C111%2C78%2C63%2C19%2C82%2C83%2C112%2C81%2C33%2C280%2C201%2C190%2C191%2C189%2C283%2C275%2C49%2C202%2C104%2C127%2C77%2C117%2C51%2C44%2C46%2C110%2C116%2C122%2C55%2C61%2C50%2C53%2C97%2C152%2C1%2C120%2C14%2C118%2C12%2C2%2C54%2C90%2C62%2C114%2C86%2C85%2C155%2C156%2C91%2C92%2C9%2C121%2C99%2C48%2C133%2C84%2C76%2C68%2C113%2C103%2C40%2C134%2C0%2C79%2C36%2C105%2C13%2C157",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://ml314.com/utsync.ashx?pub=&adv=&et=0&eid=84882&ct=js&pi=&fp=&clid=&if=0&ps=&cl=&mlt=&data=&&cp=https%3A%2F%2Fwww.scworld.com%2F&pv=1774174355633_y4j4y8oof&bl=en-us&cb=6942435&return=&ht=&d=&dc=&si=1774174355633_y4j4y8oof&cid=&s=1440x900&rp=&v=2.8.2.257",
+      "domain": "ml314.com"
+    },
+    {
+      "url": "https://in.ml314.com/ud.ashx?topiclimit=&cb=2222026&v=2.8.2.257",
+      "domain": "in.ml314.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/17512950610/?random=1774174355669&cv=11&fst=1774174355669&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9230626451z8847545990za20kzb847545990zd847545990xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938465~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.scworld.com%2F&frm=0&tiba=Cybersecurity%20News%2C%20Awards%2C%20Webinars%2C%20eSummits%2C%20Research%20%7C%20SC%20Media&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=134494759.1774174356&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://stats.g.doubleclick.net/g/collect?v=2&tid=G-2735PK1JSE&cid=190224447.1774174356&gtm=45je63i0v876774837z8847545990za20kzb847545990zd847545990&aip=1&dma=0&gcd=13l3l3l3l1l1&npa=0&frm=0&tag_exp=103116026~103200004~115938465~115938469~116024733~117484252~117884344",
+      "domain": "stats.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/17512950610/?random=1774174355669&cv=11&fst=1774174355669&fmt=3&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9230626451z8847545990za20kzb847545990zd847545990xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938465~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.scworld.com%2F&frm=0&tiba=Cybersecurity%20News%2C%20Awards%2C%20Webinars%2C%20eSummits%2C%20Research%20%7C%20SC%20Media&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=134494759.1774174356&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://js.zi-scripts.com/zi-tag.js",
+      "domain": "js.zi-scripts.com"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/pagead/managed/dict/m202603190101/gpt",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://munchkin.marketo.net/munchkin.js",
+      "domain": "munchkin.marketo.net"
+    },
+    {
+      "url": "https://a.usbrowserspeed.com/cs?pid=d177d942cb8207b52f57818feb9bb79a7b77ce6e0ed688e3af36875661b9be1d&r=https%3A%2F%2Fs.dpmsrv.com%2Fblank.png&puid=dpmpixc%5B1122%5Da%5BNA%5Ds%5B019d1508-436b-7400-8dfa-7f275a3a35a6%5D",
+      "domain": "a.usbrowserspeed.com"
+    },
+    {
+      "url": "https://ep1.adtrafficquality.google/getconfig/sodar?sv=200&tid=gpt&tv=m202603170101&st=env&sjk=3875256217610046",
+      "domain": "ep1.adtrafficquality.google"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=3875256217610046&correlator=905301034501890&hxva=1&scor=549260134145926&eid=31096386%2C31097308&output=ldjh&gdfp_req=1&vrg=202603170101&ptt=17&impl=fifs&iu_parts=21883553441%2CSkin%2CLeaderboard%2CBox%2CNative%2CIframePrestitial&enc_prev_ius=0%2F1%2C0%2F2%2C0%2F3%2C0%2F4%2C0%2F4%2C0%2F3%2C0%2F5&prev_iu_szs=1x1%2C970x250%2C300x250%7C300x300%2C320x50%2C320x50%2C300x250%7C300x300%7C300x600%7C300x1050%2C640x480&fluid=0%2C0%2C0%2Cheight%2Cheight%2C0%2C0&ifi=1&dids=_R_58m_~_R_3hh8m_~_R_aih8m_~_R_4nmkh8m_~_R_8nmkh8m_~_R_jkh8m_~_R_l8m_&adfs=1610878419~1725234912~2374793271~1051085497~1721632288~1351722607~2342241797&sfv=1-0-45&ists=64&eri=1&sc=1&lrm=100&cookie_enabled=1&abxe=1&dt=1774174356571&lmt=1774174356&adxs=713%2C228%2C1003%2C300%2C300%2C1058%2C-12245933&adys=77%2C77%2C630%2C2517%2C3190%2C3167%2C-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=0%7C0%7C0%7C1%7C2%7C3%7C-1&ucis=1%7C2%7C3%7C4%7C5%7C6%7C7&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fwww.scworld.com%2F&vis=1&psz=0x-1%7C970x0%7C300x0%7C716x0%7C716x0%7C300x250%7C0x-1&msz=0x-1%7C970x0%7C300x0%7C716x0%7C716x0%7C300x250%7C0x-1&fws=512%2C0%2C0%2C0%2C0%2C512%2C644&ohw=0%2C0%2C0%2C0%2C0%2C0%2C0&dlt=1774174354689&idt=854&prev_scp=%7CtargetingId%3Dtop%7CtargetingId%3Dtop-right%7C%7C%7C%7C&cust_params=pagetype%3Dlanding%26uri%3D%252F%26postId%3D125983%26sid%3Dhome%26env%3Dlive%26app%3Dscm%26Segment%3Dp0securitytal102025%252Csaltsecurity092025&adks=2408918036%2C2565389488%2C677800915%2C3214173333%2C393208770%2C286997167%2C3183267186&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://ad73c09695630ce7b77f3d9ddbb7c6bd.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html",
+      "domain": "ad73c09695630ce7b77f3d9ddbb7c6bd.safeframe.googlesyndication.com"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=3875256217610046&correlator=992852060788690&hxva=1&scor=549260134145926&eid=31096386%2C31097308&output=ldjh&gdfp_req=1&vrg=202603170101&ptt=17&impl=fifs&iu_parts=21883553441%2CSkin%2CLeaderboard%2CBox%2CNative%2CIframePrestitial&enc_prev_ius=0%2F1%2C0%2F2%2C0%2F3%2C0%2F4%2C0%2F4%2C0%2F3%2C0%2F5&prev_iu_szs=1x1%2C970x250%2C300x250%7C300x300%2C320x50%2C320x50%2C300x250%7C300x300%7C300x600%7C300x1050%2C640x480&fluid=0%2C0%2C0%2Cheight%2Cheight%2C0%2C0&ifi=1&dids=_R_58m_~_R_3hh8m_~_R_aih8m_~_R_4nmkh8m_~_R_8nmkh8m_~_R_jkh8m_~_R_l8m_&adfs=1610878419~1725234912~2374793271~1051085497~1721632288~1351722607~2342241797&sfv=1-0-45&ists=64&eri=65&sc=1&lrm=100&cookie_enabled=1&abxe=1&dt=1774174357607&lmt=1774174357&adxs=713%2C228%2C1003%2C300%2C300%2C1058%2C-12245933&adys=77%2C77%2C630%2C2517%2C3190%2C3167%2C-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=0%7C0%7C0%7C7%7C8%7C9%7C-1&ucis=1%7C2%7C3%7C4%7C5%7C6%7C7&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fwww.scworld.com%2F&vis=1&psz=0x-1%7C970x0%7C300x0%7C716x0%7C716x0%7C300x250%7C0x-1&msz=0x-1%7C970x0%7C300x0%7C716x0%7C716x0%7C300x250%7C0x-1&fws=512%2C0%2C0%2C0%2C0%2C512%2C644&ohw=0%2C0%2C0%2C0%2C0%2C0%2C0&dlt=1774174354689&idt=854&prev_scp=%7CtargetingId%3Dtop%7CtargetingId%3Dtop-right%7C%7C%7C%7C&cust_params=pagetype%3Dlanding%26uri%3D%252F%26postId%3D125983%26sid%3Dhome%26env%3Dlive%26app%3Dscm%26Segment%3Dp0securitytal102025%252Csaltsecurity092025&adks=2408918036%2C2565389488%2C677800915%2C3214173333%2C393208770%2C286997167%2C3183267186&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/gampad/ads?pvsid=3875256217610046&correlator=4264245893160654&hxva=1&scor=549260134145926&eid=31096386%2C31097308&output=ldjh&gdfp_req=1&vrg=202603170101&ptt=17&impl=fifs&iu_parts=21883553441%2CSkin%2CLeaderboard%2CBox%2CNative%2CIframePrestitial&enc_prev_ius=0%2F1%2C0%2F2%2C0%2F3%2C0%2F4%2C0%2F4%2C0%2F3%2C0%2F5&prev_iu_szs=1x1%2C970x250%2C300x250%7C300x300%2C320x50%2C320x50%2C300x250%7C300x300%7C300x600%7C300x1050%2C640x480&fluid=0%2C0%2C0%2Cheight%2Cheight%2C0%2C0&ifi=1&dids=_R_58m_~_R_3hh8m_~_R_aih8m_~_R_4nmkh8m_~_R_8nmkh8m_~_R_jkh8m_~_R_l8m_&adfs=1610878419~1725234912~2374793271~1051085497~1721632288~1351722607~2342241797&sfv=1-0-45&ists=64&eri=65&sc=1&lrm=100&cookie_enabled=1&abxe=1&dt=1774174358627&lmt=1774174358&adxs=713%2C228%2C1003%2C300%2C300%2C1058%2C-12245933&adys=77%2C77%2C630%2C2517%2C3190%2C3167%2C-12245933&biw=1425&bih=900&scr_x=0&scr_y=0&btvi=0%7C0%7C0%7C13%7C14%7C15%7C-1&ucis=1%7C2%7C3%7C4%7C5%7C6%7C7&oid=2&u_his=2&u_h=900&u_w=1440&u_ah=900&u_aw=1440&u_cd=24&u_sd=1&u_tz=-240&dmc=8&bc=31&nvt=1&uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjE0NS4wLjc2MzIuNiIsbnVsbCwwLG51bGwsIjY0IixbWyJDaHJvbWl1bSIsIjE0NS4wLjc2MzIuNiJdLFsiTm90OkEtQnJhbmQiLCI5OS4wLjAuMCJdXSwwXQ..&url=https%3A%2F%2Fwww.scworld.com%2F&vis=1&psz=0x-1%7C970x0%7C300x0%7C716x0%7C716x0%7C300x250%7C0x-1&msz=0x-1%7C970x0%7C300x0%7C716x0%7C716x0%7C300x250%7C0x-1&fws=512%2C0%2C0%2C0%2C0%2C512%2C644&ohw=0%2C0%2C0%2C0%2C0%2C0%2C0&dlt=1774174354689&idt=854&prev_scp=%7CtargetingId%3Dtop%7CtargetingId%3Dtop-right%7C%7C%7C%7C&cust_params=pagetype%3Dlanding%26uri%3D%252F%26postId%3D125983%26sid%3Dhome%26env%3Dlive%26app%3Dscm%26Segment%3Dp0securitytal102025%252Csaltsecurity092025&adks=2408918036%2C2565389488%2C677800915%2C3214173333%2C393208770%2C286997167%2C3183267186&frm=20&eoidce=1&pgls=CAk.",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://ib.adnxs.com/seg?member=827&consent=1&add=20986004,39847032",
+      "domain": "ib.adnxs.com"
+    },
+    {
+      "url": "https://pixel.mathtag.com/event/img?mt_id=2372486&mt_adid=431650",
+      "domain": "pixel.mathtag.com"
+    },
+    {
+      "url": "https://pixel.mathtag.com/event/img?mt_id=2372489&mt_adid=431650",
+      "domain": "pixel.mathtag.com"
+    },
+    {
+      "url": "https://insight.adsrvr.org/track/pxl/?adv=f6ba480&ct=0:t32zzfa&fmt=3",
+      "domain": "insight.adsrvr.org"
+    },
+    {
+      "url": "https://insight.adsrvr.org/track/pxl/?adv=f6ba480&ct=0:9kcmxn8&fmt=3",
+      "domain": "insight.adsrvr.org"
+    }
+  ],
+  "blocked_domains": [
+    "a.usbrowserspeed.com",
+    "ad73c09695630ce7b77f3d9ddbb7c6bd.safeframe.googlesyndication.com",
+    "cm.g.doubleclick.net",
+    "connect.facebook.net",
+    "ep1.adtrafficquality.google",
+    "googleads.g.doubleclick.net",
+    "ib.adnxs.com",
+    "in.ml314.com",
+    "insight.adsrvr.org",
+    "js.zi-scripts.com",
+    "ml314.com",
+    "munchkin.marketo.net",
+    "pixel.mathtag.com",
+    "px.ads.linkedin.com",
+    "secure.adnxs.com",
+    "securepubads.g.doubleclick.net",
+    "stats.g.doubleclick.net"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "CookieConsent_cookieConsentContainer__ERn_N fixed-bottom d-flex align-items-center w-100 font-body",
+      "id": "",
+      "text": "CookiesThis website uses cookies to improve your experience, provide social media features and deliver advertising offers that are relevant to you.If you continue without changing your settings, you consent to our use of cookies in accordance with our privacy policy. You may disable cookies.Accept cookies",
+      "rect": {
+        "x": 0,
+        "y": 803,
+        "w": 1425,
+        "h": 97
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "privacy policy",
+          "ariaLabel": "",
+          "classes": "text-underline text-nowrap",
+          "id": "",
+          "x": 866,
+          "y": 874,
+          "w": 97,
+          "h": 19
+        },
+        {
+          "tag": "button",
+          "text": "Accept cookies",
+          "ariaLabel": "Accept cookies",
+          "classes": "btn btn-primary mb-1 mt-md-0 mt-2 mx-4 fs-7 text-capitalize allow-portal-round-border portal-round-border-md",
+          "id": "rcc-confirm-button",
+          "x": 1195,
+          "y": 847,
+          "w": 126,
+          "h": 35
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP FeaturedPost_imageWrapper__M9szB",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 80,
+        "y": 385,
+        "w": 826,
+        "h": 465
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 81,
+        "y": 1137,
+        "w": 217,
+        "h": 122
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 316,
+        "y": 1137,
+        "w": 217,
+        "h": 122
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 551,
+        "y": 1137,
+        "w": 217,
+        "h": 122
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 786,
+        "y": 1137,
+        "w": 217,
+        "h": 122
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 1021,
+        "y": 1137,
+        "w": 217,
+        "h": 122
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 81,
+        "y": 1538,
+        "w": 217,
+        "h": 122
+      },
+      "buttons": []
+    },
+    {
+      "tag": "img",
+      "classes": "Overlay_playBtn__7U_r8 MediaItem_img__QQ6NG",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 125,
+        "y": 1535,
+        "w": 128,
+        "h": 128
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 316,
+        "y": 1538,
+        "w": 217,
+        "h": 122
+      },
+      "buttons": []
+    },
+    {
+      "tag": "img",
+      "classes": "Overlay_playBtn__7U_r8 MediaItem_img__QQ6NG",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 360,
+        "y": 1535,
+        "w": 128,
+        "h": 128
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 551,
+        "y": 1538,
+        "w": 217,
+        "h": 122
+      },
+      "buttons": []
+    },
+    {
+      "tag": "img",
+      "classes": "Overlay_playBtn__7U_r8 MediaItem_img__QQ6NG",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 595,
+        "y": 1535,
+        "w": 128,
+        "h": 128
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 786,
+        "y": 1538,
+        "w": 217,
+        "h": 122
+      },
+      "buttons": []
+    },
+    {
+      "tag": "img",
+      "classes": "Overlay_playBtn__7U_r8 MediaItem_img__QQ6NG",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 830,
+        "y": 1535,
+        "w": 128,
+        "h": 128
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 1021,
+        "y": 1538,
+        "w": 217,
+        "h": 122
+      },
+      "buttons": []
+    },
+    {
+      "tag": "img",
+      "classes": "Overlay_playBtn__7U_r8 MediaItem_img__QQ6NG",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 1065,
+        "y": 1535,
+        "w": 128,
+        "h": 128
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 960,
+        "y": 1140,
+        "w": 386,
+        "h": 217
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 300,
+        "y": 1901,
+        "w": 333,
+        "h": 187
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 300,
+        "y": 2107,
+        "w": 333,
+        "h": 187
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 300,
+        "y": 2312,
+        "w": 333,
+        "h": 187
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 300,
+        "y": 2535,
+        "w": 333,
+        "h": 187
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 300,
+        "y": 2740,
+        "w": 333,
+        "h": 187
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 300,
+        "y": 2965,
+        "w": 333,
+        "h": 187
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 300,
+        "y": 3208,
+        "w": 333,
+        "h": 187
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "Overlay_overlayWrap__fxtmP",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 300,
+        "y": 3414,
+        "w": 333,
+        "h": 187
+      },
+      "buttons": []
+    }
+  ]
+}

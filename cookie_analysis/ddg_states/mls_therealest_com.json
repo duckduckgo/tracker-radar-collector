@@ -1,0 +1,11 @@
+{
+  "site": "mls.therealest.com",
+  "url": "https://mls.therealest.com/",
+  "timestamp": "2026-03-22T10:13:11.376456",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/mls_therealest_com.png",
+  "total_requests": 195,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": []
+}

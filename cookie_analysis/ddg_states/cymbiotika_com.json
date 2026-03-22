@@ -1,0 +1,655 @@
+{
+  "site": "cymbiotika.com",
+  "url": "https://cymbiotika.com/",
+  "timestamp": "2026-03-22T10:19:49.369027",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/cymbiotika_com.png",
+  "total_requests": 550,
+  "blocked_requests_count": 52,
+  "blocked_requests": [
+    {
+      "url": "https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=CKPBEDRC77U7PPI8ATC0&lib=ttq",
+      "domain": "analytics.tiktok.com"
+    },
+    {
+      "url": "https://tags.srv.stackadapt.com/shopify/event?sync=true",
+      "domain": "tags.srv.stackadapt.com"
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-757618123",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=GT-WPT9FDZS",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-661680154",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://shop.pe/widget/widget_async.js",
+      "domain": "shop.pe"
+    },
+    {
+      "url": "https://sc-static.net/scevent.min.js",
+      "domain": "sc-static.net"
+    },
+    {
+      "url": "https://api.intelligems.io/v3/track",
+      "domain": "api.intelligems.io"
+    },
+    {
+      "url": "https://www.redditstatic.com/ads/pixel.js",
+      "domain": "www.redditstatic.com"
+    },
+    {
+      "url": "https://j.northbeam.io/ota-sp/b30615b4-6f20-48f5-a084-63811abf9279.js",
+      "domain": "j.northbeam.io"
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://cdn.attn.tv/attentive/dtag.js",
+      "domain": "cdn.attn.tv"
+    },
+    {
+      "url": "https://pixel.tapad.com/idsync/ex/receive?partner_id=3365&partner_device_id=a8850a4c-7bf1-4e78-a18c-251c3ff8818a&partner_url=https%3A%2F%2Fus.mgln.ai%2Fpixel%3Ftapad_id%3D%24%7BTA_DEVICE_ID%7D",
+      "domain": "pixel.tapad.com"
+    },
+    {
+      "url": "https://www.talkable.com/public/mitolife/affiliate_members/create.html?v=3.0.5",
+      "domain": "www.talkable.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-Y3W5PW4M2X",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://bat.bing.com/p/action/187235382.js",
+      "domain": "bat.bing.com"
+    },
+    {
+      "url": "https://live.visually-io.com/api/s?token=js.18248017&bulk=1",
+      "domain": "live.visually-io.com"
+    },
+    {
+      "url": "https://cdn.attn.tv/cymbiotika/dtag.js",
+      "domain": "cdn.attn.tv"
+    },
+    {
+      "url": "https://cymbiotika-us.attn.tv/d?attn_vid=c95cc0a21c6741448e305a52a8757130",
+      "domain": "cymbiotika-us.attn.tv"
+    },
+    {
+      "url": "https://trkn.us/pixel/c?ppt=21404&g=sitewide&gid=49769&gtmcb=285769744",
+      "domain": "trkn.us"
+    },
+    {
+      "url": "https://trkn.us/pixel/conv/?ppt=21880&g=sitewide&gid=50878&ord=515395084&gtmcb=744319821",
+      "domain": "trkn.us"
+    },
+    {
+      "url": "https://cdn.attn.tv/growth-tag-assets/client-configs/ZOx.js",
+      "domain": "cdn.attn.tv"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-757618123&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-Y3W5PW4M2X&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://j.northbeam.io/ota-sp/b30615b4-6f20-48f5-a084-63811abf9279.js",
+      "domain": "j.northbeam.io"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=GT-WPT9FDZS&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-661680154&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://live.visually-io.com/api/s?token=js.18248017&bulk=1",
+      "domain": "live.visually-io.com"
+    },
+    {
+      "url": "https://bat.bing.com/action/0?ti=187238975&Ver=2&vid=a0f7e40025d811f19d7689c53b591b3e&mid=3a5d4c39-4348-4902-9029-4c7229d08777&et=shop-wpa&sid=a0fb185025d811f19d7689c53b591b3e&uid=b9beeab0c4c345bb975d5d93143b6ac3&p=https%3A%2F%2Fcymbiotika.com%2F&r=&sw=1440&sh=900&rn=915755890&tl=CYMBIOTIKA%3A+Natural+%26+Organic+Online+Supplement+Store&lg=en-US&evt=pageLoad&msclkid=N",
+      "domain": "bat.bing.com"
+    },
+    {
+      "url": "https://t.contentsquare.net/uxa/b4b3bab035668.js",
+      "domain": "t.contentsquare.net"
+    },
+    {
+      "url": "https://api.config-security.com/event",
+      "domain": "api.config-security.com"
+    },
+    {
+      "url": "https://api.config-security.com/event",
+      "domain": "api.config-security.com"
+    },
+    {
+      "url": "https://cymbiotika-us.attn.tv/unrenderedCreative?v=2026.03.4&r=&id=c95cc0a21c6741448e305a52a8757130&pv=1&l=https%3A%2F%2Fcymbiotika.com%2F&w=1440&h=900&ss_ref=ORGANIC&f=3",
+      "domain": "cymbiotika-us.attn.tv"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=G-Y3W5PW4M2X&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=AW-757618123&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=MC-KR7ZD6X610&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://api.config-security.com/event",
+      "domain": "api.config-security.com"
+    },
+    {
+      "url": "https://api.config-security.com/event",
+      "domain": "api.config-security.com"
+    },
+    {
+      "url": "https://cdn-scripts.signifyd.com/shopify/script-tag.js?shop=mitolife.myshopify.com",
+      "domain": "cdn-scripts.signifyd.com"
+    },
+    {
+      "url": "https://cdn.hextom.com/js/eventpromotionbar.js?shop=mitolife.myshopify.com",
+      "domain": "cdn.hextom.com"
+    },
+    {
+      "url": "https://cdn.attn.tv/cymbiotika/dtag.js?shop=mitolife.myshopify.com",
+      "domain": "cdn.attn.tv"
+    },
+    {
+      "url": "https://tag.rmp.rakuten.com/127384.ct.js?shop=mitolife.myshopify.com",
+      "domain": "tag.rmp.rakuten.com"
+    },
+    {
+      "url": "https://api.config-security.com/event",
+      "domain": "api.config-security.com"
+    },
+    {
+      "url": "https://sdk.postscript.io/sdk.bundle.js?shopId=273262",
+      "domain": "sdk.postscript.io"
+    },
+    {
+      "url": "https://api.config-security.com/event",
+      "domain": "api.config-security.com"
+    },
+    {
+      "url": "https://i.liadm.com/s/89602?shd_id=XNiGdu13EcbIUNN0FOgP&account_id=mitolife.myshopify.com",
+      "domain": "i.liadm.com"
+    },
+    {
+      "url": "https://api.segment.io/v1/p",
+      "domain": "api.segment.io"
+    },
+    {
+      "url": "https://api.segment.io/v1/p",
+      "domain": "api.segment.io"
+    },
+    {
+      "url": "https://api.segment.io/v1/p",
+      "domain": "api.segment.io"
+    },
+    {
+      "url": "https://live.visually-io.com/api/s?token=js.18248017&bulk=1",
+      "domain": "live.visually-io.com"
+    },
+    {
+      "url": "https://api.segment.io/v1/p",
+      "domain": "api.segment.io"
+    }
+  ],
+  "blocked_domains": [
+    "analytics.tiktok.com",
+    "api.config-security.com",
+    "api.intelligems.io",
+    "api.segment.io",
+    "bat.bing.com",
+    "cdn-scripts.signifyd.com",
+    "cdn.attn.tv",
+    "cdn.hextom.com",
+    "connect.facebook.net",
+    "cymbiotika-us.attn.tv",
+    "i.liadm.com",
+    "j.northbeam.io",
+    "live.visually-io.com",
+    "pixel.tapad.com",
+    "sc-static.net",
+    "sdk.postscript.io",
+    "shop.pe",
+    "t.contentsquare.net",
+    "tag.rmp.rakuten.com",
+    "tags.srv.stackadapt.com",
+    "trkn.us",
+    "www.googletagmanager.com",
+    "www.redditstatic.com",
+    "www.talkable.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "button",
+      "classes": "cookies-btn spt-bg-black spt-flex spt-justify-center spt-items-center spt-pb-3 spt-pt-2.5 spt-px-12 spt-h-9 spt-text-white spt-rounded-full spt-w-full",
+      "id": "",
+      "text": "GOT IT",
+      "rect": {
+        "x": 948,
+        "y": 840,
+        "w": 315,
+        "h": 36
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cart-product-modal spt-w-[130px] spt-h-[130px] md:spt-w-[160px] md:spt-h-[160px] spt-bg-[#F7F7F7] spt-relative spt-cursor-pointer disable-while-loading",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 1461,
+        "y": 676,
+        "w": 160,
+        "h": 160
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cart-product-modal spt-w-[130px] spt-h-[130px] md:spt-w-[160px] md:spt-h-[160px] spt-bg-[#F7F7F7] spt-relative spt-cursor-pointer disable-while-loading",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 1641,
+        "y": 676,
+        "w": 160,
+        "h": 160
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cart-product-modal spt-w-[130px] spt-h-[130px] md:spt-w-[160px] md:spt-h-[160px] spt-bg-[#F7F7F7] spt-relative spt-cursor-pointer disable-while-loading",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 1821,
+        "y": 676,
+        "w": 160,
+        "h": 160
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cart-product-modal spt-w-[130px] spt-h-[130px] md:spt-w-[160px] md:spt-h-[160px] spt-bg-[#F7F7F7] spt-relative spt-cursor-pointer disable-while-loading",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 2001,
+        "y": 676,
+        "w": 160,
+        "h": 160
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cart-product-modal spt-w-[130px] spt-h-[130px] md:spt-w-[160px] md:spt-h-[160px] spt-bg-[#F7F7F7] spt-relative spt-cursor-pointer disable-while-loading",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 2181,
+        "y": 676,
+        "w": 160,
+        "h": 160
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "nav-transition spt-bg-white spt-z-[2147483647] spt-fixed spt-bottom-0 spt-py-5 spt-w-screen spt-h-fit",
+      "id": "cookies-popup",
+      "text": "Our site and third parties use cookies and pixels to improve your user experience. By continuing to browse, you are accepting the use of these cookies and pixels. For more information, including how to opt out, see our\n          \n            Cookies and Pixels Policy\n          \n          and\n          \n            Privacy Policy\n          .\n        \n        \n\n\n\n\n      \n      \n        \n          GOT IT",
+      "rect": {
+        "x": 0,
+        "y": 815,
+        "w": 1441,
+        "h": 85
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Cookies and Pixels Policy",
+          "ariaLabel": "",
+          "classes": "link-no-style",
+          "id": "",
+          "x": 623,
+          "y": 869,
+          "w": 149,
+          "h": 18
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "link-no-style",
+          "id": "",
+          "x": 764,
+          "y": 869,
+          "w": 81,
+          "h": 18
+        },
+        {
+          "tag": "button",
+          "text": "GOT IT",
+          "ariaLabel": "",
+          "classes": "cookies-btn spt-bg-black spt-flex spt-justify-center spt-items-center spt-pb-3 spt-pt-2.5 spt-px-12 spt-h-9 spt-text-white spt-rounded-full spt-w-full",
+          "id": "",
+          "x": 1106,
+          "y": 858,
+          "w": 315,
+          "h": 36
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "nav-transition spt-bg-white spt-z-20 spt-fixed spt-top-0 spt-bottom-0 spt-w-screen md:spt-w-[28.375rem]",
+      "id": "drawer-search",
+      "text": "Search\n      \n      \n        \n        \n          \n\n\n\n\n\n          \n            Search\n          \n        \n      \n      \n        \n        \n        \n          \n            \n            \n            \n            \n          \n        \n        \n          \n            \n              No Results found\n            \n            \n              We could not find any results with",
+      "rect": {
+        "x": 1425,
+        "y": 0,
+        "w": 454,
+        "h": 900
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "close search",
+          "classes": "spt-absolute spt-top-0 spt-right-0 spt-m-5 md:spt-mr-9",
+          "id": "search-close",
+          "x": 1831,
+          "y": 28,
+          "w": 24,
+          "h": 16
+        },
+        {
+          "tag": "button",
+          "text": "Search",
+          "ariaLabel": "search",
+          "classes": "ml-[-1px] spt-aspect-square spt-bg-cym spt-text-white spt-shrink-0 spt-h-full spt-flex spt-items-center spt-rounded-md",
+          "id": "search-submit",
+          "x": 1821,
+          "y": 119,
+          "w": 44,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cart-transition spt-bg-white spt-z-50 spt-flex spt-flex-col spt-h-full spt-fixed spt-top-0 spt-bottom-0 spt-w-screen md:spt-w-[34rem] spt-cym-h-3-sm spt-min-w-[20rem]",
+      "id": "drawer-cart",
+      "text": "You've unlocked a FREE gift!\n            \n          \n           \n          \n            \n              \n                \n                  \n                \n              \n            \n            \n              \n                Select a FREE product of your choice!\n              \n              \n                \n                  \n                \n              \n              \n                ADD TO CART\n              \n            \n          \n        \n      \n    \n    \n    \n      \n        \n      ",
+      "rect": {
+        "x": 1425,
+        "y": 0,
+        "w": 544,
+        "h": 900
+      },
+      "buttons": [
+        {
+          "tag": "div",
+          "text": "Back to cart",
+          "ariaLabel": "",
+          "classes": "spt-flex spt-flex-row spt-items-center spt-w-full spt-gap-2.5 spt-cursor-pointer",
+          "id": "gwp-back-btn",
+          "x": 2594,
+          "y": 25,
+          "w": 480,
+          "h": 19
+        },
+        {
+          "tag": "button",
+          "text": "Add Gift to Cart",
+          "ariaLabel": "",
+          "classes": "spt-button-contained spt-w-full !spt-max-w-full",
+          "id": "gwp-gift-claim",
+          "x": 2594,
+          "y": 802,
+          "w": 480,
+          "h": 48
+        },
+        {
+          "tag": "button",
+          "text": "Decline Gift",
+          "ariaLabel": "",
+          "classes": "spt-button-outlined spt-w-full !spt-max-w-full",
+          "id": "gwp-decline-gift-btn",
+          "x": 2594,
+          "y": 860,
+          "w": 480,
+          "h": 48
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "close cart",
+          "classes": "",
+          "id": "layout-cart-close-button",
+          "x": 1906,
+          "y": 36,
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "previous item",
+          "classes": "spt-cursor-pointer chevron-disabled",
+          "id": "sub-tracker-prev",
+          "x": 1878,
+          "y": 256,
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "next item",
+          "classes": "spt-cursor-pointer chevron-active",
+          "id": "sub-tracker-next",
+          "x": 1906,
+          "y": 256,
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "button",
+          "text": "Shop Now",
+          "ariaLabel": "",
+          "classes": "spt-cym-button spt-normal-case spt-font-neue-haas spt-h-[32px] md:spt-h-[46px] spt-w-[143] spt-leading-[140%] spt-py-0 spt-tracking-[0.16px] spt-font-normal spt-text-base spt-mt-8 md:spt-w-[240px]",
+          "id": "",
+          "x": 1581,
+          "y": 550,
+          "w": 240,
+          "h": 46
+        },
+        {
+          "tag": "button",
+          "text": "Liposomal NAD+",
+          "ariaLabel": "",
+          "classes": "spt-w-full spt-font-ivy spt-font-normal spt-text-sm spt-leading-[150%] -spt-tracking-[0.36px] md:spt-text-base md:-spt-tracking-[0.48px] spt-truncate spt-mt-3",
+          "id": "",
+          "x": 1541,
+          "y": 860,
+          "w": 160,
+          "h": 24
+        },
+        {
+          "tag": "button",
+          "text": "Add to Cart",
+          "ariaLabel": "add to cart nad",
+          "classes": "cart-upsell-a2c-button spt-cym-button-5-sm spt-bg-white spt-text-cym !spt-font-neue-haas !spt-font-medium !spt-leading-[150%] !spt-tracking-[0.12px] !spt-normal-case !spt-rounded-none !spt-text-sm !spt-py-1.5 spt-mt-3 spt-whitespace-nowrap spt-w-full",
+          "id": "",
+          "x": 1535,
+          "y": 1011,
+          "w": 148,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "Shilajit Liquid Complex",
+          "ariaLabel": "",
+          "classes": "spt-w-full spt-font-ivy spt-font-normal spt-text-sm spt-leading-[150%] -spt-tracking-[0.36px] md:spt-text-base md:-spt-tracking-[0.48px] spt-truncate spt-mt-3",
+          "id": "",
+          "x": 1721,
+          "y": 860,
+          "w": 160,
+          "h": 24
+        },
+        {
+          "tag": "button",
+          "text": "Add to Cart",
+          "ariaLabel": "add to cart shilajit liquid complex",
+          "classes": "cart-upsell-a2c-button spt-cym-button-5-sm spt-bg-white spt-text-cym !spt-font-neue-haas !spt-font-medium !spt-leading-[150%] !spt-tracking-[0.12px] !spt-normal-case !spt-rounded-none !spt-text-sm !spt-py-1.5 spt-mt-3 spt-whitespace-nowrap spt-w-full",
+          "id": "",
+          "x": 1715,
+          "y": 1011,
+          "w": 148,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "Irish Sea Moss",
+          "ariaLabel": "",
+          "classes": "spt-w-full spt-font-ivy spt-font-normal spt-text-sm spt-leading-[150%] -spt-tracking-[0.36px] md:spt-text-base md:-spt-tracking-[0.48px] spt-truncate spt-mt-3",
+          "id": "",
+          "x": 1901,
+          "y": 860,
+          "w": 160,
+          "h": 24
+        },
+        {
+          "tag": "button",
+          "text": "Add to Cart",
+          "ariaLabel": "add to cart irish sea moss",
+          "classes": "cart-upsell-a2c-button spt-cym-button-5-sm spt-bg-white spt-text-cym !spt-font-neue-haas !spt-font-medium !spt-leading-[150%] !spt-tracking-[0.12px] !spt-normal-case !spt-rounded-none !spt-text-sm !spt-py-1.5 spt-mt-3 spt-whitespace-nowrap spt-w-full",
+          "id": "",
+          "x": 1895,
+          "y": 1011,
+          "w": 148,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "Liquid Colostrum",
+          "ariaLabel": "",
+          "classes": "spt-w-full spt-font-ivy spt-font-normal spt-text-sm spt-leading-[150%] -spt-tracking-[0.36px] md:spt-text-base md:-spt-tracking-[0.48px] spt-truncate spt-mt-3",
+          "id": "",
+          "x": 2081,
+          "y": 860,
+          "w": 160,
+          "h": 24
+        },
+        {
+          "tag": "button",
+          "text": "Add to Cart",
+          "ariaLabel": "add to cart liquid colostrum",
+          "classes": "cart-upsell-a2c-button spt-cym-button-5-sm spt-bg-white spt-text-cym !spt-font-neue-haas !spt-font-medium !spt-leading-[150%] !spt-tracking-[0.12px] !spt-normal-case !spt-rounded-none !spt-text-sm !spt-py-1.5 spt-mt-3 spt-whitespace-nowrap spt-w-full",
+          "id": "",
+          "x": 2075,
+          "y": 1011,
+          "w": 148,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "Liposomal Elderberry",
+          "ariaLabel": "",
+          "classes": "spt-w-full spt-font-ivy spt-font-normal spt-text-sm spt-leading-[150%] -spt-tracking-[0.36px] md:spt-text-base md:-spt-tracking-[0.48px] spt-truncate spt-mt-3",
+          "id": "",
+          "x": 2261,
+          "y": 860,
+          "w": 160,
+          "h": 24
+        },
+        {
+          "tag": "button",
+          "text": "Add to Cart",
+          "ariaLabel": "add to cart liposomal elderberry defense",
+          "classes": "cart-upsell-a2c-button spt-cym-button-5-sm spt-bg-white spt-text-cym !spt-font-neue-haas !spt-font-medium !spt-leading-[150%] !spt-tracking-[0.12px] !spt-normal-case !spt-rounded-none !spt-text-sm !spt-py-1.5 spt-mt-3 spt-whitespace-nowrap spt-w-full",
+          "id": "",
+          "x": 2255,
+          "y": 1011,
+          "w": 148,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "Checkout",
+          "ariaLabel": "",
+          "classes": "spt-cym-button-sm !spt-normal-case !spt-font-neue-haas !spt-leading-[150%] !spt-tracking-[0.14px] md:spt-h-[46px] md:!spt-text-base spt-font-normal md:spt-cym-button-lg spt-w-full spt-flex spt-justify-center spt-items-center",
+          "id": "cart-checkout-button-cloned",
+          "x": 1697,
+          "y": 795,
+          "w": 472,
+          "h": 46
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "fixed bottom-[10px] right-[20px] items-end z-[2147483647]",
+      "id": "",
+      "text": "Hey, I'm Cym. Let's get you matched with the right support.Hey, I'm Cym. Let's get you matched with the right support.",
+      "rect": {
+        "x": 1341,
+        "y": 819,
+        "w": 64,
+        "h": 71
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "close",
+          "classes": "h-3 w-3 md:h-4 md:w-4 md:ml-size/spacer/0-5x",
+          "id": "",
+          "x": 1384,
+          "y": 738,
+          "w": 16,
+          "h": 16
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Open chat",
+          "classes": "",
+          "id": "cymChatOpen",
+          "x": 1373,
+          "y": 851,
+          "w": 64,
+          "h": 64
+        }
+      ]
+    }
+  ]
+}

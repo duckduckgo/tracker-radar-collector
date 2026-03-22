@@ -1,0 +1,109 @@
+[
+  {
+    "tag": "div",
+    "classes": "v-alert mb-0 cookie white--text pr-md-16 d-print-none v-sheet theme--dark rounded-0",
+    "id": "",
+    "text": "We use cookies to offer you a better user experience. Cookies enable you to enjoy certain features on our site. By continuing to use this website, you consent to the use of cookies in accordance with our\n      \n        Privacy Policy\n       \n        OK",
+    "rect": {
+      "x": 0,
+      "y": 816,
+      "w": 1425,
+      "h": 84
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "white--text",
+        "id": "",
+        "href": "https://sf.rexel-cdn.com/web/terms/Privacy_Policy.pdf",
+        "x": 632,
+        "y": 868
+      },
+      {
+        "tag": "button",
+        "text": "OK",
+        "ariaLabel": "",
+        "classes": "ma-2 v-btn v-btn--outlined theme--dark v-size--default",
+        "id": "",
+        "href": null,
+        "x": 1289,
+        "y": 858
+      }
+    ],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  },
+  {
+    "tag": "a",
+    "classes": "px-sm-1 px-md-4 v-btn v-btn--is-elevated v-btn--has-bg v-btn--tile theme--dark v-size--default border-bottom--primary",
+    "id": "sf_defaultlayout_bannerselector_platt",
+    "text": "",
+    "rect": {
+      "x": 485,
+      "y": 2681,
+      "w": 152,
+      "h": 48
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[id*=\"banner\" i]"
+  },
+  {
+    "tag": "a",
+    "classes": "px-sm-1 px-md-4 v-btn v-btn--is-elevated v-btn--has-bg v-btn--tile theme--dark v-size--default",
+    "id": "sf_defaultlayout_bannerselector_rexel",
+    "text": "",
+    "rect": {
+      "x": 637,
+      "y": 2681,
+      "w": 152,
+      "h": 48
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[id*=\"banner\" i]"
+  },
+  {
+    "tag": "a",
+    "classes": "px-sm-1 px-md-4 v-btn v-btn--is-elevated v-btn--has-bg v-btn--tile theme--dark v-size--default",
+    "id": "sf_defaultlayout_bannerselector_gexpro",
+    "text": "",
+    "rect": {
+      "x": 789,
+      "y": 2681,
+      "w": 152,
+      "h": 48
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[id*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "pa-2 d-flex",
+    "id": "sf_defaultlayout_footer_privacy",
+    "text": "Privacy",
+    "rect": {
+      "x": 714,
+      "y": 3053,
+      "w": 75,
+      "h": 47
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy",
+        "ariaLabel": "",
+        "classes": "grey--text text-caption pa-2",
+        "id": "",
+        "href": "https://www.rexelusa.com/terms",
+        "x": 752,
+        "y": 3077
+      }
+    ],
+    "matchedSelector": "[id*=\"privacy\" i]"
+  }
+]

@@ -1,0 +1,149 @@
+{
+  "site": "build.com",
+  "url": "https://www.build.com/",
+  "timestamp": "2026-03-22T10:21:15.328458",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/build_com.png",
+  "total_requests": 336,
+  "blocked_requests_count": 1,
+  "blocked_requests": [
+    {
+      "url": "https://imgs.signifyd.com/ne0xLLw9LZJmhast?450ddf57cee83863=iwZgv3bRgHpwDQtP9Acui_3Z75JHe9LPGdAMLzbeNtzz67UE1QMnBGh97ET0GdmuGkaF3kBvaKVhjgGApUsRwPvL8NXYOon1miLEaLBeN3qY2KaP23_gv5EjfwQ-gGjjuq_CYwbFQ_JGygyxQ51qMA&jac=1&je=3c302e26776f6137312c30322e3130332e333a312e7f6b6735776760707c6b57616c7c65726469665d6f666c73",
+      "domain": "imgs.signifyd.com"
+    }
+  ],
+  "blocked_domains": [
+    "imgs.signifyd.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "span",
+      "classes": "cc-message",
+      "id": "cookieconsent:desc",
+      "text": "We use cookies to ensure fast, reliable, and secure operations, and to give you the best possible experience when using our website. We use both session-based cookies and persistent cookies. We also allow the use of third-party cookies by certain authorized third parties with whom we execute marketing campaigns. If your browser/device has enabled the Global Privacy Control signal, this website acknowledges it. For more information, please refer to our Privacy Policy and Cookie Policy.",
+      "rect": {
+        "x": 38,
+        "y": 535,
+        "w": 288,
+        "h": 273
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "cc-link",
+          "id": "",
+          "x": 210,
+          "y": 776,
+          "w": 94,
+          "h": 25
+        },
+        {
+          "tag": "a",
+          "text": "Cookie Policy.",
+          "ariaLabel": "",
+          "classes": "cc-link",
+          "id": "",
+          "x": 86,
+          "y": 797,
+          "w": 95,
+          "h": 25
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cc-window cc-floating cc-type-hybrid cc-theme-block cc-bottom cc-left cc-color-override-8871847 ",
+      "id": "",
+      "text": "We use cookies to ensure fast, reliable, and secure operations, and to give you the best possible experience when using our website. We use both session-based cookies and persistent cookies. We also allow the use of third-party cookies by certain authorized third parties with whom we execute marketing campaigns. If your browser/device has enabled the Global Privacy Control signal, this website acknowledges it. For more information, please refer to our Privacy Policy and Cookie Policy.\n          ",
+      "rect": {
+        "x": 14,
+        "y": 511,
+        "w": 336,
+        "h": 375
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "cc-link",
+          "id": "",
+          "x": 210,
+          "y": 776,
+          "w": 94,
+          "h": 25
+        },
+        {
+          "tag": "a",
+          "text": "Cookie Policy.",
+          "ariaLabel": "",
+          "classes": "cc-link",
+          "id": "",
+          "x": 86,
+          "y": 797,
+          "w": 95,
+          "h": 25
+        },
+        {
+          "tag": "a",
+          "text": "Dismiss",
+          "ariaLabel": "",
+          "classes": "cc-btn cc-allow cc-btn-format",
+          "id": "",
+          "x": 77,
+          "y": 838,
+          "w": 77,
+          "h": 32
+        },
+        {
+          "tag": "span",
+          "text": "",
+          "ariaLabel": "Close banner",
+          "classes": "cc-close cc-close-banner-btn",
+          "id": "",
+          "x": 334,
+          "y": 527,
+          "w": 24,
+          "h": 24
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cc-compliance cc-highlight cc-regular",
+      "id": "",
+      "text": "DismissCookie Preferences Icon Online Privacy Choices",
+      "rect": {
+        "x": 14,
+        "y": 822,
+        "w": 336,
+        "h": 40
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Dismiss",
+          "ariaLabel": "",
+          "classes": "cc-btn cc-allow cc-btn-format",
+          "id": "",
+          "x": 77,
+          "y": 838,
+          "w": 77,
+          "h": 32
+        },
+        {
+          "tag": "span",
+          "text": "",
+          "ariaLabel": "Close banner",
+          "classes": "cc-close cc-close-banner-btn",
+          "id": "",
+          "x": 334,
+          "y": 527,
+          "w": 24,
+          "h": 24
+        }
+      ]
+    }
+  ]
+}

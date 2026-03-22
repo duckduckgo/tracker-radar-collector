@@ -1,0 +1,90 @@
+{
+  "site": "serpstat.com",
+  "url": "https://serpstat.com/",
+  "timestamp": "2026-03-22T10:13:27.337178",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/serpstat_com.png",
+  "total_requests": 64,
+  "blocked_requests_count": 9,
+  "blocked_requests": [
+    {
+      "url": "https://dev.visualwebsiteoptimizer.com/j.php?a=691145&u=https%3A%2F%2Fserpstat.com%2F&vn=2.1&x=true",
+      "domain": "dev.visualwebsiteoptimizer.com"
+    },
+    {
+      "url": "https://www.dwin1.com/122238.js",
+      "domain": "www.dwin1.com"
+    },
+    {
+      "url": "https://dev.visualwebsiteoptimizer.com/ee.gif?a=691145&e=loading_failure:https://dev.visualwebsiteoptimizer.com/j.php?a=691145&u=https%3A%2F%2Fserpstat.com%2F&vn=2.1&x=true",
+      "domain": "dev.visualwebsiteoptimizer.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-E2HH4M9M7F&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-DNKCKDTH13&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-GDW29WTKPZ&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=AW-960501073&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=G-E2HH4M9M7F&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    }
+  ],
+  "blocked_domains": [
+    "connect.facebook.net",
+    "dev.visualwebsiteoptimizer.com",
+    "www.dwin1.com",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "cookie-consent",
+      "id": "",
+      "text": "We use cookies to make Serpstat better. By clicking \"Accept cookies\", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts.Learn more Accept cookies",
+      "rect": {
+        "x": 0,
+        "y": 788,
+        "w": 1425,
+        "h": 112
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Learn more",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1118,
+          "y": 844,
+          "w": 81,
+          "h": 19
+        },
+        {
+          "tag": "button",
+          "text": "Accept cookies",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1308,
+          "y": 844,
+          "w": 155,
+          "h": 48
+        }
+      ]
+    }
+  ]
+}

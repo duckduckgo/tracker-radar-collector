@@ -1,0 +1,76 @@
+{
+  "site": "cyberpower.com",
+  "url": "https://www.cyberpower.com/GLOBAL/en",
+  "timestamp": "2026-03-22T10:24:25.807629",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/cyberpower_com.png",
+  "total_requests": 297,
+  "blocked_requests_count": 3,
+  "blocked_requests": [
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-8PLCSZ4W52",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-7250CZXBJN&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-8PLCSZ4W52&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    }
+  ],
+  "blocked_domains": [
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "cookiesPopup",
+      "id": "",
+      "text": "This site uses cookies to provide you with a more responsive and personalized service. By using this site you agree to our use of cookies. Learn more about our Cookies Policy.\n         Close",
+      "rect": {
+        "x": 0,
+        "y": 817,
+        "w": 1425,
+        "h": 83
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Cookies Policy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 134,
+          "y": 871,
+          "w": 103,
+          "h": 19
+        },
+        {
+          "tag": "a",
+          "text": "Close",
+          "ariaLabel": "",
+          "classes": "closeCookies",
+          "id": "",
+          "x": 1307,
+          "y": 859,
+          "w": 72,
+          "h": 31
+        }
+      ]
+    },
+    {
+      "tag": "a",
+      "classes": "closeCookies",
+      "id": "",
+      "text": "Close",
+      "rect": {
+        "x": 1270,
+        "y": 843,
+        "w": 72,
+        "h": 31
+      },
+      "buttons": []
+    }
+  ]
+}

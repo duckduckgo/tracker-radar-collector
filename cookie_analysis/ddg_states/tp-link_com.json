@@ -1,0 +1,146 @@
+{
+  "site": "tp-link.com",
+  "url": "https://www.tp-link.com/",
+  "timestamp": "2026-03-22T10:22:41.724397",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/tp-link_com.png",
+  "total_requests": 71,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "tp-cookie-banner",
+      "id": "",
+      "text": "Welcome to Our Website! If you stay on our site, we and our third-party partners use cookies, pixels, and other tracking technologies to better understand how you use our site, provide and improve our services, and personalize your experience and ads based on your interests. Learn more in your privacy choices.\n          Okay",
+      "rect": {
+        "x": 0,
+        "y": 799,
+        "w": 1425,
+        "h": 86
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "your privacy choices",
+          "ariaLabel": "your privacy choices",
+          "classes": "show-cookie-dialog",
+          "id": "",
+          "x": 740,
+          "y": 850,
+          "w": 128,
+          "h": 17
+        },
+        {
+          "tag": "button",
+          "text": "Okay",
+          "ariaLabel": "Okay",
+          "classes": "tp-cookie-btn tp-cookie-accept-all",
+          "id": "",
+          "x": 1308,
+          "y": 842,
+          "w": 140,
+          "h": 36
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "tp-cookie-banner-container",
+      "id": "",
+      "text": "Welcome to Our Website! If you stay on our site, we and our third-party partners use cookies, pixels, and other tracking technologies to better understand how you use our site, provide and improve our services, and personalize your experience and ads based on your interests. Learn more in your privacy choices.\n          Okay",
+      "rect": {
+        "x": 48,
+        "y": 799,
+        "w": 1330,
+        "h": 86
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "your privacy choices",
+          "ariaLabel": "your privacy choices",
+          "classes": "show-cookie-dialog",
+          "id": "",
+          "x": 740,
+          "y": 850,
+          "w": 128,
+          "h": 17
+        },
+        {
+          "tag": "button",
+          "text": "Okay",
+          "ariaLabel": "Okay",
+          "classes": "tp-cookie-btn tp-cookie-accept-all",
+          "id": "",
+          "x": 1308,
+          "y": 842,
+          "w": 140,
+          "h": 36
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "tp-cookie-banner-box",
+      "id": "",
+      "text": "Welcome to Our Website! If you stay on our site, we and our third-party partners use cookies, pixels, and other tracking technologies to better understand how you use our site, provide and improve our services, and personalize your experience and ads based on your interests. Learn more in your privacy choices.\n          Okay",
+      "rect": {
+        "x": 48,
+        "y": 799,
+        "w": 1330,
+        "h": 86
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "your privacy choices",
+          "ariaLabel": "your privacy choices",
+          "classes": "show-cookie-dialog",
+          "id": "",
+          "x": 740,
+          "y": 850,
+          "w": 128,
+          "h": 17
+        },
+        {
+          "tag": "button",
+          "text": "Okay",
+          "ariaLabel": "Okay",
+          "classes": "tp-cookie-btn tp-cookie-accept-all",
+          "id": "",
+          "x": 1308,
+          "y": 842,
+          "w": 140,
+          "h": 36
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "tp-cookie-btn tp-cookie-accept-all",
+      "id": "",
+      "text": "Okay",
+      "rect": {
+        "x": 1238,
+        "y": 824,
+        "w": 140,
+        "h": 36
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "ga-click chat-popup",
+      "id": "tp-chat-now",
+      "text": "Chat Now",
+      "rect": {
+        "x": 1167,
+        "y": 834,
+        "w": 249,
+        "h": 51
+      },
+      "buttons": []
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "tag": "div",
+    "classes": "css-jsrm3 e1yu3us94",
+    "id": "",
+    "text": "We use technologies that provide information about your interactions with this site to others for functionality,\nanalytics, targeted advertising, and other purposes. \nLearn more in our Privacy Notice.\nYou agree that your use of this website and the Hearst Services is governed by the Terms of Use (including the dispute resolution procedures).",
+    "rect": {
+      "x": 0,
+      "y": 786,
+      "w": 1425,
+      "h": 114
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "button",
+        "text": "",
+        "ariaLabel": "Close Privacy Disclosure",
+        "classes": "hds-do-not-use inline-flex items-center justify-center gap-(--space-2xs) cursor-pointer font-(--font-weight-semibold) font-(family-name:--font-family-default) not-italic disabled:opacity-(--_opacity-3",
+        "id": "",
+        "href": null,
+        "x": 1215,
+        "y": 843
+      },
+      {
+        "tag": "a",
+        "text": "Learn more in our Privacy Notice",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.hearst.com/-/us-magazines-privacy-notice",
+        "x": 462,
+        "y": 843
+      },
+      {
+        "tag": "a",
+        "text": "Terms of Use",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.hearst.com/-/us-magazines-terms-of-use",
+        "x": 321,
+        "y": 859
+      },
+      {
+        "tag": "a",
+        "text": "the dispute resolution procedures",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.hearst.com/-/us-magazines-terms-of-use#_DISPUTE_RESOLUTION",
+        "x": 509,
+        "y": 859
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "ariaLabel": "Close Privacy Disclosure",
+        "classes": "hds-do-not-use inline-flex items-center justify-center gap-(--space-2xs) cursor-pointer font-(--font-weight-semibold) font-(family-name:--font-family-default) not-italic disabled:opacity-(--_opacity-3",
+        "id": "",
+        "x": 1215,
+        "y": 843,
+        "isClose": true
+      }
+    ],
+    "matchedSelector": "[role=\"dialog\"]"
+  }
+]

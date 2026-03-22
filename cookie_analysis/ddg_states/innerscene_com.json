@@ -1,0 +1,150 @@
+{
+  "site": "innerscene.com",
+  "url": "https://www.innerscene.com/",
+  "timestamp": "2026-03-22T10:12:57.234116",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/innerscene_com.png",
+  "total_requests": 131,
+  "blocked_requests_count": 4,
+  "blocked_requests": [
+    {
+      "url": "https://a.clarity.ms/collect",
+      "domain": "a.clarity.ms"
+    },
+    {
+      "url": "https://a.clarity.ms/collect",
+      "domain": "a.clarity.ms"
+    },
+    {
+      "url": "https://a.clarity.ms/collect",
+      "domain": "a.clarity.ms"
+    },
+    {
+      "url": "https://a.clarity.ms/collect",
+      "domain": "a.clarity.ms"
+    }
+  ],
+  "blocked_domains": [
+    "a.clarity.ms"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "CookieConsent_container__jyeet",
+      "id": "",
+      "text": "By clicking 'Accept All Cookies', you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. Privacy PolicyAccept all cookies",
+      "rect": {
+        "x": 0,
+        "y": 732,
+        "w": 1425,
+        "h": 168
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "link",
+          "id": "",
+          "x": 530,
+          "y": 840,
+          "w": 109,
+          "h": 19
+        },
+        {
+          "tag": "div",
+          "text": "Accept all cookies",
+          "ariaLabel": "",
+          "classes": "CookieConsent_accept__cAGbO",
+          "id": "",
+          "x": 1033,
+          "y": 816,
+          "w": 128,
+          "h": 72
+        },
+        {
+          "tag": "button",
+          "text": "Accept all cookies",
+          "ariaLabel": "",
+          "classes": "inline-flex justify-center items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 text-center px-4 py-2 shadow-sm text-charcoal-gray border-2 border-golden-sand bg-golden-sand rounded hover:bg-sunflower-yellow hover:border-sunflower-yellow focus-visible:outline-yel",
+          "id": "",
+          "x": 1033,
+          "y": 816,
+          "w": 128,
+          "h": 66
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "CookieConsent_wrapper__jDvNk",
+      "id": "",
+      "text": "By clicking 'Accept All Cookies', you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. Privacy PolicyAccept all cookies",
+      "rect": {
+        "x": 313,
+        "y": 764,
+        "w": 800,
+        "h": 104
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "link",
+          "id": "",
+          "x": 530,
+          "y": 840,
+          "w": 109,
+          "h": 19
+        },
+        {
+          "tag": "div",
+          "text": "Accept all cookies",
+          "ariaLabel": "",
+          "classes": "CookieConsent_accept__cAGbO",
+          "id": "",
+          "x": 1033,
+          "y": 816,
+          "w": 128,
+          "h": 72
+        },
+        {
+          "tag": "button",
+          "text": "Accept all cookies",
+          "ariaLabel": "",
+          "classes": "inline-flex justify-center items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 text-center px-4 py-2 shadow-sm text-charcoal-gray border-2 border-golden-sand bg-golden-sand rounded hover:bg-sunflower-yellow hover:border-sunflower-yellow focus-visible:outline-yel",
+          "id": "",
+          "x": 1033,
+          "y": 816,
+          "w": 128,
+          "h": 66
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "CookieConsent_accept__cAGbO",
+      "id": "",
+      "text": "Accept all cookies",
+      "rect": {
+        "x": 969,
+        "y": 780,
+        "w": 128,
+        "h": 72
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept all cookies",
+          "ariaLabel": "",
+          "classes": "inline-flex justify-center items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 text-center px-4 py-2 shadow-sm text-charcoal-gray border-2 border-golden-sand bg-golden-sand rounded hover:bg-sunflower-yellow hover:border-sunflower-yellow focus-visible:outline-yel",
+          "id": "",
+          "x": 1033,
+          "y": 816,
+          "w": 128,
+          "h": 66
+        }
+      ]
+    }
+  ]
+}

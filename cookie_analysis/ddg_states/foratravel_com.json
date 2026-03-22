@@ -1,0 +1,262 @@
+{
+  "site": "foratravel.com",
+  "url": "https://www.foratravel.com/",
+  "timestamp": "2026-03-22T10:15:54.966071",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/foratravel_com.png",
+  "total_requests": 308,
+  "blocked_requests_count": 50,
+  "blocked_requests": [
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-10817187183",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-5ZT2KW3PQ3&cx=c&gtm=4e63i0h1",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://dx.mountain.com/spx?shaid=49288&tdr=https%3A%2F%2Fwww.foratravel.com%2F&plh=https%3A%2F%2Fwww.foratravel.com%2F&cb=22778782310095580",
+      "domain": "dx.mountain.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-10817187183&cx=c&gtm=4e63i0h1",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=CG9A863C77UBA1097FF0&lib=ttq",
+      "domain": "analytics.tiktok.com"
+    },
+    {
+      "url": "https://bat.bing.com/bat.js",
+      "domain": "bat.bing.com"
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://rum-static.pingdom.net/pa-61285ccf49ef7d0011000019.js",
+      "domain": "rum-static.pingdom.net"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=90dd7f3e-1aac-4e92-8a91-96e1ff9240b8&batch_time=1774174547890",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=2f29658f-8bce-4875-b88f-56269b0f1dd3&batch_time=1774174547892",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=3598156&time=1774174547972&li_adsId=daa61c6a-dd60-4b77-942a-162e4a97a1d2&url=https%3A%2F%2Fwww.foratravel.com%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=223aca23-f8ca-4f6c-9bb7-0c061ac3710e&batch_time=1774174547893",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=824c50e8-9936-454f-878c-476c1a869b3a&batch_time=1774174547894",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=a4fd3a9e-6049-4556-aefb-56b55d3774f6&batch_time=1774174547977",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://js.hs-analytics.net/analytics/1774174200000/39757216.js",
+      "domain": "js.hs-analytics.net"
+    },
+    {
+      "url": "https://js.hs-banner.com/v2/39757216/banner.js",
+      "domain": "js.hs-banner.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=8cc268cd-4216-4305-ade5-f560ea27a43c&batch_time=1774174547979",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=c0545762-d2ae-41b8-83e8-c78668060133&batch_time=1774174547981",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=0d2e8c25-3f2b-4085-98db-e3444483c7e8&batch_time=1774174547982",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=ecf4335d-4362-422f-bf91-6e4292b0f1cd&batch_time=1774174547983",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=db63f7a2-eed4-4f71-bc80-c34296f3ebc1&batch_time=1774174548017",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=db4ecb19-637a-4368-84f1-121a39f24d68&batch_time=1774174548043",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=0b62c9d7-cbf8-447b-9b88-97fb0c0060f4&batch_time=1774174548050",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=3b30af3d-6b9e-493a-8507-40c4bf17d129&batch_time=1774174548057",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=2ac85fac-83ad-45da-a9af-c7a92cb3771b&batch_time=1774174548060",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=fetch&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/insight_tag_errors.gif?v=2&pid=3598156&error=version%3A%20285%20%7C%20WebsiteActions-285-TypeError%3A%20Failed%20to%20fetch%3B%20ErrorData%3A%20%7B%22domain%22%3A%22foratravel.com%22%2C%22requestFetcher%22%3A%22fetch-keepalive%22%2C%22body%22%3A%22H4sIAAAAAAAAA1WPUWvCMBhF%2F0q5z%2Bk02mqbtz5MKWwwZvFljJE0nxqWplkSN0T870OFwR4P93K49wxvdIR4m5d1xcvFO0Psg%2FFpSyGa0UHMqpIhmYEg%2BHJZ8GVRFtWU1wx6HKRxENiNQaYgv8k%2B9OMAhmOwEDik5KOYTP7HEzB4uafOJEsQWI1Biqw7UPY8agou627VrNmT609g%2BCEVTaKN2TtpX%2BnrSDG1GgKqnxWSV4t8TtM%2B54Ve5GqmeK6qaV3VtVR1TWAwsQvSRSsTaYidtJEYrFnJuwVXWBvp0h0GE3uIM3xUmyQTQeTF5Wp5Mu6TdOsa7%2F80Bxog3NFahnjb15389dRLs3782LabtsPlF95oABFjAQAA%22%7D&href=https%3A%2F%2Fwww.foratravel.com%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=ef39da4c-1472-4e04-8abf-d9ba5bfeb1ce&batch_time=1774174548145",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=893fc67e-6c83-47f4-b14f-02fa3382c3d1&batch_time=1774174548172",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=fb8e7669-714e-4a6f-ac9d-4a6ee3b4323f&batch_time=1774174548174",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=4255fb1c-91dd-4274-bd0d-465f5a98041e&batch_time=1774174548175",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=e4ebf610-eae6-42d6-96da-66efea238c8a&batch_time=1774174548176",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=beacon&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=eef85e42-9812-469e-ad7d-1e4710890fee&batch_time=1774174548222",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=f2ddc336-5235-46a8-ab2d-84b54bc687bf&batch_time=1774174548226",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=64d5bd39-38c3-4975-a93f-5073f9120cac&batch_time=1774174548223",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=80a50791-e8a7-46b9-8578-5fd1c26df51d&batch_time=1774174548224",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=cfc8d40a-ab28-4c7d-a383-cc76a7bd2559&batch_time=1774174548252",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=9f270396-0dc0-4cd1-b93f-e6f6ac0f12cc&batch_time=1774174548254",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=b3545762-053e-42e5-94e7-add0abb0fba4&batch_time=1774174548255",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=28d4faa2-4f4c-49b3-aec0-0304df74c290&batch_time=1774174548306",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=7b7415fe-2587-4dc2-a043-5ceb71573e41&batch_time=1774174548322",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://js.zi-scripts.com/zi-tag.js",
+      "domain": "js.zi-scripts.com"
+    },
+    {
+      "url": "https://api.segment.io/v1/p",
+      "domain": "api.segment.io"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=14d37361-3271-4b7a-9f64-0cd411e36617&batch_time=1774174548381",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=35258278-bc62-4b42-ae38-b73231af9a43&batch_time=1774174548385",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Afetch%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=50fc526f-0077-4385-98f9-ccbeff12b8b9&batch_time=1774174549142",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://rum.browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&ddtags=sdk_version%3A4.50.1%2Capi%3Axhr%2Cenv%3Aproduction%2Cservice%3Afora-website-prod-(www.foratravel.com)&dd-api-key=pub1ae9381b4b562b4469540e71f3cfc344&dd-evp-origin-version=4.50.1&dd-evp-origin=browser&dd-request-id=03c896f4-b519-426c-a9f3-221fa868c9f9&batch_time=1774174549153",
+      "domain": "rum.browser-intake-datadoghq.com"
+    },
+    {
+      "url": "https://api.segment.io/v1/p",
+      "domain": "api.segment.io"
+    },
+    {
+      "url": "https://api.segment.io/v1/p",
+      "domain": "api.segment.io"
+    }
+  ],
+  "blocked_domains": [
+    "analytics.tiktok.com",
+    "api.segment.io",
+    "bat.bing.com",
+    "connect.facebook.net",
+    "dx.mountain.com",
+    "js.hs-analytics.net",
+    "js.hs-banner.com",
+    "js.zi-scripts.com",
+    "px.ads.linkedin.com",
+    "rum-static.pingdom.net",
+    "rum.browser-intake-datadoghq.com",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "!flex-nowrap !bg-stone text-serif text-sand !p-3 !items-center md:!justify-center md:!gap-x-8 !gap-x-2 fora-text-caption-serif-1 global-cookie-consent-container",
+      "id": "",
+      "text": "We use cookies to enhance the user experience. Read our Privacy Policy here.I ACCEPT",
+      "rect": {
+        "x": 0,
+        "y": 850,
+        "w": 1425,
+        "h": 50
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy here.",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 842,
+          "y": 875,
+          "w": 126,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "I ACCEPT",
+          "ariaLabel": "Accept cookies",
+          "classes": "!bg-transparent !text-sand !whitespace-nowrap !m-0 !fora-text-button-2",
+          "id": "rcc-confirm-button",
+          "x": 975,
+          "y": 876,
+          "w": 77,
+          "h": 24
+        }
+      ]
+    }
+  ]
+}

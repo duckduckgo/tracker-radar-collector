@@ -1,0 +1,169 @@
+{
+  "site": "scad.edu",
+  "url": "https://www.scad.edu/",
+  "timestamp": "2026-03-22T10:19:04.448563",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/scad_edu.png",
+  "total_requests": 211,
+  "blocked_requests_count": 23,
+  "blocked_requests": [
+    {
+      "url": "https://connect.facebook.net/signals/config/910403069016374?v=2.9.281&r=stable&domain=www.scad.edu&hme=7561e8db2489737df4c74b634c943d82cefbf4e67acc7fda2493ff919471f0aa&ex_m=101%2C194%2C143%2C22%2C69%2C70%2C136%2C65%2C64%2C11%2C151%2C87%2C16%2C130%2C123%2C72%2C75%2C129%2C148%2C153%2C8%2C4%2C5%2C7%2C6%2C3%2C88%2C98%2C154%2C159%2C208%2C59%2C175%2C176%2C52%2C264%2C30%2C71%2C220%2C219%2C218%2C23%2C32%2C100%2C58%2C10%2C60%2C94%2C95%2C96%2C102%2C126%2C31%2C29%2C128%2C125%2C124%2C144%2C73%2C147%2C145%2C146%2C47%2C57%2C119%2C15%2C150%2C42%2C251%2C252%2C250%2C26%2C27%2C28%2C45%2C137%2C74%2C109%2C18%2C20%2C41%2C37%2C39%2C38%2C80%2C89%2C93%2C107%2C135%2C138%2C43%2C108%2C24%2C21%2C115%2C66%2C35%2C140%2C139%2C141%2C132%2C131%2C25%2C34%2C56%2C106%2C149%2C67%2C17%2C142%2C111%2C78%2C63%2C19%2C82%2C83%2C112%2C81%2C33%2C280%2C201%2C190%2C191%2C189%2C283%2C275%2C49%2C202%2C104%2C127%2C77%2C117%2C51%2C44%2C46%2C110%2C116%2C122%2C55%2C61%2C50%2C53%2C97%2C152%2C1%2C120%2C14%2C118%2C12%2C2%2C54%2C90%2C62%2C114%2C86%2C85%2C155%2C156%2C91%2C92%2C9%2C121%2C99%2C48%2C133%2C84%2C76%2C68%2C113%2C103%2C40%2C134%2C0%2C79%2C36%2C105%2C13%2C157",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://e.acuityplatform.com/pj?pk=1773484272639140204&pu=https%3A%2F%2Fwww.scad.edu%2F&pixelKey=1773484272639140204",
+      "domain": "e.acuityplatform.com"
+    },
+    {
+      "url": "https://analytics.tiktok.com/i18n/pixel/static/main.MTEwMjY2ZTExOA.js",
+      "domain": "analytics.tiktok.com"
+    },
+    {
+      "url": "https://analytics.tiktok.com/i18n/pixel/static/main.MTEwMjY2ZTExMQ.js",
+      "domain": "analytics.tiktok.com"
+    },
+    {
+      "url": "https://ads.undertone.com/f?pid=9791627&cb=495974",
+      "domain": "ads.undertone.com"
+    },
+    {
+      "url": "https://origin.acuityplatform.com/event/v2/pixel.js",
+      "domain": "origin.acuityplatform.com"
+    },
+    {
+      "url": "https://origin.acuityplatform.com/event/v2/pixel.js",
+      "domain": "origin.acuityplatform.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1069965397/?random=1774174732919&cv=11&fst=1774174732919&bg=ffffff&guid=ON&async=1&gtm=45be63i0v9175385933z86446591za20gzb6446591zd6446591xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616986~115938466~115938469~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.scad.edu%2F&frm=0&tiba=The%20University%20for%20Creative%20Careers%20%7C%20SCAD&hn=www.googleadservices.com&rdp=1&npa=0&pscdl=noapi&auid=154166184.1774174732&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CAI&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://tr6.snapchat.com/p",
+      "domain": "tr6.snapchat.com"
+    },
+    {
+      "url": "https://www.googleadservices.com/pagead/conversion/415286247/?random=1774174732975&cv=11&fst=1774174732975&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be63i0z86446591za20gzb6446591zd6446591xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938469~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.scad.edu%2F&label=EVHZCOP22PYBEOeHg8YB&capi=1&frm=0&tiba=The%20University%20for%20Creative%20Careers%20%7C%20SCAD&bttype=purchase&value=0&hn=www.googleadservices.com&rdp=1&npa=0&pscdl=noapi&auid=154166184.1774174732&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CAI&gcl_ctr=1~0~0~0&category=acrcp_v1_512&fmt=7",
+      "domain": "www.googleadservices.com"
+    },
+    {
+      "url": "https://pixel.tapad.com/idsync/ex/push?partner_id=2884&partner_url=https%3A%2F%2Ftr.snapchat.com%2Fcm%2Fp%3Frand%3D1774026604083%26pnid%3D140%26pcid%3D%24%7BTA_DEVICE_ID%7D",
+      "domain": "pixel.tapad.com"
+    },
+    {
+      "url": "https://www.google.com/pagead/1p-conversion/415286247/?random=1774174732975&cv=11&fst=1774174732975&fmt=3&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be63i0z86446591za20gzb6446591zd6446591xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938469~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.scad.edu%2F&label=EVHZCOP22PYBEOeHg8YB&capi=1&frm=0&tiba=The%20University%20for%20Creative%20Careers%20%7C%20SCAD&bttype=purchase&value=0&hn=www.googleadservices.com&rdp=1&npa=0&pscdl=noapi&auid=154166184.1774174732&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CAI&gcl_ctr=1~0~0~0&category=acrcp_v1_512&gcp=1&sscte=1&ct_cookie_present=1",
+      "domain": "www.google.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/10956394856/?random=1774174733020&cv=11&fst=1774174733020&bg=ffffff&guid=ON&async=1&gtm=45be63i0v9216319583z86446591za20gzb6446591zd6446591xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616986~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.scad.edu%2F&frm=0&tiba=The%20University%20for%20Creative%20Careers%20%7C%20SCAD&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=154166184.1774174732&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=KAI&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.googleadservices.com/pagead/conversion/10956394856/?random=1774174733053&cv=11&fst=1774174733053&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be63i0v9216319583z86446591za20gzb6446591zd6446591xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616986~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.scad.edu%2F&label=ijVyCIKGzr4YEOiitego&capi=1&frm=0&tiba=The%20University%20for%20Creative%20Careers%20%7C%20SCAD&bttype=purchase&value=0&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=154166184.1774174732&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&ec_mode=a&_tu=CA&gcl_ctr=2~0~0~0&category=acrcp_v1_512&em=tv.1&fmt=7",
+      "domain": "www.googleadservices.com"
+    },
+    {
+      "url": "https://www.google.com/pagead/1p-conversion/10956394856/?random=1774174733053&cv=11&fst=1774174733053&fmt=3&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be63i0v9216319583z86446591za20gzb6446591zd6446591xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616986~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.scad.edu%2F&label=ijVyCIKGzr4YEOiitego&capi=1&frm=0&tiba=The%20University%20for%20Creative%20Careers%20%7C%20SCAD&bttype=purchase&value=0&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=154166184.1774174732&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&ec_mode=a&_tu=CA&gcl_ctr=2~0~0~0&category=acrcp_v1_512&em=tv.1&gcp=1&sscte=1&ct_cookie_present=1",
+      "domain": "www.google.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1069965397/?random=1774174732919&cv=11&fst=1774174732919&fmt=3&bg=ffffff&guid=ON&async=1&gtm=45be63i0v9175385933z86446591za20gzb6446591zd6446591xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616986~115938466~115938469~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.scad.edu%2F&frm=0&tiba=The%20University%20for%20Creative%20Careers%20%7C%20SCAD&hn=www.googleadservices.com&rdp=1&npa=0&pscdl=noapi&auid=154166184.1774174732&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CAI",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/10956394856/?random=1774174733020&cv=11&fst=1774174733020&fmt=3&bg=ffffff&guid=ON&async=1&gtm=45be63i0v9216319583z86446591za20gzb6446591zd6446591xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616986~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.scad.edu%2F&frm=0&tiba=The%20University%20for%20Creative%20Careers%20%7C%20SCAD&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=154166184.1774174732&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=KAI",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://tr.snapchat.com/p",
+      "domain": "tr.snapchat.com"
+    },
+    {
+      "url": "https://pixel-sync.sitescout.com/dmp/asyncPixelSync",
+      "domain": "pixel-sync.sitescout.com"
+    },
+    {
+      "url": "https://pixel-sync.sitescout.com/dmp/asyncPixelSync",
+      "domain": "pixel-sync.sitescout.com"
+    },
+    {
+      "url": "https://pixel.sitescout.com/up/bb8fba2e9de298e8?cntr_revenue=&cntr_transactionId=2582673996793&u1=&u2=&u3=&u4=&u5=&src=12289349&cat=retar0&type=retar0&cntr_url=https%3A%2F%2Fwww.scad.edu%2F",
+      "domain": "pixel.sitescout.com"
+    },
+    {
+      "url": "https://pixel.sitescout.com/up/bb8fba2e9de298e8?cntr_revenue=&cntr_transactionId=1&u1=&u2=&u3=&u4=&u5=&src=12289349&cat=sitev002&type=sitev0&cntr_url=https%3A%2F%2Fwww.scad.edu%2F",
+      "domain": "pixel.sitescout.com"
+    },
+    {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-6B73W0YZGG&gtm=45je63i0v871709024z86446591za20gzb6446591zd6446591&_p=1774174732202&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1099641895.1774174733&ecid=190583178&ul=en-us&sr=1440x900&ir=1&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EAAAAAQ&tag_exp=103116026~103200004~115938466~115938468~116024733~117266401~117484252~117884344~118104771&sid=1774174732&sct=1&seg=0&dl=https%3A%2F%2Fwww.scad.edu%2F&dt=The%20University%20for%20Creative%20Careers%20%7C%20SCAD&_s=2&tfd=6153",
+      "domain": "www.google-analytics.com"
+    }
+  ],
+  "blocked_domains": [
+    "ads.undertone.com",
+    "analytics.tiktok.com",
+    "connect.facebook.net",
+    "e.acuityplatform.com",
+    "googleads.g.doubleclick.net",
+    "origin.acuityplatform.com",
+    "pixel-sync.sitescout.com",
+    "pixel.sitescout.com",
+    "pixel.tapad.com",
+    "tr.snapchat.com",
+    "tr6.snapchat.com",
+    "www.google-analytics.com",
+    "www.google.com",
+    "www.googleadservices.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "section",
+      "classes": "consent-footer",
+      "id": "",
+      "text": "This site uses cookies. By continuing to browse the site, you are agreeing to our use of cookies. Find out more.Ok",
+      "rect": {
+        "x": 0,
+        "y": 760,
+        "w": 325,
+        "h": 140
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Find out more",
+          "ariaLabel": "",
+          "classes": "marking-links-processed",
+          "id": "",
+          "x": 181,
+          "y": 823,
+          "w": 106,
+          "h": 16
+        },
+        {
+          "tag": "button",
+          "text": "Ok",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 53,
+          "y": 864,
+          "w": 65,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "video-overlay-screen",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 60,
+        "w": 1425,
+        "h": 900
+      },
+      "buttons": []
+    }
+  ]
+}

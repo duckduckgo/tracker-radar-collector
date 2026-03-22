@@ -1,0 +1,23 @@
+{
+  "site": "extrabux.com",
+  "url": "https://www.extrabux.com/",
+  "timestamp": "2026-03-22T10:20:20.783747",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/extrabux_com.png",
+  "total_requests": 74,
+  "blocked_requests_count": 2,
+  "blocked_requests": [
+    {
+      "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+      "domain": "static.cloudflareinsights.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-2DGNQR9T03&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    }
+  ],
+  "blocked_domains": [
+    "static.cloudflareinsights.com",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": []
+}

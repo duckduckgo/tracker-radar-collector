@@ -1,0 +1,230 @@
+{
+  "site": "spermidinelife.us",
+  "url": "https://spermidinelife.us/",
+  "timestamp": "2026-03-22T10:16:54.707047",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/spermidinelife_us.png",
+  "total_requests": 247,
+  "blocked_requests_count": 16,
+  "blocked_requests": [
+    {
+      "url": "https://spermidinelife-us.attn.tv/d?attn_vid=c44ebca7ae81440cb483b448d7a356f6",
+      "domain": "spermidinelife-us.attn.tv"
+    },
+    {
+      "url": "https://events.attentivemobile.com/ct-ev",
+      "domain": "events.attentivemobile.com"
+    },
+    {
+      "url": "https://cdn.attn.tv/growth-tag-assets/client-configs/Vwf.js",
+      "domain": "cdn.attn.tv"
+    },
+    {
+      "url": "https://connect.facebook.net/signals/config/2658204581131072?v=2.9.281&r=stable&domain=spermidinelife.us&hme=7561e8db2489737df4c74b634c943d82cefbf4e67acc7fda2493ff919471f0aa&ex_m=101%2C194%2C143%2C22%2C69%2C70%2C136%2C65%2C64%2C11%2C151%2C87%2C16%2C130%2C123%2C72%2C75%2C129%2C148%2C153%2C8%2C4%2C5%2C7%2C6%2C3%2C88%2C98%2C154%2C159%2C208%2C59%2C175%2C176%2C52%2C264%2C30%2C71%2C220%2C219%2C218%2C23%2C32%2C100%2C58%2C10%2C60%2C94%2C95%2C96%2C102%2C126%2C31%2C29%2C128%2C125%2C124%2C144%2C73%2C147%2C145%2C146%2C47%2C57%2C119%2C15%2C150%2C42%2C251%2C252%2C250%2C26%2C27%2C28%2C45%2C137%2C74%2C109%2C18%2C20%2C41%2C37%2C39%2C38%2C80%2C89%2C93%2C107%2C135%2C138%2C43%2C108%2C24%2C21%2C115%2C66%2C35%2C140%2C139%2C141%2C132%2C131%2C25%2C34%2C56%2C106%2C149%2C67%2C17%2C142%2C111%2C78%2C63%2C19%2C82%2C83%2C112%2C81%2C33%2C280%2C201%2C190%2C191%2C189%2C283%2C275%2C49%2C202%2C104%2C127%2C77%2C117%2C51%2C44%2C46%2C110%2C116%2C122%2C55%2C61%2C50%2C53%2C97%2C152%2C1%2C120%2C14%2C118%2C12%2C2%2C54%2C90%2C62%2C114%2C86%2C85%2C155%2C156%2C91%2C92%2C9%2C121%2C99%2C48%2C133%2C84%2C76%2C68%2C113%2C103%2C40%2C134%2C0%2C79%2C36%2C105%2C13%2C157",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://spermidinelife-us.attn.tv/unrenderedCreative?v=4.40.84&r=&id=c44ebca7ae81440cb483b448d7a356f6&pv=1&l=https%3A%2F%2Fspermidinelife.us%2F&w=1440&h=900&ss_ref=ORGANIC&f=3",
+      "domain": "spermidinelife-us.attn.tv"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=MC-YFNZG54PN3&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-CERZ537BG1&gtm=45je63i0v9101312153za200zd9101312153&_p=1774174603226&_gaz=1&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dN2ZkMj.dNTU0Yz.dYmNjMT&cid=1699566322.1774174604&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAGA&_s=1&tag_exp=103116026~103200004~115938466~115938468~116024733~116133312~117484252~118104772~118128923&dp=%2F&dt=spermidineLIFE%C2%AE%20US%20%7C%20Spermidine-Rich%20Capsules%20for%20Health%20and%20Longevity%20%E2%80%93%20spermidineLIFE%C2%AE%20by%20Longevity%20Labs%2C%20Inc.&dl=https%3A%2F%2Fspermidinelife.us%2F&sid=1774174603&sct=1&seg=0&_tu=AAI&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&edid=dNzYwYj&tfd=1565",
+      "domain": "analytics.google.com"
+    },
+    {
+      "url": "https://stats.g.doubleclick.net/g/collect?v=2&tid=G-CERZ537BG1&cid=1699566322.1774174604&gtm=45je63i0v9101312153za200zd9101312153&aip=1&dma=0&gcs=G111&gcd=13t3t3t3t5l1&npa=0&frm=0&tag_exp=103116026~103200004~115938466~115938468~116024733~116133312~117484252~118104772~118128923",
+      "domain": "stats.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.googleadservices.com/pagead/conversion/634508704/?random=1774174603844&cv=11&fst=1774174603844&bg=ffffff&guid=ON&async=1&en=page_view&gtm=45je63i0v9101312153za200zd9101312153xec&gcs=G111&gcd=13t3t3t3t5l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~116133312~117484252~118104772~118128923&u_w=1440&u_h=900&url=https%3A%2F%2Fspermidinelife.us%2F&label=ehufCO6TwYUDEKCrx64C&capi=1&gtm_ee=1&tiba=spermidineLIFE%C2%AE%20US%20%7C%20Spermidine-Rich%20Capsules%20for%20Health%20and%20Longevity%20%E2%80%93%20spermidineLIFE%C2%AE%20by%20Longevity%20Labs%2C%20Inc.&frm=0&did=dN2ZkMj%2CdNTU0Yz%2CdYmNjMT%2CdNzYwYj&gdid=dN2ZkMj.dNTU0Yz.dYmNjMT&edid=dNzYwYj&hn=www.googleadservices.com&rdp=0&npa=0&pscdl=noapi&auid=1766016229.1774174604&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&ec_mode=c&_tu=AAI&gcl_ctr=1~0~0~0&data=event%3Dpage_view%3Bpage_path%3D%2F&category=acrcp_v1_512&em=tv.1&fmt=7",
+      "domain": "www.googleadservices.com"
+    },
+    {
+      "url": "https://alb.reddit.com/rp.gif?ts=1774174603851&id=a2_gul5odijiviu&event=PageVisit&m.itemCount=&m.value=&m.valueDecimal=&m.currency=&m.transactionId=&m.customEventName=&m.products=&m.conversionId=&uuid=1637556e-3b2d-4ac2-b9f4-5d71d024b141&aaid=&em=&pn=&external_id=&idfa=&integration=reddit&partner=&partner_version=&opt_out=0&sh=1951&sw=1220&v=rdt_79aa2193&dpm=&dpcc=&dprc=",
+      "domain": "alb.reddit.com"
+    },
+    {
+      "url": "https://www.google.com/pagead/1p-conversion/634508704/?random=1774174603844&cv=11&fst=1774174603844&fmt=3&bg=ffffff&guid=ON&async=1&en=page_view&gtm=45je63i0v9101312153za200zd9101312153xec&gcs=G111&gcd=13t3t3t3t5l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~116133312~117484252~118104772~118128923&u_w=1440&u_h=900&url=https%3A%2F%2Fspermidinelife.us%2F&label=ehufCO6TwYUDEKCrx64C&capi=1&gtm_ee=1&tiba=spermidineLIFE%C2%AE%20US%20%7C%20Spermidine-Rich%20Capsules%20for%20Health%20and%20Longevity%20%E2%80%93%20spermidineLIFE%C2%AE%20by%20Longevity%20Labs%2C%20Inc.&frm=0&did=dN2ZkMj%2CdNTU0Yz%2CdYmNjMT%2CdNzYwYj&gdid=dN2ZkMj.dNTU0Yz.dYmNjMT&edid=dNzYwYj&hn=www.googleadservices.com&rdp=0&npa=0&pscdl=noapi&auid=1766016229.1774174604&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&ec_mode=c&_tu=AAI&gcl_ctr=1~0~0~0&data=event%3Dpage_view%3Bpage_path%3D%2F&category=acrcp_v1_512&em=tv.1&gcp=1&sscte=1&ct_cookie_present=1",
+      "domain": "www.google.com"
+    },
+    {
+      "url": "https://cdn.attn.tv/spermidinelife/dtag.js?shop=spermidine-life.myshopify.com",
+      "domain": "cdn.attn.tv"
+    },
+    {
+      "url": "https://x.bidswitch.net/sync?dsp_id=95&user_id=cfa40acd-2659-4acd-8e28-b1ee4c99c0ac&expires=30&user_group=1",
+      "domain": "x.bidswitch.net"
+    },
+    {
+      "url": "https://dsum-sec.casalemedia.com/rum?cm_dsp_id=208&external_user_id=cfa40acd-2659-4acd-8e28-b1ee4c99c0ac&expiration=30",
+      "domain": "dsum-sec.casalemedia.com"
+    },
+    {
+      "url": "https://d-code.liadm.com/did-0014.min.js",
+      "domain": "d-code.liadm.com"
+    },
+    {
+      "url": "https://www.googleoptimize.com/optimize.js?id=GTM-MDL76QW",
+      "domain": "www.googleoptimize.com"
+    }
+  ],
+  "blocked_domains": [
+    "alb.reddit.com",
+    "analytics.google.com",
+    "cdn.attn.tv",
+    "connect.facebook.net",
+    "d-code.liadm.com",
+    "dsum-sec.casalemedia.com",
+    "events.attentivemobile.com",
+    "spermidinelife-us.attn.tv",
+    "stats.g.doubleclick.net",
+    "www.google.com",
+    "www.googleadservices.com",
+    "www.googleoptimize.com",
+    "www.googletagmanager.com",
+    "x.bidswitch.net"
+  ],
+  "dom_areas": [
+    {
+      "tag": "section",
+      "classes": "plug-gdpr-wrapper plug-gdpr-wrapper--show js-gdpr-wrapper",
+      "id": "",
+      "text": "We use cookies to offer a better browsing experience, analyze site traffic, personalize content, and serve targeted advertisements. Please review our privacy policy page if you have any questions.\n            Accept\n        \n        \n            document.addEventListener('DOMContentLoaded', function() {\n                const button = document.querySelector('.js-gdpr-button');\n                const gdprWrapper = document.querySelector('.js-gdpr-wrapper');\n                const getCookie = (name) ",
+      "rect": {
+        "x": 0,
+        "y": 835,
+        "w": 1425,
+        "h": 65
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "gdpr__button js-gdpr-button",
+          "id": "",
+          "x": 1066,
+          "y": 868,
+          "w": 90,
+          "h": 31
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "gdpr",
+      "id": "",
+      "text": "We use cookies to offer a better browsing experience, analyze site traffic, personalize content, and serve targeted advertisements. Please review our privacy policy page if you have any questions.\n            Accept\n        \n        \n            document.addEventListener('DOMContentLoaded', function() {\n                const button = document.querySelector('.js-gdpr-button');\n                const gdprWrapper = document.querySelector('.js-gdpr-wrapper');\n                const getCookie = (name) ",
+      "rect": {
+        "x": 0,
+        "y": 848,
+        "w": 1425,
+        "h": 39
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "gdpr__button js-gdpr-button",
+          "id": "",
+          "x": 1066,
+          "y": 868,
+          "w": 90,
+          "h": 31
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "gdpr__content",
+      "id": "",
+      "text": "We use cookies to offer a better browsing experience, analyze site traffic, personalize content, and serve targeted advertisements. Please review our privacy policy page if you have any questions.\n            Accept",
+      "rect": {
+        "x": 425,
+        "y": 848,
+        "w": 576,
+        "h": 39
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "gdpr__button js-gdpr-button",
+          "id": "",
+          "x": 1066,
+          "y": 868,
+          "w": 90,
+          "h": 31
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "gdpr__button js-gdpr-button",
+      "id": "",
+      "text": "Accept",
+      "rect": {
+        "x": 1021,
+        "y": 852,
+        "w": 90,
+        "h": 31
+      },
+      "buttons": []
+    },
+    {
+      "tag": "predictive-search",
+      "classes": "search-modal__form",
+      "id": "",
+      "text": "Search for product, article",
+      "rect": {
+        "x": 471,
+        "y": 59,
+        "w": 478,
+        "h": 45
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Search for product, article",
+          "classes": "search__button field__button",
+          "id": "",
+          "x": 493,
+          "y": 81,
+          "w": 44,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "tag": "form",
+      "classes": "search search-modal__form ",
+      "id": "",
+      "text": "Search for product, article",
+      "rect": {
+        "x": 471,
+        "y": 59,
+        "w": 478,
+        "h": 45
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Search for product, article",
+          "classes": "search__button field__button",
+          "id": "",
+          "x": 493,
+          "y": 81,
+          "w": 44,
+          "h": 44
+        }
+      ]
+    }
+  ]
+}

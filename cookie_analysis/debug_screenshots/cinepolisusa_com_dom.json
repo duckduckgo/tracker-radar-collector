@@ -1,0 +1,271 @@
+[
+  {
+    "tag": "div",
+    "classes": "swiper swiper-banner swiper-initialized swiper-horizontal q-px-lg swiper-backface-hidden",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 0,
+      "y": 179,
+      "w": 1425,
+      "h": 570
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "link",
+        "id": "",
+        "href": "/movie/project-hail-mary",
+        "x": 713,
+        "y": 458
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "link",
+        "id": "",
+        "href": "/movie/you-me-and-tuscany",
+        "x": 2139,
+        "y": 458
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "link",
+        "id": "",
+        "href": "/movie/undertone",
+        "x": 3565,
+        "y": 458
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "link",
+        "id": "",
+        "href": "/movie/reminders-of-him",
+        "x": 4991,
+        "y": 458
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "link",
+        "id": "",
+        "href": "/movie/the-super-mario-galaxy-movie",
+        "x": 6417,
+        "y": 464
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "link",
+        "id": "",
+        "href": "/movie/hoppers",
+        "x": 7843,
+        "y": 458
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "link",
+        "id": "",
+        "href": "/movie/ready-or-not-2-here-i-come",
+        "x": 9269,
+        "y": 458
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "link",
+        "id": "",
+        "href": "/cinepolis-handpicked",
+        "x": 10695,
+        "y": 459
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "",
+    "id": "cookiescript_injected",
+    "text": "\u00d7\n\t  \n    \n      \n    This website uses cookies  \n  \n\t    \n      We use cookies to personalise content, ads and to analyse our traffic. We also share information about your use of our site with our advertising and analytics partners who may combine it with other information that you\u2019ve provided to them or that they\u2019ve collected from your use of their services.    \n\n    \n      \n      \n        Privacy Policy      \n\n          \n  \n              \n        Accept all      \n              \n        Declin",
+    "rect": {
+      "x": 20,
+      "y": 607,
+      "w": 300,
+      "h": 273
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "div",
+        "text": "\u00d7",
+        "ariaLabel": "Close",
+        "classes": "",
+        "id": "cookiescript_close",
+        "href": null,
+        "x": 298,
+        "y": 628
+      },
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "Privacy Policy, opens a new window",
+        "classes": "",
+        "id": "cookiescript_readmore",
+        "href": "https://www.cinepolisusa.com/privacy-policy",
+        "x": 228,
+        "y": 793
+      },
+      {
+        "tag": "div",
+        "text": "Accept all",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "cookiescript_accept",
+        "href": null,
+        "x": 101,
+        "y": 833
+      },
+      {
+        "tag": "div",
+        "text": "Decline all",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "cookiescript_reject",
+        "href": null,
+        "x": 236,
+        "y": 833
+      },
+      {
+        "tag": "div",
+        "text": "\u00d7",
+        "ariaLabel": "Close",
+        "classes": "",
+        "id": "cookiescript_close",
+        "x": 298,
+        "y": 628,
+        "isClose": true
+      }
+    ],
+    "matchedSelector": "[id*=\"cookie\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "",
+    "id": "cookiescript_header",
+    "text": "This website uses cookies",
+    "rect": {
+      "x": 40,
+      "y": 622,
+      "w": 247,
+      "h": 43
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[id*=\"cookie\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "",
+    "id": "cookiescript_description",
+    "text": "We use cookies to personalise content, ads and to analyse our traffic. We also share information about your use of our site with our advertising and analytics partners who may combine it with other information that you\u2019ve provided to them or that they\u2019ve collected from your use of their services.    \n\n    \n      \n      \n        Privacy Policy",
+    "rect": {
+      "x": 40,
+      "y": 665,
+      "w": 260,
+      "h": 139
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "Privacy Policy, opens a new window",
+        "classes": "",
+        "id": "cookiescript_readmore",
+        "href": "https://www.cinepolisusa.com/privacy-policy",
+        "x": 228,
+        "y": 793
+      }
+    ],
+    "matchedSelector": "[id*=\"cookie\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "",
+    "id": "cookiescript_buttons",
+    "text": "Accept all      \n              \n        Decline all",
+    "rect": {
+      "x": 35,
+      "y": 814,
+      "w": 270,
+      "h": 51
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "div",
+        "text": "Accept all",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "cookiescript_accept",
+        "href": null,
+        "x": 101,
+        "y": 833
+      },
+      {
+        "tag": "div",
+        "text": "Decline all",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "cookiescript_reject",
+        "href": null,
+        "x": 236,
+        "y": 833
+      }
+    ],
+    "matchedSelector": "[id*=\"cookie\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "",
+    "id": "cookiescript_accept",
+    "text": "Accept all",
+    "rect": {
+      "x": 40,
+      "y": 814,
+      "w": 122,
+      "h": 38
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[id*=\"cookie\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "",
+    "id": "cookiescript_reject",
+    "text": "Decline all",
+    "rect": {
+      "x": 172,
+      "y": 814,
+      "w": 128,
+      "h": 38
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[id*=\"cookie\" i]"
+  }
+]

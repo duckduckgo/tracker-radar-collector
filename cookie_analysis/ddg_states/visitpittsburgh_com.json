@@ -1,0 +1,118 @@
+{
+  "site": "visitpittsburgh.com",
+  "url": "https://www.visitpittsburgh.com/",
+  "timestamp": "2026-03-22T10:18:47.910831",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/visitpittsburgh_com.png",
+  "total_requests": 296,
+  "blocked_requests_count": 18,
+  "blocked_requests": [
+    {
+      "url": "https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202603160101/pubads_impl.js",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/pagead/ppub_config?ippd=www.visitpittsburgh.com",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://tag.yieldoptimizer.com/ps/analytics?pxid=12291&",
+      "domain": "tag.yieldoptimizer.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-1060384315&l=dl&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-985959090&l=dl&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-DZJFWGWYR6&l=dl&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://tag.yieldoptimizer.com/ps/ps?t=s&p=5453&sg=y&pg=ot&",
+      "domain": "tag.yieldoptimizer.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=AW-985959090&l=dl&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/pagead/managed/dict/m202603190101/gpt",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://ib.adnxs.com/getuid?https://dc.arrivalist.com/pj/proc.php?auid=$UID&rk=ckip-10-0-1-19469bfc1fa8ad1f4.6209351469bfc1fa8c2e35.79593616",
+      "domain": "ib.adnxs.com"
+    },
+    {
+      "url": "https://www.instagram.com/embed.js",
+      "domain": "www.instagram.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-6LR6M45LNC",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=9600153&time=1774174715120&li_adsId=b0edb498-f0e6-4145-8f72-22901ee284a1&url=https%3A%2F%2Fwww.visitpittsburgh.com%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=fetch&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/insight_tag_errors.gif?v=2&pid=9600153&error=version%3A%20285%20%7C%20WebsiteActions-285-TypeError%3A%20Failed%20to%20fetch%3B%20ErrorData%3A%20%7B%22domain%22%3A%22skillyai.com%22%2C%22requestFetcher%22%3A%22fetch-keepalive%22%2C%22body%22%3A%22H4sIAAAAAAAAA03PX0vDMBQF8K8y7nNq139rFxDZwxwFH4Yr80FE0uR2vTRNY5KhY%2By7y5yIj4cDP845gyXlgb8uF%2FN5UmRvDLx0ZMMenafJAE%2BrgkGgEYEnZZknZV4mRZpVDNQ0CjLAwQ%2Bk9UnQnZxGYHB0Gjj0IVjP4%2Fh%2FGeNXQGeEjgRFshchrhAHnZ9IDg%2Bdm8a6c2LErXBowgup0N8neT4HBlYcsKGgETisf5HZqp5dEWDwia2ngDs6GKGf8eOIPtQKOGQZVtmiaiNZyDZSZZpHxXLZRW0i07Yq01ahBAbkGyeM1yKgAt4J7ZGBpkdxU%2BAaNiRMuIWRvAR%2BBuvbXRABgUf55ao8kRlQ1WZl7R%2FT4wjcHLVm4H%2F2NSd7vbFdbdbv%2B3pXN3D5BsCtWgSHAQAA%22%7D&href=https%3A%2F%2Fwww.visitpittsburgh.com%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=beacon&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    }
+  ],
+  "blocked_domains": [
+    "connect.facebook.net",
+    "ib.adnxs.com",
+    "px.ads.linkedin.com",
+    "securepubads.g.doubleclick.net",
+    "tag.yieldoptimizer.com",
+    "www.googletagmanager.com",
+    "www.instagram.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "msg msg--popover msg--ribbon bg--yellow  lobotomize text--content links text--right",
+      "id": "",
+      "text": "This site uses cookies to enhance your experience.\n\n            \n\n\n        Accept",
+      "rect": {
+        "x": 0,
+        "y": 728,
+        "w": 430,
+        "h": 172
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "btn btn--alt",
+          "id": "",
+          "x": 335,
+          "y": 851,
+          "w": 126,
+          "h": 50
+        }
+      ]
+    }
+  ]
+}

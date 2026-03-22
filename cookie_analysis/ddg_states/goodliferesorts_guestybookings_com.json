@@ -1,0 +1,157 @@
+{
+  "site": "goodliferesorts.guestybookings.com",
+  "url": "https://goodliferesorts.guestybookings.com/en",
+  "timestamp": "2026-03-22T10:09:52.772765",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/goodliferesorts_guestybookings_com.png",
+  "total_requests": 70,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "row no-gutters cookies__block root-0-1-475",
+      "id": "",
+      "text": "This website uses cookies. We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you've provided to them or that they've collected from your use of their services.Privacy PolicyAccept",
+      "rect": {
+        "x": 0,
+        "y": 775,
+        "w": 1425,
+        "h": 125
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "privacyPolicy-0-1-476",
+          "id": "",
+          "x": 554,
+          "y": 872,
+          "w": 1045,
+          "h": 23
+        },
+        {
+          "tag": "div",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "col-sm-12 col-md-3 pt-2 cookies__btn__group",
+          "id": "",
+          "x": 1251,
+          "y": 837,
+          "w": 348,
+          "h": 93
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "Button-root-0-1-489 IconButton-root-0-1-477 IconButton-iconSm-0-1-484 cookies__btn cookies__btn--decline",
+          "id": "",
+          "x": 1097,
+          "y": 821,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "Button-root-0-1-489 Button-btnMd-0-1-496 FlatButton-root-0-1-503 FlatButton-secondary-0-1-504 cookies__btn cookies__btn--accept",
+          "id": "",
+          "x": 1219,
+          "y": 820,
+          "w": 95,
+          "h": 39
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "col-sm-12 col-md-9 cookies__message",
+      "id": "",
+      "text": "This website uses cookies. We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you've provided to them or that they've collected from your use of their services.Privacy Policy",
+      "rect": {
+        "x": 32,
+        "y": 791,
+        "w": 1045,
+        "h": 93
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "privacyPolicy-0-1-476",
+          "id": "",
+          "x": 554,
+          "y": 872,
+          "w": 1045,
+          "h": 23
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "col-sm-12 col-md-3 pt-2 cookies__btn__group",
+      "id": "",
+      "text": "Accept",
+      "rect": {
+        "x": 1077,
+        "y": 791,
+        "w": 348,
+        "h": 93
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "Button-root-0-1-489 IconButton-root-0-1-477 IconButton-iconSm-0-1-484 cookies__btn cookies__btn--decline",
+          "id": "",
+          "x": 1097,
+          "y": 821,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "Button-root-0-1-489 Button-btnMd-0-1-496 FlatButton-root-0-1-503 FlatButton-secondary-0-1-504 cookies__btn cookies__btn--accept",
+          "id": "",
+          "x": 1219,
+          "y": 820,
+          "w": 95,
+          "h": 39
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "Button-root-0-1-489 Button-btnMd-0-1-496 FlatButton-root-0-1-503 FlatButton-secondary-0-1-504 cookies__btn cookies__btn--accept",
+      "id": "",
+      "text": "Accept",
+      "rect": {
+        "x": 1172,
+        "y": 801,
+        "w": 95,
+        "h": 39
+      },
+      "buttons": []
+    },
+    {
+      "tag": "a",
+      "classes": "privacyPolicy-0-1-476",
+      "id": "",
+      "text": "Privacy Policy",
+      "rect": {
+        "x": 32,
+        "y": 861,
+        "w": 1045,
+        "h": 23
+      },
+      "buttons": []
+    }
+  ]
+}

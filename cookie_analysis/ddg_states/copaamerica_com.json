@@ -1,0 +1,23 @@
+{
+  "site": "copaamerica.com",
+  "url": "https://copaamerica.com/en/match-schedule/",
+  "timestamp": "2026-03-22T10:13:41.948929",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/copaamerica_com.png",
+  "total_requests": 113,
+  "blocked_requests_count": 2,
+  "blocked_requests": [
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-LL10612BVN&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://secure.widget.cloud.opta.net/v3/v3.opta-widgets.js",
+      "domain": "secure.widget.cloud.opta.net"
+    }
+  ],
+  "blocked_domains": [
+    "secure.widget.cloud.opta.net",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": []
+}

@@ -1,0 +1,174 @@
+[
+  {
+    "tag": "div",
+    "classes": "main_banner",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 113,
+      "y": 164,
+      "w": 840,
+      "h": 422
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/users/register",
+        "x": -1102,
+        "y": 375
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/transfer/store/14295/6387334/homepage/7377",
+        "x": -284,
+        "y": 375
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/transfer/store/11000/6383137/homepage/7382",
+        "x": 534,
+        "y": 375
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/transfer/store/10376/6386865/homepage/7375",
+        "x": 1351,
+        "y": 375
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/transfer/store/34565/6384686/homepage/7376",
+        "x": 2169,
+        "y": 375
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/users/register",
+        "x": 2987,
+        "y": 375
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/transfer/store/14295/6387334/homepage/7377",
+        "x": 3805,
+        "y": 375
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "list-banner",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 113,
+      "y": 164,
+      "w": 840,
+      "h": 422
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/users/register",
+        "x": -1102,
+        "y": 375
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/transfer/store/14295/6387334/homepage/7377",
+        "x": -284,
+        "y": 375
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/transfer/store/11000/6383137/homepage/7382",
+        "x": 534,
+        "y": 375
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/transfer/store/10376/6386865/homepage/7375",
+        "x": 1351,
+        "y": 375
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/transfer/store/34565/6384686/homepage/7376",
+        "x": 2169,
+        "y": 375
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/users/register",
+        "x": 2987,
+        "y": 375
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "box eb_ads_tracking",
+        "id": "",
+        "href": "/transfer/store/14295/6387334/homepage/7377",
+        "x": 3805,
+        "y": 375
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  }
+]

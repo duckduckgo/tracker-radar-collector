@@ -1,0 +1,253 @@
+{
+  "site": "westjet.com",
+  "url": "https://www.westjet.com/en-ca",
+  "timestamp": "2026-03-22T10:21:57.860538",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/westjet_com.png",
+  "total_requests": 155,
+  "blocked_requests_count": 8,
+  "blocked_requests": [
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://adobedc.demdex.net/ee/v1/identity/acquire?configId=4ab6f803-9d0f-43c3-ad01-e78c20b304d2&requestId=21a4313c-3157-41de-b65a-ef6d32413bc6",
+      "domain": "adobedc.demdex.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-920817551&l=dataLayer",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.clarity.ms/tag/n47yznihzb",
+      "domain": "www.clarity.ms"
+    },
+    {
+      "url": "https://dynamic.criteo.com/js/ld/ld.js?a=102177",
+      "domain": "dynamic.criteo.com"
+    },
+    {
+      "url": "https://sc-static.net/scevent.min.js",
+      "domain": "sc-static.net"
+    },
+    {
+      "url": "https://rum-collector-2.pingdom.net/img/beacon.gif?id=5a0d0165bd3729410a7b23c6&sAW=1440&sAH=900&bIW=1440&bIH=900&pD=24&dPR=1&or=landscape-primary&nT=0&rC=0&nS=0&cS=15&cE=37&dLE=15&dLS=3&fS=0&hS=15&rE=-1&rS=-1&reS=37&resS=155&resE=157&uEE=-1&uES=-1&dL=158&dI=965&dCLES=979&dCLEE=1019&dC=2996&lES=2996&lEE=3009&s=nt&title=Flights%20and%20vacation%20packages%20%7C%20WestJet%20official%20site&path=https%3A%2F%2Fwww.westjet.com%2Fen-ca&ref=&sId=12txrf7u&sST=1774174909&sIS=1&rV=0&v=1.4.1",
+      "domain": "rum-collector-2.pingdom.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-1RRJQCZJMS",
+      "domain": "www.googletagmanager.com"
+    }
+  ],
+  "blocked_domains": [
+    "adobedc.demdex.net",
+    "connect.facebook.net",
+    "dynamic.criteo.com",
+    "rum-collector-2.pingdom.net",
+    "sc-static.net",
+    "www.clarity.ms",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "wj-header-usercookies open",
+      "id": "",
+      "text": "By using the WestJet website, you agree to the website terms of use, the privacy statement, and the use of cookies.\n\n\n            \n            \n                \n                    Accept",
+      "rect": {
+        "x": 0,
+        "y": 826,
+        "w": 1425,
+        "h": 74
+      },
+      "buttons": [
+        {
+          "tag": "div",
+          "text": "By using the WestJet website, you agree to the website terms of use, the privacy statement, and the use of cookies.\n\n\n            \n            \n                \n                    Accept",
+          "ariaLabel": "",
+          "classes": "wj-header-usercookies__content alert alert-dismissible",
+          "id": "",
+          "x": 713,
+          "y": 863,
+          "w": 896,
+          "h": 74
+        },
+        {
+          "tag": "a",
+          "text": "terms of use",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 667,
+          "y": 862,
+          "w": 82,
+          "h": 19
+        },
+        {
+          "tag": "a",
+          "text": "privacy statement",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 800,
+          "y": 862,
+          "w": 118,
+          "h": 19
+        },
+        {
+          "tag": "a",
+          "text": "use of cookies",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 967,
+          "y": 862,
+          "w": 93,
+          "h": 19
+        },
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "wj-header-usercookies__accept",
+          "id": "",
+          "x": 1104,
+          "y": 863,
+          "w": 112,
+          "h": 42
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "wj-header-usercookies__content alert alert-dismissible",
+      "id": "",
+      "text": "By using the WestJet website, you agree to the website terms of use, the privacy statement, and the use of cookies.\n\n\n            \n            \n                \n                    Accept",
+      "rect": {
+        "x": 265,
+        "y": 826,
+        "w": 896,
+        "h": 74
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "terms of use",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 667,
+          "y": 862,
+          "w": 82,
+          "h": 19
+        },
+        {
+          "tag": "a",
+          "text": "privacy statement",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 800,
+          "y": 862,
+          "w": 118,
+          "h": 19
+        },
+        {
+          "tag": "a",
+          "text": "use of cookies",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 967,
+          "y": 862,
+          "w": 93,
+          "h": 19
+        },
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "wj-header-usercookies__accept",
+          "id": "",
+          "x": 1104,
+          "y": 863,
+          "w": 112,
+          "h": 42
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "wj-header-usercookies__text",
+      "id": "",
+      "text": "By using the WestJet website, you agree to the website terms of use, the privacy statement, and the use of cookies.",
+      "rect": {
+        "x": 265,
+        "y": 853,
+        "w": 752,
+        "h": 21
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "terms of use",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 667,
+          "y": 862,
+          "w": 82,
+          "h": 19
+        },
+        {
+          "tag": "a",
+          "text": "privacy statement",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 800,
+          "y": 862,
+          "w": 118,
+          "h": 19
+        },
+        {
+          "tag": "a",
+          "text": "use of cookies",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 967,
+          "y": 862,
+          "w": 93,
+          "h": 19
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "wj-header-usercookies__accept",
+      "id": "",
+      "text": "Accept",
+      "rect": {
+        "x": 1048,
+        "y": 842,
+        "w": 112,
+        "h": 42
+      },
+      "buttons": []
+    },
+    {
+      "tag": "button",
+      "classes": "com-modal__trigger com-legal-disclaimer__button",
+      "id": "",
+      "text": "Legal, restrictions and terms and conditions",
+      "rect": {
+        "x": 265,
+        "y": 4982,
+        "w": 327,
+        "h": 24
+      },
+      "buttons": []
+    }
+  ]
+}

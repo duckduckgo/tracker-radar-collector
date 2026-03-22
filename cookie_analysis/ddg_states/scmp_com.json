@@ -1,0 +1,25 @@
+{
+  "site": "scmp.com",
+  "url": "https://www.scmp.com/",
+  "timestamp": "2026-03-22T10:23:08.856170",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/scmp_com.png",
+  "total_requests": 1692,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "gdpr-banner__accept css-11g79bl e17fr8g60",
+      "id": "",
+      "text": "ACCEPT",
+      "rect": {
+        "x": 930,
+        "y": 831,
+        "w": 68,
+        "h": 30
+      },
+      "buttons": []
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "site": "spencer.org",
+  "url": "https://www.spencer.org/",
+  "timestamp": "2026-03-22T10:16:23.364267",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/spencer_org.png",
+  "total_requests": 29,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "cookies-bar text-light py-3",
+      "id": "",
+      "text": "This site uses cookies. More Information.\n\n\nOK",
+      "rect": {
+        "x": 0,
+        "y": 833,
+        "w": 1425,
+        "h": 67
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "More Information",
+          "ariaLabel": "",
+          "classes": "text-white",
+          "id": "",
+          "x": 373,
+          "y": 866,
+          "w": 123,
+          "h": 16
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "btn btn-outline-light border-2 px-5",
+          "id": "",
+          "x": 1208,
+          "y": 867,
+          "w": 120,
+          "h": 35
+        }
+      ]
+    }
+  ]
+}

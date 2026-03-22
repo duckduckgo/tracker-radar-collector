@@ -1,0 +1,1574 @@
+{
+  "site": "endocrine.org",
+  "url": "https://endocrine.org/",
+  "timestamp": "2026-03-22T10:22:27.638503",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/endocrine_org.png",
+  "total_requests": 122,
+  "blocked_requests_count": 18,
+  "blocked_requests": [
+    {
+      "url": "https://static.addtoany.com/menu/sm.25.html",
+      "domain": "static.addtoany.com"
+    },
+    {
+      "url": "https://static.addtoany.com/menu/modules/core.ydpp7jcu.js",
+      "domain": "static.addtoany.com"
+    },
+    {
+      "url": "https://static.addtoany.com/menu/eso.ydpp7jcu.js",
+      "domain": "static.addtoany.com"
+    },
+    {
+      "url": "https://match.deepintent.com/usersync/114/store?ext1=00430840-25d9-11f1-99c3-479635c63b50&id=UNK",
+      "domain": "match.deepintent.com"
+    },
+    {
+      "url": "https://match.deepintent.com/identity/?key=b34f88888ed3cef8db96f40c178450e85c2fc969ec23ace2f6e4f445ef155738&sid=00430840-25d9-11f1-99c3-479635c63b50&cb=jsonp_1774174936779_65624",
+      "domain": "match.deepintent.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=AW-988200886&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://static.ads-twitter.com/uwt.js",
+      "domain": "static.ads-twitter.com"
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://tracking.magnetmail.net/MagnetLeads.js",
+      "domain": "tracking.magnetmail.net"
+    },
+    {
+      "url": "https://www.clarity.ms/tag/nj421t7n3e?ref=gtm2",
+      "domain": "www.clarity.ms"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-HSDY68YJDC&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://s.adroll.com/j/roundtrip.js",
+      "domain": "s.adroll.com"
+    },
+    {
+      "url": "https://secure.adnxs.com/getuidu?https://trc.lhmos.com/uid/save/?uid=$UID&aimsessionidv4=00430840-25d9-11f1-99c3-479635c63b50&dgid=UNK&mcode=15710&mid=47",
+      "domain": "secure.adnxs.com"
+    },
+    {
+      "url": "https://secure.adnxs.com/getuidp?callback=jsonp_1774174936778_31579",
+      "domain": "secure.adnxs.com"
+    },
+    {
+      "url": "https://tags.crwdcntrl.net/lt/c/12671/lt.min.js",
+      "domain": "tags.crwdcntrl.net"
+    },
+    {
+      "url": "https://mviewwebtes.112.2o7.net/b/ss/mviewwebtes/1/JS-2.26.0-LEWM/s51992314462063?AQB=1&ndh=1&pf=1&t=22%2F2%2F2026%206%3A22%3A16%200%20240&fid=39F066907F2D3A81-11B47BA71B0C1EAC&ce=UTF-8&g=https%3A%2F%2Fwww.endocrine.org%2F&cc=USD&s=1440x900&c=24&j=1.6&v=N&k=Y&bw=1440&bh=900&AQE=1",
+      "domain": "mviewwebtes.112.2o7.net"
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/pagead/managed/dict/m202603190101/gpt",
+      "domain": "securepubads.g.doubleclick.net"
+    },
+    {
+      "url": "https://pagead2.googlesyndication.com/pagead/ping?e=1",
+      "domain": "pagead2.googlesyndication.com"
+    }
+  ],
+  "blocked_domains": [
+    "connect.facebook.net",
+    "match.deepintent.com",
+    "mviewwebtes.112.2o7.net",
+    "pagead2.googlesyndication.com",
+    "s.adroll.com",
+    "secure.adnxs.com",
+    "securepubads.g.doubleclick.net",
+    "static.addtoany.com",
+    "static.ads-twitter.com",
+    "tags.crwdcntrl.net",
+    "tracking.magnetmail.net",
+    "www.clarity.ms",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "body",
+      "classes": "show-gdpr",
+      "id": "",
+      "text": "<iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-MP7Z5K\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe>\n  \n\n\n\n\n    \n        \n        \n            \n                \n    \n        \n            \n                        \n                                \n                                    Home\n                                \n                        \n                        \n                                \n                                    Donate\n                ",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 4958
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Home",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 110,
+          "y": 22,
+          "w": 36,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Donate",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 179,
+          "y": 22,
+          "w": 44,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "ENDO 2026",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 265,
+          "y": 22,
+          "w": 70,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "EndoForum",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 364,
+          "y": 22,
+          "w": 70,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Search",
+          "classes": "CoveoSearchButton coveo-accessible-button",
+          "id": "",
+          "x": 1303,
+          "y": 28,
+          "w": 60,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "end-site-logo__link",
+          "id": "",
+          "x": 189,
+          "y": 101,
+          "w": 193,
+          "h": 49
+        },
+        {
+          "tag": "a",
+          "text": "News",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 447,
+          "y": 87,
+          "w": 162,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Advocacy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 647,
+          "y": 87,
+          "w": 162,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Awards",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 847,
+          "y": 87,
+          "w": 162,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Endocrine Topics",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 447,
+          "y": 119,
+          "w": 162,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Education & Training",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 647,
+          "y": 119,
+          "w": 162,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Practice Guidelines",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 847,
+          "y": 119,
+          "w": 162,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Journals",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 447,
+          "y": 151,
+          "w": 162,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Meetings & Events",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 647,
+          "y": 151,
+          "w": 162,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Store",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 847,
+          "y": 151,
+          "w": 162,
+          "h": 21
+        },
+        {
+          "tag": "button",
+          "text": "Hello, Please login\n                    \n                \n                    Your Account & Tools",
+          "ariaLabel": "",
+          "classes": "member-login__button js-simple-nav",
+          "id": "",
+          "x": 1132,
+          "y": 100,
+          "w": 181,
+          "h": 48
+        },
+        {
+          "tag": "a",
+          "text": "0 Items",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1285,
+          "y": 100,
+          "w": 95,
+          "h": 24
+        },
+        {
+          "tag": "a",
+          "text": "The Latest",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 137,
+          "y": 226,
+          "w": 88,
+          "h": 28
+        },
+        {
+          "tag": "a",
+          "text": "Our Community",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 277,
+          "y": 226,
+          "w": 132,
+          "h": 28
+        },
+        {
+          "tag": "a",
+          "text": "Advancing Research",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 459,
+          "y": 226,
+          "w": 172,
+          "h": 28
+        },
+        {
+          "tag": "a",
+          "text": "Improving Practice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 654,
+          "y": 226,
+          "w": 158,
+          "h": 28
+        },
+        {
+          "tag": "a",
+          "text": "Membership",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 816,
+          "y": 226,
+          "w": 105,
+          "h": 28
+        },
+        {
+          "tag": "a",
+          "text": "Partnerships",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 952,
+          "y": 226,
+          "w": 108,
+          "h": 28
+        },
+        {
+          "tag": "a",
+          "text": "JOIN OR RENEW TODAY!",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1257,
+          "y": 226,
+          "w": 151,
+          "h": 18
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 340,
+          "y": 978,
+          "w": 414,
+          "h": 461
+        },
+        {
+          "tag": "a",
+          "text": "ENDO 2026 Early Rates End Next Tuesday",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 340,
+          "y": 1282,
+          "w": 414,
+          "h": 77
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 758,
+          "y": 832,
+          "w": 323,
+          "h": 170
+        },
+        {
+          "tag": "a",
+          "text": "Endocrine Mentor Day Registration Now Open",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 758,
+          "y": 981,
+          "w": 323,
+          "h": 58
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 758,
+          "y": 1475,
+          "w": 323,
+          "h": 170
+        },
+        {
+          "tag": "a",
+          "text": "The Dual Practice of Obesity Medicine: Academic and Private Care Pathways",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 758,
+          "y": 1638,
+          "w": 323,
+          "h": 86
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1131,
+          "y": 832,
+          "w": 323,
+          "h": 170
+        },
+        {
+          "tag": "a",
+          "text": "Now Available: The Gold Standard in Endocrine Education",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1131,
+          "y": 996,
+          "w": 323,
+          "h": 86
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1131,
+          "y": 1503,
+          "w": 323,
+          "h": 170
+        },
+        {
+          "tag": "a",
+          "text": "Advocacy in Action",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1131,
+          "y": 1638,
+          "w": 323,
+          "h": 29
+        },
+        {
+          "tag": "button",
+          "text": "Previous",
+          "ariaLabel": "",
+          "classes": "slick-prev slick-arrow slick-disabled",
+          "id": "",
+          "x": 107,
+          "y": 2226,
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "a",
+          "text": "News",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 227,
+          "y": 2244,
+          "w": 117,
+          "h": 90
+        },
+        {
+          "tag": "a",
+          "text": "Advocacy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 376,
+          "y": 2244,
+          "w": 117,
+          "h": 90
+        },
+        {
+          "tag": "a",
+          "text": "Awards",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 525,
+          "y": 2244,
+          "w": 117,
+          "h": 90
+        },
+        {
+          "tag": "a",
+          "text": "Endocrine Topics",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 674,
+          "y": 2258,
+          "w": 117,
+          "h": 117
+        },
+        {
+          "tag": "a",
+          "text": "Education & Training",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 823,
+          "y": 2258,
+          "w": 117,
+          "h": 117
+        },
+        {
+          "tag": "a",
+          "text": "Practice Guidelines",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 972,
+          "y": 2258,
+          "w": 117,
+          "h": 117
+        },
+        {
+          "tag": "a",
+          "text": "Journals",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1121,
+          "y": 2244,
+          "w": 117,
+          "h": 90
+        },
+        {
+          "tag": "a",
+          "text": "Meetings & Events",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1270,
+          "y": 2258,
+          "w": 117,
+          "h": 117
+        },
+        {
+          "tag": "a",
+          "text": "Store",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1419,
+          "y": 2244,
+          "w": 117,
+          "h": 90
+        },
+        {
+          "tag": "button",
+          "text": "Next",
+          "ariaLabel": "",
+          "classes": "slick-next slick-arrow",
+          "id": "",
+          "x": 1319,
+          "y": 2226,
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "button",
+          "text": "1",
+          "ariaLabel": "1 of 2",
+          "classes": "",
+          "id": "slick-slide-control00",
+          "x": 698,
+          "y": 2331,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "2",
+          "ariaLabel": "2 of 2",
+          "classes": "",
+          "id": "slick-slide-control01",
+          "x": 728,
+          "y": 2331,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "Publish with Us",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 296,
+          "y": 2594,
+          "w": 286,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Gain professional recognition",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 296,
+          "y": 2621,
+          "w": 286,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Attend a meeting or event",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 296,
+          "y": 2648,
+          "w": 286,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Learn and claim credits (CME/MOC)",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 688,
+          "y": 2594,
+          "w": 307,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Explore career development resources",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 688,
+          "y": 2621,
+          "w": 307,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Browse journals and articles",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 688,
+          "y": 2648,
+          "w": 307,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "View session recordings",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 688,
+          "y": 2675,
+          "w": 307,
+          "h": 27
+        },
+        {
+          "tag": "button",
+          "text": "Join Today",
+          "ariaLabel": "",
+          "classes": "btn btn--primary",
+          "id": "",
+          "x": 1037,
+          "y": 2567,
+          "w": 200,
+          "h": 51
+        },
+        {
+          "tag": "a",
+          "text": "Join Today",
+          "ariaLabel": "",
+          "classes": "btn--primary__text",
+          "id": "",
+          "x": 1011,
+          "y": 2566,
+          "w": 78,
+          "h": 23
+        },
+        {
+          "tag": "a",
+          "text": "advantages of membership",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1178,
+          "y": 2661,
+          "w": 189,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Endocrine Society congratulates 2026 Early Investigator Award winners",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 165,
+          "y": 2982,
+          "w": 169,
+          "h": 144
+        },
+        {
+          "tag": "a",
+          "text": "PFAS exposure may weaken teens\u2019 bones",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 384,
+          "y": 2946,
+          "w": 169,
+          "h": 72
+        },
+        {
+          "tag": "a",
+          "text": "Father\u2019s tobacco use may raise children\u2019s diabetes risk",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 603,
+          "y": 2958,
+          "w": 169,
+          "h": 96
+        },
+        {
+          "tag": "a",
+          "text": "View More",
+          "ariaLabel": "",
+          "classes": "btn btn--box-arrow",
+          "id": "",
+          "x": 122,
+          "y": 3323,
+          "w": 84,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Cabergoline-Induced Gambling Causing Increased Adrenal Crisis Episodes",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 822,
+          "y": 3081,
+          "w": 169,
+          "h": 343
+        },
+        {
+          "tag": "a",
+          "text": "Exploring GABA and Kisspeptin Roles in Reproductive and Metabolic Regulation",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1041,
+          "y": 3069,
+          "w": 169,
+          "h": 319
+        },
+        {
+          "tag": "a",
+          "text": "Beneficial Effects of Carbohydrate Restriction in Type 2 Diabetes Can Be Traced to Changes in Hepatic Metabolism",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1261,
+          "y": 3093,
+          "w": 169,
+          "h": 367
+        },
+        {
+          "tag": "a",
+          "text": "View More",
+          "ariaLabel": "",
+          "classes": "btn btn--box-arrow",
+          "id": "",
+          "x": 780,
+          "y": 3616,
+          "w": 84,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Back to top",
+          "ariaLabel": "",
+          "classes": "button-back-to-top js-back-to-top",
+          "id": "",
+          "x": 1370,
+          "y": 850,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "Read about our history",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1180,
+          "y": 3844,
+          "w": 180,
+          "h": 24
+        },
+        {
+          "tag": "a",
+          "text": "Advertise with Us",
+          "ariaLabel": "",
+          "classes": "btn btn--box-arrow",
+          "id": "",
+          "x": 1138,
+          "y": 4023,
+          "w": 363,
+          "h": 32
+        },
+        {
+          "tag": "a",
+          "text": "License our Content",
+          "ariaLabel": "",
+          "classes": "btn btn--box-arrow",
+          "id": "",
+          "x": 1138,
+          "y": 4055,
+          "w": 363,
+          "h": 32
+        },
+        {
+          "tag": "a",
+          "text": "Awards",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 227,
+          "y": 4283,
+          "w": 144,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Endocrine News Podcast",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 434,
+          "y": 4283,
+          "w": 144,
+          "h": 41
+        },
+        {
+          "tag": "a",
+          "text": "News",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 641,
+          "y": 4283,
+          "w": 144,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Journals",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 847,
+          "y": 4283,
+          "w": 144,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Meetings & Events",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1054,
+          "y": 4283,
+          "w": 144,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Endocrine Topics",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1260,
+          "y": 4283,
+          "w": 144,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Practice Guidelines",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 227,
+          "y": 4353,
+          "w": 144,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Education & Training",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 434,
+          "y": 4353,
+          "w": 144,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Membership",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 641,
+          "y": 4353,
+          "w": 144,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Products & Services",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 847,
+          "y": 4353,
+          "w": 144,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Our Community",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 148,
+          "y": 4497,
+          "w": 110,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Special Interest Groups",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 181,
+          "y": 4545,
+          "w": 177,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Career & Professional Development",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 181,
+          "y": 4582,
+          "w": 177,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "Community & Global Exchange",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 181,
+          "y": 4627,
+          "w": 177,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "Expanding Field of Endocrinology",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 181,
+          "y": 4672,
+          "w": 177,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "About Endocrine Society",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 181,
+          "y": 4710,
+          "w": 177,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Advancing Research",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 373,
+          "y": 4497,
+          "w": 143,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Research Opportunities",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 387,
+          "y": 4545,
+          "w": 170,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Stay Informed: Scientific Research",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 387,
+          "y": 4582,
+          "w": 170,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "Research Fellowships & Programs",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 387,
+          "y": 4627,
+          "w": 170,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "Research Awards",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 387,
+          "y": 4665,
+          "w": 170,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Improving Practice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 570,
+          "y": 4497,
+          "w": 132,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Clinical Practice Guidelines",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 597,
+          "y": 4545,
+          "w": 187,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Education & Training",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 597,
+          "y": 4574,
+          "w": 187,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Physician Payment: QPP and MACRA",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 597,
+          "y": 4612,
+          "w": 187,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "Membership",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 766,
+          "y": 4497,
+          "w": 87,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Member Rates",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 782,
+          "y": 4545,
+          "w": 118,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Renew Membership",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 782,
+          "y": 4574,
+          "w": 118,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Member Resources",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 782,
+          "y": 4604,
+          "w": 118,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "EndoForum Community",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 782,
+          "y": 4641,
+          "w": 118,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "Membership Toolkit",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 782,
+          "y": 4679,
+          "w": 118,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Advertise with Us",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 782,
+          "y": 4708,
+          "w": 118,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "About Us",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 905,
+          "y": 4497,
+          "w": 64,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Board of Directors",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 949,
+          "y": 4545,
+          "w": 152,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Ethics and Society Documents",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 949,
+          "y": 4582,
+          "w": 152,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "Society Staff",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 949,
+          "y": 4619,
+          "w": 152,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Our History",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 949,
+          "y": 4649,
+          "w": 152,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Employment at the Society",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 949,
+          "y": 4686,
+          "w": 152,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "Careers",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 118,
+          "y": 4806,
+          "w": 51,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "Licensing & Permissions",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 255,
+          "y": 4806,
+          "w": 161,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "Commercial Reprints",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 435,
+          "y": 4806,
+          "w": 137,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "Advertise with Us",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 592,
+          "y": 4806,
+          "w": 115,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "btn btn--box-arrow",
+          "id": "",
+          "x": 768,
+          "y": 856,
+          "w": 85,
+          "h": 21
+        },
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "js-accept-btn btn btn--white",
+          "id": "",
+          "x": 1211,
+          "y": 857,
+          "w": 103,
+          "h": 36
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Close Banner",
+          "classes": "end-gdpr-banner__close-button js-close-btn btn--reset",
+          "id": "",
+          "x": 1385,
+          "y": 857,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "Terms & Policies",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 436,
+          "y": 4891,
+          "w": 87,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Privacy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 515,
+          "y": 4891,
+          "w": 38,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "twitter",
+          "classes": "",
+          "id": "",
+          "x": 1128,
+          "y": 4501,
+          "w": 30,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Facebook",
+          "classes": "",
+          "id": "",
+          "x": 1166,
+          "y": 4501,
+          "w": 30,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "https://www.instagram.com/theendocrinesociety/",
+          "classes": "",
+          "id": "",
+          "x": 1204,
+          "y": 4501,
+          "w": 30,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "https://www.linkedin.com/company/the-endocrine-society/",
+          "classes": "",
+          "id": "",
+          "x": 1242,
+          "y": 4501,
+          "w": 30,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "linkedin",
+          "classes": "",
+          "id": "",
+          "x": 1280,
+          "y": 4501,
+          "w": 30,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": " https://bsky.app/profile/endocrinesociety.bsky.social",
+          "classes": "",
+          "id": "",
+          "x": 1318,
+          "y": 4501,
+          "w": 30,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "Contact Us",
+          "ariaLabel": "",
+          "classes": "btn btn--box-arrow",
+          "id": "",
+          "x": 1156,
+          "y": 4576,
+          "w": 87,
+          "h": 22
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "end-gdpr-banner container container--bleed is-adjacent container--horizontal-padding",
+      "id": "gdprBanner",
+      "text": "Our website uses cookies to deliver an improved browser experience. To learn more, please visit our\n                            \n                                Privacy Policy\n                            \n\n            \n            \n                 Accept",
+      "rect": {
+        "x": 0,
+        "y": 814,
+        "w": 1425,
+        "h": 86
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "btn btn--box-arrow",
+          "id": "",
+          "x": 768,
+          "y": 856,
+          "w": 85,
+          "h": 21
+        },
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "js-accept-btn btn btn--white",
+          "id": "",
+          "x": 1211,
+          "y": 857,
+          "w": 103,
+          "h": 36
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Close Banner",
+          "classes": "end-gdpr-banner__close-button js-close-btn btn--reset",
+          "id": "",
+          "x": 1385,
+          "y": 857,
+          "w": 40,
+          "h": 40
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "end-gdpr-banner__container container container--100",
+      "id": "",
+      "text": "Our website uses cookies to deliver an improved browser experience. To learn more, please visit our\n                            \n                                Privacy Policy\n                            \n\n            \n            \n                 Accept",
+      "rect": {
+        "x": 93,
+        "y": 839,
+        "w": 1240,
+        "h": 36
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "btn btn--box-arrow",
+          "id": "",
+          "x": 768,
+          "y": 856,
+          "w": 85,
+          "h": 21
+        },
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "js-accept-btn btn btn--white",
+          "id": "",
+          "x": 1211,
+          "y": 857,
+          "w": 103,
+          "h": 36
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "end-gdpr-banner__cta-container",
+      "id": "",
+      "text": "Accept",
+      "rect": {
+        "x": 918,
+        "y": 839,
+        "w": 345,
+        "h": 36
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "js-accept-btn btn btn--white",
+          "id": "",
+          "x": 1211,
+          "y": 857,
+          "w": 103,
+          "h": 36
+        }
+      ]
+    }
+  ]
+}

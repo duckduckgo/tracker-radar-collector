@@ -1,0 +1,25 @@
+{
+  "site": "schoolhouse.com",
+  "url": "https://schoolhouse.com/",
+  "timestamp": "2026-03-22T10:10:46.107487",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/schoolhouse_com.png",
+  "total_requests": 280,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": [
+    {
+      "tag": "button",
+      "classes": "absolute w-full h-full bg-overlay transition duration-300 opacity-0",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 900
+      },
+      "buttons": []
+    }
+  ]
+}

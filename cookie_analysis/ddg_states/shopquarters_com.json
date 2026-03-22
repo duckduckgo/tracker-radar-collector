@@ -1,0 +1,96 @@
+{
+  "site": "shopquarters.com",
+  "url": "https://shopquarters.com/",
+  "timestamp": "2026-03-22T10:12:30.934424",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/shopquarters_com.png",
+  "total_requests": 127,
+  "blocked_requests_count": 2,
+  "blocked_requests": [
+    {
+      "url": "https://lantern.roeyecdn.com/lantern_global_120349.min.js",
+      "domain": "lantern.roeyecdn.com"
+    },
+    {
+      "url": "https://www.dwin1.com/106491.js",
+      "domain": "www.dwin1.com"
+    }
+  ],
+  "blocked_domains": [
+    "lantern.roeyecdn.com",
+    "www.dwin1.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "aside",
+      "classes": "absolute top-0 left-0 w-full bottom-0 flex items-end pointer-events-none z-50",
+      "id": "",
+      "text": "Stay up-to-date on new arrivals, special events, and other worthwhile diversions.\n          \n          \n            \n              \n              \n            \n          \n        \n        \n  \n    \n      \n    \n    \n    \n      Enter",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1441,
+        "h": 900
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "w-3.5 h-3.5 hover:opacity-50 duration-300 ease-linear transition-opacity shrink-0",
+          "id": "",
+          "x": 1400,
+          "y": 746,
+          "w": 14,
+          "h": 14
+        },
+        {
+          "tag": "button",
+          "text": "Enter",
+          "ariaLabel": "Submit form",
+          "classes": "small-sans p-0.5 cursor-pointer shrink-0 group-invalid:cursor-not-allowed peer-[&:not(:placeholder-shown):not(:focus):invalid]:before:content-['Invalid'] before:block relative hover:opacity-50 duration-300 ease-in-linear transition-all before:content-['Enter']",
+          "id": "",
+          "x": 1390,
+          "y": 856,
+          "w": 34,
+          "h": 21
+        }
+      ]
+    },
+    {
+      "tag": "aside",
+      "classes": "absolute top-0 left-0 w-full bottom-0 flex items-end pointer-events-none z-[100]",
+      "id": "",
+      "text": "We use cookies to remember your preferences and personalize your experience.\n      \n      \n        Accept\n        \n          View Privacy Policy",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1441,
+        "h": 900
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "underline hover:opacity-50 duration-200 ease-linear",
+          "id": "",
+          "x": 1262,
+          "y": 864,
+          "w": 41,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "View Privacy Policy",
+          "ariaLabel": "",
+          "classes": "hover:opacity-50 duration-200 ease-linear",
+          "id": "",
+          "x": 1353,
+          "y": 864,
+          "w": 109,
+          "h": 17
+        }
+      ]
+    }
+  ]
+}

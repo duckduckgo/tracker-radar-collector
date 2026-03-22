@@ -1,0 +1,47 @@
+[
+  {
+    "tag": "h1",
+    "classes": "\n                font-ubuntu text-[2.25rem] font-semibold leading-[2.625rem] md:text-[4rem] md:leading-[4.375rem] \n                md:font-bold tracking-[0.72px] [text-shadow:var(--banner-heading-shadow)]\n              ",
+    "id": "",
+    "text": "Find your path. Expand your community. Immerse yourself.",
+    "rect": {
+      "x": 94,
+      "y": 170,
+      "w": 824,
+      "h": 210
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "h2",
+    "classes": "\n                text-[1.125rem] font-normal leading-[1.5rem] \n                md:text-[1.5rem] md:leading-[2.25rem] [text-shadow:var(--banner-description-shadow)]\n                ",
+    "id": "",
+    "text": "Explore pre-college academic programming at world-renowned universities.",
+    "rect": {
+      "x": 94,
+      "y": 390,
+      "w": 824,
+      "h": 72
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "span",
+    "classes": "\n        absolute inset-0 z-1 style_videoOverlay__7iwg_\n      ",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 836,
+      "y": 1919,
+      "w": 506,
+      "h": 406
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"overlay\" i]"
+  }
+]

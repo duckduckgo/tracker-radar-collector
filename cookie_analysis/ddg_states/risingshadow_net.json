@@ -1,0 +1,55 @@
+{
+  "site": "risingshadow.net",
+  "url": "https://www.risingshadow.net/",
+  "timestamp": "2026-03-22T10:20:04.867248",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/risingshadow_net.png",
+  "total_requests": 50,
+  "blocked_requests_count": 1,
+  "blocked_requests": [
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-C6XY8ZW4ZY",
+      "domain": "www.googletagmanager.com"
+    }
+  ],
+  "blocked_domains": [
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "",
+      "id": "cookieConsent",
+      "text": "This website uses cookies to ensure you get the best experience on our website.Privacy PolicyGot it!",
+      "rect": {
+        "x": 0,
+        "y": 831,
+        "w": 1425,
+        "h": 69
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 675,
+          "y": 876,
+          "w": 93,
+          "h": 16
+        },
+        {
+          "tag": "button",
+          "text": "Got it!",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 767,
+          "y": 876,
+          "w": 59,
+          "h": 27
+        }
+      ]
+    }
+  ]
+}

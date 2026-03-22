@@ -1,0 +1,1601 @@
+[
+  {
+    "tag": "div",
+    "classes": "TopicPromoBanner_topicPromoBanner__mIgfV",
+    "id": "static-banner-1",
+    "text": "",
+    "rect": {
+      "x": 1038,
+      "y": 1884,
+      "w": 295,
+      "h": 565
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "Grid_grid__zS_Qg PageWideBannerGrid_pageWideBannerGrid__qg5J6",
+    "id": "",
+    "text": "Iran tensionsHow the Middle East crisis impacts AsiaOur latest coverage of business, diplomacy and the economy after the U.S.-Israeli strikesDiscover moreIran tensions",
+    "rect": {
+      "x": 93,
+      "y": 2479,
+      "w": 1240,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 297,
+        "y": 2594
+      },
+      {
+        "tag": "a",
+        "text": "How the Middle East crisis impacts Asia",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 779,
+        "y": 2544
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 779,
+        "y": 2646
+      },
+      {
+        "tag": "a",
+        "text": "Iran tensions",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 1209,
+        "y": 2582
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridItem__J5MfN PageWideBannerGrid_pageWideBannerGrid__qg5J6",
+    "id": "",
+    "text": "Iran tensionsHow the Middle East crisis impacts AsiaOur latest coverage of business, diplomacy and the economy after the U.S.-Israeli strikesDiscover moreIran tensions",
+    "rect": {
+      "x": 93,
+      "y": 2479,
+      "w": 1240,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 297,
+        "y": 2594
+      },
+      {
+        "tag": "a",
+        "text": "How the Middle East crisis impacts Asia",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 779,
+        "y": 2544
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 779,
+        "y": 2646
+      },
+      {
+        "tag": "a",
+        "text": "Iran tensions",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 1209,
+        "y": 2582
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridItem__J5MfN PageWideBannerGrid_pageWideBannerGrid__qg5J6",
+    "id": "",
+    "text": "Iran tensionsHow the Middle East crisis impacts AsiaOur latest coverage of business, diplomacy and the economy after the U.S.-Israeli strikesDiscover moreIran tensions",
+    "rect": {
+      "x": 93,
+      "y": 2479,
+      "w": 1240,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 297,
+        "y": 2594
+      },
+      {
+        "tag": "a",
+        "text": "How the Middle East crisis impacts Asia",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 779,
+        "y": 2544
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 779,
+        "y": 2646
+      },
+      {
+        "tag": "a",
+        "text": "Iran tensions",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 1209,
+        "y": 2582
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridInnerWrapper__7dgoM",
+    "id": "",
+    "text": "Iran tensionsHow the Middle East crisis impacts AsiaOur latest coverage of business, diplomacy and the economy after the U.S.-Israeli strikesDiscover moreIran tensions",
+    "rect": {
+      "x": 93,
+      "y": 2479,
+      "w": 1240,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 297,
+        "y": 2594
+      },
+      {
+        "tag": "a",
+        "text": "How the Middle East crisis impacts Asia",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 779,
+        "y": 2544
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 779,
+        "y": 2646
+      },
+      {
+        "tag": "a",
+        "text": "Iran tensions",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 1209,
+        "y": 2582
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridImageContainer__Gm_Ap",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 93,
+      "y": 2479,
+      "w": 409,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 297,
+        "y": 2594
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "a",
+    "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 93,
+      "y": 2479,
+      "w": 409,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "img",
+    "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4 ImageNew_imageNewImageResponsive__f1VTu",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 93,
+      "y": 2479,
+      "w": 409,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridContent__QxJfW",
+    "id": "",
+    "text": "Iran tensionsHow the Middle East crisis impacts AsiaOur latest coverage of business, diplomacy and the economy after the U.S.-Israeli strikesDiscover more",
+    "rect": {
+      "x": 502,
+      "y": 2479,
+      "w": 534,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "How the Middle East crisis impacts Asia",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 779,
+        "y": 2544
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 779,
+        "y": 2646
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "h2",
+    "classes": "Heading_heading__AsDWN PageWideBannerGrid_pageWideBannerGridHeading__Q4lkY",
+    "id": "",
+    "text": "How the Middle East crisis impacts Asia",
+    "rect": {
+      "x": 543,
+      "y": 2509,
+      "w": 473,
+      "h": 70
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "p",
+    "classes": "Subhead_subhead__B5_Rz PageWideBannerGrid_pageWideBannerGridContentSubhead__P2mrH",
+    "id": "",
+    "text": "Our latest coverage of business, diplomacy and the economy after the U.S.-Israeli strikes",
+    "rect": {
+      "x": 543,
+      "y": 2579,
+      "w": 473,
+      "h": 51
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridDiscoverMore__M0VxC",
+    "id": "",
+    "text": "Discover more",
+    "rect": {
+      "x": 543,
+      "y": 2630,
+      "w": 473,
+      "h": 32
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "p",
+    "classes": "Heading_heading__AsDWN PageWideBannerGrid_pageWideBannerGridDiscoverMoreText__q6KD_",
+    "id": "",
+    "text": "Discover more",
+    "rect": {
+      "x": 575,
+      "y": 2633,
+      "w": 140,
+      "h": 26
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridAside__Vcztr",
+    "id": "",
+    "text": "Iran tensions",
+    "rect": {
+      "x": 1036,
+      "y": 2479,
+      "w": 297,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Iran tensions",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 1209,
+        "y": 2582
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridContainer__0s1qa",
+    "id": "",
+    "text": "Iran tensions",
+    "rect": {
+      "x": 1036,
+      "y": 2509,
+      "w": 267,
+      "h": 170
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Iran tensions",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/iran-tensions",
+        "x": 1209,
+        "y": 2582
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "Tag_tag__TLJZU PageWideBannerGrid_pageWideBannerGridContainerTag__Z9ioN",
+    "id": "",
+    "text": "Iran tensions",
+    "rect": {
+      "x": 1115,
+      "y": 2569,
+      "w": 188,
+      "h": 26
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "TopicPromoBanner_topicPromoBanner__mIgfV",
+    "id": "static-banner-2",
+    "text": "",
+    "rect": {
+      "x": 1038,
+      "y": 2772,
+      "w": 295,
+      "h": 565
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "Grid_grid__zS_Qg PageWideBannerGrid_pageWideBannerGrid__qg5J6",
+    "id": "",
+    "text": "#techAsiaA test for chip testing and SoftBank's stumbleThe inside story on the Asia tech trends that matter, from Nikkei Asia and the Financial TimesDiscover more#techAsiaAsia's tech transformation decoded",
+    "rect": {
+      "x": 93,
+      "y": 3367,
+      "w": 1240,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 297,
+        "y": 3482
+      },
+      {
+        "tag": "a",
+        "text": "A test for chip testing and SoftBank's stumble",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 779,
+        "y": 3432
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 779,
+        "y": 3534
+      },
+      {
+        "tag": "a",
+        "text": "#techAsia",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/techasia",
+        "x": 1235,
+        "y": 3470
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridItem__J5MfN PageWideBannerGrid_pageWideBannerGrid__qg5J6",
+    "id": "",
+    "text": "#techAsiaA test for chip testing and SoftBank's stumbleThe inside story on the Asia tech trends that matter, from Nikkei Asia and the Financial TimesDiscover more#techAsiaAsia's tech transformation decoded",
+    "rect": {
+      "x": 93,
+      "y": 3367,
+      "w": 1240,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 297,
+        "y": 3482
+      },
+      {
+        "tag": "a",
+        "text": "A test for chip testing and SoftBank's stumble",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 779,
+        "y": 3432
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 779,
+        "y": 3534
+      },
+      {
+        "tag": "a",
+        "text": "#techAsia",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/techasia",
+        "x": 1235,
+        "y": 3470
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridItem__J5MfN PageWideBannerGrid_pageWideBannerGrid__qg5J6",
+    "id": "",
+    "text": "#techAsiaA test for chip testing and SoftBank's stumbleThe inside story on the Asia tech trends that matter, from Nikkei Asia and the Financial TimesDiscover more#techAsiaAsia's tech transformation decoded",
+    "rect": {
+      "x": 93,
+      "y": 3367,
+      "w": 1240,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 297,
+        "y": 3482
+      },
+      {
+        "tag": "a",
+        "text": "A test for chip testing and SoftBank's stumble",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 779,
+        "y": 3432
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 779,
+        "y": 3534
+      },
+      {
+        "tag": "a",
+        "text": "#techAsia",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/techasia",
+        "x": 1235,
+        "y": 3470
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridInnerWrapper__7dgoM",
+    "id": "",
+    "text": "#techAsiaA test for chip testing and SoftBank's stumbleThe inside story on the Asia tech trends that matter, from Nikkei Asia and the Financial TimesDiscover more#techAsiaAsia's tech transformation decoded",
+    "rect": {
+      "x": 93,
+      "y": 3367,
+      "w": 1240,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 297,
+        "y": 3482
+      },
+      {
+        "tag": "a",
+        "text": "A test for chip testing and SoftBank's stumble",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 779,
+        "y": 3432
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 779,
+        "y": 3534
+      },
+      {
+        "tag": "a",
+        "text": "#techAsia",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/techasia",
+        "x": 1235,
+        "y": 3470
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridImageContainer__Gm_Ap",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 93,
+      "y": 3367,
+      "w": 409,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 297,
+        "y": 3482
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "a",
+    "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 93,
+      "y": 3367,
+      "w": 409,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "img",
+    "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4 ImageNew_imageNewImageResponsive__f1VTu",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 93,
+      "y": 3367,
+      "w": 409,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridContent__QxJfW",
+    "id": "",
+    "text": "#techAsiaA test for chip testing and SoftBank's stumbleThe inside story on the Asia tech trends that matter, from Nikkei Asia and the Financial TimesDiscover more",
+    "rect": {
+      "x": 502,
+      "y": 3367,
+      "w": 534,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "A test for chip testing and SoftBank's stumble",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 779,
+        "y": 3432
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/techasia/a-test-for-chip-testing-and-softbank-s-stumble",
+        "x": 779,
+        "y": 3534
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "h2",
+    "classes": "Heading_heading__AsDWN PageWideBannerGrid_pageWideBannerGridHeading__Q4lkY",
+    "id": "",
+    "text": "A test for chip testing and SoftBank's stumble",
+    "rect": {
+      "x": 543,
+      "y": 3397,
+      "w": 473,
+      "h": 70
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "p",
+    "classes": "Subhead_subhead__B5_Rz PageWideBannerGrid_pageWideBannerGridContentSubhead__P2mrH",
+    "id": "",
+    "text": "The inside story on the Asia tech trends that matter, from Nikkei Asia and the Financial Times",
+    "rect": {
+      "x": 543,
+      "y": 3467,
+      "w": 473,
+      "h": 51
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridDiscoverMore__M0VxC",
+    "id": "",
+    "text": "Discover more",
+    "rect": {
+      "x": 543,
+      "y": 3518,
+      "w": 473,
+      "h": 32
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "p",
+    "classes": "Heading_heading__AsDWN PageWideBannerGrid_pageWideBannerGridDiscoverMoreText__q6KD_",
+    "id": "",
+    "text": "Discover more",
+    "rect": {
+      "x": 575,
+      "y": 3521,
+      "w": 140,
+      "h": 26
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridAside__Vcztr",
+    "id": "",
+    "text": "#techAsiaAsia's tech transformation decoded",
+    "rect": {
+      "x": 1036,
+      "y": 3367,
+      "w": 297,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "#techAsia",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/techasia",
+        "x": 1235,
+        "y": 3470
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridContainer__0s1qa",
+    "id": "",
+    "text": "#techAsiaAsia's tech transformation decoded",
+    "rect": {
+      "x": 1036,
+      "y": 3397,
+      "w": 267,
+      "h": 170
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "#techAsia",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/techasia",
+        "x": 1235,
+        "y": 3470
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "Tag_tag__TLJZU PageWideBannerGrid_pageWideBannerGridContainerTag__Z9ioN",
+    "id": "",
+    "text": "#techAsia",
+    "rect": {
+      "x": 1167,
+      "y": 3457,
+      "w": 136,
+      "h": 26
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "p",
+    "classes": "Subhead_subhead__B5_Rz PageWideBannerGrid_pageWideBannerGridContainerSubhead__agPNS",
+    "id": "",
+    "text": "Asia's tech transformation decoded",
+    "rect": {
+      "x": 1057,
+      "y": 3483,
+      "w": 246,
+      "h": 44
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "TopicPromoBanner_topicPromoBanner__mIgfV",
+    "id": "static-banner-3",
+    "text": "",
+    "rect": {
+      "x": 1038,
+      "y": 3660,
+      "w": 295,
+      "h": 565
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "Grid_grid__zS_Qg PageWideBannerGrid_pageWideBannerGrid__qg5J6",
+    "id": "",
+    "text": "DatawatchAI-fueled surge in scientific papers raises quality concernsTraces of machine-generated text found in over 13% of global biomedical publicationsDiscover moreDatawatchIn depth analysis",
+    "rect": {
+      "x": 93,
+      "y": 4255,
+      "w": 1240,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 297,
+        "y": 4370
+      },
+      {
+        "tag": "a",
+        "text": "AI-fueled surge in scientific papers raises quality concerns",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 779,
+        "y": 4320
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 779,
+        "y": 4422
+      },
+      {
+        "tag": "a",
+        "text": "Datawatch",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/datawatch",
+        "x": 1229,
+        "y": 4358
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridItem__J5MfN PageWideBannerGrid_pageWideBannerGrid__qg5J6",
+    "id": "",
+    "text": "DatawatchAI-fueled surge in scientific papers raises quality concernsTraces of machine-generated text found in over 13% of global biomedical publicationsDiscover moreDatawatchIn depth analysis",
+    "rect": {
+      "x": 93,
+      "y": 4255,
+      "w": 1240,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 297,
+        "y": 4370
+      },
+      {
+        "tag": "a",
+        "text": "AI-fueled surge in scientific papers raises quality concerns",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 779,
+        "y": 4320
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 779,
+        "y": 4422
+      },
+      {
+        "tag": "a",
+        "text": "Datawatch",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/datawatch",
+        "x": 1229,
+        "y": 4358
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridItem__J5MfN PageWideBannerGrid_pageWideBannerGrid__qg5J6",
+    "id": "",
+    "text": "DatawatchAI-fueled surge in scientific papers raises quality concernsTraces of machine-generated text found in over 13% of global biomedical publicationsDiscover moreDatawatchIn depth analysis",
+    "rect": {
+      "x": 93,
+      "y": 4255,
+      "w": 1240,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 297,
+        "y": 4370
+      },
+      {
+        "tag": "a",
+        "text": "AI-fueled surge in scientific papers raises quality concerns",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 779,
+        "y": 4320
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 779,
+        "y": 4422
+      },
+      {
+        "tag": "a",
+        "text": "Datawatch",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/datawatch",
+        "x": 1229,
+        "y": 4358
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridInnerWrapper__7dgoM",
+    "id": "",
+    "text": "DatawatchAI-fueled surge in scientific papers raises quality concernsTraces of machine-generated text found in over 13% of global biomedical publicationsDiscover moreDatawatchIn depth analysis",
+    "rect": {
+      "x": 93,
+      "y": 4255,
+      "w": 1240,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 297,
+        "y": 4370
+      },
+      {
+        "tag": "a",
+        "text": "AI-fueled surge in scientific papers raises quality concerns",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 779,
+        "y": 4320
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 779,
+        "y": 4422
+      },
+      {
+        "tag": "a",
+        "text": "Datawatch",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/datawatch",
+        "x": 1229,
+        "y": 4358
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridImageContainer__Gm_Ap",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 93,
+      "y": 4255,
+      "w": 409,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 297,
+        "y": 4370
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "a",
+    "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 93,
+      "y": 4255,
+      "w": 409,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "img",
+    "classes": "PageWideBannerGrid_pageWideBannerGridImage__NFdA4 ImageNew_imageNewImageResponsive__f1VTu",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 93,
+      "y": 4255,
+      "w": 409,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridContent__QxJfW",
+    "id": "",
+    "text": "DatawatchAI-fueled surge in scientific papers raises quality concernsTraces of machine-generated text found in over 13% of global biomedical publicationsDiscover more",
+    "rect": {
+      "x": 502,
+      "y": 4255,
+      "w": 534,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "AI-fueled surge in scientific papers raises quality concerns",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 779,
+        "y": 4320
+      },
+      {
+        "tag": "a",
+        "text": "Discover more",
+        "ariaLabel": "",
+        "classes": "Link_link__qPD1b",
+        "id": "",
+        "href": "/spotlight/datawatch/ai-fueled-surge-in-scientific-papers-raises-quality-concerns",
+        "x": 779,
+        "y": 4422
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "h2",
+    "classes": "Heading_heading__AsDWN PageWideBannerGrid_pageWideBannerGridHeading__Q4lkY",
+    "id": "",
+    "text": "AI-fueled surge in scientific papers raises quality concerns",
+    "rect": {
+      "x": 543,
+      "y": 4285,
+      "w": 473,
+      "h": 70
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "p",
+    "classes": "Subhead_subhead__B5_Rz PageWideBannerGrid_pageWideBannerGridContentSubhead__P2mrH",
+    "id": "",
+    "text": "Traces of machine-generated text found in over 13% of global biomedical publications",
+    "rect": {
+      "x": 543,
+      "y": 4355,
+      "w": 473,
+      "h": 51
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridDiscoverMore__M0VxC",
+    "id": "",
+    "text": "Discover more",
+    "rect": {
+      "x": 543,
+      "y": 4406,
+      "w": 473,
+      "h": 32
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "p",
+    "classes": "Heading_heading__AsDWN PageWideBannerGrid_pageWideBannerGridDiscoverMoreText__q6KD_",
+    "id": "",
+    "text": "Discover more",
+    "rect": {
+      "x": 575,
+      "y": 4409,
+      "w": 140,
+      "h": 26
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridAside__Vcztr",
+    "id": "",
+    "text": "DatawatchIn depth analysis",
+    "rect": {
+      "x": 1036,
+      "y": 4255,
+      "w": 297,
+      "h": 230
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Datawatch",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/datawatch",
+        "x": 1229,
+        "y": 4358
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "PageWideBannerGrid_pageWideBannerGridContainer__0s1qa",
+    "id": "",
+    "text": "DatawatchIn depth analysis",
+    "rect": {
+      "x": 1036,
+      "y": 4285,
+      "w": 267,
+      "h": 170
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Datawatch",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/spotlight/datawatch",
+        "x": 1229,
+        "y": 4358
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "Tag_tag__TLJZU PageWideBannerGrid_pageWideBannerGridContainerTag__Z9ioN",
+    "id": "",
+    "text": "Datawatch",
+    "rect": {
+      "x": 1155,
+      "y": 4345,
+      "w": 148,
+      "h": 26
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "p",
+    "classes": "Subhead_subhead__B5_Rz PageWideBannerGrid_pageWideBannerGridContainerSubhead__agPNS",
+    "id": "",
+    "text": "In depth analysis",
+    "rect": {
+      "x": 1159,
+      "y": 4371,
+      "w": 144,
+      "h": 22
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "section",
+    "classes": "content overrides_contentPagewideBanner___3hjE",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 83,
+      "y": 6349,
+      "w": 1260,
+      "h": 250
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "overrides_tagContentPagewideBannerParentOverride__yCFG3",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 93,
+      "y": 6349,
+      "w": 1240,
+      "h": 250
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "overrides_bannerImageOverride__cLqsv tag-content-pagewide-banner__image",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 93,
+      "y": 6349,
+      "w": 920,
+      "h": 250
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "overrides_tagContentPagewideBannerOverride__mQA64",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 1033,
+      "y": 6349,
+      "w": 300,
+      "h": 250
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "tag-content-pagewide-banner__advert",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 1033,
+      "y": 6349,
+      "w": 300,
+      "h": 250
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "EventReportsBanner_eventReportsBanner__l2GE_",
+    "id": "",
+    "text": "Event ReportsHighlights and insights from Nikkei eventsProduced by Nikkei Commercial departments",
+    "rect": {
+      "x": 93,
+      "y": 8242,
+      "w": 1240,
+      "h": 185
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "EventReportsBanner_eventReportsBannerSection__7JIkB",
+    "id": "",
+    "text": "Event ReportsHighlights and insights from Nikkei eventsProduced by Nikkei Commercial departments",
+    "rect": {
+      "x": 93,
+      "y": 8242,
+      "w": 1240,
+      "h": 185
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "EventReportsBanner_eventReportsBannerContent__zxXaf",
+    "id": "",
+    "text": "Event Reports",
+    "rect": {
+      "x": 93,
+      "y": 8242,
+      "w": 458,
+      "h": 185
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "h2",
+    "classes": "Heading_heading__AsDWN EventReportsBanner_eventReportsBannerHeading__fBYEA",
+    "id": "",
+    "text": "Event Reports",
+    "rect": {
+      "x": 211,
+      "y": 8291,
+      "w": 339,
+      "h": 82
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "EventReportsBanner_eventReportsBannerAside___uTzW",
+    "id": "",
+    "text": "Highlights and insights from Nikkei eventsProduced by Nikkei Commercial departments",
+    "rect": {
+      "x": 550,
+      "y": 8242,
+      "w": 720,
+      "h": 185
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "EventReportsBanner_eventReportsBannerContainer__FDWTA",
+    "id": "",
+    "text": "Highlights and insights from Nikkei events",
+    "rect": {
+      "x": 622,
+      "y": 8323,
+      "w": 614,
+      "h": 24
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "Tag_tag__TLJZU EventReportsBanner_eventReportsBannerContainerTag__0F1I2",
+    "id": "",
+    "text": "Highlights and insights from Nikkei events",
+    "rect": {
+      "x": 622,
+      "y": 8323,
+      "w": 611,
+      "h": 24
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "",
+    "id": "pianoj_ribbon_cookie",
+    "text": "",
+    "rect": {
+      "x": 0,
+      "y": 822,
+      "w": 1425,
+      "h": 78
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[id*=\"cookie\" i]"
+  }
+]

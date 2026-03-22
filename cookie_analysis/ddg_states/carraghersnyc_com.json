@@ -1,0 +1,806 @@
+{
+  "site": "carraghersnyc.com",
+  "url": "https://www.carraghersnyc.com/",
+  "timestamp": "2026-03-22T10:09:36.500905",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/carraghersnyc_com.png",
+  "total_requests": 94,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": [
+    {
+      "tag": "section",
+      "classes": "gdpr-cookie-banner BOTTOM_LEFT black popup full-styling",
+      "id": "",
+      "text": "By using this website, you agree to our use of cookies. We use cookies to provide you with a great experience and to help our website run effectively.Accept",
+      "rect": {
+        "x": 20,
+        "y": 729,
+        "w": 360,
+        "h": 151
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+          "id": "",
+          "x": 76,
+          "y": 843,
+          "w": 73,
+          "h": 34
+        }
+      ]
+    },
+    {
+      "tag": "p",
+      "classes": "disclaimer-text sqs-cookie-banner-v2-text",
+      "id": "",
+      "text": "By using this website, you agree to our use of cookies. We use cookies to provide you with a great experience and to help our website run effectively.",
+      "rect": {
+        "x": 40,
+        "y": 749,
+        "w": 320,
+        "h": 56
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "button-group sqs-cookie-banner-v2-cta-container",
+      "id": "",
+      "text": "Accept",
+      "rect": {
+        "x": 40,
+        "y": 826,
+        "w": 320,
+        "h": 34
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+          "id": "",
+          "x": 76,
+          "y": 843,
+          "w": 73,
+          "h": 34
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+      "id": "",
+      "text": "Accept",
+      "rect": {
+        "x": 40,
+        "y": 826,
+        "w": 73,
+        "h": 34
+      },
+      "buttons": []
+    },
+    {
+      "tag": "body",
+      "classes": "tweak-blog-alternating-side-by-side-width-full tweak-blog-alternating-side-by-side-image-aspect-ratio-11-square tweak-blog-alternating-side-by-side-text-alignment-left tweak-blog-alternating-side-by-side-read-more-style-show tweak-blog-alternating-side-by-side-image-text-alignment-middle tweak-blog-",
+      "id": "collection-62d722369e9134503a332a87",
+      "text": "By using this website, you agree to our use of cookies. We use cookies to provide you with a great experience and to help our website run effectively.Accept\n      \n      \n\n      \n\n\n\n\n\n\n\n\n\n\n\n\n  \n    \n  \n    \n  \n\n  \n    \n  \n\n  \n    \n  \n\n  \n    \n  \n\n  \n    \n  \n  \n  \n    \n    \n  \n  \n  \n    \n  \n  \n  \n    \n    \n  \n  \n  \n    \n  \n  \n  \n  \n    \n  \n  \n  \n    \n    \n  \n  \n  \n    \n  \n\n  \n    \n    \n  \n\n  \n    \n    \n  \n\n  \n    \n  \n  \n  \n    \n  \n\n\n    \n  \n    function shouldShowAnnouncementBar() {\n      try {\n ",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 7239
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+          "id": "",
+          "x": 76,
+          "y": 843,
+          "w": 73,
+          "h": 34
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "sqs-announcement-bar-url",
+          "id": "",
+          "x": 713,
+          "y": 22,
+          "w": 1425,
+          "h": 44
+        },
+        {
+          "tag": "span",
+          "text": "",
+          "ariaLabel": "Close Announcement",
+          "classes": "sqs-announcement-bar-close",
+          "id": "",
+          "x": 1405,
+          "y": 20,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "Skip to Content",
+          "ariaLabel": "",
+          "classes": "header-skip-link sqs-button-element--primary",
+          "id": "",
+          "x": -15931,
+          "y": 80,
+          "w": 138,
+          "h": 23
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "preFade fadeIn",
+          "id": "",
+          "x": 175,
+          "y": 94,
+          "w": 234,
+          "h": 70
+        },
+        {
+          "tag": "a",
+          "text": "Home",
+          "ariaLabel": "",
+          "classes": "preFade fadeIn",
+          "id": "",
+          "x": 364,
+          "y": 94,
+          "w": 45,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Menu",
+          "ariaLabel": "",
+          "classes": "preFade fadeIn",
+          "id": "",
+          "x": 437,
+          "y": 94,
+          "w": 43,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Summer Specials",
+          "ariaLabel": "",
+          "classes": "preFade fadeIn",
+          "id": "",
+          "x": 554,
+          "y": 94,
+          "w": 135,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Shop",
+          "ariaLabel": "",
+          "classes": "preFade fadeIn",
+          "id": "",
+          "x": 670,
+          "y": 94,
+          "w": 40,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Our Story",
+          "ariaLabel": "",
+          "classes": "preFade fadeIn",
+          "id": "",
+          "x": 755,
+          "y": 94,
+          "w": 73,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Events",
+          "ariaLabel": "",
+          "classes": "preFade fadeIn",
+          "id": "",
+          "x": 846,
+          "y": 94,
+          "w": 52,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Gallery",
+          "ariaLabel": "",
+          "classes": "preFade fadeIn",
+          "id": "",
+          "x": 928,
+          "y": 94,
+          "w": 54,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "News",
+          "ariaLabel": "",
+          "classes": "preFade fadeIn",
+          "id": "",
+          "x": 1004,
+          "y": 94,
+          "w": 42,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Get in Touch",
+          "ariaLabel": "",
+          "classes": "preFade fadeIn",
+          "id": "",
+          "x": 1103,
+          "y": 94,
+          "w": 97,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "0",
+          "ariaLabel": "0 items in cart",
+          "classes": "cart-style-icon icon--stroke icon--fill icon--cart sqs-custom-cart header-icon show-empty-cart-state cart-quantity-zero header-icon-border-shape-none header-icon-border-style-outline sqs-template-integrated-shopping-cart",
+          "id": "",
+          "x": 1204,
+          "y": 94,
+          "w": 41,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Book a table",
+          "ariaLabel": "",
+          "classes": "btn btn--border theme-btn--primary-inverse sqs-button-element--primary",
+          "id": "",
+          "x": 1312,
+          "y": 94,
+          "w": 112,
+          "h": 23
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "[object SVGAnimatedString]",
+          "id": "",
+          "x": 883,
+          "y": 193,
+          "w": 2750,
+          "h": 32
+        },
+        {
+          "tag": "a",
+          "text": "Make a Reservation",
+          "ariaLabel": "",
+          "classes": "sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element",
+          "id": "",
+          "x": 713,
+          "y": 766,
+          "w": 873,
+          "h": 57
+        },
+        {
+          "tag": "a",
+          "text": "BOOK A TABLE",
+          "ariaLabel": "",
+          "classes": "sqs-block-button-element--large sqs-button-element--secondary sqs-block-button-element",
+          "id": "",
+          "x": 713,
+          "y": 1984,
+          "w": 870,
+          "h": 28
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Previous Slide",
+          "classes": "gallery-reel-control-btn",
+          "id": "",
+          "x": 95,
+          "y": 2263,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "gallery-reel-control-btn-icon",
+          "id": "",
+          "x": 95,
+          "y": 2263,
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Next Slide",
+          "classes": "gallery-reel-control-btn",
+          "id": "",
+          "x": 1331,
+          "y": 2263,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "gallery-reel-control-btn-icon",
+          "id": "",
+          "x": 1331,
+          "y": 2263,
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "sqs-block-image-link js-content-mode-element content-fill",
+          "id": "",
+          "x": 272,
+          "y": 2957,
+          "w": 429,
+          "h": 429
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "[object SVGAnimatedString]",
+          "id": "",
+          "x": 883,
+          "y": 2787,
+          "w": 2750,
+          "h": 86
+        },
+        {
+          "tag": "a",
+          "text": "BRUNCH",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 272,
+          "y": 2976,
+          "w": 137,
+          "h": 71
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "sqs-block-image-link js-content-mode-element content-fill",
+          "id": "",
+          "x": 713,
+          "y": 2957,
+          "w": 429,
+          "h": 463
+        },
+        {
+          "tag": "a",
+          "text": "GAME DAY",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 713,
+          "y": 2976,
+          "w": 177,
+          "h": 71
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "sqs-block-image-link js-content-mode-element content-fill",
+          "id": "",
+          "x": 1153,
+          "y": 3411,
+          "w": 429,
+          "h": 423
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "sqs-block-image-link js-content-mode-element content-fill",
+          "id": "",
+          "x": 713,
+          "y": 3411,
+          "w": 429,
+          "h": 423
+        },
+        {
+          "tag": "a",
+          "text": "DINNER",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 713,
+          "y": 3410,
+          "w": 123,
+          "h": 71
+        },
+        {
+          "tag": "a",
+          "text": "DRINKS",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1153,
+          "y": 3410,
+          "w": 124,
+          "h": 71
+        },
+        {
+          "tag": "a",
+          "text": "BOOK A TABLE",
+          "ariaLabel": "",
+          "classes": "sqs-block-button-element--small sqs-button-element--tertiary sqs-block-button-element",
+          "id": "",
+          "x": 713,
+          "y": 3687,
+          "w": 980,
+          "h": 28
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "sqs-block-image-link js-content-mode-element content-fill",
+          "id": "",
+          "x": 713,
+          "y": 4281,
+          "w": 1425,
+          "h": 384
+        },
+        {
+          "tag": "a",
+          "text": "Book Karaoke",
+          "ariaLabel": "",
+          "classes": "sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element",
+          "id": "",
+          "x": 713,
+          "y": 4558,
+          "w": 980,
+          "h": 68
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "sqs-block-image-link js-content-mode-element content-fill",
+          "id": "",
+          "x": 272,
+          "y": 5230,
+          "w": 429,
+          "h": 423
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "sqs-block-image-link js-content-mode-element content-fill",
+          "id": "",
+          "x": 713,
+          "y": 5230,
+          "w": 429,
+          "h": 423
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "sqs-block-image-link js-content-mode-element content-fill",
+          "id": "",
+          "x": 1153,
+          "y": 5230,
+          "w": 429,
+          "h": 423
+        },
+        {
+          "tag": "a",
+          "text": "Shop Now",
+          "ariaLabel": "",
+          "classes": "sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element",
+          "id": "",
+          "x": 713,
+          "y": 5527,
+          "w": 980,
+          "h": 68
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Previous Slide",
+          "classes": "gallery-reel-control-btn",
+          "id": "",
+          "x": 80,
+          "y": 6252,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "gallery-reel-control-btn-icon",
+          "id": "",
+          "x": 80,
+          "y": 6252,
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Next Slide",
+          "classes": "gallery-reel-control-btn",
+          "id": "",
+          "x": 134,
+          "y": 6252,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "gallery-reel-control-btn-icon",
+          "id": "",
+          "x": 134,
+          "y": 6252,
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "button",
+          "text": "Sign Up",
+          "ariaLabel": "",
+          "classes": "\n            newsletter-form-button\n            sqs-system-button\n            sqs-editable-button-layout\n            sqs-editable-button-style\n            sqs-editable-button-shape\n            sqs-button-element--primary\n          ",
+          "id": "",
+          "x": 859,
+          "y": 6770,
+          "w": 122,
+          "h": 64
+        },
+        {
+          "tag": "a",
+          "text": "Make a Reservation",
+          "ariaLabel": "",
+          "classes": "sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element",
+          "id": "",
+          "x": 713,
+          "y": 7112,
+          "w": 650,
+          "h": 68
+        },
+        {
+          "tag": "a",
+          "text": "Shop",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 75,
+          "y": 7049,
+          "w": 35,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Our Story",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 90,
+          "y": 7071,
+          "w": 65,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Get in Touch",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 101,
+          "y": 7092,
+          "w": 87,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Gallery",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 82,
+          "y": 7114,
+          "w": 48,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Instagram",
+          "classes": "sqs-svg-icon--wrapper instagram-unauth",
+          "id": "",
+          "x": 68,
+          "y": 7171,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Facebook",
+          "classes": "sqs-svg-icon--wrapper facebook-unauth",
+          "id": "",
+          "x": 100,
+          "y": 7171,
+          "w": 20,
+          "h": 20
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "fluidImageOverlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 1031,
+        "w": 1425,
+        "h": 802
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "fluidImageOverlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 58,
+        "y": 2742,
+        "w": 429,
+        "h": 429
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "fluidImageOverlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 498,
+        "y": 2725,
+        "w": 429,
+        "h": 463
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "fluidImageOverlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 938,
+        "y": 3199,
+        "w": 429,
+        "h": 423
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "fluidImageOverlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 498,
+        "y": 3199,
+        "w": 429,
+        "h": 423
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "fluidImageOverlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 4089,
+        "w": 1425,
+        "h": 384
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "fluidImageOverlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 58,
+        "y": 5019,
+        "w": 429,
+        "h": 423
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "fluidImageOverlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 498,
+        "y": 5019,
+        "w": 429,
+        "h": 423
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "fluidImageOverlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 938,
+        "y": 5019,
+        "w": 429,
+        "h": 423
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "section-background-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 5656,
+        "w": 1425,
+        "h": 226
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "section-background-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 6332,
+        "w": 1425,
+        "h": 653
+      },
+      "buttons": []
+    }
+  ]
+}

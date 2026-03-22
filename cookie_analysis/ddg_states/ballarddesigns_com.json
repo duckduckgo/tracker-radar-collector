@@ -1,0 +1,112 @@
+{
+  "site": "ballarddesigns.com",
+  "url": "https://www.ballarddesigns.com/",
+  "timestamp": "2026-03-22T10:10:58.856102",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/ballarddesigns_com.png",
+  "total_requests": 346,
+  "blocked_requests_count": 3,
+  "blocked_requests": [
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-LXPNM3SDKW&gtm=45je63j1h2v885620459z8840456583za20gzb840456583zd840456583&_p=1774174250132&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=185489429.1774174252&ecid=2131146245&ul=en-us&sr=1440x900&ir=1&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EAAAAGQ&tag_exp=103116026~103200004~115616986~115938466~115938469~116024733~117484252&dl=https%3A%2F%2Fwww.ballarddesigns.com%2F&dr=&dp=%2F&dt=Furniture%20Stores%20and%20Home%20Decor&sid=1774174251&sct=1&seg=0&_tu=QA&_s=3&tfd=7267",
+      "domain": "analytics.google.com"
+    },
+    {
+      "url": "https://c.contentsquare.net/dvar?v=15.201.10%2Bfix-8d3086b9&pid=5044&pn=1&sn=1&uu=55fe8b4f-d2af-a507-98cf-08e97b93f809&dv=H4sIAAAAAAAAA23PUWvCMBSG4b8yCuuVbZJqm1YoQ9GBsMFg3kvaHu1haRJOjmww%2FO8Oeie7fr6L7%2F1NNh%2Fvp%2B3x9AkxondPb%2Bi%2BknUyMoe4FiJ4YmPzzl6BCY27WMh7P4mOZxHf0Al0A%2FzkYQwv1BIYm10jUDZ5h%2BwJ3eW5eA1AZ0%2BTcT1kA7BBm0Yc2qpp0siGeB98Px5xglZpvVKVlqWWUqbghgfSup4pzo8Pu3ZZKt2s6qKqC1XKZVOqZPHQddj9Rf2zu90BdEOb1gEBAAA%3D&ct=2&r=962359",
+      "domain": "c.contentsquare.net"
+    },
+    {
+      "url": "https://d.btttag.com/analytics.rcv?pgNm=HomeView&trSeg=Prod&navStart=1774174249818",
+      "domain": "d.btttag.com"
+    }
+  ],
+  "blocked_domains": [
+    "analytics.google.com",
+    "c.contentsquare.net",
+    "d.btttag.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "c-cookie-banner c-custom-sheet",
+      "id": "",
+      "text": ".banner-policy { text-decoration: underline; font-weight: 400; color: #333333; } .banner-desc { color: #333333; } .cookie-banner-container { right: initial; left: auto; right: 2%; bottom: 2%; max-width: 450px; -webkit-box-shadow: -4px -5px 13px -10px rgba(0,0,0,0.75); -moz-box-shadow: -4px -5px 13px -10px rgba(0,0,0,0.75); box-shadow: -4px -5px 13px -10px rgba(0,0,0,0.75); }\t\t\t\t\t\t  \t\t  \t\t This website uses technology such as cookies and other trackers to better understand how visitors use our si",
+      "rect": {
+        "x": 947,
+        "y": 766,
+        "w": 450,
+        "h": 116
+      },
+      "buttons": [
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "c-custom-sheet-header__action c-cookie-banner__close-header",
+          "id": "",
+          "x": 1368,
+          "y": 792,
+          "w": 34,
+          "h": 27
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "close",
+          "classes": "c-button c-icon-label-button c-custom-sheet__close-button  c-cookie-banner__close-button",
+          "id": "",
+          "x": 1373,
+          "y": 789,
+          "w": 44,
+          "h": 32
+        },
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "c-icon-label c-custom-sheet__close",
+          "id": "",
+          "x": 1373,
+          "y": 789,
+          "w": 16,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Policy.",
+          "ariaLabel": "Cookie Policy",
+          "classes": "banner-policy",
+          "id": "",
+          "x": 1237,
+          "y": 850,
+          "w": 90,
+          "h": 14
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "c-cookie-banner__content-text",
+      "id": "",
+      "text": ".banner-policy { text-decoration: underline; font-weight: 400; color: #333333; } .banner-desc { color: #333333; } .cookie-banner-container { right: initial; left: auto; right: 2%; bottom: 2%; max-width: 450px; -webkit-box-shadow: -4px -5px 13px -10px rgba(0,0,0,0.75); -moz-box-shadow: -4px -5px 13px -10px rgba(0,0,0,0.75); box-shadow: -4px -5px 13px -10px rgba(0,0,0,0.75); }\t\t\t\t\t\t  \t\t  \t\t This website uses technology such as cookies and other trackers to better understand how visitors use our si",
+      "rect": {
+        "x": 959,
+        "y": 778,
+        "w": 426,
+        "h": 92
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy.",
+          "ariaLabel": "Cookie Policy",
+          "classes": "banner-policy",
+          "id": "",
+          "x": 1237,
+          "y": 850,
+          "w": 90,
+          "h": 14
+        }
+      ]
+    }
+  ]
+}

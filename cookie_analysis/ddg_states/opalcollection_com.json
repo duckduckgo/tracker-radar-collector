@@ -1,0 +1,128 @@
+{
+  "site": "opalcollection.com",
+  "url": "https://www.opalcollection.com/",
+  "timestamp": "2026-03-22T10:19:30.981306",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/opalcollection_com.png",
+  "total_requests": 134,
+  "blocked_requests_count": 11,
+  "blocked_requests": [
+    {
+      "url": "https://analytics.tiktok.com/i18n/pixel/static/identify_31760074.js",
+      "domain": "analytics.tiktok.com"
+    },
+    {
+      "url": "https://analytics-ipv6.tiktokw.us/ipv6/enrich_ipv6",
+      "domain": "analytics-ipv6.tiktokw.us"
+    },
+    {
+      "url": "https://analytics.tiktok.com/api/v2/pixel",
+      "domain": "analytics.tiktok.com"
+    },
+    {
+      "url": "https://analytics.tiktok.com/api/v2/pixel",
+      "domain": "analytics.tiktok.com"
+    },
+    {
+      "url": "https://www.facebook.com/tr/?id=899094931048201&ev=PageView&dl=https%3A%2F%2Fwww.opalcollection.com%2F&rl=&if=false&ts=1774174761985&cd[content_ids]=BRAND&cd[property_name]=Opal_Collection_Hotels_%26_Resorts&sw=1440&sh=900&v=2.9.281&r=stable&a=tmSimo-GTM-WebTemplate&ec=0&o=12318&fbp=fb.1.1774174761979.308837540831487147&cs_est=true&ler=empty&cdl=API_unavailable&pmd[title]=Opal%20Collection%20Hotels%20%26%20Resorts%20%7C%20Luxury%20Hotels%20%26%20Resorts&pmd[locale]=en_US&pmd[description]=Opal%20Collection%20is%20a%20premier%20assortment%20of%20luxury%20hotels%20and%20resorts%2C%20located%20in%20the%20most%20treasured%20destinations%20on%20the%20East%20Coast.&plt=486&it=1774174761750&coo=false&tm=1&expv2[0]=pl1&expv2[1]=el2&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=ct3&expv2[6]=hf0&rqm=GET",
+      "domain": "www.facebook.com"
+    },
+    {
+      "url": "https://www.facebook.com/privacy_sandbox/pixel/register/trigger/?id=899094931048201&ev=PageView&dl=https%3A%2F%2Fwww.opalcollection.com%2F&rl=&if=false&ts=1774174761985&cd[content_ids]=BRAND&cd[property_name]=Opal_Collection_Hotels_%26_Resorts&sw=1440&sh=900&v=2.9.281&r=stable&a=tmSimo-GTM-WebTemplate&ec=0&o=12318&fbp=fb.1.1774174761979.308837540831487147&cs_est=true&ler=empty&cdl=API_unavailable&pmd[title]=Opal%20Collection%20Hotels%20%26%20Resorts%20%7C%20Luxury%20Hotels%20%26%20Resorts&pmd[locale]=en_US&pmd[description]=Opal%20Collection%20is%20a%20premier%20assortment%20of%20luxury%20hotels%20and%20resorts%2C%20located%20in%20the%20most%20treasured%20destinations%20on%20the%20East%20Coast.&plt=486&it=1774174761750&coo=false&tm=1&expv2[0]=pl1&expv2[1]=el2&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=ct3&expv2[6]=hf0&rqm=FGET",
+      "domain": "www.facebook.com"
+    },
+    {
+      "url": "https://analytics.tiktok.com/i18n/pixel/static/identify_31760074.js",
+      "domain": "analytics.tiktok.com"
+    },
+    {
+      "url": "https://pixel-sync.sitescout.com/dmp/asyncPixelSync",
+      "domain": "pixel-sync.sitescout.com"
+    },
+    {
+      "url": "https://pixel.sitescout.com/up/2fefa897e067cc74?cntr_revenue=&cntr_transactionId=5292022807563&u1=&u2=&u3=&u4=&u5=&src=12220564&cat=unive0&type=universa&cntr_url=https%3A%2F%2Fwww.opalcollection.com%2F",
+      "domain": "pixel.sitescout.com"
+    },
+    {
+      "url": "https://analytics.tiktok.com/api/v2/pixel/act",
+      "domain": "analytics.tiktok.com"
+    },
+    {
+      "url": "https://trc-events.taboola.com/1794223/log/3/unip?en=pre_d_eng_tb&tos=4571&scd=0&ssd=1&est=1774174760978&ver=36&isls=true&src=i&invt=4500&msa=8030&rv=1&tim=1774174765550&vi=1774174760976&ri=e642ccdf55ee3dfef63b16a9b997d1f2&sd=v2_309027f1d621a79a4658352488953c16_f8b44181-a866-4102-99be-508293bd129d-tuct10b947a8_1774174760_1774174760_CNawjgYQr8FtGJDguajRMyABKAEw4QE4kaQOQOSyD0ily9kDUJcEWABgAGjI_ZnpkL_Rxv8BcAGAAQCIAQA&ui=f8b44181-a866-4102-99be-508293bd129d-tuct10b947a8&ref=null&cv=20260319-5-RELEASE&item-url=https%3A%2F%2Fwww.opalcollection.com%2F&it=GTM",
+      "domain": "trc-events.taboola.com"
+    }
+  ],
+  "blocked_domains": [
+    "analytics-ipv6.tiktokw.us",
+    "analytics.tiktok.com",
+    "pixel-sync.sitescout.com",
+    "pixel.sitescout.com",
+    "trc-events.taboola.com",
+    "www.facebook.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "cookie-popup cookie-popup--active",
+      "id": "",
+      "text": "This website uses cookies and similar technologies. By using this site, you are agreeing to our Privacy Policy.\n\n        Accept",
+      "rect": {
+        "x": 773,
+        "y": 775,
+        "w": 620,
+        "h": 75
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "cookie-popup__button c-button",
+          "id": "",
+          "x": 1319,
+          "y": 818,
+          "w": 104,
+          "h": 35
+        }
+      ]
+    },
+    {
+      "tag": "span",
+      "classes": "cookie-popup__description me-3",
+      "id": "",
+      "text": "This website uses cookies and similar technologies. By using this site, you are agreeing to our Privacy Policy.",
+      "rect": {
+        "x": 795,
+        "y": 790,
+        "w": 456,
+        "h": 45
+      },
+      "buttons": []
+    },
+    {
+      "tag": "button",
+      "classes": "cookie-popup__button c-button",
+      "id": "",
+      "text": "Accept",
+      "rect": {
+        "x": 1268,
+        "y": 800,
+        "w": 104,
+        "h": 35
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "hero__video-outer hero__overlay",
+      "id": "",
+      "text": "Your browser does not support the video tag.",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 900
+      },
+      "buttons": []
+    }
+  ]
+}

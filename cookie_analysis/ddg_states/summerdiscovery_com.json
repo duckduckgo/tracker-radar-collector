@@ -1,0 +1,25 @@
+{
+  "site": "summerdiscovery.com",
+  "url": "https://www.summerdiscovery.com/",
+  "timestamp": "2026-03-22T10:17:07.175051",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/summerdiscovery_com.png",
+  "total_requests": 198,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": [
+    {
+      "tag": "span",
+      "classes": "\n        absolute inset-0 z-1 style_videoOverlay__7iwg_\n      ",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 836,
+        "y": 1919,
+        "w": 506,
+        "h": 406
+      },
+      "buttons": []
+    }
+  ]
+}

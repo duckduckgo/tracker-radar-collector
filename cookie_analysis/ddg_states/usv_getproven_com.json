@@ -1,0 +1,208 @@
+{
+  "site": "usv.getproven.com",
+  "url": "https://usv.getproven.com/auth",
+  "timestamp": "2026-03-22T10:23:39.564238",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/usv_getproven_com.png",
+  "total_requests": 194,
+  "blocked_requests_count": 2,
+  "blocked_requests": [
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-YN69KHB9R6&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.clarity.ms/tag/kqdi8bq5bk?ref=gtm2",
+      "domain": "www.clarity.ms"
+    }
+  ],
+  "blocked_domains": [
+    "www.clarity.ms",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "mat-mdc-dialog-title mdc-dialog__title modal-wrapper__title",
+      "id": "mat-mdc-dialog-title-serverApp0",
+      "text": "Consent to Privacy Practices",
+      "rect": {
+        "x": 419,
+        "y": 295,
+        "w": 602,
+        "h": 65
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "mat-mdc-dialog-content mdc-dialog__content modal-wrapper__content pr-scrolly",
+      "id": "",
+      "text": "We value your privacy and strive to protect your personal data.\n                          By clicking 'I agree' below, you acknowledge that you have read and consent to our\n                          Privacy Policy, which details the data we collect,\n                          how it's processed, and the measures we take to keep it secure. Your consent also enables us to provide you with personalized services and offers.\n                          We are fully GDPR and SOC2 compliant.",
+      "rect": {
+        "x": 419,
+        "y": 360,
+        "w": 602,
+        "h": 160
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 499,
+          "y": 429,
+          "w": 98,
+          "h": 22
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "mat-mdc-dialog-actions mdc-dialog__actions modal-wrapper__actions",
+      "id": "",
+      "text": "I Agree",
+      "rect": {
+        "x": 419,
+        "y": 553,
+        "w": 602,
+        "h": 52
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "I Agree",
+          "ariaLabel": "",
+          "classes": "btn proven-btn ng-star-inserted",
+          "id": "",
+          "x": 715,
+          "y": 580,
+          "w": 592,
+          "h": 37
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cdk-overlay-container",
+      "id": "",
+      "text": "Consent to Privacy Practices    We value your privacy and strive to protect your personal data.\n                          By clicking 'I agree' below, you acknowledge that you have read and consent to our\n                          Privacy Policy, which details the data we collect,\n                          how it's processed, and the measures we take to keep it secure. Your consent also enables us to provide you with personalized services and offers.\n                          We are fully GDPR a",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1441,
+        "h": 900
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 499,
+          "y": 429,
+          "w": 98,
+          "h": 22
+        },
+        {
+          "tag": "button",
+          "text": "I Agree",
+          "ariaLabel": "",
+          "classes": "btn proven-btn ng-star-inserted",
+          "id": "",
+          "x": 715,
+          "y": 580,
+          "w": 592,
+          "h": 37
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1441,
+        "h": 900
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cdk-global-overlay-wrapper",
+      "id": "",
+      "text": "Consent to Privacy Practices    We value your privacy and strive to protect your personal data.\n                          By clicking 'I agree' below, you acknowledge that you have read and consent to our\n                          Privacy Policy, which details the data we collect,\n                          how it's processed, and the measures we take to keep it secure. Your consent also enables us to provide you with personalized services and offers.\n                          We are fully GDPR a",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1441,
+        "h": 900
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 499,
+          "y": 429,
+          "w": 98,
+          "h": 22
+        },
+        {
+          "tag": "button",
+          "text": "I Agree",
+          "ariaLabel": "",
+          "classes": "btn proven-btn ng-star-inserted",
+          "id": "",
+          "x": 715,
+          "y": 580,
+          "w": 592,
+          "h": 37
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cdk-overlay-pane mat-mdc-dialog-panel",
+      "id": "cdk-overlay-serverApp1",
+      "text": "Consent to Privacy Practices    We value your privacy and strive to protect your personal data.\n                          By clicking 'I agree' below, you acknowledge that you have read and consent to our\n                          Privacy Policy, which details the data we collect,\n                          how it's processed, and the measures we take to keep it secure. Your consent also enables us to provide you with personalized services and offers.\n                          We are fully GDPR a",
+      "rect": {
+        "x": 395,
+        "y": 271,
+        "w": 650,
+        "h": 358
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 499,
+          "y": 429,
+          "w": 98,
+          "h": 22
+        },
+        {
+          "tag": "button",
+          "text": "I Agree",
+          "ariaLabel": "",
+          "classes": "btn proven-btn ng-star-inserted",
+          "id": "",
+          "x": 715,
+          "y": 580,
+          "w": 592,
+          "h": 37
+        }
+      ]
+    }
+  ]
+}

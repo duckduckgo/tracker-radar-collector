@@ -1,0 +1,120 @@
+{
+  "site": "esquire.com",
+  "url": "https://www.esquire.com/",
+  "timestamp": "2026-03-22T10:25:56.756569",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/esquire_com.png",
+  "total_requests": 285,
+  "blocked_requests_count": 11,
+  "blocked_requests": [
+    {
+      "url": "https://api.permutive.com/v2.0/internal/metrics?k=7d237500-e85c-4846-9eb8-5635df7b050c",
+      "domain": "api.permutive.com"
+    },
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-3RET6VT9F2&gtm=45je63j1h2v892599798za200zd892599798&_p=1774175148156&gcs=G111&gcd=13t3t3t2t5l1&npa=0&dma=0&gdid=dYWJhMj&cid=1255145560.1774175150&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AEIAAGQ&tag_exp=103116026~103200004~115938465~115938468~116024733~117484252&sid=1774175150&sct=1&seg=0&dl=https%3A%2F%2Fwww.esquire.com%2F&dt=Esquire%20-%20Men%27s%20Fashion%2C%20Cocktails%2C%20Politics%2C%20Interviews%2C%20and%20Women&_tu=AAg&_s=3&tfd=7755",
+      "domain": "analytics.google.com"
+    },
+    {
+      "url": "https://dt.adsafeprotected.com/dt?anId=931694&asId=2dba3fdc-c4d1-4880-fd5c-698b94fba5f5&tv=%7Bc:7z66m4,pingTime:5,time:5088,type:p,clog:%5B%7Bpiv:99,vs:i,r:,w:970,h:249,t:71%7D,%7Bpiv:100,t:189%7D%5D,es:0,sc:1,ha:1,fgad:1,fif:1,gmnp:0,for:1,b11:0,cnod:1,gm:1,slTimes:%7Bi:5089,o:0,n:0,pp:0,pm:0%7D,slEvents:%5B%7Bsl:i,t:71,wc:7.36.1440.900,ac:235.36.970.249,am:i,cc:235.36.970.249,piv:100,obst:0,th:0,reas:,bkn:%7Bpiv:%5B129~75,4900~100%5D,as:%5B5029~970.249%5D%7D%7D%5D,slEventCount:1,em:true,fr:true,e:,tt:jload,dtt:16,fm:veAG7Sg+11%7C12%7C13%7C14%7C1511%7C16%7C171%7C18%7C19%7C1a%7C1b*.931694%7C1b1%7C1c1%7C1c2,idMap:1b*,rmeas:1,rend:1,renddet:IMG.qs,siq:72,msd:0,ph:12215,igt:0,sis:119%7D&br=c",
+      "domain": "dt.adsafeprotected.com"
+    },
+    {
+      "url": "https://k.p-n.io/event-stream",
+      "domain": "k.p-n.io"
+    },
+    {
+      "url": "https://k.p-n.io/event-stream",
+      "domain": "k.p-n.io"
+    },
+    {
+      "url": "https://k.p-n.io/event-stream",
+      "domain": "k.p-n.io"
+    },
+    {
+      "url": "https://k.p-n.io/event-stream",
+      "domain": "k.p-n.io"
+    },
+    {
+      "url": "https://k.p-n.io/event-stream",
+      "domain": "k.p-n.io"
+    },
+    {
+      "url": "https://k.p-n.io/event-stream",
+      "domain": "k.p-n.io"
+    },
+    {
+      "url": "https://k.p-n.io/event-stream",
+      "domain": "k.p-n.io"
+    },
+    {
+      "url": "https://k.p-n.io/event-stream",
+      "domain": "k.p-n.io"
+    }
+  ],
+  "blocked_domains": [
+    "analytics.google.com",
+    "api.permutive.com",
+    "dt.adsafeprotected.com",
+    "k.p-n.io"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "css-jsrm3 e1yu3us94",
+      "id": "",
+      "text": "We use technologies that provide information about your interactions with this site to others for functionality,\nanalytics, targeted advertising, and other purposes. \nLearn more in our Privacy Notice.\nYou agree that your use of this website and the Hearst Services is governed by the Terms of Use (including the dispute resolution procedures).",
+      "rect": {
+        "x": 0,
+        "y": 786,
+        "w": 1425,
+        "h": 114
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Close Privacy Disclosure",
+          "classes": "hds-do-not-use inline-flex items-center justify-center gap-(--space-2xs) cursor-pointer font-(--font-weight-semibold) font-(family-name:--font-family-default) not-italic disabled:opacity-(--_opacity-32) disabled:cursor-not-allowed border-solid border-(length:--border-width-sm) no-underline tracking-",
+          "id": "",
+          "x": 1215,
+          "y": 843,
+          "w": 34,
+          "h": 34
+        },
+        {
+          "tag": "a",
+          "text": "Learn more in our Privacy Notice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 462,
+          "y": 843,
+          "w": 177,
+          "h": 10
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Use",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 321,
+          "y": 859,
+          "w": 71,
+          "h": 10
+        },
+        {
+          "tag": "a",
+          "text": "the dispute resolution procedures",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 509,
+          "y": 859,
+          "w": 185,
+          "h": 10
+        }
+      ]
+    }
+  ]
+}

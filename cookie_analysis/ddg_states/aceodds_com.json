@@ -1,0 +1,48 @@
+{
+  "site": "aceodds.com",
+  "url": "https://www.aceodds.com/",
+  "timestamp": "2026-03-22T10:23:53.875009",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/aceodds_com.png",
+  "total_requests": 34,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "cookie-float-div w-100 overflow-visible d-block",
+      "id": "cookie-consent-banner",
+      "text": "We use cookies on this website to ensure you get the best user experience. If you continue to use our site, we will assume that you are ok with this. Alternatively, you can choose \"Read more\" to see what cookies entail. READ MORE OK",
+      "rect": {
+        "x": 0,
+        "y": 791,
+        "w": 1425,
+        "h": 109
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "READ MORE",
+          "ariaLabel": "",
+          "classes": "btn btn-secondary",
+          "id": "",
+          "x": 688,
+          "y": 867,
+          "w": 108,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "btn btn-primary",
+          "id": "cookie-consent-accept",
+          "x": 769,
+          "y": 867,
+          "w": 46,
+          "h": 35
+        }
+      ]
+    }
+  ]
+}

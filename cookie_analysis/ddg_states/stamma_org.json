@@ -1,0 +1,35 @@
+{
+  "site": "stamma.org",
+  "url": "https://stamma.org/",
+  "timestamp": "2026-03-22T10:25:26.972372",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/stamma_org.png",
+  "total_requests": 168,
+  "blocked_requests_count": 5,
+  "blocked_requests": [
+    {
+      "url": "https://static.hotjar.com/c/hotjar-1833677.js?sv=6",
+      "domain": "static.hotjar.com"
+    },
+    {
+      "url": "https://www.youtube.com/embed/8XvfKjhaWbk?feature=oembed",
+      "domain": "www.youtube.com"
+    },
+    {
+      "url": "https://www.youtube.com/embed/3FW8GaNcs3s?feature=oembed",
+      "domain": "www.youtube.com"
+    },
+    {
+      "url": "https://www.youtube.com/embed/DUwPV4hM3eg?feature=oembed",
+      "domain": "www.youtube.com"
+    },
+    {
+      "url": "https://www.youtube.com/embed/Hy0p7pUgBJI?feature=oembed",
+      "domain": "www.youtube.com"
+    }
+  ],
+  "blocked_domains": [
+    "static.hotjar.com",
+    "www.youtube.com"
+  ],
+  "dom_areas": []
+}

@@ -1,0 +1,80 @@
+{
+  "site": "platt.com",
+  "url": "https://www.platt.com/",
+  "timestamp": "2026-03-22T10:21:02.645595",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/platt_com.png",
+  "total_requests": 91,
+  "blocked_requests_count": 1,
+  "blocked_requests": [
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-58CNKDBV9W&gtm=45je63i0h1v898381526z8892881512za20gzb892881512zd892881512&_p=1774174854099&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=286322782.1774174855&ecid=1873762462&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAGQ&_s=2&tag_exp=103116026~103200004~115616985~115938466~115938469~116024733~117484252&uid=&sid=1774174854&sct=1&seg=0&dl=https%3A%2F%2Fwww.platt.com%2F&dt=Platt%20Electric%20Supply%20%7C%20Wholesale%20Electrical%20Supply%20Distributor%20for%20Residential%2C%20Commercial%20%26%20Industrial%20Electricians&_tu=CA&en=performance_metrics&ep.perf_navigation_time=55.40&ep.route_name=index&ep.account_key=&_et=5&up.enclosures_pilot_access=true&up.web_user_dbid=&tfd=7859",
+      "domain": "analytics.google.com"
+    }
+  ],
+  "blocked_domains": [
+    "analytics.google.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "v-alert mb-0 cookie white--text pr-md-16 d-print-none v-sheet theme--dark rounded-0",
+      "id": "",
+      "text": "We use cookies to offer you a better user experience. Cookies enable you to enjoy certain features on our site. By continuing to use this website, you consent to the use of cookies in accordance with our\n      \n        Privacy Policy\n       \n        OK",
+      "rect": {
+        "x": 0,
+        "y": 816,
+        "w": 1425,
+        "h": 84
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "white--text",
+          "id": "",
+          "x": 632,
+          "y": 868,
+          "w": 103,
+          "h": 19
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "ma-2 v-btn v-btn--outlined theme--dark v-size--default",
+          "id": "",
+          "x": 1289,
+          "y": 858,
+          "w": 64,
+          "h": 36
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "pa-2 d-flex",
+      "id": "sf_defaultlayout_footer_privacy",
+      "text": "Privacy",
+      "rect": {
+        "x": 714,
+        "y": 3053,
+        "w": 75,
+        "h": 47
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy",
+          "ariaLabel": "",
+          "classes": "grey--text text-caption pa-2",
+          "id": "",
+          "x": 752,
+          "y": 3077,
+          "w": 59,
+          "h": 31
+        }
+      ]
+    }
+  ]
+}

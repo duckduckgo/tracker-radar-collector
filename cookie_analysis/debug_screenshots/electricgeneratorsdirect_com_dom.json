@@ -1,0 +1,325 @@
+[
+  {
+    "tag": "div",
+    "classes": "cc-window cc-banner cc-type-hybrid cc-theme-block cc-bottom cc-color-override--1085510111 ",
+    "id": "",
+    "text": "We Value Your Privacy. We use cookies to ensure fast, reliable, and secure operations, and to give you the best possible experience when using our website. We use both session-based cookies and persistent cookies. We also allow the use of third-party cookies by certain authorized third parties with whom we execute marketing campaigns. For more information, please refer to our Privacy Policy and Cookie Policy.\n                                \n                            DismissCookie Preferences ",
+    "rect": {
+      "x": 0,
+      "y": 789,
+      "w": 1425,
+      "h": 111
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://privacy-central.securiti.ai/#/notices/538cb74e-ea64-4934-82c2-76df154eca48",
+        "x": 656,
+        "y": 854
+      },
+      {
+        "tag": "a",
+        "text": "Cookie Policy",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://privacy-central.securiti.ai/#/notices/538cb74e-ea64-4934-82c2-76df154eca48",
+        "x": 146,
+        "y": 865
+      },
+      {
+        "tag": "a",
+        "text": "Dismiss",
+        "ariaLabel": "",
+        "classes": "cc-btn cc-allow cc-btn-format",
+        "id": "",
+        "href": "",
+        "x": 1347,
+        "y": 829
+      },
+      {
+        "tag": "span",
+        "text": "",
+        "ariaLabel": "Close banner",
+        "classes": "cc-close cc-close-banner-btn",
+        "id": "",
+        "href": null,
+        "x": 1409,
+        "y": 805
+      },
+      {
+        "tag": "span",
+        "text": "",
+        "ariaLabel": "Close banner",
+        "classes": "cc-close cc-close-banner-btn",
+        "id": "",
+        "x": 1409,
+        "y": 805,
+        "isClose": true
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "bannerImageContainer primary-desktop-container heroBanner ",
+    "id": "",
+    "text": "We've Moved!\n            Shop generators and more at our new home: FergusonHome.com\n            \n            Offer Ends \n        \n        \n        \n            \n               Shop Now",
+    "rect": {
+      "x": 0,
+      "y": 201,
+      "w": 1425,
+      "h": 400
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Shop Now",
+        "ariaLabel": "",
+        "classes": "pedUrl text-white btn btn-ferg PED_button primaryButton ",
+        "id": "",
+        "href": "https://www.fergusonhome.com/generators/c82046257",
+        "x": 713,
+        "y": 477
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "img",
+    "classes": "bannerImageDesktop",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 0,
+      "y": 201,
+      "w": 1600,
+      "h": 400
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "bannerTextBtnContainer",
+    "id": "",
+    "text": "We've Moved!\n            Shop generators and more at our new home: FergusonHome.com\n            \n            Offer Ends \n        \n        \n        \n            \n               Shop Now",
+    "rect": {
+      "x": 0,
+      "y": 298,
+      "w": 1425,
+      "h": 206
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Shop Now",
+        "ariaLabel": "",
+        "classes": "pedUrl text-white btn btn-ferg PED_button primaryButton ",
+        "id": "",
+        "href": "https://www.fergusonhome.com/generators/c82046257",
+        "x": 713,
+        "y": 477
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "bannerTextContainerNew bannerText primaryBannerTextDesktop",
+    "id": "",
+    "text": "We've Moved!\n            Shop generators and more at our new home: FergusonHome.com\n            \n            Offer Ends",
+    "rect": {
+      "x": 363,
+      "y": 298,
+      "w": 700,
+      "h": 132
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "bannerButtonContainerNew",
+    "id": "",
+    "text": "Shop Now",
+    "rect": {
+      "x": 0,
+      "y": 430,
+      "w": 1425,
+      "h": 74
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Shop Now",
+        "ariaLabel": "",
+        "classes": "pedUrl text-white btn btn-ferg PED_button primaryButton ",
+        "id": "",
+        "href": "https://www.fergusonhome.com/generators/c82046257",
+        "x": 713,
+        "y": 477
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "overlay ",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 1441,
+      "h": 900
+    },
+    "visible": false,
+    "buttons": [],
+    "matchedSelector": "[class*=\"overlay\" i]"
+  },
+  {
+    "tag": "span",
+    "classes": "cc-message",
+    "id": "cookieconsent:desc",
+    "text": "We Value Your Privacy. We use cookies to ensure fast, reliable, and secure operations, and to give you the best possible experience when using our website. We use both session-based cookies and persistent cookies. We also allow the use of third-party cookies by certain authorized third parties with whom we execute marketing campaigns. For more information, please refer to our Privacy Policy and Cookie Policy.",
+    "rect": {
+      "x": 32,
+      "y": 789,
+      "w": 1253,
+      "h": 111
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://privacy-central.securiti.ai/#/notices/538cb74e-ea64-4934-82c2-76df154eca48",
+        "x": 656,
+        "y": 854
+      },
+      {
+        "tag": "a",
+        "text": "Cookie Policy",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://privacy-central.securiti.ai/#/notices/538cb74e-ea64-4934-82c2-76df154eca48",
+        "x": 146,
+        "y": 865
+      }
+    ],
+    "matchedSelector": "[id*=\"cookie\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "",
+    "id": "heroPromoBanner",
+    "text": "We've Moved!\n            Shop generators and more at our new home: FergusonHome.com\n            \n            Offer Ends \n        \n        \n        \n            \n               Shop Now",
+    "rect": {
+      "x": 0,
+      "y": 201,
+      "w": 1425,
+      "h": 400
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Shop Now",
+        "ariaLabel": "",
+        "classes": "pedUrl text-white btn btn-ferg PED_button primaryButton ",
+        "id": "",
+        "href": "https://www.fergusonhome.com/generators/c82046257",
+        "x": 713,
+        "y": 477
+      }
+    ],
+    "matchedSelector": "[id*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "",
+    "id": "heroBannerContainer",
+    "text": "We've Moved!\n            Shop generators and more at our new home: FergusonHome.com\n            \n            Offer Ends \n        \n        \n        \n            \n               Shop Now",
+    "rect": {
+      "x": 0,
+      "y": 201,
+      "w": 1425,
+      "h": 400
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Shop Now",
+        "ariaLabel": "",
+        "classes": "pedUrl text-white btn btn-ferg PED_button primaryButton ",
+        "id": "",
+        "href": "https://www.fergusonhome.com/generators/c82046257",
+        "x": 713,
+        "y": 477
+      }
+    ],
+    "matchedSelector": "[id*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "cc-compliance cc-highlight cc-regular",
+    "id": "",
+    "text": "DismissCookie Preferences Icon Online Privacy Choices",
+    "rect": {
+      "x": 1309,
+      "y": 789,
+      "w": 84,
+      "h": 111
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Dismiss",
+        "ariaLabel": "",
+        "classes": "cc-btn cc-allow cc-btn-format",
+        "id": "",
+        "href": "",
+        "x": 1347,
+        "y": 829
+      },
+      {
+        "tag": "span",
+        "text": "",
+        "ariaLabel": "Close banner",
+        "classes": "cc-close cc-close-banner-btn",
+        "id": "",
+        "href": null,
+        "x": 1409,
+        "y": 805
+      },
+      {
+        "tag": "span",
+        "text": "",
+        "ariaLabel": "Close banner",
+        "classes": "cc-close cc-close-banner-btn",
+        "id": "",
+        "x": 1409,
+        "y": 805,
+        "isClose": true
+      }
+    ],
+    "matchedSelector": ".cc-compliance"
+  }
+]

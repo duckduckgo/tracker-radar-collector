@@ -1,0 +1,149 @@
+[
+  {
+    "tag": "div",
+    "classes": "grid-item grid-item-width2 box1 banner-block padding0",
+    "id": "",
+    "text": "prevnext",
+    "rect": {
+      "x": 128,
+      "y": 152,
+      "w": 1170,
+      "h": 463
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "Kitchen Water-Saving Strategies: A Simple Guide to Cutting Waste - Read more",
+        "classes": "",
+        "id": "",
+        "href": "https://www.danco.com/news/kitchen-water-saving-strategies-a-simple-guide-to-cutting-waste/",
+        "x": 713,
+        "y": 384
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.leakyfaucetguide.com/",
+        "x": 1913,
+        "y": 384
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.danco.com/product/disposal-genie-garbage-disposal-strainer-in-black/",
+        "x": 3113,
+        "y": 384
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.danco.com/product/1-0-gpm-extra-water-saving-dual-thread-faucet-aerator-in-chrome/",
+        "x": 4313,
+        "y": 384
+      },
+      {
+        "tag": "a",
+        "text": "",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.danco.com/matte-black-collection/",
+        "x": 5513,
+        "y": 384
+      },
+      {
+        "tag": "div",
+        "text": "prev",
+        "ariaLabel": "",
+        "classes": "owl-prev",
+        "id": "",
+        "href": null,
+        "x": 148,
+        "y": 383
+      },
+      {
+        "tag": "div",
+        "text": "next",
+        "ariaLabel": "",
+        "classes": "owl-next",
+        "id": "",
+        "href": null,
+        "x": 1278,
+        "y": 383
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "privacy-notice",
+    "id": "",
+    "text": "We use cookies to personalize content, utilize website traffic analytics & support our marketing initiatives. By continuing to browse our site you consent to receive our cookies. For more information see our Privacy Statement (open in new tab) and Cookie Statement (open in new tab).Ok",
+    "rect": {
+      "x": 0,
+      "y": 812,
+      "w": 1425,
+      "h": 88
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy Statement (open in new tab)",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.plumbingproductsgroup.com/privacy-policy/",
+        "x": 610,
+        "y": 867
+      },
+      {
+        "tag": "a",
+        "text": "Cookie Statement (open in new tab)",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.plumbingproductsgroup.com/ppg-cookies-policy/",
+        "x": 764,
+        "y": 867
+      },
+      {
+        "tag": "div",
+        "text": "Ok",
+        "ariaLabel": "",
+        "classes": "privacy-accept",
+        "id": "",
+        "href": null,
+        "x": 852,
+        "y": 868
+      }
+    ],
+    "matchedSelector": "[class*=\"notice\" i]"
+  },
+  {
+    "tag": "img",
+    "classes": "nolazy",
+    "id": "PrivacySeals",
+    "text": "",
+    "rect": {
+      "x": 128,
+      "y": 3351,
+      "w": 100,
+      "h": 54
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[id*=\"privacy\" i]"
+  }
+]

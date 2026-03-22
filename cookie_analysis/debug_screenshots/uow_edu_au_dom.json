@@ -1,0 +1,64 @@
+[
+  {
+    "tag": "div",
+    "classes": "cookies-notice show",
+    "id": "",
+    "text": "We use cookies to improve your experience on our site and to show you personalised advertising. To find out more, read our privacy policy and cookie policy\n            \n        \n        \n            OK, THANKS",
+    "rect": {
+      "x": 0,
+      "y": 754,
+      "w": 1425,
+      "h": 146
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "privacy policy and cookie policy",
+        "ariaLabel": "",
+        "classes": "t4-tag-content-item ",
+        "id": "",
+        "href": "/privacy/",
+        "x": 318,
+        "y": 822
+      },
+      {
+        "tag": "button",
+        "text": "OK, THANKS",
+        "ariaLabel": "",
+        "classes": "button",
+        "id": "",
+        "href": null,
+        "x": 1206,
+        "y": 819
+      }
+    ],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "notice",
+    "id": "",
+    "text": "We use cookies to improve your experience on our site and to show you personalised advertising. To find out more, read our privacy policy and cookie policy",
+    "rect": {
+      "x": 113,
+      "y": 754,
+      "w": 970,
+      "h": 146
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "privacy policy and cookie policy",
+        "ariaLabel": "",
+        "classes": "t4-tag-content-item ",
+        "id": "",
+        "href": "/privacy/",
+        "x": 318,
+        "y": 822
+      }
+    ],
+    "matchedSelector": "[class*=\"notice\" i]"
+  }
+]

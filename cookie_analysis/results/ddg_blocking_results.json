@@ -1,0 +1,350 @@
+[
+  {
+    "site": "summerdiscovery.com",
+    "url": "https://www.summerdiscovery.com/",
+    "timestamp": "2026-03-22T10:02:56.557960",
+    "before_accept": {
+      "total_requests": 162,
+      "blocked_requests": 17,
+      "blocked_urls": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=DC-12704595",
+          "domain": "www.googletagmanager.com"
+        },
+        {
+          "url": "https://static.hotjar.com/c/hotjar-1603398.js?sv=7",
+          "domain": "static.hotjar.com"
+        },
+        {
+          "url": "https://connect.facebook.net/en_US/fbevents.js",
+          "domain": "connect.facebook.net"
+        },
+        {
+          "url": "https://www.redditstatic.com/ads/pixel.js",
+          "domain": "www.redditstatic.com"
+        },
+        {
+          "url": "https://tags.srv.stackadapt.com/events.js",
+          "domain": "tags.srv.stackadapt.com"
+        },
+        {
+          "url": "https://js.pulseinsights.com/surveys.js",
+          "domain": "js.pulseinsights.com"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=DC-12704595&cx=c&gtm=4e63i0h1",
+          "domain": "www.googletagmanager.com"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-VSEGEK32V3&cx=c&gtm=4e63i0h1",
+          "domain": "www.googletagmanager.com"
+        },
+        {
+          "url": "https://tag.simpli.fi/sifitag/f12a6280-bf40-013b-67e2-0cc47a8ffaac",
+          "domain": "tag.simpli.fi"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/destination?id=DC-12704595&cx=c&gtm=4e63i0h1",
+          "domain": "www.googletagmanager.com"
+        },
+        {
+          "url": "https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Sun%2C%2022%20Mar%202026%2010%3A02%3A57%20GMT&n=4d&b=Pre-College%20Academic%20Enrichment%20Programs%20%7C%20Summer%20Discovery&.yp=10196351&f=https%3A%2F%2Fwww.summerdiscovery.com%2F&enc=UTF-8&yv=1.16.6&tagmgr=gtm%2Cadobe",
+          "domain": "sp.analytics.yahoo.com"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-4G5EMB2RKK",
+          "domain": "www.googletagmanager.com"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-4G5EMB2RKK&cx=c&gtm=4e63i0h1",
+          "domain": "www.googletagmanager.com"
+        },
+        {
+          "url": "https://fid.agkn.com/f?apiKey=2520642820",
+          "domain": "fid.agkn.com"
+        },
+        {
+          "url": "https://aa.agkn.com/adscores/g.jsonp?sid=9202274878&userid=C58EC6-D956416F-6753-4F80-A382-2CFA462BD1D0",
+          "domain": "aa.agkn.com"
+        },
+        {
+          "url": "https://i.liadm.com/s/63537?bidder_id=242861&bidder_uuid=C58EC6-D956416F-6753-4F80-A382-2CFA462BD1D0",
+          "domain": "i.liadm.com"
+        },
+        {
+          "url": "https://aa.agkn.com/adscores/g.pixel?sid=9202283468&_userID=C58EC6-D956416F-6753-4F80-A382-2CFA462BD1D0&_takID=E90238C58EC6",
+          "domain": "aa.agkn.com"
+        }
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 2,
+      "new_blocked_requests": 1,
+      "new_blocked_urls": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/destination?id=G-VSEGEK32V3&cx=c&gtm=4e63i0h1",
+          "domain": "www.googletagmanager.com"
+        }
+      ]
+    },
+    "accept_button": {
+      "text": "I Understand",
+      "score": 11
+    },
+    "status": "analyzed",
+    "summary": "Before: 17 blocked / 162 total. After: +1 blocked / +2 new. No new blocked domains."
+  },
+  {
+    "site": "posthog.com",
+    "url": "https://posthog.com/",
+    "timestamp": "2026-03-22T10:03:09.987233",
+    "before_accept": {
+      "total_requests": 135,
+      "blocked_requests": 0,
+      "blocked_urls": []
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_urls": []
+    },
+    "accept_button": null,
+    "status": "no_accept_button_found",
+    "summary": "No accept button found. Blocked 0 of 135 requests. Blocked domains: "
+  },
+  {
+    "site": "extrabux.com",
+    "url": "https://www.extrabux.com/",
+    "timestamp": "2026-03-22T10:03:18.990303",
+    "before_accept": {
+      "total_requests": 73,
+      "blocked_requests": 2,
+      "blocked_urls": [
+        {
+          "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+          "domain": "static.cloudflareinsights.com"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-2DGNQR9T03&cx=c&gtm=4e63i0",
+          "domain": "www.googletagmanager.com"
+        }
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 1,
+      "new_blocked_requests": 0,
+      "new_blocked_urls": []
+    },
+    "accept_button": {
+      "text": "Continue to Browse the Site",
+      "score": 11
+    },
+    "status": "analyzed",
+    "summary": "Before: 2 blocked / 73 total. After: +0 blocked / +1 new. No new blocked domains."
+  },
+  {
+    "site": "build.com",
+    "url": "https://www.build.com/",
+    "timestamp": "2026-03-22T10:03:32.835754",
+    "before_accept": {
+      "total_requests": 137,
+      "blocked_requests": 17,
+      "blocked_urls": [
+        {
+          "url": "https://s2.go-mpulse.net/boomerang/6MJTG-TAQXL-LW3CZ-KLQX6-X2PCA",
+          "domain": "s2.go-mpulse.net"
+        },
+        {
+          "url": "https://www.datadoghq-browser-agent.com/us3/v6/datadog-rum.js",
+          "domain": "www.datadoghq-browser-agent.com"
+        },
+        {
+          "url": "https://s2.go-mpulse.net/boomerang/6MJTG-TAQXL-LW3CZ-KLQX6-X2PCA",
+          "domain": "s2.go-mpulse.net"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-JSCYJVZM1S&l=gtmDataLayer&cx=c&gtm=4e63i0&sign=ddfd363998ddf0e792660fb46438d41111945d19e183d093f902415872aae5dd_20260322",
+          "domain": "www.googletagmanager.com"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/destination?id=G-JSCYJVZM1S&l=gtmDataLayer&cx=c&gtm=4e63i0&sign=ddfd363998ddf0e792660fb46438d41111945d19e183d093f902415872aae5dd_20260322",
+          "domain": "www.googletagmanager.com"
+        },
+        {
+          "url": "https://async-px.dynamicyield.com/uia?cnst=1&_=1774173814143",
+          "domain": "async-px.dynamicyield.com"
+        },
+        {
+          "url": "https://async-px.dynamicyield.com/var",
+          "domain": "async-px.dynamicyield.com"
+        },
+        {
+          "url": "https://async-px.dynamicyield.com/var",
+          "domain": "async-px.dynamicyield.com"
+        },
+        {
+          "url": "https://async-px.dynamicyield.com/var",
+          "domain": "async-px.dynamicyield.com"
+        },
+        {
+          "url": "https://async-px.dynamicyield.com/var",
+          "domain": "async-px.dynamicyield.com"
+        },
+        {
+          "url": "https://async-px.dynamicyield.com/batch?cnst=1&_=1774173814264_330742",
+          "domain": "async-px.dynamicyield.com"
+        },
+        {
+          "url": "https://async-px.dynamicyield.com/batch?cnst=1&_=1774173814544_102473",
+          "domain": "async-px.dynamicyield.com"
+        },
+        {
+          "url": "https://t.contentsquare.net/uxa/eabf9fcf78017.js",
+          "domain": "t.contentsquare.net"
+        },
+        {
+          "url": "https://cdn-scripts.signifyd.com/api/script-tag.js",
+          "domain": "cdn-scripts.signifyd.com"
+        },
+        {
+          "url": "https://analytics-fe.digital-cloud-us-main.medallia.com/api/web/events",
+          "domain": "analytics-fe.digital-cloud-us-main.medallia.com"
+        },
+        {
+          "url": "https://s2.go-mpulse.net/boomerang/6MJTG-TAQXL-LW3CZ-KLQX6-X2PCA",
+          "domain": "s2.go-mpulse.net"
+        },
+        {
+          "url": "https://s2.go-mpulse.net/boomerang/6MJTG-TAQXL-LW3CZ-KLQX6-X2PCA",
+          "domain": "s2.go-mpulse.net"
+        }
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_urls": []
+    },
+    "accept_button": null,
+    "status": "no_accept_button_found",
+    "summary": "No accept button found. Blocked 17 of 137 requests. Blocked domains: analytics-fe.digital-cloud-us-main.medallia.com, async-px.dynamicyield.com, cdn-scripts.signifyd.com, s2.go-mpulse.net, t.contentsquare.net"
+  },
+  {
+    "site": "asia.nikkei.com",
+    "url": "https://asia.nikkei.com/",
+    "timestamp": "2026-03-22T10:03:42.023964",
+    "before_accept": {
+      "total_requests": 262,
+      "blocked_requests": 15,
+      "blocked_urls": [
+        {
+          "url": "https://platform.twitter.com/oct.js",
+          "domain": "platform.twitter.com"
+        },
+        {
+          "url": "https://static.chartbeat.com/js/chartbeat_mab.js",
+          "domain": "static.chartbeat.com"
+        },
+        {
+          "url": "https://connect.facebook.net/en_US/fbevents.js",
+          "domain": "connect.facebook.net"
+        },
+        {
+          "url": "https://www3.doubleclick.net/",
+          "domain": "www3.doubleclick.net"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-5H36ZEETNT",
+          "domain": "www.googletagmanager.com"
+        },
+        {
+          "url": "https://amplify.outbrain.com/cp/obtp.js",
+          "domain": "amplify.outbrain.com"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-5H36ZEETNT&cx=c&gtm=4e63i0",
+          "domain": "www.googletagmanager.com"
+        },
+        {
+          "url": "https://bat.bing.com/bat.js",
+          "domain": "bat.bing.com"
+        },
+        {
+          "url": "https://s.yimg.jp/images/listing/tool/cv/ytag.js",
+          "domain": "s.yimg.jp"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/destination?id=G-5H36ZEETNT&cx=c&gtm=4e63i0",
+          "domain": "www.googletagmanager.com"
+        },
+        {
+          "url": "https://cdn.cxense.com/sp1.html",
+          "domain": "cdn.cxense.com"
+        },
+        {
+          "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=104326&time=1774173823383&li_adsId=176aa164-13bb-4c9f-af30-0a36f4da2450&url=https%3A%2F%2Fasia.nikkei.com%2F",
+          "domain": "px.ads.linkedin.com"
+        },
+        {
+          "url": "https://px.ads.linkedin.com/wa/?medium=fetch&fmt=g",
+          "domain": "px.ads.linkedin.com"
+        },
+        {
+          "url": "https://px.ads.linkedin.com/insight_tag_errors.gif?v=2&pid=104326&error=version%3A%20285%20%7C%20WebsiteActions-285-TypeError%3A%20Failed%20to%20fetch%3B%20ErrorData%3A%20%7B%22domain%22%3A%22asia.nikkei.com%22%2C%22requestFetcher%22%3A%22fetch-keepalive%22%2C%22body%22%3A%22H4sIAAAAAAAAA12PwWrCQBRFf2V4i64mGk1MxtmlYCVQRGpwU0oZM099OJmkeRNExH8vKnTR5eHA4d4rdGQZ9OckTpNp9iWB6566sMWeqfWgp2omIVCDoCd5nk7yRE2TNE4k2LYx5EGDYTIjT6cT0qhuG5Aw9A40HEPoWI%2FH%2F%2FwYJHTmgBUFh6Bh9TCiYDIiEq8Dk0dmKdato0A1S7GoW982F2G8FRXWR7HCM4sXUXjjLkwMEs64Ywq4oYM37gN%2FBuRQWtBQqxkaNbeR3akkyudpFs2SPUZZnCd7peYxqgwkEFe98exMQAt6bxyjBEdv5lmBOyzJ%2BPCEhrgGfYWOd5tgAoKO0tu98k7%2BhLb0Rdf9ZY7YgPaDcxL4sa%2B6dPfj62K5%2BN6Wm7KC2y%2BHXvIziAEAAA%3D%3D%22%7D&href=https%3A%2F%2Fasia.nikkei.com%2F",
+          "domain": "px.ads.linkedin.com"
+        },
+        {
+          "url": "https://px.ads.linkedin.com/wa/?medium=beacon&fmt=g",
+          "domain": "px.ads.linkedin.com"
+        }
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_urls": []
+    },
+    "accept_button": null,
+    "status": "no_accept_button_found",
+    "summary": "No accept button found. Blocked 15 of 262 requests. Blocked domains: amplify.outbrain.com, bat.bing.com, cdn.cxense.com, connect.facebook.net, platform.twitter.com"
+  },
+  {
+    "site": "electricgeneratorsdirect.com",
+    "url": "https://www.electricgeneratorsdirect.com/",
+    "timestamp": "2026-03-22T10:03:50.906205",
+    "before_accept": {
+      "total_requests": 117,
+      "blocked_requests": 5,
+      "blocked_urls": [
+        {
+          "url": "https://s2.go-mpulse.net/boomerang/GHLJZ-HJXW7-T58M4-F6UB5-T2TYJ",
+          "domain": "s2.go-mpulse.net"
+        },
+        {
+          "url": "https://s2.go-mpulse.net/boomerang/GHLJZ-HJXW7-T58M4-F6UB5-T2TYJ",
+          "domain": "s2.go-mpulse.net"
+        },
+        {
+          "url": "https://collect.tealiumiq.com/ped/main/2/i.gif",
+          "domain": "collect.tealiumiq.com"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-YC1V22YN36",
+          "domain": "www.googletagmanager.com"
+        },
+        {
+          "url": "https://tags.tiqcdn.com/utag/tiqapp/utag.v.js?a=ped/main/202601211526&cb=1774173832199",
+          "domain": "tags.tiqcdn.com"
+        }
+      ]
+    },
+    "after_accept": {
+      "total_new_requests": 0,
+      "new_blocked_requests": 0,
+      "new_blocked_urls": []
+    },
+    "accept_button": null,
+    "status": "no_accept_button_found",
+    "summary": "No accept button found. Blocked 5 of 117 requests. Blocked domains: collect.tealiumiq.com, s2.go-mpulse.net, tags.tiqcdn.com, www.googletagmanager.com"
+  }
+]

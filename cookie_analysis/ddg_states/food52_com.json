@@ -1,0 +1,64 @@
+{
+  "site": "food52.com",
+  "url": "https://food52.com/",
+  "timestamp": "2026-03-22T10:11:21.509377",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/food52_com.png",
+  "total_requests": 3423,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": [
+    {
+      "tag": "button",
+      "classes": "absolute w-full h-full bg-overlay transition duration-300 opacity-0",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 900
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "jw-overlays jw-reset",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 40,
+        "y": 4176,
+        "w": 745,
+        "h": 419
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "jw-overlays jw-reset",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 40,
+        "y": 6254,
+        "w": 745,
+        "h": 419
+      },
+      "buttons": []
+    },
+    {
+      "tag": "iframe",
+      "classes": "ym-adhesion-6666134592125634589-overlay",
+      "id": "",
+      "text": "<!doctype html><html><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no\"><script></script></head><body><script>function loadFormatScript(){(()=>{var e={1723:function(e,t,n){!function(e,t,n){\"use strict\";var r=function(){return(r=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var i in t=arguments[n])Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i]);return e}).apply(this,arguments)};function i(e,",
+      "rect": {
+        "x": 0,
+        "y": 758,
+        "w": 1425,
+        "h": 142
+      },
+      "buttons": []
+    }
+  ]
+}

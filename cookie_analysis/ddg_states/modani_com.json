@@ -1,0 +1,614 @@
+{
+  "site": "modani.com",
+  "url": "https://modani.com/",
+  "timestamp": "2026-03-22T10:10:05.495517",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/modani_com.png",
+  "total_requests": 552,
+  "blocked_requests_count": 16,
+  "blocked_requests": [
+    {
+      "url": "https://www.clarity.ms/tag/r0h2b0i3o9",
+      "domain": "www.clarity.ms"
+    },
+    {
+      "url": "https://monorail-edge.shopifysvc.com/unstable/produce_batch",
+      "domain": "monorail-edge.shopifysvc.com"
+    },
+    {
+      "url": "https://trkapi.impact.com/PageLoad",
+      "domain": "trkapi.impact.com"
+    },
+    {
+      "url": "https://monorail-edge.shopifysvc.com/v1/produce",
+      "domain": "monorail-edge.shopifysvc.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-1065431358&cx=c&gtm=4e63j1h2",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://bat.bing.com/bat.js",
+      "domain": "bat.bing.com"
+    },
+    {
+      "url": "https://cdn.attn.tv/modani/dtag.js",
+      "domain": "cdn.attn.tv"
+    },
+    {
+      "url": "https://www.clarity.ms/tag/r0h2b0i3o9?ref=gtm2",
+      "domain": "www.clarity.ms"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-TKB8DCBTSQ&cx=c&gtm=4e63j1h2",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://aa.agkn.com/adscores/g.js?sid=9212306938&cv1=f9541cb6-601c-452e-a67d-973bfbb5e19c",
+      "domain": "aa.agkn.com"
+    },
+    {
+      "url": "https://track.sv.rkdms.com/js/sv.js?sv_cid=7129_05324&sv_origin=modani.com",
+      "domain": "track.sv.rkdms.com"
+    },
+    {
+      "url": "https://d-code.liadm.com/did-004t.min.js",
+      "domain": "d-code.liadm.com"
+    },
+    {
+      "url": "https://monorail-edge.shopifysvc.com/v1/produce",
+      "domain": "monorail-edge.shopifysvc.com"
+    },
+    {
+      "url": "https://d-code.liadm.com/did-0014.min.js",
+      "domain": "d-code.liadm.com"
+    },
+    {
+      "url": "https://a.usbrowserspeed.com/cs?pid=fdd08674eb89cae2c83bc8dec00587cf591e3ef9809a9c364cb69bd1a733aed0&r=https://a.aisiteanalytics.com/x/t_sag?ro=0%26uid=B%3E482924@f7d8e05f2786da2aa4eb$c7bfc5b80a45d03b%26ref=https%253A%252F%252Fmodani.com%252F%26gid=${HEM_SHA256_LOWERCASE}:${UP_ID}",
+      "domain": "a.usbrowserspeed.com"
+    },
+    {
+      "url": "https://monorail-edge.shopifysvc.com/v1/produce",
+      "domain": "monorail-edge.shopifysvc.com"
+    }
+  ],
+  "blocked_domains": [
+    "a.usbrowserspeed.com",
+    "aa.agkn.com",
+    "bat.bing.com",
+    "cdn.attn.tv",
+    "d-code.liadm.com",
+    "monorail-edge.shopifysvc.com",
+    "track.sv.rkdms.com",
+    "trkapi.impact.com",
+    "www.clarity.ms",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "pd-cookie-banner-window cc-window cc-floating cc-type-info cc-theme-wired cc-bottom cc-left cc-color-override-1578713391 ",
+      "id": "",
+      "text": "This website uses cookies to ensure you get the best experience. Learn moreOk\u2715",
+      "rect": {
+        "x": 16,
+        "y": 651,
+        "w": 384,
+        "h": 233
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Learn more",
+          "ariaLabel": "",
+          "classes": "cc-link",
+          "id": "",
+          "x": 236,
+          "y": 778,
+          "w": 87,
+          "h": 30
+        },
+        {
+          "tag": "button",
+          "text": "Ok",
+          "ariaLabel": "dismiss cookie message",
+          "classes": "cc-btn cc-btn-decision cc-dismiss",
+          "id": "",
+          "x": 208,
+          "y": 831,
+          "w": 320,
+          "h": 43
+        },
+        {
+          "tag": "button",
+          "text": "\u2715",
+          "ariaLabel": "dismiss cookie message",
+          "classes": "cc-close",
+          "id": "",
+          "x": 385,
+          "y": 665,
+          "w": 13,
+          "h": 12
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "tvg_hero_JgA86G_hero__overlay--desktop",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 8,
+        "y": 52,
+        "w": 1409,
+        "h": 720
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-media-type",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 60,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "151",
+      "rect": {
+        "x": 60,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-content GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "151",
+      "rect": {
+        "x": 84,
+        "y": 5068,
+        "w": 203,
+        "h": 20
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-media-type",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 323,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "251",
+      "rect": {
+        "x": 323,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-content GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "251",
+      "rect": {
+        "x": 347,
+        "y": 5068,
+        "w": 203,
+        "h": 20
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-media-type",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 587,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "499",
+      "rect": {
+        "x": 587,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-content GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "499",
+      "rect": {
+        "x": 611,
+        "y": 5068,
+        "w": 203,
+        "h": 20
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-media-type",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 850,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "111",
+      "rect": {
+        "x": 850,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-content GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "111",
+      "rect": {
+        "x": 874,
+        "y": 5068,
+        "w": 203,
+        "h": 20
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-media-type",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 1114,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "344",
+      "rect": {
+        "x": 1114,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-content GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "344",
+      "rect": {
+        "x": 1138,
+        "y": 5068,
+        "w": 203,
+        "h": 20
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-media-type",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 1377,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "150",
+      "rect": {
+        "x": 1377,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-content GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "150",
+      "rect": {
+        "x": 1401,
+        "y": 5068,
+        "w": 203,
+        "h": 20
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-media-type",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 1641,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "130",
+      "rect": {
+        "x": 1641,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-content GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "130",
+      "rect": {
+        "x": 1665,
+        "y": 5068,
+        "w": 203,
+        "h": 20
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-media-type",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 1904,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "2015",
+      "rect": {
+        "x": 1904,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-content GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "2015",
+      "rect": {
+        "x": 1928,
+        "y": 5068,
+        "w": 203,
+        "h": 20
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-media-type",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 2168,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "272",
+      "rect": {
+        "x": 2168,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-content GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "272",
+      "rect": {
+        "x": 2192,
+        "y": 5068,
+        "w": 203,
+        "h": 20
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-media-type",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 2431,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "352",
+      "rect": {
+        "x": 2431,
+        "y": 4857,
+        "w": 251,
+        "h": 251
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gfa-media__overlay-content GSC-DJOPJcRDsrRbpkM",
+      "id": "",
+      "text": "352",
+      "rect": {
+        "x": 2455,
+        "y": 5068,
+        "w": 203,
+        "h": 20
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "tvg_media_hero_lQ7P6q_hero__overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 8,
+        "y": 6552,
+        "w": 1409,
+        "h": 584
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "gta-content__overlay GSC-BAR-DJXQOoXePIEQ",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 846,
+        "w": 1425,
+        "h": 54
+      },
+      "buttons": []
+    },
+    {
+      "tag": "span",
+      "classes": "cc-message",
+      "id": "cookieconsent:desc",
+      "text": "This website uses cookies to ensure you get the best experience. Learn more",
+      "rect": {
+        "x": 48,
+        "y": 739,
+        "w": 320,
+        "h": 54
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Learn more",
+          "ariaLabel": "",
+          "classes": "cc-link",
+          "id": "",
+          "x": 236,
+          "y": 778,
+          "w": 87,
+          "h": 30
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cc-compliance cc-highlight",
+      "id": "",
+      "text": "Ok",
+      "rect": {
+        "x": 48,
+        "y": 809,
+        "w": 320,
+        "h": 43
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Ok",
+          "ariaLabel": "dismiss cookie message",
+          "classes": "cc-btn cc-btn-decision cc-dismiss",
+          "id": "",
+          "x": 208,
+          "y": 831,
+          "w": 320,
+          "h": 43
+        }
+      ]
+    }
+  ]
+}

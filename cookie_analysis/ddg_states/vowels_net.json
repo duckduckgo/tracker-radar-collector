@@ -1,0 +1,102 @@
+{
+  "site": "vowels.net",
+  "url": "https://vowels.net/",
+  "timestamp": "2026-03-22T10:12:16.619296",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/vowels_net.png",
+  "total_requests": 166,
+  "blocked_requests_count": 9,
+  "blocked_requests": [
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-T5JWDVKS24",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=GT-K46RL7S6",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/16693068348/?random=1774174326989&cv=11&fst=1774174326989&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9197167120za200zd9197167120xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938465~115938469~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fvowels.net%2F&frm=0&tiba=vowels%20%7C%20Shop%20Made-in-Japan%20Luxury%20Essentials&did=dN2ZkMj%2CdNTU0Yz&gdid=dN2ZkMj.dNTU0Yz&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1570156189.1774174327&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-T5JWDVKS24&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=GT-K46RL7S6&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/16693068348/?random=1774174326989&cv=11&fst=1774174326989&fmt=3&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9197167120za200zd9197167120xec&gcd=13t3t3t3t5l1&dma=0&tag_exp=103116026~103200004~115938465~115938469~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fvowels.net%2F&frm=0&tiba=vowels%20%7C%20Shop%20Made-in-Japan%20Luxury%20Essentials&did=dN2ZkMj%2CdNTU0Yz&gdid=dN2ZkMj.dNTU0Yz&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1570156189.1774174327&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=G-T5JWDVKS24&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=MC-C22SLM6CNG&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    }
+  ],
+  "blocked_domains": [
+    "connect.facebook.net",
+    "googleads.g.doubleclick.net",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "cookie-consent-js",
+      "id": "",
+      "text": "Cookies Consent:\n            \n            \n              Vowels uses cookies to enhance user experience and to analyze performance and traffic on our website. We also share information about your use of our site with our social media, advertising and analytics partners. Further information is available in our Privacy Policy.\n            \n\n            \n              Accept Cookies",
+      "rect": {
+        "x": 16,
+        "y": 692,
+        "w": 1393,
+        "h": 177
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "underline",
+          "id": "",
+          "x": 1133,
+          "y": 770,
+          "w": 133,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "Accept Cookies",
+          "ariaLabel": "",
+          "classes": "cookie-consent-button-js button button--ghosted-black button--full-width",
+          "id": "",
+          "x": 713,
+          "y": 842,
+          "w": 1393,
+          "h": 54
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "cookie-consent-button-js button button--ghosted-black button--full-width",
+      "id": "",
+      "text": "Accept Cookies",
+      "rect": {
+        "x": 16,
+        "y": 815,
+        "w": 1393,
+        "h": 54
+      },
+      "buttons": []
+    }
+  ]
+}

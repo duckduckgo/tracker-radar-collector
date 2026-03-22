@@ -1,0 +1,879 @@
+{
+  "site": "hearinghealthfoundation.org",
+  "url": "https://hearinghealthfoundation.org/",
+  "timestamp": "2026-03-22T10:24:06.535968",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/hearinghealthfoundation_org.png",
+  "total_requests": 208,
+  "blocked_requests_count": 8,
+  "blocked_requests": [
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-3F6DG3JDL9&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-H2Z5VSRBRR&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/id",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/id",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/id",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/id",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.youtube.com/embed/1S8Zh_ULnWc?feature=oembed&enablejsapi=1",
+      "domain": "www.youtube.com"
+    }
+  ],
+  "blocked_domains": [
+    "connect.facebook.net",
+    "googleads.g.doubleclick.net",
+    "www.googletagmanager.com",
+    "www.youtube.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "section",
+      "classes": "gdpr-cookie-banner BOTTOM legacy-light bar full-styling",
+      "id": "",
+      "text": "By using this website, you agree to our use of cookies. We use cookies to provide you with a great experience and to help our website run effectively.Accept",
+      "rect": {
+        "x": 0,
+        "y": 822,
+        "w": 1425,
+        "h": 63
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+          "id": "",
+          "x": 1371,
+          "y": 853,
+          "w": 69,
+          "h": 35
+        }
+      ]
+    },
+    {
+      "tag": "p",
+      "classes": "disclaimer-text sqs-cookie-banner-v2-text",
+      "id": "",
+      "text": "By using this website, you agree to our use of cookies. We use cookies to provide you with a great experience and to help our website run effectively.",
+      "rect": {
+        "x": 20,
+        "y": 840,
+        "w": 840,
+        "h": 27
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "button-group sqs-cookie-banner-v2-cta-container",
+      "id": "",
+      "text": "Accept",
+      "rect": {
+        "x": 1336,
+        "y": 836,
+        "w": 69,
+        "h": 35
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+          "id": "",
+          "x": 1371,
+          "y": 853,
+          "w": 69,
+          "h": 35
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+      "id": "",
+      "text": "Accept",
+      "rect": {
+        "x": 1336,
+        "y": 836,
+        "w": 69,
+        "h": 35
+      },
+      "buttons": []
+    },
+    {
+      "tag": "body",
+      "classes": "enable-nav-button nav-button-style-solid nav-button-corner-style-square banner-button-style-solid banner-button-corner-style-square banner-slideshow-controls-arrows meta-priority-date center-entry-title--meta hide-entry-author hide-list-entry-footer  hide-page-sidebar       event-show-past-events ev",
+      "id": "collection-602953bafee3a564b1ea3e46",
+      "text": "About\n            \n            \n\n              \n              \n                \n                  Mission\n                \n              \n              \n              \n            \n\n              \n              \n                \n                  History\n                \n              \n              \n              \n            \n\n              \n              \n                \n                  Leadership\n                \n              \n              \n              \n            \n\n              \n  ",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 4072
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept",
+          "ariaLabel": "",
+          "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+          "id": "",
+          "x": 1371,
+          "y": 853,
+          "w": 69,
+          "h": 35
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 128,
+          "y": 70,
+          "w": 215,
+          "h": 100
+        },
+        {
+          "tag": "a",
+          "text": "Search",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1229,
+          "y": 70,
+          "w": 82,
+          "h": 35
+        },
+        {
+          "tag": "a",
+          "text": "Donate",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1347,
+          "y": 70,
+          "w": 116,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "#keeplistening",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 336,
+          "y": 438,
+          "w": 203,
+          "h": 42
+        },
+        {
+          "tag": "a",
+          "text": "get updates in your inbox",
+          "ariaLabel": "",
+          "classes": "sqs-block-button-element--small sqs-button-element--tertiary sqs-block-button-element",
+          "id": "",
+          "x": 1043,
+          "y": 731,
+          "w": 277,
+          "h": 41
+        },
+        {
+          "tag": "a",
+          "text": "please donate now",
+          "ariaLabel": "",
+          "classes": "sqs-block-button-element--small sqs-button-element--tertiary sqs-block-button-element",
+          "id": "",
+          "x": 1043,
+          "y": 833,
+          "w": 217,
+          "h": 41
+        },
+        {
+          "tag": "a",
+          "text": "Our Programs",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 381,
+          "y": 1578,
+          "w": 192,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "Our Programs",
+          "ariaLabel": "",
+          "classes": "btn-teal",
+          "id": "",
+          "x": 381,
+          "y": 1578,
+          "w": 192,
+          "h": 43
+        },
+        {
+          "tag": "a",
+          "text": "Meet OUR TEAM",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 381,
+          "y": 2301,
+          "w": 193,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "Meet OUR TEAM",
+          "ariaLabel": "",
+          "classes": "btn-teal",
+          "id": "",
+          "x": 381,
+          "y": 2302,
+          "w": 193,
+          "h": 43
+        },
+        {
+          "tag": "a",
+          "text": "KEEP LISTENING",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 875,
+          "y": 1283,
+          "w": 191,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "KEEP LISTENING",
+          "ariaLabel": "",
+          "classes": "btn-teal",
+          "id": "",
+          "x": 875,
+          "y": 1284,
+          "w": 191,
+          "h": 43
+        },
+        {
+          "tag": "a",
+          "text": "read more",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 856,
+          "y": 2007,
+          "w": 153,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "read more",
+          "ariaLabel": "",
+          "classes": "btn-teal",
+          "id": "",
+          "x": 856,
+          "y": 2007,
+          "w": 153,
+          "h": 43
+        },
+        {
+          "tag": "a",
+          "text": "please donate now",
+          "ariaLabel": "",
+          "classes": "sqs-block-button-element--small sqs-button-element--tertiary sqs-block-button-element",
+          "id": "",
+          "x": 713,
+          "y": 2428,
+          "w": 217,
+          "h": 41
+        },
+        {
+          "tag": "span",
+          "text": "",
+          "ariaLabel": "Previous",
+          "classes": "summary-carousel-pager-prev previous sqs-disabled",
+          "id": "",
+          "x": 1157,
+          "y": 2660,
+          "w": 16,
+          "h": 17
+        },
+        {
+          "tag": "span",
+          "text": "",
+          "ariaLabel": "Next",
+          "classes": "summary-carousel-pager-next next",
+          "id": "",
+          "x": 1183,
+          "y": 2660,
+          "w": 16,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n          summary-thumbnail-container\n          sqs-gallery-image-container\n          \n        ",
+          "id": "",
+          "x": 323,
+          "y": 2772,
+          "w": 176,
+          "h": 176
+        },
+        {
+          "tag": "a",
+          "text": "Serotonin\u2019s Dual Action in the Auditory Midbrain",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 317,
+          "y": 2903,
+          "w": 165,
+          "h": 56
+        },
+        {
+          "tag": "a",
+          "text": "Read More \u2192",
+          "ariaLabel": "",
+          "classes": "summary-read-more-link",
+          "id": "",
+          "x": 323,
+          "y": 3246,
+          "w": 176,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n          summary-thumbnail-container\n          sqs-gallery-image-container\n          \n        ",
+          "id": "",
+          "x": 518,
+          "y": 2772,
+          "w": 176,
+          "h": 176
+        },
+        {
+          "tag": "a",
+          "text": "My Turning Point",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 494,
+          "y": 2883,
+          "w": 128,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Read More \u2192",
+          "ariaLabel": "",
+          "classes": "summary-read-more-link",
+          "id": "",
+          "x": 518,
+          "y": 3091,
+          "w": 176,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n          summary-thumbnail-container\n          sqs-gallery-image-container\n          \n        ",
+          "id": "",
+          "x": 713,
+          "y": 2772,
+          "w": 176,
+          "h": 176
+        },
+        {
+          "tag": "a",
+          "text": "Can You Hear Me?",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 693,
+          "y": 2883,
+          "w": 137,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Read More \u2192",
+          "ariaLabel": "",
+          "classes": "summary-read-more-link",
+          "id": "",
+          "x": 713,
+          "y": 3323,
+          "w": 176,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n          summary-thumbnail-container\n          sqs-gallery-image-container\n          \n        ",
+          "id": "",
+          "x": 908,
+          "y": 2772,
+          "w": 176,
+          "h": 176
+        },
+        {
+          "tag": "a",
+          "text": "Inclusive Listening Is Finally Going Universal",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 906,
+          "y": 2893,
+          "w": 172,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "text": "Read More \u2192",
+          "ariaLabel": "",
+          "classes": "summary-read-more-link",
+          "id": "",
+          "x": 908,
+          "y": 3412,
+          "w": 176,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n          summary-thumbnail-container\n          sqs-gallery-image-container\n          \n        ",
+          "id": "",
+          "x": 1103,
+          "y": 2772,
+          "w": 176,
+          "h": 176
+        },
+        {
+          "tag": "a",
+          "text": "Building a Bridge Between Linguistics and Audiology",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 1090,
+          "y": 2903,
+          "w": 150,
+          "h": 56
+        },
+        {
+          "tag": "a",
+          "text": "Read More \u2192",
+          "ariaLabel": "",
+          "classes": "summary-read-more-link",
+          "id": "",
+          "x": 1103,
+          "y": 3199,
+          "w": 176,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n          summary-thumbnail-container\n          sqs-gallery-image-container\n          \n        ",
+          "id": "",
+          "x": 1298,
+          "y": 2772,
+          "w": 176,
+          "h": 176
+        },
+        {
+          "tag": "a",
+          "text": "Let\u2019s Listen Smart",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 1276,
+          "y": 2883,
+          "w": 132,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Read More \u2192",
+          "ariaLabel": "",
+          "classes": "summary-read-more-link",
+          "id": "",
+          "x": 1298,
+          "y": 3184,
+          "w": 176,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n          summary-thumbnail-container\n          sqs-gallery-image-container\n          \n        ",
+          "id": "",
+          "x": 1493,
+          "y": 2772,
+          "w": 176,
+          "h": 176
+        },
+        {
+          "tag": "a",
+          "text": "A Practical Hearing Health Checklist",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 1477,
+          "y": 2893,
+          "w": 143,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "text": "Read More \u2192",
+          "ariaLabel": "",
+          "classes": "summary-read-more-link",
+          "id": "",
+          "x": 1493,
+          "y": 3250,
+          "w": 176,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n          summary-thumbnail-container\n          sqs-gallery-image-container\n          \n        ",
+          "id": "",
+          "x": 1688,
+          "y": 2772,
+          "w": 176,
+          "h": 176
+        },
+        {
+          "tag": "a",
+          "text": "ARO 2026 in Puerto Rico",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 1674,
+          "y": 2893,
+          "w": 149,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "text": "Read More \u2192",
+          "ariaLabel": "",
+          "classes": "summary-read-more-link",
+          "id": "",
+          "x": 1688,
+          "y": 3180,
+          "w": 176,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n          summary-thumbnail-container\n          sqs-gallery-image-container\n          \n        ",
+          "id": "",
+          "x": 1883,
+          "y": 2772,
+          "w": 176,
+          "h": 176
+        },
+        {
+          "tag": "a",
+          "text": "Research Shows How Auditory Feedback Sharpens Speech",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 1876,
+          "y": 2903,
+          "w": 161,
+          "h": 56
+        },
+        {
+          "tag": "a",
+          "text": "Read More \u2192",
+          "ariaLabel": "",
+          "classes": "summary-read-more-link",
+          "id": "",
+          "x": 1883,
+          "y": 3246,
+          "w": 176,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n          summary-thumbnail-container\n          sqs-gallery-image-container\n          \n        ",
+          "id": "",
+          "x": 2078,
+          "y": 2772,
+          "w": 176,
+          "h": 176
+        },
+        {
+          "tag": "a",
+          "text": "Captions, Please (Everywhere)!",
+          "ariaLabel": "",
+          "classes": "summary-title-link",
+          "id": "",
+          "x": 2052,
+          "y": 2893,
+          "w": 123,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "text": "Read More \u2192",
+          "ariaLabel": "",
+          "classes": "summary-read-more-link",
+          "id": "",
+          "x": 2078,
+          "y": 3111,
+          "w": 176,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "Subscribe",
+          "ariaLabel": "",
+          "classes": "sqs-block-button-element--small sqs-button-element--tertiary sqs-block-button-element",
+          "id": "",
+          "x": 303,
+          "y": 3629,
+          "w": 136,
+          "h": 41
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 317,
+          "y": 3779,
+          "w": 188,
+          "h": 120
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 515,
+          "y": 3779,
+          "w": 188,
+          "h": 120
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 713,
+          "y": 3779,
+          "w": 188,
+          "h": 120
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 911,
+          "y": 3779,
+          "w": 188,
+          "h": 120
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1109,
+          "y": 3779,
+          "w": 188,
+          "h": 120
+        },
+        {
+          "tag": "a",
+          "text": "Terms",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 267,
+          "y": 3893,
+          "w": 65,
+          "h": 38
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 381,
+          "y": 3893,
+          "w": 154,
+          "h": 38
+        },
+        {
+          "tag": "a",
+          "text": "Contact Us",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 518,
+          "y": 3893,
+          "w": 113,
+          "h": 38
+        },
+        {
+          "tag": "a",
+          "text": "info@hhf.org",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 468,
+          "y": 3984,
+          "w": 84,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Hearing Health Foundation",
+          "classes": "sqs-svg-icon--wrapper instagram-unauth",
+          "id": "",
+          "x": 851,
+          "y": 3935,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Threads",
+          "classes": "sqs-svg-icon--wrapper threads-unauth",
+          "id": "",
+          "x": 897,
+          "y": 3935,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "URL",
+          "classes": "sqs-svg-icon--wrapper url",
+          "id": "",
+          "x": 943,
+          "y": 3935,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Laura Friedman",
+          "classes": "sqs-svg-icon--wrapper facebook-unauth",
+          "id": "",
+          "x": 989,
+          "y": 3935,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "TikTok",
+          "classes": "sqs-svg-icon--wrapper tiktok-unauth",
+          "id": "",
+          "x": 1035,
+          "y": 3935,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "Twitter",
+          "classes": "sqs-svg-icon--wrapper twitter-unauth",
+          "id": "",
+          "x": 1081,
+          "y": 3935,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "YouTube",
+          "classes": "sqs-svg-icon--wrapper youtube-unauth",
+          "id": "",
+          "x": 1127,
+          "y": 3935,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "LinkedIn",
+          "classes": "sqs-svg-icon--wrapper linkedin-unauth",
+          "id": "",
+          "x": 1173,
+          "y": 3935,
+          "w": 36,
+          "h": 36
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "color-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 140,
+        "w": 1425,
+        "h": 511
+      },
+      "buttons": []
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "site": "lafollette.wisc.edu",
+  "url": "https://lafollette.wisc.edu/",
+  "timestamp": "2026-03-22T10:23:25.501665",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/lafollette_wisc_edu.png",
+  "total_requests": 31,
+  "blocked_requests_count": 4,
+  "blocked_requests": [
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-K6HLMHK6RH",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.youtube.com/embed/hioz1KBY1QE?feature=oembed",
+      "domain": "www.youtube.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-K6HLMHK6RH&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=AW-16741743038&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    }
+  ],
+  "blocked_domains": [
+    "www.googletagmanager.com",
+    "www.youtube.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "cc-window  cc-loaded",
+      "id": "cookieconsent-window",
+      "text": "Cookie NoticeWe use cookies on this site. By continuing to browse without changing your browser settings to block or delete cookies, you agree to the UW\u2013Madison Cookie Notice.Accept cookie notice",
+      "rect": {
+        "x": 0,
+        "y": 764,
+        "w": 1425,
+        "h": 136
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "UW\u2013Madison Cookie Notice",
+          "ariaLabel": "",
+          "classes": "cc-link",
+          "id": "cookieconsent-link",
+          "x": 562,
+          "y": 844,
+          "w": 1059,
+          "h": 45
+        },
+        {
+          "tag": "button",
+          "text": "Accept cookie notice",
+          "ariaLabel": "Accept cookie notice",
+          "classes": "cc-btn cc-dismiss",
+          "id": "cookieconsent-dismiss",
+          "x": 1254,
+          "y": 832,
+          "w": 214,
+          "h": 39
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cc-message-wrapper",
+      "id": "cookieconsent-message-wrapper",
+      "text": "Cookie NoticeWe use cookies on this site. By continuing to browse without changing your browser settings to block or delete cookies, you agree to the UW\u2013Madison Cookie Notice.",
+      "rect": {
+        "x": 32,
+        "y": 796,
+        "w": 1083,
+        "h": 72
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "UW\u2013Madison Cookie Notice",
+          "ariaLabel": "",
+          "classes": "cc-link",
+          "id": "cookieconsent-link",
+          "x": 562,
+          "y": 844,
+          "w": 1059,
+          "h": 45
+        }
+      ]
+    },
+    {
+      "tag": "h2",
+      "classes": "cc-heading",
+      "id": "cookieconsent-heading",
+      "text": "Cookie Notice",
+      "rect": {
+        "x": 32,
+        "y": 796,
+        "w": 1083,
+        "h": 24
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cc-message",
+      "id": "cookieconsent-desc",
+      "text": "We use cookies on this site. By continuing to browse without changing your browser settings to block or delete cookies, you agree to the UW\u2013Madison Cookie Notice.",
+      "rect": {
+        "x": 32,
+        "y": 820,
+        "w": 1083,
+        "h": 48
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "UW\u2013Madison Cookie Notice",
+          "ariaLabel": "",
+          "classes": "cc-link",
+          "id": "cookieconsent-link",
+          "x": 562,
+          "y": 844,
+          "w": 1059,
+          "h": 45
+        }
+      ]
+    },
+    {
+      "tag": "a",
+      "classes": "cc-link",
+      "id": "cookieconsent-link",
+      "text": "UW\u2013Madison Cookie Notice",
+      "rect": {
+        "x": 32,
+        "y": 821,
+        "w": 1059,
+        "h": 45
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cc-compliance",
+      "id": "cookieconsent-compliance",
+      "text": "Accept cookie notice",
+      "rect": {
+        "x": 1115,
+        "y": 813,
+        "w": 278,
+        "h": 39
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept cookie notice",
+          "ariaLabel": "Accept cookie notice",
+          "classes": "cc-btn cc-dismiss",
+          "id": "cookieconsent-dismiss",
+          "x": 1254,
+          "y": 832,
+          "w": 214,
+          "h": 39
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "cc-btn cc-dismiss",
+      "id": "cookieconsent-dismiss",
+      "text": "Accept cookie notice",
+      "rect": {
+        "x": 1147,
+        "y": 813,
+        "w": 214,
+        "h": 39
+      },
+      "buttons": []
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "tag": "div",
+    "classes": "css-wun474 e1kug0ah4",
+    "id": "",
+    "text": "Our Terms of Use (including dispute resolution procedures) and Privacy Notice have been updated.  We use technologies that provide information about your interactions with this site to others for functionality, analytics, and other purposes. Learn more in our Privacy Notice. By continuing to use the Seventeen Magazine Services you agree that our Terms and Notice will govern your use of the Seventeen Magazine Services.",
+    "rect": {
+      "x": 0,
+      "y": 743,
+      "w": 1425,
+      "h": 157
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "button",
+        "text": "",
+        "ariaLabel": "Close Privacy Disclosure",
+        "classes": "css-ur1o30 e1kug0ah1",
+        "id": "",
+        "href": null,
+        "x": 1217,
+        "y": 822
+      },
+      {
+        "tag": "a",
+        "text": "Terms of Use",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.hearst.com/-/seventeenmagazine-terms-of-use",
+        "x": 273,
+        "y": 792
+      },
+      {
+        "tag": "a",
+        "text": "dispute resolution procedures",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.hearst.com/-/seventeenmagazine-terms-of-use#_DISPUTE_RESOLUTION",
+        "x": 488,
+        "y": 792
+      },
+      {
+        "tag": "a",
+        "text": "Privacy Notice",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.hearst.com/-/seventeenmagazine-privacy-notice",
+        "x": 672,
+        "y": 792
+      },
+      {
+        "tag": "a",
+        "text": "Learn more in our Privacy Notice",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.hearst.com/-/seventeenmagazine-privacy-notice",
+        "x": 446,
+        "y": 831
+      },
+      {
+        "tag": "a",
+        "text": "Terms",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.hearst.com/-/seventeenmagazine-terms-of-use",
+        "x": 347,
+        "y": 850
+      },
+      {
+        "tag": "a",
+        "text": "Notice",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "https://www.hearst.com/-/seventeenmagazine-privacy-notice",
+        "x": 422,
+        "y": 850
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "ariaLabel": "Close Privacy Disclosure",
+        "classes": "css-ur1o30 e1kug0ah1",
+        "id": "",
+        "x": 1217,
+        "y": 822,
+        "isClose": true
+      }
+    ],
+    "matchedSelector": "[role=\"dialog\"]"
+  }
+]

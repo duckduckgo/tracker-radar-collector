@@ -1,0 +1,251 @@
+[
+  {
+    "tag": "div",
+    "classes": "gdpr color--white zi--100",
+    "id": "gdpr",
+    "text": "We use cookies in the following ways: (1) for system administration, (2) to assess the performance of the website, (3) to personalize your experience, content and ads, (4) to provide social media features, and (5) to analyze our traffic. You consent to our cookies if you continue to use our website.  Please consult instructions for your web browser to disable or block cookies, or to receive a warning before a cookie is stored on your computer or mobile device. Read our Privacy Policy.\n          ",
+    "rect": {
+      "x": 0,
+      "y": 710,
+      "w": 1425,
+      "h": 190
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "links__inline",
+        "id": "",
+        "href": "/privacy-policy/",
+        "x": 425,
+        "y": 851
+      },
+      {
+        "tag": "button",
+        "text": "That's Fine",
+        "ariaLabel": "",
+        "classes": "gdpr__accept button__primary",
+        "id": "gdpr-accept",
+        "href": null,
+        "x": 1132,
+        "y": 795
+      },
+      {
+        "tag": "button",
+        "text": "Close GDPR alert",
+        "ariaLabel": "",
+        "classes": "gdpr__close button__no-button",
+        "id": "gdpr-close",
+        "href": null,
+        "x": 1326,
+        "y": 758
+      },
+      {
+        "tag": "button",
+        "text": "Close GDPR alert",
+        "ariaLabel": "",
+        "classes": "gdpr__close button__no-button",
+        "id": "gdpr-close",
+        "x": 1326,
+        "y": 758,
+        "isClose": true
+      }
+    ],
+    "matchedSelector": "[class*=\"gdpr\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "gdpr__content background--caption-black zi--10",
+    "id": "",
+    "text": "We use cookies in the following ways: (1) for system administration, (2) to assess the performance of the website, (3) to personalize your experience, content and ads, (4) to provide social media features, and (5) to analyze our traffic. You consent to our cookies if you continue to use our website.  Please consult instructions for your web browser to disable or block cookies, or to receive a warning before a cookie is stored on your computer or mobile device. Read our Privacy Policy.\n          ",
+    "rect": {
+      "x": 0,
+      "y": 710,
+      "w": 1425,
+      "h": 190
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "links__inline",
+        "id": "",
+        "href": "/privacy-policy/",
+        "x": 425,
+        "y": 851
+      },
+      {
+        "tag": "button",
+        "text": "That's Fine",
+        "ariaLabel": "",
+        "classes": "gdpr__accept button__primary",
+        "id": "gdpr-accept",
+        "href": null,
+        "x": 1132,
+        "y": 795
+      },
+      {
+        "tag": "button",
+        "text": "Close GDPR alert",
+        "ariaLabel": "",
+        "classes": "gdpr__close button__no-button",
+        "id": "gdpr-close",
+        "href": null,
+        "x": 1326,
+        "y": 758
+      },
+      {
+        "tag": "button",
+        "text": "Close GDPR alert",
+        "ariaLabel": "",
+        "classes": "gdpr__close button__no-button",
+        "id": "gdpr-close",
+        "x": 1326,
+        "y": 758,
+        "isClose": true
+      }
+    ],
+    "matchedSelector": "[class*=\"gdpr\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "gdpr__flex flex flex__jc--center flex__ai--flex-start flex__stack--sm",
+    "id": "",
+    "text": "We use cookies in the following ways: (1) for system administration, (2) to assess the performance of the website, (3) to personalize your experience, content and ads, (4) to provide social media features, and (5) to analyze our traffic. You consent to our cookies if you continue to use our website.  Please consult instructions for your web browser to disable or block cookies, or to receive a warning before a cookie is stored on your computer or mobile device. Read our Privacy Policy.\n          ",
+    "rect": {
+      "x": 193,
+      "y": 770,
+      "w": 1039,
+      "h": 90
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "links__inline",
+        "id": "",
+        "href": "/privacy-policy/",
+        "x": 425,
+        "y": 851
+      },
+      {
+        "tag": "button",
+        "text": "That's Fine",
+        "ariaLabel": "",
+        "classes": "gdpr__accept button__primary",
+        "id": "gdpr-accept",
+        "href": null,
+        "x": 1132,
+        "y": 795
+      }
+    ],
+    "matchedSelector": "[class*=\"gdpr\" i]"
+  },
+  {
+    "tag": "p",
+    "classes": "gdpr__copy hierarchy__minion-text",
+    "id": "",
+    "text": "We use cookies in the following ways: (1) for system administration, (2) to assess the performance of the website, (3) to personalize your experience, content and ads, (4) to provide social media features, and (5) to analyze our traffic. You consent to our cookies if you continue to use our website.  Please consult instructions for your web browser to disable or block cookies, or to receive a warning before a cookie is stored on your computer or mobile device. Read our Privacy Policy.",
+    "rect": {
+      "x": 233,
+      "y": 770,
+      "w": 759,
+      "h": 90
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "links__inline",
+        "id": "",
+        "href": "/privacy-policy/",
+        "x": 425,
+        "y": 851
+      }
+    ],
+    "matchedSelector": "[class*=\"gdpr\" i]"
+  },
+  {
+    "tag": "button",
+    "classes": "gdpr__accept button__primary",
+    "id": "gdpr-accept",
+    "text": "That's Fine",
+    "rect": {
+      "x": 1032,
+      "y": 770,
+      "w": 200,
+      "h": 50
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"gdpr\" i]"
+  },
+  {
+    "tag": "a",
+    "classes": "links__overlay",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 89,
+      "y": 10,
+      "w": 110,
+      "h": 109
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"overlay\" i]"
+  },
+  {
+    "tag": "a",
+    "classes": "links__overlay",
+    "id": "",
+    "text": "See Recent Work",
+    "rect": {
+      "x": 947,
+      "y": 1159,
+      "w": 389,
+      "h": 351
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"overlay\" i]"
+  },
+  {
+    "tag": "a",
+    "classes": "links__overlay",
+    "id": "",
+    "text": "Learn More",
+    "rect": {
+      "x": 947,
+      "y": 1550,
+      "w": 389,
+      "h": 241
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"overlay\" i]"
+  },
+  {
+    "tag": "a",
+    "classes": "links__overlay",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 89,
+      "y": 5197,
+      "w": 282,
+      "h": 126
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"overlay\" i]"
+  }
+]

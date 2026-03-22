@@ -1,0 +1,323 @@
+{
+  "site": "bso.org",
+  "url": "https://www.bso.org/",
+  "timestamp": "2026-03-22T10:18:29.684209",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/bso_org.png",
+  "total_requests": 137,
+  "blocked_requests_count": 52,
+  "blocked_requests": [
+    {
+      "url": "https://trkn.us/pixel/conv/ppt=23331;g=Homepage;gid=56248;ip=52.14.104.140;cuidchk=1",
+      "domain": "trkn.us"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/11452970460/?random=1774174694989&cv=11&fst=1774174694989&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9179665579z86397032za20gzb6397032zd6397032xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616986~115938466~115938469~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&frm=0&tiba=BSO&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://cm.teads.tv/v2/advertiser?referer=https%3A%2F%2Fwww.bso.org%2F&buyer_pixel_id=6652&gtm_consent=false",
+      "domain": "cm.teads.tv"
+    },
+    {
+      "url": "https://l.teads.tv/performance/http-source?%7B%22errorMessage%22%3A%22Error%20while%20trigger%20API%20to%20know%20advertiser%20information%22%2C%22topUrl%22%3A%22https%3A%2F%2Fwww.bso.org%2F%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F131.0.0.0%20Safari%2F537.36%22%2C%22exception%22%3A%22Failed%20to%20fetch%22%2C%22version%22%3A%228.8.0_2d69e81%22%2C%22type%22%3A%22internal%22%7D",
+      "domain": "l.teads.tv"
+    },
+    {
+      "url": "https://t.teads.tv/track?action=pageView&env=js-web&tag_version=8.8.0_2d69e81&provider=tag&buyer_pixel_id=6652&referer=https%3A%2F%2Fwww.bso.org%2F&hasConsent=true&cht=timeout",
+      "domain": "t.teads.tv"
+    },
+    {
+      "url": "https://t.teads.tv/track?action=browser-topics&env=js-web&tag_version=8.8.0_2d69e81&provider=tag&buyer_pixel_id=6652&referer=https%3A%2F%2Fwww.bso.org%2F&hasConsent=true&cht=timeout",
+      "domain": "t.teads.tv"
+    },
+    {
+      "url": "https://l.teads.tv/performance/http-source?%7B%22errorMessage%22%3A%22Unable%20to%20fire%20a%20log%20using%20fetch%20API%22%2C%22topUrl%22%3A%22https%3A%2F%2Fwww.bso.org%2F%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F131.0.0.0%20Safari%2F537.36%22%2C%22exception%22%3A%22Failed%20to%20fetch%22%2C%22version%22%3A%228.8.0_2d69e81%22%2C%22type%22%3A%22bad_integration%22%7D",
+      "domain": "l.teads.tv"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/984889145/?random=1774174695130&cv=11&fst=1774174695130&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9172465934z86397032za20gzb6397032zd6397032xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616985~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&frm=0&tiba=BSO&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.googleadservices.com/pagead/conversion/984889145/?random=1774174695171&cv=11&fst=1774174695171&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be63i0v9172465934z86397032za20gzb6397032zd6397032xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616985~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&label=3RjVCJv9x_wYELnu0NUD&capi=1&frm=0&tiba=BSO&bttype=purchase&value=0&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&ec_mode=a&_tu=CA&gcl_ctr=1~0~0&category=acrcp_v1_512&em=tv.1&fmt=7",
+      "domain": "www.googleadservices.com"
+    },
+    {
+      "url": "https://www.google.com/pagead/1p-conversion/984889145/?random=1774174695171&cv=11&fst=1774174695171&fmt=3&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be63i0v9172465934z86397032za20gzb6397032zd6397032xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616985~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&label=3RjVCJv9x_wYELnu0NUD&capi=1&frm=0&tiba=BSO&bttype=purchase&value=0&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&ec_mode=a&_tu=CA&gcl_ctr=1~0~0&category=acrcp_v1_512&em=tv.1&gcp=1&sscte=1&ct_cookie_present=1",
+      "domain": "www.google.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1066813212/?random=1774174695448&cv=11&fst=1774174695448&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v892517037z86397032za20gzb6397032zd6397032xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&frm=0&tiba=BSO&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.googleadservices.com/pagead/conversion/1066813212/?random=1774174695483&cv=11&fst=1774174695483&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be63i0v892517037z86397032za20gzb6397032zd6397032xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&label=kHRxCLODntkDEJyO2fwD&capi=1&frm=0&tiba=BSO&bttype=purchase&value=0&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&ec_mode=a&_tu=CA&gcl_ctr=2~0~1&category=acrcp_v1_512&em=tv.1&fmt=7",
+      "domain": "www.googleadservices.com"
+    },
+    {
+      "url": "https://www.googleadservices.com/pagead/conversion/1066813212/?random=1774174695489&cv=11&fst=1774174695489&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be63i0v892517037z86397032za20gzb6397032zd6397032xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&label=V2ylCK7TjoAYEJ3JzMkC&capi=1&frm=0&tiba=BSO&bttype=purchase&value=0&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&ec_mode=a&_tu=CA&gcl_ctr=3~0~1&category=acrcp_v1_512&em=tv.1&fmt=7",
+      "domain": "www.googleadservices.com"
+    },
+    {
+      "url": "https://www.google.com/pagead/1p-conversion/1066813212/?random=1774174695483&cv=11&fst=1774174695483&fmt=3&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be63i0v892517037z86397032za20gzb6397032zd6397032xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&label=kHRxCLODntkDEJyO2fwD&capi=1&frm=0&tiba=BSO&bttype=purchase&value=0&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&ec_mode=a&_tu=CA&gcl_ctr=2~0~1&category=acrcp_v1_512&em=tv.1&gcp=1&sscte=1&ct_cookie_present=1",
+      "domain": "www.google.com"
+    },
+    {
+      "url": "https://www.google.com/pagead/1p-conversion/1066813212/?random=1774174695489&cv=11&fst=1774174695489&fmt=3&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be63i0v892517037z86397032za20gzb6397032zd6397032xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&label=V2ylCK7TjoAYEJ3JzMkC&capi=1&frm=0&tiba=BSO&bttype=purchase&value=0&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&ec_mode=a&_tu=CA&gcl_ctr=3~0~1&category=acrcp_v1_512&em=tv.1&gcp=1&sscte=1&ct_cookie_present=1",
+      "domain": "www.google.com"
+    },
+    {
+      "url": "https://connect.facebook.net/signals/config/1409243686601897?v=2.9.281&r=stable&domain=www.bso.org&hme=7561e8db2489737df4c74b634c943d82cefbf4e67acc7fda2493ff919471f0aa&ex_m=101%2C194%2C143%2C22%2C69%2C70%2C136%2C65%2C64%2C11%2C151%2C87%2C16%2C130%2C123%2C72%2C75%2C129%2C148%2C153%2C8%2C4%2C5%2C7%2C6%2C3%2C88%2C98%2C154%2C159%2C208%2C59%2C175%2C176%2C52%2C264%2C30%2C71%2C220%2C219%2C218%2C23%2C32%2C100%2C58%2C10%2C60%2C94%2C95%2C96%2C102%2C126%2C31%2C29%2C128%2C125%2C124%2C144%2C73%2C147%2C145%2C146%2C47%2C57%2C119%2C15%2C150%2C42%2C251%2C252%2C250%2C26%2C27%2C28%2C45%2C137%2C74%2C109%2C18%2C20%2C41%2C37%2C39%2C38%2C80%2C89%2C93%2C107%2C135%2C138%2C43%2C108%2C24%2C21%2C115%2C66%2C35%2C140%2C139%2C141%2C132%2C131%2C25%2C34%2C56%2C106%2C149%2C67%2C17%2C142%2C111%2C78%2C63%2C19%2C82%2C83%2C112%2C81%2C33%2C280%2C201%2C190%2C191%2C189%2C283%2C275%2C49%2C202%2C104%2C127%2C77%2C117%2C51%2C44%2C46%2C110%2C116%2C122%2C55%2C61%2C50%2C53%2C97%2C152%2C1%2C120%2C14%2C118%2C12%2C2%2C54%2C90%2C62%2C114%2C86%2C85%2C155%2C156%2C91%2C92%2C9%2C121%2C99%2C48%2C133%2C84%2C76%2C68%2C113%2C103%2C40%2C134%2C0%2C79%2C36%2C105%2C13%2C157",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://pixel-config.reddit.com/pixels/a2_evlod2e1ng5l/config",
+      "domain": "pixel-config.reddit.com"
+    },
+    {
+      "url": "https://alb.reddit.com/rp.gif?ts=1774174695543&id=a2_evlod2e1ng5l&event=PageVisit&m.itemCount=&m.value=&m.valueDecimal=&m.currency=&m.transactionId=&m.customEventName=&m.products=&m.conversionId=&uuid=596c1a36-c10e-4100-a510-99d8260b4747&aaid=&em=&pn=&external_id=&idfa=&integration=reddit&partner=&partner_version=&opt_out=0&sh=1440&sw=900&v=rdt_79aa2193&dpm=&dpcc=&dprc=",
+      "domain": "alb.reddit.com"
+    },
+    {
+      "url": "https://alb.reddit.com/rp.gif?ts=1774174695544&id=a2_ijfuc520242l&event=PageVisit&m.itemCount=&m.value=&m.valueDecimal=&m.currency=&m.transactionId=&m.customEventName=&m.products=&m.conversionId=&uuid=596c1a36-c10e-4100-a510-99d8260b4747&aaid=&em=&pn=&external_id=&idfa=&integration=reddit&partner=&partner_version=&opt_out=0&sh=1440&sw=900&v=rdt_79aa2193&dpm=&dpcc=&dprc=",
+      "domain": "alb.reddit.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=7534084&time=1774174695546&li_adsId=b06670c8-6e57-44e2-b848-af48465f1cdc&url=https%3A%2F%2Fwww.bso.org%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://bat.bing.com/p/action/97071325.js",
+      "domain": "bat.bing.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=fetch&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=AW-691217565&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=DC-14349797&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/insight_tag_errors.gif?v=2&pid=7534084&error=version%3A%20285%20%7C%20WebsiteActions-285-TypeError%3A%20Failed%20to%20fetch%3B%20ErrorData%3A%20%7B%22domain%22%3A%22bso.org%22%2C%22requestFetcher%22%3A%22fetch-keepalive%22%2C%22body%22%3A%22H4sIAAAAAAAAAz2OQUvDMBxHv8vvnDrbNU2b2wQdBUGxZRcRSZZ%2Ft2CaxiZFZOy7y5x4fO%2FweCcEayLkq%2BDr8rYu3xjifrYh7WiOdvKQRc0Zkh0JMheizEVZNZzzisFMo7IeEjpON9N8AMMyO0gcUwpRrlZ%2FfgWGoA7U2%2BQIEnfdExi%2BSEebqLMHr9wLfS4UU2sg0YhyXQ2myIra6KyoBpM1udaZaPKmMLnQnCsw2NjPykenEhnIQblIDM4%2BqGsFF9ha5dMVRhv3kCeEqLukEkFm5flSebT%2Bg0zrNyH8Z440QvrFOYb4%2B9d%2Fh8v582Z7%2F75ru7bH%2BQeuWwErOgEAAA%3D%3D%22%7D&href=https%3A%2F%2Fwww.bso.org%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-HSJY18TMZS&gtm=45je63i0v881181593z86397032za20gzb6397032zd6397032&_p=1774174694494&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1197804321.1774174696&ecid=276734899&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&ec_mode=a&_eu=AAAAAGA&_s=1&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252~118104773&sid=1774174695&sct=1&seg=0&dl=https%3A%2F%2Fwww.bso.org%2F&dt=BSO&en=page_view&_fv=1&_nsi=1&_ss=1&ep.debug_mode=true&tfd=1452",
+      "domain": "analytics.google.com"
+    },
+    {
+      "url": "https://stats.g.doubleclick.net/g/collect?v=2&tid=G-HSJY18TMZS&cid=1197804321.1774174696&gtm=45je63i0v881181593z86397032za20gzb6397032zd6397032&aip=1&dma=0&gcd=13l3l3l3l1l1&npa=0&frm=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252~118104773",
+      "domain": "stats.g.doubleclick.net"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=beacon&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/11452970460/?random=1774174694989&cv=11&fst=1774174694989&fmt=3&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9179665579z86397032za20gzb6397032zd6397032xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616986~115938466~115938469~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&frm=0&tiba=BSO&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/984889145/?random=1774174695130&cv=11&fst=1774174695130&fmt=3&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9172465934z86397032za20gzb6397032zd6397032xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616985~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&frm=0&tiba=BSO&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1066813212/?random=1774174695448&cv=11&fst=1774174695448&fmt=3&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v892517037z86397032za20gzb6397032zd6397032xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&frm=0&tiba=BSO&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=5216562%2C7534084&time=1774174695632&li_adsId=b06670c8-6e57-44e2-b848-af48465f1cdc&url=https%3A%2F%2Fwww.bso.org%2F&tm=gtmv2",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://i.simpli.fi/p?cid=478663&cb=sifi_att_42656._hp",
+      "domain": "i.simpli.fi"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=DC-8371565&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://sc-static.net/scevent.min.js",
+      "domain": "sc-static.net"
+    },
+    {
+      "url": "https://storage.cloud.kargo.com/kds/kds-events-gtm.min.js",
+      "domain": "storage.cloud.kargo.com"
+    },
+    {
+      "url": "https://www.clarity.ms/tag/ont7nrphmb?ref=gtm",
+      "domain": "www.clarity.ms"
+    },
+    {
+      "url": "https://diffuser-cdn.app-us1.com/diffuser/diffuser.js",
+      "domain": "diffuser-cdn.app-us1.com"
+    },
+    {
+      "url": "https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=D0HNS0BC77U7JU438BLG&lib=ttq",
+      "domain": "analytics.tiktok.com"
+    },
+    {
+      "url": "https://go.affec.tv/j/68c9ae820f3f7857f1030a72?gdpr=[GDPR_APPLIES]&gdpr_consent=[GDPR_TCF_CONSENT_STRING]",
+      "domain": "go.affec.tv"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1066813212/?random=1774174695646&cv=11&fst=1774174695646&bg=ffffff&guid=ON&async=1&gtm=45be63i0v892517037z86397032za20gzb6397032zd6397032xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&frm=0&tiba=BSO&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=KA&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1066813212/?random=1774174695646&cv=11&fst=1774174695646&fmt=3&bg=ffffff&guid=ON&async=1&gtm=45be63i0v892517037z86397032za20gzb6397032zd6397032xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.bso.org%2F&frm=0&tiba=BSO&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2018203100.1774174695&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=KA",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://px.mountain.com/st?ga_tracking_id=G-HSJY18TMZS&ga_client_id=1197804321.1774174696&shpt=BSO&dcm_cid=s1774174695%24o1%24g0%24t1774174695%24j60%24l0%24h276734899.undefined&available_ga=%5B%7B%22id%22%3A%22G-HSJY18TMZS%22%2C%22sess_id%22%3A%221774174695%22%7D%5D&ga_info=%7B%22status%22%3A%22OK%22%2C%22available_ga%22%3A%5B%7B%22id%22%3A%22G-HSJY18TMZS%22%2C%22sess_id%22%3A%221774174695%22%7D%5D%2C%22hardcoded_ga%22%3A%22G-HSJY18TMZS%22%2C%22ga_tracking_id%22%3A%22G-HSJY18TMZS%22%2C%22ga_client_id%22%3A%221197804321.1774174696%22%2C%22shpt%22%3A%22BSO%22%2C%22dcm_cid%22%3A%22s1774174695%24o1%24g0%24t1774174695%24j60%24l0%24h276734899.undefined%22%2C%22mntnis%22%3A%22d6eJTjvnIsx9N%2B2BSePiQ%2Bl%2BJvCv5CZz%22%2C%22execution_workflow%22%3A%7B%22iteration%22%3A1%2C%22getClientIdByCookie%22%3A%22OK%22%2C%22shpt%22%3A%22OK%22%2C%22dcm_cid%22%3A%22OK%22%7D%7D&hardcoded_ga=G-HSJY18TMZS&meta_tag_data=%5B%7B%22description.content%22%3A%22Home%20of%20the%20Boston%20Symphony%20Orchestra%20and%20Boston%20Pops.%20World-class%20performances%20at%20Symphony%20Hall%2C%20Tanglewood%2C%20and%20beyond%20%E2%80%94%20browse%20concerts%20and%20get%20tickets.%22%7D%2C%7B%22robots.content%22%3A%22all%22%7D%5D&dxver=4.0.0&shaid=38107&plh=https%3A%2F%2Fwww.bso.org%2F&cb=69765806544564740term%3Dvalue&shadditional=googletagmanager%3Dtrue%2Cga4%3Dtrue%2Crb_adv_id%3Dboston_symphony",
+      "domain": "px.mountain.com"
+    },
+    {
+      "url": "https://fid.agkn.com/f?apiKey=2520642820",
+      "domain": "fid.agkn.com"
+    },
+    {
+      "url": "https://i.liadm.com/s/63537?bidder_id=242861&bidder_uuid=8A541C-9667488F-BB7B-4906-8525-CF6AC4808967",
+      "domain": "i.liadm.com"
+    },
+    {
+      "url": "https://aa.agkn.com/adscores/g.jsonp?sid=9202274878&userid=8A541C-9667488F-BB7B-4906-8525-CF6AC4808967",
+      "domain": "aa.agkn.com"
+    },
+    {
+      "url": "https://aa.agkn.com/adscores/g.pixel?sid=9202283468&_userID=8A541C-9667488F-BB7B-4906-8525-CF6AC4808967&_takID=DA44558A541C",
+      "domain": "aa.agkn.com"
+    },
+    {
+      "url": "https://bat.bing.com/action/0?ti=97071325&tm=gtm002&Ver=2&mid=e3940dd1-91a0-48e2-b4a9-12e96b46b0d9&bo=1&sid=716ba8b025d811f18052854814930a61&vid=716be96025d811f19ee9dd8965627bf0&vids=1&msclkid=N&uach=pv%3D10.0&pi=918639831&lg=en-US&sw=1440&sh=900&sc=24&tl=BSO&p=https%3A%2F%2Fwww.bso.org%2F&r=&lt=1467&evt=pageLoad&sv=2&cdb=AQAA&rn=807222",
+      "domain": "bat.bing.com"
+    },
+    {
+      "url": "https://ib.adnxs.com/pixie?pi=d964f6ba-da4a-4313-bae4-374c491ae2df&e=PageView&script=0",
+      "domain": "ib.adnxs.com"
+    },
+    {
+      "url": "https://ib.adnxs.com/pixie?pi=d964f6ba-da4a-4313-bae4-374c491ae2df&e=PageView&script=0",
+      "domain": "ib.adnxs.com"
+    },
+    {
+      "url": "https://ib.adnxs.com/pixie?pi=d964f6ba-da4a-4313-bae4-374c491ae2df&e=PageView&script=0",
+      "domain": "ib.adnxs.com"
+    },
+    {
+      "url": "https://ib.adnxs.com/pixie?pi=d964f6ba-da4a-4313-bae4-374c491ae2df&e=PageView&script=0",
+      "domain": "ib.adnxs.com"
+    }
+  ],
+  "blocked_domains": [
+    "aa.agkn.com",
+    "alb.reddit.com",
+    "analytics.google.com",
+    "analytics.tiktok.com",
+    "bat.bing.com",
+    "cm.teads.tv",
+    "connect.facebook.net",
+    "diffuser-cdn.app-us1.com",
+    "fid.agkn.com",
+    "go.affec.tv",
+    "googleads.g.doubleclick.net",
+    "i.liadm.com",
+    "i.simpli.fi",
+    "ib.adnxs.com",
+    "l.teads.tv",
+    "pixel-config.reddit.com",
+    "px.ads.linkedin.com",
+    "px.mountain.com",
+    "sc-static.net",
+    "stats.g.doubleclick.net",
+    "storage.cloud.kargo.com",
+    "t.teads.tv",
+    "trkn.us",
+    "www.clarity.ms",
+    "www.google.com",
+    "www.googleadservices.com",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "cookie-consent js--cookie-consent active",
+      "id": "",
+      "text": "We use cookies to enhance your experience. By continuing to browse, you agree to saving BSO and third-party cookies on your device. See our privacy policy.\n  Dismiss",
+      "rect": {
+        "x": 30,
+        "y": 683,
+        "w": 428,
+        "h": 187
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "privacy policy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 242,
+          "y": 773,
+          "w": 371,
+          "h": 40
+        },
+        {
+          "tag": "button",
+          "text": "Dismiss",
+          "ariaLabel": "",
+          "classes": "cookie-consent__close js--cookie-consent-close",
+          "id": "",
+          "x": 97,
+          "y": 827,
+          "w": 82,
+          "h": 35
+        }
+      ]
+    },
+    {
+      "tag": "p",
+      "classes": "cookie-consent__text",
+      "id": "",
+      "text": "We use cookies to enhance your experience. By continuing to browse, you agree to saving BSO and third-party cookies on your device. See our privacy policy.",
+      "rect": {
+        "x": 56,
+        "y": 709,
+        "w": 376,
+        "h": 86
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "privacy policy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 242,
+          "y": 773,
+          "w": 371,
+          "h": 40
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "cookie-consent__close js--cookie-consent-close",
+      "id": "",
+      "text": "Dismiss",
+      "rect": {
+        "x": 56,
+        "y": 810,
+        "w": 82,
+        "h": 35
+      },
+      "buttons": []
+    }
+  ]
+}

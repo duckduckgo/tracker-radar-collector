@@ -1,0 +1,53 @@
+[
+  {
+    "tag": "div",
+    "classes": "cookie-float-div w-100 overflow-visible d-block",
+    "id": "cookie-consent-banner",
+    "text": "We use cookies on this website to ensure you get the best user experience. If you continue to use our site, we will assume that you are ok with this. Alternatively, you can choose \"Read more\" to see what cookies entail. READ MORE OK",
+    "rect": {
+      "x": 0,
+      "y": 791,
+      "w": 1425,
+      "h": 109
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "READ MORE",
+        "ariaLabel": "",
+        "classes": "btn btn-secondary",
+        "id": "",
+        "href": "/cookies.html",
+        "x": 688,
+        "y": 867
+      },
+      {
+        "tag": "button",
+        "text": "OK",
+        "ariaLabel": "",
+        "classes": "btn btn-primary",
+        "id": "cookie-consent-accept",
+        "href": null,
+        "x": 769,
+        "y": 867
+      }
+    ],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  },
+  {
+    "tag": "img",
+    "classes": "rounded mb-4 d-inline-block right-banner ao-shadow",
+    "id": "",
+    "text": "",
+    "rect": {
+      "x": 1022,
+      "y": 708,
+      "w": 273,
+      "h": 273
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"banner\" i]"
+  }
+]

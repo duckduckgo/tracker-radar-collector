@@ -1,0 +1,354 @@
+{
+  "site": "poconomountains.com",
+  "url": "https://www.poconomountains.com/",
+  "timestamp": "2026-03-22T10:18:10.401355",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/poconomountains_com.png",
+  "total_requests": 300,
+  "blocked_requests_count": 30,
+  "blocked_requests": [
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-Q3027Z5YJW&l=gtmDataLayer&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://pixel-a.basis.net/dmp/asyncPixelSync",
+      "domain": "pixel-a.basis.net"
+    },
+    {
+      "url": "https://pixel-a.basis.net/dmp/asyncPixelSync",
+      "domain": "pixel-a.basis.net"
+    },
+    {
+      "url": "https://pixel.sitescout.com/dmp/asyncPixelSync",
+      "domain": "pixel.sitescout.com"
+    },
+    {
+      "url": "https://pixel-a.basis.net/iap/74d2895037a18b7a?gtmcb=1048195972",
+      "domain": "pixel-a.basis.net"
+    },
+    {
+      "url": "https://pixel-a.basis.net/iap/4ef5099835bddcc5",
+      "domain": "pixel-a.basis.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-VLL9GYK436&l=gtmDataLayer&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://static.ads-twitter.com/uwt.js",
+      "domain": "static.ads-twitter.com"
+    },
+    {
+      "url": "https://bat.bing.com/bat.js",
+      "domain": "bat.bing.com"
+    },
+    {
+      "url": "https://cdn.mouseflow.com/projects/bd54a5ab-5085-4c03-b357-751b8c082780.js",
+      "domain": "cdn.mouseflow.com"
+    },
+    {
+      "url": "https://pixel.zprk.io/v5/pixel/PlsdANz4Fa.gif?ssid=1&ut1=&ut2=%2F&ut3=https%3A%2F%2Fwww.poconomountains.com%2F&gtmcb=1408745647",
+      "domain": "pixel.zprk.io"
+    },
+    {
+      "url": "https://pixel-a.basis.net/iap/d53ad40f1ccf5fa2",
+      "domain": "pixel-a.basis.net"
+    },
+    {
+      "url": "https://pixel-a.basis.net/up/4c54ee2f1a05f55a?cntr_url=https%3A%2F%2Fwww.poconomountains.com%2F",
+      "domain": "pixel-a.basis.net"
+    },
+    {
+      "url": "https://pixel.sitescout.com/iap/89a45982e794daae",
+      "domain": "pixel.sitescout.com"
+    },
+    {
+      "url": "https://c.amazon-adsystem.com/aat/amzn.js",
+      "domain": "c.amazon-adsystem.com"
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=CEI89GBC77U4LISTVPI0&lib=ttq",
+      "domain": "analytics.tiktok.com"
+    },
+    {
+      "url": "https://tags.srv.stackadapt.com/events.js",
+      "domain": "tags.srv.stackadapt.com"
+    },
+    {
+      "url": "https://collector-51300.us.tvsquared.com/tv2track.js",
+      "domain": "collector-51300.us.tvsquared.com"
+    },
+    {
+      "url": "https://www.clarity.ms/tag/rnpyyh0g71?ref=gtm2",
+      "domain": "www.clarity.ms"
+    },
+    {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-Z9MN82YTMQ&gtm=45je63i0v888806292z876041680za20gzb76041680zd76041680&_p=1774174678718&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=96271639.1774174680&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_s=1&tag_exp=103116026~103200004~115616985~115938465~115938468~116024733~117384406~117484252~118104773&sid=1774174679&sct=1&seg=0&dl=https%3A%2F%2Fwww.poconomountains.com%2F&dt=Visit%20the%20Poconos%20%7C%20Discover%20Restaurants%2C%20Hotels%20%26%20Things%20to%20Do&_tu=QA&en=page_view&_fv=1&_nsi=1&_ss=1&tfd=1477",
+      "domain": "www.google-analytics.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-7K6ZZ7HWF4",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://tag.yieldoptimizer.com/ps/ps?t=s&p=1824&pg=sh&si=803&shcy=Stroudsburg&shst=PA&shcr=United%20States&shid=03/22/2026&shod=03/23/2026&shna=1&ch=Book%E2%80%BADirect",
+      "domain": "tag.yieldoptimizer.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=AW-832253407&l=gtmDataLayer&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=G-VLL9GYK436&l=gtmDataLayer&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=G-Q3027Z5YJW&l=gtmDataLayer&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=D5MGBGJC77U6J0PHFNF0&lib=ttq",
+      "domain": "analytics.tiktok.com"
+    },
+    {
+      "url": "https://wsmcdn.audioeye.com/aem.js",
+      "domain": "wsmcdn.audioeye.com"
+    },
+    {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-Z9MN82YTMQ&gtm=45je63i0v888806292z876041680za20gzb76041680zd76041680&_p=1774174678718&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=96271639.1774174680&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAAQ&tag_exp=103116026~103200004~115616985~115938465~115938468~116024733~117384406~117484252~118104773&sid=1774174679&sct=1&seg=0&dl=https%3A%2F%2Fwww.poconomountains.com%2F&dt=Visit%20the%20Poconos%20%7C%20Discover%20Restaurants%2C%20Hotels%20%26%20Things%20to%20Do&_tu=SA&_s=2&tfd=6523",
+      "domain": "www.google-analytics.com"
+    },
+    {
+      "url": "https://static.hotjar.com/c/hotjar-582055.js?sv=7",
+      "domain": "static.hotjar.com"
+    }
+  ],
+  "blocked_domains": [
+    "analytics.tiktok.com",
+    "bat.bing.com",
+    "c.amazon-adsystem.com",
+    "cdn.mouseflow.com",
+    "collector-51300.us.tvsquared.com",
+    "connect.facebook.net",
+    "pixel-a.basis.net",
+    "pixel.sitescout.com",
+    "pixel.zprk.io",
+    "static.ads-twitter.com",
+    "static.hotjar.com",
+    "tag.yieldoptimizer.com",
+    "tags.srv.stackadapt.com",
+    "wsmcdn.audioeye.com",
+    "www.clarity.ms",
+    "www.google-analytics.com",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "dialog",
+      "classes": "cookie-banner core-styles",
+      "id": "",
+      "text": "The site uses cookies to store information on your computer. Some are essential to make our site work, others help us improve the user experience. By using the site, you consent to the placement of these cookies. Read our\u00a0Privacy Policy\u00a0to learn more.\n\n\t\t\n\t\t\n\t\t\t\n\t\t\t\tAccept & Dismiss",
+      "rect": {
+        "x": 925,
+        "y": 270,
+        "w": 500,
+        "h": 188
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1135,
+          "y": 374,
+          "w": 372,
+          "h": 43
+        },
+        {
+          "tag": "div",
+          "text": "Accept & Dismiss",
+          "ariaLabel": "",
+          "classes": "banner-close",
+          "id": "",
+          "x": 1175,
+          "y": 424,
+          "w": 452,
+          "h": 36
+        },
+        {
+          "tag": "button",
+          "text": "Accept & Dismiss",
+          "ariaLabel": "Close cookie banner",
+          "classes": "button site-style",
+          "id": "",
+          "x": 1039,
+          "y": 424,
+          "w": 179,
+          "h": 36
+        }
+      ]
+    },
+    {
+      "tag": "a",
+      "classes": "gt_switcher-popup glink nturl notranslate",
+      "id": "",
+      "text": "English\u25bc",
+      "rect": {
+        "x": 827,
+        "y": 9577,
+        "w": 95,
+        "h": 21
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cr__asset__overlayV3",
+      "id": "",
+      "text": "keepingupwkristianPocono Mountains",
+      "rect": {
+        "x": 0,
+        "y": 8666,
+        "w": 206,
+        "h": 259
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cr__asset__overlayV3",
+      "id": "",
+      "text": "nowheretobe.busHonesdale",
+      "rect": {
+        "x": 212,
+        "y": 8666,
+        "w": 259,
+        "h": 259
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cr__asset__overlayV3",
+      "id": "",
+      "text": "will.strawserHonesdale",
+      "rect": {
+        "x": 477,
+        "y": 8666,
+        "w": 206,
+        "h": 259
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cr__asset__overlayV3",
+      "id": "",
+      "text": "poconotourismScotrun",
+      "rect": {
+        "x": 689,
+        "y": 8666,
+        "w": 259,
+        "h": 259
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cr__asset__overlayV3",
+      "id": "",
+      "text": "poconotourismPocono Mountains",
+      "rect": {
+        "x": 954,
+        "y": 8666,
+        "w": 259,
+        "h": 259
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cr__asset__overlayV3",
+      "id": "",
+      "text": "photographybyrachelelizabethMilford",
+      "rect": {
+        "x": 1219,
+        "y": 8666,
+        "w": 206,
+        "h": 259
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cr__asset__overlayV3",
+      "id": "",
+      "text": "ssspeedwaysS&S Speedways - Indoor Go-Karts",
+      "rect": {
+        "x": 0,
+        "y": 8930,
+        "w": 387,
+        "h": 219
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cr__asset__overlayV3",
+      "id": "",
+      "text": "poconotourismJim Thorpe",
+      "rect": {
+        "x": 393,
+        "y": 8930,
+        "w": 219,
+        "h": 219
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cr__asset__overlayV3",
+      "id": "",
+      "text": "skirmishusapaintballSkirmish Paintball Fields",
+      "rect": {
+        "x": 617,
+        "y": 8930,
+        "w": 294,
+        "h": 219
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cr__asset__overlayV3",
+      "id": "",
+      "text": "lexipewThe Stourbridge Line Train Excursions",
+      "rect": {
+        "x": 917,
+        "y": 8930,
+        "w": 174,
+        "h": 219
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "cr__asset__overlayV3",
+      "id": "",
+      "text": "bjlitSkytop Lodge",
+      "rect": {
+        "x": 1097,
+        "y": 8930,
+        "w": 329,
+        "h": 219
+      },
+      "buttons": []
+    }
+  ]
+}

@@ -1,0 +1,818 @@
+{
+  "site": "emerson.edu",
+  "url": "https://emerson.edu/",
+  "timestamp": "2026-03-22T10:14:53.877663",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/emerson_edu.png",
+  "total_requests": 62,
+  "blocked_requests_count": 1,
+  "blocked_requests": [
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-4EJLZRHYE6&gtm=45je63i0h1v880485848z871506172za200zd880485848&_p=1774174483550&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dMDhkMT&cid=129807263.1774174484&ul=en-us&sr=1440x900&ir=1&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=EAAAAGQ&_s=3&tag_exp=103116026~103200004~115616985~115938465~115938469~116024733~117484252&sid=1774174483&sct=1&seg=1&dl=https%3A%2F%2Femerson.edu%2F&dt=Emerson%20College%2C%20Undergraduate%20%26%20Graduate%20Programs%20in%20Boston&en=page_view&_et=1&tfd=5385",
+      "domain": "analytics.google.com"
+    }
+  ],
+  "blocked_domains": [
+    "analytics.google.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "body",
+      "classes": "fs-grid fs-grid page_layout_home page_theme_feature eu-cookie-compliance-popup-open eu-cookie-compliance-status-null loaded",
+      "id": "",
+      "text": "We use cookies on this site to enhance your user experienceBy continuing to use this site, you agree to our\u00a0use of cookies.\n              Privacy Policy\n          \n\n    \n    \n            OK\n          \n  \n\n  \n    \n      \n        \n          \n          \n        \n      \n      \n        \n      \n      \n        \n      \n      \n        \n      \n      \n        \n      \n      \n        \n      \n      \n        \n      \n      \n        \n      \n      \n        \n      \n      \n        \n      \n      \n        \n      \n   ",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 9263
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "find-more-button eu-cookie-compliance-more-button find-more-button-processed",
+          "id": "",
+          "x": 532,
+          "y": 879,
+          "w": 98,
+          "h": 18
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1257,
+          "y": 868,
+          "w": 42,
+          "h": 28
+        },
+        {
+          "tag": "a",
+          "text": "Skip to Main Content",
+          "ariaLabel": "",
+          "classes": "skip_link",
+          "id": "skip_to_content",
+          "x": 713,
+          "y": -59,
+          "w": 257,
+          "h": 39
+        },
+        {
+          "tag": "a",
+          "text": "Menu",
+          "ariaLabel": "",
+          "classes": "js-swap js-menu-handle menu_handle menu_handle_mobile fs-swap-element fs-swap-enabled",
+          "id": "",
+          "x": 1397,
+          "y": 47,
+          "w": 54,
+          "h": 44
+        },
+        {
+          "tag": "a",
+          "text": "Instagram",
+          "ariaLabel": "",
+          "classes": "social_nav_link",
+          "id": "",
+          "x": 1398,
+          "y": 381,
+          "w": 55,
+          "h": 47
+        },
+        {
+          "tag": "a",
+          "text": "Facebook",
+          "ariaLabel": "",
+          "classes": "social_nav_link",
+          "id": "",
+          "x": 1398,
+          "y": 428,
+          "w": 55,
+          "h": 47
+        },
+        {
+          "tag": "a",
+          "text": "LinkedIn",
+          "ariaLabel": "",
+          "classes": "social_nav_link",
+          "id": "",
+          "x": 1398,
+          "y": 475,
+          "w": 55,
+          "h": 47
+        },
+        {
+          "tag": "a",
+          "text": "YouTube",
+          "ariaLabel": "",
+          "classes": "social_nav_link",
+          "id": "",
+          "x": 1398,
+          "y": 521,
+          "w": 55,
+          "h": 44
+        },
+        {
+          "tag": "a",
+          "text": "Majors & Programs",
+          "ariaLabel": "",
+          "classes": "main_nav_link",
+          "id": "",
+          "x": 215,
+          "y": 38,
+          "w": 180,
+          "h": 51
+        },
+        {
+          "tag": "a",
+          "text": "Around the World",
+          "ariaLabel": "",
+          "classes": "main_nav_link",
+          "id": "",
+          "x": 431,
+          "y": 38,
+          "w": 171,
+          "h": 51
+        },
+        {
+          "tag": "a",
+          "text": "Emerson Life",
+          "ariaLabel": "",
+          "classes": "main_nav_link",
+          "id": "",
+          "x": 615,
+          "y": 38,
+          "w": 118,
+          "h": 51
+        },
+        {
+          "tag": "a",
+          "text": "Admissions & Aid",
+          "ariaLabel": "",
+          "classes": "main_nav_link",
+          "id": "",
+          "x": 792,
+          "y": 38,
+          "w": 155,
+          "h": 51
+        },
+        {
+          "tag": "a",
+          "text": "Apply",
+          "ariaLabel": "",
+          "classes": "secondary_nav_link",
+          "id": "",
+          "x": 1038,
+          "y": 38,
+          "w": 68,
+          "h": 46
+        },
+        {
+          "tag": "a",
+          "text": "Visit",
+          "ariaLabel": "",
+          "classes": "secondary_nav_link",
+          "id": "",
+          "x": 1103,
+          "y": 38,
+          "w": 57,
+          "h": 46
+        },
+        {
+          "tag": "a",
+          "text": "Contact",
+          "ariaLabel": "",
+          "classes": "secondary_nav_link",
+          "id": "",
+          "x": 1174,
+          "y": 38,
+          "w": 79,
+          "h": 46
+        },
+        {
+          "tag": "a",
+          "text": "Give",
+          "ariaLabel": "",
+          "classes": "secondary_nav_link",
+          "id": "",
+          "x": 1246,
+          "y": 38,
+          "w": 59,
+          "h": 46
+        },
+        {
+          "tag": "a",
+          "text": "Menu",
+          "ariaLabel": "",
+          "classes": "js-swap js-menu-handle menu_handle menu_handle_mobile fs-swap-element fs-swap-enabled",
+          "id": "",
+          "x": 1397,
+          "y": 47,
+          "w": 54,
+          "h": 44
+        },
+        {
+          "tag": "a",
+          "text": "Emerson College",
+          "ariaLabel": "",
+          "classes": "logo_link",
+          "id": "",
+          "x": 713,
+          "y": 170,
+          "w": 1175,
+          "h": 69
+        },
+        {
+          "tag": "a",
+          "text": "Apply Now",
+          "ariaLabel": "",
+          "classes": "feature_story_link",
+          "id": "",
+          "x": 198,
+          "y": 574,
+          "w": 145,
+          "h": 56
+        },
+        {
+          "tag": "a",
+          "text": "Under Leadership of Co-CEO Pam Abdy \u201995, LHD \u201923, Warner Bros. Nets 11 Oscars",
+          "ariaLabel": "",
+          "classes": "news_story_item_title_link",
+          "id": "",
+          "x": 291,
+          "y": 1530,
+          "w": 337,
+          "h": 88
+        },
+        {
+          "tag": "a",
+          "text": "Emerson Students Explore Film, Media, and Innovation at SXSW",
+          "ariaLabel": "",
+          "classes": "news_story_item_title_link",
+          "id": "",
+          "x": 677,
+          "y": 1515,
+          "w": 332,
+          "h": 57
+        },
+        {
+          "tag": "a",
+          "text": "Seven Faculty Members Receive Tenure",
+          "ariaLabel": "",
+          "classes": "news_story_item_title_link",
+          "id": "",
+          "x": 1068,
+          "y": 1500,
+          "w": 337,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "More news on Emerson Today",
+          "ariaLabel": "",
+          "classes": "news_story_item_link",
+          "id": "",
+          "x": 1086,
+          "y": 1626,
+          "w": 300,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "Read more about the pipeline that Emerson built",
+          "ariaLabel": "",
+          "classes": "photo_story_link",
+          "id": "",
+          "x": 929,
+          "y": 2398,
+          "w": 448,
+          "h": 50
+        },
+        {
+          "tag": "a",
+          "text": "Watch on YouTube: Discover Emerson College",
+          "ariaLabel": "",
+          "classes": "js-lightboxing video_story_link js-video js-youtube",
+          "id": "",
+          "x": 513,
+          "y": 3895,
+          "w": 775,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "Find Your Program",
+          "ariaLabel": "",
+          "classes": "related_link_list_link",
+          "id": "",
+          "x": 1042,
+          "y": 4180,
+          "w": 156,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "What Makes an Emersonian",
+          "ariaLabel": "",
+          "classes": "related_link_list_link",
+          "id": "",
+          "x": 1079,
+          "y": 4225,
+          "w": 231,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "Visit Emerson",
+          "ariaLabel": "",
+          "classes": "related_link_list_link",
+          "id": "",
+          "x": 1020,
+          "y": 4270,
+          "w": 112,
+          "h": 26
+        },
+        {
+          "tag": "button",
+          "text": "Pause",
+          "ariaLabel": "",
+          "classes": "js-background-video-pause background_video_pause active",
+          "id": "",
+          "x": 20,
+          "y": 4835,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "Explore Emerson\u2019s School of Arts & Interdisciplinary Studies",
+          "ariaLabel": "",
+          "classes": "photo_story_link",
+          "id": "",
+          "x": 891,
+          "y": 5481,
+          "w": 373,
+          "h": 50
+        },
+        {
+          "tag": "a",
+          "text": "Emerson Stage: Experience the Next Generation of Performers",
+          "ariaLabel": "",
+          "classes": "related_link_list_link",
+          "id": "",
+          "x": 1058,
+          "y": 5836,
+          "w": 262,
+          "h": 54
+        },
+        {
+          "tag": "a",
+          "text": "Discover Boston\u2019s UnCommon Radio, WERS",
+          "ariaLabel": "",
+          "classes": "related_link_list_link",
+          "id": "",
+          "x": 1052,
+          "y": 5909,
+          "w": 250,
+          "h": 54
+        },
+        {
+          "tag": "a",
+          "text": "Alumni Stories: Serino \u201924 Stars in Broadway\u2019s \u2018Harry Potter and the Cursed Child\u2019",
+          "ariaLabel": "",
+          "classes": "related_link_list_link",
+          "id": "",
+          "x": 1057,
+          "y": 5996,
+          "w": 259,
+          "h": 82
+        },
+        {
+          "tag": "a",
+          "text": "Explore Emerson\u2019s School of Communication",
+          "ariaLabel": "",
+          "classes": "photo_story_link",
+          "id": "",
+          "x": 942,
+          "y": 6679,
+          "w": 474,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "Meet The Robbins Center, Emerson\u2019s Clinical Training Facility for Communication Disorders",
+          "ariaLabel": "",
+          "classes": "related_link_list_link",
+          "id": "",
+          "x": 1039,
+          "y": 7095,
+          "w": 225,
+          "h": 110
+        },
+        {
+          "tag": "a",
+          "text": "Get Involved: Communications, Politics, and Law Society (CPLA)",
+          "ariaLabel": "",
+          "classes": "related_link_list_link",
+          "id": "",
+          "x": 1059,
+          "y": 7196,
+          "w": 263,
+          "h": 54
+        },
+        {
+          "tag": "a",
+          "text": "Emerson Polling: 25 Years of Surveying Public Opinion",
+          "ariaLabel": "",
+          "classes": "related_link_list_link",
+          "id": "",
+          "x": 1047,
+          "y": 7269,
+          "w": 240,
+          "h": 54
+        },
+        {
+          "tag": "a",
+          "text": "Majors & Programs",
+          "ariaLabel": "",
+          "classes": "cta_link",
+          "id": "",
+          "x": 313,
+          "y": 7667,
+          "w": 337,
+          "h": 56
+        },
+        {
+          "tag": "a",
+          "text": "Around the World",
+          "ariaLabel": "",
+          "classes": "cta_link",
+          "id": "",
+          "x": 713,
+          "y": 7667,
+          "w": 337,
+          "h": 56
+        },
+        {
+          "tag": "a",
+          "text": "Admissions & Aid",
+          "ariaLabel": "",
+          "classes": "related_link_list_link",
+          "id": "",
+          "x": 1118,
+          "y": 7630,
+          "w": 146,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "About Emerson",
+          "ariaLabel": "",
+          "classes": "related_link_list_link",
+          "id": "",
+          "x": 1110,
+          "y": 7675,
+          "w": 129,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "Support Emerson",
+          "ariaLabel": "",
+          "classes": "related_link_list_link",
+          "id": "",
+          "x": 1118,
+          "y": 7720,
+          "w": 145,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "Boston",
+          "ariaLabel": "",
+          "classes": "address_link",
+          "id": "",
+          "x": 214,
+          "y": 8349,
+          "w": 82,
+          "h": 52
+        },
+        {
+          "tag": "button",
+          "text": "Tap here for Boston contact information",
+          "ariaLabel": "Tap here for Boston contact information",
+          "classes": "js-swap address_swap address_1 fs-swap-element fs-swap-target fs-swap-enabled fs-swap-active",
+          "id": "",
+          "x": 487,
+          "y": 8344,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "tag": "a",
+          "text": "Telephone              \n\t\t\t\t\n\t\t\t\t\n\t\t\t\t  617-824-8500",
+          "ariaLabel": "",
+          "classes": "address_phone",
+          "id": "",
+          "x": 241,
+          "y": 8451,
+          "w": 136,
+          "h": 44
+        },
+        {
+          "tag": "a",
+          "text": "Los Angeles",
+          "ariaLabel": "",
+          "classes": "address_link",
+          "id": "",
+          "x": 239,
+          "y": 8513,
+          "w": 132,
+          "h": 52
+        },
+        {
+          "tag": "button",
+          "text": "Tap here for Los Angeles contact information",
+          "ariaLabel": "Tap here for Los Angeles contact information",
+          "classes": "js-swap address_swap address_2 fs-swap-element fs-swap-target fs-swap-enabled",
+          "id": "",
+          "x": 487,
+          "y": 8509,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "tag": "a",
+          "text": "The Netherlands",
+          "ariaLabel": "",
+          "classes": "address_link",
+          "id": "",
+          "x": 265,
+          "y": 8570,
+          "w": 185,
+          "h": 52
+        },
+        {
+          "tag": "button",
+          "text": "Tap here for The Netherlands contact information",
+          "ariaLabel": "Tap here for The Netherlands contact information",
+          "classes": "js-swap address_swap address_3 fs-swap-element fs-swap-target fs-swap-enabled",
+          "id": "",
+          "x": 487,
+          "y": 8565,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "tag": "a",
+          "text": "Office of Equal Opportunity (OEO)",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 438,
+          "y": 8968,
+          "w": 252,
+          "h": 24
+        },
+        {
+          "tag": "a",
+          "text": "Emerson Policy Against Discrimination, Harassment & Sexual Violence",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 539,
+          "y": 9027,
+          "w": 509,
+          "h": 24
+        },
+        {
+          "tag": "a",
+          "text": "Accessibility",
+          "ariaLabel": "",
+          "classes": "footer_nav_link",
+          "id": "",
+          "x": 200,
+          "y": 9222,
+          "w": 150,
+          "h": 46
+        },
+        {
+          "tag": "a",
+          "text": "Privacy",
+          "ariaLabel": "",
+          "classes": "footer_nav_link",
+          "id": "",
+          "x": 366,
+          "y": 9222,
+          "w": 101,
+          "h": 46
+        },
+        {
+          "tag": "a",
+          "text": "Offices & Departments",
+          "ariaLabel": "",
+          "classes": "footer_nav_link",
+          "id": "",
+          "x": 578,
+          "y": 9222,
+          "w": 242,
+          "h": 46
+        },
+        {
+          "tag": "a",
+          "text": "Faculty & Staff Directory",
+          "ariaLabel": "",
+          "classes": "footer_nav_link",
+          "id": "",
+          "x": 876,
+          "y": 9222,
+          "w": 274,
+          "h": 46
+        },
+        {
+          "tag": "a",
+          "text": "Work at Emerson",
+          "ariaLabel": "",
+          "classes": "footer_nav_link",
+          "id": "",
+          "x": 1150,
+          "y": 9222,
+          "w": 192,
+          "h": 46
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default",
+      "id": "",
+      "text": "We use cookies on this site to enhance your user experienceBy continuing to use this site, you agree to our\u00a0use of cookies.\n              Privacy Policy\n          \n\n    \n    \n            OK",
+      "rect": {
+        "x": 0,
+        "y": 837,
+        "w": 1425,
+        "h": 63
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "find-more-button eu-cookie-compliance-more-button find-more-button-processed",
+          "id": "",
+          "x": 532,
+          "y": 879,
+          "w": 98,
+          "h": 18
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1257,
+          "y": 868,
+          "w": 42,
+          "h": 28
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "popup-content info eu-cookie-compliance-content",
+      "id": "",
+      "text": "We use cookies on this site to enhance your user experienceBy continuing to use this site, you agree to our\u00a0use of cookies.\n              Privacy Policy\n          \n\n    \n    \n            OK",
+      "rect": {
+        "x": 143,
+        "y": 837,
+        "w": 1140,
+        "h": 60
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "find-more-button eu-cookie-compliance-more-button find-more-button-processed",
+          "id": "",
+          "x": 532,
+          "y": 879,
+          "w": 98,
+          "h": 18
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1257,
+          "y": 868,
+          "w": 42,
+          "h": 28
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "eu-cookie-compliance-message",
+      "id": "popup-text",
+      "text": "We use cookies on this site to enhance your user experienceBy continuing to use this site, you agree to our\u00a0use of cookies.\n              Privacy Policy",
+      "rect": {
+        "x": 143,
+        "y": 842,
+        "w": 439,
+        "h": 47
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "find-more-button eu-cookie-compliance-more-button find-more-button-processed",
+          "id": "",
+          "x": 532,
+          "y": 879,
+          "w": 98,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "sliding-popup-bottom",
+      "id": "sliding-popup",
+      "text": "We use cookies on this site to enhance your user experienceBy continuing to use this site, you agree to our\u00a0use of cookies.\n              Privacy Policy\n          \n\n    \n    \n            OK",
+      "rect": {
+        "x": 0,
+        "y": 837,
+        "w": 1425,
+        "h": 63
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "find-more-button eu-cookie-compliance-more-button find-more-button-processed",
+          "id": "",
+          "x": 532,
+          "y": 879,
+          "w": 98,
+          "h": 18
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1257,
+          "y": 868,
+          "w": 42,
+          "h": 28
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "fs-cell fs-lg-9 fs-lg-justify-center",
+      "id": "block-noticeofnondiscrimination",
+      "text": "Notice of Non-Discrimination: Emerson College does not discriminate on the basis of race, color, national origin, ethnicity, sex (under Title IX), pregnancy, sexual orientation, gender identity/expression, including transgender identity, religion, disability, age, genetics, active military or veteran status and any other characteristics protected under applicable federal or Massachusetts law in the administration of its educational or employment practices, programs or activities. Any concerns re",
+      "rect": {
+        "x": 284,
+        "y": 8755,
+        "w": 857,
+        "h": 285
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Office of Equal Opportunity (OEO)",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 438,
+          "y": 8968,
+          "w": 252,
+          "h": 24
+        },
+        {
+          "tag": "a",
+          "text": "Emerson Policy Against Discrimination, Harassment & Sexual Violence",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 539,
+          "y": 9027,
+          "w": 509,
+          "h": 24
+        }
+      ]
+    }
+  ]
+}

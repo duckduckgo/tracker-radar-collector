@@ -1,0 +1,50 @@
+{
+  "site": "osf.io",
+  "url": "https://osf.io/",
+  "timestamp": "2026-03-22T10:14:27.302272",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/osf_io.png",
+  "total_requests": 82,
+  "blocked_requests_count": 8,
+  "blocked_requests": [
+    {
+      "url": "https://js-agent.newrelic.com/nr-spa-1.301.0.min.js",
+      "domain": "js-agent.newrelic.com"
+    },
+    {
+      "url": "https://js-agent.newrelic.com/nr-spa-1.301.0.min.js",
+      "domain": "js-agent.newrelic.com"
+    },
+    {
+      "url": "https://bam.nr-data.net/1/704513e63b?a=1835137194&sa=1&v=1.306.0&t=Unnamed%20Transaction&rst=1519&ck=0&s=c3e8f6aceaed320c&ref=https://osf.io/&ptid=fd576fbeb39481b4&af=err,spa,xhr,stn,ins&be=205&fe=871&dc=868&fsh=1&perf=%7B%22timing%22:%7B%22of%22:1774174455957,%22n%22:0,%22f%22:1,%22dn%22:3,%22dne%22:106,%22c%22:106,%22s%22:107,%22ce%22:150,%22rq%22:151,%22rp%22:206,%22rpe%22:209,%22di%22:340,%22ds%22:1073,%22de%22:1073,%22dc%22:1075,%22l%22:1075,%22le%22:1076%7D,%22navigation%22:%7B%7D%7D&fp=1232&fcp=1232",
+      "domain": "bam.nr-data.net"
+    },
+    {
+      "url": "https://bam.nr-data.net/jserrors/1/704513e63b?a=1835137194&sa=1&v=1.306.0&t=Unnamed%20Transaction&rst=1524&ck=0&s=c3e8f6aceaed320c&ref=https://osf.io/&ptid=fd576fbeb39481b4",
+      "domain": "bam.nr-data.net"
+    },
+    {
+      "url": "https://www.youtube.com/embed/X07mBq2tnMg?si=jzOBeqyUPGJ6tm86",
+      "domain": "www.youtube.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-JMG7YD81TP&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.clarity.ms/tag/qwz5axcfwv?ref=gtm",
+      "domain": "www.clarity.ms"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=AW-963536011&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    }
+  ],
+  "blocked_domains": [
+    "bam.nr-data.net",
+    "js-agent.newrelic.com",
+    "www.clarity.ms",
+    "www.googletagmanager.com",
+    "www.youtube.com"
+  ],
+  "dom_areas": []
+}

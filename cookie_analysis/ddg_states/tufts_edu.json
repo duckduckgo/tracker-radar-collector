@@ -1,0 +1,262 @@
+{
+  "site": "tufts.edu",
+  "url": "https://www.tufts.edu/",
+  "timestamp": "2026-03-22T10:21:29.610465",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/tufts_edu.png",
+  "total_requests": 187,
+  "blocked_requests_count": 22,
+  "blocked_requests": [
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-3DDNK3T75D&gtm=45je63i0v9108289831z89105359397za20gzb9105359397zd9105359397&_p=1774174879137&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=822478279.1774174880&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAGA&_s=1&tag_exp=103116026~103200004~115938465~115938469~116024733~117484252&sid=1774174880&sct=1&seg=0&dl=https%3A%2F%2Fwww.tufts.edu%2F&dt=Tufts%20University&en=page_view&_fv=1&_nsi=1&_ss=1&ep.previous_page=&ep.article_topics=null&ep.article_authors=null&ep.article_schools=null&tfd=1013",
+      "domain": "analytics.google.com"
+    },
+    {
+      "url": "https://stats.g.doubleclick.net/g/collect?v=2&tid=G-3DDNK3T75D&cid=822478279.1774174880&gtm=45je63i0v9108289831z89105359397za20gzb9105359397zd9105359397&aip=1&dma=0&gcd=13l3l3l3l1l1&npa=0&frm=0&tag_exp=103116026~103200004~115938465~115938469~116024733~117484252",
+      "domain": "stats.g.doubleclick.net"
+    },
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-7QHZNYE3J3&gtm=45je63i0v882154003z89105359397za20gzb9105359397zd9105359397&_p=1774174879137&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=822478279.1774174880&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAGA&_s=1&tag_exp=103116026~103200004~115938465~115938468~116024733~117484252&sid=1774174880&sct=1&seg=0&dl=https%3A%2F%2Fwww.tufts.edu%2F&dt=Tufts%20University&en=page_view&_fv=1&_ss=1&ep.previous_page=&ep.article_topics=null&ep.article_authors=null&ep.article_schools=null&tfd=1074",
+      "domain": "analytics.google.com"
+    },
+    {
+      "url": "https://stats.g.doubleclick.net/g/collect?v=2&tid=G-7QHZNYE3J3&cid=822478279.1774174880&gtm=45je63i0v882154003z89105359397za20gzb9105359397zd9105359397&aip=1&dma=0&gcd=13l3l3l3l1l1&npa=0&frm=0&tag_exp=103116026~103200004~115938465~115938468~116024733~117484252",
+      "domain": "stats.g.doubleclick.net"
+    },
+    {
+      "url": "https://connect.facebook.net/signals/config/1232637663948177?v=2.9.281&r=stable&domain=www.tufts.edu&hme=7561e8db2489737df4c74b634c943d82cefbf4e67acc7fda2493ff919471f0aa&ex_m=101%2C194%2C143%2C22%2C69%2C70%2C136%2C65%2C64%2C11%2C151%2C87%2C16%2C130%2C123%2C72%2C75%2C129%2C148%2C153%2C8%2C4%2C5%2C7%2C6%2C3%2C88%2C98%2C154%2C159%2C208%2C59%2C175%2C176%2C52%2C264%2C30%2C71%2C220%2C219%2C218%2C23%2C32%2C100%2C58%2C10%2C60%2C94%2C95%2C96%2C102%2C126%2C31%2C29%2C128%2C125%2C124%2C144%2C73%2C147%2C145%2C146%2C47%2C57%2C119%2C15%2C150%2C42%2C251%2C252%2C250%2C26%2C27%2C28%2C45%2C137%2C74%2C109%2C18%2C20%2C41%2C37%2C39%2C38%2C80%2C89%2C93%2C107%2C135%2C138%2C43%2C108%2C24%2C21%2C115%2C66%2C35%2C140%2C139%2C141%2C132%2C131%2C25%2C34%2C56%2C106%2C149%2C67%2C17%2C142%2C111%2C78%2C63%2C19%2C82%2C83%2C112%2C81%2C33%2C280%2C201%2C190%2C191%2C189%2C283%2C275%2C49%2C202%2C104%2C127%2C77%2C117%2C51%2C44%2C46%2C110%2C116%2C122%2C55%2C61%2C50%2C53%2C97%2C152%2C1%2C120%2C14%2C118%2C12%2C2%2C54%2C90%2C62%2C114%2C86%2C85%2C155%2C156%2C91%2C92%2C9%2C121%2C99%2C48%2C133%2C84%2C76%2C68%2C113%2C103%2C40%2C134%2C0%2C79%2C36%2C105%2C13%2C157",
+      "domain": "connect.facebook.net"
+    },
+    {
+      "url": "https://www.google.com/pagead/1p-user-list/780980239/?random=1774174879844&cv=11&fst=1774173600000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9102218094za200zd9102218094xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938465~115938468~116024733~117484252~118104773&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.tufts.edu%2F&frm=0&tiba=Tufts%20University&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2082639876.1774174880&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=3&is_vtc=1&cid=CAQSsQEABaugfegjiTYCNv2_Id9LU0cVxoUi3fzawe7rmhH8lbPmVvl8OZYAp5mNsbEpaQDLlTqySDWJI8_CErmxtK7evgDrmrMoy2wzFzKUnmi5ubJMsNbPtRICF-vSiCHYyr0ZDZBa1kod7kOMAjwKuqTUa0P6m6P2hmcB-bh2lzhQy8bl5_IvaaEVBZPRWb64SkVhUEQ_1vCDS7oVNn-jpBkFngaRfwyAjvcYrFe5m2Fc1dk&random=4079869650&rmt_tld=0&ipr=y",
+      "domain": "www.google.com"
+    },
+    {
+      "url": "https://www.youtube.com/s/player/1ebf2aa6/www-widgetapi.vflset/www-widgetapi.js",
+      "domain": "www.youtube.com"
+    },
+    {
+      "url": "https://track.hubspot.com/__ptq.gif?k=1&sd=1440x900&cd=24-bit&cs=UTF-8&ln=en-us&v=1.1&a=3860938&rcu=https%3A%2F%2Fwww.tufts.edu%2F&pu=https%3A%2F%2Fwww.tufts.edu%2F&t=Tufts+University&cts=1774174880395&vi=ce21e7b9d02a43b185fb3bce6435ece6&nc=true&u=189197748.ce21e7b9d02a43b185fb3bce6435ece6.1774174880392.1774174880392.1774174880392.1&b=189197748.1.1774174880392&cc=15",
+      "domain": "track.hubspot.com"
+    },
+    {
+      "url": "https://arttrk.com/pixel/?ad_log=referer&action=misc&pixid=849dcd4e-5cfc-4ae8-9ea5-402a7da48525",
+      "domain": "arttrk.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=DC-14631269&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-666834536&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://www.redditstatic.com/ads/pixel.js",
+      "domain": "www.redditstatic.com"
+    },
+    {
+      "url": "https://js.ipredictive.com/viant_universal_pixel.js",
+      "domain": "js.ipredictive.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/780980239/?random=1774174880422&cv=11&fst=1774174880422&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9102218094z89105359397za200zd9102218094xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938465~115938468~116024733~117484252~118104773&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.tufts.edu%2F&frm=0&tiba=Tufts%20University&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2082639876.1774174880&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/780980239/?random=1774174880422&cv=11&fst=1774174880422&fmt=3&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9102218094z89105359397za200zd9102218094xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938465~115938468~116024733~117484252~118104773&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.tufts.edu%2F&frm=0&tiba=Tufts%20University&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2082639876.1774174880&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=DC-14631269&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=fetch&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=8038201&time=1774174880529&li_adsId=99778496-79e9-4473-b2f4-b17e5b039d02&url=https%3A%2F%2Fwww.tufts.edu%2F&tm=gtmv2",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/insight_tag_errors.gif?v=2&pid=8038201&error=version%3A%20285%20%7C%20WebsiteActions-285-TypeError%3A%20Failed%20to%20fetch%3B%20ErrorData%3A%20%7B%22domain%22%3A%22tufts.edu%22%2C%22requestFetcher%22%3A%22fetch-keepalive%22%2C%22body%22%3A%22H4sIAAAAAAAAAz2PQUsDMRSE%2F4rMOWuTbbZdcutBy4IHsWsvIpJtXtuH2TRuskop%2Fe%2ByFjwOH3wzc0Fkl2DeajmvS6neBdJu4Ji3NCQ%2BBZiyrgQy9wSjlkutlrquZVVqAXfqLQcY5HGf0z25EQLj4GFwzDkmM5v9kxkEoj1Qy9kTDNoJ3L0G%2Fp568hkCP9QlzrThQ7D%2Bhb5GSrlxMOh0JcnpXaEqTYV0c1XM7aIqZKk7VypZLRYKApzawYbkbSYHs7c%2BkYDnR3uzYAprtiHfQs9pB3NBTN0m20wwhb5OlicOn%2BSasIrxX3OkHiaM3gukv33tOU43nlfrh49ts2laXH8BO8jY2ksBAAA%3D%22%7D&href=https%3A%2F%2Fwww.tufts.edu%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=beacon&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-3DDNK3T75D&gtm=45je63i0v9108289831z89105359397za20gzb9105359397zd9105359397&_p=1774174879137&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=822478279.1774174880&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAGQ&_s=2&tag_exp=103116026~103200004~115938465~115938469~116024733~117484252&sid=1774174880&sct=1&seg=0&dl=https%3A%2F%2Fwww.tufts.edu%2F&dt=Tufts%20University&_tu=KA&en=scroll&ep.previous_page=&ep.article_topics=null&ep.article_authors=null&ep.article_schools=null&epn.depth=0&_et=362&tfd=6379",
+      "domain": "analytics.google.com"
+    },
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-7QHZNYE3J3&gtm=45je63i0v882154003z89105359397za20gzb9105359397zd9105359397&_p=1774174879137&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=822478279.1774174880&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAGQ&_s=2&tag_exp=103116026~103200004~115938465~115938468~116024733~117484252&sid=1774174880&sct=1&seg=0&dl=https%3A%2F%2Fwww.tufts.edu%2F&dt=Tufts%20University&_tu=KA&en=scroll&ep.previous_page=&ep.article_topics=null&ep.article_authors=null&ep.article_schools=null&epn.depth=0&_et=307&tfd=6382",
+      "domain": "analytics.google.com"
+    }
+  ],
+  "blocked_domains": [
+    "analytics.google.com",
+    "arttrk.com",
+    "connect.facebook.net",
+    "googleads.g.doubleclick.net",
+    "js.ipredictive.com",
+    "px.ads.linkedin.com",
+    "stats.g.doubleclick.net",
+    "track.hubspot.com",
+    "www.google.com",
+    "www.googletagmanager.com",
+    "www.redditstatic.com",
+    "www.youtube.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "section",
+      "classes": "privacy-notice privacy-notice--not-accepted",
+      "id": "privacy-notice",
+      "text": "Accept and ContinueWe use cookies and similar technologies to understand how you use our site, to personalize content and to improve functionality. By continuing to use this site, we will assume you agree with our use of these technologies as described in the Privacy Statement.",
+      "rect": {
+        "x": 0,
+        "y": 807,
+        "w": 1425,
+        "h": 93
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept and Continue",
+          "ariaLabel": "",
+          "classes": "privacy-notice__button",
+          "id": "",
+          "x": 1285,
+          "y": 854,
+          "w": 230,
+          "h": 52
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Statement",
+          "ariaLabel": "",
+          "classes": "privacy-notice__link",
+          "id": "",
+          "x": 689,
+          "y": 859,
+          "w": 132,
+          "h": 22
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "privacy-notice__wrapper",
+      "id": "",
+      "text": "Accept and ContinueWe use cookies and similar technologies to understand how you use our site, to personalize content and to improve functionality. By continuing to use this site, we will assume you agree with our use of these technologies as described in the Privacy Statement.",
+      "rect": {
+        "x": 0,
+        "y": 808,
+        "w": 1425,
+        "h": 92
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept and Continue",
+          "ariaLabel": "",
+          "classes": "privacy-notice__button",
+          "id": "",
+          "x": 1285,
+          "y": 854,
+          "w": 230,
+          "h": 52
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Statement",
+          "ariaLabel": "",
+          "classes": "privacy-notice__link",
+          "id": "",
+          "x": 689,
+          "y": 859,
+          "w": 132,
+          "h": 22
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "privacy-notice__action",
+      "id": "",
+      "text": "Accept and Continue",
+      "rect": {
+        "x": 1170,
+        "y": 828,
+        "w": 230,
+        "h": 52
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Accept and Continue",
+          "ariaLabel": "",
+          "classes": "privacy-notice__button",
+          "id": "",
+          "x": 1285,
+          "y": 854,
+          "w": 230,
+          "h": 52
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "privacy-notice__button",
+      "id": "",
+      "text": "Accept and Continue",
+      "rect": {
+        "x": 1170,
+        "y": 828,
+        "w": 230,
+        "h": 52
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "privacy-notice__text",
+      "id": "privacy-notice-text",
+      "text": "We use cookies and similar technologies to understand how you use our site, to personalize content and to improve functionality. By continuing to use this site, we will assume you agree with our use of these technologies as described in the Privacy Statement.",
+      "rect": {
+        "x": 25,
+        "y": 828,
+        "w": 1085,
+        "h": 52
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Statement",
+          "ariaLabel": "",
+          "classes": "privacy-notice__link",
+          "id": "",
+          "x": 689,
+          "y": 859,
+          "w": 132,
+          "h": 22
+        }
+      ]
+    },
+    {
+      "tag": "a",
+      "classes": "privacy-notice__link",
+      "id": "",
+      "text": "Privacy Statement",
+      "rect": {
+        "x": 623,
+        "y": 848,
+        "w": 132,
+        "h": 22
+      },
+      "buttons": []
+    }
+  ]
+}

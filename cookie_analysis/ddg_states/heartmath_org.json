@@ -1,0 +1,79 @@
+{
+  "site": "heartmath.org",
+  "url": "https://www.heartmath.org/",
+  "timestamp": "2026-03-22T10:15:41.822107",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/heartmath_org.png",
+  "total_requests": 153,
+  "blocked_requests_count": 15,
+  "blocked_requests": [
+    {
+      "url": "https://www.facebook.com/tr/?id=481042605636248&ev=PageView&dl=https%3A%2F%2Fwww.heartmath.org%2F&rl=&if=false&ts=1774174528876&sw=1440&sh=900&v=2.9.281&r=stable&ec=0&o=12318&fbp=fb.1.1774174528870.478171149269840524&cs_est=true&ler=empty&cdl=API_unavailable&pmd[title]=HeartMath%20Institute&pmd[locale]=en_US&pmd[description]=HeartMath%20Institute%20is%20a%20501(c)(3)%20nonprofit%20organization%20and%20has%20developed%20reliable%2C%20scientifically%20validated%20tools%20since%201991%20to%20help%20people%20reduce%20and%20avoid%20stress%20while%20experiencing%20increased%20peace%2C%20satisfaction%20and%20enjoyment.&plt=677.4000000059605&it=1774174528568&coo=false&expv2[0]=pl1&expv2[1]=el2&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=ct2&expv2[6]=hf0&rqm=GET",
+      "domain": "www.facebook.com"
+    },
+    {
+      "url": "https://www.facebook.com/privacy_sandbox/pixel/register/trigger/?id=481042605636248&ev=PageView&dl=https%3A%2F%2Fwww.heartmath.org%2F&rl=&if=false&ts=1774174528876&sw=1440&sh=900&v=2.9.281&r=stable&ec=0&o=12318&fbp=fb.1.1774174528870.478171149269840524&cs_est=true&ler=empty&cdl=API_unavailable&pmd[title]=HeartMath%20Institute&pmd[locale]=en_US&pmd[description]=HeartMath%20Institute%20is%20a%20501(c)(3)%20nonprofit%20organization%20and%20has%20developed%20reliable%2C%20scientifically%20validated%20tools%20since%201991%20to%20help%20people%20reduce%20and%20avoid%20stress%20while%20experiencing%20increased%20peace%2C%20satisfaction%20and%20enjoyment.&plt=677.4000000059605&it=1774174528568&coo=false&expv2[0]=pl1&expv2[1]=el2&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=ct2&expv2[6]=hf0&rqm=FGET",
+      "domain": "www.facebook.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/17845438383/?random=1774174528907&cv=11&fst=1774174528907&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9239624743z89132481067za20gzb9132481067zd9132481067xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.heartmath.org%2F&frm=0&tiba=HeartMath%20Institute&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1454513451.1774174529&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=3819900&time=1774174528794&li_adsId=c0be4540-12af-4101-9499-f5f939210ab9&url=https%3A%2F%2Fwww.heartmath.org%2F&cookiesTest=true",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=fetch&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/insight_tag_errors.gif?v=2&pid=3819900&error=version%3A%20285%20%7C%20WebsiteActions-285-TypeError%3A%20Failed%20to%20fetch%3B%20ErrorData%3A%20%7B%22domain%22%3A%22heartmath.org%22%2C%22requestFetcher%22%3A%22fetch-keepalive%22%2C%22body%22%3A%22H4sIAAAAAAAAA1WPQUvDQBSE%2F4rMeWOTNDXJ3nrQGlAQG3qRIi%2FNS7O42a7ZF0RK%2F7vEguBx5oOPmTO8aQP027JIyjKO9wrhMBovOx6DOTnotFgpiBkYOsnzLMmzVVqUWaHQngYyDho90ygDSX97Go9QmEY7tyI%2B6MXiH11AwdORayOWofE4w2eS%2FqZyQYxMwlD44iYY4a05OrKv%2FDlxkKqFRrxsKG66OMpXnEYlLbuozJouytK8iFO6S9sih4IJ9UguWBJuoTuygRWseaCrBXPYGHJyDYMJB%2BgzfGi2QsLQUXaZLU%2FGfXBbubX3f5qeB2g3WasQfvfV335%2B8rLe3L%2Fvqm1V4%2FIDtXCp3lYBAAA%3D%22%7D&href=https%3A%2F%2Fwww.heartmath.org%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-81VETL5J76&gtm=45je63i0v869254071z89132481067za20gzb9132481067zd9132481067&_p=1774174528049&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1216429135.1774174529&ul=en-us&are=1&frm=0&pscdl=noapi&_geo=1&_rdi=1&_s=1&tag_exp=103116026~103200004~115616985~115938466~115938468~116024733~117484252&sid=1774174528&sct=1&seg=0&dl=https%3A%2F%2Fwww.heartmath.org%2F&dt=HeartMath%20Institute&en=page_view&_fv=1&_nsi=1&_ss=1&gap.plf=5&tfd=1252",
+      "domain": "www.google-analytics.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=beacon&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/984430937/?random=1774174529024&cv=11&fst=1774174529024&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9196582451z89132481067za20gzb9132481067zd9132481067xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252~118128922&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.heartmath.org%2F&frm=0&tiba=HeartMath%20Institute&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1454513451.1774174529&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/984430937/?random=1774174529057&cv=11&fst=1774174529057&bg=ffffff&guid=ON&async=1&gtm=45be63i0v9196582451z89132481067za20gzb9132481067zd9132481067xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252~118128922&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.heartmath.org%2F&frm=0&tiba=HeartMath%20Institute&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1454513451.1774174529&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/td?id=AW-984430937&v=3&t=t&pid=488149360&gtm=45be63i0v9196582451za20gzb9132481067zd9132481067&seq=1&exp=103116026~103200004~115938466~115938468~116024733~117484252~118128922&dl=www.heartmath.org%2F&tdp=AW-984430937;196582451;1;6;0&frm=0&rtg=132481067&slo=11&hlo=14&lst=1&pcid=132481067&bt=0&ct=3&z=0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/17845438383/?random=1774174528907&cv=11&fst=1774174528907&fmt=3&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9239624743z89132481067za20gzb9132481067zd9132481067xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.heartmath.org%2F&frm=0&tiba=HeartMath%20Institute&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1454513451.1774174529&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/984430937/?random=1774174529024&cv=11&fst=1774174529024&fmt=3&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0v9196582451z89132481067za20gzb9132481067zd9132481067xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252~118128922&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.heartmath.org%2F&frm=0&tiba=HeartMath%20Institute&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1454513451.1774174529&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/984430937/?random=1774174529057&cv=11&fst=1774174529057&fmt=3&bg=ffffff&guid=ON&async=1&gtm=45be63i0v9196582451z89132481067za20gzb9132481067zd9132481067xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115938466~115938468~116024733~117484252~118128922&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.heartmath.org%2F&frm=0&tiba=HeartMath%20Institute&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1454513451.1774174529&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://pi.pardot.com/pd.js",
+      "domain": "pi.pardot.com"
+    }
+  ],
+  "blocked_domains": [
+    "googleads.g.doubleclick.net",
+    "pi.pardot.com",
+    "px.ads.linkedin.com",
+    "www.facebook.com",
+    "www.google-analytics.com",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": []
+}

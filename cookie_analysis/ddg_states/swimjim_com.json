@@ -1,0 +1,92 @@
+{
+  "site": "swimjim.com",
+  "url": "https://www.swimjim.com/",
+  "timestamp": "2026-03-22T10:16:09.283071",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/swimjim_com.png",
+  "total_requests": 113,
+  "blocked_requests_count": 3,
+  "blocked_requests": [
+    {
+      "url": "https://www.google.com/pagead/1p-user-list/953468483/?random=1774174559539&cv=11&fst=1774173600000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0h1v9213353418za20gzb894074853zd894074853xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616986~115938465~115938469~116024733~117484252~118128922&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.swimjim.com%2F&frm=0&tiba=Swimming%20Lessons%20in%20NYC%20%26%20Classes%20Houston%20%7C%20SwimJim%2C%20Inc&did=dMDU5Nj&gdid=dMDU5Nj&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=27891327.1774174559&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=3&is_vtc=1&cid=CAQSsQEABaugfUaF0prVUdUvp55VMaVG7EOHsjdDIikKtKk4plOzKxpYMcdyoy69jAkEJAtidxuMMKo9OsgDarpvrdMD4KjsKDbc7tk9CRa9D-uV2oYXmAolPWIpIJv3Bbd-58YzR9MhBc6CoqSyvrbOPzq1XbloZZB8pM8eZ2iaHgTNE82cWDb-AmZSV7jaN97fohP5waOyDvH7v_1rv1lor45MvhISwX23kUjiQ0r1esXClXo&random=1167597099&rmt_tld=0&ipr=y",
+      "domain": "www.google.com"
+    },
+    {
+      "url": "https://www.google.com/pagead/1p-user-list/953468483/?random=1774174559515&cv=11&fst=1774173600000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0h1v9213353418z8894074853za20gzb894074853zd894074853xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616986~115938465~115938469~116024733~117484252~118128922&u_w=1440&u_h=900&url=https%3A%2F%2Fwww.swimjim.com%2F&frm=0&tiba=Swimming%20Lessons%20in%20NYC%20%26%20Classes%20Houston%20%7C%20SwimJim%2C%20Inc&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=27891327.1774174559&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=3&is_vtc=1&cid=CAQSsQEABaugfaYrvVVLC4FZVmE6nLQ0hWWi6YK6dQVTYygpop0owy_IG36dC8nWBiZC07ViUyPnVYoxWy7Sgo3-gEBEg6rum6n3FAizdfVEgwYnlqpUtCdrg-9Nq85_X1ZOOVTXahvA5Pp_yojpma-Vyz2rMrOpeGqIzPdIqzqvbCyciuqmULmasoAAL2mY2k1AuvP52oiYVfMP-i8kq_DujBqy-5bw7U0uMARE1dOmRCZkvwg&random=3814881359&rmt_tld=0&ipr=y",
+      "domain": "www.google.com"
+    },
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-J3CTQ0L8E6&gtm=45je63i0v892294049za20gzb894074853zd894074853&_p=1774174559026&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dMDU5Nj&cid=1338239145.1774174559&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAGQ&_s=2&tag_exp=103116026~103200004~115616985~115938465~115938468~116024733~117484252&sid=1774174559&sct=1&seg=1&dl=https%3A%2F%2Fwww.swimjim.com%2F&dt=Swimming%20Lessons%20in%20NYC%20%26%20Classes%20Houston%20%7C%20SwimJim%2C%20Inc&en=page_view&_ee=1&_et=10&tfd=5807",
+      "domain": "analytics.google.com"
+    }
+  ],
+  "blocked_domains": [
+    "analytics.google.com",
+    "www.google.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "dmPopup",
+      "id": "dmPopup",
+      "text": "Share by:",
+      "rect": {
+        "x": 0,
+        "y": 10,
+        "w": 1325,
+        "h": 900
+      },
+      "buttons": [
+        {
+          "tag": "div",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "dmPopupClose dm-common-icons-close oneIcon",
+          "id": "",
+          "x": 1300,
+          "y": 36,
+          "w": 27,
+          "h": 27
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "dmPopupTitle",
+      "id": "",
+      "text": "Share by:",
+      "rect": {
+        "x": 20,
+        "y": 30,
+        "w": 1285,
+        "h": 22
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "u_1846292280 dmRespRow dmSectionNoParallax hasBackgroundOverlay hasExtraLayerOverlay relativePos",
+      "id": "1846292280",
+      "text": "Building Confident, Resilient Swimmers, \n One Lesson at a Time.",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 749
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "bgExtraLayerOverlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 749
+      },
+      "buttons": []
+    }
+  ]
+}

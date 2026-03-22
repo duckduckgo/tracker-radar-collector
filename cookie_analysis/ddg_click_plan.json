@@ -1,0 +1,1190 @@
+[
+  {
+    "site": "80.lv",
+    "action": "no_popup",
+    "reason": "No DOM areas found",
+    "blocked_before": 0,
+    "total_before": 71
+  },
+  {
+    "site": "acct.ezpassde.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 24,
+    "target": {
+      "text": "Accept",
+      "tag": "a",
+      "x": 998,
+      "y": 450,
+      "classes": "cc-btn cc-allow",
+      "id": ""
+    },
+    "area_text": "This website uses cookies to enable essential services and functionality. Please accept our cookie p",
+    "blocked_before": 0,
+    "total_before": 38
+  },
+  {
+    "site": "aceodds.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 27,
+    "target": {
+      "text": "OK",
+      "tag": "button",
+      "x": 769,
+      "y": 867,
+      "classes": "btn btn-primary",
+      "id": "cookie-consent-accept"
+    },
+    "area_text": "We use cookies on this website to ensure you get the best user experience. If you continue to use ou",
+    "blocked_before": 0,
+    "total_before": 34
+  },
+  {
+    "site": "admissions.pitt.edu",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Accept",
+      "tag": "button",
+      "x": 1305,
+      "y": 833,
+      "classes": "uppercase border rounded-lg py-4 px-12 font-bold tracking-wide border-yellow-500 hover:border-white ",
+      "id": "acceptCookies"
+    },
+    "area_text": "<iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-K443GST\"\nheight=\"0\" width=\"0\" style=\"di",
+    "blocked_before": 0,
+    "total_before": 151
+  },
+  {
+    "site": "asia.nikkei.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [],
+    "blocked_before": 52,
+    "total_before": 313
+  },
+  {
+    "site": "ballarddesigns.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 17,
+    "target": {
+      "text": "",
+      "tag": "button",
+      "x": 1373,
+      "y": 789,
+      "classes": "c-button c-icon-label-button c-custom-sheet__close-button  c-cookie-banner__close-button",
+      "id": ""
+    },
+    "area_text": ".banner-policy { text-decoration: underline; font-weight: 400; color: #333333; } .banner-desc { colo",
+    "blocked_before": 3,
+    "total_before": 346
+  },
+  {
+    "site": "bso.org",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Dismiss",
+      "tag": "button",
+      "x": 97,
+      "y": 827,
+      "classes": "cookie-consent__close js--cookie-consent-close",
+      "id": ""
+    },
+    "area_text": "We use cookies to enhance your experience. By continuing to browse, you agree to saving BSO and thir",
+    "blocked_before": 52,
+    "total_before": 137
+  },
+  {
+    "site": "build.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 27,
+    "target": {
+      "text": "Dismiss",
+      "tag": "a",
+      "x": 77,
+      "y": 838,
+      "classes": "cc-btn cc-allow cc-btn-format",
+      "id": ""
+    },
+    "area_text": "We use cookies to ensure fast, reliable, and secure operations, and to give you the best possible ex",
+    "blocked_before": 1,
+    "total_before": 336
+  },
+  {
+    "site": "caribbeancinemas.com",
+    "action": "no_popup",
+    "reason": "No DOM areas found",
+    "blocked_before": 4,
+    "total_before": 129
+  },
+  {
+    "site": "carraghersnyc.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 27,
+    "target": {
+      "text": "Accept",
+      "tag": "button",
+      "x": 76,
+      "y": 843,
+      "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+      "id": ""
+    },
+    "area_text": "By using this website, you agree to our use of cookies. We use cookies to provide you with a great e",
+    "blocked_before": 0,
+    "total_before": 94
+  },
+  {
+    "site": "ciee.org",
+    "action": "click",
+    "confidence": "high",
+    "score": 27,
+    "target": {
+      "text": "Agree and Dismiss",
+      "tag": "button",
+      "x": 1129,
+      "y": 819,
+      "classes": "agree-button eu-cookie-compliance-default-button",
+      "id": ""
+    },
+    "area_text": "CIEE collects personal data about visitors to our website, in order to improve your experience and p",
+    "blocked_before": 1,
+    "total_before": 94
+  },
+  {
+    "site": "copaamerica.com",
+    "action": "no_popup",
+    "reason": "No DOM areas found",
+    "blocked_before": 2,
+    "total_before": 113
+  },
+  {
+    "site": "cyberpower.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Close",
+      "tag": "a",
+      "x": 1307,
+      "y": 859,
+      "classes": "closeCookies",
+      "id": ""
+    },
+    "area_text": "This site uses cookies to provide you with a more responsive and personalized service. By using this",
+    "blocked_before": 3,
+    "total_before": 297
+  },
+  {
+    "site": "cymbiotika.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "GOT IT",
+      "tag": "button",
+      "x": 1106,
+      "y": 858,
+      "classes": "cookies-btn spt-bg-black spt-flex spt-justify-center spt-items-center spt-pb-3 spt-pt-2.5 spt-px-12 ",
+      "id": ""
+    },
+    "area_text": "Our site and third parties use cookies and pixels to improve your user experience. By continuing to ",
+    "blocked_before": 52,
+    "total_before": 550
+  },
+  {
+    "site": "danco.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 26,
+    "target": {
+      "text": "Ok",
+      "tag": "div",
+      "x": 852,
+      "y": 868,
+      "classes": "privacy-accept",
+      "id": ""
+    },
+    "area_text": "We use cookies to personalize content, utilize website traffic analytics & support our marketing ini",
+    "blocked_before": 5,
+    "total_before": 146
+  },
+  {
+    "site": "davidson.edu",
+    "action": "click",
+    "confidence": "high",
+    "score": 27,
+    "target": {
+      "text": "OK",
+      "tag": "button",
+      "x": 1022,
+      "y": 853,
+      "classes": "agree-button eu-cookie-compliance-default-button",
+      "id": ""
+    },
+    "area_text": "Skip to main site navigation\n      Skip to main content\n    \n    <img src=\"https://www.facebook.com/",
+    "blocked_before": 14,
+    "total_before": 77
+  },
+  {
+    "site": "electricgeneratorsdirect.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [],
+    "blocked_before": 5,
+    "total_before": 118
+  },
+  {
+    "site": "emerson.edu",
+    "action": "click",
+    "confidence": "high",
+    "score": 27,
+    "target": {
+      "text": "OK",
+      "tag": "button",
+      "x": 1257,
+      "y": 868,
+      "classes": "agree-button eu-cookie-compliance-default-button",
+      "id": ""
+    },
+    "area_text": "We use cookies on this site to enhance your user experienceBy continuing to use this site, you agree",
+    "blocked_before": 1,
+    "total_before": 62
+  },
+  {
+    "site": "endocrine.org",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Accept",
+      "tag": "button",
+      "x": 1211,
+      "y": 857,
+      "classes": "js-accept-btn btn btn--white",
+      "id": ""
+    },
+    "area_text": "<iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-MP7Z5K\" height=\"0\" width=\"0\" style=\"dis",
+    "blocked_before": 18,
+    "total_before": 122
+  },
+  {
+    "site": "esquire.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [
+      {
+        "text": "",
+        "tag": "button",
+        "x": 1215,
+        "y": 843,
+        "area": "css-jsrm3 e1yu3us94 "
+      },
+      {
+        "text": "Learn more in our Privacy Notice",
+        "tag": "a",
+        "x": 462,
+        "y": 843,
+        "area": "css-jsrm3 e1yu3us94 "
+      },
+      {
+        "text": "Terms of Use",
+        "tag": "a",
+        "x": 321,
+        "y": 859,
+        "area": "css-jsrm3 e1yu3us94 "
+      },
+      {
+        "text": "the dispute resolution procedures",
+        "tag": "a",
+        "x": 509,
+        "y": 859,
+        "area": "css-jsrm3 e1yu3us94 "
+      }
+    ],
+    "blocked_before": 11,
+    "total_before": 285
+  },
+  {
+    "site": "extrabux.com",
+    "action": "no_popup",
+    "reason": "No DOM areas found",
+    "blocked_before": 2,
+    "total_before": 74
+  },
+  {
+    "site": "fashionnova.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [
+      {
+        "text": "",
+        "tag": "a",
+        "x": 124,
+        "y": 30,
+        "area": "flex min-h-screen w-full flex-col overflow-x-hidden !p-0 bx-client-overlay "
+      },
+      {
+        "text": "WOMEN",
+        "tag": "a",
+        "x": 273,
+        "y": 30,
+        "area": "flex min-h-screen w-full flex-col overflow-x-hidden !p-0 bx-client-overlay "
+      },
+      {
+        "text": "PLUS+CURVE",
+        "tag": "a",
+        "x": 357,
+        "y": 30,
+        "area": "flex min-h-screen w-full flex-col overflow-x-hidden !p-0 bx-client-overlay "
+      },
+      {
+        "text": "MEN",
+        "tag": "a",
+        "x": 430,
+        "y": 30,
+        "area": "flex min-h-screen w-full flex-col overflow-x-hidden !p-0 bx-client-overlay "
+      },
+      {
+        "text": "NEWSPORT",
+        "tag": "a",
+        "x": 483,
+        "y": 30,
+        "area": "flex min-h-screen w-full flex-col overflow-x-hidden !p-0 bx-client-overlay "
+      },
+      {
+        "text": "KIDS",
+        "tag": "a",
+        "x": 536,
+        "y": 30,
+        "area": "flex min-h-screen w-full flex-col overflow-x-hidden !p-0 bx-client-overlay "
+      },
+      {
+        "text": "BEAUTY",
+        "tag": "a",
+        "x": 593,
+        "y": 30,
+        "area": "flex min-h-screen w-full flex-col overflow-x-hidden !p-0 bx-client-overlay "
+      },
+      {
+        "text": "Search within Women's Clothing",
+        "tag": "div",
+        "x": 954,
+        "y": 30,
+        "area": "flex min-h-screen w-full flex-col overflow-x-hidden !p-0 bx-client-overlay "
+      },
+      {
+        "text": "",
+        "tag": "button",
+        "x": 756,
+        "y": 30,
+        "area": "flex min-h-screen w-full flex-col overflow-x-hidden !p-0 bx-client-overlay "
+      },
+      {
+        "text": "",
+        "tag": "button",
+        "x": 1144,
+        "y": 30,
+        "area": "flex min-h-screen w-full flex-col overflow-x-hidden !p-0 bx-client-overlay "
+      }
+    ],
+    "blocked_before": 1,
+    "total_before": 281
+  },
+  {
+    "site": "food52.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [],
+    "blocked_before": 0,
+    "total_before": 3423
+  },
+  {
+    "site": "foratravel.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "I ACCEPT",
+      "tag": "button",
+      "x": 975,
+      "y": 876,
+      "classes": "!bg-transparent !text-sand !whitespace-nowrap !m-0 !fora-text-button-2",
+      "id": "rcc-confirm-button"
+    },
+    "area_text": "We use cookies to enhance the user experience. Read our Privacy Policy here.I ACCEPT",
+    "blocked_before": 50,
+    "total_before": 308
+  },
+  {
+    "site": "garnethill.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 17,
+    "target": {
+      "text": "",
+      "tag": "button",
+      "x": 1358,
+      "y": 796,
+      "classes": "c-button c-icon-label-button c-custom-sheet__close-button  c-cookie-banner__close-button",
+      "id": ""
+    },
+    "area_text": "This website uses technology such as cookies and other trackers to better understand how visitors us",
+    "blocked_before": 24,
+    "total_before": 165
+  },
+  {
+    "site": "getguru.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Okay",
+      "tag": "a",
+      "x": 1363,
+      "y": 841,
+      "classes": "cookie-button w-button",
+      "id": "privacy-ok"
+    },
+    "area_text": "We use cookies to give our users a better experience. \u00a0By using this site, you agree to our Privacy ",
+    "blocked_before": 1,
+    "total_before": 220
+  },
+  {
+    "site": "goodliferesorts.guestybookings.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Accept",
+      "tag": "button",
+      "x": 1219,
+      "y": 820,
+      "classes": "Button-root-0-1-489 Button-btnMd-0-1-496 FlatButton-root-0-1-503 FlatButton-secondary-0-1-504 cookie",
+      "id": ""
+    },
+    "area_text": "This website uses cookies. We use cookies to personalise content and ads, to provide social media fe",
+    "blocked_before": 0,
+    "total_before": 70
+  },
+  {
+    "site": "hatchshowprint.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 27,
+    "target": {
+      "text": "That's Fine",
+      "tag": "button",
+      "x": 1132,
+      "y": 795,
+      "classes": "gdpr__accept button__primary",
+      "id": "gdpr-accept"
+    },
+    "area_text": "We use cookies in the following ways: (1) for system administration, (2) to assess the performance o",
+    "blocked_before": 15,
+    "total_before": 93
+  },
+  {
+    "site": "hearinghealthfoundation.org",
+    "action": "click",
+    "confidence": "high",
+    "score": 27,
+    "target": {
+      "text": "Accept",
+      "tag": "button",
+      "x": 1371,
+      "y": 853,
+      "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+      "id": ""
+    },
+    "area_text": "By using this website, you agree to our use of cookies. We use cookies to provide you with a great e",
+    "blocked_before": 8,
+    "total_before": 208
+  },
+  {
+    "site": "heartmath.org",
+    "action": "no_popup",
+    "reason": "No DOM areas found",
+    "blocked_before": 15,
+    "total_before": 153
+  },
+  {
+    "site": "humandx.org",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "\u2715",
+      "tag": "button",
+      "x": 1383,
+      "y": 858,
+      "classes": "",
+      "id": "rcc-confirm-button"
+    },
+    "area_text": "By using our site, you give consent to cookies (see our Privacy Policy).\u2715",
+    "blocked_before": 0,
+    "total_before": 107
+  },
+  {
+    "site": "innerscene.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 16,
+    "target": {
+      "text": "Accept all cookies",
+      "tag": "div",
+      "x": 1033,
+      "y": 816,
+      "classes": "CookieConsent_accept__cAGbO",
+      "id": ""
+    },
+    "area_text": "By clicking 'Accept All Cookies', you agree to the storing of cookies on your device to enhance site",
+    "blocked_before": 4,
+    "total_before": 131
+  },
+  {
+    "site": "lafollette.wisc.edu",
+    "action": "click",
+    "confidence": "high",
+    "score": 17,
+    "target": {
+      "text": "Accept cookie notice",
+      "tag": "button",
+      "x": 1254,
+      "y": 832,
+      "classes": "cc-btn cc-dismiss",
+      "id": "cookieconsent-dismiss"
+    },
+    "area_text": "Cookie NoticeWe use cookies on this site. By continuing to browse without changing your browser sett",
+    "blocked_before": 4,
+    "total_before": 31
+  },
+  {
+    "site": "meetboston.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Accept",
+      "tag": "button",
+      "x": 594,
+      "y": 840,
+      "classes": "button site-style",
+      "id": ""
+    },
+    "area_text": "Cookies are used for measurement, ads, and optimization. By continuing to use our site, you agree to",
+    "blocked_before": 25,
+    "total_before": 228
+  },
+  {
+    "site": "mls.therealest.com",
+    "action": "no_popup",
+    "reason": "No DOM areas found",
+    "blocked_before": 0,
+    "total_before": 195
+  },
+  {
+    "site": "modani.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Ok",
+      "tag": "button",
+      "x": 208,
+      "y": 831,
+      "classes": "cc-btn cc-btn-decision cc-dismiss",
+      "id": ""
+    },
+    "area_text": "This website uses cookies to ensure you get the best experience. Learn moreOk\u2715",
+    "blocked_before": 16,
+    "total_before": 552
+  },
+  {
+    "site": "mooremerkowitztile.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 27,
+    "target": {
+      "text": "OK",
+      "tag": "button",
+      "x": 1382,
+      "y": 862,
+      "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+      "id": ""
+    },
+    "area_text": "By using this website, you agree to our Terms of Use and Privacy Policy.OK",
+    "blocked_before": 16,
+    "total_before": 96
+  },
+  {
+    "site": "opalcollection.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Accept",
+      "tag": "button",
+      "x": 1319,
+      "y": 818,
+      "classes": "cookie-popup__button c-button",
+      "id": ""
+    },
+    "area_text": "This website uses cookies and similar technologies. By using this site, you are agreeing to our Priv",
+    "blocked_before": 11,
+    "total_before": 134
+  },
+  {
+    "site": "osf.io",
+    "action": "no_popup",
+    "reason": "No DOM areas found",
+    "blocked_before": 8,
+    "total_before": 82
+  },
+  {
+    "site": "petrapalusova.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 27,
+    "target": {
+      "text": "Accept",
+      "tag": "button",
+      "x": 1372,
+      "y": 865,
+      "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+      "id": ""
+    },
+    "area_text": "By using this website, you agree to the use of cookies, which helps run the website effectively.Acce",
+    "blocked_before": 0,
+    "total_before": 82
+  },
+  {
+    "site": "platt.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "OK",
+      "tag": "button",
+      "x": 1289,
+      "y": 858,
+      "classes": "ma-2 v-btn v-btn--outlined theme--dark v-size--default",
+      "id": ""
+    },
+    "area_text": "We use cookies to offer you a better user experience. Cookies enable you to enjoy certain features o",
+    "blocked_before": 1,
+    "total_before": 91
+  },
+  {
+    "site": "poconomountains.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 16,
+    "target": {
+      "text": "Accept & Dismiss",
+      "tag": "button",
+      "x": 1039,
+      "y": 424,
+      "classes": "button site-style",
+      "id": ""
+    },
+    "area_text": "The site uses cookies to store information on your computer. Some are essential to make our site wor",
+    "blocked_before": 30,
+    "total_before": 300
+  },
+  {
+    "site": "posthog.com",
+    "action": "no_popup",
+    "reason": "No DOM areas found",
+    "blocked_before": 0,
+    "total_before": 142
+  },
+  {
+    "site": "researchgate.net",
+    "action": "no_popup",
+    "reason": "No DOM areas found",
+    "blocked_before": 0,
+    "total_before": 74
+  },
+  {
+    "site": "risingshadow.net",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Got it!",
+      "tag": "button",
+      "x": 767,
+      "y": 876,
+      "classes": "",
+      "id": ""
+    },
+    "area_text": "This website uses cookies to ensure you get the best experience on our website.Privacy PolicyGot it!",
+    "blocked_before": 1,
+    "total_before": 50
+  },
+  {
+    "site": "riverandrailkitchen.com",
+    "action": "no_popup",
+    "reason": "No DOM areas found",
+    "blocked_before": 0,
+    "total_before": 42
+  },
+  {
+    "site": "rwguildgalleryny.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Accept",
+      "tag": "button",
+      "x": 1259,
+      "y": 858,
+      "classes": "btn accept",
+      "id": ""
+    },
+    "area_text": "Guild Gallery New York\n        \n        \n        \n            \u2013 Guild Gallery NY\n        \n    \n\n    ",
+    "blocked_before": 1,
+    "total_before": 105
+  },
+  {
+    "site": "scad.edu",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Ok",
+      "tag": "button",
+      "x": 53,
+      "y": 864,
+      "classes": "",
+      "id": ""
+    },
+    "area_text": "This site uses cookies. By continuing to browse the site, you are agreeing to our use of cookies. Fi",
+    "blocked_before": 23,
+    "total_before": 211
+  },
+  {
+    "site": "schoolhouse.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [],
+    "blocked_before": 0,
+    "total_before": 280
+  },
+  {
+    "site": "scmp.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [],
+    "blocked_before": 0,
+    "total_before": 1692
+  },
+  {
+    "site": "scworld.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Accept cookies",
+      "tag": "button",
+      "x": 1195,
+      "y": 847,
+      "classes": "btn btn-primary mb-1 mt-md-0 mt-2 mx-4 fs-7 text-capitalize allow-portal-round-border portal-round-b",
+      "id": "rcc-confirm-button"
+    },
+    "area_text": "CookiesThis website uses cookies to improve your experience, provide social media features and deliv",
+    "blocked_before": 27,
+    "total_before": 160
+  },
+  {
+    "site": "serpstat.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Accept cookies",
+      "tag": "button",
+      "x": 1308,
+      "y": 844,
+      "classes": "",
+      "id": ""
+    },
+    "area_text": "We use cookies to make Serpstat better. By clicking \"Accept cookies\", you agree to the storing of co",
+    "blocked_before": 9,
+    "total_before": 64
+  },
+  {
+    "site": "seventeen.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [
+      {
+        "text": "",
+        "tag": "button",
+        "x": 1217,
+        "y": 822,
+        "area": "css-wun474 e1kug0ah4 "
+      },
+      {
+        "text": "Terms of Use",
+        "tag": "a",
+        "x": 273,
+        "y": 792,
+        "area": "css-wun474 e1kug0ah4 "
+      },
+      {
+        "text": "dispute resolution procedures",
+        "tag": "a",
+        "x": 488,
+        "y": 792,
+        "area": "css-wun474 e1kug0ah4 "
+      },
+      {
+        "text": "Privacy Notice",
+        "tag": "a",
+        "x": 672,
+        "y": 792,
+        "area": "css-wun474 e1kug0ah4 "
+      },
+      {
+        "text": "Learn more in our Privacy Notice",
+        "tag": "a",
+        "x": 446,
+        "y": 831,
+        "area": "css-wun474 e1kug0ah4 "
+      },
+      {
+        "text": "Terms",
+        "tag": "a",
+        "x": 347,
+        "y": 850,
+        "area": "css-wun474 e1kug0ah4 "
+      },
+      {
+        "text": "Notice",
+        "tag": "a",
+        "x": 422,
+        "y": 850,
+        "area": "css-wun474 e1kug0ah4 "
+      }
+    ],
+    "blocked_before": 1,
+    "total_before": 156
+  },
+  {
+    "site": "shopquarters.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [
+      {
+        "text": "",
+        "tag": "button",
+        "x": 1400,
+        "y": 746,
+        "area": "absolute top-0 left-0 w-full bottom-0 flex items-end pointer-events-none z-50 "
+      },
+      {
+        "text": "Enter",
+        "tag": "button",
+        "x": 1390,
+        "y": 856,
+        "area": "absolute top-0 left-0 w-full bottom-0 flex items-end pointer-events-none z-50 "
+      },
+      {
+        "text": "Accept",
+        "tag": "button",
+        "x": 1262,
+        "y": 864,
+        "area": "absolute top-0 left-0 w-full bottom-0 flex items-end pointer-events-none z-[100]"
+      },
+      {
+        "text": "View Privacy Policy",
+        "tag": "a",
+        "x": 1353,
+        "y": 864,
+        "area": "absolute top-0 left-0 w-full bottom-0 flex items-end pointer-events-none z-[100]"
+      }
+    ],
+    "blocked_before": 2,
+    "total_before": 127
+  },
+  {
+    "site": "spencer.org",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "OK",
+      "tag": "button",
+      "x": 1208,
+      "y": 867,
+      "classes": "btn btn-outline-light border-2 px-5",
+      "id": ""
+    },
+    "area_text": "This site uses cookies. More Information.\n\n\nOK",
+    "blocked_before": 0,
+    "total_before": 29
+  },
+  {
+    "site": "spermidinelife.us",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Accept",
+      "tag": "button",
+      "x": 1066,
+      "y": 868,
+      "classes": "gdpr__button js-gdpr-button",
+      "id": ""
+    },
+    "area_text": "We use cookies to offer a better browsing experience, analyze site traffic, personalize content, and",
+    "blocked_before": 16,
+    "total_before": 247
+  },
+  {
+    "site": "stamma.org",
+    "action": "no_popup",
+    "reason": "No DOM areas found",
+    "blocked_before": 5,
+    "total_before": 168
+  },
+  {
+    "site": "store.waitbutwhy.com",
+    "action": "click",
+    "confidence": "medium",
+    "score": 9,
+    "target": {
+      "text": "Cookie Policy",
+      "tag": "a",
+      "x": 933,
+      "y": 861,
+      "classes": "priread cc-link",
+      "id": ""
+    },
+    "area_text": "We only collect user information that is relevant to store orders and customer satisfaction or other",
+    "blocked_before": 3,
+    "total_before": 298
+  },
+  {
+    "site": "summerdiscovery.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [],
+    "blocked_before": 0,
+    "total_before": 198
+  },
+  {
+    "site": "swimjim.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [
+      {
+        "text": "",
+        "tag": "div",
+        "x": 1300,
+        "y": 36,
+        "area": "dmPopup dmPopup"
+      }
+    ],
+    "blocked_before": 3,
+    "total_before": 113
+  },
+  {
+    "site": "tp-link.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 27,
+    "target": {
+      "text": "Okay",
+      "tag": "button",
+      "x": 1308,
+      "y": 842,
+      "classes": "tp-cookie-btn tp-cookie-accept-all",
+      "id": ""
+    },
+    "area_text": "Welcome to Our Website! If you stay on our site, we and our third-party partners use cookies, pixels",
+    "blocked_before": 0,
+    "total_before": 71
+  },
+  {
+    "site": "tufts.edu",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Accept and Continue",
+      "tag": "button",
+      "x": 1285,
+      "y": 854,
+      "classes": "privacy-notice__button",
+      "id": ""
+    },
+    "area_text": "Accept and ContinueWe use cookies and similar technologies to understand how you use our site, to pe",
+    "blocked_before": 22,
+    "total_before": 187
+  },
+  {
+    "site": "uow.edu.au",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "OK, THANKS",
+      "tag": "button",
+      "x": 1206,
+      "y": 819,
+      "classes": "button",
+      "id": ""
+    },
+    "area_text": "We use cookies to improve your experience on our site and to show you personalised advertising. To f",
+    "blocked_before": 14,
+    "total_before": 68
+  },
+  {
+    "site": "usv.getproven.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [
+      {
+        "text": "Privacy Policy",
+        "tag": "a",
+        "x": 499,
+        "y": 429,
+        "area": "mat-mdc-dialog-content mdc-dialog__content modal-wrapper__content pr-scrolly "
+      },
+      {
+        "text": "I Agree",
+        "tag": "button",
+        "x": 715,
+        "y": 580,
+        "area": "mat-mdc-dialog-actions mdc-dialog__actions modal-wrapper__actions "
+      },
+      {
+        "text": "Privacy Policy",
+        "tag": "a",
+        "x": 499,
+        "y": 429,
+        "area": "cdk-overlay-container "
+      },
+      {
+        "text": "I Agree",
+        "tag": "button",
+        "x": 715,
+        "y": 580,
+        "area": "cdk-overlay-container "
+      },
+      {
+        "text": "Privacy Policy",
+        "tag": "a",
+        "x": 499,
+        "y": 429,
+        "area": "cdk-global-overlay-wrapper "
+      },
+      {
+        "text": "I Agree",
+        "tag": "button",
+        "x": 715,
+        "y": 580,
+        "area": "cdk-global-overlay-wrapper "
+      },
+      {
+        "text": "Privacy Policy",
+        "tag": "a",
+        "x": 499,
+        "y": 429,
+        "area": "cdk-overlay-pane mat-mdc-dialog-panel cdk-overlay-serverApp1"
+      },
+      {
+        "text": "I Agree",
+        "tag": "button",
+        "x": 715,
+        "y": 580,
+        "area": "cdk-overlay-pane mat-mdc-dialog-panel cdk-overlay-serverApp1"
+      }
+    ],
+    "blocked_before": 2,
+    "total_before": 194
+  },
+  {
+    "site": "visitpittsburgh.com",
+    "action": "manual_review",
+    "reason": "No confident match (best_score=-1)",
+    "candidates": [
+      {
+        "text": "Accept",
+        "tag": "button",
+        "x": 335,
+        "y": 851,
+        "area": "msg msg--popover msg--ribbon bg--yellow  lobotomize text--content links text--ri"
+      }
+    ],
+    "blocked_before": 18,
+    "total_before": 296
+  },
+  {
+    "site": "vowels.net",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Accept Cookies",
+      "tag": "button",
+      "x": 713,
+      "y": 842,
+      "classes": "cookie-consent-button-js button button--ghosted-black button--full-width",
+      "id": ""
+    },
+    "area_text": "Cookies Consent:\n            \n            \n              Vowels uses cookies to enhance user experie",
+    "blocked_before": 9,
+    "total_before": 166
+  },
+  {
+    "site": "wecoach.gg",
+    "action": "no_popup",
+    "reason": "No DOM areas found",
+    "blocked_before": 0,
+    "total_before": 72
+  },
+  {
+    "site": "westjet.com",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "Accept",
+      "tag": "button",
+      "x": 1104,
+      "y": 863,
+      "classes": "wj-header-usercookies__accept",
+      "id": ""
+    },
+    "area_text": "By using the WestJet website, you agree to the website terms of use, the privacy statement, and the ",
+    "blocked_before": 8,
+    "total_before": 155
+  },
+  {
+    "site": "worldbank.org",
+    "action": "click",
+    "confidence": "high",
+    "score": 19,
+    "target": {
+      "text": "\u00d7",
+      "tag": "button",
+      "x": 1409,
+      "y": 841,
+      "classes": "close accept-consent",
+      "id": ""
+    },
+    "area_text": "This site uses cookies to optimize functionality and give you the best possible experience. If you c",
+    "blocked_before": 13,
+    "total_before": 127
+  }
+]

@@ -1,0 +1,98 @@
+{
+  "site": "acct.ezpassde.com",
+  "url": "https://acct.ezpassde.com/Login.aspx",
+  "timestamp": "2026-03-22T10:14:39.627390",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/acct_ezpassde_com.png",
+  "total_requests": 38,
+  "blocked_requests_count": 0,
+  "blocked_requests": [],
+  "blocked_domains": [],
+  "dom_areas": [
+    {
+      "tag": "span",
+      "classes": "cc-message",
+      "id": "cookieconsent:desc",
+      "text": "This website uses cookies to enable essential services and functionality. Please accept our cookie policy to continue.  \n    Learn more",
+      "rect": {
+        "x": 360,
+        "y": 423,
+        "w": 532,
+        "h": 54
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Learn more",
+          "ariaLabel": "Learn more",
+          "classes": "cc-link",
+          "id": "",
+          "x": 784,
+          "y": 462,
+          "w": 88,
+          "h": 30
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cc-window cc-banner cc-type-opt-in cc-theme-classic cc-bottom cc-color-override-688238583 ",
+      "id": "",
+      "text": "This website uses cookies to enable essential services and functionality. Please accept our cookie policy to continue.  \n    Learn more\n        DeclineAccept",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1441,
+        "h": 900
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Learn more",
+          "ariaLabel": "Learn more",
+          "classes": "cc-link",
+          "id": "",
+          "x": 784,
+          "y": 462,
+          "w": 88,
+          "h": 30
+        },
+        {
+          "tag": "a",
+          "text": "Accept",
+          "ariaLabel": "allow cookies",
+          "classes": "cc-btn cc-allow",
+          "id": "",
+          "x": 998,
+          "y": 450,
+          "w": 165,
+          "h": 38
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "cc-compliance cc-highlight",
+      "id": "",
+      "text": "DeclineAccept",
+      "rect": {
+        "x": 908,
+        "y": 431,
+        "w": 172,
+        "h": 38
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Accept",
+          "ariaLabel": "allow cookies",
+          "classes": "cc-btn cc-allow",
+          "id": "",
+          "x": 998,
+          "y": 450,
+          "w": 165,
+          "h": 38
+        }
+      ]
+    }
+  ]
+}

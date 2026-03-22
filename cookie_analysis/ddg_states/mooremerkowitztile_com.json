@@ -1,0 +1,1226 @@
+{
+  "site": "mooremerkowitztile.com",
+  "url": "https://mooremerkowitztile.com/",
+  "timestamp": "2026-03-22T10:25:11.647142",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/mooremerkowitztile_com.png",
+  "total_requests": 96,
+  "blocked_requests_count": 16,
+  "blocked_requests": [
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/687716505/?random=1774175100875&cv=11&fst=1774175100875&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0h1v9216736965za200zd9216736965xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616985~115938465~115938469~116024733~117484252~118128922&u_w=1440&u_h=900&url=https%3A%2F%2Fmooremerkowitztile.com%2F&frm=0&tiba=Ceramic%20Handmade%20Tile%20%7C%20Handmade%20Tile%20Made%20in%20the%20USA&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1162819236.1774175101&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&gap.plf=2&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-V46SWNRTQF&cx=c&gtm=4e63i0h1",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://js.hs-banner.com/v2/6592682/banner.js",
+      "domain": "js.hs-banner.com"
+    },
+    {
+      "url": "https://js.hs-analytics.net/analytics/1774174800000/6592682.js",
+      "domain": "js.hs-analytics.net"
+    },
+    {
+      "url": "https://bat.bing.com/p/action/149011062.js",
+      "domain": "bat.bing.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/687716505/?random=1774175100976&cv=11&fst=1774175100976&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0h1v9216736965z89137612108za200zd9216736965xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616985~115938465~115938469~116024733~117484252~118128922&u_w=1440&u_h=900&url=https%3A%2F%2Fmooremerkowitztile.com%2F&frm=0&tiba=Ceramic%20Handmade%20Tile%20%7C%20Handmade%20Tile%20Made%20in%20the%20USA&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1162819236.1774175101&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&gap.plf=2&rfmt=3&fmt=4",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=6484378&time=1774175100984&li_adsId=2ead9d44-384f-4fd8-acec-a9336cd31c04&url=https%3A%2F%2Fmooremerkowitztile.com%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=UA-150353453-1&cx=c&gtm=4e63i0",
+      "domain": "www.googletagmanager.com"
+    },
+    {
+      "url": "https://analytics.google.com/g/collect?v=2&tid=G-V46SWNRTQF&gtm=45je63i0v873902001za200zb9216736965zd9216736965&_p=1774175100650&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1293405671.1774175101&ul=en-us&sr=1440x900&_ng=1&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAGA&_s=1&tag_exp=103116026~103200004~115616986~115938465~115938468~116024733~117484252~118104772&sid=1774175101&sct=1&seg=0&dl=https%3A%2F%2Fmooremerkowitztile.com%2F&dt=Ceramic%20Handmade%20Tile%20%7C%20Handmade%20Tile%20Made%20in%20the%20USA&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=995",
+      "domain": "analytics.google.com"
+    },
+    {
+      "url": "https://stats.g.doubleclick.net/g/collect?v=2&_ng=1&tid=G-V46SWNRTQF&cid=1293405671.1774175101&gtm=45je63i0v873902001za200zb9216736965zd9216736965&aip=1&dma=0&gcd=13l3l3l3l1l1&npa=0&frm=0&tag_exp=103116026~103200004~115616986~115938465~115938468~116024733~117484252~118104772",
+      "domain": "stats.g.doubleclick.net"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=fetch&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/insight_tag_errors.gif?v=2&pid=6484378&error=version%3A%20285%20%7C%20WebsiteActions-285-TypeError%3A%20Failed%20to%20fetch%3B%20ErrorData%3A%20%7B%22domain%22%3A%22mooremerkowitztile.com%22%2C%22requestFetcher%22%3A%22fetch-keepalive%22%2C%22body%22%3A%22H4sIAAAAAAAAA22PQUvDQBSE%2F0qY88Y27bZJ91ZEa0BBTOxFRDbJa%2Fvo7iZmtxSt%2Fe8SCx7E23wwfMyc0HHjoV7mMpPTNHsV8HXPXVhT77l1UJNsJhDYElSSpjJJZ8k4GU%2FGAk1rNTso2LbtyVK%2Fb48cPgMbuqpbC4FDb6CwC6HzajT6vzaCQKe3VHIwBIVr6rXlOrrTrrG6oahkQ9HXH34YErso7Ch6LpYQOFLlOVDBW6fNE70fyIe8gcJmISspk0lMs1kSV%2BlUxpskXcTzudRUp5ms0ikE2Je9dt7oQA3URhtPAoZv9cWCAVasXbiAZV9DndD5qgg6EFQsz4Plnt2emtwtu%2B5XsyML5Q7GCPiffeVHN3x9XK5u3tZ5kZc4fwMkHfLhigEAAA%3D%3D%22%7D&href=https%3A%2F%2Fmooremerkowitztile.com%2F",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://px.ads.linkedin.com/wa/?medium=beacon&fmt=g",
+      "domain": "px.ads.linkedin.com"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/687716505/?random=1774175100875&cv=11&fst=1774175100875&fmt=3&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0h1v9216736965za200zd9216736965xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616985~115938465~115938469~116024733~117484252~118128922&u_w=1440&u_h=900&url=https%3A%2F%2Fmooremerkowitztile.com%2F&frm=0&tiba=Ceramic%20Handmade%20Tile%20%7C%20Handmade%20Tile%20Made%20in%20the%20USA&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1162819236.1774175101&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&gap.plf=2",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/687716505/?random=1774175100976&cv=11&fst=1774175100976&fmt=3&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be63i0h1v9216736965z89137612108za200zd9216736965xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~115616985~115938465~115938469~116024733~117484252~118128922&u_w=1440&u_h=900&url=https%3A%2F%2Fmooremerkowitztile.com%2F&frm=0&tiba=Ceramic%20Handmade%20Tile%20%7C%20Handmade%20Tile%20Made%20in%20the%20USA&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1162819236.1774175101&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&gap.plf=2",
+      "domain": "googleads.g.doubleclick.net"
+    },
+    {
+      "url": "https://bat.bing.com/action/0?ti=149011062&Ver=2&mid=4d29858b-4c6d-49f4-b231-ff7c9cad5bed&bo=1&sid=6307cac025d911f1a6cdadb7a586783d&vid=6308026025d911f1a4244ba7bdba4613&vids=1&msclkid=N&uach=pv%3D10.0&pi=918639831&lg=en-US&sw=1440&sh=900&sc=24&tl=Ceramic%20Handmade%20Tile%20%7C%20Handmade%20Tile%20Made%20in%20the%20USA&p=https%3A%2F%2Fmooremerkowitztile.com%2F&r=&lt=1545&evt=pageLoad&sv=2&cdb=AQAA&rn=236802",
+      "domain": "bat.bing.com"
+    }
+  ],
+  "blocked_domains": [
+    "analytics.google.com",
+    "bat.bing.com",
+    "googleads.g.doubleclick.net",
+    "js.hs-analytics.net",
+    "js.hs-banner.com",
+    "px.ads.linkedin.com",
+    "stats.g.doubleclick.net",
+    "www.googletagmanager.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "section",
+      "classes": "gdpr-cookie-banner BOTTOM legacy-dark bar full-styling",
+      "id": "",
+      "text": "By using this website, you agree to our Terms of Use and Privacy Policy.OK",
+      "rect": {
+        "x": 0,
+        "y": 823,
+        "w": 1425,
+        "h": 77
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Terms of Use",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 239,
+          "y": 861,
+          "w": 63,
+          "h": 14
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Policy.",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 327,
+          "y": 861,
+          "w": 69,
+          "h": 14
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+          "id": "",
+          "x": 1382,
+          "y": 862,
+          "w": 46,
+          "h": 49
+        }
+      ]
+    },
+    {
+      "tag": "p",
+      "classes": "disclaimer-text sqs-cookie-banner-v2-text",
+      "id": "",
+      "text": "By using this website, you agree to our Terms of Use and Privacy Policy.",
+      "rect": {
+        "x": 20,
+        "y": 848,
+        "w": 342,
+        "h": 27
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Terms of Use",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 239,
+          "y": 861,
+          "w": 63,
+          "h": 14
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Policy.",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 327,
+          "y": 861,
+          "w": 69,
+          "h": 14
+        }
+      ]
+    },
+    {
+      "tag": "body",
+      "classes": "tweak-site-width-option-full-background tweak-icon-weight-hairline tweak-site-ajax-loading-bar-show ancillary-header-top-left-layout-horizontal ancillary-header-top-center-layout-horizontal ancillary-header-top-right-layout-horizontal ancillary-header-bottom-left-layout-horizontal ancillary-header-b",
+      "id": "collection-5c8fdef8419202f5c4ab855f",
+      "text": "By using this website, you agree to our Terms of Use and Privacy Policy.OK\n\n    \n\n    \n  \n\n    \n      \n    \n        \n          \n            \n            \n\n\n\n  \n  \n  \n  \n\n  \n  \n    \n  \n\n  \n  \n\n\n          \n        \n      \n    \n    \n        \n          \n          \n        \n        \n          \n          \n        \n        \n          \n          \n        \n        \n          \n          \n        \n        \n          \n          \n        \n        \n          \n          \n        \n        \n          \n          ",
+      "rect": {
+        "x": 0,
+        "y": 47,
+        "w": 1425,
+        "h": 7384
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Terms of Use",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 239,
+          "y": 861,
+          "w": 63,
+          "h": 14
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Policy.",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 327,
+          "y": 861,
+          "w": 69,
+          "h": 14
+        },
+        {
+          "tag": "button",
+          "text": "OK",
+          "ariaLabel": "",
+          "classes": "accept sqs-button-element--primary sqs-cookie-banner-v2-accept sqs-cookie-banner-v2-cta",
+          "id": "",
+          "x": 1382,
+          "y": 862,
+          "w": 46,
+          "h": 49
+        },
+        {
+          "tag": "a",
+          "text": "Tiles",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-title",
+          "id": "",
+          "x": 38,
+          "y": 22,
+          "w": 36,
+          "h": 14
+        },
+        {
+          "tag": "a",
+          "text": "Series Index",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 69,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Abigail",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 90,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Animal",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 112,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Buttercup",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 133,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Chateau",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 154,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Delilah",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 175,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Diamond",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 196,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "English Cottage",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 217,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Field Tile",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 238,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Garland",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 260,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Iris",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 281,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Laurel",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 302,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Molding & Trim",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 323,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Morning Glory",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 344,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Octagon",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 365,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Tulip",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 386,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Woven Pansy",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99908,
+          "y": 408,
+          "w": 142,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Range Panels",
+          "ariaLabel": "",
+          "classes": "Header-nav-item",
+          "id": "",
+          "x": 133,
+          "y": 23,
+          "w": 107,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Colors",
+          "ariaLabel": "",
+          "classes": "Header-nav-item",
+          "id": "",
+          "x": 237,
+          "y": 23,
+          "w": 57,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Ideas",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-title",
+          "id": "",
+          "x": 310,
+          "y": 22,
+          "w": 42,
+          "h": 14
+        },
+        {
+          "tag": "a",
+          "text": "Kitchen & Bath Ideas",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 69,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Abigail Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 90,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Animal Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 112,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Chateau Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 133,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Delilah Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 154,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Diamond Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 175,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Laurel Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 196,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Morning Glory Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 217,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Tulip Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 238,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Woven Pansy Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 260,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Buttercup Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 281,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "English Cottage Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 302,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Garland Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 323,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Iris Pairings",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -99603,
+          "y": 344,
+          "w": 215,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "Header-branding",
+          "id": "",
+          "x": 713,
+          "y": 23,
+          "w": 335,
+          "h": 37
+        },
+        {
+          "tag": "a",
+          "text": "Cart\n\n      \n        \n        \n      \n      \n        \n        \n      \n      \n        \n        \n      \n      \n        \n        \n      \n\n      0",
+          "ariaLabel": "0 items in cart",
+          "classes": "Cart sqs-custom-cart sqs-template-integrated-shopping-cart",
+          "id": "",
+          "x": 1383,
+          "y": 23,
+          "w": 69,
+          "h": 34
+        },
+        {
+          "tag": "a",
+          "text": "About",
+          "ariaLabel": "",
+          "classes": "Header-nav-item",
+          "id": "",
+          "x": 993,
+          "y": 23,
+          "w": 48,
+          "h": 27
+        },
+        {
+          "tag": "a",
+          "text": "Trade",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-title",
+          "id": "",
+          "x": 1062,
+          "y": 22,
+          "w": 44,
+          "h": 14
+        },
+        {
+          "tag": "a",
+          "text": "Trade Registration",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -98878,
+          "y": 69,
+          "w": 161,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Request A Quote",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -98878,
+          "y": 90,
+          "w": 161,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "How to Purchase",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -98878,
+          "y": 112,
+          "w": 161,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "How to Purchase",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-title",
+          "id": "",
+          "x": 1176,
+          "y": 22,
+          "w": 139,
+          "h": 14
+        },
+        {
+          "tag": "a",
+          "text": "Retail Customers",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -98820,
+          "y": 69,
+          "w": 145,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Trade Customers",
+          "ariaLabel": "",
+          "classes": "Header-nav-folder-item",
+          "id": "",
+          "x": -98820,
+          "y": 90,
+          "w": 145,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Contact",
+          "ariaLabel": "",
+          "classes": "Header-nav-item",
+          "id": "",
+          "x": 1302,
+          "y": 23,
+          "w": 68,
+          "h": 27
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "Index-gallery-control Index-gallery-control--left",
+          "id": "",
+          "x": 22,
+          "y": 502,
+          "w": 33,
+          "h": 45
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "Index-gallery-control Index-gallery-control--right",
+          "id": "",
+          "x": 1404,
+          "y": 502,
+          "w": 33,
+          "h": 45
+        },
+        {
+          "tag": "a",
+          "text": "ceramic art tile manufacturer",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 967,
+          "y": 1215,
+          "w": 344,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "text": "Explore Our Complete Collection",
+          "ariaLabel": "",
+          "classes": "sqs-block-button-element--small sqs-button-element--tertiary sqs-block-button-element",
+          "id": "",
+          "x": 713,
+          "y": 1509,
+          "w": 365,
+          "h": 42
+        },
+        {
+          "tag": "a",
+          "text": "View Ideas",
+          "ariaLabel": "",
+          "classes": "sqs-button-element--primary",
+          "id": "",
+          "x": 155,
+          "y": 2260,
+          "w": 98,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "Shop Now",
+          "ariaLabel": "",
+          "classes": "sqs-button-element--primary",
+          "id": "",
+          "x": 1055,
+          "y": 2960,
+          "w": 96,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "View Series",
+          "ariaLabel": "",
+          "classes": "sqs-button-element--primary",
+          "id": "",
+          "x": 157,
+          "y": 3689,
+          "w": 101,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "View Collections",
+          "ariaLabel": "",
+          "classes": "sqs-button-element--primary",
+          "id": "",
+          "x": 1072,
+          "y": 4396,
+          "w": 130,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "View Ideas",
+          "ariaLabel": "",
+          "classes": "sqs-button-element--primary",
+          "id": "",
+          "x": 155,
+          "y": 5110,
+          "w": 98,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "View Ideas",
+          "ariaLabel": "",
+          "classes": "sqs-button-element--primary",
+          "id": "",
+          "x": 1056,
+          "y": 5783,
+          "w": 98,
+          "h": 26
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n                \n                  sqs-block-image-link\n                \n                image-inset",
+          "id": "yui_3_17_2_1_1774175100402_159",
+          "x": 180,
+          "y": 6385,
+          "w": 295,
+          "h": 290
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n                \n                  sqs-block-image-link\n                \n                image-inset",
+          "id": "yui_3_17_2_1_1774175100402_176",
+          "x": 535,
+          "y": 6385,
+          "w": 295,
+          "h": 290
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n                \n                  sqs-block-image-link\n                \n                image-inset",
+          "id": "yui_3_17_2_1_1774175100402_188",
+          "x": 890,
+          "y": 6385,
+          "w": 295,
+          "h": 290
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "\n                \n                  sqs-block-image-link\n                \n                image-inset",
+          "id": "yui_3_17_2_1_1774175100402_200",
+          "x": 1245,
+          "y": 6385,
+          "w": 295,
+          "h": 290
+        },
+        {
+          "tag": "a",
+          "text": "mmtile@mooremerkowitztile.com",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 154,
+          "y": 7177,
+          "w": 233,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Tiles",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 509,
+          "y": 7078,
+          "w": 31,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Range Panels",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 541,
+          "y": 7105,
+          "w": 96,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Colors",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 516,
+          "y": 7132,
+          "w": 47,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Ideas",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 513,
+          "y": 7159,
+          "w": 39,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Sale",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 509,
+          "y": 7186,
+          "w": 32,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "About",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 515,
+          "y": 7213,
+          "w": 43,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "How To Purchase",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 554,
+          "y": 7258,
+          "w": 122,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Retail Customers",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 571,
+          "y": 7285,
+          "w": 117,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Trade Customers",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 572,
+          "y": 7312,
+          "w": 118,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Trade Registration",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 557,
+          "y": 7339,
+          "w": 127,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Request A Quote",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 554,
+          "y": 7366,
+          "w": 121,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Contact",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 521,
+          "y": 7393,
+          "w": 56,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "FAQ",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 746,
+          "y": 7078,
+          "w": 33,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Use",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 774,
+          "y": 7105,
+          "w": 90,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Terms and Conditions",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 806,
+          "y": 7132,
+          "w": 152,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Online Purchase",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 807,
+          "y": 7159,
+          "w": 116,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Direct Purchase",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 804,
+          "y": 7186,
+          "w": 110,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Policy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 779,
+          "y": 7213,
+          "w": 98,
+          "h": 22
+        },
+        {
+          "tag": "button",
+          "text": "Subscribe",
+          "ariaLabel": "",
+          "classes": "\n            newsletter-form-button\n            sqs-system-button\n            sqs-editable-button-layout\n            sqs-editable-button-style\n            sqs-editable-button-shape\n            sqs-button-element--primary\n          ",
+          "id": "",
+          "x": 1293,
+          "y": 7222,
+          "w": 146,
+          "h": 50
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 541,
+        "y": 1912,
+        "w": 828,
+        "h": 552
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 56,
+        "y": 2615,
+        "w": 828,
+        "h": 570
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 541,
+        "y": 3336,
+        "w": 828,
+        "h": 562
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 56,
+        "y": 4048,
+        "w": 828,
+        "h": 553
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 541,
+        "y": 4751,
+        "w": 828,
+        "h": 552
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 56,
+        "y": 5453,
+        "w": 828,
+        "h": 553
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 33,
+        "y": 6241,
+        "w": 295,
+        "h": 290
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 388,
+        "y": 6241,
+        "w": 295,
+        "h": 290
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 742,
+        "y": 6241,
+        "w": 295,
+        "h": 290
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "image-overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 1097,
+        "y": 6241,
+        "w": 295,
+        "h": 290
+      },
+      "buttons": []
+    }
+  ]
+}

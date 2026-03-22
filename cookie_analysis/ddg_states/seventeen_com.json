@@ -1,0 +1,110 @@
+{
+  "site": "seventeen.com",
+  "url": "https://seventeen.com/",
+  "timestamp": "2026-03-22T10:20:48.348943",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/seventeen_com.png",
+  "total_requests": 156,
+  "blocked_requests_count": 1,
+  "blocked_requests": [
+    {
+      "url": "https://s.skimresources.com/js/74968X1525086.skimlinks.js",
+      "domain": "s.skimresources.com"
+    }
+  ],
+  "blocked_domains": [
+    "s.skimresources.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "div",
+      "classes": "css-wun474 e1kug0ah4",
+      "id": "",
+      "text": "Our Terms of Use (including dispute resolution procedures) and Privacy Notice have been updated.  We use technologies that provide information about your interactions with this site to others for functionality, analytics, and other purposes. Learn more in our Privacy Notice. By continuing to use the Seventeen Magazine Services you agree that our Terms and Notice will govern your use of the Seventeen Magazine Services.",
+      "rect": {
+        "x": 0,
+        "y": 743,
+        "w": 1425,
+        "h": 157
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Close Privacy Disclosure",
+          "classes": "css-ur1o30 e1kug0ah1",
+          "id": "",
+          "x": 1217,
+          "y": 822,
+          "w": 15,
+          "h": 15
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Use",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 273,
+          "y": 792,
+          "w": 88,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "dispute resolution procedures",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 488,
+          "y": 792,
+          "w": 197,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Notice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 672,
+          "y": 792,
+          "w": 96,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Learn more in our Privacy Notice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 446,
+          "y": 831,
+          "w": 215,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Terms",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 347,
+          "y": 850,
+          "w": 41,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Notice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 422,
+          "y": 850,
+          "w": 43,
+          "h": 16
+        }
+      ]
+    }
+  ]
+}

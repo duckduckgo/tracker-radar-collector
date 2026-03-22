@@ -1,0 +1,135 @@
+[
+  {
+    "tag": "div",
+    "classes": "rg-us-cookie-banner",
+    "id": "rg-us-cookie-banner",
+    "text": "We and our partners use cookies\u2715By using this site, you consent to the processing of your personal data, the storing of cookies on your device, and the use of similar technologies for personalization, ads, analytics, etc. For more information or to opt out, see our Privacy Policy",
+    "rect": {
+      "x": 0,
+      "y": 806,
+      "w": 1425,
+      "h": 94
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "button",
+        "text": "\u2715",
+        "ariaLabel": "Close",
+        "classes": "rg-us-cookie-banner__dismiss-button",
+        "id": "rg-us-cookie-banner-dismiss-button",
+        "href": null,
+        "x": 1374,
+        "y": 835
+      },
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "rg-us-cookie-banner__policy-link",
+        "id": "rg-us-cookie-banner-privacy-policy",
+        "href": "https://www.researchgate.net/privacy-policy",
+        "x": 705,
+        "y": 861
+      },
+      {
+        "tag": "button",
+        "text": "\u2715",
+        "ariaLabel": "Close",
+        "classes": "rg-us-cookie-banner__dismiss-button",
+        "id": "rg-us-cookie-banner-dismiss-button",
+        "x": 1374,
+        "y": 835,
+        "isClose": true
+      }
+    ],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  },
+  {
+    "tag": "div",
+    "classes": "rg-us-cookie-banner__content",
+    "id": "",
+    "text": "We and our partners use cookies\u2715By using this site, you consent to the processing of your personal data, the storing of cookies on your device, and the use of similar technologies for personalization, ads, analytics, etc. For more information or to opt out, see our Privacy Policy",
+    "rect": {
+      "x": 0,
+      "y": 806,
+      "w": 1425,
+      "h": 94
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "button",
+        "text": "\u2715",
+        "ariaLabel": "Close",
+        "classes": "rg-us-cookie-banner__dismiss-button",
+        "id": "rg-us-cookie-banner-dismiss-button",
+        "href": null,
+        "x": 1374,
+        "y": 835
+      },
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "rg-us-cookie-banner__policy-link",
+        "id": "rg-us-cookie-banner-privacy-policy",
+        "href": "https://www.researchgate.net/privacy-policy",
+        "x": 705,
+        "y": 861
+      },
+      {
+        "tag": "button",
+        "text": "\u2715",
+        "ariaLabel": "Close",
+        "classes": "rg-us-cookie-banner__dismiss-button",
+        "id": "rg-us-cookie-banner-dismiss-button",
+        "x": 1374,
+        "y": 835,
+        "isClose": true
+      }
+    ],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  },
+  {
+    "tag": "p",
+    "classes": "rg-us-cookie-banner__description",
+    "id": "rg-us-cookie-banner-description",
+    "text": "By using this site, you consent to the processing of your personal data, the storing of cookies on your device, and the use of similar technologies for personalization, ads, analytics, etc. For more information or to opt out, see our Privacy Policy",
+    "rect": {
+      "x": 40,
+      "y": 844,
+      "w": 1345,
+      "h": 36
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Privacy Policy",
+        "ariaLabel": "",
+        "classes": "rg-us-cookie-banner__policy-link",
+        "id": "rg-us-cookie-banner-privacy-policy",
+        "href": "https://www.researchgate.net/privacy-policy",
+        "x": 705,
+        "y": 861
+      }
+    ],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  },
+  {
+    "tag": "a",
+    "classes": "rg-us-cookie-banner__policy-link",
+    "id": "rg-us-cookie-banner-privacy-policy",
+    "text": "Privacy Policy",
+    "rect": {
+      "x": 40,
+      "y": 845,
+      "w": 1330,
+      "h": 32
+    },
+    "visible": true,
+    "buttons": [],
+    "matchedSelector": "[class*=\"cookie\" i]"
+  }
+]

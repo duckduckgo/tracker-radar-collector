@@ -1,0 +1,28 @@
+[
+  {
+    "tag": "div",
+    "classes": "block block-block-content block-block-content2357995e-bf08-4dbc-a414-5637e7569cf4 block-content--type-banner",
+    "id": "block-block-content2357995e-bf08-4dbc-a414-5637e7569cf4",
+    "text": "Help End Phone Call Nightmares\n      \n      \n            Campaign: get involved",
+    "rect": {
+      "x": 0,
+      "y": 140,
+      "w": 1425,
+      "h": 471
+    },
+    "visible": true,
+    "buttons": [
+      {
+        "tag": "a",
+        "text": "Help End Phone Call Nightmares\n      \n      \n            Campaign: get involved",
+        "ariaLabel": "",
+        "classes": "",
+        "id": "",
+        "href": "/get-involved/campaigns/end-the-phone-call-nightmares",
+        "x": 713,
+        "y": 375
+      }
+    ],
+    "matchedSelector": "[class*=\"banner\" i]"
+  }
+]

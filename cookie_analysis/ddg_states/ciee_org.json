@@ -1,0 +1,1985 @@
+{
+  "site": "ciee.org",
+  "url": "https://www.ciee.org/",
+  "timestamp": "2026-03-22T10:10:17.870069",
+  "screenshot": "/workspace/cookie_analysis/ddg_screenshots/ciee_org.png",
+  "total_requests": 94,
+  "blocked_requests_count": 1,
+  "blocked_requests": [
+    {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-274EJGWFTR&gtm=45je63i0v889651022z876131777za20gzb76131777zd76131777&_p=1774174209343&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1705930655.1774174210&ul=en-us&sr=1440x900&uaa=x86&uab=64&uafvl=Chromium%3B145.0.7632.6%7CNot%253AA-Brand%3B99.0.0.0&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAAQ&_s=2&tag_exp=103116026~103200004~115938466~115938469~116024733~117484252&sid=1774174209&sct=1&seg=0&dl=https%3A%2F%2Fwww.ciee.org%2F&dt=CIEE&_tu=CA&en=scroll_depth&ep.debug_mode=true&epn.percent_scrolled=10&_et=326&tfd=6055",
+      "domain": "www.google-analytics.com"
+    }
+  ],
+  "blocked_domains": [
+    "www.google-analytics.com"
+  ],
+  "dom_areas": [
+    {
+      "tag": "body",
+      "classes": "eu-cookie-compliance-popup-open eu-cookie-compliance-status-null",
+      "id": "",
+      "text": "CIEE collects personal data about visitors to our website, in order to improve your experience and provide visitors and prospective visitors with personalized information on our programs and services. By using our site, you accept the information policies and practices outlined in our\u00a0Privacy Notice\u00a0and our Terms & Conditions.\n                          \n\n            \n              \n              \n                Agree and Dismiss\n                              \n            \n          \n        \n  ",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1425,
+        "h": 5871
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Notice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 653,
+          "y": 848,
+          "w": 99,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Terms & Conditions",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 832,
+          "y": 848,
+          "w": 135,
+          "h": 16
+        },
+        {
+          "tag": "button",
+          "text": "Agree and Dismiss",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1129,
+          "y": 819,
+          "w": 227,
+          "h": 50
+        },
+        {
+          "tag": "a",
+          "text": "Skip to main site navigation",
+          "ariaLabel": "",
+          "classes": "element-invisible element-focusable",
+          "id": "",
+          "x": 1,
+          "y": 1,
+          "w": 1,
+          "h": 1
+        },
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "ariaLabel": "",
+          "classes": "element-invisible element-focusable",
+          "id": "",
+          "x": 1,
+          "y": 1,
+          "w": 1,
+          "h": 1
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "CIEE Home",
+          "classes": "site-header__logo",
+          "id": "",
+          "x": 223,
+          "y": 96,
+          "w": 180,
+          "h": 48
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Search CIEE.org",
+          "classes": "site-search__toggle button-toggle",
+          "id": "site-search--button-toggle",
+          "x": 1272,
+          "y": 26,
+          "w": 41,
+          "h": 41
+        },
+        {
+          "tag": "a",
+          "text": "Give",
+          "ariaLabel": "Give",
+          "classes": "site-header__top--link",
+          "id": "",
+          "x": 1068,
+          "y": 26,
+          "w": 45,
+          "h": 18
+        },
+        {
+          "tag": "a",
+          "text": "MyCIEE",
+          "ariaLabel": "opens MyCIEE in new window",
+          "classes": "site-header__top--link",
+          "id": "",
+          "x": 1129,
+          "y": 26,
+          "w": 70,
+          "h": 18
+        },
+        {
+          "tag": "a",
+          "text": "Apply",
+          "ariaLabel": "opens Apply in new window",
+          "classes": "btn btn--accent",
+          "id": "",
+          "x": 1208,
+          "y": 26,
+          "w": 64,
+          "h": 33
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "",
+          "classes": "visually-hidden",
+          "id": "main-menu",
+          "x": 153,
+          "y": 82,
+          "w": 40,
+          "h": 60
+        },
+        {
+          "tag": "a",
+          "text": "Go Abroad",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 504,
+          "y": 96,
+          "w": 147,
+          "h": 87
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Toggle the Go Abroad menu",
+          "classes": "menu-item__button",
+          "id": "toggle-the-go-abroad-menu--button",
+          "x": 601,
+          "y": 76,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "tag": "a",
+          "text": "Go to the USA",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 667,
+          "y": 96,
+          "w": 180,
+          "h": 87
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Toggle the Go to the USA menu",
+          "classes": "menu-item__button",
+          "id": "toggle-the-go-to-the-usa-menu--button",
+          "x": 781,
+          "y": 76,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "tag": "a",
+          "text": "Partner With CIEE",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 868,
+          "y": 96,
+          "w": 222,
+          "h": 87
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Toggle the Partner With CIEE menu",
+          "classes": "menu-item__button",
+          "id": "toggle-the-partner-with-ciee-menu--button",
+          "x": 1003,
+          "y": 76,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "tag": "a",
+          "text": "Alumni & Friends",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1085,
+          "y": 96,
+          "w": 212,
+          "h": 87
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Toggle the Alumni &amp; Friends menu",
+          "classes": "menu-item__button",
+          "id": "toggle-the-alumni-&amp;-friends-menu--button",
+          "x": 1215,
+          "y": 76,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "tag": "a",
+          "text": "About",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1242,
+          "y": 96,
+          "w": 102,
+          "h": 87
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "Toggle the About menu",
+          "classes": "menu-item__button",
+          "id": "toggle-the-about-menu--button",
+          "x": 1317,
+          "y": 76,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "tag": "button",
+          "text": "Go",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1189,
+          "y": 526,
+          "w": 90,
+          "h": 52
+        },
+        {
+          "tag": "a",
+          "text": "Go Abroad",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 313,
+          "y": 1183,
+          "w": 163,
+          "h": 29
+        },
+        {
+          "tag": "a",
+          "text": "For College",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 313,
+          "y": 1247,
+          "w": 320,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "For High School",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 313,
+          "y": 1283,
+          "w": 320,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "For Work",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 313,
+          "y": 1319,
+          "w": 320,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "For Educators",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 313,
+          "y": 1355,
+          "w": 320,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Go to the U.S.",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 713,
+          "y": 1181,
+          "w": 199,
+          "h": 29
+        },
+        {
+          "tag": "a",
+          "text": "For High School",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 713,
+          "y": 1245,
+          "w": 320,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "For Work",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 713,
+          "y": 1281,
+          "w": 320,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Research and Training",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 713,
+          "y": 1317,
+          "w": 320,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "For Research and Professional Training",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 713,
+          "y": 1363,
+          "w": 320,
+          "h": 42
+        },
+        {
+          "tag": "a",
+          "text": "Partner with CIEE",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1113,
+          "y": 1183,
+          "w": 270,
+          "h": 29
+        },
+        {
+          "tag": "a",
+          "text": "For Employers",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1113,
+          "y": 1247,
+          "w": 320,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "For Host",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1113,
+          "y": 1283,
+          "w": 320,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "For Institutions",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1113,
+          "y": 1319,
+          "w": 320,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "For Professional Services",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1113,
+          "y": 1355,
+          "w": 320,
+          "h": 21
+        },
+        {
+          "tag": "a",
+          "text": "Asia-Pacific",
+          "ariaLabel": "",
+          "classes": "is_active",
+          "id": "",
+          "x": 313,
+          "y": 1785,
+          "w": 167,
+          "h": 84
+        },
+        {
+          "tag": "a",
+          "text": "Africa",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 465,
+          "y": 1770,
+          "w": 136,
+          "h": 54
+        },
+        {
+          "tag": "a",
+          "text": "Europe",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 606,
+          "y": 1770,
+          "w": 148,
+          "h": 54
+        },
+        {
+          "tag": "a",
+          "text": "Latin America",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 775,
+          "y": 1785,
+          "w": 189,
+          "h": 84
+        },
+        {
+          "tag": "a",
+          "text": "Middle East",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 955,
+          "y": 1785,
+          "w": 172,
+          "h": 84
+        },
+        {
+          "tag": "a",
+          "text": "America",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1118,
+          "y": 1770,
+          "w": 155,
+          "h": 54
+        },
+        {
+          "tag": "button",
+          "text": "Go to the next slide.",
+          "ariaLabel": "",
+          "classes": "f-button slider-navigation__next far fa-chevron-right",
+          "id": "",
+          "x": 1270,
+          "y": 2172,
+          "w": 45,
+          "h": 45
+        },
+        {
+          "tag": "button",
+          "text": "Go to the previous slide.",
+          "ariaLabel": "",
+          "classes": "f-button slider-navigation__prev far fa-chevron-left",
+          "id": "",
+          "x": 155,
+          "y": 2172,
+          "w": 45,
+          "h": 45
+        },
+        {
+          "tag": "a",
+          "text": "CIEE BridgeUSA Celebration Tour Visits Park City to Highlight How BridgeUSA Makes America Safer, Stronger, and More Prosperous",
+          "ariaLabel": "Read full blog post: CIEE BridgeUSA Celebration Tour Visits Park City to Highlight How BridgeUSA Mak",
+          "classes": "dark-link",
+          "id": "",
+          "x": 891,
+          "y": 2842,
+          "w": 694,
+          "h": 54
+        },
+        {
+          "tag": "a",
+          "text": "keep reading",
+          "ariaLabel": "Keep reading",
+          "classes": "old-link-arrow",
+          "id": "",
+          "x": 947,
+          "y": 3003,
+          "w": 130,
+          "h": 20
+        },
+        {
+          "tag": "button",
+          "text": "Go to the previous slide.",
+          "ariaLabel": "",
+          "classes": "swiper-button-prev",
+          "id": "",
+          "x": 135,
+          "y": 3433,
+          "w": 45,
+          "h": 45
+        },
+        {
+          "tag": "button",
+          "text": "Go to the next slide.",
+          "ariaLabel": "",
+          "classes": "swiper-button-next",
+          "id": "",
+          "x": 1290,
+          "y": 3433,
+          "w": 45,
+          "h": 45
+        },
+        {
+          "tag": "a",
+          "text": "CIEE Partners with America250 to Celebrate America\u2019s 250th Anniversary",
+          "ariaLabel": "",
+          "classes": "dark-link",
+          "id": "",
+          "x": 309,
+          "y": 3548,
+          "w": 327,
+          "h": 84
+        },
+        {
+          "tag": "a",
+          "text": "keep reading",
+          "ariaLabel": "Keep reading CIEE Partners with America250 to Celebrate America\u2019s 250th Anniversary ",
+          "classes": "old-link-arrow",
+          "id": "",
+          "x": 399,
+          "y": 3808,
+          "w": 130,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "CIEE Announces the Rick A. Ruth BridgeUSA Summer Work Travel Scholarship",
+          "ariaLabel": "",
+          "classes": "dark-link",
+          "id": "",
+          "x": 730,
+          "y": 3548,
+          "w": 329,
+          "h": 84
+        },
+        {
+          "tag": "a",
+          "text": "keep reading",
+          "ariaLabel": "Keep reading CIEE Announces the Rick A. Ruth BridgeUSA Summer Work Travel Scholarship",
+          "classes": "old-link-arrow",
+          "id": "",
+          "x": 697,
+          "y": 3836,
+          "w": 130,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "CIEE Receives $50,000 Gift to Launch Knowledge Without Borders: Democracy and Memory Fellowship in Berlin",
+          "ariaLabel": "",
+          "classes": "dark-link",
+          "id": "",
+          "x": 1139,
+          "y": 3563,
+          "w": 306,
+          "h": 114
+        },
+        {
+          "tag": "a",
+          "text": "keep reading",
+          "ariaLabel": "Keep reading CIEE Receives $50,000 Gift to Launch Knowledge Without Borders: Democracy and Memory Fe",
+          "classes": "old-link-arrow",
+          "id": "",
+          "x": 1051,
+          "y": 3894,
+          "w": 130,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "Announcing the Tenth Cohort of CIEE Frederick Douglass-Daniel O\u2019Connell Global Interns in Ireland",
+          "ariaLabel": "",
+          "classes": "dark-link",
+          "id": "",
+          "x": 1569,
+          "y": 3563,
+          "w": 326,
+          "h": 114
+        },
+        {
+          "tag": "a",
+          "text": "keep reading",
+          "ariaLabel": "Keep reading Announcing the Tenth Cohort of CIEE Frederick Douglass-Daniel O\u2019Connell Global Interns ",
+          "classes": "old-link-arrow",
+          "id": "",
+          "x": 1557,
+          "y": 3880,
+          "w": 304,
+          "h": 48
+        },
+        {
+          "tag": "a",
+          "text": "CIEE to Assume Stewardship of Farther Foundation\u2019s Assets and Mission to Support Study Abroad Opportunities for Low-income Students in the Chicago Area",
+          "ariaLabel": "",
+          "classes": "dark-link",
+          "id": "",
+          "x": 1989,
+          "y": 3593,
+          "w": 327,
+          "h": 174
+        },
+        {
+          "tag": "a",
+          "text": "keep reading",
+          "ariaLabel": "Keep reading CIEE to Assume Stewardship of Farther Foundation\u2019s Assets and Mission to Support Study ",
+          "classes": "old-link-arrow",
+          "id": "",
+          "x": 1969,
+          "y": 3926,
+          "w": 130,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "CIEE Announces 2026 as the \u201cYear of the Host Family\u201d",
+          "ariaLabel": "",
+          "classes": "dark-link",
+          "id": "",
+          "x": 2394,
+          "y": 3533,
+          "w": 297,
+          "h": 54
+        },
+        {
+          "tag": "a",
+          "text": "keep reading",
+          "ariaLabel": "Keep reading CIEE Announces 2026 as the \u201cYear of the Host Family\u201d",
+          "classes": "old-link-arrow",
+          "id": "",
+          "x": 2405,
+          "y": 3792,
+          "w": 320,
+          "h": 48
+        },
+        {
+          "tag": "a",
+          "text": "CIEE and Scan Design Foundation Announce the 2026 Scan Design Foundation Environmental Sustainability Interns in Denmark",
+          "ariaLabel": "",
+          "classes": "dark-link",
+          "id": "",
+          "x": 2831,
+          "y": 3578,
+          "w": 331,
+          "h": 144
+        },
+        {
+          "tag": "a",
+          "text": "keep reading",
+          "ariaLabel": "Keep reading CIEE and Scan Design Foundation Announce the 2026 Scan Design Foundation Environmental ",
+          "classes": "old-link-arrow",
+          "id": "",
+          "x": 2831,
+          "y": 3910,
+          "w": 330,
+          "h": 48
+        },
+        {
+          "tag": "div",
+          "text": "Available Scholarships",
+          "ariaLabel": "",
+          "classes": "global-spacing--large btn-wrapper",
+          "id": "",
+          "x": 363,
+          "y": 4411,
+          "w": 460,
+          "h": 52
+        },
+        {
+          "tag": "a",
+          "text": "Available Scholarships",
+          "ariaLabel": "",
+          "classes": "btn",
+          "id": "",
+          "x": 363,
+          "y": 4411,
+          "w": 297,
+          "h": 52
+        },
+        {
+          "tag": "div",
+          "text": "Health & SafetyiNext Travel Protection",
+          "ariaLabel": "",
+          "classes": "btn-row btn-wrapper",
+          "id": "",
+          "x": 963,
+          "y": 5149,
+          "w": 660,
+          "h": 52
+        },
+        {
+          "tag": "a",
+          "text": "Health & Safety",
+          "ariaLabel": "",
+          "classes": "btn",
+          "id": "",
+          "x": 744,
+          "y": 5149,
+          "w": 223,
+          "h": 52
+        },
+        {
+          "tag": "a",
+          "text": "iNext Travel Protection",
+          "ariaLabel": "opens iNext Travel Protection in new window",
+          "classes": "btn external",
+          "id": "",
+          "x": 1054,
+          "y": 5149,
+          "w": 317,
+          "h": 52
+        },
+        {
+          "tag": "a",
+          "text": "CIEE",
+          "ariaLabel": "CIEE Home",
+          "classes": "site-footer__title",
+          "id": "",
+          "x": 195,
+          "y": 5361,
+          "w": 75,
+          "h": 39
+        },
+        {
+          "tag": "a",
+          "text": "207-553-4000",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 292,
+          "y": 5469,
+          "w": 210,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "207-553-4299",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 292,
+          "y": 5501,
+          "w": 210,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "contact@ciee.org",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 250,
+          "y": 5533,
+          "w": 124,
+          "h": 22
+        },
+        {
+          "tag": "div",
+          "text": "Apply",
+          "ariaLabel": "",
+          "classes": "site-footer__info-box--btn-wrapper",
+          "id": "",
+          "x": 277,
+          "y": 5590,
+          "w": 240,
+          "h": 52
+        },
+        {
+          "tag": "a",
+          "text": "Apply",
+          "ariaLabel": "opens Apply in new window",
+          "classes": "btn btn--accent",
+          "id": "",
+          "x": 277,
+          "y": 5590,
+          "w": 240,
+          "h": 52
+        },
+        {
+          "tag": "a",
+          "text": "What We Stand For",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 572,
+          "y": 5371,
+          "w": 218,
+          "h": 33
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "% s submenu",
+          "classes": "menu-item__button",
+          "id": "%-s-submenu--button",
+          "x": 571,
+          "y": 5509,
+          "w": 40,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "Access",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 572,
+          "y": 5414,
+          "w": 218,
+          "h": 30
+        },
+        {
+          "tag": "a",
+          "text": "Advocacy",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 572,
+          "y": 5444,
+          "w": 218,
+          "h": 30
+        },
+        {
+          "tag": "a",
+          "text": "Health, Safety & Security",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 572,
+          "y": 5474,
+          "w": 218,
+          "h": 30
+        },
+        {
+          "tag": "a",
+          "text": "Support Resources",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 572,
+          "y": 5504,
+          "w": 218,
+          "h": 30
+        },
+        {
+          "tag": "a",
+          "text": "What We Do",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 776,
+          "y": 5371,
+          "w": 143,
+          "h": 33
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "% s submenu",
+          "classes": "menu-item__button",
+          "id": "%-s-submenu--button",
+          "x": 776,
+          "y": 5509,
+          "w": 40,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "News",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 776,
+          "y": 5414,
+          "w": 143,
+          "h": 30
+        },
+        {
+          "tag": "a",
+          "text": "Impact",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 776,
+          "y": 5444,
+          "w": 143,
+          "h": 30
+        },
+        {
+          "tag": "a",
+          "text": "Mission",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 776,
+          "y": 5474,
+          "w": 143,
+          "h": 30
+        },
+        {
+          "tag": "a",
+          "text": "Giving",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 776,
+          "y": 5504,
+          "w": 143,
+          "h": 30
+        },
+        {
+          "tag": "a",
+          "text": "We Are CIEE",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 941,
+          "y": 5371,
+          "w": 139,
+          "h": 33
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "ariaLabel": "% s submenu",
+          "classes": "menu-item__button",
+          "id": "%-s-submenu--button",
+          "x": 941,
+          "y": 5509,
+          "w": 40,
+          "h": 20
+        },
+        {
+          "tag": "a",
+          "text": "Leadership",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 941,
+          "y": 5414,
+          "w": 139,
+          "h": 30
+        },
+        {
+          "tag": "a",
+          "text": "Board of Directors",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 941,
+          "y": 5444,
+          "w": 139,
+          "h": 30
+        },
+        {
+          "tag": "a",
+          "text": "Work for CIEE",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1112,
+          "y": 5371,
+          "w": 154,
+          "h": 33
+        },
+        {
+          "tag": "a",
+          "text": "MyCIEE",
+          "ariaLabel": "opens MyCIEE in new window",
+          "classes": "",
+          "id": "",
+          "x": 504,
+          "y": 5610,
+          "w": 54,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Safety Alerts",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 522,
+          "y": 5642,
+          "w": 89,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "800-407-8839",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 892,
+          "y": 5643,
+          "w": 237,
+          "h": 22
+        },
+        {
+          "tag": "a",
+          "text": "Instagram",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1070,
+          "y": 5615,
+          "w": 27,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "TikTok",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1107,
+          "y": 5615,
+          "w": 27,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "Facebook",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1140,
+          "y": 5615,
+          "w": 19,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "YouTube",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1177,
+          "y": 5615,
+          "w": 35,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "Twitter",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1220,
+          "y": 5615,
+          "w": 31,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "LinkedIn",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 1259,
+          "y": 5615,
+          "w": 27,
+          "h": 31
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "CIEE Home",
+          "classes": "",
+          "id": "",
+          "x": 203,
+          "y": 5844,
+          "w": 140,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Notice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 594,
+          "y": 5792,
+          "w": 99,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Terms & Conditions",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 736,
+          "y": 5792,
+          "w": 135,
+          "h": 16
+        }
+      ]
+    },
+    {
+      "tag": "article",
+      "classes": "cookie-compliance-popup",
+      "id": "",
+      "text": "CIEE collects personal data about visitors to our website, in order to improve your experience and provide visitors and prospective visitors with personalized information on our programs and services. By using our site, you accept the information policies and practices outlined in our\u00a0Privacy Notice\u00a0and our Terms & Conditions.\n                          \n\n            \n              \n              \n                Agree and Dismiss",
+      "rect": {
+        "x": 0,
+        "y": 769,
+        "w": 1425,
+        "h": 116
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Notice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 653,
+          "y": 848,
+          "w": 99,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Terms & Conditions",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 832,
+          "y": 848,
+          "w": 135,
+          "h": 16
+        },
+        {
+          "tag": "button",
+          "text": "Agree and Dismiss",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1129,
+          "y": 819,
+          "w": 227,
+          "h": 50
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default global-padding global-padding--default",
+      "id": "",
+      "text": "CIEE collects personal data about visitors to our website, in order to improve your experience and provide visitors and prospective visitors with personalized information on our programs and services. By using our site, you accept the information policies and practices outlined in our\u00a0Privacy Notice\u00a0and our Terms & Conditions.\n                          \n\n            \n              \n              \n                Agree and Dismiss",
+      "rect": {
+        "x": 133,
+        "y": 769,
+        "w": 1160,
+        "h": 116
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Notice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 653,
+          "y": 848,
+          "w": 99,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Terms & Conditions",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 832,
+          "y": 848,
+          "w": 135,
+          "h": 16
+        },
+        {
+          "tag": "button",
+          "text": "Agree and Dismiss",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1129,
+          "y": 819,
+          "w": 227,
+          "h": 50
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "popup-content info eu-cookie-compliance-content",
+      "id": "",
+      "text": "CIEE collects personal data about visitors to our website, in order to improve your experience and provide visitors and prospective visitors with personalized information on our programs and services. By using our site, you accept the information policies and practices outlined in our\u00a0Privacy Notice\u00a0and our Terms & Conditions.\n                          \n\n            \n              \n              \n                Agree and Dismiss",
+      "rect": {
+        "x": 158,
+        "y": 794,
+        "w": 1110,
+        "h": 66
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Notice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 653,
+          "y": 848,
+          "w": 99,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Terms & Conditions",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 832,
+          "y": 848,
+          "w": 135,
+          "h": 16
+        },
+        {
+          "tag": "button",
+          "text": "Agree and Dismiss",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1129,
+          "y": 819,
+          "w": 227,
+          "h": 50
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "eu-cookie-compliance-message",
+      "id": "popup-text",
+      "text": "CIEE collects personal data about visitors to our website, in order to improve your experience and provide visitors and prospective visitors with personalized information on our programs and services. By using our site, you accept the information policies and practices outlined in our\u00a0Privacy Notice\u00a0and our Terms & Conditions.\n                          \n\n            \n              \n              \n                Agree and Dismiss",
+      "rect": {
+        "x": 158,
+        "y": 794,
+        "w": 1110,
+        "h": 66
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "Privacy Notice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 653,
+          "y": 848,
+          "w": 99,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Terms & Conditions",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 832,
+          "y": 848,
+          "w": 135,
+          "h": 16
+        },
+        {
+          "tag": "button",
+          "text": "Agree and Dismiss",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1129,
+          "y": 819,
+          "w": 227,
+          "h": 50
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "eu-cookie-compliance-buttons",
+      "id": "popup-buttons",
+      "text": "Agree and Dismiss",
+      "rect": {
+        "x": 1010,
+        "y": 794,
+        "w": 237,
+        "h": 50
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "Agree and Dismiss",
+          "ariaLabel": "",
+          "classes": "agree-button eu-cookie-compliance-default-button",
+          "id": "",
+          "x": 1129,
+          "y": 819,
+          "w": 227,
+          "h": 50
+        }
+      ]
+    },
+    {
+      "tag": "button",
+      "classes": "agree-button eu-cookie-compliance-default-button",
+      "id": "",
+      "text": "Agree and Dismiss",
+      "rect": {
+        "x": 1015,
+        "y": 794,
+        "w": 227,
+        "h": 50
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "site-footer__privacy-wrapper cell initial-12 initial-order-4",
+      "id": "block-legal-information",
+      "text": "\u00a9 2026 CIEE. All Rights Reserved.        \n        Privacy NoticeTerms & Conditions",
+      "rect": {
+        "x": 0,
+        "y": 5714,
+        "w": 1425,
+        "h": 157
+      },
+      "buttons": [
+        {
+          "tag": "a",
+          "text": "",
+          "ariaLabel": "CIEE Home",
+          "classes": "",
+          "id": "",
+          "x": 203,
+          "y": 5844,
+          "w": 140,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Notice",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 594,
+          "y": 5792,
+          "w": 99,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Terms & Conditions",
+          "ariaLabel": "",
+          "classes": "",
+          "id": "",
+          "x": 736,
+          "y": 5792,
+          "w": 135,
+          "h": 16
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "classes": "hero__overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 140,
+        "w": 1425,
+        "h": 558
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Seoul",
+      "rect": {
+        "x": 305,
+        "y": 1867,
+        "w": 816,
+        "h": 612
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Seoul",
+      "rect": {
+        "x": 639,
+        "y": 2147,
+        "w": 147,
+        "h": 52
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Thailand",
+      "rect": {
+        "x": 1048,
+        "y": 1895,
+        "w": 742,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Thailand",
+      "rect": {
+        "x": 1339,
+        "y": 2149,
+        "w": 161,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Sydney",
+      "rect": {
+        "x": 1755,
+        "y": 1895,
+        "w": 742,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Sydney",
+      "rect": {
+        "x": 2052,
+        "y": 2149,
+        "w": 149,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Shanghai",
+      "rect": {
+        "x": 2466,
+        "y": 1895,
+        "w": 557,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Shanghai",
+      "rect": {
+        "x": 2660,
+        "y": 2149,
+        "w": 169,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Taipei",
+      "rect": {
+        "x": 2990,
+        "y": 1895,
+        "w": 819,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Taipei",
+      "rect": {
+        "x": 3331,
+        "y": 2149,
+        "w": 137,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Legon",
+      "rect": {
+        "x": 3777,
+        "y": 1895,
+        "w": 557,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Legon",
+      "rect": {
+        "x": 3985,
+        "y": 2149,
+        "w": 141,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Gaborone",
+      "rect": {
+        "x": 4302,
+        "y": 1895,
+        "w": 742,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Gaborone",
+      "rect": {
+        "x": 4587,
+        "y": 2149,
+        "w": 173,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Morocco",
+      "rect": {
+        "x": 5006,
+        "y": 1895,
+        "w": 863,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Morocco",
+      "rect": {
+        "x": 5357,
+        "y": 2149,
+        "w": 161,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Cape Town",
+      "rect": {
+        "x": 5831,
+        "y": 1895,
+        "w": 742,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Cape Town",
+      "rect": {
+        "x": 6111,
+        "y": 2149,
+        "w": 182,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Seville",
+      "rect": {
+        "x": 6538,
+        "y": 1895,
+        "w": 742,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Seville",
+      "rect": {
+        "x": 6839,
+        "y": 2149,
+        "w": 140,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Paris",
+      "rect": {
+        "x": 7245,
+        "y": 1895,
+        "w": 742,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Paris",
+      "rect": {
+        "x": 7552,
+        "y": 2149,
+        "w": 128,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Dublin",
+      "rect": {
+        "x": 7949,
+        "y": 1895,
+        "w": 835,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Dublin",
+      "rect": {
+        "x": 8294,
+        "y": 2149,
+        "w": 144,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Prague",
+      "rect": {
+        "x": 8751,
+        "y": 1895,
+        "w": 557,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Prague",
+      "rect": {
+        "x": 8955,
+        "y": 2149,
+        "w": 148,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Monteverde",
+      "rect": {
+        "x": 9274,
+        "y": 1895,
+        "w": 835,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Monteverde",
+      "rect": {
+        "x": 9596,
+        "y": 2149,
+        "w": 192,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Buenos Aires",
+      "rect": {
+        "x": 10069,
+        "y": 1895,
+        "w": 863,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Buenos Aires",
+      "rect": {
+        "x": 10400,
+        "y": 2149,
+        "w": 201,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Dominican Republic",
+      "rect": {
+        "x": 10892,
+        "y": 1895,
+        "w": 837,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Dominican Republic",
+      "rect": {
+        "x": 11176,
+        "y": 2149,
+        "w": 267,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Amman",
+      "rect": {
+        "x": 11688,
+        "y": 1895,
+        "w": 863,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Amman",
+      "rect": {
+        "x": 12041,
+        "y": 2149,
+        "w": 157,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "High School USA",
+      "rect": {
+        "x": 12507,
+        "y": 1895,
+        "w": 989,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "High School USA",
+      "rect": {
+        "x": 12885,
+        "y": 2149,
+        "w": 235,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Work & Travel",
+      "rect": {
+        "x": 13453,
+        "y": 1895,
+        "w": 835,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Work & Travel",
+      "rect": {
+        "x": 13768,
+        "y": 2149,
+        "w": 205,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay",
+      "id": "",
+      "text": "Host Family",
+      "rect": {
+        "x": -455,
+        "y": 1895,
+        "w": 835,
+        "h": 557
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "media-container__overlay-content",
+      "id": "",
+      "text": "Host Family",
+      "rect": {
+        "x": -132,
+        "y": 2149,
+        "w": 190,
+        "h": 47
+      },
+      "buttons": []
+    },
+    {
+      "tag": "div",
+      "classes": "home-anchor__icon-area__overlay",
+      "id": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 4617,
+        "w": 1425,
+        "h": 638
+      },
+      "buttons": []
+    }
+  ]
+}
