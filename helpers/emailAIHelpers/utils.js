@@ -4,6 +4,18 @@
 
 /* eslint-disable max-lines */
 
+// Get the files to inject in browser
+const path = require('path');
+const fs = require('fs');
+const findLoginLinksJS = fs.readFileSync(path.join(__dirname, '..', 'emailAIHelpers', 'browserJS', 'findloginlinks.js'), 'utf8');
+const findLoginLinksbycoordsJS = fs.readFileSync(path.join(__dirname, '..', 'emailAIHelpers', 'browserJS', 'findloginlinksbycoords.js'), 'utf8');
+/**
+ * Inline browser-side snippet that serializes a DOM element to a plain object.
+ * Embedded as a string inside evaluateInSession expressions.
+ */
+const SERIALIZE_EL = fs.readFileSync(path.join(__dirname, '..', 'emailAIHelpers', 'browserJS', 'serialize.js'), 'utf8');
+
+
 // ── No puppeteer dependency — all functions work with raw CDP sessions ─────────
 
 const ENABLE_LOOSE_LOGIN_LINK_MATCHES = true;
@@ -52,6 +64,18 @@ function isButtonOrLink(typeOfEl) {
     return (typeOfEl === 'BUTTON' || typeOfEl === 'A') ? 1 : 0;
 }
 
+/**
+ * @param {string} browserScriptTemplate
+ * @param {string} loginRegexSrc
+ */
+function _buildScript(browserScriptTemplate, loginRegexSrc) {
+    let script = browserScriptTemplate;
+    if (loginRegexSrc) {
+    script = script.replace('__LOGIN_REGEX_SRC__', JSON.stringify(loginRegexSrc));
+    }
+    return script.replace('__SERIALIZE_EL__', SERIALIZE_EL);
+}
+
 // ── CDP helper ────────────────────────────────────────────────────────────────
 
 /**
@@ -86,24 +110,6 @@ async function evaluateInSession(session, expression, log = null) {
 // so results come back as plain serializable objects — no ElementHandles needed.
 
 /**
- * Inline browser-side snippet that serializes a DOM element to a plain object.
- * Embedded as a string inside evaluateInSession expressions.
- */
-const SERIALIZE_EL = `(el => ({
-    id: el.id || '',
-    type: el.getAttribute('type') || '',
-    nodeType: el.nodeName || '',
-    name: el.getAttribute('name') || '',
-    href: el.href || '',
-    class: el.className || '',
-    innerText: (el.innerText || '').trim(),
-    ariaLabel: el.ariaLabel || '',
-    placeholder: el.getAttribute('placeholder') || '',
-    xpath: (typeof fathom !== 'undefined') ? fathom.getXPath(el) : '',
-    onTop: (typeof fathom !== 'undefined') ? fathom.isOnTop(el) : false,
-}))`;
-
-/**
  * Find login/register links near the typical top-right coordinates where
  * login buttons are most commonly found.
  *
@@ -111,30 +117,7 @@ const SERIALIZE_EL = `(el => ({
  * @returns {Promise<ElementAttributes[]>}
  */
 async function findLoginLinksByCoords(session) {
-    const result = await evaluateInSession(session, `
-        (function() {
-            const MAX_COORD_BASED_LINKS = 5;
-            const MEDIAN_LOGIN_LINK_X = 1113;
-            const MEDIAN_LOGIN_LINK_Y = 64.5;
-
-            function distanceFromLoginLinkMedianPoint(elem) {
-                const rect = elem.getBoundingClientRect();
-                const centerX = rect.x + rect.width / 2;
-                const centerY = rect.y + rect.height / 2;
-                return Math.sqrt(
-                    Math.pow(centerX - MEDIAN_LOGIN_LINK_X, 2) +
-                    Math.pow(centerY - MEDIAN_LOGIN_LINK_Y, 2)
-                );
-            }
-
-            const serialize = ${SERIALIZE_EL};
-            const allElements = [...document.querySelectorAll('a,button')];
-            allElements.sort((a, b) =>
-                distanceFromLoginLinkMedianPoint(a) - distanceFromLoginLinkMedianPoint(b)
-            );
-            return allElements.slice(0, MAX_COORD_BASED_LINKS).map(serialize);
-        })()
-    `);
+    const result = await evaluateInSession(session, _buildScript(findLoginLinksbycoordsJS, null));
     return result || [];
 }
 
@@ -147,35 +130,7 @@ async function findLoginLinksByCoords(session) {
  */
 async function findLoginLinks(session, exactMatch = false) {
     const loginRegexSrc = exactMatch ? combinedLoginLinkRegexExactSrc : combinedLoginLinkRegexLooseSrc;
-    const result = await evaluateInSession(session, `
-        (function() {
-            const loginRegex = new RegExp(${JSON.stringify(loginRegexSrc)}, 'i');
-            const serialize = ${SERIALIZE_EL};
-            const allElements = [...document.querySelectorAll('a,span,button,div')];
-
-            return allElements
-                .filter(el => (
-                    (el.innerText && el.innerText.match(loginRegex) &&
-                        el.innerText === el.innerText.match(loginRegex)[0]) ||
-                    (el.title && el.title.match(loginRegex)) ||
-                    (el.ariaLabel && el.ariaLabel.match(loginRegex)) ||
-                    (el.href && (
-                        el.href instanceof SVGAnimatedString
-                            ? el.href.baseVal.match(loginRegex)
-                            : String(el.href).match(loginRegex)
-                    )) ||
-                    (el.getAttribute('placeholder') && el.getAttribute('placeholder').match(loginRegex)) ||
-                    (el.id && el.id.match(loginRegex)) ||
-                    (el.getAttribute('name') && el.getAttribute('name').match(loginRegex)) ||
-                    (el.className && (
-                        el.href instanceof SVGAnimatedString
-                            ? el.className.baseVal.match(loginRegex)
-                            : String(el.className).match(loginRegex)
-                    ))
-                ))
-                .map(serialize);
-        })()
-    `);
+    const result = await evaluateInSession(session, _buildScript(findLoginLinksJS, loginRegexSrc));
     return result || [];
 }
 
