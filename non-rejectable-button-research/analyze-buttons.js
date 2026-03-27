@@ -1,7 +1,7 @@
 const fs = require('fs');
 const fsp = require('fs/promises');
 const path = require('path');
-const { isSettingsButton, cleanButtonText } = require('../post-processing/generate-autoconsent-rules/detection');
+const { isSettingsButton, isRejectButton, cleanButtonText } = require('../post-processing/generate-autoconsent-rules/detection');
 
 const CRAWL_BASE = '/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04';
 const REGION = process.argv[2] || 'US';
@@ -34,9 +34,10 @@ function processFile(data, file, results) {
             results.llmMatchPopups++;
 
             if (popup.rejectButtons && popup.rejectButtons.length > 0) continue;
+            const otherButtons = popup.otherButtons || [];
+            if (otherButtons.some(b => isRejectButton(b.text))) continue;
             results.noRejectPopups++;
 
-            const otherButtons = popup.otherButtons || [];
             if (hasSettingsButton(otherButtons)) continue;
             results.noSettingsPopups++;
             results.matchingPopups++;

@@ -1,86 +1,77 @@
 === Non-Rejectable Cookie Popup Button Analysis ===
 Input directory: /mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/CA/3p-crawl
-Date: 2026-03-27T12:21:23.994Z
+Date: 2026-03-27T14:43:23.908Z
 
 --- Summary ---
 Total JSON files: 99606
 Files with potential popups: 64973
 Total potential popups: 94237
   └─ AI-confirmed cookie popups: 20432
-      └─ No reject buttons: 11504
-          └─ No settings buttons: 7629 (aka non-rejectable cookie notices)
+      └─ No reject buttons: 11452
+          └─ No settings buttons: 7226 (aka non-rejectable cookie notices)
 
---- Button Text Distribution (cleaned, all 2830 entries) ---
+--- Button Text Distribution (cleaned, all 2674 entries) ---
 Count | Button Text
 ------+------------
- 1813 | privacy policy
- 1074 | accept
-  833 | ok
-  827 | learn more
-  567 | cookie policy
+ 1805 | privacy policy
+ 1072 | accept
+  831 | ok
+  826 | learn more
+  563 | cookie policy
   372 | got it!
   308 | close
-  273 | agree
-  209 | politique de confidentialité
-  206 | accept all
-  192 | personnaliser
-  170 | tout accepter
+  271 | agree
+  201 | accept all
   169 | i agree
-  153 | accepter
   150 | got it
   135 | terms of use
   131 | more info
-  125 | accepter tout
   124 | here
-  113 | en savoir plus
+  118 | politique de confidentialité
   111 | agree and close
-  110 | accept all cookies
   110 | i accept
   110 | accept cookies
+  109 | accept all cookies
   108 | more information
   107 | privacy policy.
   107 | read more
-   97 | x
+  102 | en savoir plus
+   99 | tout accepter
+   96 | x
    96 | learn more…
    93 | continue
-   92 | privacy statement
-   89 | show details
-   87 | cookies policy
+   93 | accepter
+   90 | privacy statement
    86 | i understand
+   86 | cookies policy
    77 | english
-   76 | cookies
+   75 | cookies
    74 | terms of service
    71 | no thanks
    71 | terms and conditions
-   65 | jaccepte
    64 | disagree and close
+   63 | show details
    58 | no
    57 | allow cookies
-   53 | paramètres
+   56 | jaccepte
    50 | cookie policy.
    47 | no, thanks
-   47 | cookie notice
-   47 | allow all
    47 | privacy notice
+   45 | cookie notice
    42 | okay
    42 | ok, i agree
-   40 | accepter et continuer
-   40 | politique de confidentialité.
    39 | learn about cookies
-   36 | allow selection
-   36 | politique de cookies
    36 | dismiss
    36 | click here
    35 | use of cookies
    34 | terms
-   34 | accepter fermer
    34 | more on cookies
+   33 | accepter fermer
+   33 | politique de confidentialité.
    33 | reject all data uses
-   32 | paramétrer
    32 | agree to all data uses
    31 | yes
    31 | personnaliser vos choix
-   31 | voir nos partenaires
    31 | learn more.
    31 | opt-out preferences
    31 | terms conditions
@@ -90,34 +81,28 @@ Count | Button Text
    29 | ok, got it!
    29 | exit
    28 | third parties
+   27 | accepter tout
    27 | website privacy statement
    27 | view our partners
-   27 | fermer
-   25 | préférences
-   25 | allow all cookies
+   26 | fermer
    24 | enter
-   24 | tout autoriser
    24 | website terms conditions
+   24 | politique de cookies
    24 | accept close
    24 | storage preferences
-   24 | impressum
+   24 | voir nos partenaires
    23 | manage online experience
-   23 | details
-   23 | datenschutzerklärung
    23 | yes, i understand.
-   23 | prisma media
    23 | loblaw privacy policy
+   22 | allow all
    22 | imprint
-   20 | accepter et fermer
    20 | privacy and cookie policy
    20 | leave
    20 | privacy
    20 | hide this message
    19 | td privacy policy: interacting with td online
-   19 | paramètres des cookies
-   19 | partenaires
    19 | refuser les témoins facultatifs
-   18 | politique relative aux cookies
+   18 | details
    18 | accept toate
    18 | listă parteneri (furnizori)
    17 | show this message in english
@@ -127,119 +112,97 @@ Count | Button Text
    17 | mai multe detalii
    17 | accepter tous les témoins
    17 | gérer les témoins
-   16 | our partners
-   16 | disagree
    16 | privacy preferences
    16 | jai compris
    16 | review preferences
    16 | description des témoins
-   16 | cerise media
    15 | personnaliser mes choix
    15 | opt out
-   15 | accept and close
+   15 | our partners
+   15 | disagree
+   15 | allow all cookies
    15 | allow
-   15 | identifiants partagés
-   15 | espace de confidentialité
-   15 | didentifiants partagés
+   15 | accepter et continuer
    15 | autoriser tous les témoins
    14 | gérer vos préférences
    14 | voir les préférences
-   14 | politique relative aux fichiers témoins
+   14 | accepter et fermer
    14 | our privacy policy
    14 | plus doptions
-   14 | afficher les détails
    14 | accept and continue
+   14 | accept and close
    14 | exit here
    14 | agree and continue
    13 | cookie consent tool
    13 | accept continue
-   13 | partner
+   13 | impressum
+   13 | datenschutzerklärung
    13 | accept all manage cookies
-   13 | datenschutzhinweisen
    12 | agree close
-   12 | about
-   12 | consent
    12 | gérer les cookies
    12 | learn about our privacy practices.
    12 | yes, i agree
    12 | confirm
-   12 | personalize
    12 | gérer mes préférences
-   12 | hier
-   12 | partners
    12 | configuration
    12 | cookies policy.
-   12 | einstellungen
-   11 | essentiels uniquement
-   11 | déjà abonné ? se connecter
    11 | english▼
    11 | aceptar
+   11 | partners
    11 | im over 18
    11 | more details
-   11 | conditions dutilisation
-   11 | autoriser tous les cookies
-   11 | personalisierte werbung und inhalte, messung von werbeleistung und der performance von inhalten, zielgruppenforschung sowie entwicklung und verbesserung von angeboten
-   11 | speichern von oder zugriff auf informationen auf einem endgerät
    11 | se connecter
    11 | cookie
    10 | personalize my choices
-   10 | données personnelles
+   10 | politique relative aux cookies
    10 | yes, i accept
    10 | i agree!
    10 | no, adjust
    10 | dismiss this warning
-   10 | sabonner
    10 | here.
    10 | about cookies
    10 | read our privacy policy
-   10 | alle akzeptieren
+   10 | hier
    10 | store andor access information on a device
    10 | personalize your preferences
    10 | consult our digital data policy.
    10 | data privacy
     9 | gérer les préférences
-    9 | déclaration de confidentialité
-    9 | politique cookies
     9 | cookie consent manager.
     9 | learn more...
     9 | learn more and customize
     9 | confirm my choices
     9 | personnaliser vos préférences
     9 | consultez notre politique sur les données numériques.
-    9 | daccord
-    9 | non merci
-    9 | akzeptieren
     9 | no, give me more info
     9 | versant
     9 | cookie privacy policy
     9 | personalised advertising and content, advertising and content measurement, audience research and services development
+    9 | conditions dutilisation
     9 | subscribe
     9 | understood
     9 | our 4 partners
-    9 | réglages
     9 | sharing settings
-    8 | 247 partenaires
+    9 | datenschutzhinweisen
+    8 | déclaration de confidentialité
+    8 | daccord
     8 | learn more about our cookie policy
     8 | i understand - dismiss cookie message
     8 | learn more about cookies on our privacy policy page .
     8 | cookie privacy policy.
-    8 | autoriser
     8 | refuser et fermer
-    8 | accepter les cookies
-    8 | datenschutzeinstellungen
     8 | más información
-    8 | accepter tous les cookies
     8 | personalize your choices
     8 | paramètres des témoins
+    8 | partner
     8 | elfogadom
     8 | további lehetőségek
     8 | parental control guide
     8 | 18 u.s.c. 2257 record-keeping requirements compliance statement.
     8 | privacy page
-    8 | compte prisma connect
-    8 | refuser et sabonner (1,99€) pour une expérience sans pub
     8 | en
-    8 | datenschutz
+    7 | about
+    7 | consent
     7 | our 9 partners
     7 | how we use cookies and how you can change your settings.
     7 | cookie consent plugin for the eu cookie law
@@ -250,29 +213,21 @@ Count | Button Text
     7 | ок
     7 | close cookie notice
     7 | university of illinois system cookie policy.
-    7 | conditions de confidentialité
-    7 | zustimmen
     7 | non
     7 | personnaliser les témoins
-    7 | details section
     7 | i agree - enter
     7 | save
-    7 | apprendre encore plus
-    7 | digital prisma players
-    7 | refuser et sabonner (0,99€) pour une expérience sans pub
+    7 | réglages
     7 | cookie statement
     7 | liste complète
-    7 | faq
     7 | general privacy policy
     7 | see details
     7 | politique de confidentialité générale
     6 | privacy@ocil.ca
-    6 | décliner
     6 | sign in
     6 | 同意する
     6 | je comprends
     6 | find out more.
-    6 | laissez-moi choisir
     6 | more
     6 | policy
     6 | privacy policy and use of cookies
@@ -280,15 +235,17 @@ Count | Button Text
     6 | fine print
     6 | preferenze cookies
     6 | only selected
+    6 | autoriser
+    6 | conditions de confidentialité
     6 | confirm selection
-    6 | termes et conditions
+    6 | datenschutzeinstellungen
     6 | log in
     6 | accepter les témoins
     6 | read our cookie policy
     6 | cookie information
     6 | 同意
     6 | view privacy policy
-    6 | .
+    6 | afficher les détails
     6 | gérer les paramètres
     6 | i disagree
     6 | acknowledge
@@ -297,11 +254,10 @@ Count | Button Text
     6 | cliquant ici
     6 | podrobné nastavení
     6 | more information new window
-    6 | werbefrei für 3,99€ monat
-    6 | consulter notre politique de confidentialité
     6 | accept selection
     5 | how we use cookies and how you can change your settings
     5 | ok. got it.
+    5 | décliner
     5 | leave site
     5 | confidentialité
     5 | autoriser tout
@@ -312,22 +268,21 @@ Count | Button Text
     5 | polityce prywatności
     5 | accetto tutti i cookies
     5 | save selection
-    5 | agb
-    5 | politique en matière de cookies
+    5 | akzeptieren
+    5 | zustimmen
     5 | acepto
     5 | i accept cookies
     5 | no, manage settings
     5 | mehr erfahren
-    5 | cookie-einstellungen
     5 | prosseguir
     5 | privacy options
     5 | cookie 設定
-    5 | our 1014 partners
     5 | política de privacidad
     5 | change the language of your browser
     5 | i acknowledge
     5 | voir la politique de confidentialité
     5 | view our privacy policy.
+    5 | accepter les cookies
     5 | paramètres personnalisés
     5 | prihvati i zatvori
     5 | à quoi servent les cookies ?
@@ -335,9 +290,8 @@ Count | Button Text
     5 | privacy cookie policy
     5 | liste de nos partenaires (fournisseurs)
     5 | rifiuta e abbonati
-    5 | alle cookies akzeptieren
+    5 | .
     5 | save settings
-    5 | mit contentpass einloggen
     5 | opt-out
     5 | i consent to cookies
     5 | want to know more?
@@ -363,17 +317,17 @@ Count | Button Text
     4 | modify cookie preferences
     4 | configurar
     4 | 8 partners
-    4 | cookies essentiels
     4 | learn more about cookies
     4 | agree to all
     4 | click here.
-    4 | liste der partner (lieferanten)
     4 | legal notice
     4 | more info.
     4 | blackboards terms of use
     4 | blackboards privacy statement
     4 | privacy, cookies and terms of use
     4 | check privacy policy
+    4 | tout autoriser
+    4 | termes et conditions
     4 | politique de témoins
     4 | close cookie notice i agree
     4 | about this tool (opens in a new window)
@@ -383,10 +337,8 @@ Count | Button Text
     4 | essential only cookies
     4 | ok, got it.
     4 | plus dinformations
-    4 | jaccepte tout
-    4 | je naccepte rien
-    4 | politique de protection des données personnelles
     4 | (privacy policy)
+    4 | partenaires
     4 | we use cookies to help improve the usability of our websites.
     4 | portal da privacidade
     4 | aviso de privacidade
@@ -397,8 +349,6 @@ Count | Button Text
     4 | data protection policy
     4 | review cookie settings
     4 | view policy
-    4 | ik ga akkoord
-    4 | meer opties
     4 | privacy preference center
     4 | akceptuję
     4 | do not track
@@ -410,6 +360,7 @@ Count | Button Text
     4 | mbna privacy policy: interacting with mbna online
     4 | saznajte više
     4 | contact us
+    4 | apprendre encore plus
     4 | i disagree - leave the website
     4 | enter ts4rent
     4 | data protection
@@ -428,14 +379,16 @@ Count | Button Text
     4 | report violations
     4 | cliquez ici
     4 | online preferences
+    4 | werbefrei für 3,99€ monat
+    4 | faq
     4 | save choices
     4 | learn more about your rights on our privacy policy page
     4 | accepter tout gérer les cookies
-    4 | hier anmelden
     4 | accessibility
     4 | autoriser les témoins nécessaires
     4 | edit your preferences
     4 | περισσοτερες επιλογες
+    4 | datenschutz
     4 | sabonner et refuser les cookies
     4 | politique relative au respect de la vie privée de loblaw
     4 | save my settings
@@ -450,7 +403,6 @@ Count | Button Text
     3 | our use of cookies.
     3 | click here to learn more about implementing rta labeling.
     3 | click here to read our terms and conditions
-    3 | close gdpr cookie banner
     3 | enter site
     3 | manage preference
     3 | nos 979 partenaires
@@ -460,7 +412,6 @@ Count | Button Text
     3 | vain välttämättömät
     3 | do not sell page
     3 | je refuse les cookies non-fonctionnels
-    3 | politique relative aux témoins
     3 | принять
     3 | learn more about our privacy policy.
     3 | gérer lexpérience en ligne
@@ -469,15 +420,14 @@ Count | Button Text
     3 | open settings
     3 | rejeter tous
     3 | accepter tous
+    3 | laissez-moi choisir
     3 | cyberpatrol
     3 | net nanny
     3 | cybersitter
     3 | our privacy and cookie policy.
     3 | enter website
-    3 | consultez notre politique de confidentialité
     3 | view details
     3 | home
-    3 | paramètres de confidentialité
     3 | i accept use of cookies
     3 | disallow cookies
     3 | website privacy policy
@@ -486,9 +436,9 @@ Count | Button Text
     3 | powered by websitepolicies
     3 | change here
     3 | i want more options
+    3 | agb
     3 | プライバシーポリシー
     3 | personal information
-    3 | akkoord
     3 | cookieverklaring
     3 | accept accepter
     3 | cookies.
@@ -498,11 +448,12 @@ Count | Button Text
     3 | i am 18+
     3 | privacy protection
     3 | withdraw consent
+    3 | accepter tous les cookies
     3 | preference center
     3 | avis sur les cookies
-    3 | conditions générales
     3 | annuler
     3 | consentement à lutilisation de cookies selon le rgpd avec real cookie banner
+    3 | details section
     3 | read our privacy statement (opens in new window.)
     3 | accept cookie notice
     3 | uw–madison cookie notice
@@ -528,11 +479,9 @@ Count | Button Text
     3 | dataset license (opens in a new tab)
     3 | terms of service (opens in a new tab)
     3 | privacy policy (opens in a new tab)
-    3 | ok pour moi
     3 | más opciones
     3 | socios
     3 | always in control
-    3 | politique de vie privée
     3 | find out more here
     3 | marketing
     3 | afvis alle
@@ -543,7 +492,6 @@ Count | Button Text
     3 | paramétrer les fichiers témoins
     3 | continuer
     3 | online privacy policy
-    3 | nur technisch notwendige
     3 | use of cookies.
     3 | manage...
     3 | すべての cookie を受け入れる
@@ -557,32 +505,30 @@ Count | Button Text
     3 | aviso legal
     3 | français
     3 | ses 981 partenaires (dont 972 partenaires iab)
-    3 | analytics storage
-    3 | drittanbieter
     3 | cookies statement
     3 | view our 186 partners
     3 | nutzung der utiq-technologie, unterstützt durch ihren telekommunikationsanbieter
     3 | datenschutzerklärung von utiq
     3 | utiq jetzt ablehnen
     3 | unterstützte internetverbindung
+    3 | mit contentpass einloggen
     3 | über 600 andere websites
     3 | datenschutzhinweise
     3 | drittanbietern
     3 | fr
     3 | our 2 partners
     3 | afficher ce texte en français
+    3 | alle akzeptieren
     3 | close cookie bar
-    3 | verwendung genauer standortdaten
     3 | nuestros socios
     3 | inicia sesión
     3 | rechazar y suscribirse
-    3 | datenschutz-einstellungen
+    3 | hier anmelden
     3 | refuser sabonner
     3 | nos 254 partenaires
     3 | voir plus
     3 | aquí
     3 | google privacy policy
-    3 | alles akzeptieren
     3 | zezwól na wszystkie
     3 | rejeter tous les témoins
     3 | read more (opens in a new tab)
@@ -593,9 +539,9 @@ Count | Button Text
     3 | согласен
     3 | confirm all
     3 | settings or reject
-    3 | nos partenaires
     3 | nos 356 partenaires
     3 | lire notre politique de vie privée.
+    3 | déjà abonné ? se connecter
     3 | je refuse et je mabonne
     3 | συμφωνω
     3 | διαφωνω
@@ -605,16 +551,15 @@ Count | Button Text
     3 | privacy policy and terms conditions
     3 | paramètres des fichiers témoins
     3 | gérer les paramètres des témoins
-    3 | accepteren
     3 | widerrufen
     2 | cookies guide
-    2 | essentiels seulement
     2 | find out more how we use cookies
     2 | accept and enter
     2 | learn more about our use of cookies and information
     2 | cookies and similar technologies
     2 | cookie policy – canadian residents
     2 | block
+    2 | données personnelles
     2 | exit website
     2 | search
     2 | business finance
@@ -636,7 +581,6 @@ Count | Button Text
     2 | suomeksi
     2 | order now
     2 | jaccepte tous les cookies
-    2 | refuser les témoins non essentiels
     2 | more infor
     2 | покажете подробности
     2 | приемете всички
@@ -676,13 +620,15 @@ Count | Button Text
     2 | dont allow cookies
     2 | keep disabled
     2 | mehr optionen
+    2 | liste der partner (lieferanten)
     2 | cookies anpassen
     2 | cookie-hinweis
     2 | website terms of use
+    2 | consultez notre politique de confidentialité
     2 | stel voorkeuren in
+    2 | akkoord
     2 | bekijk onze 129 partners
     2 | doeleinden
-    2 | zum abonnement
     2 | no.
     2 | know more
     2 | legal warning
@@ -694,7 +640,6 @@ Count | Button Text
     2 | chl llc website terms of use
     2 | i choose
     2 | en savoir plus et gérer ces paramètres
-    2 | conditions de confidentialité de google
     2 | confirm enter
     2 | personalizar cookies
     2 | 12 partners
@@ -715,11 +660,11 @@ Count | Button Text
     2 | préférences en matière de confidentialité
     2 | refuser les témoins
     2 | plus dinfos
-    2 | 1078 partenaires
     2 | politique de confidentialité des cookies
     2 | nos conditions dutilisation
     2 | jai + de 18 entrer
     2 | pour plus dinformations sur le label rta et les services compatibles, cliquez ici
+    2 | paramètres de confidentialité
     2 | mentions légales
     2 | ici
     2 | personnaliser les cookies
@@ -734,6 +679,7 @@ Count | Button Text
     2 | resources
     2 | política de privacidade e cookies
     2 | no, i dont accept
+    2 | our 1014 partners
     2 | cookie政策
     2 | veuillez revoir les paramètres de confidentialité de votre appareil et de votre navigateur
     2 | accepter et fermer lalerte
@@ -757,8 +703,6 @@ Count | Button Text
     2 | autoriser la sélection
     2 | start playing
     2 | cookie preference
-    2 | politique de protection des renseignements personnels
-    2 | this link
     2 | do not sell or share my personal information opt out
     2 | data subject request form
     2 | cookie preferences do not share
@@ -808,11 +752,10 @@ Count | Button Text
     2 | условия
     2 | privacy and cookie policy. open in a new tab
     2 | no, i do not consent
-    2 | je choisis
     2 | privacy center
     2 | afficher les préférences
     2 | okay, got it!
-    2 | politique de consentement aux cookies
+    2 | politique de vie privée
     2 | terms of use.
     2 | cookiescript
     2 | report
@@ -826,6 +769,7 @@ Count | Button Text
     2 | confirm my choice
     2 | consentir
     2 | notre politique de confidentialité
+    2 | politique en matière de cookies
     2 | настроить файлы cookie
     2 | уведомлении о файлах cookie
     2 | подробнее
@@ -853,7 +797,6 @@ Count | Button Text
     2 | webcams
     2 | escorts
     2 | accept dismiss
-    2 | konfigurieren
     2 | naš 981 partneri
     2 | close message
     2 | reject performance cookies
@@ -864,6 +807,7 @@ Count | Button Text
     2 | do not allow
     2 | view our cookies policy
     2 | for more information, read our cookies page.
+    2 | ok pour moi
     2 | すべて拒否する
     2 | voir nos 24 partenaires
     2 | pourquoi télérama vous demande daccepter ces traitements de vos données
@@ -871,7 +815,6 @@ Count | Button Text
     2 | no thank you
     2 | our use of cookies
     2 | i like cookies
-    2 | https:mtygroup.comcookie-policy-ca
     2 | renseignements personnels
     2 | acceptér alle
     2 | hide
@@ -893,15 +836,12 @@ Count | Button Text
     2 | terms of sale
     2 | save settings and proceed
     2 | cookiebeleid
-    2 | plus de détails
     2 | déclaration sur la protection des renseignements personnels en ligne.
     2 | cookies and privacy policy
     2 | help
     2 | i accept all cookies
     2 | accepter et poursuivre la navigation
     2 | more about cookies
-    2 | verwendung und weitergabe von nutzerkennungen zu werbezwecken
-    2 | jetzt anmelden
     2 | microsoft privacy policy
     2 | learn more about third party cookies
     2 | web terms of use
@@ -919,10 +859,11 @@ Count | Button Text
     2 | aceitar cookies
     2 | règles de confidentialité
     2 | cookies page
-    2 | our 973 partners
     2 | preferenze
     2 | in questa lista
     2 | servizio di base
+    2 | our 973 partners
+    2 | sabonner
     2 | rozumím a přijímám
     2 | view more info
     2 | више о политици приватности
@@ -956,12 +897,12 @@ Count | Button Text
     2 | 1002 partners
     2 | free of charge.
     2 | dostosuj zgody
+    2 | datenschutz-einstellungen
     2 | werbefrei für 3,99 € monat
     2 | privacy page.
     2 | i wish to block cookies.
     2 | changer mes préférences
     2 | gérer vos témoins de navigation
-    2 | contentpass faq
     2 | hyväksyn
     2 | hallitse asetuksia
     2 | kumppanien (toimittajien) luettelo
@@ -972,8 +913,10 @@ Count | Button Text
     2 | read privacy notice
     2 | pour en savoir plus
     2 | more info...
+    2 | alles akzeptieren
     2 | αποδοχή
     2 | privacy choices
+    2 | politique relative aux témoins
     2 | log on
     2 | business
     2 | personal
@@ -985,16 +928,13 @@ Count | Button Text
     2 | i agree to the terms and use the site
     2 | cookie management center
     2 | open cookies settings
-    2 | partnern
     2 | ustawienia prywatności
     2 | polityce cookies
     2 | naszych partnerów reklamowych (1018)
     2 | службу поддержки
     2 | политикой о конфиденциальности.
     2 | cookie-файлы и некоторые другие данные
-    2 | ses partenaires
     2 | california privacy act
-    2 | einstellungen oder ablehnen
     2 | actively scan device characteristics for identification
     2 | use precise geolocation data
     2 | akzeptieren wie ausgewählt
@@ -1002,7 +942,6 @@ Count | Button Text
     2 | i agree, enter
     2 | obtener más información y configuración
     2 | datenschutzhinweisen (pur)
-    2 | einwilligen und weiter
     2 | charte cookies
     2 | privacy cookies policy
     2 | close banner
@@ -1011,18 +950,13 @@ Count | Button Text
     2 | i am over 18 and agree
     2 | open main menu
     2 | akceptuj wszystko
-    2 | ok, accept all
     2 | privacy policy,
     2 | our privacy policy.
-    2 | verwendung und weitergabe von identifiern
-    2 | angebotsübergreifende verarbeitung von daten durch bertelsmann-unternehmen für analyse, produktentwicklung, messung, werbung und risikomanagement
-    2 | fremdinhalte anzeigen (soziale netzwerke und chat-systeme)
-    2 | anmelden
-    2 | jetzt abonnieren
     2 | agree to our privacy policy
     2 | manage cookies...
     2 | je me connecte
     2 | revenir sur mon choix et accepter les cookies
+    2 | alle cookies akzeptieren
     2 | ustaw preferencje
     2 | zezwól tylko na niezbędne
     2 | lista partnerów (dostawców)
@@ -1043,8 +977,8 @@ Count | Button Text
     2 | accept ali cookies
     2 | einverstanden
     2 | godta alle
+    2 | accepteren
     2 | review our privacy policy.
-    2 | privatsphäre einstellungen
     2 | approve
     2 | allow none
     2 | zum faq-bereich
@@ -1068,11 +1002,13 @@ Count | Button Text
     2 | duke privacy statement.
     1 | learn more about privacy and sketchup.
     1 | dont show this again
+    1 | essentiels seulement
     1 | choose
     1 | see our privacy policy for more information.
     1 | allow all necessary cookies
     1 | visit our cookie policy
     1 | learn more about it
+    1 | politique cookies
     1 | 694 partenaires
     1 | más información aquí
     1 | quitter.
@@ -1080,7 +1016,6 @@ Count | Button Text
     1 | entrer
     1 | qui
     1 | enter adultprime
-    1 | oui, jaccepte les cookies
     1 | para mais informações, consulte aqui.
     1 | how we use your data
     1 | no, you can`t
@@ -1110,9 +1045,7 @@ Count | Button Text
     1 | learn more about policies
     1 | ok i agree
     1 | cookie privacy
-    1 | tout rejeter (les cartes ne seront pas accessibles)
     1 | term of use
-    1 | politique de confidentialité et de protection des renseignements personnels
     1 | personnalisez
     1 | sauvegarder mes choix
     1 | ознакомиться с соглашением обработке персональных данных вы можете здесь.
@@ -1121,7 +1054,6 @@ Count | Button Text
     1 | 了解更多。…
     1 | 接受
     1 | privacy centre
-    1 | politique de fichiers témoins
     1 | we use cookies to ensure that we give you the best experience on our website.
     1 | privacy policy terms disclaimer
     1 | click here to view our privacy and cookie policies
@@ -1130,7 +1062,6 @@ Count | Button Text
     1 | read more...
     1 | i agree with it!
     1 | view in english
-    1 | avis sur lutilisation des témoins de connexion
     1 | terms and conditions of use
     1 | im not 18 — quit
     1 | i am over 18 — enter
@@ -1152,7 +1083,6 @@ Count | Button Text
     1 | get coupon code
     1 | allow us to use
     1 | leer políticas de privacidad
-    1 | consultez la politique de confidentialité de lacq
     1 | click the privacy policy
     1 | view profile
     1 | about cpkc
@@ -1170,7 +1100,6 @@ Count | Button Text
     1 | casinos
     1 | content
     1 | ajustes
-    1 | plus dinfo
     1 | see details here.
     1 | go to cookie settings
     1 | les conditions dutilisation.
@@ -1182,6 +1111,7 @@ Count | Button Text
     1 | lire la politique de gestion des plaintes
     1 | lire la politique sur les témoins
     1 | politique dutilisation, de confidentialité et des témoins
+    1 | cookies essentiels
     1 | politique dutilisation des cookies
     1 | cookie policy and our privacy policy.
     1 | learn more about our website privacy policy.
@@ -1194,11 +1124,8 @@ Count | Button Text
     1 | 自定义 cookie
     1 | ↓
     1 | nos 6 partenaires
-    1 | témoins essentiels
     1 | uvics privacy policy
     1 | cooper equipment rentals privacy policy
-    1 | je suis daccord
-    1 | que les essentiels
     1 | lesales@coppsbuildall.com
     1 | 519-659-9989
     1 | 2090 dundas street london, ontario n5v 1r2
@@ -1254,6 +1181,7 @@ Count | Button Text
     1 | verwendung reduzierter daten zur auswahl von inhalten
     1 | iab tcf 2.0 framework
     1 | hier anmelden!
+    1 | zum abonnement
     1 | please give
     1 | find out more about our cookies
     1 | ver política de privacidad
@@ -1271,7 +1199,7 @@ Count | Button Text
     1 | ok for me
     1 | non, merci
     1 | view cookies policy.
-    1 | témoins nécessaires seulement
+    1 | conditions de confidentialité de google
     1 | ich bin 18 jahre alt oder älter und erlaube alle cookies
     1 | rechazar y crear una cuenta gratuita
     1 | iniciar sesión
@@ -1283,14 +1211,12 @@ Count | Button Text
     1 | privacy notice and cookie policy
     1 | sunt de acord
     1 | mai multe opțiuni
-    1 | lénoncé de confidentialité exo
     1 | cookies policy here
     1 | покажи всички партньори (181)
     1 | termos de uso
     1 | bloquer tout
     1 | dont show this popup again
     1 | open cookie preferences
-    1 | politiques de cookies
     1 | read our privacy policy.
     1 | preference
     1 | enable
@@ -1314,14 +1240,15 @@ Count | Button Text
     1 | sabonner maintenant
     1 | informations sur la protection des données
     1 | inscrivez-vous ici.
-    1 | avis de confidentialité
-    1 | modifier les paramètres liés aux témoins
     1 | en savoir plus et personnaliser
     1 | finalités publicitaires
     1 | tiers
+    1 | avis de confidentialité
+    1 | modifier les paramètres liés aux témoins
     1 | préférences en matière de cookies
     1 | read more…
     1 | this website uses cookies to enhance user experience. please tap here to acknowledge that.
+    1 | conditions générales
     1 | no cookies for me, thanks
     1 | i loooove cookies!
     1 | find out more about cookies
@@ -1384,11 +1311,11 @@ Count | Button Text
     1 | سیاست‌های کوکی‌های ما در اینجا ذخیره شده‌اند
     1 | settings page
     1 | find out more...
-    1 | personalizza cookie
-    1 | informativa sui cookie
     1 | lascia il sito
     1 | termini di servizio
     1 | italiano
+    1 | personalizza cookie
+    1 | informativa sui cookie
     1 | maggiori informazioni
     1 | model courses
     1 | 同意しない
@@ -1420,11 +1347,9 @@ Count | Button Text
     1 | a community healthcare provider or researcher?
     1 | job seeker, volunteer or learner?
     1 | patient, family member or visitor?
-    1 | ik ga niet akkoord
     1 | 예
     1 | 더 알아보기
     1 | notre politique de confidentialité et de protection des données
-    1 | les paramètres
     1 | paramètres.
     1 | enter here
     1 | larasplayground
@@ -1439,8 +1364,8 @@ Count | Button Text
     1 | oui yes
     1 | non, merci!
     1 | oui, bien sûr!
-    1 | politique de confidentialité et de cookies
     1 | digital privacy statement.
+    1 | this link
     1 | website terms conditions opens a new window
     1 | lifestance notice of privacy practices
     1 | declinedéclin
@@ -1524,7 +1449,6 @@ Count | Button Text
     1 | or only accept required
     1 | en savoir plus sur les cookies
     1 | protected by patchstack
-    1 | read cookie policy
     1 | yes, allow all
     1 | dostosuj pliki cookie
     1 | powiadomieniu o plikach cookie
@@ -1571,9 +1495,6 @@ Count | Button Text
     1 | agree to rentmen terms cookies policy and go to this profile adamrusso los angeles, ca
     1 | accepter alle cookies
     1 | cookieindstillinger
-    1 | politique sur lutilisation des fichiers témoins
-    1 | politique de confidentialité web
-    1 | gestion des préférences
     1 | leave this website
     1 | детальніше
     1 | 詳細
@@ -1607,14 +1528,12 @@ Count | Button Text
     1 | our 1 partners
     1 | details...
     1 | pour plus dinformations sur notre utilisation des marqueurs numériques.
-    1 | necessary statistics preferences marketing
     1 | more information here
     1 | حسناً
     1 | your online choices (eu)
     1 | all about cookies
     1 | u.s. federal trade commission (ftc)
     1 | myupmc terms and conditions
-    1 | mehr informationen ...
     1 | i want to know more
     1 | load all cookies
     1 | keep only essential cookies
@@ -1628,8 +1547,8 @@ Count | Button Text
     1 | bbc privacy policy
     1 | more info about our cookies
     1 | limit to essentials
-    1 | more...
     1 | politique de cookies (témoins)
+    1 | more...
     1 | zaufanych partnerów tvp
     1 | zaufanych partnerów z iab
     1 | zaufanych partnerów tvp (93 firm)
@@ -1639,10 +1558,10 @@ Count | Button Text
     1 | политике конфиденциальности.
     1 | privacy commitment notice
     1 | règlementation sur le consentement à la collecte de données personnelles
-    1 | agbs
     1 | english (us)
     1 | não
     1 | sim
+    1 | je choisis
     1 | refuse customize allow all
     1 | ethics privacy policy.
     1 | read details
@@ -1655,6 +1574,7 @@ Count | Button Text
     1 | i confirm accept
     1 | click to accept
     1 | read our policy
+    1 | close gdpr cookie banner
     1 | activecampaign
     1 | legal
     1 | happy to help
@@ -1703,7 +1623,6 @@ Count | Button Text
     1 | legalprivacy policy
     1 | see our cookie policy for more information.
     1 | accept all settings
-    1 | lignes directrices sur lutilisation des fichiers témoins
     1 | register
     1 | understood! i agree.
     1 | j`ai 18 ans ou plus
@@ -1742,15 +1661,10 @@ Count | Button Text
     1 | click here for more information about our privacy policy.
     1 | cookies information
     1 | nuestros 717 socios
-    1 | cookie-instellingen
-    1 | niet akkoord
-    1 | lijst van onze partners
-    1 | cookiestatement.
     1 | aceito
     1 | mostrar finalidades
     1 | privacy policy and terms of service.
     1 | terms of usage
-    1 | nos 51 partenaires
     1 | see privacy policy
     1 | leia nossa política de privacidade
     1 | cookie use
@@ -1761,8 +1675,6 @@ Count | Button Text
     1 | this page
     1 | individual options
     1 | craaq
-    1 | politique de protection de la vie privée
-    1 | utilisation des témoins
     1 | ok, i accept
     1 | www.dse.ulaval.caconfidentialite
     1 | cookies 政策。
@@ -1805,16 +1717,12 @@ Count | Button Text
     1 | nous joindre
     1 | voir les préférences see preferences
     1 | refuser reject
-    1 | confirmer la sélection
-    1 | avis relatif à lutilisation des témoins
-    1 | disagree close
     1 | 閉じる
     1 | 利用者情報の外部送信について
     1 | data and privacy info
     1 | cookie statement.
     1 | manage or reject
     1 | politique de données personnelles.
-    1 | 313 partenaires
     1 | find out how these are used
     1 | modifier les paramètres
     1 | política de cookies.
@@ -1827,6 +1735,7 @@ Count | Button Text
     1 | do not sell my personal data
     1 | proceed with necessary cookies only
     1 | accept recommended cookies
+    1 | plus de détails
     1 | view bantrel cookie policy
     1 | consulter la déclaration
     1 | politique de confidentialité de gérer son quartier
@@ -1848,12 +1757,9 @@ Count | Button Text
     1 | ill decide myself
     1 | nederlands
     1 | politique de confidentalité.
-    1 | ablehnen konfigurieren
-    1 | ad storage
-    1 | accept continue to website
     1 | only use essential cookies
+    1 | accept continue to website
     1 | view privacy statement
-    1 | jetzt bild pur abonnieren
     1 | privacy policy and cookie notice
     1 | employ cookies
     1 | přejít do uživatelského účtu
@@ -1869,11 +1775,8 @@ Count | Button Text
     1 | δεν αποδεχομαι
     1 | αλλαγή προτιμήσεων
     1 | opt out of the sale or sharing of your personal information
-    1 | cookies akzeptieren
-    1 | mehr informationen
     1 | do not sellshare
     1 | reject non‑essential
-    1 | consultez notre politique de confidentialité - cet hyperlien souvrira dans une nouvelle fenêtre.
     1 | eula
     1 | refuser decline
     1 | gérer mes préférences manage preferences
@@ -1902,30 +1805,22 @@ Count | Button Text
     1 | odmítám vše
     1 | jak chráníme vaše osobní údaje
     1 | voir la politique
+    1 | refuser les témoins non essentiels
     1 | ne pas vendre mes renseignements personnels
     1 | keep them off
     1 | permettre
     1 | plus tard
-    1 | 172 partner
-    1 | jetzt einloggen
-    1 | allen zwecken zustimmen
-    1 | mehr informationen dazu findest du hier
     1 | homepage
-    1 | seulement les cookies essentiels
-    1 | protection des données
     1 | for more information about the cookies we use, see our cookies page (opens in a new window)
     1 | política de privacidad.
     1 | entendi
     1 | política de privacidade.
-    1 | ça me va
-    1 | ça me va!
     1 | our 277 partners
     1 | www.clapperapp.com
     1 | gerenciar cookies
     1 | en savoir plus sur lutilisation des témoins
     1 | refuser tous les fichiers témoins
     1 | accepter tous les fichiers témoins
-    1 | our 972 partners
     1 | gestionnaire de cookies
     1 | presse
     1 | professionnels
@@ -1943,6 +1838,7 @@ Count | Button Text
     1 | cookie page
     1 | modifier mes préférences de cookies
     1 | autoriser seulement les cookies nécessaires
+    1 | autoriser tous les cookies
     1 | learn more about privacy
     1 | https:www.conceptcarz.cominfotermsofuse.aspx
     1 | (see privacy policy)
@@ -1964,7 +1860,6 @@ Count | Button Text
     1 | nos 14 partenaires
     1 | podívejte se na našich 83 partnerů
     1 | accept the use of cookies
-    1 | en savoir plus.
     1 | odmítnout všechny
     1 | souhlasím se všemi
     1 | www.cvm.qc.caconfidentialite
@@ -2007,7 +1902,6 @@ Count | Button Text
     1 | custom cookies
     1 | privacy policy for drivewise bc
     1 | cookie policy drivewise bc
-    1 | à notre politique de confidentialité et cookies.
     1 | afvis
     1 | privacy and security page
     1 | policy page
@@ -2031,18 +1925,14 @@ Count | Button Text
     1 | disable.
     1 | apply settings
     1 | our 970 partners
-    1 | weitere einstellungen
-    1 | generierung einer user-id auf basis ihrer e-mail-adresse
-    1 | empfangen und verwenden automatisch gesendeter geräteinformationen zum zweck der identifikation
-    1 | funktional, analytik, werbung (nicht iab-anbieter), soziale medien und strikt erforderliche cookies
     1 | please read our updated privacy policy.
     1 | más info
-    1 | políticas de cookies y de datos.
     1 | aceptar y seguir leyendo
     1 | rechazar y suscribirte
     1 | portal de privacidad de utiq
     1 | puedes rechazar utiq ahora
     1 | nuestra(s) propiedad(es) digital(es)
+    1 | políticas de cookies y de datos.
     1 | view our 1067 partners
     1 | decline and subscribe
     1 | click aquí
@@ -2080,7 +1970,6 @@ Count | Button Text
     1 | privacy policy politique de confidentialité
     1 | aprende más
     1 | view our 18 partners
-    1 | ne pas accepter les cookies.
     1 | samþykkja
     1 | lesa nánar
     1 | how to change my cookie settings
@@ -2089,17 +1978,9 @@ Count | Button Text
     1 | used
     1 | collected
     1 | www.allaboutcookies.org
-    1 | zaufani partnerzy iab 972
     1 | view our 294 partners
+    1 | zaufani partnerzy iab 972
     1 | learn more privacy
-    1 | ablehnen abonnieren
-    1 | 716 weitere websites
-    1 | einwilligen weiter
-    1 | genaue standortdaten und identifikation durch scannen von endgeräten
-    1 | personenbezogenen daten
-    1 | einwilligung
-    1 | 467 partner
-    1 | entgeltfrei.
     1 | i am allergic to cookies
     1 | click here to find out more
     1 | i agreed
@@ -2163,6 +2044,8 @@ Count | Button Text
     1 | personal information collection statement
     1 | online terms conditions
     1 | skip to main content
+    1 | select all
+    1 | privacy terms
     1 | help?
     1 | shop all
     1 | award-winning sleepea swaddle
@@ -2174,18 +2057,13 @@ Count | Button Text
     1 | toggle navigation menu
     1 | 0 open cart
     1 | happiest baby
-    1 | select all
-    1 | privacy terms
-    1 | 1041 derden
     1 | personalised content and content measurement
     1 | personalised advertising, advertising measurement, audience research and services development
     1 | use of utiq technology powered by your telecom operator. you can reject for use of utiq by rejecting the utiq purpose.
+    1 | analytics storage
     1 | third-party content embeds in editorial content
     1 | login here
     1 | ok, close warning.
-    1 | endgeräteeigenschaften zur identifikation aktiv abfragen
-    1 | analyse cookies
-    1 | jetzt zustimmen und kostenlos weiter
     1 | et nos conditions dutilisation.
     1 | learn more about hirekos privacy policy
     1 | agree and dont show again
@@ -2227,14 +2105,13 @@ Count | Button Text
     1 | ovdje
     1 | your privacy matters
     1 | access cookie settings
-    1 | wie beschrieben
     1 | χρησιμοποιήστε μόνο τα απαραίτητα cookies
     1 | επιτρέπεται η επιλογή
     1 | επιτρέπονται όλα τα cookies
     1 | ρυθμίσεις
-    1 | open
     1 | gérer les paramètres des cookies
     1 | activer les cookies
+    1 | open
     1 | no, ill leave
     1 | what are cookies?
     1 | zamítnout vše
@@ -2247,6 +2124,7 @@ Count | Button Text
     1 | reject and subscribe
     1 | our 985 partners
     1 | jacuzzi privacy policy
+    1 | ses partenaires
     1 | seulement les témoins nécessaires
     1 | ses 982 partenaires (dont 972 partenaires iab)
     1 | privacy and use policies
@@ -2271,6 +2149,7 @@ Count | Button Text
     1 | data protection declaration
     1 | https:www.knack.comprivacy
     1 | allen zustimmen
+    1 | einstellungen oder ablehnen
     1 | datenschutzcenter
     1 | i want to choose
     1 | правилами использования куки
@@ -2279,13 +2158,13 @@ Count | Button Text
     1 | optionen verwalten
     1 | 77 partner
     1 | voir nos 995 partenaires
+    1 | nos partenaires
     1 | пользовательском соглашении
     1 | soutenir notre travail pour 1€
     1 | accetto i cookie
     1 | impostazioni cookie
     1 | configuraciones de cookies
     1 | non, je veux en savoir plus
-    1 | ne pas accepter et fermer
     1 | accessibility statement
     1 | nuestros 1054 socios
     1 | our 280 partners
@@ -2296,20 +2175,19 @@ Count | Button Text
     1 | datenschutzmanager aufrufen
     1 | für 2,99 €monat abonnieren
     1 | häufig gestellten fragen (faq)
+    1 | einwilligen und weiter
     1 | masquer ce message
     1 | about cookie control
     1 | about this tool
     1 | cookies are on
-    1 | nos 229 partenaires
     1 | view our protection of personal information policy.
+    1 | nos 229 partenaires
     1 | paramétrer mon consentement
     1 | leurs 278 partenaires
     1 | les sociétés de son groupe
     1 | déja abonné ? se connecter
     1 | je mabonne
-    1 | fermer la bannière des cookies gdpr
     1 | nos 284 partenaires
-    1 | nos 116 partenaires
     1 | cliquez pour accepter les cookies marketing et activer ce contenu
     1 | disagree and create account
     1 | our 349 partners
@@ -2336,11 +2214,6 @@ Count | Button Text
     1 | rechazo y me suscribo
     1 | acepto y continúo gratis
     1 | politique de lutilisation des cookies
-    1 | politique de protection des données personnelles dutiq
-    1 | portail dutiq (consenthub)
-    1 | opérateur télécom
-    1 | sur nos sites
-    1 | 1073 partenaires
     1 | custom products
     1 | industrial hand tools
     1 | idlers
@@ -2366,8 +2239,8 @@ Count | Button Text
     1 | nie zgadzam się
     1 | our 53 partners
     1 | 「プライバシーポリシー」
-    1 | central de privacidade.
     1 | centro de privacidad.
+    1 | central de privacidade.
     1 | accept and close this notification
     1 | saber mais
     1 | permitir cookies
@@ -2394,7 +2267,6 @@ Count | Button Text
     1 | пользовательского соглашения
     1 | правилами использования cookies
     1 | we use our own and third-party cookies to personalize your experience and the promotions you see.
-    1 | politique de protection des données
     1 | sinscrire
     1 | notre politique de données personnelles
     1 | zoom sur midual française ! - le plus exceptionnel café-racer du monde. midual présente une nouvelle série limitée, très tres haut de gamme, honorant les valeurs de la france.
@@ -2421,7 +2293,6 @@ Count | Button Text
     1 | show all partners (25)
     1 | i agree to terms
     1 | accept all cookie settings
-    1 | mehr informationen, auch zum jederzeit möglichen widerruf, finden sie hier.
     1 | find out how we use cookies.
     1 | https:www.nationalacademies.orglegalprivacy
     1 | close cookie notification
@@ -2435,12 +2306,12 @@ Count | Button Text
     1 | privacy portal
     1 | cookie faq
     1 | adapt
-    1 | privacy policy (opens in new tab)
     1 | odaberi
     1 | pogledajte naše 1011 partnere
     1 | podešavanje kolačića
     1 | politici kolačića
     1 | partnerima
+    1 | privacy policy (opens in new tab)
     1 | our usage policy.
     1 | pour une navigation sans cookie publicitaire, je mabonne pour 2,50€.
     1 | pourquoi le nouvel obs vous demande daccepter ces traitements de vos données
@@ -2457,11 +2328,11 @@ Count | Button Text
     1 | office timeline privacy statement
     1 | dont ask me again
     1 | x close
-    1 | polityka cookies,
     1 | setează preferințele
     1 | acceptă doar necesare
     1 | politica de confidențialitate
     1 | politica privind cookie-urile,
+    1 | polityka cookies,
     1 | yes, i am happy
     1 | cookies online advertising policy
     1 | ca privacy notice
@@ -2497,7 +2368,6 @@ Count | Button Text
     1 | ok,got it!
     1 | privacy webpage
     1 | voir les paramètres
-    1 | politique sur la protection de la vie privée
     1 | polityka plików cookies i podobnych technologii,
     1 | protection of personal information
     1 | ok, i agree to the terms.
@@ -2543,11 +2413,6 @@ Count | Button Text
     1 | play prodigy
     1 | enig
     1 | flere valg
-    1 | politique dutilisation des témoins de navigation.
-    1 | individuelle einstellung einblenden
-    1 | nur essentielle cookies akzeptieren
-    1 | datenschutz-erklärung
-    1 | cookie-erklärung
     1 | podívejte se na našich 58 partnerů
     1 | see our cookie policy
     1 | notre déclaration de confidentialité
@@ -2565,7 +2430,6 @@ Count | Button Text
     1 | nos 29 partenaires
     1 | nee, liever niet
     1 | please read our privacy policy
-    1 | cookie instellingen
     1 | close cookies button
     1 | data privacy statement
     1 | learn more about the use of cookies here
@@ -2575,9 +2439,6 @@ Count | Button Text
     1 | réglages des témoins
     1 | data privacy policy
     1 | configurer
-    1 | voir nos 290 partenaires
-    1 | erstreckung von einwilligungen auf geräte, apps inhalte ohne grafische benutzerschnittstelle
-    1 | 174 partner
     1 | cookie disclaimer
     1 | complete provides personalized content and uses marketing cookies.
     1 | standard provides optimal operation and uses video cookies, among others.
@@ -2589,10 +2450,8 @@ Count | Button Text
     1 | stillingar á vafrakökum
     1 | nánar um vafrakökur
     1 | eri privacy policy
-    1 | conditions de confidentialité saq
     1 | no personal cookies please
     1 | yes, i accept all cookies
-    1 | jetzt einloggen!
     1 | nos 1085 partenaires
     1 | www.ulaval.caconfidentialite
     1 | 详细隐私条款
@@ -2604,7 +2463,6 @@ Count | Button Text
     1 | about seniors choice
     1 | life insurance
     1 | 1-844-840-0276
-    1 | politique dutilisation des témoins de connexion
     1 | enable non-essential cookies
     1 | contact us here
     1 | send my 10% off coupon!
@@ -2614,7 +2472,6 @@ Count | Button Text
     1 | reject accept
     1 | web privacy notice
     1 | limit the use of my sensitive personal information
-    1 | 2194 derden
     1 | by using our site you agree to our cookie policy.
     1 | visit our cookie policy.
     1 | ucc 2257
@@ -2629,14 +2486,11 @@ Count | Button Text
     1 | polityka prywatności agora s.a.
     1 | polityka prywatności gazeta.pl
     1 | https:www.springfield-armory.comlegal
-    1 | accepter et accéder au site
     1 | gdpr-hq
     1 | exit now
     1 | to give you the best possible experience, this site uses cookies. continuing to use squirt means you agree to our use of cookies. find out more about the cookies we use here.
     1 | to learn more, read our website privacy policy.
     1 | any time
-    1 | zum pur-abo
-    1 | zustimmen und weiter
     1 | only allow necessary cookies
     1 | protection of privacy page
     1 | non | no
@@ -2656,11 +2510,13 @@ Count | Button Text
     1 | werbung durch dritte (iab-verarbeitungszwecke, siehe unten)
     1 | sz-personalisierung und marketing
     1 | nutzungsanalyse und produktoptimierung
+    1 | partnern
     1 | sundance spas privacy policy
     1 | no cookies please
     1 | in unseren faq
     1 | anmeldung für abonnenten
     1 | werbefrei lesen ohne premium
+    1 | jetzt abonnieren
     1 | datenschutzinformationszentrum
     1 | datenschutzhinweise (pur)
     1 | push-benachrichtigungen kommunikation
@@ -2669,9 +2525,6 @@ Count | Button Text
     1 | häufig gestellten fragen (faqs)
     1 | jetzt sichern
     1 | individuell anpassen
-    1 | politische werbung
-    1 | nutzungsanalyse
-    1 | einbindung von externen inhalten für journalistische zwecke
     1 | privatumo nuostatos
     1 | sutinku
     1 | accept specific cookies
@@ -2694,7 +2547,6 @@ Count | Button Text
     1 | fermer la modale
     1 | following link
     1 | our 1026 partners
-    1 | mehr informationen …
     1 | additional informationen
     1 | privacy and access to information
     1 | accept all accept all
@@ -2747,7 +2599,6 @@ Count | Button Text
     1 | acceptar tot
     1 | més informació
     1 | go
-    1 | to our privacy and cookies policy.
     1 | rechazar por 36€ año
     1 | 1009 socios
     1 | see preferences
@@ -2756,8 +2607,6 @@ Count | Button Text
     1 | naš 977 partneri
     1 | politika kolačića
     1 | politika zaštite privatnosti
-    1 | accepter cookies
-    1 | refusé
     1 | velosaloons privacy statement
     1 | click here to see our terms and privacy policy.
     1 | we use cookies
@@ -2774,7 +2623,6 @@ Count | Button Text
     1 | find books
     1 | пользовательское соглашение
     1 | info...
-    1 | strict nécessaire
     1 | cookies requis uniquement
     1 | dragonpass privacy policy
     1 | close cookie banner accept
@@ -2792,22 +2640,18 @@ Count | Button Text
     1 | privacy policy and our terms of use.
     1 | i disagree - leave
     1 | i agree - enter now
+    1 | nicht-notwendige ablehnen
     1 | i am under 18 (exit)
     1 | i am 18 or older (accept)
-    1 | nicht-notwendige ablehnen
     1 | do not sell or share my information
     1 | all right!
-    1 | jetzt welt pur abonnieren
     1 | datenschutzhinweisen (contentpass-abo)
+    1 | privatsphäre einstellungen
     1 | akzeptieren und weiter
     1 | close disclaimer
-    1 | made hosted in germany by ccm19
-    1 | datenschutzhinweis
-    1 | selbst wählen
     1 | cookies preference center
     1 | data privacy notice.
     1 | cookie terms of use
-    1 | 1039 derden
     1 | click here to learn more about cookies.
     1 | accept !
     1 | netnanny
@@ -2848,23 +2692,23 @@ Count | Button Text
 Button Count | Popups
 -------------+-------
            0 | 264
-           1 | 1699
-           2 | 3396
-           3 | 1391
-           4 | 470
-           5 | 199
-           6 | 58
-           7 | 59
-           8 | 14
-           9 | 23
+           1 | 1698
+           2 | 3303
+           3 | 1192
+           4 | 420
+           5 | 181
+           6 | 55
+           7 | 48
+           8 | 13
+           9 | 13
           10 | 8
-          11 | 10
-          12 | 12
-          13 | 6
-          14 | 4
+          11 | 6
+          12 | 2
+          13 | 5
+          14 | 3
           15 | 3
           16 | 2
-          17 | 2
+          17 | 1
           18 | 2
           19 | 1
           21 | 2
@@ -2873,12 +2717,6 @@ Button Count | Popups
           30 | 2
 
 --- Sample Matching Popups (first 20) ---
-File: 1-45.med.usherbrooke.ca_e581.json
-  Popup: Nous respectons votre vie privée.
-
-Nous utilisons des cookies pour authentifier votre session et suivre les actions de l...
-  Buttons: ["accepter tout","personnaliser"]
-
 File: 221a.ca_138a.json
   Popup: We use cookies on this site to enhance your user experience.
 
@@ -2947,13 +2785,13 @@ File: 80.lv_c3a5.json
 We use cookies on this website to make your browsing experience better. By using the site you agre...
   Buttons: ["learn more"]
 
-File: a24films.com_c9a0.json
-  Popup: We use first and third-party cookies to personalize content, to provide social media features, and to analyze our traffi...
-  Buttons: ["choose","accept all","see our privacy policy for more information."]
-
 File: a25.com_ac97.json
   Popup: Nous utilisons des témoins pour améliorer votre expérience de navigation. Veuillez consulter notre Politique de confiden...
   Buttons: ["essentiels seulement","gérer les préférences","accepter tout"]
+
+File: a24films.com_c9a0.json
+  Popup: We use first and third-party cookies to personalize content, to provide social media features, and to analyze our traffi...
+  Buttons: ["choose","accept all","see our privacy policy for more information."]
 
 File: aa-intergroup.org_b2e1.json
   Popup: close
@@ -2970,3 +2808,9 @@ File: abbotsford.perfectmind.com_2691.json
  
    ...
   Buttons: []
+
+File: abetter.bid_d349.json
+  Popup: We use cookies to analyse & personalise content
+Find out more how we use cookies
+Got it...
+  Buttons: ["got it","find out more how we use cookies"]

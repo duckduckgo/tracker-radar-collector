@@ -1,23 +1,23 @@
 === Non-Rejectable Cookie Popup Button Analysis ===
 Input directory: /mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/NO/3p-crawl
-Date: 2026-03-27T12:15:29.239Z
+Date: 2026-03-27T14:43:17.616Z
 
 --- Summary ---
 Total JSON files: 99855
 Files with potential popups: 77221
 Total potential popups: 113516
   └─ AI-confirmed cookie popups: 35108
-      └─ No reject buttons: 22055
-          └─ No settings buttons: 17098 (aka non-rejectable cookie notices)
+      └─ No reject buttons: 21897
+          └─ No settings buttons: 16600 (aka non-rejectable cookie notices)
 
---- Button Text Distribution (cleaned, all 7545 entries) ---
+--- Button Text Distribution (cleaned, all 7210 entries) ---
 Count | Button Text
 ------+------------
  1930 | godta alle
- 1606 | ok
+ 1602 | ok
  1105 | detaljer
- 1102 | privacy policy
-  973 | learn more
+ 1092 | privacy policy
+  972 | learn more
   969 | avvis alle
   907 | tilpass
   813 | accept
@@ -26,7 +26,7 @@ Count | Button Text
   724 | personvernerklæring
   708 | godta
   702 | samtykke
-  685 | cookie policy
+  683 | cookie policy
   647 | avslå
   616 | avvis
   583 | les mer
@@ -39,8 +39,6 @@ Count | Button Text
   388 | aksepter alt
   365 | got it!
   324 | mer informasjon
-  313 | datenschutzerklärung
-  304 | impressum
   277 | den er grei
   267 | kun nødvendige cookies
   235 | lagre ogeller få tilgang til informasjon på en enhet
@@ -53,14 +51,14 @@ Count | Button Text
   192 | akseptere
   190 | cookie-erklæring
   182 | personvernerklæringen
-  181 | accept all
   179 | avslå alle
+  179 | accept all
   178 | personvern
   176 | afvis alle
-  172 | cookies
+  171 | datenschutzerklärung
+  169 | impressum
+  165 | cookies
   159 | more information
-  158 | alle akzeptieren
-  157 | show details
   151 | se preferanser
   142 | more info
   140 | got it
@@ -68,40 +66,33 @@ Count | Button Text
   133 | aksepter alle
   129 | i agree!
   124 | godta alle cookier
-  123 | einstellungen
-  121 | datenschutz
   120 | informasjonskapselinnstillinger
   119 | view partners
-  117 | details
-  111 | allow selection
   111 | read more
   110 | close
   110 | retningslinjer for informasjonskapsler
-  109 | allow all
   106 | endre innstillinger
-  106 | speichern von oder zugriff auf informationen auf einem endgerät
   104 | afvis
   103 | informasjonskapsler
   103 | godta nødvendig
   102 | our partners
-  100 | personalisierte werbung und inhalte, messung von werbeleistung und der performance von inhalten, zielgruppenforschung sowie entwicklung und verbesserung von angeboten
    99 | personlig tilpasset annonsering
    98 | no
    97 | lagre innstillinger
-   96 | akzeptieren
    96 | cookie information
-   95 | partner
-   95 | partners
    94 | les mer om informasjonskapsler
+   93 | partners
    93 | her
    92 | cookies policy
    90 | view our 161 partners
+   89 | show details
    88 | tillad alle
    88 | english
    87 | política de cookies
    87 | annonseleverandører
    86 | terms of use
-   85 | here
+   85 | alle akzeptieren
+   84 | here
    83 | terms and conditions
    82 | accept cookies
    82 | godkjenn alle
@@ -113,51 +104,47 @@ Count | Button Text
    78 | googles retningslinjer for personvern
    77 | agree
    77 | godta kun nødvendige
-   76 | x
    76 | jeg godtar
    76 | juster innstillingene
+   74 | x
    74 | i accept
    73 | learn more…
    72 | flere valg
    72 | privatlivspolitik
    70 | her.
-   70 | accepter
-   69 | datenschutzhinweisen
    69 | list of partners (vendors)
    69 | tilpasset innhold, måling av innhold, tjenesteutvikling og markedsføring
    69 | personlig tilpasset annonsering, annonserings- og innholdsmåling og tjenesteutvikling
+   69 | details
    69 | administrer innstillinger
    69 | partnere
    68 | privacy policy page
    68 | eu law
    68 | inställningar
-   67 | consent
    67 | cookiescript
    66 | enig
    66 | ok, got it
-   66 | about
    65 | hyväksy kaikki
    65 | bare nødvendige cookies
    63 | la meg velge selv
    62 | benekte
-   62 | accept all cookies
+   62 | datenschutz
+   61 | accept all cookies
    60 | disagree and close
    60 | mer info
-   60 | alle cookies akzeptieren
-   60 | datenschutzeinstellungen
    60 | evästeasetukset
    59 | nei takk
-   58 | zustimmen
    58 | cookieerklæring
+   58 | akzeptieren
    58 | preferanser
    58 | tilpass cookies
-   58 | privacy statement
+   57 | privacy statement
    56 | tillad alle cookies
    56 | report
    55 | elfogadom
-   55 | hier
    54 | polityce prywatności
    53 | jeg forstår
+   53 | accepter
    52 | bare nødvendige
    52 | aceptar
    51 | godta valgte
@@ -186,20 +173,19 @@ Count | Button Text
    45 | vis preferanser
    45 | akceptuję
    45 | læs mere
-   45 | allow all cookies
    45 | logg på
    45 | godta alle cookies
-   44 | imprint
    44 | anpassa
    44 | exit
    44 | privacy policy.
+   43 | imprint
    42 | dostosuj
    42 | cookie information åpnes i ny fane
+   41 | datenschutzhinweisen
    41 | tilpas
-   41 | verwendung genauer standortdaten
-   41 | cookie-einstellungen
    41 | accetta
    40 | принять
+   40 | partner
    40 | tillåt alla
    40 | information
    40 | samtycke
@@ -212,59 +198,48 @@ Count | Button Text
    39 | godta bare nødvendige
    38 | lukk
    38 | zgadzam się
-   38 | drittanbieter
    37 | ustawienia
    37 | zgoda
-   36 | endgeräteeigenschaften zur identifikation aktiv abfragen
-   36 | konfigurieren
    36 | godkjenn
    36 | strengt nødvendig
-   36 | contentpass faq
    36 | personlig tilpasset annonsering og innhold, annonsering- og innholdsmåling, publikumsundersøkelser og tjenesteutvikling
-   36 | faq
    36 | les mer om våre informasjonskapsler
    35 | acceptér alle
    35 | akceptuj wszystkie
    35 | salli kaikki evästeet
-   35 | mit contentpass einloggen
    34 | exit here
    34 | további lehetőségek
-   34 | tout accepter
    34 | annonseinnstillinger
    34 | fler alternativ
+   34 | consent
    34 | ok!
    34 | funksjonalitet
    34 | les mer her
-   34 | agb
+   33 | hier
    33 | akceptuj wszystko
-   33 | privacy
+   33 | about
+   32 | privacy
    32 | tilpass innstillinger
    32 | yes, i understand.
    32 | detaljer for informasjons­kapsler
+   31 | datenschutzeinstellungen
    31 | retningslinjer for personvern
    31 | nastavení
    31 | okay
    31 | weitere informationen
-   31 | werbefrei für 3,99€ monat
-   31 | analytics storage
    30 | im over 18
    30 | odmítnout
-   30 | speichern
-   30 | politique de confidentialité
    30 | det er greit!
    30 | les mer i vår personvernerklæring
    30 | powered by cookiescript
-   30 | nur technisch notwendige
    30 | accetto
-   30 | einverstanden
    30 | personvernregler
+   29 | zustimmen
    29 | læs mere om cookies
    29 | use of cookies
    29 | personvernerklæringen.
-   29 | mehr informationen ...
    29 | personvernpolicy
    29 | click here
-   28 | datenschutzhinweise
    28 | learn more.
    28 | acceptera
    28 | asetukset
@@ -275,13 +250,15 @@ Count | Button Text
    27 | produktutvikling, personlig tilpassing, markedsføring og annonsering utført av schibsted media as
    27 | 36 partnere
    27 | odrzuć
-   27 | jaccepte
    27 | hylkää kaikki
    26 | our privacy policy
    26 | parental control guide
    26 | 18 u.s.c. 2257 record-keeping requirements compliance statement.
    26 | accept continue
+   26 | politique de confidentialité
+   26 | allow all
    26 | política de privacidad
+   26 | einverstanden
    26 | rifiuta e abbonati
    26 | salli kaikki
    26 | bekreft valg
@@ -292,12 +269,11 @@ Count | Button Text
    25 | ok, i agree
    25 | cookie-inställningar
    25 | kiellä
+   25 | jaccepte
    25 | podrobné nastavení
    25 | näytä tiedot
    25 | ytelse
    24 | zaakceptuj wszystkie
-   24 | hier anmelden
-   24 | personnaliser
    23 | administrer tjenester
    23 | detaljar
    23 | okej
@@ -315,63 +291,59 @@ Count | Button Text
    22 | cookie instillinger
    22 | nei, endre valg
    22 | accept and continue
+   22 | allow all cookies
    22 | administrer informasjonskapsler
    22 | zezwól na wszystkie
    22 | mer information
    22 | save selection
-   22 | akzeptieren und weiter
    22 | dismiss
    22 | ustawienia zaawansowane
    22 | informativa sulla privacy
    21 | jag förstår
    21 | administrer alternativer
+   21 | datenschutzhinweise
    21 | scopri di più e personalizza
    21 | privacy notice
    21 | det er greit
-   21 | mehr informationen
-   21 | marketing
    21 | nødvendige
-   21 | einstellungen oder ablehnen
    21 | precise geolocation data, and identification through device scanning
    21 | fagpressen.no.
    21 | συμφωνω
    21 | περισσοτερες επιλογες
    21 | aceptar y continuar
+   20 | alle cookies akzeptieren
    20 | jeg aksepterer
    20 | súhlasím
-   20 | mehr erfahren
    20 | tillat kun nødvendige
    20 | bruk utvalg
    20 | godta alt
    20 | annonceindstillinger
    20 | aksepter cookies
-   20 | login
    20 | configurar
    20 | pay to reject
    20 | szczegóły
    20 | godkänn alla
-   20 | kontakt
    20 | więcej opcji
    20 | accedi
-   20 | paramétrer
    20 | liste over partnere (leverandører)
-   19 | datenschutz-manager
+   20 | analytics storage
    19 | cookie policy.
    19 | akceptuj
    19 | configurar cookies
    19 | les vår personvernerklæring
+   19 | mehr erfahren
    19 | más opciones
    19 | vain välttämättömät
    19 | přijmout vše
    19 | dowiedz się więcej
+   19 | login
    19 | rechazar y suscribirse
    19 | ↓ 1 tjeneste
    19 | accetta e chiudi
    19 | terms conditions
-   18 | cookie notice
    18 | avvise
    18 | les mer om disse formålene
-   18 | zustimmung
+   18 | mehr informationen
    18 | berre nødvendige
    18 | bruke begrensede data for å velge innhold
    18 | utvikle og forbedre tjenester
@@ -381,7 +353,6 @@ Count | Button Text
    18 | se detaljer
    18 | gem indstillinger
    18 | nuestros socios
-   18 | meer informatie
    18 | cookie-innstillinger
    18 | o plikach cookies
    18 | legal notice
@@ -392,6 +363,7 @@ Count | Button Text
    18 | les meir
    17 | политикой конфиденциальности
    17 | jag godkänner
+   17 | marketing
    17 | liste over cookies
    17 | statistikk
    17 | godta kun nødvendige cookies
@@ -402,24 +374,23 @@ Count | Button Text
    17 | infokapsel-erklæring
    17 | lue lisää
    17 | agree to all
-   17 | jetzt abonnieren
    17 | yes, i agree
    17 | acceptera alla cookies
    17 | salli valinta
    17 | tillåt alla cookies
    16 | hyväksyn
+   16 | cookie notice
    16 | nutzungsbedingungen
-   16 | anpassen
-   16 | über cookies
+   16 | datenschutz-manager
+   16 | zustimmung
    16 | хорошо
    16 | les mer om personvern
    16 | kabul et
-   16 | details section
    16 | retningslinjene for informasjonskapsler
    16 | povolit vše
    16 | la meg velge
-   16 | politique de cookies
    16 | lær mer
+   16 | contentpass faq
    16 | cookieinnstillinger
    16 | change here
    16 | política de privacidade
@@ -428,50 +399,45 @@ Count | Button Text
    16 | les mer.
    16 | personaliser
    16 | ok, aksepter alt
-   16 | genaue standortdaten und identifikation durch scannen von endgeräten
-   16 | einwilligung
-   15 | aanpassen
+   16 | faq
+   15 | tout accepter
    15 | greit
    15 | příjmout
    15 | rozumiem
    15 | tilpass valg
+   15 | anpassen
    15 | подробнее
    15 | webbplatser och appar där bonnier news ab tillhandahåller sina tjänster
    15 | más información
-   15 | auswahl bestätigen
    15 | googles personvernerklæring
    15 | no, adjust
    15 | tillat
    15 | vis innstillinger
-   15 | akkoord
    15 | velg kategorier
    15 | jag accepterar
    15 | godta informasjonskapsler
+   15 | meer informatie
    15 | learn more...
    15 | finalità pubblicitarie
-   15 | cookies akzeptieren
    15 | gestisci le opzioni
    15 | nostri partner
+   15 | hier anmelden
    15 | akceptuję i przechodzę do serwisu
    15 | ugradert
-   15 | datenschu tzerklärung
-   15 | personenbezogenen daten
    15 | jeg vil velge
-   14 | hier einloggen
    14 | datenschutzhinweisen (pur)
-   14 | cookie-richtlinie
    14 | jeg vil vite mer
    14 | mehr infos
    14 | erklæring om informasjonskapsler
+   14 | über cookies
    14 | понятно
+   14 | auswahl bestätigen
    14 | cookie einstellungen
    14 | 31 leverandører
    14 | ja
    14 | les mer om vår bruk av informasjonskapsler
-   14 | cookiebeleid
    14 | administrer personverninnstillinger
    14 | våre partnere
-   14 | details anzeigen
    14 | pokaż szczegóły
    14 | disagree
    14 | personvern- og cookieerklæring
@@ -482,31 +448,26 @@ Count | Button Text
    14 | accept toate
    14 | listă parteneri (furnizori)
    14 | spersonalizuj
-   14 | liste der partner (lieferanten)
+   14 | akzeptieren und weiter
+   14 | agb
    14 | dostosuj zgody
    14 | hyväksyn kaikki evästeet
    14 | zaufanych partnerów
    14 | vis cookie detaljer
    14 | målretting
-   14 | ablehnen oder einstellungen
    14 | prijať všetko
-   14 | over
-   14 | toestemming
-   14 | 716 weitere websites
-   14 | entgeltfrei.
+   14 | werbefrei für 3,99€ monat
    13 | lagre mine preferanser
-   13 | mehr optionen
    13 | accept and close
    13 | no thanks
    13 | informasjonskapselpolicy
    13 | finn ut mer
    13 | zobrazit předvolby
-   13 | cookie-details
-   13 | akzeptieren schließen
    13 | godkänn alla kakor
    13 | salli vain välttämättömät evästeet
-   13 | alle auswählen
+   13 | details anzeigen
    13 | verstanden!
+   13 | politique de cookies
    13 | oppdater samtykke
    13 | les mer om våre cookies
    13 | ikke godta
@@ -517,7 +478,6 @@ Count | Button Text
    13 | mai multe detalii
    13 | více informací
    13 | ustawienia prywatności
-   13 | datenschutzrichtlinie
    13 | more details
    13 | se innstillinger
    13 | read our privacy policy
@@ -525,7 +485,6 @@ Count | Button Text
    13 | en
    13 | cookies policy.
    13 | partnerzy
-   13 | partenaires
    13 | godta cookies
    13 | aksepter alle cookies
    13 | saznajte više
@@ -535,24 +494,19 @@ Count | Button Text
    13 | wirtualna polska
    13 | zaufanych partnerów iab
    13 | wirtualną polskę
-   13 | alles accepteren
    13 | personlig tilpasset annonsering, annonseringsmåling, publikumsundersøkelser og tjenesteutvikling
    13 | aviso legal
-   13 | ablehnen abonnieren
-   13 | einwilligen weiter
    13 | cookie-erklæringa
-   13 | datenschutz-einstellungen
-   13 | prisma media
+   12 | mehr optionen
    12 | personalize cookies
    12 | aceptar cookies
    12 | zásady cookies
-   12 | individuelle datenschutzeinstellungen
    12 | polityka cookies
    12 | anpassa inställningar
-   12 | our 1014 partners
    12 | согласен
    12 | uklassificerede
    12 | funktionelle
+   12 | cookiebeleid
    12 | guce
    12 | tietosuoja
    12 | więcej informacji
@@ -567,22 +521,19 @@ Count | Button Text
    12 | english▼
    12 | przejdź do serwisu
    12 | polityce cookies
+   12 | jetzt abonnieren
    12 | sutinku
    12 | inicia sesión
    12 | nuestra política de cookies
-   12 | generierung einer user-id auf basis ihrer e-mail-adresse
-   12 | empfangen und verwenden automatisch gesendeter geräteinformationen zum zweck der identifikation
    12 | data protection
    12 | prihvati sve
    12 | vain välttämättömät evästeet
-   12 | alles akzeptieren
-   12 | alles toestaan
-   11 | accepteren
+   12 | mit contentpass einloggen
+   11 | hier einloggen
    11 | administrer tillatelser
    11 | gå til slutten
    11 | erklæring om personvern og informasjonskapsler
    11 | akceptuję wszystkie
-   11 | cookie-instellingen
    11 | reject pay
    11 | personvern og informasjonskapsler
    11 | tilpasset innhold, produktutvikling og markedsføring utført av aller media
@@ -599,6 +550,8 @@ Count | Button Text
    11 | flere muligheder
    11 | einstellungen ändern
    11 | ich lehne ab
+   11 | liste der partner (lieferanten)
+   11 | akkoord
    11 | lære mer.
    11 | hyväksyn vain välttämättömät evästeet
    11 | vores 1014 partnere
@@ -607,29 +560,25 @@ Count | Button Text
    11 | cookieindstillinger
    11 | data privacy
    11 | häufig gestellten fragen (faq)
-   11 | einwilligen und weiter
    11 | nej tack
-   11 | datenschutzbestimmungen
    11 | prihvati i zatvori
    11 | akzeptieren wie ausgewählt
    11 | https:developers.google.comanalyticsdevguidescollectionanalyticsjscookie-usage?hl=degtagjs_google_analytics_4_-_cookie_usage
-   11 | zustimmen und weiter
-   11 | abschnitt einzelheiten
    11 | fortsett uten å godta
    11 | vis formål
+   11 | cookies akzeptieren
    11 | aksepter alle informasjonskapsler
    11 | ich stimme zu
-   11 | jetzt anmelden
+   11 | einstellungen oder ablehnen
    11 | les mer om hvordan google bruker dataene dine
    11 | actively scan device characteristics for identification
    10 | privacy cookie policy
+   10 | cookie-richtlinie
    10 | statistiske
    10 | allow
    10 | acceptér
    10 | ok, jeg forstår
    10 | αποδοχή όλων
-   10 | sabonner
-   10 | accepter et continuer
    10 | vores 202 samarbejdspartnere
    10 | retningslinjer for cookies
    10 | our cookie policy
@@ -644,6 +593,7 @@ Count | Button Text
    10 | yes
    10 | più opzioni
    10 | www.youronlinechoices.eu
+   10 | datenschutzrichtlinie
    10 | socios
    10 | vis mer informasjon
    10 | zaakceptuj tylko niezbędne
@@ -658,20 +608,20 @@ Count | Button Text
    10 | godta avslå innstillinger
    10 | verstanden
    10 | godkjenn alle cookies
-   10 | ik ga akkoord
+   10 | abschnitt einzelheiten
    10 | cookie-policy
-   10 | verwendung und weitergabe von nutzerkennungen zu werbezwecken
+   10 | alles akzeptieren
    10 | aksepter utvalg
    10 | log in here
     9 | отклонить
     9 | fine print
-    9 | accepter et fermer
     9 | agree close
     9 | nie zgadzam się
     9 | accepter fermer
     9 | vår personvernerklæring
     9 | odmów
     9 | απόρριψη όλων
+    9 | accepter et continuer
     9 | sivustoilla
     9 | kumppaneineen (86)
     9 | lær mere
@@ -685,7 +635,6 @@ Count | Button Text
     9 | se præferencer
     9 | powered by
     9 | save settings
-    9 | jetzt einloggen!
     9 | avvis alle informasjonskapsler
     9 | accetta e continua
     9 | opt out
@@ -696,31 +645,26 @@ Count | Button Text
     9 | polityką prywatności
     9 | leer más
     9 | tillat utvalgte
-    9 | privacy center
+    9 | einwilligen und weiter
     9 | ustawień zaawansowanych
     9 | les mer om bruk av informasjonskapsler i vår personvernerklæring.
     9 | mehr dazu
-    9 | déjà abonné ? se connecter
     9 | lisää vaihtoehtoja
     9 | tilpass informasjonskapsler
     9 | anzeigeneinstellungen
     9 | auswahl speichern
     9 | få mer informasjon
     9 | einstellungen speichern
-    9 | drittanbietern
+    9 | alles accepteren
     9 | accetta tutti i cookie
     9 | här
     9 | odmietnuť
     9 | (skjul denne meldinga)
     9 | rozumím a přijímám
     9 | tilpass dine innstillinger
-    9 | identifiants partagés
-    9 | espace de confidentialité
-    9 | didentifiants partagés
     9 | se personvernerklæring
     9 | actividades de marketing digital o análisis
     9 | conexión a internet habilitada
-    8 | privacybeleid
     8 | view our 1017 partners
     8 | individuell anpassen
     8 | çerez politikası
@@ -729,7 +673,6 @@ Count | Button Text
     8 | afvise
     8 | våre 1570 partnere
     8 | részletek
-    8 | instellingen
     8 | adatkezelési tájékoztató
     8 | přijmout
     8 | se vores 427 partnere
@@ -739,15 +682,12 @@ Count | Button Text
     8 | akseptere cookies
     8 | flere innstillinger
     8 | соглашаюсь
-    8 | cookies zulassen
     8 | nõustun
     8 | personverninnstillinger
-    8 | accepter tout
-    8 | fermer
     8 | naszych partnerów reklamowych (1018)
     8 | slapukų nustatymai
+    8 | kontakt
     8 | endre instillinger
-    8 | privatsphäre einstellungen
     8 | aceitar
     8 | persondatapolitik
     8 | third parties
@@ -764,6 +704,7 @@ Count | Button Text
     8 | inställningar för cookies
     8 | lagre valg
     8 | afvis og luk
+    8 | privacy center
     8 | pielāgot izvēli
     8 | funksjonelle funksjonelle cookiene gjør det mulig å lagre opplysninger som endrer måten nettsiden ser ut eller oppfører seg på. f.eks. ditt foretrukne språk eller den regionen du befinner deg i.
     8 | nødvendige (påkrevd) nødvendige cookiene hjelper med å gjøre nettsiden vår brukbar ved å aktivere grunnleggende funksjoner, slik som side-navigasjon og tilgang til sikre områder av nettsiden. nettsiden kan ikke fungere optimalt uten disse cookiene. vi har vurdert disse som nødvendige, og de lagres derfor uten foregående samtykke.
@@ -779,13 +720,9 @@ Count | Button Text
     8 | evästekäytännöt
     8 | terze parti selezionate
     8 | reject subscribe
-    8 | nur essentielle cookies akzeptieren
-    8 | cerise media
     7 | vis cookiedetaljer
-    7 | personalize
-    7 | ok, accept all
     7 | datenschutzhinweise (pur)
-    7 | données personnelles
+    7 | accepter et fermer
     7 | 同意する
     7 | om informasjonskapsler
     7 | politykę prywatności
@@ -793,20 +730,19 @@ Count | Button Text
     7 | les vår personvernerklæring for mer info
     7 | administrer præferencer
     7 | odmítám
-    7 | analytics
-    7 | privatsphäre
     7 | se partnerne våre
     7 | stäng
     7 | ändra mina inställningar
     7 | cookie- og privatlivspolitik
     7 | ok, got it!
+    7 | cookies zulassen
     7 | powered by websitepolicies
     7 | policy for informasjonskapsler
     7 | here.
+    7 | fermer
     7 | ajustes
     7 | godkänn inte
     7 | about cookies
-    7 | werbefrei für 3,99 € monat
     7 | nein
     7 | preferenze
     7 | więcej o plikach cookies przeczytasz w naszej polityce prywatności.
@@ -826,28 +762,25 @@ Count | Button Text
     7 | lista zaufanych partnerów
     7 | hyväksy välttämättömät
     7 | avvis alle cookies
-    7 | einstellungen verwalten
     7 | leyfa vafrakökur
     7 | nánar um vafrakökur
     7 | išsami informacija
     7 | tutaj
-    7 | meer opties
     7 | tümünü kabul et
     7 | reddet
-    7 | cookieverklaring
     7 | maggiori informazioni
     7 | godta utvalg
     7 | les mer i vår cookiepolicy
     7 | lista partnerów (dostawców)
-    7 | paramètres des cookies
     7 | alle zulassen
-    7 | unsere 1014 partner
     7 | om oss
     7 | tilpasset innhold, produktutvikling og markedsføring utført av abc startsiden
     7 | consenthub
+    7 | drittanbietern
     7 | godkänn alla cookies
     7 | view our cookie policy
     7 | impostazioni cookie
+    7 | datenschutz-einstellungen
     7 | souhlas
     7 | preferenze pubblicitarie
     7 | gestione consensi
@@ -855,7 +788,6 @@ Count | Button Text
     7 | personalised advertising, advertising measurement, audience research and services development
     7 | les meir om informasjonskapslane våre
     6 | accetta tutto
-    6 | politique cookies
     6 | qui
     6 | bruk av informasjonskapsler
     6 | non
@@ -865,7 +797,6 @@ Count | Button Text
     6 | preferenze cookies
     6 | subscribe
     6 | accepter valgte
-    6 | accepteer alle cookies
     6 | testreszabás
     6 | den er grei!
     6 | privacy and cookies policy
@@ -883,13 +814,12 @@ Count | Button Text
     6 | lagre
     6 | kun nødvendig
     6 | acknowledge
+    6 | accepter tout
     6 | aceptar y cerrar
     6 | vilkår og betingelser
     6 | privatumo politika
-    6 | learn more about how we use cookies
     6 | det er ok
-    6 | cookie-richtlinien
-    6 | niet akkoord
+    6 | werbefrei für 3,99 € monat
     6 | lees meer
     6 | cookie notice.
     6 | confirm selection
@@ -909,7 +839,7 @@ Count | Button Text
     6 | evästekäytäntö
     6 | 同意
     6 | vis detaljar
-    6 | cookie-erklärung
+    6 | einstellungen verwalten
     6 | no, give me more info
     6 | cookie info
     6 | 488 partner
@@ -941,6 +871,7 @@ Count | Button Text
     6 | prijať všetky
     6 | odmietnuť všetko
     6 | no, thank you
+    6 | unsere 1014 partner
     6 | bekreft mine valg
     6 | jeg forstår!
     6 | ρυθμίσεις
@@ -966,9 +897,13 @@ Count | Button Text
     6 | sanoman verkostosta
     6 | hantera cookies
     6 | detaily
+    6 | alle auswählen
     6 | συμφωνώ
+    6 | nur essentielle cookies akzeptieren
     6 | godtar cookies
+    6 | speichern von oder zugriff auf informationen auf einem endgerät
     6 | aquí
+    6 | drittanbieter
     6 | (vis detaljer)
     6 | visa syften
     6 | ️ settings
@@ -985,13 +920,15 @@ Count | Button Text
     5 | nej
     5 | les vår personvernerklæring her
     5 | aksepter valgte
+    5 | accepteren
     5 | ver socios
     5 | red de wordpress.com
     5 | приемам
     5 | погоджуюсь
+    5 | accepteer alle cookies
+    5 | sabonner
     5 | polityka plików cookie
     5 | souhlasím a pokračovat
-    5 | verwendung reduzierter daten zur auswahl von inhalten
     5 | pouze nezbytné
     5 | cliquez ici
     5 | настроить
@@ -1013,7 +950,6 @@ Count | Button Text
     5 | mostra dettagli
     5 | odrzucam
     5 | политикой обработки персональных данных
-    5 | notwendige cookies
     5 | schließen
     5 | entrer
     5 | velg selv
@@ -1021,8 +957,8 @@ Count | Button Text
     5 | columbia university website cookie notice
     5 | personalizați
     5 | ok til alle
-    5 | prüfung der anwendbarkeit der utiq-technologie
-    5 | liste unserer partner
+    5 | learn more about how we use cookies
+    5 | cookie-richtlinien
     5 | slapukų politika
     5 | patvirtinti pažymėtus
     5 | våre 979 partnere
@@ -1040,11 +976,8 @@ Count | Button Text
     5 | ustawieniach
     5 | ok, got it.
     5 | προσαρμογή
-    5 | weitere einstellungen
-    5 | jaccepte tout
     5 | ohne werbetracking für 3.99 € monat
     5 | vis vilkår informasjon
-    5 | nos partenaires
     5 | prosseguir
     5 | engedélyezem
     5 | további tudnivalók
@@ -1058,7 +991,6 @@ Count | Button Text
     5 | cookie policy page
     5 | ok, jeg aksepterer
     5 | se retningslinjer
-    5 | zur datenschutzerklärung
     5 | cookie-policy.
     5 | definições de cookies
     5 | erweiterte einstellungen
@@ -1067,6 +999,7 @@ Count | Button Text
     5 | manage services
     5 | piekrītu
     5 | povolit nezbytné
+    5 | datenschutzbestimmungen
     5 | preferanse
     5 | cookie statement
     5 | cookie consent mit real cookie banner
@@ -1074,14 +1007,12 @@ Count | Button Text
     5 | přijmout všechny soubory cookie
     5 | leggi di più
     5 | az összes elfogadása
-    5 | 247 partenaires
     5 | nei takk!
     5 | endre
     5 | polityki prywatności
     5 | leisti visus slapukus
     5 | slapukų politikoje
     5 | tümünü reddet
-    5 | paramètres
     5 | saznaj više
     5 | zaakceptuj
     5 | politica sui cookie
@@ -1090,8 +1021,7 @@ Count | Button Text
     5 | rādīt detalizēti
     5 | рекомендательные технологии
     5 | privacy page
-    5 | anmelden
-    5 | auswahl erlauben
+    5 | cookieverklaring
     5 | tracks
     5 | riders
     5 | standings
@@ -1108,7 +1038,6 @@ Count | Button Text
     5 | viac informácií
     5 | ρυθμίσεις cookies
     5 | prispôsobiť
-    5 | berechtigten interesses
     5 | plus dinformations
     5 | our 10 partners
     5 | personuppgifts- och cookiepolicy
@@ -1127,8 +1056,6 @@ Count | Button Text
     5 | already a contentpass user? log in here
     5 | sharing settings
     5 | aceptar y continuar gratis
-    5 | digital prisma players
-    5 | refuser et sabonner (0,99€) pour une expérience sans pub
     5 | fler inställningar
     5 | listado completo de finalidades
     5 | sus 979 socios
@@ -1137,13 +1064,8 @@ Count | Button Text
     5 | our privacy policy.
     5 | hyväksy vain välttämättömät evästeet
     5 | preferansar
-    5 | details tonen
     5 | se igjennom
-    5 | anbieter
     5 | rozumím
-    5 | cookie instellingen
-    5 | angebotsübergreifende verarbeitung von daten durch bertelsmann-unternehmen für analyse, produktentwicklung, messung, werbung und risikomanagement
-    5 | fremdinhalte anzeigen (soziale netzwerke und chat-systeme)
     5 | selection of personalised content and content measurement
     5 | create profiles to personalise content
     5 | technical necessary information
@@ -1174,12 +1096,10 @@ Count | Button Text
     4 | acceptă
     4 | les mer om personvern i avinor
     4 | lasīt vairāk
-    4 | annehmen
     4 | show more information
     4 | click here to read our complete cookie policy.
     4 | avbryt
     4 | cookie declaration
-    4 | erfahren sie mehr
     4 | view privacy policy
     4 | ustawienia cookies
     4 | odmawiam
@@ -1196,14 +1116,13 @@ Count | Button Text
     4 | know more
     4 | our 980 partners
     4 | click here to learn more about implementing rta labeling.
-    4 | our 4 partners
     4 | close cookie notice i agree
     4 | отказаться
     4 | i consent
     4 | zobrazit podrobnosti
     4 | vše přijmout
-    4 | fortfahren ohne akzeptieren
     4 | datenschutzrichtlinien
+    4 | niet akkoord
     4 | tylko niezbędne
     4 | tak, zgadzam się
     4 | cookie information åbner i ny fane
@@ -1225,7 +1144,6 @@ Count | Button Text
     4 | i accept all cookies
     4 | personverninformasjon
     4 | zmień ustawienia
-    4 | alle cookies accepteren
     4 | zezwól na wybór
     4 | részletek megjelenítése
     4 | zarządzaj preferencjami
@@ -1236,11 +1154,7 @@ Count | Button Text
     4 | kun strengt nødvendige
     4 | confirm
     4 | available here
-    4 | datenaustausch
-    4 | funktional, analytik, werbung (nicht iab-anbieter), soziale medien und unbedingt erforderliche cookies
     4 | 閉じる
-    4 | je naccepte rien
-    4 | politique de protection des données personnelles
     4 | kabul ediyorum
     4 | lär dig mer
     4 | tillat kun nødvendige informasjonskapsler
@@ -1256,6 +1170,7 @@ Count | Button Text
     4 | aviso de privacidade
     4 | cookies.
     4 | tilpass mine cookies
+    4 | partenaires
     4 | prihvaćam
     4 | πολιτική απορρήτου
     4 | afvis alle cookies
@@ -1267,11 +1182,11 @@ Count | Button Text
     4 | informasjonskapsler for publikumsmåling
     4 | les mer om vår bruk av cookies i personvernerklæringen.
     4 | informasjon om vår bruk av cookies
-    4 | datenschutzerklärung.
+    4 | zur datenschutzerklärung
+    4 | cookie-erklärung
     4 | retningslinjer
     4 | näytä asetukset
     4 | ikkje tillat
-    4 | datensc hutz
     4 | podívejte se na našich 54 partnerů
     4 | štampa
     4 | kolačići
@@ -1316,7 +1231,6 @@ Count | Button Text
     4 | mere info
     4 | összes elutasítása
     4 | advertising purposes
-    4 | barrierefreiheit
     4 | nekt
     4 | informasjonskapselerklæring
     4 | innstillinger og info
@@ -1327,20 +1241,18 @@ Count | Button Text
     4 | ok, verstanden
     4 | acceptă toate
     4 | find out more here
+    4 | auswahl erlauben
     4 | kun nødvendige informasjonskapsler
     4 | upravit
     4 | informasjonskapsler.
     4 | teams
-    4 | non merci
     4 | ďalšie informácie
     4 | googlen tietosuojakäytäntö
     4 | povoliť všetko
-    4 | individuelle einstellungen
     4 | les mer om personvern og informasjonskapsler
     4 | sluiten
     4 | 177 partner
     4 | avanserte innstillinger
-    4 | individuelle cookie-einstellungen
     4 | beállítások módosítása
     4 | + tilastoevästeet
     4 | + markkinointievästeet
@@ -1351,7 +1263,6 @@ Count | Button Text
     4 | privacy policies
     4 | preferanser for informasjonskapsler
     4 | çerez politikamızı
-    4 | eigene produkt- und vertriebsentwicklung
     4 | odrzucam i chcę dowiedzieć się więcej
     4 | zaloguj
     4 | firmainfo
@@ -1360,73 +1271,46 @@ Count | Button Text
     4 | yes, i accept
     4 | enter website
     4 | speichern schließen
-    4 | our 972 partners
     4 | entendido
     4 | poszczególnych serwisów
-    4 | accepteer alles
     4 | polityka prywatności agora s.a.
     4 | this link
     4 | zásadách používání souborů cookie
-    4 | alle abwählen
     4 | vis mer
     4 | nuestros 717 socios
-    4 | cookies für marketingzwecke
-    4 | funktionelle cookies
-    4 | leistungs-cookies
-    4 | unbedingt erforderliche cookies
     4 | sprejmi vse
     4 | de
     4 | aceitar todos os cookies
     4 | chiudi
-    4 | alle cookies aanvaarden
     4 | presné údaje o geografickej polohe a identifikácia skenovaním zariadenia
     4 | data protection notice
     4 | für 2,99 €monat abonnieren
-    4 | privacy-manager
     4 | administrere
     4 | cookie-informationen anzeigen
     4 | accept all continue
     4 | 126 technology partners
     4 | acceptér alle cookies
-    4 | ‌
-    4 | partnern
-    4 | nicht zustimmen
-    4 | alle cookies toestaan
-    4 | privacy- en cookieverklaring
     4 | περισσότερα
     4 | kun funksjonelle
     4 | webnode
-    4 | selectie toestaan
-    4 | individuelle einstellung einblenden
-    4 | datenschutz-erklärung
-    4 | compte prisma connect
-    4 | refuser et sabonner (1,99€) pour une expérience sans pub
-    4 | technisch notwendig
     4 | acceptera cookies
-    4 | .
     4 | à quoi servent les cookies ?
     4 | partenaires (239)
     4 | almacenar la información en un dispositivo yo acceder a ella
     4 | i disagree - leave
     4 | i agree - enter now
-    4 | nee, liever niet
-    4 | präferenzen
     4 | cookie-präferenzen
     4 | sortir
     4 | configurar preferencias
     4 | salva le mie preferenze
     4 | noraidīt
-    4 | personalisierte werbung
     4 | hallitse asetuksia
     4 | kumppanien (toimittajien) luettelo
     4 | hantera
-    4 | made hosted in germany by ccm19
     4 | aksepter informasjonskapsler
     4 | produktutvikling, personlig tilpasning og markedsføring utført av schibsted media as
     4 | annonsering utført av schibsted media as
     4 | 2 partnere
-    4 | messung
-    4 | funktion
     4 | zarządzaj opcjami
     4 | das ist ok
     4 | edit your preferences
@@ -1437,15 +1321,11 @@ Count | Button Text
     4 | lisätietoja k-ryhmän evästekäytännöistä
     4 | customize or reject all
     4 | avvis informasjonskapsler
+    4 | déjà abonné ? se connecter
     4 | je refuse et je mabonne
     4 | liste de nos partenaires (fournisseurs)
     4 | notre politique de confidentialité
-    4 | alle erlauben
-    4 | verwendung und weitergabe von identifiern
     4 | cookie-center
-    4 | datenschutz-optionen
-    4 | akzeptieren weiter
-    4 | erstreckung von einwilligungen auf geräte, apps inhalte ohne grafische benutzerschnittstelle
     3 | done_all accept
     3 | push-benachrichtigungen kommunikation
     3 | einbindung externer inhalte
@@ -1469,18 +1349,14 @@ Count | Button Text
     3 | gestionar cookies
     3 | bare nødvendige informasjonskapsler
     3 | tilpass mine valg
-    3 | individual privacy preferences
     3 | our 11 partners
-    3 | zum abonnement
     3 | политикой обработки файлов cookie
-    3 | політика конфіденційності
     3 | политика за поверителност
+    3 | політика конфіденційності
     3 | nesouhlasím
     3 | tietojen tallentaminen laitteelle jatai laitteella olevien tietojen käyttö
     3 | принять все
     3 | endre preferanser
-    3 | afficher les détails
-    3 | unserer datenschutzerklärung
     3 | další informace
     3 | refuză
     3 | a sütikről
@@ -1489,7 +1365,6 @@ Count | Button Text
     3 | zásady používání souborů cookie
     3 | microsoft corporation
     3 | konfigurer
-    3 | décliner
     3 | čia
     3 | további információk
     3 | only accept required
@@ -1503,8 +1378,8 @@ Count | Button Text
     3 | terms and conditions of use
     3 | learn more about our cookie policy
     3 | accept and hide this message
+    3 | notwendige cookies
     3 | további információ
-    3 | politique relative aux cookies
     3 | legal warning
     3 | subscribe and decline
     3 | gérer les cookies
@@ -1519,6 +1394,7 @@ Count | Button Text
     3 | click here.
     3 | forstått
     3 | datenschutzinformationszentrum
+    3 | liste unserer partner
     3 | privatsphäre-einstellungen
     3 | odmítám vše
     3 | lukk og godkjenn
@@ -1536,6 +1412,7 @@ Count | Button Text
     3 | view policy
     3 | se full forklaring
     3 | luba valik
+    3 | analytics
     3 | cookie consent tool
     3 | personvern og cookies
     3 | preferencias
@@ -1578,11 +1455,12 @@ Count | Button Text
     3 | svenska
     3 | norsk (nynorsk)
     3 | norsk (bokmål)
+    3 | nos partenaires
     3 | terms info
     3 | vår bruk av informasjonskapsler
     3 | portal da privacidade
-    3 | personanpassad reklam och innehåll, reklam- och innehållsmätning, forskning angående målgrupp och tjänsteutveckling
     3 | nøyaktige geolokasjonsdata og identifisering gjennom enhetsskanning
+    3 | personanpassad reklam och innehåll, reklam- och innehållsmätning, forskning angående målgrupp och tjänsteutveckling
     3 | i understand.
     3 | oświadczenie o prywatności
     3 | våre retningslinjer for informasjonskapsler
@@ -1595,6 +1473,7 @@ Count | Button Text
     3 | innstillinger for informasjonskapsler og tjenester
     3 | erklæring om informasjonskapsler og datadeling
     3 | muuta asetuksia
+    3 | datenschutzerklärung.
     3 | godta utvalde
     3 | når som helst endre tillatinga du gir her.
     3 | accept cookie notice
@@ -1606,8 +1485,6 @@ Count | Button Text
     3 | elfogadás és bezárás
     3 | folytatás beleegyezés nélkül
     3 | close cookie bar
-    3 | political advertising
-    3 | analyse cookies, analyse speicherung
     3 | kebijakan cookie
     3 | jeg aksepterer alle
     3 | mer informasjon og innstillinger
@@ -1647,7 +1524,6 @@ Count | Button Text
     3 | okay, got it
     3 | rohkem infot
     3 | tredjeparter
-    3 | 1041 derden
     3 | begrepen!
     3 | handelsbetingelser
     3 | cookie politik
@@ -1660,7 +1536,6 @@ Count | Button Text
     3 | se personvernerklæringen
     3 | politika zaštite privatnosti
     3 | our use of cookies
-    3 | accepter tous les cookies
     3 | akseptér
     3 | czytaj więcej...
     3 | zaakceptuj zgody
@@ -1681,13 +1556,14 @@ Count | Button Text
     3 | juster preferanser
     3 | se vores cookiepolitik
     3 | privacy page.
+    3 | over
+    3 | toestemming
     3 | consents certified by
     3 | 設定を管理
     3 | cloudflare inc.
     3 | سياسة الخصوصية
     3 | show more
     3 | personvern­erklæring
-    3 | ich akzeptiere
     3 | read more here.
     3 | uniconsent
     3 | administrer informasjonskapsler og finn ut mer
@@ -1696,7 +1572,6 @@ Count | Button Text
     3 | privacy policy (opens in a new tab)
     3 | consent management platform von real cookie banner
     3 | пользовательского соглашения
-    3 | googles privacy policy
     3 | här.
     3 | googles personvernregler
     3 | mais opções
@@ -1708,27 +1583,24 @@ Count | Button Text
     3 | salva preferenze
     3 | zarządzaj serwisami
     3 | ยอมรับทั้งหมด
+    3 | privacybeleid
     3 | facebook
     3 | the vault
     3 | отклонить все
-    3 | compris
     3 | tillat utval
     3 | godta alle kun nødvendige
     3 | nei, bare nødvendige
     3 | ja, det går bra
     3 | gi samtykke
     3 | privatumo politikoje
+    3 | individuelle einstellungen
     3 | polityka cookie
     3 | zeige alle
     3 | postavke kolačića
     3 | prihvati sve kolačiće
     3 | i am 18+ — enter
-    3 | entwicklung und verbesserung der angebote
-    3 | erstellung von profilen für personalisierte werbung
-    3 | verwendung reduzierter daten zur auswahl von werbeanzeigen
     3 | إدارة التفضيلات
-    3 | werbung
-    3 | analytik
+    3 | individuelle cookie-einstellungen
     3 | samo nužno
     3 | popis partnera
     3 | persondata- og cookiepolitik
@@ -1744,7 +1616,6 @@ Count | Button Text
     3 | tillat alt
     3 | evästekäytännöistämme
     3 | muokkaa valintoja
-    3 | abfall
     3 | cookie 設定
     3 | configuración de cookie
     3 | speichern schliessen
@@ -1752,8 +1623,9 @@ Count | Button Text
     3 | configuration
     3 | deaktivere alle
     3 | enter ts4rent
-    3 | zustimmen weiter
     3 | 隱私權政策
+    3 | zustimmen und weiter
+    3 | our 972 partners
     3 | visa inställningar
     3 | privaatsuspoliitika
     3 | termes et conditions
@@ -1774,49 +1646,47 @@ Count | Button Text
     3 | slik administrerer vi informasjonskapsler.
     3 | personnaliser mes choix
     3 | nicht einverstanden
-    3 | dritte
     3 | aceitar todos
     3 | more on cookies
+    3 | alle cookies aanvaarden
     3 | våra 49 partners
     3 | luban kõik
     3 | zaakceptuj wszystko
+    3 | erfahren sie mehr
     3 | juster
-    3 | notwendige akzeptieren
+    3 | privatsphäre
     3 | only accept necessary cookies
-    3 | ad storage
     3 | δεν συμφωνώ
     3 | pravila o zaštiti privatnosti
     3 | data privacy statement
+    3 | annehmen
     3 | agree to our privacy policy
     3 | sekretesspolicy
     3 | cookies verwalten
+    3 | individuelle einstellung einblenden
+    3 | datenschutz-erklärung
     3 | administrer individuelle preferanser
-    3 | meer info
     3 | politica de confidențialitate
+    3 | technisch notwendig
     3 | pielāgot
     3 | çerez ayarları
     3 | fr
-    3 | zustimmen schließen
     3 | nastavitve piškotkov
     3 | werbefrei für 3.99 € monat
     3 | publicidad y contenido personalizados, medición de publicidad y contenido, investigación de audiencia y desarrollo de servicios
     3 | mehr über die genutzten cookies erfahren
     3 | spara inställningar
-    3 | einbindung von externen inhalten für journalistische zwecke
     3 | nos 356 partenaires
     3 | lire notre politique de vie privée.
-    3 | datenschutzinformation
     3 | cookie-nutzung
+    3 | nicht zustimmen
     3 | vis alle partnere (1703)
     3 | erlauben
     3 | hide
+    3 | endgeräteeigenschaften zur identifikation aktiv abfragen
     3 | les mer om personvern hos oss.
     3 | odmietnuť všetky
     3 | tcs
-    3 | instellungen
-    3 | jetzt nicht zustimmen
-    3 | aus authentifizierungen abgeleitete kennungen (einschließlich netid und utiq)
-    3 | speichern von oder zugriff auf informationen auf einem endgerät.
     3 | consentik
     3 | close x
     3 | scopri di più
@@ -1827,31 +1697,32 @@ Count | Button Text
     3 | select cookies
     3 | optionen verwalten
     3 | read more...
+    3 | privacy- en cookieverklaring
+    3 | details tonen
     3 | aydınlatma metnimizi
     3 | çerez
     3 | cookie information öppnas i ny flik
     3 | forlag
     3 | επιτρέπεται η επιλογή
+    3 | .
     3 | accetto i cookie
     3 | leave here
     3 | απορριψη ολων
     3 | en hyväksy
     3 | jag förstår!
-    3 | algemene voorwaarden
     3 | povolit pouze nezbytné
-    3 | werbefrei lesen
-    3 | réglages
     3 | ver 1065 socios
     3 | afficher toutes les finalités
     3 | charte cookies
     3 | paramétrer vos choix
     3 | youtube
+    3 | made hosted in germany by ccm19
     3 | visualizza linformativa sulla privacy
-    3 | social-media-cookies
     3 | ustaw preferencje
     3 | lassen sie mich wählen
     3 | accepter kun nødvendige
-    3 | privacy beleid
+    3 | alle erlauben
+    3 | akzeptieren weiter
     3 | widerrufen
     2 | обработку персональных данных
     2 | cookies guide
@@ -1867,11 +1738,12 @@ Count | Button Text
     2 | personnaliser vos choix
     2 | show this message in english
     2 | refuser et sabonner
+    2 | données personnelles
     2 | más información aquí
-    2 | alle annehmen
     2 | usar solo las necesarias
     2 | permitir todas las cookies
     2 | política ampliada de cookies
+    2 | akzeptieren schließen
     2 | - impressum
     2 | ausgewählte cookies akzeptieren
     2 | les mer om vår bruk av informasjonskapsler og velg innstillingene som passer deg
@@ -1907,17 +1779,14 @@ Count | Button Text
     2 | les mer om personven for elever
     2 | polityce prywatności i cookies
     2 | forstået
-    2 | notwendig
-    2 | alles klar
-    2 | cookie inställningar
     2 | lagre valgene mine
+    2 | cookie inställningar
     2 | отхвърляне
     2 | персонализирайте
     2 | akceptuj niezbędne
     2 | read policy
     2 | muokkaa evästeasetuksia
     2 | lue lisää evästeistämme
-    2 | politique de protection des données
     2 | les mer om cookies på ark.no her.
     2 | i want more options
     2 | les mer om vår bruk av cookies
@@ -1928,6 +1797,7 @@ Count | Button Text
     2 | kohdennettu mainonta, mainonnan mittaaminen, yleisötutkimus ja palvelujen kehittäminen
     2 | 62 mainontakumppania
     2 | selectie accepteren
+    2 | afficher les détails
     2 | https:auksjonen.noinfosentercookies
     2 | einstellungen übernehmen
     2 | zmeniť moje nastavenia
@@ -1953,11 +1823,11 @@ Count | Button Text
     2 | ja, jeg akspeterer alle typer cookies
     2 | nei, jeg akspeterer ikke cookies
     2 | bekrefte
-    2 | wenn du keine cookies mit ausnahme der technisch notwendigen cookie akzeptieren möchtest, dann klicke bitte hier
     2 | cookies her
     2 | cookie policy,
     2 | globalprivacycontrol.org
     2 | ideas.lego.com
+    2 | décliner
     2 | les mer om informasjonskapsler og våre partnere
     2 | teknisk
     2 | wordpress cookie plugin von real cookie banner
@@ -1970,12 +1840,11 @@ Count | Button Text
     2 | 177 socios
     2 | customize reject all accept all
     2 | about us
-    2 | accepteren sluiten
     2 | view details
     2 | apstiprināt
     2 | sīkdatņu politiku
-    2 | i våre personvernvilkår
     2 | besøk vår informasjonsside
+    2 | i våre personvernvilkår
     2 | open settings
     2 | aksepterer alle
     2 | jeg skjønner!
@@ -2004,6 +1873,7 @@ Count | Button Text
     2 | chấp nhận
     2 | elfogad
     2 | politique de vérification de lâge
+    2 | politique relative aux cookies
     2 | endre cookies
     2 | valgte preferanser
     2 | enter here!
@@ -2058,7 +1928,6 @@ Count | Button Text
     2 | zaawansowane
     2 | international
     2 | tilpass informasjonskapselpreferanser
-    2 | zelf instellen
     2 | hallitse evästeitä
     2 | tietosuojaselosteestamme
     2 | keisti mano pasirinkimus
@@ -2067,7 +1936,6 @@ Count | Button Text
     2 | ρυθμίσεις για τα cookies
     2 | agree cookies
     2 | politica de confidentialitate
-    2 | tout autoriser
     2 | sain aru
     2 | kun nødv.
     2 | godta alle og fortsett
@@ -2089,12 +1957,11 @@ Count | Button Text
     2 | personal data
     2 | 975 partners
     2 | free of charge.
-    2 | data protection policy.
-    2 | gothia towers
-    2 | svenska mässan
+    2 | our 4 partners
     2 | gå til personverninnstillinger
     2 | pogledaj postavke
     2 | zabrani
+    2 | alle cookies accepteren
     2 | denne lenken
     2 | polityką prywatności i plików cookie
     2 | skift indstillinger
@@ -2120,10 +1987,8 @@ Count | Button Text
     2 | vis databeskyttelsespolitik
     2 | preference
     2 | opt-out
-    2 | ok, tout accepter
     2 | leverantorer
     2 | more information...
-    2 | 1078 partenaires
     2 | en savoir plus sur les cookies
     2 | uppfattat!
     2 | administrer innstillinger for informasjonskapsler
@@ -2145,7 +2010,6 @@ Count | Button Text
     2 | mcgraw hill privacy center
     2 | uvjeti korištenja
     2 | prihvaćam odabrane
-    2 | einstellungen öffnen
     2 | godta bruk av informasjonskapsler
     2 | det går fint!
     2 | i understand - close this message
@@ -2168,7 +2032,6 @@ Count | Button Text
     2 | les alt om hunkemöllers policy for informasjonskapsler her.
     2 | klikk her.
     2 | „erweiterte einstellungen
-    2 | 381 partner
     2 | avís legal
     2 | rebutjar tot
     2 | acceptar tot
@@ -2196,7 +2059,6 @@ Count | Button Text
     2 | neka alla icke-nödvändiga cookies
     2 | dataskyddsbeskrivning
     2 | tietosuojakäytännöstämme
-    2 | unbedingt erforderlich
     2 | polityce plików cookie
     2 | greit!
     2 | nein, anpassen
@@ -2255,10 +2117,6 @@ Count | Button Text
     2 | tilpasset annoncering og indhold, annoncerings- og indholdsmåling, målgruppeundersøgelser og udvikling af tjenester
     2 | opbevare ogeller tilgå oplysninger på en enhed
     2 | præcise geografiske placeringsoplysninger og identifikation gennem enhedsscanning
-    2 | datenschutzmanager
-    2 | google analytics
-    2 | zum login
-    2 | faqs
     2 | 利用者情報の外部送信について
     2 | jeg er enig
     2 | jeg er ikke enig
@@ -2281,7 +2139,6 @@ Count | Button Text
     2 | x skjul informasjonskapselbanner
     2 | klikk
     2 | política de privacidade e cookies
-    2 | mentions légales
     2 | bare viktige informasjonskapsler
     2 | miele as
     2 | προτιμήσεις
@@ -2292,8 +2149,8 @@ Count | Button Text
     2 | tv 2s privatlivspolitik
     2 | erklæring om cookies
     2 | polityka ciasteczek
+    2 | accepter tous les cookies
     2 | disallow cookies
-    2 | voir les mentions légales
     2 | tietosuojakäytäntösivulla
     2 | avtrykk
     2 | 50 partner
@@ -2321,8 +2178,6 @@ Count | Button Text
     2 | 닫기
     2 | 개인정보 처리방침
     2 | подтверждаю
-    2 | pur-abo abonnieren
-    2 | bestehenden pur-abo einloggen
     2 | les mer i personvernerklæringen vår.
     2 | vis innstillinger for informasjonskapsler
     2 | tilpass valgene mine
@@ -2368,9 +2223,9 @@ Count | Button Text
     2 | cookieen politika atarian
     2 | bazkideek
     2 | data protection declaration
+    2 | ich akzeptiere
     2 | oui, je suis daccord
     2 | se info
-    2 | abonnieren
     2 | juster dine preferanser
     2 | godta bare nødvendige informasjonskapsler
     2 | tietosuojailmoituksestamme
@@ -2387,6 +2242,7 @@ Count | Button Text
     2 | přijímám vše
     2 | налаштування cookie
     2 | per saperne di più
+    2 | googles privacy policy
     2 | russian
     2 | zarządzaj plikami cookies
     2 | våre ki chat bots
@@ -2414,9 +2270,9 @@ Count | Button Text
     2 | features
     2 | altre opzioni
     2 | privacy and cookie statement
+    2 | medical professionals
     2 | rammeverk for googles samtykkemodus
     2 | integrert innhold
-    2 | medical professionals
     2 | vaata eelistusi
     2 | keeldun
     2 | tingimused
@@ -2437,6 +2293,7 @@ Count | Button Text
     2 | confirm my choice
     2 | mehr infos.
     2 | ik ga niet akkoord
+    2 | ik ga akkoord
     2 | i am a minor or came here by mistake. l e a v e
     2 | i am over 18 and will not share this site with minors. e n t e r
     2 | anna minun valita
@@ -2454,19 +2311,9 @@ Count | Button Text
     2 | data protection policy
     2 | show details.
     2 | les mer om hvordan vi behandler cookies og personopplysninger her.
-    2 | analyse von zielgruppen durch statistiken oder kombinationen von daten aus verschiedenen quellen
-    2 | messung der performance von inhalten
-    2 | messung der werbeleistung
-    2 | verwendung von profilen zur auswahl personalisierter inhalte
-    2 | erstellung von profilen zur personalisierung von inhalten
-    2 | verwendung von profilen zur auswahl personalisierter werbung
-    2 | ne pas accepter et fermer
-    2 | ses partenaires
     2 | políticas de cookies.
     2 | настройки
     2 | cookiemeddelande
-    2 | externe inhalte anzeigen (z. b. soziale medien, videos, quiz)
-    2 | direktes marketing
     2 | nekte valgfrie
     2 | מסכיםה
     2 | לינק למדיניות הקוקיז
@@ -2527,8 +2374,6 @@ Count | Button Text
     2 | informasjonskapsler på sor.no
     2 | blokker
     2 | i am a healthcare professional and consent to the use of cookies
-    2 | mehr information
-    2 | jetzt bild pur abonnieren
     2 | our 1026 partners
     2 | razumijem
     2 | accept all reject all
@@ -2547,7 +2392,6 @@ Count | Button Text
     2 | hotjar ltd
     2 | informacje o cookies
     2 | personvernsopplysninger
-    2 | werbefrei für 0,50 € woche
     2 | privacy and cookie policy.
     2 | küpsiste sätted
     2 | すべて拒否する
@@ -2604,7 +2448,6 @@ Count | Button Text
     2 | zaufanych partnerów z iab* (1111 firm)
     2 | for more information, please see our privacy policy
     2 | 0
-    2 | jetzt welt pur abonnieren
     2 | bekräfta val
     2 | our 976 partners
     2 | les mer om vår personvernserklæring her
@@ -2614,12 +2457,8 @@ Count | Button Text
     2 | tool zum anzeigen von gebrauchtwagenbestand: akzeptieren
     2 | kartra-informasjonskapsler
     2 | created with iubenda (il link si apre in una nuova scheda)
-    2 | accepteer cookies
     2 | lire la suite
-    2 | acceptez
     2 | prihvaćam odabrano
-    2 | google iab tcf 2 purposes of processing
-    2 | 147 partner
     2 | about cookie control
     2 | about this tool
     2 | cookies are on
@@ -2630,8 +2469,6 @@ Count | Button Text
     2 | ei, säädä
     2 | detailní nastavení
     2 | zásadách ochrany osobních údajů
-    2 | voorkeuren
-    2 | accepteer
     2 | it
     2 | en savoir plus sur notre politique de confidentialité
     2 | essentiels uniquement
@@ -2651,7 +2488,6 @@ Count | Button Text
     2 | save settings and proceed
     2 | blog
     2 | swisscom directories ag cookie policy.
-    2 | social media
     2 | zezwól na wszystkie pliki cookies
     2 | zobrazit detaily
     2 | ses 981 partenaires (dont 972 partenaires iab)
@@ -2662,6 +2498,8 @@ Count | Button Text
     2 | política de cookies.
     2 | aksepter og lukk
     2 | çerezleri kabul et
+    2 | dritte
+    2 | notwendige akzeptieren
     2 | endre utvalg
     2 | vilkår for personvern og informasjonskapsler
     2 | avvise cookies
@@ -2672,7 +2510,6 @@ Count | Button Text
     2 | accepter la sélection
     2 | français
     2 | polityką plików cookies
-    2 | wie beschrieben
     2 | our 35 partners
     2 | přejít do uživatelského účtu
     2 | auswahl akzeptieren
@@ -2687,20 +2524,18 @@ Count | Button Text
     2 | rifiuta e iscriviti
     2 | allmänna villkor
     2 | mehr
-    2 | 500 andere websites
     2 | continuar sin aceptar
     2 | mehr lesen
     2 | maggiori opzioni
     2 | sunt de acord
+    2 | meer info
+    2 | compris
     2 | κλείσιμο
     2 | désactiver les cookies
     2 | no, grazie
-    2 | je choisis
-    2 | ok pour moi
     2 | ok, ive understood!
     2 | godta cookier
     2 | mer informasjon om cookies
-    2 | autoriser
     2 | aceitar cookies
     2 | meta
     2 | 1539 partner
@@ -2717,13 +2552,15 @@ Count | Button Text
     2 | cookie-erklæringen vår
     2 | weitere informationen.
     2 | les mer om hvordan vi bruker cookies
+    2 | nee, liever niet
     2 | aceptar y seguir leyendo
+    2 | datenschutzinformation
     2 | accetta tutti i cookies
     2 | prijať vybrané
     2 | zobraziť detaily
     2 | okay got it
     2 | cookies policy page
-    2 | funktional, analytik, werbung (nicht iab-anbieter), soziale medien und strikt erforderliche cookies
+    2 | präferenzen
     2 | no thanks, only essential cookies
     2 | accept cookies for aggregated statistics
     2 | mer informasjon.
@@ -2732,10 +2569,14 @@ Count | Button Text
     2 | 1009 socios
     2 | rechazar y suscribirte
     2 | mer om informasjonskapsler.
+    2 | verwendung genauer standortdaten
     2 | externe inhalte anzeigen (z.b. soziale medien, quiz)
+    2 | generierung einer user-id auf basis ihrer e-mail-adresse
+    2 | empfangen und verwenden automatisch gesendeter geräteinformationen zum zweck der identifikation
     2 | personalisierte anzeigen und inhalte, anzeigen- und inhaltsmessungen, erkenntnisse über zielgruppen und produktentwicklungen
     2 | view our 1067 partners
     2 | decline and subscribe
+    2 | individual privacy preferences
     2 | mit diesem button wird der dialog geschlossen. seine funktionalität ist identisch mit der des buttons accept only essential cookies.
     2 | küpsiste seaded
     2 | ja tak, accepter alle
@@ -2752,25 +2593,23 @@ Count | Button Text
     2 | its partners
     2 | rechazar y registrarse
     2 | 973 socios
-    2 | politische werbung
-    2 | einbindung von externen multimedia-inhalten
     2 | más info
     2 | nicht erlauben
     2 | logga in
     2 | yes its okay
     2 | see cookie options
-    2 | politici kolačića
     2 | luban ainult vajalikud
     2 | valin ise
+    2 | politici kolačića
     2 | google werbeanzeigen
     2 | externe inhalte soziale netzwerke
     2 | messung der performance von inhalten, zielgruppenforschung sowie entwicklung und verbesserung der angebote
+    2 | personalisierte werbung
     2 | werbung basierend auf einer reduzierten menge von daten, personalisierte inhalte und messung von werbeleistung
-    2 | datenschutzinformationen
     2 | avvis ikke-essensielle informasjonskapsler
     2 | godta ikke-essensielle informasjonskapsler
     2 | hallinnoi evästeitä
-    2 | datenschutzhinweis
+    2 | funktional, analytik, werbung (nicht iab-anbieter), soziale medien und unbedingt erforderliche cookies
     2 | personalize my choices
     2 | jag samtycker
     2 | показать цели
@@ -2781,7 +2620,6 @@ Count | Button Text
     2 | disclaimer
     2 | zobrazit nastavení
     2 | 拒否する
-    2 | zum pur-abo
     2 | lsu privacy statement.
     2 | more info...
     2 | tv
@@ -2793,7 +2631,7 @@ Count | Button Text
     2 | recept
     2 | accepter les cookies
     2 | ja, jeg godtar
-    2 | ablehnen und einstellungen
+    2 | alles toestaan
     2 | retningslinjer for cookies.
     2 | accept essential and performance only
     2 | aksepter nødvendige informasjonskapsler
@@ -2838,6 +2676,7 @@ Count | Button Text
     2 | listy dostawców
     2 | jen nezbytné
     2 | quit
+    2 | algemene voorwaarden
     2 | hyväksy välttämättömät evästeet
     2 | einstellungen anpassen
     2 | edytuj ustawienia
@@ -2846,8 +2685,7 @@ Count | Button Text
     2 | czytaj więcej
     2 | preferenser
     2 | upravit nastavení cookies
-    2 | hier anmelden.
-    2 | einverstanden und weiterlesen
+    2 | zustimmen weiter
     2 | tillåt alla kakor
     2 | inställningar för kakor
     2 | confidentialité
@@ -2862,9 +2700,8 @@ Count | Button Text
     2 | stay at lifeextension.com
     2 | apstiprināt visu
     2 | accept all accept all
+    2 | details section
     2 | zamknij informację o plikach cookies
-    2 | weitere informationen zu cookies
-    2 | ich bin nicht einverstanden
     2 | singapore
     2 | weitere infos
     2 | i am over 18 and agree
@@ -2883,8 +2720,6 @@ Count | Button Text
     2 | ler mer om personvern
     2 | kun påkrevde
     2 | privacy policy,
-    2 | schon registriert?
-    2 | faq von contentpass
     2 | detailed settings
     2 | узнать подробнее
     2 | zavřít
@@ -2900,7 +2735,7 @@ Count | Button Text
     2 | i agree - enter
     2 | how we use cookies
     2 | çerez kullanımını
-    2 | pur-abo abschließen
+    2 | privacy-manager
     2 | cookie manager
     2 | fortfahren
     2 | oke
@@ -2916,8 +2751,6 @@ Count | Button Text
     2 | detalls
     2 | consentiment
     2 | accepta
-    2 | 161 partner
-    2 | info-seite
     2 | ver 973 socios
     2 | jeg aksepterer cookies som privatperson
     2 | jeg aksepterer cookies som bedrift
@@ -2930,7 +2763,6 @@ Count | Button Text
     2 | greit for meg!
     2 | настройки на бисквитките
     2 | приемане на всички бисквитки
-    2 | steady
     2 | redigera cookies
     2 | godkänn urval av cookies
     2 | bekreft valget
@@ -2940,26 +2772,19 @@ Count | Button Text
     2 | fortrolighedspolitik
     2 | view our privacy policy.
     2 | accept ali cookies
-    2 | opslaan
-    2 | autoriser tous les cookies
-    2 | nähere infos
     2 | tästä
     2 | show detailed settings
     2 | reject all data uses
     2 | agree to all data uses
     2 | accetto tutti i cookie
-    2 | 174 partner
-    2 | politique en matière de cookies
     2 | os nossos 982 parceiros
-    2 | nutzungsanalyse
-    2 | acknowledged
     2 | למדיניות הפרטיות
+    2 | acknowledged
     2 | avviser
     2 | cookie information opens in new tab
     2 | allow selected cookies
     2 | tillad kun nødvendige
     2 | předvolby
-    2 | zum abo
     2 | mention légale
     2 | connexion
     2 | en savoir plus sur skiinfo+
@@ -2974,7 +2799,9 @@ Count | Button Text
     2 | ja, jeg accepterer
     2 | informativa sui cookies
     2 | aksepter bare nødvendige cookies
+    2 | partnern
     2 | læs mere om brugen af cookies på sundhed.dk
+    2 | accepteer alles
     2 | in unseren faq
     2 | anmeldung für abonnenten
     2 | werbefrei lesen ohne premium
@@ -2991,11 +2818,9 @@ Count | Button Text
     2 | subscribe ad-free
     2 | protection des données
     2 | declaración de privacidad y cookies
-    2 | its okay
     2 | apstiprināt visas
     2 | gjennomgå valg
     2 | informasjonskapselvarsel.
-    2 | cookies pagina
     2 | ciasteczek
     2 | gratis met persoonlijke advertenties
     2 | advertentievrij premium (€3,49 per jaar)
@@ -3010,7 +2835,6 @@ Count | Button Text
     2 | περισσότερες πληροφορίες
     2 | погоджуюсь 30
     2 | політики конфіденційності
-    1 | mijn voorkeuren opslaan
     1 | правилами
     1 | website
     1 | tietosuoja-, rekisteriseloste ja evästekäytäntö
@@ -3020,7 +2844,6 @@ Count | Button Text
     1 | pārvaldīt piekrišanu
     1 | atļaut visu
     1 | learn more about privacy and sketchup.
-    1 | x hide cookie banner
     1 | läs vår cookie policy
     1 | настроить cookie
     1 | i love privacy too!
@@ -3037,6 +2860,7 @@ Count | Button Text
     1 | forgot your password?
     1 | learn more about it
     1 | tilpasse dine cookie-innstillinger
+    1 | politique cookies
     1 | 694 partenaires
     1 | läs mer om våra cookies
     1 | les om bruk av informasjonskapsler
@@ -3085,17 +2909,16 @@ Count | Button Text
     1 | agreement
     1 | learn more about policies
     1 | ok i agree
-    1 | abo-nutzungsbedingungen
-    1 | abgleichung und kombination von daten aus unterschiedlichen quellen
+    1 | alles klar
     1 | weitere infos in unserer datenschutzerklärung
     1 | поддомейни
     1 | нашите 1570 партньори
-    1 | узнайте больше про использование cookie.
     1 | персональные настройки cookie
     1 | покажете подробности
     1 | отхвърлете всички
     1 | приемете всички
     1 | покажи всички партньори (1664)
+    1 | узнайте больше про использование cookie.
     1 | موافقة
     1 | سياسية الخصوصية
     1 | privatlivs politik
@@ -3104,6 +2927,7 @@ Count | Button Text
     1 | informasjons­­kapsler
     1 | acceptez tout
     1 | lire plus
+    1 | politique de protection des données
     1 | vis cookie oplysninger
     1 | accepter nødvendige
     1 | politykę cookies
@@ -3142,9 +2966,7 @@ Count | Button Text
     1 | administrer 1245 leverandører
     1 | jeg aksepterer informasjonskapsler
     1 | політика приватності
-    1 | funktionelle cookies akzeptieren
     1 | beállítások megtekintése
-    1 | alle cookies aktivieren
     1 | i understand, dont show this
     1 | ok, tak
     1 | yes, please
@@ -3155,15 +2977,15 @@ Count | Button Text
     1 | tickets
     1 | statistik und analyse cookies
     1 | technische notwendige cookies
-    1 | innstillinger aksepter
     1 | settings accept
+    1 | innstillinger aksepter
     1 | fortroligheds- og cookiepolitik
     1 | personvern- og informasjonskapselregler
     1 | akseptér cookies
     1 | see our policy
     1 | manage cookie consent
-    1 | vis meg mer
     1 | infokapselsretningslinjer
+    1 | vis meg mer
     1 | политика за бисквитките
     1 | бисквитки
     1 | analytics only
@@ -3259,6 +3081,7 @@ Count | Button Text
     1 | ck-modelcars
     1 | zahlung
     1 | statistik
+    1 | notwendig
     1 | aktuelle auswahl zulassen
     1 | trigger cookie opening
     1 | persondata her
@@ -3339,6 +3162,8 @@ Count | Button Text
     1 | upravit předvolby
     1 | bruk av informasjonskapsler i dbh
     1 | cookie-script
+    1 | fortfahren ohne akzeptieren
+    1 | prüfung der anwendbarkeit der utiq-technologie
     1 | 450 weitere websites
     1 | für die nutzung mit werbung
     1 | information zum datenschutz
@@ -3416,9 +3241,9 @@ Count | Button Text
     1 | polityką wykorzystywania plików cookie.
     1 | personvern og lagringsinformasjon
     1 | tájékoztató a sütikről
-    1 | je suis daccord
     1 | nein, gib mir mehr informationen
     1 | ok, einverstanden
+    1 | je suis daccord
     1 | dressmann personvernerklæring
     1 | cookie consent change
     1 | приемам всички
@@ -3427,25 +3252,22 @@ Count | Button Text
     1 | затвори
     1 | privacy policy and terms of service
     1 | cookiepolitikk
-    1 | ik wil een optimale site-ervaring
-    1 | bekijk ons privacybeleid
     1 | lisätietoa evästeistä löydät täältä.
     1 | детальніше
+    1 | verwendung reduzierter daten zur auswahl von inhalten
     1 | iab tcf 2.0 framework
     1 | hier anmelden!
+    1 | zum abonnement
     1 | απόρριψη όλων των cookies
     1 | optionen
     1 | our 717 partners
     1 | despre „cookies
-    1 | tout interdire
     1 | rohkem infot.
     1 | kjøpsvilkår og personvern
     1 | concordar e fechar
     1 | cookie akzeptieren
     1 | bruk bare nødvendige cookies
     1 | les mer om hvilke informasjonskapsler vi bruker.
-    1 | verberge nur die benachrichtigung
-    1 | einstellungen akzeptieren
     1 | политики обработки данных
     1 | politykę prywatności i cookies
     1 | opciones
@@ -3457,14 +3279,14 @@ Count | Button Text
     1 | only accept essential cookies
     1 | les om hvordan vi behandler personlige data
     1 | privacy and cookies
-    1 | ver detalles
     1 | tęsti
     1 | vu privatumo politikavu privacy policy
+    1 | ver detalles
     1 | our 967 partners
+    1 | במדיניות הפרטיות
     1 | no , only allow whats necessary for the websites to function
     1 | ok , thats fine
     1 | read about cookies 
-    1 | במדיניות הפרטיות
     1 | data policy disclosure text
     1 | more information (in german)
     1 | ég skil
@@ -3473,8 +3295,8 @@ Count | Button Text
     1 | administrer 995-leverandører
     1 | read more about our cookie policy
     1 | informasjonskapsler (cookies) erklæring
-    1 | find out more about our cookies
     1 | zaufanych partnerów*
+    1 | find out more about our cookies
     1 | дозволити вибране
     1 | upravljanje uslugama
     1 | lees meer over het gebruik van persoonlijke gegevens
@@ -3514,6 +3336,7 @@ Count | Button Text
     1 | kizárólag az elengedhetetlen sütiket használja
     1 | részletek pontban
     1 | 1014 partnerünk
+    1 | tout autoriser
     1 | choisir
     1 | show external content
     1 | privacy notice and cookie policy
@@ -3544,8 +3367,8 @@ Count | Button Text
     1 | lese om cookies og personvern
     1 | responsibility.org
     1 | přijmout nutné cookies
-    1 | súhlas gdpr so súbormi cookie s real cookie bannerom
     1 | cookies toestaan
+    1 | súhlas gdpr so súbormi cookie s real cookie bannerom
     1 | mer om våre informasjonskapsler
     1 | تخصيص
     1 | les våre retningslinjer for cookies her.
@@ -3560,7 +3383,6 @@ Count | Button Text
     1 | settings...
     1 | политика за бисквитки
     1 | focus prompt
-    1 | interdire tous les cookies
     1 | close filters
     1 | count me in
     1 | helt fint, jeg forstår!
@@ -3598,16 +3420,16 @@ Count | Button Text
     1 | privacy policy terms of use
     1 | read our privacy policies here.
     1 | personvern privacy policy
+    1 | kjøp tilgang og avvis alle
+    1 | analyse og statistikk
+    1 | funksjonell
+    1 | cookie- og personvernpolicy
     1 | hentera
     1 | köp åtkomst och avvisa alla
     1 | analys och statistik
     1 | funktionella
     1 | exakta uppgifter om geografisk positionering och identifiering via skanning av enheten
     1 | cookie- och integritetspolicy
-    1 | kjøp tilgang og avvis alle
-    1 | analyse og statistikk
-    1 | funksjonell
-    1 | cookie- og personvernpolicy
     1 | håndter preferanser
     1 | i agree. lets make games
     1 | questions?
@@ -3625,8 +3447,6 @@ Count | Button Text
     1 | polityce cookies.
     1 | zapisz
     1 | ok, accepter alle
-    1 | allow all support greenshot
-    1 | deny cookies ads
     1 | לא
     1 | כן
     1 | technical
@@ -3642,7 +3462,6 @@ Count | Button Text
     1 | μετάβαση στο τέλος
     1 | πολιτική για τα cookies
     1 | συνεργάτες μας
-    1 | nur das nötigste
     1 | standardvilkår for personvernerklæring her
     1 | se her hvis du vil blokkere informasjonskapsler.
     1 | find out how we use cookies
@@ -3664,8 +3483,8 @@ Count | Button Text
     1 | personvern for elever
     1 | alle einstellungen anzeigen.
     1 | datenschutz-richtlinien
-    1 | információk
     1 | a cookie-k testreszabása
+    1 | információk
     1 | administer preferanser
     1 | godkjenne lukk
     1 | ved å bruke nettstedet godtar du bruken av informasjonskapsler
@@ -3690,10 +3509,10 @@ Count | Button Text
     1 | tarkkojen sijaintitietojen käyttäminen
     1 | palvelujen kehittäminen ja parantaminen
     1 | kohdennettu mainonta ja personoitu sisältö, mainonnan ja sisällön mittaaminen sekä yleisötutkimus
-    1 | luk og accepter
     1 | ik ga akkoord!
     1 | partners weergeven
     1 | wordpress.com-netwerk
+    1 | luk og accepter
     1 | finn ut mer om cookies
     1 | cookie erklæring
     1 | personvernregler.
@@ -3716,8 +3535,8 @@ Count | Button Text
     1 | lýsing
     1 | samtykki
     1 | administrer 1095 leverandører
-    1 | se integritetspolicy
     1 | tillat noen
+    1 | se integritetspolicy
     1 | prikaži sve partnere (1446)
     1 | podrobno
     1 | godkjenn utvalde cookiar
@@ -3735,7 +3554,6 @@ Count | Button Text
     1 | in ausgewählte diensteanwendungen einwilligen
     1 | in alle diensteanwendungen einwilligen
     1 | „datenschutzerklärung
-    1 | werbefrei für 0,99 € 4 wochen
     1 | accepter et fermer lalerte
     1 | en savoir plus (nouvelle fenêtre)
     1 | veuillez revoir les paramètres de confidentialité de votre appareil et de votre navigateur (nouvelle fenêtre)
@@ -3765,10 +3583,10 @@ Count | Button Text
     1 | ofte stilte spørsmål
     1 | ambita.com
     1 | info@ambita.com
-    1 | ajustes cookies
     1 | 702 trećih strana
-    1 | les mer og tilpass.
+    1 | ajustes cookies
     1 | условиях использования cookie-файлов
+    1 | les mer og tilpass.
     1 | politika zasebnosti
     1 | prikaz nastavitev
     1 | sprejmi
@@ -3843,21 +3661,20 @@ Count | Button Text
     1 | ru
     1 | et
     1 | vår side om informasjonskapsler.
-    1 | erhebung und verarbeitung personenbezogener daten
-    1 | indsamling og behandling af personoplysninger
     1 | vores 189 partnere
-    1 | absolutt nødvendig
-    1 | samler inn og behandler personopplysninger
+    1 | indsamling og behandling af personoplysninger
     1 | niezbędne zgody
     1 | gromadzeniu i przetwarzaniu danych osobowych naszej
+    1 | absolutt nødvendig
+    1 | samler inn og behandler personopplysninger
     1 | nevyhnutné
     1 | prijať všetky súbory cookie
     1 | používania súborov cookie
     1 | zhromažďovaní a spracovaní osobných údajov
     1 | selvfølgelig
     1 | nei, tilpass
-    1 | sulge
     1 | jeg sjønner
+    1 | sulge
     1 | τα cookies που χρησημοποιούμε
     1 | απόρρητο
     1 | αποδοχη υποχρεωτικων
@@ -3877,8 +3694,8 @@ Count | Button Text
     1 | våre 2 partnerne
     1 | cookiehub consent management
     1 | kk-text.dk bruger cookies for at forbedre din oplevelse, til statistisk analyse, interaktion med sociale medier og til at støtte markedsføringen af ydelserne. ved at klikke videre på websitet, accepterer du websitets brug af cookies.
-    1 | les mer om vår personvernerklæring
     1 | (datenschutzerklärung)
+    1 | les mer om vår personvernerklæring
     1 | våre 31 partnerne
     1 | personvernerklæring for klatreverket
     1 | не, коригирайте
@@ -3906,8 +3723,8 @@ Count | Button Text
     1 | 수락
     1 | 설정
     1 | 쿠키정책
-    1 | les mer om personvern her
     1 | naš 974 partneri
+    1 | les mer om personvern her
     1 | se mer
     1 | hantera kakor
     1 | kakor (cookies)
@@ -3971,7 +3788,6 @@ Count | Button Text
     1 | kontynuuj bez zgody
     1 | да, я согласен
     1 | reject non‑essential
-    1 | bekijk voorkeuren
     1 | endre mine innstillinger
     1 | zobacz politykę prywatności
     1 | ok, eg forstår!
@@ -4005,8 +3821,6 @@ Count | Button Text
     1 | se cookie- og privatlivspolitik her.
     1 | køb adgang (eller login)
     1 | jeg vil gerne have gratis adgang
-    1 | kundenservice
-    1 | abonnieren für 3,99 € monat
     1 | digital services act (reg ue 20222065)
     1 | dichiarazione di accessibilità
     1 | tutela minori
@@ -4057,7 +3871,6 @@ Count | Button Text
     1 | політика використання файлів cookie
     1 | tillatt
     1 | skjul innstillinger
-    1 | berechtigtem interesse
     1 | personoplysninger
     1 | brug af cookies og hvordan du fjerner dem her
     1 | merkur.dk
@@ -4066,11 +3879,10 @@ Count | Button Text
     1 | vairāk informācijas
     1 | organiser cookies
     1 | vår personvererklæring
-    1 | ne souhaitez pas accepter
     1 | approve
-    1 | политикой обработки пд
     1 | согласия на обработку персональных данных
     1 | согласие на обработку ваших персональных данных
+    1 | политикой обработки пд
     1 | mer informasjon om informasjonskapsler.
     1 | eller afvis cookies
     1 | kasutan vajalikke küpsiseid
@@ -4086,7 +3898,6 @@ Count | Button Text
     1 | i acknowledge
     1 | non, merci
     1 | gérer vos cookies
-    1 | politique relative aux fichiers témoins
     1 | kolmannen osapuolen kumppanimme (335)
     1 | tos
     1 | les mer om personern for elever
@@ -4130,12 +3941,10 @@ Count | Button Text
     1 | hur du kan neka dem.
     1 | vis præferencer
     1 | részletek és beállítások
-    1 | vis flere
     1 | kun nødvedige
+    1 | vis flere
     1 | tilbakestill
     1 | våre 89 partnerne
-    1 | consulter la politique cookies
-    1 | continuer sans accepter les cookies x
     1 | i understand and agree.
     1 | slapukų politikoje.
     1 | du kan velge bort informasjonskapsler fra google analytics ved å klikke her.
@@ -4238,7 +4047,6 @@ Count | Button Text
     1 | this site uses cookies. by continuing to use this website, you agree to their use. to find out more see here.
     1 | godkend alle
     1 | acceptă esențiale
-    1 | politique dutilisation des cookies
     1 | settings only essential cookies accept all cookies
     1 | personalitzar
     1 | acceptar-les totes
@@ -4260,7 +4068,6 @@ Count | Button Text
     1 | consenti tutti i cookie
     1 | nega tutto
     1 | impostazioni dei cookie
-    1 | read cookie policy
     1 | do not track
     1 | ok, alles klar.
     1 | прекрасно
@@ -4268,8 +4075,8 @@ Count | Button Text
     1 | sutinku su būtinaisiais
     1 | yes, allow all
     1 | personverninstillinger
-    1 | zapisz preferencje
     1 | lisätietoja evästekäytännöstä
+    1 | zapisz preferencje
     1 | ukrainian
     1 | spanish
     1 | polish
@@ -4286,25 +4093,21 @@ Count | Button Text
     1 | kliknij tutaj
     1 | nie zezwalaj
     1 | nasza polityka
-    1 | salida
-    1 | salir de la web.
-    1 | términos y condiciones.
     1 | wyjdź
     1 | przewodnikiem po blokadzie rodzicielskiej
     1 | 18 u.s.c. 2257 oświadczenie o zgodności wymogów dot. prowadzenia dokumentacji.
     1 | regulaminu
     1 | mam ukończone 18 lat
+    1 | salida
+    1 | salir de la web.
+    1 | términos y condiciones.
     1 | administrer 990 leverandører
     1 | ok, play now!
     1 | geforce now terms of use.
     1 | reset
     1 | download
-    1 | 151 partner
-    1 | pur werbetrackingfrei buchen
-    1 | mehr informationen, auch zum jederzeit möglichen widerruf, findest du hier.
     1 | låt mig välja själv
     1 | acceptera endast nödvändigt
-    1 | je ne veux pas
     1 | kontakta oss för mer info
     1 | dostosuj ustawienia
     1 | upravljaj kolačićima
@@ -4318,7 +4121,6 @@ Count | Button Text
     1 | nasi partnerzy (1050)
     1 | polska press, pro media
     1 | jeg avslår
-    1 | cookie-instellingen aanpassen
     1 | discordo
     1 | acceptar totes les galetes
     1 | rebutjar-les totes
@@ -4337,6 +4139,7 @@ Count | Button Text
     1 | datavern
     1 | accept and close this message
     1 | find out more about cookies.
+    1 | ok, accept all
     1 | souhlasit
     1 | ujednání o ochraně údajů
     1 | naší
@@ -4449,7 +4252,6 @@ Count | Button Text
     1 | zezwól na pliki cookies
     1 | прочитайте больше
     1 | more informations
-    1 | lire notre politique de confidentialité
     1 | om vad regionen använder kakor till
     1 | data protection guidelines
     1 | tietosuojakuvauksesta
@@ -4467,9 +4269,9 @@ Count | Button Text
     1 | 
     1 | icense and copyright
     1 | clear
+    1 | ik wil meer informatie
     1 | sluit cookiemelding
     1 | instellingen aanpassen
-    1 | ik wil meer informatie
     1 | markedsføring vi bruker markedsførings-cookiene til å spore besøkende på tvers av nettsider – både våre og tredjeparts. hensikten er å vise deg annonser som er relevante og engasjerende for deg, og dermed mer verdifulle for oss og tredjeparts-annonsører.
     1 | legitiem belang
     1 | direct inloggen bij van dale?
@@ -4479,9 +4281,9 @@ Count | Button Text
     1 | leave this website
     1 | miten käytämme cookies
     1 | slik bruker vi cookies
-    1 | meiri upplýsingar
     1 | accept and proceed
     1 | ritverc.com
+    1 | meiri upplýsingar
     1 | respingeți
     1 | acceptați
     1 | politica noastră referitoare la modulele cookie
@@ -4490,8 +4292,8 @@ Count | Button Text
     1 | ikke godta cookies
     1 | details zeigen speichern alle akzeptieren
     1 | ignorer
-    1 | seite verlassen (exit)
     1 | allow only technically necessary
+    1 | seite verlassen (exit)
     1 | potwierdzam wybrane
     1 | 詳細
     1 | leisti būtinus
@@ -4503,8 +4305,8 @@ Count | Button Text
     1 | условиями
     1 | дополнительные параметры
     1 | партнеры
-    1 | политикой файлов-cookie
     1 | условиями использования
+    1 | политикой файлов-cookie
     1 | padres lean esto para proteger a sus hijos
     1 | si, entrar
     1 | read more about our cookie policy here.
@@ -4527,7 +4329,6 @@ Count | Button Text
     1 | samo potrebni kolačići
     1 | pravila o privatnosti
     1 | administrer 995 leverandører
-    1 | akzeptiere alle
     1 | einstellungen anzeigen
     1 | hyväksyn evästeet
     1 | this website uses cookies.
@@ -4537,7 +4338,6 @@ Count | Button Text
     1 | no thanks.
     1 | sounds good.
     1 | meer in ons cookie- en privacybeleid
-    1 | werbepartner
     1 | cookies, integritet och användarvillkor
     1 | les mer om informasjonskapsler og hvordan vi håndterer dem.
     1 | check i agree
@@ -4569,7 +4369,6 @@ Count | Button Text
     1 | adatvédelmi tájékoztató
     1 | haldan küpsiseid
     1 | nee
-    1 | 1042 derden
     1 | akkoord en sluiten
     1 | afwijzen en sluiten
     1 | afvis ikke-nødvendige
@@ -4608,9 +4407,9 @@ Count | Button Text
     1 | zobraziť podrobnosti
     1 | mind elutasítása
     1 | minden elfogadása
+    1 | what are cookies?
     1 | informasjonskapsler og samtykke
     1 | helt i orden
-    1 | what are cookies?
     1 | agree proceed
     1 | find out how we use cookies.
     1 | i am 18 years or older
@@ -4645,6 +4444,7 @@ Count | Button Text
     1 | политикой конфиденциальности.
     1 | lær mer om vår bruk av cookies.
     1 | nsf@speiding.no
+    1 | mehr information
     1 | zur kenntnis genommen
     1 | les mer om personvernet ditt hos oss.
     1 | informasjonskapsel-erklæring
@@ -4676,9 +4476,8 @@ Count | Button Text
     1 | skifte innstillinger
     1 | polityka-cookie
     1 | les mer om informasjonskapsler (cookies)
-    1 | vis detaljer om cookie kategorierne
     1 | datenschutz­erklärung
-    1 | agbs
+    1 | vis detaljer om cookie kategorierne
     1 | lisätietoa on saatavilla sivulla sivuston evästeet.
     1 | informativa privacy.
     1 | for more information, read our cookies page.
@@ -4775,8 +4574,6 @@ Count | Button Text
     1 | tulli.fi:n käyttöehdot
     1 | ja, ich stimme zu!
     1 | datenschutzerklärung nutzungsbedingungen
-    1 | 318 partner
-    1 | meine bz ihr kundenkonto
     1 | privatlivspolitik for løbende kunde- og samarbejdsforhold.
     1 | trusted tvp partners (93 company)
     1 | trusted partners from iab* (1111 company)
@@ -4863,18 +4660,17 @@ Count | Button Text
     1 | privacy policy statement.
     1 | informasjonskapsel (cookies) innstillinger
     1 | continuer
-    1 | norsk norsk nok inkl. mva.
-    1 | svenska sek inkl. moms
     1 | ažuriraj postavke
     1 | prihvaćam samo neophodno
     1 | pravilima o korištenju kolačića.
     1 | tokic.hr pravilima privatnosti.
+    1 | svenska sek inkl. moms
+    1 | norsk norsk nok inkl. mva.
     1 | doorgaan zonder toestemming
     1 | applicant privacy policy
     1 | i accept the selection
     1 | i only want the strictly necessary
     1 | i accept all
-    1 | bekijk onze 427 partners
     1 | wifotek tietosuojakäytäntö
     1 | politykę plików cookie
     1 | すべて拒否
@@ -4905,14 +4701,11 @@ Count | Button Text
     1 | accept only functional cookies
     1 | отлично
     1 | использование cookie файлов и с пользовательским соглашением
-    1 | kontakt aufnehmen
     1 | (datenschutz)
-    1 | pouze nezbytné cookies
     1 | click here for more information about our privacy policy.
+    1 | pouze nezbytné cookies
     1 | vores 57 partnere
     1 | no thank you
-    1 | lijst van onze partners
-    1 | cookiestatement.
     1 | mostrar finalidades
     1 | close this module
     1 | personalizza cookie
@@ -4920,6 +4713,7 @@ Count | Button Text
     1 | dont show again
     1 | click
     1 | cookies instellen
+    1 | accepteer cookies
     1 | googles privacy terms site.
     1 | cookie policy (in english)
     1 | 当サイトのご利用にあたって
@@ -4928,15 +4722,10 @@ Count | Button Text
     1 | cookie use
     1 | join adultfolio for free!
     1 | cookies (informasjonskapsler)
-    1 | unserer datenschutzerklärung.
-    1 | cookie-hinweis
     1 | политике cookie
     1 | yes, i accept cookies.
-    1 | werbung (nicht-iab anbieter)
-    1 | targeting (1st party)
-    1 | non-essential cookies
-    1 | read more about our cookies policy here
     1 | les mer om informasjonskapsler her
+    1 | read more about our cookies policy here
     1 | vis samtykkedetaljer
     1 | our cookies policy
     1 | personvernforklaring
@@ -4947,9 +4736,9 @@ Count | Button Text
     1 | aanvaard geen cookies
     1 | voorkeuren aanpassen
     1 | learn more about privacy policy
-    1 | mer informasjon om ditt personvern
     1 | information about cookies
     1 | trekk samtykke
+    1 | mer informasjon om ditt personvern
     1 | les mer om personvern og informasjonskapsler hos oss
     1 | informacích o zpracování osobních údajů společnosti google
     1 | solo cookies necessari
@@ -4961,10 +4750,9 @@ Count | Button Text
     1 | más información de cokkies
     1 | abandonar web
     1 | اضغط هنا
-    1 | bekijk onze cookiepagina
-    1 | deze melding uitschakelen
     1 | sprejmi samo nujne
     1 | sl
+    1 | deze melding uitschakelen
     1 | ses 988 partenaires (dont 972 partenaires iab)
     1 | personal data policy
     1 | αποδέχομαι
@@ -4972,9 +4760,9 @@ Count | Button Text
     1 | view more
     1 | vores 236 partnere
     1 | innstillingerinfo
+    1 | příjmout vše
     1 | continua senza avere unesperienza personalizzata
     1 | accetta. vivi unesperienza completa
-    1 | příjmout vše
     1 | dismiss notification
     1 | you can learn more about our privacy policy here
     1 | kişiselleştirin
@@ -4996,7 +4784,6 @@ Count | Button Text
     1 | cookies blockieren
     1 | cookies zeigen
     1 | was ist das ?
-    1 | zustimmen und weiter ...
     1 | keine einwilligung
     1 | policy.
     1 | administrer samtykke
@@ -5016,7 +4803,6 @@ Count | Button Text
     1 | kolačićima.
     1 | noraidīt visu
     1 | noteikumi un iestatījumi
-    1 | verwerfen
     1 | acceptar i tancar
     1 | rebutjar i tancar
     1 | saber-ne més
@@ -5064,6 +4850,7 @@ Count | Button Text
     1 | baitholdere
     1 | attraktorer
     1 | post@arctic-fritid.no
+    1 | faqs
     1 | cookies og personvern.
     1 | min konto
     1 | kundenes erfaringer
@@ -5075,7 +4862,6 @@ Count | Button Text
     1 | more information ...
     1 | je voorkeuren aanpassen
     1 | enkel essentiële cookies aanvaarden
-    1 | bekijk ons beleid
     1 | tekintse meg 937 partnerünket
     1 | partnereink
     1 | data and privacy info
@@ -5096,7 +4882,6 @@ Count | Button Text
     1 | isolate
     1 | register
     1 | pricing
-    1 | 313 partenaires
     1 | reject and disable all non-essential cookies
     1 | hallinnoi evästeasetuksia
     1 | jatka välttämättömillä evästeillä
@@ -5104,9 +4889,9 @@ Count | Button Text
     1 | още опции
     1 | партньори
     1 | ausgewählte cookies erlauben
+    1 | social media
     1 | statistik cookies
     1 | erforderliche cookies
-    1 | jetzt auto bild pur abonnieren
     1 | tilpasning
     1 | ne, ani náhodou!
     1 | jen ty, co zaškrtnu dole.
@@ -5115,6 +4900,7 @@ Count | Button Text
     1 | impostazioni di privacy
     1 | elenco fornitori
     1 | colophon
+    1 | einwilligung
     1 | sekretess-inställningar
     1 | tinkinti
     1 | priimti visus
@@ -5123,9 +4909,9 @@ Count | Button Text
     1 | lijst van leveranciers
     1 | infos zu nicht notwendigen cookies
     1 | да без проблем
-    1 | conditions générales dutilisation
     1 | akzeptieren und schliessen
     1 | präferenzen verwalten
+    1 | conditions générales dutilisation
     1 | samþykkja og loka
     1 | hafa umsjón með kjörstillingum
     1 | stefna okkar um vafrakökur
@@ -5173,7 +4959,6 @@ Count | Button Text
     1 | google privacy site.
     1 | manage cookies setup
     1 | accept tracking
-    1 | ablehnen konfigurieren
     1 | close note
     1 | hinweis schließen
     1 | anladım!
@@ -5184,14 +4969,10 @@ Count | Button Text
     1 | gizlilik sözleşmesini oku.
     1 | informacje
     1 | polityce prywatności google
-    1 | infos zu unseren newslettern
-    1 | erklärung zur barrierefreiheit
-    1 | https:www.bielefeld.de
-    1 | posteingang@bielefeld.de
-    1 | +49 521 51-0
     1 | zapoznaj się z polityką plików cookies
     1 | bruk kun nødvendige informasjonskapsler
     1 | vis informasjon om cookie
+    1 | ablehnen oder einstellungen
     1 | θα βρείτε εδώ
     1 | το κατάλαβα
     1 | tillatelse
@@ -5231,20 +5012,17 @@ Count | Button Text
     1 | see our policy.
     1 | bod juridisk informasjon
     1 | mehr details
-    1 | läs mer om vår cookiepolicy
     1 | spara val
     1 | googles sekretesspolicy
+    1 | läs mer om vår cookiepolicy
     1 | im okay with the use of cookies
     1 | tillad alle og fortsæt
     1 | preferensar
     1 | cookieeinstellungen
     1 | avvis samtykke
     1 | enkelte databehandlinger
-    1 | toestemming weigeren
-    1 | gegevensgebruik om informatie
     1 | jeg godtar kun nødvendige informasjonskapsler
     1 | eula
-    1 | buy access and deny
     1 | only allow required cookies
     1 | ja til cookies
     1 | nej til cookies
@@ -5276,7 +5054,6 @@ Count | Button Text
     1 | hellotrust.de - cookie management - v.1.0.7.4 - de_de
     1 | hellotrust auch auf deiner webseite - hier klicken
     1 | historie einsehen
-    1 | allow all cookies and services
     1 | les mer om våre cookies.
     1 | inloggen
     1 | abonnementsvoorwaarden
@@ -5311,9 +5088,7 @@ Count | Button Text
     1 | ajustes de cookies
     1 | opciones de cookies
     1 | im over 18 enter
-    1 | only technical cookies
     1 | alle cookies
-    1 | accepteer alle
     1 | se mer info
     1 | les mer om cookies vi bruker
     1 | cookieの使用に同意
@@ -5331,10 +5106,6 @@ Count | Button Text
     1 | choisissez et personnalisez
     1 | politique relative aux cookies.
     1 | linformativa
-    1 | soziale medien
-    1 | funktional
-    1 | strikt erforderliche cookies
-    1 | partner technologien
     1 | leggi tutto
     1 | ich mag cookies
     1 | einverständniserklärung zurückziehen
@@ -5354,23 +5125,18 @@ Count | Button Text
     1 | entendido!
     1 | préférences sur les cookies
     1 | déclaration sur les cookies
-    1 | 172 partner
-    1 | jetzt einloggen
-    1 | allen zwecken zustimmen
-    1 | mehr informationen dazu findest du hier
     1 | non, merci.
     1 | paramètres de confidentialité
     1 | privacy and security policy
     1 | zustimmung zurückziehen
     1 | privacyrequest@christianbook.com
-    1 | interdire tout
     1 | ok for mig
     1 | erklæring om beskyttelse af personlige oplysninger
+    1 | greit for meg
     1 | enbart nödvändiga kakor
     1 | det är ok för mig
-    1 | greit for meg
-    1 | tercihler
     1 | agree and dismiss
+    1 | tercihler
     1 | política de privacidade.
     1 | our 277 partners
     1 | sīkdatņu lietošanas noteikumos
@@ -5391,11 +5157,11 @@ Count | Button Text
     1 | personalice
     1 | guardar mis preferencias
     1 | hier gehts zur datenschutzerklärung
+    1 | ver nossa política de privacidade
     1 | gestionnaire de cookies
     1 | presse
     1 | professionnels
     1 | particuliers
-    1 | ver nossa política de privacidade
     1 | politikkinnsyn
     1 | akseptér alle
     1 | select all and confirm
@@ -5409,14 +5175,14 @@ Count | Button Text
     1 | izjava o zaštiti osobnih podataka
     1 | apenas necessárias
     1 | definições
-    1 | sprejmem
-    1 | izjava o zasebnosti
     1 | egyetértek
     1 | cookie-beállítások
     1 | nyilatkozat a személyes adatok védelméről
+    1 | sprejmem
+    1 | izjava o zasebnosti
     1 | microsoft
     1 | mehr zu computerbase pro
-    1 | jetzt computer bild pur abonnieren
+    1 | anmelden
     1 | choice
     1 | okey!
     1 | accetto i cookies
@@ -5473,7 +5239,6 @@ Count | Button Text
     1 | dcus privacy practices
     1 | acepto cookies
     1 | aviso de privacidad
-    1 | sieh dir unsere 31 partner an.
     1 | elfogadás bezárás
     1 | egyéb tudnivalók
     1 | partnereink megtekintése
@@ -5489,21 +5254,19 @@ Count | Button Text
     1 | rinktis
     1 | nödvändiga cookies nödvändiga cookies tredjeparts-cookies tredjeparts-cookies interna cookies interna cookies
     1 | ändra dina inställningar här
+    1 | accepter kun viktig
+    1 | les vår retningslinjer for informasjonskapsler
     1 | advokatfirman delphi i stockholm ab är personuppgiftsansvarig för behandlingen som du kan läsa mer om här.
     1 | här kan du läsa om hur vi använder cookies.
     1 | nej, jag samtycker inte
     1 | ja, jag samtycker
     1 | privacy@delphi.se
-    1 | accepter kun viktig
-    1 | les vår retningslinjer for informasjonskapsler
     1 | ja, dat is prima
     1 | cookiepagina
     1 | nuestros {{count}} socios
     1 | prohlášení o cookies
     1 | ayarları düzenle
     1 | lesen sie unsere datenschutzerklärung hier!
-    1 | nee, niet akkoord
-    1 | later opnieuw tonen
     1 | подробнее...
     1 | nuestros 478 socios
     1 | revoca consenso
@@ -5547,11 +5310,11 @@ Count | Button Text
     1 | se valgte cookies
     1 | privatlivspolitikken
     1 | alle cookies annehmen
+    1 | zezwól na wszystkie ciasteczka
+    1 | oświadczeniem o plikach cookie
     1 | iba nutné cookies
     1 | vyhlásenie o cookies.
     1 | upravenie nastavenia súhlasu s cookies
-    1 | zezwól na wszystkie ciasteczka
-    1 | oświadczeniem o plikach cookie
     1 | spotify inc.
     1 | configurações
     1 | okay, thanks!
@@ -5570,10 +5333,10 @@ Count | Button Text
     1 | cookie 设置
     1 | 隐私、cookie 和数据保护政策
     1 | agree, stay here
-    1 | read our privacy statement
     1 | aceptar y seguir gratis
     1 | ¿ya estás suscrito? conéctate
     1 | 1042 third parties
+    1 | read our privacy statement
     1 | find out morechange settings
     1 | no thanks, only necessary cookies
     1 | i erklæringen om informasjonskapsler
@@ -5586,10 +5349,10 @@ Count | Button Text
     1 | ja, ik ga akkoord
     1 | our 970 partners
     1 | + información
+    1 | our 708 partners
     1 | our 706 partners
     1 | reject cookies for 1 €
     1 | 4h
-    1 | our 708 partners
     1 | tietosuojaselosteestamme.
     1 | evästeilmoituksestamme
     1 | annonseformål
@@ -5610,11 +5373,10 @@ Count | Button Text
     1 | technically necessary
     1 | columbia university website cookie notice.
     1 | entendi e concordo
-    1 | juste requis
-    1 | notre politique relative aux cookies
     1 | access full information on cookies that we use
     1 | youtubes privacy policy.
     1 | διαχείριση προτιμήσεων
+    1 | cookie-details
     1 | alle ablehnen*
     1 | tool-einstellungen
     1 | oświadczeniu administratorów danych osobowych.
@@ -5634,8 +5396,8 @@ Count | Button Text
     1 | русский
     1 | vis alle partnere
     1 | 973 colaboradores
-    1 | i understand !
     1 | cancel
+    1 | i understand !
     1 | godta nødvendige cookies
     1 | odrzucam opcjonalne
     1 | akceptuję cookies
@@ -5664,20 +5426,15 @@ Count | Button Text
     1 | follow
     1 | cache policy
     1 | new online safety regulations
-    1 | messung erweiterte conversions
-    1 | f.a.z. pur-abonnent? hier anmelden
-    1 | kostenfrei testen
-    1 | bereitstellungsbedingungen
-    1 | cookie-manager
     1 | тук
     1 | view our 18 partners
+    1 | jaccepte tout
     1 | prenumerera
     1 | bloggar
     1 | intervjuer
     1 | privatekonomi
     1 | skönhet
     1 | mode
-    1 | plus dinfos
     1 | general terms
     1 | godta all
     1 | 同意并关闭
@@ -5691,18 +5448,16 @@ Count | Button Text
     1 | privātums
     1 | afla mai multe
     1 | view our 294 partners
-    1 | zaufani partnerzy iab 972
     1 | se vuoi puoi non accettare
+    1 | zaufani partnerzy iab 972
     1 | povratak
     1 | learn more privacy
     1 | innholdstilpasning, produktutvikling og markedesføring av finansavisen.no
-    1 | 470 partner
-    1 | zustimmen und weiter...
     1 | einwilligung für optionale cookies widerrufen
     1 | términos legales
-    1 | accept settings close
     1 | i am allergic to cookies
     1 | click here to find out more
+    1 | accept settings close
     1 | podívejte se na našich 59 partnerů
     1 | produktutvikling, personlig tilpassing, markedsføring (inkludert google, meta og snap) og annonsering utført av vend
     1 | 39 partnere
@@ -5719,6 +5474,7 @@ Count | Button Text
     1 | privātuma politika
     1 | display third-party content (social networks, video)
     1 | third-party vendors
+    1 | datenschutzhinweis
     1 | administrer indstillinger
     1 | refer to our privacy notice section on cookies and similar tracking technology for more details.
     1 | se dine innstillinger
@@ -5737,9 +5493,9 @@ Count | Button Text
     1 | läs mer!
     1 | kun funksjonelle informasjonskapsler
     1 | details zur cookie-speicherung ansehen - cookie policy
-    1 | jeg godtar anbefalte innstillinger
     1 | atenschutzhinweise
     1 | d
+    1 | jeg godtar anbefalte innstillinger
     1 | lue lisää tietosuojakäytännöistämme
     1 | https:www.folkeskolen.dkpersondata
     1 | vores 4 partnere
@@ -5765,8 +5521,6 @@ Count | Button Text
     1 | à propos des cookies
     1 | détails
     1 | consentement
-    1 | zu den einstellungen
-    1 | ohne einwilligung weiter
     1 | avvise informasjonskapsler
     1 | innstilling for informasjonskapsler
     1 | informasjonskapselerklæring.
@@ -5779,7 +5533,6 @@ Count | Button Text
     1 | alle details zu youtube
     1 | alle details zu google maps
     1 | alle details zu siteimprove
-    1 | 404 partner
     1 | cookie設定
     1 | 利用規約
     1 | mer detaljer
@@ -5825,27 +5578,20 @@ Count | Button Text
     1 | 913 partners
     1 | odrzuć wszystko i zamknij
     1 | listę naszych partnerów
-    1 | more info bout privacy
     1 | ignore
+    1 | more info bout privacy
     1 | avis alle
     1 | oké
     1 | ikke vis denne meldingen igjen
     1 | vilkår og personvern
     1 | her kan du lese mer om våre informasjonskapsler.
     1 | save choices
-    1 | scegli i cookie
     1 | aceptar las cookies
     1 | seleccionar cookies
-    1 | datenschutzerklarung
+    1 | scegli i cookie
     1 | datainställningar
     1 | i dont want to see this banner again
     1 | more info on cookies
-    1 | individuelle datenschutzpräferenzen
-    1 | nur wesentliche cookies akzeptieren
-    1 | zustimmung speichern
-    1 | ich akzeptiere alle
-    1 | this button closes the dialog. its functionality is identical to the nur wesentliche cookies akzeptieren button.
-    1 | nutzungserklärung
     1 | adobe inc.
     1 | i dont understand this
     1 | reject unnecessary cookies
@@ -5858,7 +5604,6 @@ Count | Button Text
     1 | nei, tillat kun det er som må til for at nettsidene skal fungere
     1 | les om informasjonskapsler
     1 | megértettem!
-    1 | 415 partner
     1 | leyfa
     1 | les om informasjonskapsler her
     1 | informasjonskapsle
@@ -5875,7 +5620,6 @@ Count | Button Text
     1 | avslå informasjonskapsler
     1 | les mer i vår cookie-erklæring
     1 | bare strengt nødvendige
-    1 | préférences
     1 | datenschutzerklärung impressum
     1 | our 37 partners
     1 | opplysninger om bedriften
@@ -5885,8 +5629,6 @@ Count | Button Text
     1 | cookies på www.hcandersen-homepage.dk
     1 | licy
     1 | privacy po
-    1 | alle akzeptieren!
-    1 | doorgaan
     1 | přijmout vybrané
     1 | zásady
     1 | lue evästeiden käytöstä hekan verkkosivuilla.
@@ -5902,16 +5644,14 @@ Count | Button Text
     1 | ok and close
     1 | behandling av personuppgifter
     1 | läs vår integritetspolicy
-    1 | ver nuestros 486 socios
-    1 | pagar y rechazar
-    1 | ok, close warning.
     1 | 不，调整
     1 | 保存设置
     1 | 接受所有的
     1 | cookie信息页
+    1 | ok, close warning.
+    1 | ver nuestros 486 socios
+    1 | pagar y rechazar
     1 | læs mere om cookies på hessel.dk
-    1 | analyse cookies
-    1 | jetzt zustimmen und kostenlos weiter
     1 | trykke her
     1 | hikmicrotech.com
     1 | our 18 partners
@@ -5926,7 +5666,6 @@ Count | Button Text
     1 | hörmann norge as
     1 | gestionar la configuración de cookies
     1 | vi bruker informasjonskapsler for markedsføringsanalyse
-    1 | lees meer over ons cookiebeleid.
     1 | se retningslinjene våre for informasjonskapsler for mer informasjon
     1 | nekt alt
     1 | formålet du vil samtykke
@@ -5962,17 +5701,17 @@ Count | Button Text
     1 | ad free for 3,99€ month
     1 | 更多資訊
     1 | 私隱聲明及責任聲明
-    1 | gdpr privacy policy
     1 | acceptable use policy
+    1 | gdpr privacy policy
     1 | our 23 partners
     1 | loe tingimusi
     1 | cookies accepteren
     1 | wijzig voorkeuren
     1 | weitere informationen zu cookies.
-    1 | jeg accepterer alle
-    1 | mere information og indstillinger
     1 | jatkan vain välttämättömillä
     1 | lisätiedot ja asetukset
+    1 | jeg accepterer alle
+    1 | mere information og indstillinger
     1 | hyväksy vain tarpeelliset
     1 | policy for cookies
     1 | 当社ウェブサイトにおける個人情報の取扱いについて
@@ -5990,17 +5729,17 @@ Count | Button Text
     1 | ainult vajalikud
     1 | küpsistest
     1 | polityce plików cookies
-    1 | werbefrei lesen für 3,99 € monat
     1 | avtrykk |
-    1 | cookies deaktivieren
-    1 | cookies aktivieren
     1 | gérer les paramètres des cookies
     1 | activer les cookies
     1 | avis sur les cookies
-    1 | accetta selezionati
+    1 | cookies deaktivieren
+    1 | cookies aktivieren
     1 | open
+    1 | accetta selezionati
     1 | tilpass dine valg
     1 | tıklayın
+    1 | barrierefreiheit
     1 | denegado
     1 | privacy - cookie policy
     1 | no, ill leave
@@ -6035,12 +5774,9 @@ Count | Button Text
     1 | dont accept
     1 | privacy and use policies
     1 | ja, det er ok
-    1 | allen cookies zustimmen
-    1 | auswahl speichern und zustimmen
     1 | eller gör dina val
     1 | vores behandling af personoplysninger
     1 | jobindex brug af cookies
-    1 | minimale cookies aanvaarden
     1 | a(z) 123 partnerünk
     1 | tilpass cookies-innstillingene
     1 | jeg godkjenner kun nødvendige cookies
@@ -6068,9 +5804,6 @@ Count | Button Text
     1 | lisäasetukset
     1 | lue lisää evästeistä.
     1 | einstellungen bearbeiten
-    1 | cookies toestaan (ook in de vs)
-    1 | alleen technisch noodzakelijke cookies toestaan
-    1 | ons privacybeleid
     1 | se personvernregler
     1 | mer information om cookies
     1 | akceptuję wszystkie zgody
@@ -6127,9 +5860,6 @@ Count | Button Text
     1 | ja, ist ok für mich
     1 | lese mehr über diese zwecke
     1 | verwalten von 1631-lieferanten
-    1 | ja, accepteren
-    1 | nee, dank je
-    1 | marketingpartners
     1 | hinweis akzeptieren und schließen
     1 | spravovat služby
     1 | underdomæner
@@ -6138,7 +5868,6 @@ Count | Button Text
     1 | krone pur bestellen
     1 | 77 partner
     1 | šeit
-    1 | ausgewählte akzeptieren
     1 | os nossos 993 parceiros
     1 | avböj alla kakor
     1 | evästeet-sivulta
@@ -6147,6 +5876,7 @@ Count | Button Text
     1 | ne, děkuji
     1 | leverandør.
     1 | tilpass og vis detaljer
+    1 | réglages
     1 | voir nos 995 partenaires
     1 | gestion des cookies
     1 | réglage des cookies
@@ -6156,6 +5886,7 @@ Count | Button Text
     1 | a propos de nous
     1 | decline all and close
     1 | cookie optin by olli machts
+    1 | alle annehmen
     1 | upravljanje podešavanjima
     1 | valitse evästeet
     1 | digital privacy statement
@@ -6174,10 +5905,10 @@ Count | Button Text
     1 | nuestros 1054 socios
     1 | our 280 partners
     1 | view our 1028 partners
-    1 | returns policy
-    1 | delivery policy
     1 | visit our privacy policy
     1 | you can find out more in our privacy policy and cookie policy and manage the choices available to you at any time by going to privacy settings at the bottom of any page.
+    1 | returns policy
+    1 | delivery policy
     1 | διαφωνώ
     1 | start playing
     1 | spremi postavke i zatvori
@@ -6185,12 +5916,13 @@ Count | Button Text
     1 | za više informacija pročitajte našu politiku upravljanja kolačićima.
     1 | cookie policy here
     1 | nur essentiell
-    1 | se över din användning av cookies och ställ in dina preferenser
+    1 | mehr informationen ...
     1 | se gjennom bruken vår av informasjonskapsler og still inn preferansene dine
+    1 | se över din användning av cookies och ställ in dina preferenser
     1 | nos 229 partenaires
-    1 | déjà abonné? je midentifie
     1 | refuser sabonner
     1 | nos 254 partenaires
+    1 | déjà abonné? je midentifie
     1 | paramétrer mon consentement
     1 | leurs 278 partenaires
     1 | les sociétés de son groupe
@@ -6238,6 +5970,7 @@ Count | Button Text
     1 | les mer om personvern i lørenskog kommune.
     1 | refuse unnecessary
     1 | accept chosen
+    1 | our 1014 partners
     1 | fechar
     1 | conheça a nossa política de utilização de cookies.
     1 | view privacy and cookies policy
@@ -6246,6 +5979,7 @@ Count | Button Text
     1 | 268 partners
     1 | read our updated privacy policy
     1 | разбрах!
+    1 | weitere informationen zu cookies
     1 | chiudi informativa sui cookies
     1 | no, i will leave.
     1 | yes, im a legal adult and i accept cookies.
@@ -6264,8 +5998,6 @@ Count | Button Text
     1 | www.mackolik.com
     1 | cookiepolitik.
     1 | personalizza le impostazioni
-    1 | nicht essentielle cookies ablehnen
-    1 | nestlé deutschland ag und mit ihr gesellschaftsrechtlich verbundenen unternehmen
     1 | by using this site, you agree to our privacy policy including the use of cookies to enhance your experience.
     1 | aceptar la selección actual
     1 | negar todo
@@ -6280,21 +6012,16 @@ Count | Button Text
     1 | apple parental control measures
     1 | google safety centre
     1 | microsoft family safety
-    1 | rechazo y me suscribo
-    1 | acepto y continúo gratis
     1 | refuser tous les cookies optionnels
     1 | activer tous les cookies optionnels
+    1 | rechazo y me suscribo
+    1 | acepto y continúo gratis
     1 | this website uses cookies to improve your experience. well assume youre ok with this, but you can opt-out if you wish.
     1 | i am happy with it
     1 | διαβάστε περισσότερα...
     1 | οκ
     1 | doar cookie-uri esentiale
     1 | preferinte cookie-uri
-    1 | politique de protection des données personnelles dutiq
-    1 | portail dutiq (consenthub)
-    1 | opérateur télécom
-    1 | sur nos sites
-    1 | 1073 partenaires
     1 | nepovolit žádné
     1 | povolit všechny
     1 | chci se dozvědět více
@@ -6330,14 +6057,12 @@ Count | Button Text
     1 | นโยบายคุกกี้
     1 | kundeservice
     1 | avslå alle informasjonskapsler
-    1 | nein, einstellungen öffnen
-    1 | ja, verstanden
     1 | apply settings
-    1 | our 53 partners
     1 | ok, den er grei
     1 | les mer på informasjonssiden
-    1 | accetta solo cookies necessari
+    1 | our 53 partners
     1 | 「プライバシーポリシー」
+    1 | accetta solo cookies necessari
     1 | polityka prywatności eurozet sp. z o.o. i
     1 | central de privacidade.
     1 | dismiss this message
@@ -6351,8 +6076,8 @@ Count | Button Text
     1 | privacy and safety
     1 | start
     1 | opções
-    1 | ikke aksepter
     1 | tietosuojakäytäntö ↗
+    1 | ikke aksepter
     1 | приемане
     1 | marketingové
     1 | štatistické
@@ -6385,30 +6110,25 @@ Count | Button Text
     1 | επίδοσης
     1 | αναγκαία
     1 | εδώ
+    1 | acceptez
     1 | en savoir plus ici
-    1 | přijmout nezbytné soubory cookie
-    1 | dokumentu o používání cookies
     1 | rifiuto i cookie
     1 | policy sui cookie
+    1 | přijmout nezbytné soubory cookie
+    1 | dokumentu o používání cookies
     1 | nein - moneylove.de verlassen
     1 | ja - moneylove.de betreten
     1 | for øvrig vises det til vår personvernerklæring.
-    1 | more estate sine retningslinjer for innsamling og bruk av persondata
     1 | akceptuję wszystko
+    1 | more estate sine retningslinjer for innsamling og bruk av persondata
     1 | administrer informasjonskapsler (cookies)
     1 | jetzt details ansehen
     1 | privatlivspolitik - det jødiske samfund (mosaiske.dk)
-    1 | visa alla partners (1695)
-    1 | medlemsvillkor
     1 | vis alle partnere (1695)
     1 | medlemsvilkår
-    1 | aux cookies
+    1 | visa alla partners (1695)
+    1 | medlemsvillkor
     1 | website privacy statement.
-    1 | analytische speicherung
-    1 | motor1
-    1 | formel1.de
-    1 | 500 weitere websites
-    1 | voreinstellungen verwalten
     1 | behandle cookies
     1 | sehen sie sich unsere 294 partner an
     1 | grupy witryn
@@ -6416,7 +6136,6 @@ Count | Button Text
     1 | usage safety guidelines
     1 | versant
     1 | nastaviť cookies
-    1 | 420 partner
     1 | personalize mtgo.com cookies
     1 | reject all mtgo.com cookies
     1 | accept all mtgo.com cookies
@@ -6438,11 +6157,11 @@ Count | Button Text
     1 | nastavení a informace o cookies
     1 | povolit jen nezbytné
     1 | ochraně osobních údajů
+    1 | information and cookies
     1 | süti beállítások és információk
     1 | szükséges engedélyezése
     1 | hozzájárulok
     1 | adatvédelmi
-    1 | information and cookies
     1 | beállítások szerkesztése
     1 | elfogadom a javasolt beállításokat
     1 | itt
@@ -6452,7 +6171,6 @@ Count | Button Text
     1 | awesome
     1 | zobacz naszych partnerów
     1 | help
-    1 | jetzt myhomebook pur abonnieren
     1 | lisätietoa tästä
     1 | tilpass informasjonskapslene
     1 | race director (evenager)
@@ -6463,7 +6181,6 @@ Count | Button Text
     1 | not personalized
     1 | login (premium)
     1 | mystic slots® privacy policy
-    1 | mehr informationen, auch zum jederzeit möglichen widerruf, finden sie hier.
     1 | informasjonskapsler på naboen.no
     1 | detailné nastavenie
     1 | zobraziť všetkých partnerov (1561)
@@ -6478,7 +6195,6 @@ Count | Button Text
     1 | om personvern i netlife
     1 | norsk
     1 | accept cookies close
-    1 | 1572 partner
     1 | tillat valg
     1 | https:policies.google.comprivacy
     1 | seçimleri yönet
@@ -6498,10 +6214,9 @@ Count | Button Text
     1 | (privacy policy)
     1 | skjul varsling
     1 | våre 13 partnere
-    1 | 497 partner
+    1 | mukauta evästeeni.
     1 | tilpas mine cookies.
     1 | tilpass mine cookies.
-    1 | mukauta evästeeni.
     1 | anpassa mina cookies.
     1 | ind out more
     1 | f
@@ -6517,8 +6232,6 @@ Count | Button Text
     1 | pourquoi le nouvel obs vous demande daccepter ces traitements de vos données
     1 | solo i cookie essenziali
     1 | fornitori iab e google
-    1 | externe inhalte und erweiterte interaktion
-    1 | abonnieren und weiter
     1 | nej tack!
     1 | det, är okej!
     1 | visa villkor information
@@ -6531,9 +6244,9 @@ Count | Button Text
     1 | i̇ş ortakları listesi (satıcılar)
     1 | çerez politikasi
     1 | okudum
+    1 | changer mes préférences
     1 | piekrist
     1 | vairāk
-    1 | changer mes préférences
     1 | les vår personvernerklæring for mer informasjon
     1 | не, благодаря
     1 | les mer om cookies.
@@ -6546,29 +6259,28 @@ Count | Button Text
     1 | mer informasjon om cookies på obos.no
     1 | view our cookie policy.
     1 | website privacy and cookies policy
+    1 | nicht technische cookies ablehnen
+    1 | meine cookie-auswahl
     1 | cookie-liste
     1 | 187 partner
     1 | mit bestehendem pur-abo anmelden.
-    1 | nicht technische cookies ablehnen
-    1 | meine cookie-auswahl
+    1 | pur-abo abschließen
     1 | terms of use.
-    1 | privacy statement...
     1 | further information
+    1 | privacy statement...
     1 | technisch notwenige cookies einsehen
     1 | zum login als mitglied
     1 | zur club-mitgliedschaft
     1 | 我同意
     1 | 服務條款
-    1 | 411 partner
     1 | personalizovat
     1 | přijmout všechny cookies
     1 | geen cookies
-    1 | geht klar
-    1 | закрити
-    1 | дізнатись більше.
     1 | setează preferințele
     1 | acceptă doar necesare
     1 | politica privind cookie-urile,
+    1 | закрити
+    1 | дізнатись більше.
     1 | lue lisää käyttöehdoista.
     1 | naszymi 972 partnerami
     1 | avvis all
@@ -6582,18 +6294,18 @@ Count | Button Text
     1 | obligatoriska kakor
     1 | läs mer om kakor och hur vi hanterar dem.
     1 | további információ az adatvédelemről
+    1 | accepteer
     1 | learn how
     1 | vreau să schimb setările
     1 | πολιτική ασφαλείας και πολιτική cookies
     1 | αποκλεισμός cookies τρίτων
+    1 | jag accepterar inte
+    1 | jag accepterar de rekommenderade inställningarna
     1 | pārvaldīt iestatījumus
     1 | atteikt visam
     1 | piekrist visam
-    1 | jag accepterar inte
-    1 | jag accepterar de rekommenderade inställningarna
-    1 | website data collection policy
-    1 | ja det er ok
     1 | salli vain pakolliset evästeet
+    1 | ja det er ok
     1 | our 56 partners
     1 | ok. jeg godtar
     1 | visitor agreement
@@ -6638,11 +6350,9 @@ Count | Button Text
     1 | více možností
     1 | partneři
     1 | personalizeaza
-    1 | ad user data
-    1 | ad personalization
+    1 | our 285 partners
     1 | tilpassede innstillinger
     1 | informasjonskapselregler
-    1 | our 285 partners
     1 | nos 245 partenaires
     1 | det är ok för mig!
     1 | les mer om hvordan du administrerer cookies på nettvett.no.
@@ -6671,17 +6381,18 @@ Count | Button Text
     1 | funktionalität
     1 | targeting
     1 | performance
+    1 | unbedingt erforderlich
     1 | informationen zu cookies
     1 | join
     1 | vain pakolliset
     1 | nie wyrażaj zgody i zamknij
     1 | veure preferències
     1 | denega
-    1 | quali cookie utilizziamo e le loro finalità
     1 | nur notwendige cookies nutzen
     1 | datenschutzerklärung und fernmeldegeheimnis
     1 | unsere 44 partner
     1 | personal settings.
+    1 | quali cookie utilizziamo e le loro finalità
     1 | technisch notwendige cookies
     1 | mehr informationen zum datenschutz
     1 | ok, thanks
@@ -6712,10 +6423,9 @@ Count | Button Text
     1 | evästeasetuksissa
     1 | your privacy rights
     1 | ok, chiudi e accetta
-    1 | vlastním nastavení
     1 | นโยบายสิทธิส่วนบุคคล
     1 | เงื่อนไขการใช้งานเว็บไซต์
-    1 | für 2,99 € monat
+    1 | vlastním nastavení
     1 | link til cookie-erklæring
     1 | naši 978 partneri
     1 | zaakceptuj wszystkie pliki cookie
@@ -6723,9 +6433,9 @@ Count | Button Text
     1 | polityką prywatności i plików cookies
     1 | samtykke-erklæring
     1 | staying safe
-    1 | activate paranoid mode
     1 | iab tcf settings
     1 | show all partners (847)
+    1 | activate paranoid mode
     1 | cookies zulassen!
     1 | více...
     1 | hyväksy pakolliset
@@ -6734,20 +6444,17 @@ Count | Button Text
     1 | uredi možnosti
     1 | zavrni vse
     1 | varovanje zasebnosti
-    1 | 195 partner
     1 | click here to read more on our privacy policy.
     1 | soubory cookie
     1 | ok rozumiem
     1 | w polityce prywatności
     1 | vores partnere
-    1 | jetzt bezahlen
-    1 | schließen akzeptieren
     1 | more...
+    1 | googles policy
+    1 | dont show this again.
     1 | dovoli vse piškotke
     1 | uredi nastavitve piškotkov
     1 | več o piškotkih...
-    1 | googles policy
-    1 | dont show this again.
     1 | i decline!
     1 | kliknij po więcej szczegółów
     1 | our 898 partners
@@ -6757,11 +6464,12 @@ Count | Button Text
     1 | our 862 partners
     1 | läs mer om kakor här.
     1 | meer informatie over cookies of je keuze aanpassen?
-    1 | принять и закрыть
-    1 | политикой в отношении файлов cookie
     1 | ver 1036 socios
     1 | refusar i pagar 0.20€ per 24h
+    1 | принять и закрыть
+    1 | политикой в отношении файлов cookie
     1 | racedays terms
+    1 | opslaan
     1 | informačním memorandu
     1 | informacích o zpracování cookies
     1 | политике использования файлов cookie
@@ -6769,15 +6477,12 @@ Count | Button Text
     1 | nascondi
     1 | персональные данные
     1 | политикой использования cookies
-    1 | our 26 partners
     1 | zur datenschutzerklaerung
+    1 | our 26 partners
     1 | personvernsforskrifter
     1 | google retningslinjer for personvern
     1 | dispensar
-    1 | ab 3 € monat
     1 | endast funktionella
-    1 | eingeschränkt nutzen
-    1 | hier lesen
     1 | datenschutzerklärung und impressum
     1 | skjema
     1 | nødvendige informasjonskapsler
@@ -6791,12 +6496,9 @@ Count | Button Text
     1 | cookies we use.
     1 | læs mere i vores cookiepolitik
     1 | lære mer?
-    1 | revisorforeningen.no
     1 | läs mer om hur vi använder kakor här
+    1 | revisorforeningen.no
     1 | i agree to the use of cookies
-    1 | fremdinhalte darstellen (soziale netzwerke, videos und andere einbindungen)
-    1 | zum hilfebereich
-    1 | weitere angebote
     1 | nos 29 partenaires
     1 | từ chối tất cả
     1 | thiết lập
@@ -6820,8 +6522,6 @@ Count | Button Text
     1 | cliccando qui
     1 | review our privacy policy.
     1 | bare det nødvedigste
-    1 | einwilligung speichern
-    1 | nur essenzielle cookies setzen
     1 | accept save
     1 | allow all save
     1 | powered by cookie-script.com
@@ -6830,9 +6530,9 @@ Count | Button Text
     1 | velge
     1 | velg alle
     1 | les mere
-    1 | voir nos 290 partenaires
-    1 | termos e condições
     1 | voir nos 139 partenaires
+    1 | politique en matière de cookies
+    1 | termos e condições
     1 | varstvo osebnih podatkov
     1 | spletni piškotki
     1 | več možnosti
@@ -6841,23 +6541,20 @@ Count | Button Text
     1 | standard provides optimal operation and uses video cookies, among others.
     1 | functional provides basic functions and uses anonymized cookies.
     1 | accept termenii si conditiile
-    1 | personalisierte werbung inhalte inkl. profilbildung
-    1 | soziale netzwerke, videos und personalisierung
-    1 | 352 drittanbieter
-    1 | mehr zum pur-abo
     1 | hafna valkvæðu
     1 | ja, jeg er enig
     1 | ønsker ikke
-    1 | tallenna valinnat
     1 | kişiselleştir
     1 | çerez bilgilendirme metnimizi
     1 | hakkında
     1 | reklam ayarları
     1 | bilgiler
     1 | rıza
+    1 | tallenna valinnat
     1 | プライバシーポリシーをご覧ください。
     1 | full­stendig informasjon for vilkår for person­vern og informasjons­kapsler
     1 | cookie settings center
+    1 | eri privacy policy
     1 | condiciones de uso
     1 | contacto
     1 | iniciar sesión con contentpass
@@ -6866,7 +6563,6 @@ Count | Button Text
     1 | consentimiento
     1 | 717 socios
     1 | gratuita.
-    1 | eri privacy policy
     1 | created with iubenda (lenken åpnes i en ny fane)
     1 | finn ut mer og tilpass
     1 | partneri
@@ -6885,7 +6581,6 @@ Count | Button Text
     1 | cookie-details anzeigen
     1 | gewählte cookies akzeptieren
     1 | tillåt särskilda cookies
-    1 | 478 partner
     1 | personaliseerin
     1 | küpsiste kasutamise põhimõtetest.
     1 | estonian
@@ -6907,8 +6602,6 @@ Count | Button Text
     1 | 同意して閉じる
     1 | settl informasjonskapsler
     1 | cookies verbieten
-    1 | ik ben 18+ en akkoord!
-    1 | privacy-en cookiebeleid
     1 | neka alla utom nödvändiga cookies
     1 | shemalevancouver.com
     1 | shemalemontreal.com
@@ -6923,6 +6616,7 @@ Count | Button Text
     1 | webcams
     1 | escorts
     1 | retningslinjer for personvern.
+    1 | alle cookies toestaan
     1 | arată detaliile
     1 | află mai multe
     1 | politica de confidențialitate google
@@ -6961,13 +6655,13 @@ Count | Button Text
     1 | informasjonskapselmerknad
     1 | valdyti pasirinkimą
     1 | atmesti visus
+    1 | tillåt nödvändiga kakor
+    1 | hantera valbara kakor
     1 | spravovať cookies
     1 | povoliť analytické
     1 | viac informácií o cookies
     1 | máte možnosť odmietnuť
     1 | tento súhlas môžete kedykoľvek odvolať.
-    1 | tillåt nödvändiga kakor
-    1 | hantera valbara kakor
     1 | küpsiste poliitikaga
     1 | kişisel veri politikası
     1 | cookies-indstillinger
@@ -6976,8 +6670,6 @@ Count | Button Text
     1 | ikke tillatt
     1 | andre brukes til statistikk og analyse.
     1 | more infos privacy policy
-    1 | cookies essentiels et fonctionnels
-    1 | voir notre politique en matière de cookies
     1 | essensielle og funksjonelle informasjonskapsler
     1 | se våre retningslinjer for informasjonskapsler
     1 | più informazioni
@@ -6994,15 +6686,7 @@ Count | Button Text
     1 | hylkää kaikki evästeet
     1 | register or sign-in
     1 | get pure
-    1 | datenschutz |
-    1 | allgemeine nutzungsbedingungen |
-    1 | impressum |
-    1 | login mit spektrum+
-    1 | + ihre privatsphäre
-    1 | probeabo spektrum+
     1 | privacy policy here.
-    1 | zusätzliche messungen und anzeigen
-    1 | 414 partner
     1 | i våre brukervilkår
     1 | zakázať cookies
     1 | povoliť všetky cookies
@@ -7012,7 +6696,6 @@ Count | Button Text
     1 | personvernerklæring og cookies
     1 | lietojiet tikai nepieciešamos sīkfailus
     1 | atļaut visus sīkfailus
-    1 | ich habe bereits ein pur-abo
     1 | הסכמה
     1 | במדיניות הפרטיות המעודכנת
     1 | zásadách ochrany osobních údajů google
@@ -7020,7 +6703,6 @@ Count | Button Text
     1 | przeczytaj więcej o tych celach
     1 | zarządzaj 1245 dostawcami
     1 | privacy cookies
-    1 | targeting (3rd party)
     1 | https:www.springfield-armory.comlegal
     1 | hinweis ausblenden
     1 | gdpr-hq
@@ -7049,8 +6731,8 @@ Count | Button Text
     1 | samtykkedetaljer
     1 | cookie richtlinie
     1 | administrer innstillingene mine
-    1 | λεπτομέρειες εδώ
     1 | åpne innstillinger
+    1 | λεπτομέρειες εδώ
     1 | personvern.
     1 | datenschutzerklärung (de)
     1 | privacy policy (en(
@@ -7061,7 +6743,6 @@ Count | Button Text
     1 | ändra inställningar
     1 | les mer om personvern og cookies på styreplan.no
     1 | nos 289 partenaires
-    1 | voir nos 315 partenaires
     1 | jetzt testen
     1 | sie bestimmen, wie wir tracken
     1 | deutlich weniger werbung
@@ -7071,9 +6752,10 @@ Count | Button Text
     1 | werbung durch dritte (iab-verarbeitungszwecke, siehe unten)
     1 | sz-personalisierung und marketing
     1 | nutzungsanalyse und produktoptimierung
+    1 | voir nos 315 partenaires
     1 | voorkeuren beheren
-    1 | close window
     1 | cookie information avautuu uudessa välilehdessä
+    1 | close window
     1 | kiellä kaikki
     1 | click here to learn more about our cookie policy
     1 | nur notwendige cookies setzen
@@ -7093,16 +6775,14 @@ Count | Button Text
     1 | lv
     1 | only accept technically necessary cookies
     1 | polityką dotyczącą cookies
-    1 | våra partners
     1 | yes; i accept cookies
+    1 | våra partners
     1 | 「cookieについて」
-    1 | annuleren
-    1 | alleen essentieel
     1 | les mer om vår cookiepolicy
     1 | thats fine!
     1 | les mer om vår bruk av informasjonskapsler her.
-    1 | accept specific cookies
     1 | private: data protection cookie policy
+    1 | accept specific cookies
     1 | united states
     1 | united kingdom
     1 | switzerland
@@ -7134,12 +6814,9 @@ Count | Button Text
     1 | teachers college, columbia university website cookie notice
     1 | deaktiver ikke-nødvendige informasjonskapsler
     1 | wordpress cookie notice by real cookie banner
-    1 | jetzt techbook pur abonnieren
     1 | cookie statement (opens in a new window)
     1 | seleziona le tue preferenze
     1 | kun påkrævede
-    1 | mit pur-abo anmelden
-    1 | pur-abo
     1 | keeldun mittevajalikest küpsistest
     1 | cookie privacy
     1 | tenk sandefjord sine retningslinjer for innsamling og bruk av persondata
@@ -7154,15 +6831,15 @@ Count | Button Text
     1 | personaliseer
     1 | beleid inzake cookies
     1 | raadpleeg hier de lijst van cookies
-    1 | cliquez ici pour consulter la liste des cookies
     1 | nødvendige infromasjonskapsler
-    1 | fermer la modale
     1 | privacy preference center
+    1 | fermer la modale
     1 | vores cookieoplysninger kan findes her.
     1 | juster indstillinger
     1 | plus dinfo
     1 | firebase
     1 | pinterest
+    1 | google analytics
     1 | help scout
     1 | reject all and subscribe
     1 | 133 partners
@@ -7199,10 +6876,6 @@ Count | Button Text
     1 | personalised content, content measurement, audience research, and services development
     1 | 295 partners
     1 | 650 other websites
-    1 | develop and improve services
-    1 | personalised content, content measurement and audience research
-    1 | 128 partners
-    1 | 300 other websites
     1 | ss
     1 | contentpass s
     1 | veri gizliliği
@@ -7223,6 +6896,15 @@ Count | Button Text
     1 | gizlilik politikamızda
     1 | gizlilik yöneticisinde
     1 | gizlilik politikamız
+    1 | entwicklung und verbesserung der angebote
+    1 | personalisierte werbung und inhalte, messung von werbeleistung und der performance von inhalten sowie zielgruppenforschung
+    1 | 362
+    1 | 300 andere websites
+    1 | develop and improve services
+    1 | personalised content, content measurement and audience research
+    1 | 128 partners
+    1 | 300 other websites
+    1 | mentions légales
     1 | analyser activement les caractéristiques de lappareil pour lidentification
     1 | utiliser des données de géolocalisation précises
     1 | développer et améliorer les services
@@ -7235,9 +6917,6 @@ Count | Button Text
     1 | sans publicité pour 3,99 € mois
     1 | 300 autres sites web
     1 | déclaration relative à la protection des données
-    1 | personalisierte werbung und inhalte, messung von werbeleistung und der performance von inhalten sowie zielgruppenforschung
-    1 | 362
-    1 | 300 andere websites
     1 | analizar activamente las características del dispositivo para su identificación
     1 | utilizar datos de localización geográfica precisa
     1 | desarrollo y mejora de los servicios
@@ -7273,17 +6952,17 @@ Count | Button Text
     1 | informativa sulla privacy e sui cookie
     1 | doeleinden weergeven
     1 | partnerlijst (derden)
+    1 | cookie voreinstellungen
     1 | permitir todas
     1 | preferencias de cookies
-    1 | cookie voreinstellungen
     1 | naszymi 1570 partnerami
     1 | aksepter og lagre
     1 | den er grei !
     1 | behandling av personopplysninger hos trondheim tannlegesenter
-    1 | onze 1570 partners
     1 | no,leave
     1 | yes,enter
     1 | verwendete funktionen und informationen
+    1 | weitere einstellungen
     1 | configuración de rastreadores
     1 | leer más sobre privacidad y uso de datos
     1 | no usen mi información personal
@@ -7317,15 +6996,6 @@ Count | Button Text
     1 | staff
     1 | current students
     1 | functional cookies only
-    1 | nutzen sie schon contentpass ? hier einloggen
-    1 | ablehnen und bezahlen
-    1 | zustimmen und weiter mit werbung
-    1 | personalisierung
-    1 | anzeigen ads
-    1 | sonstiges
-    1 | analyse statistiken
-    1 | 1001 partner
-    1 | kostenlos.
     1 | our privacy notice
     1 | les meir i vår personvernerklæring
     1 | mehr zu unserem datenschutz
@@ -7354,10 +7024,10 @@ Count | Button Text
     1 | stimme zu und fortfahren
     1 | beenden
     1 | aboutcookies.org
+    1 | control cookies
     1 | rebutja-ho tot
     1 | accepta-ho tot
     1 | configuració
-    1 | control cookies
     1 | 539 partner
     1 | ok, pokračujte
     1 | nie, uprav
@@ -7374,6 +7044,7 @@ Count | Button Text
     1 | czytaj więcej o plikach „cookies
     1 | lue tietosuojaseloste
     1 | mindent elfogad
+    1 | einstellungen öffnen
     1 | aksepter nødvendige cookies
     1 | onze cookie en privacyverklaring
     1 | 21+
@@ -7382,7 +7053,6 @@ Count | Button Text
     1 | kustomoi valintasi
     1 | findest du hier
     1 | naš 977 partneri
-    1 | deny and use necessary cookies only
     1 | våre 14 partnere
     1 | personvern, vilkår og betingelser for vestagdermuseet.no og vam nettbutikk
     1 | personvererklæring
@@ -7421,14 +7091,13 @@ Count | Button Text
     1 | läs mer i vår cookiepolicy
     1 | sites tiers succeptibles dutiliser des cookies ou autres méthodes de tracking
     1 | utilisation de vos données personnelles
-    1 | 410 partner
     1 | protection de la vie privée cookies
     1 | instellingen bewaren
-    1 | use only necessary cookie
     1 | само строго необходимите бисквитки
     1 | персонализация
     1 | позволи всички бисквитки
     1 | parinktys
+    1 | ich bin nicht einverstanden
     1 | patvirtinti pasirinktus slapukus
     1 | privatumo politika.
     1 | uždaryti
@@ -7446,14 +7115,14 @@ Count | Button Text
     1 | politika cookies
     1 | odmítnout volitelné
     1 | alright
-    1 | datenschutzbestimmungen.
-    1 | bare det viktigste
+    1 | zum login
+    1 | werbefrei lesen
     1 | les om personvern
+    1 | bare det viktigste
     1 | accept recommended settings and close
     1 | our cookie information page
     1 | les mer om personvern her.
     1 | okej, jag förstår
-    1 | cest ok pour moi
     1 | påkrævede
     1 | gtc
     1 | company-details
@@ -7463,6 +7132,9 @@ Count | Button Text
     1 | accept cookies policy
     1 | more info on our cookie policy
     1 | datenschutzhinweisen (contentpass-abo)
+    1 | privatsphäre einstellungen
+    1 | erstellung von profilen für personalisierte werbung
+    1 | verwendung reduzierter daten zur auswahl von werbeanzeigen
     1 | partn er
     1 | werbefrei für 1,99€ monat
     1 | jag vill göra inställningar för cookies
@@ -7474,13 +7146,10 @@ Count | Button Text
     1 | investering i whisky
     1 | om whisky.dk
     1 | for mer informasjon, les vår policy for informasjonskapsler
-    1 | nutzung der utiq und netid technologie zu werbezwecken
-    1 | politische werbung anzeigen
-    1 | nicht-essentielles ablehnen
     1 | finn ut mer om hvordan google behandler personopplysninger
+    1 | nicht-essentielles ablehnen
     1 | www.allaboutcookies.org
     1 | data privacy notice.
-    1 | 2193 derden
     1 | alle partner anzeigen
     1 | acceptér cookies
     1 | dowiedz się więcej pomoc.woombikes.pl
@@ -7497,8 +7166,8 @@ Count | Button Text
     1 | yogalaaven.no
     1 | enterado
     1 | aquí.
-    1 | learn more in our privacy notice.
     1 | shipping
+    1 | learn more in our privacy notice.
     1 | einstellung speichern
     1 | weitere informationen zu cookies erhalten sie in unserer datenschutzerklärung.
     1 | souhlasím, ať to roste
@@ -7512,9 +7181,6 @@ Count | Button Text
     1 | about cookie policy
     1 | go on with essentials
     1 | upravit nastavení...
-    1 | jetzt ab 2,49 € monat bestellen (*)
-    1 | widerrufbar
-    1 | datens chutz
     1 | polityce prywatności i plików cookie.
     1 | jeg godtar bruk av cookies
     1 | обработки персональных данных
@@ -7524,8 +7190,6 @@ Count | Button Text
     1 | wildlife safari tour tickets
     1 | 40% off zoo tickets
     1 | animal facts and videos
-    1 | impressum und agb
-    1 | nicht akzeptieren
     1 | odrzuć opcjonalne
     1 | polityka cookies dla www.zus.pl
     1 | razumem
@@ -7556,6 +7220,7 @@ Count | Button Text
     1 | polityka prywatności link otwiera się w nowym oknie
     1 | partner anzeigen
     1 | wordpress.com-netzwerk
+    1 | its okay
     1 | zapoznaj się z polityką prywatności
     1 | файлы cookie.
 
@@ -7563,31 +7228,29 @@ Count | Button Text
 Button Count | Popups
 -------------+-------
            0 | 482
-           1 | 1834
-           2 | 5214
-           3 | 3687
-           4 | 2843
-           5 | 1322
-           6 | 759
-           7 | 259
-           8 | 240
-           9 | 160
-          10 | 57
-          11 | 56
-          12 | 50
-          13 | 45
-          14 | 15
-          15 | 16
-          16 | 13
-          17 | 7
-          18 | 6
-          19 | 13
+           1 | 1832
+           2 | 5177
+           3 | 3561
+           4 | 2771
+           5 | 1240
+           6 | 736
+           7 | 239
+           8 | 230
+           9 | 131
+          10 | 46
+          11 | 41
+          12 | 26
+          13 | 31
+          14 | 10
+          15 | 9
+          16 | 8
+          17 | 6
+          18 | 5
+          19 | 3
           20 | 2
-          21 | 4
+          21 | 3
           22 | 3
-          23 | 1
-          24 | 2
-          25 | 1
+          24 | 1
           29 | 3
           33 | 2
           48 | 1
@@ -7604,11 +7267,6 @@ File: 1001ebooks.club_6ff6.json
   Popup: Ce site utilise des cookies 🍪 Le site utilise des cookies pour vous assurer une meilleure expérience sur notre site. En...
   Buttons: ["ok","en savoir plus"]
 
-File: 100procentonderhouden.nl_2ec1.json
-  Popup: 100procentonderhouden.nl
-We vinden dat u gegevens uw eigendom zijn en ondersteunen uw recht op privacy en transparantie....
-  Buttons: ["privacybeleid","aanpassen","mijn voorkeuren opslaan"]
-
 File: 1040abroad.com_bf21.json
   Popup: By continuing to use the site, you agree to the use of cookies. more information Accept...
   Buttons: ["accept","more information"]
@@ -7619,17 +7277,17 @@ File: 101internet.ru_f7f0.json
 ОК...
   Buttons: ["ок","правилами"]
 
-File: 123minilager.no_dd5f.json
-  Popup: Vi respekterer personvernet ditt
-
-Vi bruker informasjonskapsler for å forbedre nettleseropplevelsen din, vise personlig ...
-  Buttons: ["lagre mine preferanser","aksepter alt","avvis","tilpass"]
-
 File: 123lyd.no_c92f.json
   Popup: 123 LYD Cookies Policy
 
 Our Website uses cookies to improve your experience. Please visit our Cookie Policy page for mor...
   Buttons: ["cookie policy","website"]
+
+File: 123minilager.no_dd5f.json
+  Popup: Vi respekterer personvernet ditt
+
+Vi bruker informasjonskapsler for å forbedre nettleseropplevelsen din, vise personlig ...
+  Buttons: ["lagre mine preferanser","aksepter alt","avvis","tilpass"]
 
 File: 16444.fi_aa67.json
   Popup: 16444.fi käyttää evästeitä käyttökokemuksen parantamiseksi ja käyttötilastojen keräämiseksi. Hyväksyt evästeiden käytön ...
@@ -7692,3 +7350,11 @@ Mi és partnereink sütiket és más technológiákat használunk információk 
 File: 240dc.com_e247.json
   Popup: We use cookies to ensure that we give you the best experience on our website. If you continue to use this site we will a...
   Buttons: ["ok"]
+
+File: 24sevenoffice.com_2acf.json
+  Popup: Samtykke
+Detaljer
+Om
+Denne nettsiden anvender cookies
+Vi bruker informasjonskapsler for å gi innhold og annonser et pers...
+  Buttons: ["tillat alle","tillat utvalg","ikke tillat","om","detaljer","samtykke"]
