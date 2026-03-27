@@ -25,6 +25,8 @@ const REJECT_PATTERNS_ENGLISH = [
     // often used in CCPA
     /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*information\s*$/is,
 
+    'allow selection',
+
     // These are impactful, but look error-prone
     // // e.g. "disagree"
     // /^\s*(i)?\s*disagree\s*(and\s+close)?\s*$/i,
@@ -42,6 +44,7 @@ const REJECT_PATTERNS_DUTCH = [
     'alleen noodzakelijk',
     'weiger',
     'weiger cookies',
+    'selectie toestaan',
     'doorgaan zonder te accepteren',
     'alleen functionele cookies',
     'alleen functioneel',
@@ -145,6 +148,8 @@ const REJECT_PATTERNS_FRENCH = [
     'tout refuser',
     'refuser',
     'refuser tous les cookies',
+    'non merci',
+    'interdire tous les cookies',
     'je refuse',
     'refuser tout',
     'tout rejeter',
@@ -241,6 +246,7 @@ const REJECT_PATTERNS_GERMAN = [
     'cookies ablehnen',
     'optionale cookies ablehnen',
     'nur erforderliche cookies',
+    'nur technisch notwendige',
     'einwilligung ablehnen',
     'nur erforderliche',
     'nur notwendige cookies zulassen',
@@ -736,6 +742,33 @@ const SETTINGS_PATTERNS = [
     'update cookie preferences',
     'show cookie preferences',
     'edit cookie settings',
+    'personalize',
+
+    // FR
+    'personnaliser',
+    'paramètres',
+    'paramètres des cookies',
+    'paramétrer',
+    'préférences',
+
+
+    // DE
+    'einstellungen',
+    'speichern',
+    'konfigurieren',
+    'cookie-einstellungen',
+    'personalisierte werbung und inhalte, messung von werbeleistung und der performance von inhalten, zielgruppenforschung sowie entwicklung und verbesserung von angeboten',
+    'individuelle datenschutzeinstellungen',
+
+    // NL
+    'aanpassen',
+    'instellingen',
+    'cookie instellingen',
+    'cookie-instellingen',
+    'voorkeuren',
+    'bekijk voorkeuren',
+    'meer opties',
+    'zelf instellen',
 ];
 
 const SAVE_PATTERNS = [
