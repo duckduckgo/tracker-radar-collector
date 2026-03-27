@@ -743,6 +743,7 @@ const SETTINGS_PATTERNS = [
     'show cookie preferences',
     'edit cookie settings',
     'personalize',
+    'opt-out preferences',
 
     // FR
     'personnaliser',
