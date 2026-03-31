@@ -213,11 +213,14 @@ async function main() {
     let frameLevelAgree = 0;
     let frameLevelDisagree = 0;
     const errorCounts = { guardrail: 0, context_overflow: 0, network: 0, other: 0 };
+    /** @type {Array<{site: string, level: string, llm: boolean, afm: boolean, text?: string}>} */
+    const disagreements = [];
 
     const rejectButtonTexts = new Set();
     const otherButtonTexts = new Set();
 
     const reportFile = path.join(crawlDir, '..', 'detection-report.json');
+    const disagreementsFile = path.join(crawlDir, '..', 'detection-disagreements.jsonl');
 
     async function writeReport() {
         const report = {
@@ -235,6 +238,7 @@ async function main() {
             timestamp: new Date().toISOString(),
         };
         await fs.promises.writeFile(reportFile, JSON.stringify(report, null, 2));
+        await fs.promises.writeFile(disagreementsFile, disagreements.map((d) => JSON.stringify(d)).join('\n') + '\n');
     }
 
     await asyncLib.eachOfLimit(pages, parallel, async (page, /** @type {number} */ index) => {
@@ -289,6 +293,14 @@ async function main() {
                         popupLevelAgree++;
                     } else {
                         popupLevelDisagree++;
+                        disagreements.push({
+                            file: page,
+                            site: data.finalUrl || page,
+                            level: 'popup',
+                            llm: !!oldLlm,
+                            afm: newAfm,
+                            text: (frameContext.potentialPopups[i].text || '').slice(0, 500),
+                        });
                     }
                 }
             }
@@ -302,6 +314,14 @@ async function main() {
                 frameLevelAgree++;
             } else {
                 frameLevelDisagree++;
+                disagreements.push({
+                    file: page,
+                    site: data.finalUrl || page,
+                    level: 'frame',
+                    llm: existingFrameLlm,
+                    afm: documentClassificationResult.afmPopupDetected,
+                    text: (frameContext.cleanedText || '').slice(0, 500),
+                });
             }
         }
 
@@ -352,6 +372,7 @@ async function main() {
     console.log(`Popup-level comparison with OpenAI: agree=${popupLevelAgree}, disagree=${popupLevelDisagree}`);
     console.log(`Frame-level comparison with OpenAI: agree=${frameLevelAgree}, disagree=${frameLevelDisagree}`);
     console.log(`Errors: ${JSON.stringify(errorCounts)}`);
+    console.log(`Disagreements: ${disagreements.length} (saved to ${disagreementsFile})`)
     console.log(`Report saved to ${reportFile}`);
     console.log(`Reject button texts (${rejectButtonTexts.size}) saved in ${rejectButtonTextsFile}`);
     console.log(`Other button texts (${otherButtonTexts.size}) saved in ${otherButtonTextsFile}`);
