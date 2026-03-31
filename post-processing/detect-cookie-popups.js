@@ -157,8 +157,9 @@ async function main() {
     const crawlDir = opts.crawldir;
     const parallel = parseInt(opts.parallel, 10);
 
-    if (!process.env.OPENAI_API_KEY) {
-        console.error('env variable OPENAI_API_KEY is not set');
+    const afmBaseUrl = process.env.AFM_BASE_URL;
+    if (!afmBaseUrl && !process.env.OPENAI_API_KEY) {
+        console.error('Set OPENAI_API_KEY or AFM_BASE_URL (e.g. http://localhost:8000/v1)');
         process.exit(1);
     }
 
@@ -168,7 +169,8 @@ async function main() {
     }
 
     const openai = new OpenAI({
-        apiKey: process.env.OPENAI_API_KEY,
+        baseURL: afmBaseUrl || undefined,
+        apiKey: afmBaseUrl ? 'unused' : process.env.OPENAI_API_KEY,
     });
 
     const pages = fs.readdirSync(crawlDir).filter((name) => name.endsWith('.json') && name !== 'metadata.json');
