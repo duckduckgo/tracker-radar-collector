@@ -160,15 +160,8 @@ function classifyError(errorMessage) {
     return 'other';
 }
 
-/**
- * @param {import('openai').OpenAI} openai
- * @param {string} text
- * @param {{guardrail: number, context_overflow: number, network: number, other: number}} [errorCounts]
- * @returns {Promise<boolean>}
- */
-async function checkLLM(openai, text, errorCounts) {
-    const systemPrompt = `
-You are an expert in web application user interfaces. You are given a text extracted from an HTML element. Your task is to determine whether this element is a cookie popup.
+const PROMPTS = {
+    original: `You are an expert in web application user interfaces. You are given a text extracted from an HTML element. Your task is to determine whether this element is a cookie popup.
 
 A "cookie popup", also known as "consent management dialog", is a notification that informs users about the use of cookies (or other storage technologies), and seeks their consent. It typically includes information about cookies, consent options, privacy policy links, and action buttons.
 
@@ -185,9 +178,27 @@ Examples of cookie popup text:
 Examples of NON-cookie popup text:
 - "This site is for adults only. By pressing continue, you confirm that you are at least 18 years old."
 - "Help Contact Pricing Company Jobs Research Program Sitemap Privacy Settings Legal Notice Cookie Policy"
-- "Would you like to enable notifications to stay up to date?"
-    `;
+- "Would you like to enable notifications to stay up to date?"`,
 
+    short: `Classify whether the given text is from a cookie consent popup (a dialog asking users to accept or reject cookies/tracking). Text containing only code or navigation links is NOT a cookie popup. Return true or false.`,
+
+    medium: `Classify whether the given text is from a cookie consent popup (a dialog asking users to accept or reject cookies/tracking).
+
+Cookie popup: "We use cookies to improve your experience. Accept All / Reject All"
+NOT a cookie popup: "Help Contact Pricing Privacy Settings Cookie Policy"
+NOT a cookie popup: code snippets or JavaScript
+
+Return true or false.`,
+};
+
+/**
+ * @param {import('openai').OpenAI} openai
+ * @param {string} systemPrompt
+ * @param {string} text
+ * @param {Record<string, number>} [errorCounts]
+ * @returns {Promise<boolean>}
+ */
+async function checkLLMWithPrompt(openai, systemPrompt, text, errorCounts) {
     const trimmedText = text.length > MAX_TEXT_LENGTH ? text.slice(0, MAX_TEXT_LENGTH) : text;
 
     const CookieConsentNoticeClassification = z.object({
@@ -198,16 +209,9 @@ Examples of NON-cookie popup text:
         const completion = await openai.beta.chat.completions.parse({
             model: 'gpt-4.1-nano-2025-04-14',
             messages: [
-                {
-                    role: 'system',
-                    content: systemPrompt,
-                },
-                {
-                    role: 'user',
-                    content: trimmedText,
-                },
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: trimmedText },
             ],
-
             response_format: zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
         });
 
@@ -246,25 +250,30 @@ function classifyButtons(buttons) {
 }
 
 /**
- * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
+ * Run popup through all prompt variants and regex.
  * @param {import('./types').PopupData} popup
  * @param {import('openai').OpenAI} openai
- * @param {{guardrail: number, context_overflow: number, network: number, other: number}} [errorCounts]
+ * @param {Record<string, number>} [errorCounts]
  * @returns {Promise<PopupClassificationResult>}
  */
 async function classifyPopup(popup, openai, errorCounts) {
     const popupText = popup.text?.trim();
     let regexMatch = false;
-    let afmMatch = false;
+    const afmResults = { original: false, short: false, medium: false };
+
     if (popupText) {
         regexMatch = checkHeuristicPatterns(popupText);
-        afmMatch = await checkLLM(openai, popupText, errorCounts);
+        for (const [name, prompt] of Object.entries(PROMPTS)) {
+            afmResults[name] = await checkLLMWithPrompt(openai, prompt, popupText, errorCounts);
+        }
     }
 
     const { rejectButtons, otherButtons } = classifyButtons(popup.buttons);
 
     return {
-        afmMatch,
+        afmOriginal: afmResults.original,
+        afmShort: afmResults.short,
+        afmMedium: afmResults.medium,
         regexMatch,
         rejectButtons,
         otherButtons,
@@ -273,7 +282,9 @@ async function classifyPopup(popup, openai, errorCounts) {
 
 /**
  * @typedef {Object} PopupClassificationResult
- * @property {boolean} afmMatch
+ * @property {boolean} afmOriginal
+ * @property {boolean} afmShort
+ * @property {boolean} afmMedium
  * @property {boolean} regexMatch
  * @property {import('./types').ButtonData[]} rejectButtons
  * @property {import('./types').ButtonData[]} otherButtons
@@ -283,4 +294,5 @@ module.exports = {
     classifyButtons,
     classifyPopup,
     checkHeuristicPatterns,
+    PROMPTS,
 };
