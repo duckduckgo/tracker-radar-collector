@@ -19,6 +19,7 @@ function classifyError(errorMessage) {
     const msg = String(errorMessage).toLowerCase();
     if (msg.includes('guardrail') || msg.includes('unsafe')) return 'guardrail';
     if (msg.includes('context') || msg.includes('exceeded') || msg.includes('4096')) return 'context_overflow';
+    if (msg.includes('unsupported language') || msg.includes('locale')) return 'unsupported_locale';
     if (msg.includes('econnrefused') || msg.includes('econnreset') || msg.includes('etimedout') || msg.includes('fetch failed') || msg.includes('connection error')) return 'network';
     return 'other';
 }
@@ -212,7 +213,7 @@ async function main() {
     let popupLevelDisagree = 0;
     let frameLevelAgree = 0;
     let frameLevelDisagree = 0;
-    const errorCounts = { guardrail: 0, context_overflow: 0, network: 0, other: 0 };
+    const errorCounts = { guardrail: 0, context_overflow: 0, unsupported_locale: 0, network: 0, other: 0 };
     /** @type {Array<{site: string, level: string, llm: boolean, afm: boolean, text?: string}>} */
     const disagreements = [];
 

@@ -155,6 +155,7 @@ function classifyError(errorMessage) {
     const msg = String(errorMessage).toLowerCase();
     if (msg.includes('guardrail') || msg.includes('unsafe')) return 'guardrail';
     if (msg.includes('context') || msg.includes('exceeded') || msg.includes('4096')) return 'context_overflow';
+    if (msg.includes('unsupported language') || msg.includes('locale')) return 'unsupported_locale';
     if (msg.includes('econnrefused') || msg.includes('econnreset') || msg.includes('etimedout') || msg.includes('fetch failed') || msg.includes('connection error')) return 'network';
     return 'other';
 }
