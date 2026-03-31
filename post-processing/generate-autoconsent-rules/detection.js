@@ -145,12 +145,27 @@ function isRejectButton(buttonText) {
     );
 }
 
+const MAX_TEXT_LENGTH = 10_000;
+
+/**
+ * @param {string} errorMessage
+ * @returns {string}
+ */
+function classifyError(errorMessage) {
+    const msg = String(errorMessage).toLowerCase();
+    if (msg.includes('guardrail') || msg.includes('unsafe')) return 'guardrail';
+    if (msg.includes('context') || msg.includes('exceeded') || msg.includes('4096')) return 'context_overflow';
+    if (msg.includes('econnrefused') || msg.includes('econnreset') || msg.includes('etimedout') || msg.includes('fetch failed') || msg.includes('connection error')) return 'network';
+    return 'other';
+}
+
 /**
  * @param {import('openai').OpenAI} openai
  * @param {string} text
+ * @param {{guardrail: number, context_overflow: number, network: number, other: number}} [errorCounts]
  * @returns {Promise<boolean>}
  */
-async function checkLLM(openai, text) {
+async function checkLLM(openai, text, errorCounts) {
     const systemPrompt = `
 You are an expert in web application user interfaces. You are given a text extracted from an HTML element. Your task is to determine whether this element is a cookie popup.
 
@@ -172,6 +187,8 @@ Examples of NON-cookie popup text:
 - "Would you like to enable notifications to stay up to date?"
     `;
 
+    const trimmedText = text.length > MAX_TEXT_LENGTH ? text.slice(0, MAX_TEXT_LENGTH) : text;
+
     const CookieConsentNoticeClassification = z.object({
         isCookieConsentNotice: z.boolean(),
     });
@@ -186,7 +203,7 @@ Examples of NON-cookie popup text:
                 },
                 {
                     role: 'user',
-                    content: text,
+                    content: trimmedText,
                 },
             ],
 
@@ -197,6 +214,11 @@ Examples of NON-cookie popup text:
         return result?.isCookieConsentNotice ?? false;
     } catch (error) {
         console.error('Error classifying candidate:', error);
+        if (errorCounts) {
+            const errorText = [error?.message, error?.cause?.message, error?.cause?.code].filter(Boolean).join(' ');
+            const category = classifyError(errorText);
+            errorCounts[category] = (errorCounts[category] || 0) + 1;
+        }
     }
 
     return false;
@@ -226,21 +248,22 @@ function classifyButtons(buttons) {
  * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
  * @param {import('./types').PopupData} popup
  * @param {import('openai').OpenAI} openai
+ * @param {{guardrail: number, context_overflow: number, network: number, other: number}} [errorCounts]
  * @returns {Promise<PopupClassificationResult>}
  */
-async function classifyPopup(popup, openai) {
+async function classifyPopup(popup, openai, errorCounts) {
     const popupText = popup.text?.trim();
     let regexMatch = false;
-    let llmMatch = false;
+    let afmMatch = false;
     if (popupText) {
         regexMatch = checkHeuristicPatterns(popupText);
-        llmMatch = await checkLLM(openai, popupText);
+        afmMatch = await checkLLM(openai, popupText, errorCounts);
     }
 
     const { rejectButtons, otherButtons } = classifyButtons(popup.buttons);
 
     return {
-        llmMatch,
+        afmMatch,
         regexMatch,
         rejectButtons,
         otherButtons,
@@ -249,7 +272,7 @@ async function classifyPopup(popup, openai) {
 
 /**
  * @typedef {Object} PopupClassificationResult
- * @property {boolean} llmMatch
+ * @property {boolean} afmMatch
  * @property {boolean} regexMatch
  * @property {import('./types').ButtonData[]} rejectButtons
  * @property {import('./types').ButtonData[]} otherButtons

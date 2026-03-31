@@ -8,14 +8,28 @@ const { z } = require('zod');
 const { zodResponseFormat } = require('openai/helpers/zod');
 const asyncLib = require('async');
 const { checkHeuristicPatterns, classifyPopup, classifyButtons } = require('./generate-autoconsent-rules/detection');
-const { verifyButtonTexts } = require('./generate-autoconsent-rules/verification');
+
+const MAX_TEXT_LENGTH = 10_000;
+
+/**
+ * @param {string} errorMessage
+ * @returns {string}
+ */
+function classifyError(errorMessage) {
+    const msg = String(errorMessage).toLowerCase();
+    if (msg.includes('guardrail') || msg.includes('unsafe')) return 'guardrail';
+    if (msg.includes('context') || msg.includes('exceeded') || msg.includes('4096')) return 'context_overflow';
+    if (msg.includes('econnrefused') || msg.includes('econnreset') || msg.includes('etimedout') || msg.includes('fetch failed') || msg.includes('connection error')) return 'network';
+    return 'other';
+}
 
 /**
  * @param {import('openai').OpenAI} openai
  * @param {string} text
+ * @param {{guardrail: number, context_overflow: number, network: number, other: number}} errorCounts
  * @returns {Promise<boolean>}
  */
-async function checkLLM(openai, text) {
+async function checkLLM(openai, text, errorCounts) {
     const systemPrompt = `
 You are an expert in web application user interfaces. You are given a text extracted from an HTML page. Your task is to determine whether this page contains a cookie popup.
 
@@ -40,6 +54,8 @@ Examples of NON-cookie popup text:
 - "function rn(){return"EU"===tn()}var on={};return{require:o,getLookUpTable:c,getListOfCookiesForDeletion:a,getGDPRFlag:g,getGDPRConsent:f,getGDPRConsentString:l,isCouplingMode:s"
     `;
 
+    const trimmedText = text.length > MAX_TEXT_LENGTH ? text.slice(0, MAX_TEXT_LENGTH) : text;
+
     const CookieConsentNoticeClassification = z.object({
         isCookieConsentNotice: z.boolean(),
     });
@@ -54,7 +70,7 @@ Examples of NON-cookie popup text:
                 },
                 {
                     role: 'user',
-                    content: text,
+                    content: trimmedText,
                 },
             ],
 
@@ -65,6 +81,9 @@ Examples of NON-cookie popup text:
         return result?.isCookieConsentNotice ?? false;
     } catch (error) {
         console.error('Error classifying candidate:', error);
+        const errorText = [error?.message, error?.cause?.message, error?.cause?.code].filter(Boolean).join(' ');
+        const category = classifyError(errorText);
+        errorCounts[category] = (errorCounts[category] || 0) + 1;
     }
 
     return false;
@@ -73,37 +92,36 @@ Examples of NON-cookie popup text:
 /**
  * @param {import('../collectors/CookiePopupsCollector.js').ScrapeScriptResult} frameContext
  * @param {import('openai').OpenAI} openai
- * @returns {Promise<{hasDetectedPopupLlm: boolean, hasDetectedPopupRegex: boolean, rejectButtonTexts: Set<string>, otherButtonTexts: Set<string>}>}
+ * @param {{guardrail: number, context_overflow: number, network: number, other: number}} errorCounts
+ * @returns {Promise<{hasDetectedPopupAfm: boolean, hasDetectedPopupRegex: boolean, rejectButtonTexts: Set<string>, otherButtonTexts: Set<string>}>}
  */
-async function classifyPotentialPopups(frameContext, openai) {
-    let hasDetectedPopupLlm = false;
+async function classifyPotentialPopups(frameContext, openai, errorCounts) {
+    let hasDetectedPopupAfm = false;
     let hasDetectedPopupRegex = false;
     const rejectButtonTexts = new Set();
     const otherButtonTexts = new Set();
     for (let i = 0; i < frameContext.potentialPopups.length; i++) {
         const popup = frameContext.potentialPopups[i];
 
-        const popupClassificationResult = await classifyPopup(popup, openai);
-        // Replace the popup data in place
+        const popupClassificationResult = await classifyPopup(popup, openai, errorCounts);
 
         frameContext.potentialPopups[i] = {
             ...popup,
             ...popupClassificationResult,
         };
-        if (popupClassificationResult.llmMatch) {
-            hasDetectedPopupLlm = true;
+        if (popupClassificationResult.afmMatch) {
+            hasDetectedPopupAfm = true;
         }
         if (popupClassificationResult.regexMatch) {
             hasDetectedPopupRegex = true;
         }
-        // Collect button texts for analysis
-        if (popupClassificationResult.llmMatch) {
+        if (popupClassificationResult.afmMatch) {
             popupClassificationResult.rejectButtons.flatMap((button) => button.text).forEach((b) => rejectButtonTexts.add(b));
             popupClassificationResult.otherButtons.flatMap((button) => button.text).forEach((b) => otherButtonTexts.add(b));
         }
     }
     return {
-        hasDetectedPopupLlm,
+        hasDetectedPopupAfm,
         hasDetectedPopupRegex,
         rejectButtonTexts,
         otherButtonTexts,
@@ -113,31 +131,31 @@ async function classifyPotentialPopups(frameContext, openai) {
 /**
  * @param {import('../collectors/CookiePopupsCollector.js').ScrapeScriptResult} frameContext
  * @param {import('openai').OpenAI} openai
- * @returns {Promise<{llmPopupDetected: boolean, regexPopupDetected: boolean}>}
+ * @param {{guardrail: number, context_overflow: number, network: number, other: number}} errorCounts
+ * @returns {Promise<{afmPopupDetected: boolean, regexPopupDetected: boolean}>}
  */
-async function classifyDocument(frameContext, openai) {
-    let llmPopupDetected = false;
+async function classifyDocument(frameContext, openai, errorCounts) {
+    let afmPopupDetected = false;
     let regexPopupDetected = false;
     // ask LLM to detect cookie popups in the page text
     if (
         frameContext.cleanedText &&
         (frameContext.isTop || frameContext.buttons.length > 0) // simple heuristic to filter out utility iframes that often cause false positives
     ) {
-        // Skip LLM check if we already have an LLM detected popup in the popup elements. This saves some OpenAI calls.
-        if (frameContext.potentialPopups?.some((p) => p.llmMatch)) {
-            llmPopupDetected = true;
+        if (frameContext.potentialPopups?.some((p) => p.afmMatch)) {
+            afmPopupDetected = true;
         } else {
-            llmPopupDetected = await checkLLM(openai, frameContext.cleanedText);
+            afmPopupDetected = await checkLLM(openai, frameContext.cleanedText, errorCounts);
         }
         regexPopupDetected = checkHeuristicPatterns(frameContext.cleanedText);
         const { rejectButtons, otherButtons } = classifyButtons(frameContext.buttons);
         frameContext.rejectButtons = rejectButtons;
         frameContext.otherButtons = otherButtons;
     }
-    frameContext.llmPopupDetected = llmPopupDetected;
+    frameContext.afmPopupDetected = afmPopupDetected;
     frameContext.regexPopupDetected = regexPopupDetected;
     return {
-        llmPopupDetected,
+        afmPopupDetected,
         regexPopupDetected,
     };
 }
@@ -145,17 +163,19 @@ async function classifyDocument(frameContext, openai) {
 async function main() {
     const program = new Command();
     program
-        .description('Detect cookie popups in a crawl')
+        .description('Detect cookie popups in a crawl (Apple FM batch testing variant)')
         .requiredOption(
             '-d, --crawldir <dir>',
             'Directory of crawl output to process, e.g. "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2025-05-12/US/3p-crawl/"',
         )
-        .option('-p, --parallel <n>', 'Number of pages to process in parallel', '50')
+        .option('-p, --parallel <n>', 'Number of pages to process in parallel', '1')
+        .option('--report-interval <n>', 'Write intermediate report every N pages', '100')
         .parse(process.argv);
 
     const opts = program.opts();
     const crawlDir = opts.crawldir;
     const parallel = parseInt(opts.parallel, 10);
+    const reportInterval = parseInt(opts.reportInterval, 10);
 
     const afmBaseUrl = process.env.AFM_BASE_URL;
     if (!afmBaseUrl && !process.env.OPENAI_API_KEY) {
@@ -183,13 +203,39 @@ async function main() {
               width: 30,
           });
 
-    let sitesWithPopupsLlm = 0;
+    let processed = 0;
+    let sitesWithPopupsAfm = 0;
     let sitesWithPopupsRegex = 0;
-    let sitesWithDetectedPopupLlm = 0;
+    let sitesWithDetectedPopupAfm = 0;
     let sitesWithDetectedPopupRegex = 0;
+    let popupLevelAgree = 0;
+    let popupLevelDisagree = 0;
+    let frameLevelAgree = 0;
+    let frameLevelDisagree = 0;
+    const errorCounts = { guardrail: 0, context_overflow: 0, network: 0, other: 0 };
 
     const rejectButtonTexts = new Set();
     const otherButtonTexts = new Set();
+
+    const reportFile = path.join(crawlDir, '..', 'detection-report.json');
+
+    async function writeReport() {
+        const report = {
+            processed,
+            total: pages.length,
+            sitesWithPopupsAfm,
+            sitesWithPopupsRegex,
+            sitesWithDetectedPopupAfm,
+            sitesWithDetectedPopupRegex,
+            popupLevelAgree,
+            popupLevelDisagree,
+            frameLevelAgree,
+            frameLevelDisagree,
+            errors: { ...errorCounts },
+            timestamp: new Date().toISOString(),
+        };
+        await fs.promises.writeFile(reportFile, JSON.stringify(report, null, 2));
+    }
 
     await asyncLib.eachOfLimit(pages, parallel, async (page, /** @type {number} */ index) => {
         if (!progressBar) {
@@ -205,59 +251,86 @@ async function main() {
         } catch (error) {
             console.error(`Error reading or parsing file ${page}:`, error.message);
             progressBar?.tick({ page });
+            processed++;
             return;
         }
 
         if (!data.data || !data.data.cookiepopups) {
             progressBar?.tick({ page });
+            processed++;
             return;
         }
 
         /** @type {import('../collectors/CookiePopupsCollector.js').CookiePopupsCollectorResult} */
         const collectorResult = data.data.cookiepopups;
 
-        let cookiePopupDetectedLlm = false;
+        let cookiePopupDetectedAfm = false;
         let cookiePopupDetectedRegex = false;
-        let hasDetectedPopupLlm = false;
+        let hasDetectedPopupAfm = false;
         let hasDetectedPopupRegex = false;
 
         for (const frameContext of collectorResult.scrapedFrames) {
-            // First, go over potential popups and classify them individually
+            // Save pre-existing OpenAI results before classifyPotentialPopups runs
+            const existingPopupLlmFlags = (frameContext.potentialPopups || []).map((p) => p.llmMatch);
+            const existingFrameLlm = !!frameContext.llmPopupDetected;
 
-            const popupClassificationResult = await classifyPotentialPopups(frameContext, openai);
-            hasDetectedPopupLlm = hasDetectedPopupLlm || popupClassificationResult.hasDetectedPopupLlm;
+            const popupClassificationResult = await classifyPotentialPopups(frameContext, openai, errorCounts);
+            hasDetectedPopupAfm = hasDetectedPopupAfm || popupClassificationResult.hasDetectedPopupAfm;
             hasDetectedPopupRegex = hasDetectedPopupRegex || popupClassificationResult.hasDetectedPopupRegex;
             popupClassificationResult.rejectButtonTexts.forEach((b) => rejectButtonTexts.add(b));
             popupClassificationResult.otherButtonTexts.forEach((b) => otherButtonTexts.add(b));
 
-            // Then, classify based on the full document text
+            // Popup-level comparison: compare each popup's llmMatch vs afmMatch
+            for (let i = 0; i < (frameContext.potentialPopups || []).length; i++) {
+                const oldLlm = existingPopupLlmFlags[i];
+                const newAfm = !!frameContext.potentialPopups[i].afmMatch;
+                if (oldLlm !== undefined) {
+                    if (oldLlm === newAfm) {
+                        popupLevelAgree++;
+                    } else {
+                        popupLevelDisagree++;
+                    }
+                }
+            }
 
-            const documentClassificationResult = await classifyDocument(frameContext, openai);
-            cookiePopupDetectedLlm = cookiePopupDetectedLlm || documentClassificationResult.llmPopupDetected;
+            const documentClassificationResult = await classifyDocument(frameContext, openai, errorCounts);
+            cookiePopupDetectedAfm = cookiePopupDetectedAfm || documentClassificationResult.afmPopupDetected;
             cookiePopupDetectedRegex = cookiePopupDetectedRegex || documentClassificationResult.regexPopupDetected;
+
+            // Frame-level comparison: compare llmPopupDetected vs afmPopupDetected
+            if (existingFrameLlm === documentClassificationResult.afmPopupDetected) {
+                frameLevelAgree++;
+            } else {
+                frameLevelDisagree++;
+            }
         }
 
         if (collectorResult.scrapedFrames.length > 0) {
-            if (cookiePopupDetectedLlm) {
-                sitesWithPopupsLlm++;
+            if (cookiePopupDetectedAfm) {
+                sitesWithPopupsAfm++;
             }
             if (cookiePopupDetectedRegex) {
                 sitesWithPopupsRegex++;
             }
-            if (hasDetectedPopupLlm) {
-                sitesWithDetectedPopupLlm++;
+            if (hasDetectedPopupAfm) {
+                sitesWithDetectedPopupAfm++;
             }
             if (hasDetectedPopupRegex) {
                 sitesWithDetectedPopupRegex++;
             }
 
-            // update the crawl file asynchronously
             await fs.promises.writeFile(filePath, JSON.stringify(data, null, 2));
         }
-        progressBar?.tick({
-            page,
-        });
+
+        processed++;
+        progressBar?.tick({ page });
+
+        if (processed % reportInterval === 0) {
+            await writeReport();
+        }
     });
+
+    await writeReport();
 
     console.log('Saving button texts to files...');
     const rejectButtonTextsFile = path.join(crawlDir, '..', 'reject-button-texts.txt');
@@ -265,27 +338,21 @@ async function main() {
     await fs.promises.writeFile(rejectButtonTextsFile, Array.from(rejectButtonTexts).join('\n'));
     await fs.promises.writeFile(otherButtonTextsFile, Array.from(otherButtonTexts).join('\n'));
 
-    console.log('Verifying button texts...');
-    const verificationResults = await verifyButtonTexts({
-        openai,
-        rejectButtonTextsFile,
-        otherButtonTextsFile,
-    });
-    await fs.promises.writeFile(path.join(crawlDir, '..', 'verification-results.json'), JSON.stringify(verificationResults, null, 2));
-
     console.log('Done');
-    console.log(
-        `Sites with LLM detected text (full text page): ${sitesWithPopupsLlm} (${((sitesWithPopupsLlm / pages.length) * 100).toFixed(1)}%)`,
-    );
+    console.log(`Sites with AFM detected text (full text page): ${sitesWithPopupsAfm} (${((sitesWithPopupsAfm / pages.length) * 100).toFixed(1)}%)`);
     console.log(
         `Sites with regex detected popups (full text page): ${sitesWithPopupsRegex} (${((sitesWithPopupsRegex / pages.length) * 100).toFixed(1)}%)`,
     );
     console.log(
-        `Sites with LLM detected popups (popup elements): ${sitesWithDetectedPopupLlm} (${((sitesWithDetectedPopupLlm / pages.length) * 100).toFixed(1)}%)`,
+        `Sites with AFM detected popups (popup elements): ${sitesWithDetectedPopupAfm} (${((sitesWithDetectedPopupAfm / pages.length) * 100).toFixed(1)}%)`,
     );
     console.log(
         `Sites with regex detected popups (popup elements): ${sitesWithDetectedPopupRegex} (${((sitesWithDetectedPopupRegex / pages.length) * 100).toFixed(1)}%)`,
     );
+    console.log(`Popup-level comparison with OpenAI: agree=${popupLevelAgree}, disagree=${popupLevelDisagree}`);
+    console.log(`Frame-level comparison with OpenAI: agree=${frameLevelAgree}, disagree=${frameLevelDisagree}`);
+    console.log(`Errors: ${JSON.stringify(errorCounts)}`);
+    console.log(`Report saved to ${reportFile}`);
     console.log(`Reject button texts (${rejectButtonTexts.size}) saved in ${rejectButtonTextsFile}`);
     console.log(`Other button texts (${otherButtonTexts.size}) saved in ${otherButtonTextsFile}`);
 }
