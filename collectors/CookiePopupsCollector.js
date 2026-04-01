@@ -180,6 +180,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
                     enablePrehide: false,
                     enableCosmeticRules: true,
                     enableFilterList: false,
+                    enableGeneratedRules: false,
                     enableHeuristicDetection: true,
                     enableHeuristicAction: true,
                     detectRetries: 20,

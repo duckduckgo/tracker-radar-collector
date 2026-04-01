@@ -1,0 +1,522 @@
+{
+  "initialUrl": "http://5e.tools/",
+  "finalUrl": "https://5e.tools/",
+  "timeout": false,
+  "testStarted": 1768214245101,
+  "testFinished": 1768214268066,
+  "data": {
+    "cookiepopups": {
+      "cmps": [],
+      "scrapedFrames": [
+        {
+          "isTop": true,
+          "origin": "https://5e.tools",
+          "buttons": [
+            {
+              "text": "Accept",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > div:nth-child(1):not([id]) > button:nth-child(2):not([id])"
+            },
+            {
+              "text": "Advanced Settings",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > div:nth-child(1):not([id]) > button:nth-child(1):not([id])"
+            },
+            {
+              "text": "1086 vendors",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > div:nth-child(1):not([id]) > p:nth-child(2):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Limba română",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(9):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Português",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(8):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Polski",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(7):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Nederlands",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(6):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Italiano",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(5):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Français",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(4):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Español",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(3):not([id]) > a:not([id])"
+            },
+            {
+              "text": "English",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(2):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Deutsch",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(1):not([id]) > a:not([id])"
+            },
+            {
+              "text": " English",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Firefox",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(7):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "Chrome",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(7):not([id]) > a:nth-child(2):not([id])"
+            },
+            {
+              "text": "Rivet",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(7):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Plutonium Features",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(6):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "v12",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(6):not([id]) > sup:nth-child(2):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "v13",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(6):not([id]) > sup:nth-child(2):not([id]) > a:nth-child(2):not([id])"
+            },
+            {
+              "text": "current",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(6):not([id]) > sup:nth-child(2):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Plutonium",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(6):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Foundry",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > h3:nth-child(4):not([id]) > a:not([id])"
+            },
+            {
+              "text": "fan server",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(3):not([id]) > a:not([id])"
+            },
+            {
+              "text": "CR\nCalculator",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(3):not([id]) > a:nth-child(5):not([id])"
+            },
+            {
+              "text": "Loot\nGenerator",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(3):not([id]) > a:nth-child(4):not([id])"
+            },
+            {
+              "text": "DM Screen",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(3):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "Bestiary",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(3):not([id]) > a:nth-child(2):not([id])"
+            },
+            {
+              "text": "Conditions",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(1):not([id]) > a:nth-child(5):not([id])"
+            },
+            {
+              "text": "Rules\nGlossary",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(1):not([id]) > a:nth-child(4):not([id])"
+            },
+            {
+              "text": "Books",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(1):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "Adventures",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(1):not([id]) > a:nth-child(2):not([id])"
+            },
+            {
+              "text": "Stat\nGenerator",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(3):not([id]) > a:nth-child(4):not([id])"
+            },
+            {
+              "text": "Spells",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(3):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "Items",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(3):not([id]) > a:nth-child(2):not([id])"
+            },
+            {
+              "text": "Backgrounds",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(3):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Options\n& Features",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > a:nth-child(4):not([id])"
+            },
+            {
+              "text": "Feats",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "Classes",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > a:nth-child(2):not([id])"
+            },
+            {
+              "text": "Species",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Help",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(8):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Settings ",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(7):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Utilities ",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(6):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "References ",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(5):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Dungeon Master ",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(4):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Player ",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(3):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Rules ",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(2):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Home",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(1):not([id]) > a:not([id])"
+            }
+          ],
+          "cleanedText": "5etools\n\nA suite of tools for 5th Edition Dungeons & Dragons players and Dungeon Masters.\n\nHome\nRules \nPlayer \nDungeon Master \nReferences \nUtilities \nSettings \nHelp\nPlayers\nSpecies\nClasses\nFeats\nOptions\n& Features\nBackgrounds\nItems\nSpells\nStat\nGenerator\nRules\nAdventures\nBooks\nRules\nGlossary\nConditions\nDungeon Masters\nBestiary\nDM Screen\nLoot\nGenerator\nCR\nCalculator\nUse Discord?\n\nJoin the fan server for announcements, updates, and feature voting.\n\nUse Foundry?\n\nNo? Well, you should! Foundry is a modernized, better-than replacement for Roll20, which prioritizes modding support. It is the 5etools platform of choice for VTT integrations.\n\nTo install the Plutonium module, and start using all of 5etools' content in your game, paste the manifest URL[current/v13/v12] into your Foundry server's module installer. See the Plutonium Features page for an overview of the functionality the module provides.\n\nYou can also install the Rivet browser extension (Chrome/Firefox) to import content from the site with a single click.\n\nUse Roll20?\n\nInstall Tampermonkey (Chrome/Firefox), and the betteR20 script[2014/2024/Jumpgate 2014 (experimental)/Jumpgate 2024 (experimental)], all of which require the D&D 5E by Roll20 sheet. Only one script should be active at a time.\n\nCheck the wiki for an installation guide, and for information on how to use the script.\n\nFAQ\n\nIs there a wiki? Here. Contributions are welcome.\n\nIs it free? Yes! You can even download the source code[current/2014]. See the README or the wiki for help.\n\nCan I contribute? The source is available on GitHub[current/2014]. See the Contributing guidance.\n\nBrowser and device support? The latest desktop versions of Chrome and Firefox.\n\nWhere's my stuff? There's no account system. Everything is stored in cookies. If you wipe those, or close your incognito window, it's gone forever. You can download your data for safekeeping via the Settings menu.\n\nOther versions? A \"2014\" version is available, as well as an archive of releases.\n\nAnything else I should know? Hold SHIFT when hovering to lock a window in place. Everything has tooltips. You will forever be a DM.\n\nSelf-Hosting\n\nYou can host a copy of 5etools on anything that can run a basic webserver—examples include your computer, your phone, a Raspberry Pi, or a free EC2/Compute Engine instance. Download the files and images, copy them into your server's root directory, and enjoy!\n\nDisclaimer\n\n5etools is intended as an easily-accessible digital reference for products you already own. Please ensure you only access content in accordance with your local laws.\n\nVersion ? |  © 2025 5etools | Privacy Policy | Update Cookie Preferences\n5etools® is a Registered Trademark of The Norr Group Ltd. All rights reserved.\n English\nDeutsch\nEnglish\nEspañol\nFrançais\nItaliano\nNederlands\nPolski\nPortuguês\nLimba română\nYou control your privacy\n\nWe and up to 1086 vendors process, store and/or access personal data from you and your device. This data can include your type of browser, settings, cookies, unique identifiers, IP address, and geo location. Your consent can be updated or withdrawn at any time by clicking the link in our privacy policy or footer.\n\nWe're requesting consent to offer: Personalised advertising and content, advertising and content measurement, audience research and services development\n\nAdvertising and content can be personalised based on your profile. Your activity on this service can be used to build or improve a profile about you for personalised advertising and content. Advertising and content performance can be measured. Reports can be generated based on your activity and those of others. Your activity on this service can help develop and improve products and services.\n\nAdvanced Settings\nAccept\n\nYour consents are specific to this site & device.",
+          "potentialPopups": [
+            {
+              "text": " English\nDeutsch\nEnglish\nEspañol\nFrançais\nItaliano\nNederlands\nPolski\nPortuguês\nLimba română\nYou control your privacy\n\nWe and up to 1086 vendors process, store and/or access personal data from you and your device. This data can include your type of browser, settings, cookies, unique identifiers, IP address, and geo location. Your consent can be updated or withdrawn at any time by clicking the link in our privacy policy or footer.\n\nWe're requesting consent to offer: Personalised advertising and content, advertising and content measurement, audience research and services development\n\nAdvertising and content can be personalised based on your profile. Your activity on this service can be used to build or improve a profile about you for personalised advertising and content. Advertising and content performance can be measured. Reports can be generated based on your activity and those of others. Your activity on this service can help develop and improve products and services.\n\nAdvanced Settings\nAccept\n\nYour consents are specific to this site & device.",
+              "selector": "body > div#ncmp__tool > div:not([id])",
+              "buttons": [
+                {
+                  "text": "Accept",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > div:nth-child(1):not([id]) > button:nth-child(2):not([id])"
+                },
+                {
+                  "text": "Advanced Settings",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > div:nth-child(1):not([id]) > button:nth-child(1):not([id])"
+                },
+                {
+                  "text": "1086 vendors",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > div:nth-child(1):not([id]) > p:nth-child(2):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Limba română",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(9):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Português",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(8):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Polski",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(7):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Nederlands",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(6):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Italiano",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(5):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Français",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(4):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Español",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(3):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "English",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(2):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Deutsch",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(1):not([id]) > a:not([id])"
+                },
+                {
+                  "text": " English",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > a:nth-child(1):not([id])"
+                }
+              ],
+              "llmMatch": true,
+              "regexMatch": false,
+              "rejectButtons": [],
+              "otherButtons": [
+                {
+                  "text": "Accept",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > div:nth-child(1):not([id]) > button:nth-child(2):not([id])"
+                },
+                {
+                  "text": "Advanced Settings",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > div:nth-child(1):not([id]) > button:nth-child(1):not([id])"
+                },
+                {
+                  "text": "1086 vendors",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > div:nth-child(1):not([id]) > p:nth-child(2):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Limba română",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(9):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Português",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(8):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Polski",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(7):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Nederlands",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(6):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Italiano",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(5):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Français",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(4):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Español",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(3):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "English",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(2):not([id]) > a:not([id])"
+                },
+                {
+                  "text": "Deutsch",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(1):not([id]) > a:not([id])"
+                },
+                {
+                  "text": " English",
+                  "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > a:nth-child(1):not([id])"
+                }
+              ],
+              "afmMatch": false
+            }
+          ],
+          "rejectButtons": [],
+          "otherButtons": [
+            {
+              "text": "Accept",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > div:nth-child(1):not([id]) > button:nth-child(2):not([id])"
+            },
+            {
+              "text": "Advanced Settings",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(3):not([id]) > div:nth-child(1):not([id]) > button:nth-child(1):not([id])"
+            },
+            {
+              "text": "1086 vendors",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > div:nth-child(1):not([id]) > p:nth-child(2):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Limba română",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(9):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Português",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(8):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Polski",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(7):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Nederlands",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(6):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Italiano",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(5):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Français",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(4):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Español",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(3):not([id]) > a:not([id])"
+            },
+            {
+              "text": "English",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(2):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Deutsch",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > ul:nth-child(2):not([id]) > li:nth-child(1):not([id]) > a:not([id])"
+            },
+            {
+              "text": " English",
+              "selector": "body > div#ncmp__tool > div:not([id]) > div:not([id]) > div:nth-child(1):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Firefox",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(7):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "Chrome",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(7):not([id]) > a:nth-child(2):not([id])"
+            },
+            {
+              "text": "Rivet",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(7):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Plutonium Features",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(6):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "v12",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(6):not([id]) > sup:nth-child(2):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "v13",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(6):not([id]) > sup:nth-child(2):not([id]) > a:nth-child(2):not([id])"
+            },
+            {
+              "text": "current",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(6):not([id]) > sup:nth-child(2):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Plutonium",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(6):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Foundry",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > h3:nth-child(4):not([id]) > a:not([id])"
+            },
+            {
+              "text": "fan server",
+              "selector": "body > main:not([id]) > div:nth-child(2):not([id]) > p:nth-child(3):not([id]) > a:not([id])"
+            },
+            {
+              "text": "CR\nCalculator",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(3):not([id]) > a:nth-child(5):not([id])"
+            },
+            {
+              "text": "Loot\nGenerator",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(3):not([id]) > a:nth-child(4):not([id])"
+            },
+            {
+              "text": "DM Screen",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(3):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "Bestiary",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(3):not([id]) > a:nth-child(2):not([id])"
+            },
+            {
+              "text": "Conditions",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(1):not([id]) > a:nth-child(5):not([id])"
+            },
+            {
+              "text": "Rules\nGlossary",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(1):not([id]) > a:nth-child(4):not([id])"
+            },
+            {
+              "text": "Books",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(1):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "Adventures",
+              "selector": "body > div:not([id]) > div:nth-child(5):not([id]) > div:nth-child(1):not([id]) > a:nth-child(2):not([id])"
+            },
+            {
+              "text": "Stat\nGenerator",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(3):not([id]) > a:nth-child(4):not([id])"
+            },
+            {
+              "text": "Spells",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(3):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "Items",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(3):not([id]) > a:nth-child(2):not([id])"
+            },
+            {
+              "text": "Backgrounds",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(3):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Options\n& Features",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > a:nth-child(4):not([id])"
+            },
+            {
+              "text": "Feats",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > a:nth-child(3):not([id])"
+            },
+            {
+              "text": "Classes",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > a:nth-child(2):not([id])"
+            },
+            {
+              "text": "Species",
+              "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Help",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(8):not([id]) > a:not([id])"
+            },
+            {
+              "text": "Settings ",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(7):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Utilities ",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(6):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "References ",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(5):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Dungeon Master ",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(4):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Player ",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(3):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Rules ",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(2):not([id]) > a:nth-child(1):not([id])"
+            },
+            {
+              "text": "Home",
+              "selector": "body > nav#navigation > ul:nth-child(2)#navbar > li:nth-child(1):not([id]) > a:not([id])"
+            }
+          ],
+          "llmPopupDetected": true,
+          "regexPopupDetected": false,
+          "afmPopupDetected": true
+        }
+      ]
+    },
+    "screenshots": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-01-12/GB/3p-crawl/5e.tools_e8c4.jpg"
+  }
+}
