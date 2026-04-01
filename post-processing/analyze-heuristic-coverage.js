@@ -7,7 +7,7 @@ const GENERATED_TESTS_DIR = path.join(__dirname, '../../autoconsent/tests/genera
 const FILENAME_REGEX = /^auto_([A-Z]{2})_(.+?)_[^_]+$/;
 
 /**
- * @typedef {'redundant-heuristic' | 'redundant-other-cmp' | 'needs-review'} Classification
+ * @typedef {'redundant-heuristic' | 'redundant-other-cmp' | 'generated-rule-active' | 'needs-review'} Classification
  */
 
 /**
@@ -109,10 +109,16 @@ function cmpSucceeded(cmp) {
 
 /**
  * Classify a generated rule based on crawl results for a specific site.
+ *
+ * With enableGeneratedRules=true, the generated rule may succeed and preempt
+ * other CMPs. We account for this by treating a detected (but not succeeded)
+ * non-generated CMP as redundancy evidence when the generated rule won.
+ *
  * @param {import('./generate-autoconsent-rules/types').AutoconsentResult[]} cmps
+ * @param {string} ruleName - the generated rule name to check for self-success
  * @returns {{ classification: Classification, reason: string, matchedCmp: string | null }}
  */
-function classifyRule(cmps) {
+function classifyRule(cmps, ruleName) {
     if (!cmps || cmps.length === 0) {
         return {
             classification: 'needs-review',
@@ -121,7 +127,7 @@ function classifyRule(cmps) {
         };
     }
 
-    // Check if a non-generated CMP successfully handled this page
+    // Check if a non-generated CMP successfully handled this page (unambiguous redundancy)
     for (const cmp of cmps) {
         if (!cmp.name || cmp.name.trim() === '') continue;
 
@@ -142,7 +148,38 @@ function classifyRule(cmps) {
         }
     }
 
-    // Check for partial matches that need review
+    const generatedRuleCmp = cmps.find(c => c.name === ruleName);
+    const generatedRuleSucceeded = generatedRuleCmp && cmpSucceeded(generatedRuleCmp);
+
+    // If the generated rule succeeded, it may have preempted other CMPs.
+    // A non-generated CMP that detected (even if it didn't succeed) means redundancy.
+    if (generatedRuleSucceeded) {
+        const preemptedCmp = cmps.find(c => c.name && !isGeneratedCmpName(c.name) && c.name !== 'HEURISTIC' && c.open);
+        if (preemptedCmp) {
+            return {
+                classification: 'redundant-other-cmp',
+                reason: `generated rule succeeded but non-generated CMP '${preemptedCmp.name}' also detected (likely preempted)`,
+                matchedCmp: preemptedCmp.name,
+            };
+        }
+
+        const preemptedHeuristic = cmps.find(c => c.name === 'HEURISTIC' && c.open);
+        if (preemptedHeuristic) {
+            return {
+                classification: 'redundant-heuristic',
+                reason: 'generated rule succeeded but heuristic also detected popup (likely preempted)',
+                matchedCmp: 'HEURISTIC',
+            };
+        }
+
+        return {
+            classification: 'generated-rule-active',
+            reason: 'generated rule succeeded, no other CMP covers this site',
+            matchedCmp: ruleName,
+        };
+    }
+
+    // Generated rule did not succeed — check for partial matches that need review
     const heuristicCmp = cmps.find(c => c.name === 'HEURISTIC');
     if (heuristicCmp) {
         if (heuristicCmp.open && !heuristicCmp.succeeded) {
@@ -167,6 +204,14 @@ function classifyRule(cmps) {
             classification: 'needs-review',
             reason: `non-generated CMP '${nonGenCmp.name}' detected but did not succeed (open=${nonGenCmp.open}, succeeded=${nonGenCmp.succeeded})`,
             matchedCmp: nonGenCmp.name,
+        };
+    }
+
+    if (generatedRuleCmp && generatedRuleCmp.open && !generatedRuleCmp.succeeded) {
+        return {
+            classification: 'needs-review',
+            reason: 'generated rule detected popup but opt-out failed',
+            matchedCmp: ruleName,
         };
     }
 
@@ -283,7 +328,7 @@ function processRegion(crawlDir, region, rules) {
                 continue;
             }
 
-            const { classification, reason, matchedCmp } = classifyRule(cookiepopups.cmps);
+            const { classification, reason, matchedCmp } = classifyRule(cookiepopups.cmps, ruleName);
             results.push({
                 ruleFile: ruleInfo.ruleFile,
                 ruleName,
@@ -325,10 +370,16 @@ function main() {
     const program = new Command();
     program
         .description(
-            `Analyze heuristic coverage of generated autoconsent rules.
+            `Analyze coverage of generated autoconsent rules.
 
-Processes crawl results (produced with enableGeneratedRules=false) and classifies
-each generated rule as redundant (heuristic or other CMP can handle it) or needing review.
+Processes crawl results and classifies each generated rule as:
+  - generated-rule-active: rule works, no other CMP covers this site (keep)
+  - redundant-heuristic: heuristic CMP handles this site (safe to delete)
+  - redundant-other-cmp: a non-generated CMP handles this site (safe to delete)
+  - needs-review: ambiguous, requires manual inspection
+
+Supports crawls with enableGeneratedRules=true (detects preemption of other CMPs
+by the generated rule) and enableGeneratedRules=false (original mode).
 
 Example:
     node post-processing/analyze-heuristic-coverage.js \\
@@ -383,15 +434,16 @@ Example:
         total: allResults.length,
         redundantHeuristic: 0,
         redundantOtherCmp: 0,
+        generatedRuleActive: 0,
         needsReview: 0,
-        byRegion: /** @type {Record<string, { total: number, redundantHeuristic: number, redundantOtherCmp: number, needsReview: number }>} */ ({}),
+        byRegion: /** @type {Record<string, { total: number, redundantHeuristic: number, redundantOtherCmp: number, generatedRuleActive: number, needsReview: number }>} */ ({}),
         otherCmpBreakdown: /** @type {Record<string, number>} */ ({}),
         reviewReasonBreakdown: /** @type {Record<string, number>} */ ({}),
     };
 
     for (const result of allResults) {
         if (!stats.byRegion[result.region]) {
-            stats.byRegion[result.region] = { total: 0, redundantHeuristic: 0, redundantOtherCmp: 0, needsReview: 0 };
+            stats.byRegion[result.region] = { total: 0, redundantHeuristic: 0, redundantOtherCmp: 0, generatedRuleActive: 0, needsReview: 0 };
         }
         const regionStats = stats.byRegion[result.region];
         regionStats.total++;
@@ -407,6 +459,10 @@ Example:
                 if (result.matchedCmp) {
                     stats.otherCmpBreakdown[result.matchedCmp] = (stats.otherCmpBreakdown[result.matchedCmp] || 0) + 1;
                 }
+                break;
+            case 'generated-rule-active':
+                stats.generatedRuleActive++;
+                regionStats.generatedRuleActive++;
                 break;
             case 'needs-review':
                 stats.needsReview++;
@@ -448,9 +504,15 @@ Example:
     const reviewResults = allResults.filter(r => r.classification === 'needs-review');
     fs.writeFileSync(needsReviewPath, JSON.stringify(reviewResults, null, 2));
 
+    // Write active rules list (generated rules that work and aren't covered by other CMPs)
+    const activeResults = allResults.filter(r => r.classification === 'generated-rule-active');
+    const activeRulesPath = path.join(outputDir, 'active-rules.json');
+    fs.writeFileSync(activeRulesPath, JSON.stringify(activeResults, null, 2));
+
     // Print summary
     console.log('\n=== Analysis Summary ===');
     console.log(`Total generated rules analyzed: ${stats.total}`);
+    console.log(`  Generated rule active (keep): ${stats.generatedRuleActive}`);
     console.log(`  Redundant (heuristic): ${stats.redundantHeuristic}`);
     console.log(`  Redundant (other CMP): ${stats.redundantOtherCmp}`);
     console.log(`  Needs review: ${stats.needsReview}`);
@@ -458,7 +520,7 @@ Example:
 
     console.log('\n--- Per-region breakdown ---');
     for (const [region, regionStats] of Object.entries(stats.byRegion).sort(([a], [b]) => a.localeCompare(b))) {
-        console.log(`  ${region}: ${regionStats.total} rules (heuristic: ${regionStats.redundantHeuristic}, other CMP: ${regionStats.redundantOtherCmp}, review: ${regionStats.needsReview})`);
+        console.log(`  ${region}: ${regionStats.total} rules (active: ${regionStats.generatedRuleActive}, heuristic: ${regionStats.redundantHeuristic}, other CMP: ${regionStats.redundantOtherCmp}, review: ${regionStats.needsReview})`);
     }
 
     if (Object.keys(stats.otherCmpBreakdown).length > 0) {
@@ -478,6 +540,7 @@ Example:
     }
 
     console.log(`\nFull report: ${reportPath}`);
+    console.log(`Active rules (keep): ${activeRulesPath}`);
     console.log(`Deletion list: ${deletionListPath}`);
     console.log(`Needs review: ${needsReviewPath}`);
 }

@@ -1,0 +1,387 @@
+[
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_AU_royalmail.com_07a.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_AU_royalmail.com_07a.spec.ts",
+    "ruleName": "auto_AU_royalmail.com_07a",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "TrustArc-top"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_AU_sskm.de_nbi.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_AU_sskm.de_nbi.spec.ts",
+    "ruleName": "auto_AU_sskm.de_nbi",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_AU_theabsolutesound.com_wcu.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_AU_theabsolutesound.com_wcu.spec.ts",
+    "ruleName": "auto_AU_theabsolutesound.com_wcu",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "cookieyes"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_AU_vestiairecollective.com_j5c.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_AU_vestiairecollective.com_j5c.spec.ts",
+    "ruleName": "auto_AU_vestiairecollective.com_j5c",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_AU_wikifeet.com_rm1.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_AU_wikifeet.com_rm1.spec.ts",
+    "ruleName": "auto_AU_wikifeet.com_rm1",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_CA_keepersecurity.com_06v.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_CA_keepersecurity.com_06v.spec.ts",
+    "ruleName": "auto_CA_keepersecurity.com_06v",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_CA_worldelectricsupply.com_f0d.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_CA_worldelectricsupply.com_f0d.spec.ts",
+    "ruleName": "auto_CA_worldelectricsupply.com_f0d",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_CH_erotik.com_yt0.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_CH_erotik.com_yt0.spec.ts",
+    "ruleName": "auto_CH_erotik.com_yt0",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_CH_profi.rhyner.ch_fpa.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_CH_profi.rhyner.ch_fpa.spec.ts",
+    "ruleName": "auto_CH_profi.rhyner.ch_fpa",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_CH_aol.com_tp9.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_CH_aol.com_tp9.spec.ts",
+    "ruleName": "auto_CH_aol.com_tp9",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "com_didomi.io"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_CH_gesundheitswissen.de_69l.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_CH_gesundheitswissen.de_69l.spec.ts",
+    "ruleName": "auto_CH_gesundheitswissen.de_69l",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_CH_internet-offer.ch_yj6.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_CH_internet-offer.ch_yj6.spec.ts",
+    "ruleName": "auto_CH_internet-offer.ch_yj6",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_CH_mgmotor.ch_l1z.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_CH_mgmotor.ch_l1z.spec.ts",
+    "ruleName": "auto_CH_mgmotor.ch_l1z",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_CH_wirtschaftswissen.de_fdg.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_CH_wirtschaftswissen.de_fdg.spec.ts",
+    "ruleName": "auto_CH_wirtschaftswissen.de_fdg",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_CH_zuriga.com_zco.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_CH_zuriga.com_zco.spec.ts",
+    "ruleName": "auto_CH_zuriga.com_zco",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "cookieconsent3"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_DE_bildung.thueringen.de_ckl.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_DE_bildung.thueringen.de_ckl.spec.ts",
+    "ruleName": "auto_DE_bildung.thueringen.de_ckl",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_DE_club.autodoc.de_pye.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_DE_club.autodoc.de_pye.spec.ts",
+    "ruleName": "auto_DE_club.autodoc.de_pye",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_DE_dvderotik.com_n41.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_DE_dvderotik.com_n41.spec.ts",
+    "ruleName": "auto_DE_dvderotik.com_n41",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_DE_kulturkaufhaus.de_p76.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_DE_kulturkaufhaus.de_p76.spec.ts",
+    "ruleName": "auto_DE_kulturkaufhaus.de_p76",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_DE_norderney.de_sb5.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_DE_norderney.de_sb5.spec.ts",
+    "ruleName": "auto_DE_norderney.de_sb5",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_DE_raiffeisenmarkt.de_96f.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_DE_raiffeisenmarkt.de_96f.spec.ts",
+    "ruleName": "auto_DE_raiffeisenmarkt.de_96f",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "usercentrics-api"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_DE_samenhaus.de_ggz.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_DE_samenhaus.de_ggz.spec.ts",
+    "ruleName": "auto_DE_samenhaus.de_ggz",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_FR_bibliotheques.paris.fr_p0r.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_FR_bibliotheques.paris.fr_p0r.spec.ts",
+    "ruleName": "auto_FR_bibliotheques.paris.fr_p0r",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_FR_espace-client.mma.fr_t4z.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_FR_espace-client.mma.fr_t4z.spec.ts",
+    "ruleName": "auto_FR_espace-client.mma.fr_t4z",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_FR_fr.redtube.com_8p9.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_FR_fr.redtube.com_8p9.spec.ts",
+    "ruleName": "auto_FR_fr.redtube.com_8p9",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_FR_fra.xhamster.com_zaa.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_FR_fra.xhamster.com_zaa.spec.ts",
+    "ruleName": "auto_FR_fra.xhamster.com_zaa",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_FR_ge.xhamster.desi_7qy.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_FR_ge.xhamster.desi_7qy.spec.ts",
+    "ruleName": "auto_FR_ge.xhamster.desi_7qy",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_FR_jp.spankbang.com_7f9.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_FR_jp.spankbang.com_7f9.spec.ts",
+    "ruleName": "auto_FR_jp.spankbang.com_7f9",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_FR_mon-compte-particulier.enedis.fr_gg2.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_FR_mon-compte-particulier.enedis.fr_gg2.spec.ts",
+    "ruleName": "auto_FR_mon-compte-particulier.enedis.fr_gg2",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_FR_nl.xhamster.com_siy.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_FR_nl.xhamster.com_siy.spec.ts",
+    "ruleName": "auto_FR_nl.xhamster.com_siy",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_FR_guide-du-perigord.com_wyy.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_FR_guide-du-perigord.com_wyy.spec.ts",
+    "ruleName": "auto_FR_guide-du-perigord.com_wyy",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_FR_kiabi.com_3h2.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_FR_kiabi.com_3h2.spec.ts",
+    "ruleName": "auto_FR_kiabi.com_3h2",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_FR_maaf.fr_isb.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_FR_maaf.fr_isb.spec.ts",
+    "ruleName": "auto_FR_maaf.fr_isb",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_GB_shop.nationaltrust.org.uk_0.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_GB_shop.nationaltrust.org.uk_0.spec.ts",
+    "ruleName": "auto_GB_shop.nationaltrust.org.uk_0",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_GB_oakley.com_1.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_GB_oakley.com_1.spec.ts",
+    "ruleName": "auto_GB_oakley.com_1",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "Tealium"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_GB_topdoctors.co.uk_0.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_GB_topdoctors.co.uk_0.spec.ts",
+    "ruleName": "auto_GB_topdoctors.co.uk_0",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "Cybotcookiebot"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_GB_topdoctors.co.uk_1.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_GB_topdoctors.co.uk_1.spec.ts",
+    "ruleName": "auto_GB_topdoctors.co.uk_1",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "Cybotcookiebot"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_GB_wwws.airfrance.co.uk_0.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_GB_wwws.airfrance.co.uk_0.spec.ts",
+    "ruleName": "auto_GB_wwws.airfrance.co.uk_0",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_NL_into-led.com_jf3.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_NL_into-led.com_jf3.spec.ts",
+    "ruleName": "auto_NL_into-led.com_jf3",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "Cybotcookiebot"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_NL_lampenhuis.nl_u4o.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_NL_lampenhuis.nl_u4o.spec.ts",
+    "ruleName": "auto_NL_lampenhuis.nl_u4o",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_NL_nl-nl.bakker.com_xcl.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_NL_nl-nl.bakker.com_xcl.spec.ts",
+    "ruleName": "auto_NL_nl-nl.bakker.com_xcl",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_NL_cameranu.nl_f6q.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_NL_cameranu.nl_f6q.spec.ts",
+    "ruleName": "auto_NL_cameranu.nl_f6q",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_NL_groningse4daagse.nl_42x.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_NL_groningse4daagse.nl_42x.spec.ts",
+    "ruleName": "auto_NL_groningse4daagse.nl_42x",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_NL_hpdetijd.nl_hkl.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_NL_hpdetijd.nl_hkl.spec.ts",
+    "ruleName": "auto_NL_hpdetijd.nl_hkl",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_NL_somfy.nl_aln.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_NL_somfy.nl_aln.spec.ts",
+    "ruleName": "auto_NL_somfy.nl_aln",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_NL_vanwalraven.com_uns.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_NL_vanwalraven.com_uns.spec.ts",
+    "ruleName": "auto_NL_vanwalraven.com_uns",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_NO_jp.pornhub.com_hs6.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_NO_jp.pornhub.com_hs6.spec.ts",
+    "ruleName": "auto_NO_jp.pornhub.com_hs6",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_US_hades.fandom.com_3wv.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_US_hades.fandom.com_3wv.spec.ts",
+    "ruleName": "auto_US_hades.fandom.com_3wv",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "Onetrust"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_US_monsterhunter.fandom.com_ryd.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_US_monsterhunter.fandom.com_ryd.spec.ts",
+    "ruleName": "auto_US_monsterhunter.fandom.com_ryd",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "Onetrust"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_US_subnautica.fandom.com_n8q.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_US_subnautica.fandom.com_n8q.spec.ts",
+    "ruleName": "auto_US_subnautica.fandom.com_n8q",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "Onetrust"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_US_brazzers.com_0.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_US_brazzers.com_0.spec.ts",
+    "ruleName": "auto_US_brazzers.com_0",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_US_burpee.com_8gz.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_US_burpee.com_8gz.spec.ts",
+    "ruleName": "auto_US_burpee.com_8gz",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "Onetrust"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_US_chilis.com_0.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_US_chilis.com_0.spec.ts",
+    "ruleName": "auto_US_chilis.com_0",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "Onetrust"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_US_moaa.org_bbb.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_US_moaa.org_bbb.spec.ts",
+    "ruleName": "auto_US_moaa.org_bbb",
+    "classification": "redundant-heuristic",
+    "matchedCmp": "HEURISTIC"
+  },
+  {
+    "ruleFile": "/tmp2/ddg/autoconsent/rules/generated/auto_US_thingiverse.com_0.json",
+    "testFile": "/tmp2/ddg/autoconsent/tests/generated/auto_US_thingiverse.com_0.spec.ts",
+    "ruleName": "auto_US_thingiverse.com_0",
+    "classification": "redundant-other-cmp",
+    "matchedCmp": "Cybotcookiebot"
+  }
+]
