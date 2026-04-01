@@ -109,12 +109,10 @@ function cmpSucceeded(cmp) {
 
 /**
  * Classify a generated rule based on crawl results for a specific site.
- * @param {{ cosmetic: boolean }} ruleInfo
  * @param {import('./generate-autoconsent-rules/types').AutoconsentResult[]} cmps
- * @param {string | null} screenshotPath
  * @returns {{ classification: Classification, reason: string, matchedCmp: string | null }}
  */
-function classifyRule(ruleInfo, cmps, screenshotPath) {
+function classifyRule(cmps) {
     if (!cmps || cmps.length === 0) {
         return {
             classification: 'needs-review',
@@ -128,13 +126,6 @@ function classifyRule(ruleInfo, cmps, screenshotPath) {
         if (!cmp.name || cmp.name.trim() === '') continue;
 
         if (cmp.name === 'HEURISTIC' && cmpSucceeded(cmp)) {
-            if (ruleInfo.cosmetic) {
-                return {
-                    classification: 'needs-review',
-                    reason: 'heuristic succeeded but generated rule is cosmetic (heuristic is non-cosmetic)',
-                    matchedCmp: 'HEURISTIC',
-                };
-            }
             return {
                 classification: 'redundant-heuristic',
                 reason: 'heuristic CMP succeeded',
@@ -267,7 +258,10 @@ function processRegion(crawlDir, region, rules) {
         const screenshotPath = data.data.screenshots || null;
 
         const matchingRuleNames = matchCrawlToRules(initialUrl, finalUrl, rules, region);
-        if (matchingRuleNames.length === 0) continue;
+        if (matchingRuleNames.length === 0) {
+            console.warn(`WARNING: crawl result ${file} (${initialUrl} -> ${finalUrl}) did not match any generated rule for region ${region}`);
+            continue;
+        }
 
         for (const ruleName of matchingRuleNames) {
             matchedRuleNames.add(ruleName);
@@ -289,7 +283,7 @@ function processRegion(crawlDir, region, rules) {
                 continue;
             }
 
-            const { classification, reason, matchedCmp } = classifyRule(ruleInfo, cookiepopups.cmps, screenshotPath);
+            const { classification, reason, matchedCmp } = classifyRule(cookiepopups.cmps);
             results.push({
                 ruleFile: ruleInfo.ruleFile,
                 ruleName,
