@@ -21,7 +21,7 @@ const promptNames = Object.keys(PROMPTS);
 function makePromptCounters() {
     const counters = {};
     for (const name of promptNames) {
-        counters[name] = { detected: 0, agreeWithLlm: 0, disagreeWithLlm: 0 };
+        counters[name] = { detected: 0, agreeWithLlm: 0, disagreeWithLlm: 0, agreeWithRegex: 0, disagreeWithRegex: 0 };
     }
     return counters;
 }
@@ -142,6 +142,9 @@ async function main() {
                 for (const name of promptNames) {
                     const afmField = `afm${name.charAt(0).toUpperCase() + name.slice(1)}`;
                     const afmValue = result[afmField];
+                    if (afmValue === null) {
+                        continue;
+                    }
                     if (afmValue) {
                         promptCounters[name].detected++;
                     }
@@ -157,6 +160,11 @@ async function main() {
                             afm: afmValue,
                             text: (popup.text || '').slice(0, 500),
                         });
+                    }
+                    if (result.regexMatch === afmValue) {
+                        promptCounters[name].agreeWithRegex++;
+                    } else {
+                        promptCounters[name].disagreeWithRegex++;
                     }
                 }
             }
@@ -181,7 +189,7 @@ async function main() {
     console.log(`Regex detected: ${regexDetected}`);
     for (const name of promptNames) {
         const c = promptCounters[name];
-        console.log(`Prompt "${name}": detected=${c.detected} agree=${c.agreeWithLlm} disagree=${c.disagreeWithLlm}`);
+        console.log(`Prompt "${name}": detected=${c.detected} vs_llm=${c.agreeWithLlm}/${c.disagreeWithLlm} vs_regex=${c.agreeWithRegex}/${c.disagreeWithRegex}`);
     }
     console.log(`Errors: ${JSON.stringify(errorCounts)}`);
     console.log(`Disagreements: ${disagreements.length} (saved to ${disagreementsFile})`);

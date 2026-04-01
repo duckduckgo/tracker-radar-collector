@@ -192,6 +192,24 @@ Return true or false.`,
 };
 
 /**
+ * @param {Error} error
+ * @returns {boolean}
+ */
+function isNetworkError(error) {
+    const msg = [error?.message, error?.cause?.message, error?.cause?.code].filter(Boolean).join(' ').toLowerCase();
+    return msg.includes('econnrefused') || msg.includes('econnreset') || msg.includes('etimedout') ||
+        msg.includes('fetch failed') || msg.includes('connection error') || msg.includes('socket hang up');
+}
+
+/**
+ * @param {number} ms
+ * @returns {Promise<void>}
+ */
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
  * @param {import('openai').OpenAI} openai
  * @param {string} systemPrompt
  * @param {string} text
@@ -205,28 +223,39 @@ async function checkLLMWithPrompt(openai, systemPrompt, text, errorCounts) {
         isCookieConsentNotice: z.boolean(),
     });
 
-    try {
-        const completion = await openai.beta.chat.completions.parse({
-            model: 'gpt-4.1-nano-2025-04-14',
-            messages: [
-                { role: 'system', content: systemPrompt },
-                { role: 'user', content: trimmedText },
-            ],
-            response_format: zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
-        });
+    let backoff = 5_000;
+    const MAX_BACKOFF = 60_000;
 
-        const result = completion.choices[0].message.parsed;
-        return result?.isCookieConsentNotice ?? false;
-    } catch (error) {
-        console.error('Error classifying candidate:', error);
-        if (errorCounts) {
-            const errorText = [error?.message, error?.cause?.message, error?.cause?.code].filter(Boolean).join(' ');
-            const category = classifyError(errorText);
-            errorCounts[category] = (errorCounts[category] || 0) + 1;
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+        try {
+            const completion = await openai.beta.chat.completions.parse({
+                model: 'gpt-4.1-nano-2025-04-14',
+                messages: [
+                    { role: 'system', content: systemPrompt },
+                    { role: 'user', content: trimmedText },
+                ],
+                response_format: zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
+            });
+
+            const result = completion.choices[0].message.parsed;
+            return result?.isCookieConsentNotice ?? false;
+        } catch (error) {
+            if (isNetworkError(error)) {
+                console.error(`Network error, retrying in ${backoff / 1000}s...`, error?.cause?.code || error?.message);
+                await sleep(backoff);
+                backoff = Math.min(backoff * 2, MAX_BACKOFF);
+                continue;
+            }
+            console.error('Error classifying candidate:', error);
+            if (errorCounts) {
+                const errorText = [error?.message, error?.cause?.message, error?.cause?.code].filter(Boolean).join(' ');
+                const category = classifyError(errorText);
+                errorCounts[category] = (errorCounts[category] || 0) + 1;
+            }
+            return null;
         }
     }
-
-    return false;
 }
 
 /**
@@ -259,7 +288,8 @@ function classifyButtons(buttons) {
 async function classifyPopup(popup, openai, errorCounts) {
     const popupText = popup.text?.trim();
     let regexMatch = false;
-    const afmResults = { original: false, short: false, medium: false };
+    /** @type {Record<string, boolean|null>} */
+    const afmResults = { original: null, short: null, medium: null };
 
     if (popupText) {
         regexMatch = checkHeuristicPatterns(popupText);
@@ -271,7 +301,7 @@ async function classifyPopup(popup, openai, errorCounts) {
     const { rejectButtons, otherButtons } = classifyButtons(popup.buttons);
 
     return {
-        afmOriginal: afmResults.original,
+        afmOriginal: afmResults.original,  // true/false/null (null = error)
         afmShort: afmResults.short,
         afmMedium: afmResults.medium,
         regexMatch,
@@ -282,9 +312,9 @@ async function classifyPopup(popup, openai, errorCounts) {
 
 /**
  * @typedef {Object} PopupClassificationResult
- * @property {boolean} afmOriginal
- * @property {boolean} afmShort
- * @property {boolean} afmMedium
+ * @property {boolean|null} afmOriginal
+ * @property {boolean|null} afmShort
+ * @property {boolean|null} afmMedium
  * @property {boolean} regexMatch
  * @property {import('./types').ButtonData[]} rejectButtons
  * @property {import('./types').ButtonData[]} otherButtons
