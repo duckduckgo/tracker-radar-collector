@@ -1,0 +1,37 @@
+{
+  "processed": 9995,
+  "total": 9995,
+  "totalPopups": 12618,
+  "regexDetected": 4560,
+  "prompts": {
+    "original": {
+      "detected": 9980,
+      "agreeWithLlm": 7235,
+      "disagreeWithLlm": 5157,
+      "agreeWithRegex": 6909,
+      "disagreeWithRegex": 5483
+    },
+    "short": {
+      "detected": 7497,
+      "agreeWithLlm": 9631,
+      "disagreeWithLlm": 2664,
+      "agreeWithRegex": 9288,
+      "disagreeWithRegex": 3007
+    },
+    "medium": {
+      "detected": 6828,
+      "agreeWithLlm": 10117,
+      "disagreeWithLlm": 2205,
+      "agreeWithRegex": 9860,
+      "disagreeWithRegex": 2462
+    }
+  },
+  "errors": {
+    "guardrail": 347,
+    "context_overflow": 12,
+    "unsupported_locale": 228,
+    "network": 0,
+    "other": 6
+  },
+  "timestamp": "2026-04-01T20:23:17.944Z"
+}
