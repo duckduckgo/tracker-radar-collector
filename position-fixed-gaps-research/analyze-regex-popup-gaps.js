@@ -142,12 +142,18 @@ async function analyzeFile(filePath) {
         const raw = await fsp.readFile(filePath, 'utf8');
         const crawl = JSON.parse(raw);
         const frames = crawl?.data?.cookiepopups?.scrapedFrames;
+        const cmps = Array.isArray(crawl?.data?.cookiepopups?.cmps) ? crawl.data.cookiepopups.cmps : [];
+        const cmpWithNameCount = cmps.filter((cmp) => typeof cmp?.name === 'string' && cmp.name.trim() !== '').length;
 
         if (!Array.isArray(frames)) {
             return {
                 filePath,
                 host: path.basename(filePath).split('_')[0] || '',
                 skippedNoFrames: true,
+                cmpsCount: cmps.length,
+                cmpWithNameCount,
+                siteHasPopup: cmpWithNameCount > 0,
+                isGapSite: false,
                 frameCount: 0,
                 frameRegexDetectedCount: 0,
                 frameRegexWithoutPopupRegexCount: 0,
@@ -161,6 +167,10 @@ async function analyzeFile(filePath) {
             filePath,
             host: path.basename(filePath).split('_')[0] || '',
             skippedNoFrames: false,
+            cmpsCount: cmps.length,
+            cmpWithNameCount,
+            siteHasPopup: false,
+            isGapSite: false,
             frameCount: 0,
             frameRegexDetectedCount: 0,
             frameRegexWithoutPopupRegexCount: 0,
@@ -194,6 +204,12 @@ async function analyzeFile(filePath) {
             }
         }
 
+        const hasFrameRegexDetected = result.frameRegexDetectedCount > 0;
+        const hasPopupLevelRegexDetection = result.popupRegexMatchCount > 0;
+
+        result.siteHasPopup = hasFrameRegexDetected || result.cmpWithNameCount > 0;
+        result.isGapSite = hasFrameRegexDetected && cmpWithNameCount === 0 && !hasPopupLevelRegexDetection;
+
         return result;
     } catch (error) {
         return {
@@ -201,6 +217,10 @@ async function analyzeFile(filePath) {
             host: path.basename(filePath).split('_')[0] || '',
             error: error.message,
             skippedNoFrames: false,
+            cmpsCount: 0,
+            cmpWithNameCount: 0,
+            siteHasPopup: false,
+            isGapSite: false,
             frameCount: 0,
             frameRegexDetectedCount: 0,
             frameRegexWithoutPopupRegexCount: 0,
@@ -231,24 +251,32 @@ async function main() {
         processedFiles: 0,
         filesWithErrors: 0,
         filesWithoutScrapedFrames: 0,
-        filesWithGapFrames: 0,
+        sitesWithPopupByDefinition: 0,
+        sitesWithFrameRegexDetected: 0,
+        sitesWithCmpName: 0,
+        sitesWithCmpsEmpty: 0,
+        gapSites: 0,
         totalFrames: 0,
         totalFramesWithRegexPopupDetected: 0,
+        totalCmpsEntries: 0,
+        totalCmpsWithName: 0,
         totalFramesWithRegexButNoPopupRegex: 0,
         totalPotentialPopups: 0,
         totalPopupRegexMatches: 0,
     };
 
     const errors = [];
-    const gapExamples = [];
-    const originGapCounts = {};
-    const fileGapCounts = [];
+    const gapSitesExamples = [];
+    const gapOriginCounts = {};
+    const gapSitesByFrameCount = [];
 
     const parallel = Math.min(concurrency, Math.max(1, jsonFiles.length));
     await asyncLib.eachOfLimit(jsonFiles, parallel, async (filePath) => {
         const stats = await analyzeFile(filePath);
         summary.processedFiles += 1;
         summary.totalFrames += stats.frameCount;
+        summary.totalCmpsEntries += stats.cmpsCount;
+        summary.totalCmpsWithName += stats.cmpWithNameCount;
         summary.totalFramesWithRegexPopupDetected += stats.frameRegexDetectedCount;
         summary.totalFramesWithRegexButNoPopupRegex += stats.frameRegexWithoutPopupRegexCount;
         summary.totalPotentialPopups += stats.potentialPopupCount;
@@ -263,9 +291,22 @@ async function main() {
                 errors.push({ filePath: stats.filePath, error: stats.error });
             }
         }
-        if (stats.frameRegexWithoutPopupRegexCount > 0) {
-            summary.filesWithGapFrames += 1;
-            fileGapCounts.push({
+        if (stats.frameRegexDetectedCount > 0) {
+            summary.sitesWithFrameRegexDetected += 1;
+        }
+        if (stats.cmpWithNameCount > 0) {
+            summary.sitesWithCmpName += 1;
+        }
+        if (stats.cmpsCount === 0) {
+            summary.sitesWithCmpsEmpty += 1;
+        }
+        if (stats.siteHasPopup) {
+            summary.sitesWithPopupByDefinition += 1;
+        }
+
+        if (stats.isGapSite) {
+            summary.gapSites += 1;
+            gapSitesByFrameCount.push({
                 filePath: stats.filePath,
                 host: stats.host,
                 frameRegexWithoutPopupRegexCount: stats.frameRegexWithoutPopupRegexCount,
@@ -274,19 +315,21 @@ async function main() {
             });
         }
 
-        for (const gap of stats.frameGapDetails) {
-            const originKey = gap.origin || '(unknown-origin)';
-            originGapCounts[originKey] = (originGapCounts[originKey] || 0) + 1;
-            if (gapExamples.length < sampleLimit) {
-                gapExamples.push({
-                    filePath: stats.filePath,
-                    host: stats.host,
-                    frameIndex: gap.frameIndex,
-                    origin: gap.origin,
-                    isTop: gap.isTop,
-                    potentialPopupCount: gap.potentialPopupCount,
-                    popupTextPreview: gap.popupTextPreview,
-                });
+        if (stats.isGapSite) {
+            for (const gap of stats.frameGapDetails) {
+                const originKey = gap.origin || '(unknown-origin)';
+                gapOriginCounts[originKey] = (gapOriginCounts[originKey] || 0) + 1;
+                if (gapSitesExamples.length < sampleLimit) {
+                    gapSitesExamples.push({
+                        filePath: stats.filePath,
+                        host: stats.host,
+                        frameIndex: gap.frameIndex,
+                        origin: gap.origin,
+                        isTop: gap.isTop,
+                        potentialPopupCount: gap.potentialPopupCount,
+                        popupTextPreview: gap.popupTextPreview,
+                    });
+                }
             }
         }
 
@@ -301,12 +344,12 @@ async function main() {
         }
     });
 
-    const topGapOrigins = Object.entries(originGapCounts)
+    const topGapOrigins = Object.entries(gapOriginCounts)
         .sort((a, b) => b[1] - a[1])
         .slice(0, TOP_LIMIT)
         .map(([origin, count]) => ({ origin, count }));
 
-    const filesWithMostGapFrames = fileGapCounts
+    const gapSitesWithMostGapFrames = gapSitesByFrameCount
         .sort((a, b) => b.frameRegexWithoutPopupRegexCount - a.frameRegexWithoutPopupRegexCount)
         .slice(0, TOP_LIMIT);
 
@@ -318,6 +361,7 @@ async function main() {
         concurrency,
         summary: {
             ...summary,
+            gapRateAmongPopupSites: ratio(summary.gapSites, summary.sitesWithPopupByDefinition),
             frameRegexWithoutPopupRegexRateVsRegexFrames: ratio(
                 summary.totalFramesWithRegexButNoPopupRegex,
                 summary.totalFramesWithRegexPopupDetected
@@ -328,8 +372,8 @@ async function main() {
             ),
         },
         topGapOrigins,
-        filesWithMostGapFrames,
-        gapExamples,
+        gapSitesWithMostGapFrames,
+        gapSitesExamples,
         errors,
     };
 
@@ -341,11 +385,18 @@ async function main() {
     console.log(`- Processed files: ${summary.processedFiles}`);
     console.log(`- Files with errors: ${summary.filesWithErrors}`);
     console.log(`- Files without scrapedFrames: ${summary.filesWithoutScrapedFrames}`);
+    console.log(`- Sites with popup (frame regex OR cmp name): ${summary.sitesWithPopupByDefinition}`);
+    console.log(`- Sites with frame regex detected: ${summary.sitesWithFrameRegexDetected}`);
+    console.log(`- Sites with non-empty cmp name: ${summary.sitesWithCmpName}`);
+    console.log(`- Sites with empty cmps: ${summary.sitesWithCmpsEmpty}`);
+    console.log(`- Gap sites (frame regex AND cmps empty AND no popup regex match): ${summary.gapSites}`);
+    console.log(`- Gap rate among popup sites: ${report.summary.gapRateAmongPopupSites}`);
     console.log(`- Total frames: ${summary.totalFrames}`);
+    console.log(`- Total cmps entries: ${summary.totalCmpsEntries}`);
+    console.log(`- Total cmps with non-empty name: ${summary.totalCmpsWithName}`);
     console.log(`- Frames with regexPopupDetected=true: ${summary.totalFramesWithRegexPopupDetected}`);
     console.log(`- Frames with regexPopupDetected=true and no popup regexMatch=true: ${summary.totalFramesWithRegexButNoPopupRegex}`);
     console.log(`- Gap rate among regex-detected frames: ${report.summary.frameRegexWithoutPopupRegexRateVsRegexFrames}`);
-    console.log(`- Files containing at least one gap frame: ${summary.filesWithGapFrames}`);
     console.log(`- Total potentialPopups scanned: ${summary.totalPotentialPopups}`);
     console.log(`- Total popup-level regex matches: ${summary.totalPopupRegexMatches}`);
     console.log(`- Runtime: ${formatDuration(Date.now() - startedAt)}`);
