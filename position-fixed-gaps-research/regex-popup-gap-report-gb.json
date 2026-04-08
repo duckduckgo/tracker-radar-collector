@@ -1,0 +1,2048 @@
+{
+  "generatedAt": "2026-04-08T13:11:56.290Z",
+  "inputPath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl",
+  "outputPath": "position-fixed-gaps-research/regex-popup-gap-report-gb.json",
+  "sampleLimit": 200,
+  "concurrency": 24,
+  "summary": {
+    "totalJsonFiles": 99909,
+    "processedFiles": 99909,
+    "filesWithErrors": 0,
+    "filesWithoutScrapedFrames": 1,
+    "filesWithGapFrames": 12266,
+    "totalFrames": 130939,
+    "totalFramesWithRegexPopupDetected": 51485,
+    "totalFramesWithRegexButNoPopupRegex": 12626,
+    "totalPotentialPopups": 119532,
+    "totalPopupRegexMatches": 39286,
+    "frameRegexWithoutPopupRegexRateVsRegexFrames": 0.245236,
+    "frameRegexWithoutPopupRegexRateVsAllFrames": 0.096427
+  },
+  "topGapOrigins": [
+    {
+      "origin": "https://www.tumblr.com",
+      "count": 46
+    },
+    {
+      "origin": "null",
+      "count": 37
+    },
+    {
+      "origin": "https://www.linkedin.com",
+      "count": 11
+    },
+    {
+      "origin": "https://consent.google.com",
+      "count": 11
+    },
+    {
+      "origin": "https://www.bimmerpost.com",
+      "count": 10
+    },
+    {
+      "origin": "https://custommapposter.com",
+      "count": 10
+    },
+    {
+      "origin": "https://www.flixbus.co.uk",
+      "count": 7
+    },
+    {
+      "origin": "https://www.microsoft.com",
+      "count": 6
+    },
+    {
+      "origin": "https://www.searchhounds.com",
+      "count": 5
+    },
+    {
+      "origin": "https://www.nestpensions.org.uk",
+      "count": 4
+    },
+    {
+      "origin": "https://cdn.lputil.com",
+      "count": 4
+    },
+    {
+      "origin": "https://www.facebook.com",
+      "count": 4
+    },
+    {
+      "origin": "https://www.bathnes.gov.uk",
+      "count": 4
+    },
+    {
+      "origin": "https://www.zoopla.co.uk",
+      "count": 3
+    },
+    {
+      "origin": "https://www.tiktok.com",
+      "count": 3
+    },
+    {
+      "origin": "https://next.shropshire.gov.uk",
+      "count": 3
+    },
+    {
+      "origin": "https://www.meta.com",
+      "count": 3
+    },
+    {
+      "origin": "https://www.myhealthlondon.nhs.uk",
+      "count": 3
+    },
+    {
+      "origin": "https://www.knowdiabetes.org.uk",
+      "count": 3
+    },
+    {
+      "origin": "https://www.bitdefender.com",
+      "count": 3
+    }
+  ],
+  "filesWithMostGapFrames": [
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.myhealthlondon.nhs.uk_5ae9.json",
+      "host": "www.myhealthlondon.nhs.uk",
+      "frameRegexWithoutPopupRegexCount": 3,
+      "frameRegexDetectedCount": 3,
+      "frameCount": 3
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.knowdiabetes.org.uk_99c0.json",
+      "host": "www.knowdiabetes.org.uk",
+      "frameRegexWithoutPopupRegexCount": 3,
+      "frameRegexDetectedCount": 3,
+      "frameCount": 3
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zenless.hoyoverse.com_1897.json",
+      "host": "zenless.hoyoverse.com",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 3
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yourherefordshire.co.uk_24aa.json",
+      "host": "yourherefordshire.co.uk",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www2.racingadmin.co.uk_6f19.json",
+      "host": "www2.racingadmin.co.uk",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 3
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zinio.com_91ac.json",
+      "host": "www.zinio.com",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.ytechb.com_8c14.json",
+      "host": "www.ytechb.com",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 3
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wow-petopia.com_0dce.json",
+      "host": "www.wow-petopia.com",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worcsacute.nhs.uk_eba5.json",
+      "host": "www.worcsacute.nhs.uk",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.woodworkcenter.com_512d.json",
+      "host": "www.woodworkcenter.com",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.willcycle.com_6586.json",
+      "host": "www.willcycle.com",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.whereig.com_7f7f.json",
+      "host": "www.whereig.com",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.weeksuntil.com_9975.json",
+      "host": "www.weeksuntil.com",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wastebook.co.uk_e517.json",
+      "host": "www.wastebook.co.uk",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 4
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.visitparisregion.com_16d5.json",
+      "host": "www.visitparisregion.com",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.vietjetair.com_dbbd.json",
+      "host": "www.vietjetair.com",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 6
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.ventoy.net_019f.json",
+      "host": "www.ventoy.net",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.urologyhealth.org_5b85.json",
+      "host": "www.urologyhealth.org",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.truma.com_f597.json",
+      "host": "www.truma.com",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.timebie.com_aef0.json",
+      "host": "www.timebie.com",
+      "frameRegexWithoutPopupRegexCount": 2,
+      "frameRegexDetectedCount": 2,
+      "frameCount": 2
+    }
+  ],
+  "gapExamples": [
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zxart.ee_7dcf.json",
+      "host": "zxart.ee",
+      "frameIndex": 0,
+      "origin": "https://zxart.ee",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "settings"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zotuf.com_f0d3.json",
+      "host": "zotuf.com",
+      "frameIndex": 0,
+      "origin": "https://zotuf.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zoopla.co.uk_d4e2.json",
+      "host": "zoopla.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.zoopla.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Enter a location Use up and down arrow keys to navigate. Press Enter key to select. 0 results found Search"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zontsound.com_cd57.json",
+      "host": "zontsound.com",
+      "frameIndex": 0,
+      "origin": "https://zontsound.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "AUDIO VIDEO GAMING SMART HOME About Us"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zone3.com_40bd.json",
+      "host": "zone3.com",
+      "frameIndex": 0,
+      "origin": "https://zone3.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Sign in We’ll send a unique code (OTP) to your email for secure login. Email CONTINUE Create account"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zlibrary.st_3666.json",
+      "host": "zlibrary.st",
+      "frameIndex": 0,
+      "origin": "https://zlibrary.st",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zinginstruments.com_6c43.json",
+      "host": "zinginstruments.com",
+      "frameIndex": 0,
+      "origin": "https://zinginstruments.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zilliongamer.com_9c1f.json",
+      "host": "zilliongamer.com",
+      "frameIndex": 0,
+      "origin": "https://zilliongamer.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zensoundproof.com_f2dd.json",
+      "host": "zensoundproof.com",
+      "frameIndex": 0,
+      "origin": "https://zensoundproof.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zenless.hoyoverse.com_1897.json",
+      "host": "zenless.hoyoverse.com",
+      "frameIndex": 0,
+      "origin": "https://zenless.hoyoverse.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zenless.hoyoverse.com_1897.json",
+      "host": "zenless.hoyoverse.com",
+      "frameIndex": 1,
+      "origin": "https://zenless.hoyoverse.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zeldacentral.com_adf9.json",
+      "host": "zeldacentral.com",
+      "frameIndex": 0,
+      "origin": "https://zeldacentral.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zekamashi.net_3afd.json",
+      "host": "zekamashi.net",
+      "frameIndex": 0,
+      "origin": "https://zekamashi.net",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zaubee.com_f1a9.json",
+      "host": "zaubee.com",
+      "frameIndex": 0,
+      "origin": "https://zaubee.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zadig.akeo.ie_37b5.json",
+      "host": "zadig.akeo.ie",
+      "frameIndex": 0,
+      "origin": "https://zadig.akeo.ie",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/zaatarandzaytoun.com_1db4.json",
+      "host": "zaatarandzaytoun.com",
+      "frameIndex": 0,
+      "origin": "https://zaatarandzaytoun.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/za.linkedin.com_f299.json",
+      "host": "za.linkedin.com",
+      "frameIndex": 0,
+      "origin": "https://za.linkedin.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "LinkedIn Articles People Learning Jobs Games Sign in Join now"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/z4-forum.com_17b7.json",
+      "host": "z4-forum.com",
+      "frameIndex": 0,
+      "origin": "https://z4-forum.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Home Forums What's new Members Shop Log in Register"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/ystradgynlaisgp.wales.nhs.uk_b0a0.json",
+      "host": "ystradgynlaisgp.wales.nhs.uk",
+      "frameIndex": 0,
+      "origin": "https://ystradgynlaisgp.wales.nhs.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yquotes.com_a636.json",
+      "host": "yquotes.com",
+      "frameIndex": 0,
+      "origin": "https://yquotes.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/ypage.uk_a651.json",
+      "host": "ypage.uk",
+      "frameIndex": 0,
+      "origin": "https://ypage.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/youtube-thumbnail-grabber.com_3d4e.json",
+      "host": "youtube-thumbnail-grabber.com",
+      "frameIndex": 0,
+      "origin": "https://youtube-thumbnail-grabber.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yourteenmag.com_af6c.json",
+      "host": "yourteenmag.com",
+      "frameIndex": 0,
+      "origin": "https://yourteenmag.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yourroots.com_1729.json",
+      "host": "yourroots.com",
+      "frameIndex": 0,
+      "origin": "https://yourroots.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yourmotorguide.com_6708.json",
+      "host": "yourmotorguide.com",
+      "frameIndex": 0,
+      "origin": "https://yourmotorguide.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yourmileagemayvary.com_7c8b.json",
+      "host": "yourmileagemayvary.com",
+      "frameIndex": 0,
+      "origin": "https://yourmileagemayvary.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yourirish.com_e75a.json",
+      "host": "yourirish.com",
+      "frameIndex": 0,
+      "origin": "https://yourirish.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yourherefordshire.co.uk_24aa.json",
+      "host": "yourherefordshire.co.uk",
+      "frameIndex": 0,
+      "origin": "https://yourherefordshire.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "Home Latest Stories Search News 👇 Contact"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yourherefordshire.co.uk_24aa.json",
+      "host": "yourherefordshire.co.uk",
+      "frameIndex": 1,
+      "origin": "https://yourherefordshire.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "Home Latest Stories Search News 👇 Contact"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yourguardianchef.com_85c1.json",
+      "host": "yourguardianchef.com",
+      "frameIndex": 0,
+      "origin": "https://yourguardianchef.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Start Here About Recipes Subscribe"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yourgardenshed.co.uk_1b38.json",
+      "host": "yourgardenshed.co.uk",
+      "frameIndex": 0,
+      "origin": "https://yourgardenshed.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yourfuneralsongs.com_d5d1.json",
+      "host": "yourfuneralsongs.com",
+      "frameIndex": 0,
+      "origin": "https://yourfuneralsongs.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "POPULAR CATEGORIES Best Funeral Songs Christian Hymns Country Gospel Catholic Modern Traditional BY RELATIONSHIP For Mom For Dad For Husband For Wife For Son For Grandma Need help choosing? Our planni..."
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yourcrochet.com_fd24.json",
+      "host": "yourcrochet.com",
+      "frameIndex": 0,
+      "origin": "https://yourcrochet.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Search Popular Patterns & Round-Ups with"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/youprobablyneedahaircut.com_1f91.json",
+      "host": "youprobablyneedahaircut.com",
+      "frameIndex": 0,
+      "origin": "https://youprobablyneedahaircut.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/youglish.com_d6e2.json",
+      "host": "youglish.com",
+      "frameIndex": 0,
+      "origin": "https://youglish.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yougojapan.com_94ae.json",
+      "host": "yougojapan.com",
+      "frameIndex": 0,
+      "origin": "https://yougojapan.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/you.38degrees.org.uk_5918.json",
+      "host": "you.38degrees.org.uk",
+      "frameIndex": 0,
+      "origin": "https://you.38degrees.org.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/you-well.co.uk_fcb6.json",
+      "host": "you-well.co.uk",
+      "frameIndex": 0,
+      "origin": "https://you-well.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yorksu.org_c9fb.json",
+      "host": "yorksu.org",
+      "frameIndex": 0,
+      "origin": "https://yorksu.org",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yorkshiretots.com_22f9.json",
+      "host": "yorkshiretots.com",
+      "frameIndex": 0,
+      "origin": "https://yorkshiretots.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yorkshirewonders.co.uk_c1ba.json",
+      "host": "yorkshirewonders.co.uk",
+      "frameIndex": 0,
+      "origin": "https://yorkshirewonders.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yorkhospitals.nhs.uk_9ff8.json",
+      "host": "yorkhospitals.nhs.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yorkhospitals.nhs.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yorkcityfootballclub.co.uk_0835.json",
+      "host": "yorkcityfootballclub.co.uk",
+      "frameIndex": 0,
+      "origin": "https://yorkcityfootballclub.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 3,
+      "popupTextPreview": "TICKETS & INFO NEWS SQUADS SHOP SPONSORSHIP HOSPITALITY & EVENTS FANS CLUB"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yopmail.com_fc67.json",
+      "host": "yopmail.com",
+      "frameIndex": 0,
+      "origin": "https://yopmail.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yomotherboard.com_d725.json",
+      "host": "yomotherboard.com",
+      "frameIndex": 0,
+      "origin": "https://yomotherboard.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "Yo Motherboard BLOG TOOLS & UTILITIES SEO QUESTIONS & ANSWERS"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yogajala.com_e300.json",
+      "host": "yogajala.com",
+      "frameIndex": 0,
+      "origin": "https://yogajala.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yinyanghouse.com_03d3.json",
+      "host": "yinyanghouse.com",
+      "frameIndex": 0,
+      "origin": "https://yinyanghouse.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "Yin Yang House Home Blog Diagnostic Patterns Conditions Treated Acupuncture Points Point Categories Herbal Medicine Herbal Medicine Intro TCM Herbs - Full List TCM Herbs - by Function TCM Herbs - by C..."
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/ygoprodeck.com_2b4b.json",
+      "host": "ygoprodeck.com",
+      "frameIndex": 0,
+      "origin": "https://ygoprodeck.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Decks Articles Card Database Community Premium Search Sign Up Login"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yeatofficial.com_70cf.json",
+      "host": "yeatofficial.com",
+      "frameIndex": 0,
+      "origin": "https://yeatofficial.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/ybs.banklocationmaps.com_b5ba.json",
+      "host": "ybs.banklocationmaps.com",
+      "frameIndex": 0,
+      "origin": "https://ybs.banklocationmaps.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "Nearby YBS Locations 1 / 1"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yarnspatterns.com_cb60.json",
+      "host": "yarnspatterns.com",
+      "frameIndex": 0,
+      "origin": "https://yarnspatterns.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Home Crochet Amigurumi Accessories Home Decor"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yamahaden.com_f40b.json",
+      "host": "yamahaden.com",
+      "frameIndex": 0,
+      "origin": "https://yamahaden.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yamaha.manymanuals.com_c3bc.json",
+      "host": "yamaha.manymanuals.com",
+      "frameIndex": 0,
+      "origin": "https://yamaha.manymanuals.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/yachtsnet.co.uk_1432.json",
+      "host": "yachtsnet.co.uk",
+      "frameIndex": 0,
+      "origin": "https://yachtsnet.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/xynodegaming.com_b0e8.json",
+      "host": "xynodegaming.com",
+      "frameIndex": 0,
+      "origin": "https://xynodegaming.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/xxxomg.com_fbc1.json",
+      "host": "xxxomg.com",
+      "frameIndex": 0,
+      "origin": "https://xxxomg.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Close"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/xscore808.com_5786.json",
+      "host": "xscore808.com",
+      "frameIndex": 0,
+      "origin": "https://xscore808.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/xpressenglish.com_bc58.json",
+      "host": "xpressenglish.com",
+      "frameIndex": 0,
+      "origin": "https://xpressenglish.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/xp.quenq.com_ff3c.json",
+      "host": "xp.quenq.com",
+      "frameIndex": 0,
+      "origin": "https://xp.quenq.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Fullscreen CRT Filter Go Premium Upload Files Share Download App Join Discord Hide"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/xometry.uk_9a6a.json",
+      "host": "xometry.uk",
+      "frameIndex": 0,
+      "origin": "https://xometry.uk",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Are you located in Europe? This page is for Xometry’s customers in the United Kingdom but it looks like you’re not in the UK. Click the button to switch to Xometry Europe. Switch to Xometry Europe EN ..."
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/xlsxtemplates.com_418e.json",
+      "host": "xlsxtemplates.com",
+      "frameIndex": 0,
+      "origin": "https://xlsxtemplates.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/xiaomitime.com_3ecb.json",
+      "host": "xiaomitime.com",
+      "frameIndex": 0,
+      "origin": "https://xiaomitime.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "News HyperOS ▾ HyperOS 4 HyperOS 3.1 HyperOS 3 HyperOS 2 HyperOS News HyperOS Downloader Smartphones"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/xerodrive.com_0b39.json",
+      "host": "xerodrive.com",
+      "frameIndex": 0,
+      "origin": "https://xerodrive.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/xeroshoes.com_8350.json",
+      "host": "xeroshoes.com",
+      "frameIndex": 0,
+      "origin": "https://xeroshoes.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "New Men Women Kids Clearance Explore Find Your Shoe New Men Shop All New Arrivals Top Rated Best Sellers Shoes Boots Sandals Clearance Accessories & Gear e-Gift Cards Prio - Men 360 Rally - Men Wynn -..."
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/xenia-emulator.com_eb3b.json",
+      "host": "xenia-emulator.com",
+      "frameIndex": 0,
+      "origin": "https://xenia-emulator.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/xbox.com_049b.json",
+      "host": "xbox.com",
+      "frameIndex": 0,
+      "origin": "https://www.xbox.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/x3.xbimmers.com_2165.json",
+      "host": "x3.xbimmers.com",
+      "frameIndex": 0,
+      "origin": "https://www.bimmerpost.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/wzhub.gg_1424.json",
+      "host": "wzhub.gg",
+      "frameIndex": 0,
+      "origin": "https://wzhub.gg",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "WARZONE META META HUB MAPS HUB CAMO HUB TOOLS ENGLISH SIGN IN"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/wzstats.gg_462a.json",
+      "host": "wzstats.gg",
+      "frameIndex": 0,
+      "origin": "https://wzstats.gg",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "WARZONE META"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/wypeuk.com_e37e.json",
+      "host": "wypeuk.com",
+      "frameIndex": 0,
+      "origin": "https://wypeuk.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "END OF WINTER SALE: UP TO 35% OFF BESTSELLERS 🍑 Shop How it Works About Us Rewards The Suppository* UK Log in Cart SHOP NOW"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www8.eplsite.soccer_555a.json",
+      "host": "www8.eplsite.soccer",
+      "frameIndex": 0,
+      "origin": "https://www8.eplsite.soccer",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www3.somersetwestandtaunton.gov.uk_13db.json",
+      "host": "www3.somersetwestandtaunton.gov.uk",
+      "frameIndex": 0,
+      "origin": "https://www.somerset.gov.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www2.racingadmin.co.uk_6f19.json",
+      "host": "www2.racingadmin.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www2.racingadmin.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www2.racingadmin.co.uk_6f19.json",
+      "host": "www2.racingadmin.co.uk",
+      "frameIndex": 1,
+      "origin": "https://www2.racingadmin.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www2.ph.ed.ac.uk_22e7.json",
+      "host": "www2.ph.ed.ac.uk",
+      "frameIndex": 0,
+      "origin": "https://www.ph.ed.ac.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zwilling.com_ca60.json",
+      "host": "www.zwilling.com",
+      "frameIndex": 0,
+      "origin": "https://www.zwilling.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zwickroell.com_0faf.json",
+      "host": "www.zwickroell.com",
+      "frameIndex": 0,
+      "origin": "https://www.zwickroell.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "Contact"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zurichintermediary.co.uk_5a75.json",
+      "host": "www.zurichintermediary.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.zurichintermediary.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zurich-airport.net_d8ef.json",
+      "host": "www.zurich-airport.net",
+      "frameIndex": 0,
+      "origin": "https://www.zurich-airport.net",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zurich.co.uk_f82b.json",
+      "host": "www.zurich.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.zurich.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Feedback"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zuerich.com_0c8e.json",
+      "host": "www.zuerich.com",
+      "frameIndex": 0,
+      "origin": "https://www.zuerich.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Leisure Business EN Welcome, Zürich, Switzerland. Local Guide Search Menu"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zophar.net_4393.json",
+      "host": "www.zophar.net",
+      "frameIndex": 0,
+      "origin": "https://www.zophar.net",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zoopla.co.uk_70f2.json",
+      "host": "www.zoopla.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.zoopla.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Enter a location Use up and down arrow keys to navigate. Press Enter key to select. 0 results found Search"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zomato.com_1e35.json",
+      "host": "www.zomato.com",
+      "frameIndex": 0,
+      "origin": "https://www.zomato.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zoffany.design_d2bb.json",
+      "host": "www.zoffany.design",
+      "frameIndex": 0,
+      "origin": "https://www.zoffany.design",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zodiacsign.com_6297.json",
+      "host": "www.zodiacsign.com",
+      "frameIndex": 0,
+      "origin": "https://www.zodiacsign.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "ZODIAC SIGNS HOROSCOPE COMPATIBILITY ASTROLOGY TAROT ZODIAC CALENDAR ARTICLES"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zodiacpair.com_bc9a.json",
+      "host": "www.zodiacpair.com",
+      "frameIndex": 0,
+      "origin": "https://www.zodiacpair.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Sponsored X"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zkelectronics.com_d60d.json",
+      "host": "www.zkelectronics.com",
+      "frameIndex": 0,
+      "origin": "https://www.zkelectronics.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "ZKelectronics Receivers Cameras TVs Espresso Machines"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zipdatamaps.com_bd92.json",
+      "host": "www.zipdatamaps.com",
+      "frameIndex": 0,
+      "origin": "https://www.zipdatamaps.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "ZIP Data and Maps Blog About Data and Maps"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zingzing.co.uk_e3a1.json",
+      "host": "www.zingzing.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.zingzing.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zimeye.net_4e15.json",
+      "host": "www.zimeye.net",
+      "frameIndex": 0,
+      "origin": "https://www.zimeye.net",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zinio.com_91ac.json",
+      "host": "www.zinio.com",
+      "frameIndex": 0,
+      "origin": "https://www.zinio.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "MAGAZINES EXPLORE MY LIBRARY WHY ZINIO? EN"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zinio.com_91ac.json",
+      "host": "www.zinio.com",
+      "frameIndex": 1,
+      "origin": "https://www.zinio.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "MAGAZINES EXPLORE MY LIBRARY WHY ZINIO? EN"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zimbabwesituation.com_451b.json",
+      "host": "www.zimbabwesituation.com",
+      "frameIndex": 0,
+      "origin": "https://www.zimbabwesituation.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zillow.com_3a32.json",
+      "host": "www.zillow.com",
+      "frameIndex": 0,
+      "origin": "https://www.zillow.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zesolution.com_d0a1.json",
+      "host": "www.zesolution.com",
+      "frameIndex": 0,
+      "origin": "https://www.zesolution.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zeroto60times.com_5c92.json",
+      "host": "www.zeroto60times.com",
+      "frameIndex": 0,
+      "origin": "https://www.zeroto60times.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zerohedge.com_3e4e.json",
+      "host": "www.zerohedge.com",
+      "frameIndex": 0,
+      "origin": "https://www.zerohedge.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zerogpt.plus_0bbc.json",
+      "host": "www.zerogpt.plus",
+      "frameIndex": 0,
+      "origin": "https://www.zerogpt.plus",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "🎓 A student from Sweden just applied their student discount 2 minutes ago ×"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zerochan.net_f7ac.json",
+      "host": "www.zerochan.net",
+      "frameIndex": 0,
+      "origin": "https://www.zerochan.net",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "BrowseUploadSubscribedLoginRegister"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zarges.com_a075.json",
+      "host": "www.zarges.com",
+      "frameIndex": 0,
+      "origin": "https://www.zarges.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Downloads News Contact United Kingdom Product compare PRODUCTS SECTORS CONFIGURATORS SOLUTIONS COMPANY"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zalgo.org_a9d1.json",
+      "host": "www.zalgo.org",
+      "frameIndex": 0,
+      "origin": "https://www.zalgo.org",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zalando.de_b257.json",
+      "host": "www.zalando.de",
+      "frameIndex": 0,
+      "origin": "https://en.zalando.de",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zalando-lounge.co.uk_c7f5.json",
+      "host": "www.zalando-lounge.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.zalando-lounge.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Log in"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.zalando.co.uk_bed4.json",
+      "host": "www.zalando.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.zalando.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.z900rs.co.uk_5301.json",
+      "host": "www.z900rs.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.z900rs.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "RECENT POSTS"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yvonne-arnaud.co.uk_f6d7.json",
+      "host": "www.yvonne-arnaud.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yvonne-arnaud.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Yvonne Arnaud Theatre What's On Take Part Your Visit Food & Drink Support Us Our Venue Room Hire & Events SEARCH ACCOUNT BASKET (0) SIGN UP TO OUR MAILING LIST"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yupptv.com_43af.json",
+      "host": "www.yupptv.com",
+      "frameIndex": 0,
+      "origin": "https://www.yupptv.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "By interacting with this site, you agree to our cookie policy. To find out more about our Cookie Policy, Click Here for T&C"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yummytummyaarthi.com_cb08.json",
+      "host": "www.yummytummyaarthi.com",
+      "frameIndex": 0,
+      "origin": "https://www.yummytummyaarthi.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Recipe Index About Masterchef Journey Media"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yummytoddlerfood.com_6484.json",
+      "host": "www.yummytoddlerfood.com",
+      "frameIndex": 0,
+      "origin": "https://www.yummytoddlerfood.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yugiohmeta.com_bc7f.json",
+      "host": "www.yugiohmeta.com",
+      "frameIndex": 0,
+      "origin": "https://www.yugiohmeta.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "TIER LIST TOP DECKS DECK BUILDER CARD REVEALS BAN LIST CONTACT/FEEDBACK LOGIN"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.ytechb.com_8c14.json",
+      "host": "www.ytechb.com",
+      "frameIndex": 0,
+      "origin": "https://www.ytechb.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "YTECHB AI"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.ytechb.com_8c14.json",
+      "host": "www.ytechb.com",
+      "frameIndex": 1,
+      "origin": "https://www.ytechb.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "YTECHB AI"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yt-industries.com_87f4.json",
+      "host": "www.yt-industries.com",
+      "frameIndex": 0,
+      "origin": "https://www.yt-industries.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "YT-Industries EN items in cart, View cart 10 Years of Friendship: Save 30% on the JEFFSY CORE Range"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yoys.co.uk_7ac6.json",
+      "host": "www.yoys.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yoys.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "public United Kingdom translate English web Create WebSite business Add company local_offer Add product account_circle Account For business Products"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.youtubeunblocked.live_b749.json",
+      "host": "www.youtubeunblocked.live",
+      "frameIndex": 0,
+      "origin": "https://www.youtubeunblocked.live",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Configure your personal web proxy for free and share it with friends!"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.youtrannytube.com_6f73.json",
+      "host": "www.youtrannytube.com",
+      "frameIndex": 0,
+      "origin": "https://www.youtrannytube.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Close"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yourstudentloancalculator.co.uk_bf96.json",
+      "host": "www.yourstudentloancalculator.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yourstudentloancalculator.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Calculate In today's money"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yourstirling.com_018a.json",
+      "host": "www.yourstirling.com",
+      "frameIndex": 0,
+      "origin": "https://www.yourstirling.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yourspares.co.uk_ebf9.json",
+      "host": "www.yourspares.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yourspares.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Need help?"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yoursouthend.co.uk_bf36.json",
+      "host": "www.yoursouthend.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yoursouthend.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yoursaypays.co.uk_351e.json",
+      "host": "www.yoursaypays.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yoursaypays.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "ABOUT RESULTS CONTACT SIGN IN SIGN UP"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yournextshoes.com_cf36.json",
+      "host": "www.yournextshoes.com",
+      "frameIndex": 0,
+      "origin": "https://www.yournextshoes.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "BRANDS AND DESIGNERS MUST-HAVE SHOE STYLES CELEBRITY FASHION STYLE AND SHOPPING GUIDES CELEBRITIES BRANDS MOVIES AND TV HIGHLIGHTS SHOE ACCESSORIES SHOPPING GUIDE STYLES ABOUT US PRIVACY POLICY CONTAC..."
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yourmoneyyourlife.co.uk_2fbc.json",
+      "host": "www.yourmoneyyourlife.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yourmoneyyourlife.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yourlayoverguide.com_b7f0.json",
+      "host": "www.yourlayoverguide.com",
+      "frameIndex": 0,
+      "origin": "https://www.yourlayoverguide.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yourharlow.com_81a6.json",
+      "host": "www.yourharlow.com",
+      "frameIndex": 0,
+      "origin": "https://www.yourharlow.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yourgirlknows.com_c598.json",
+      "host": "www.yourgirlknows.com",
+      "frameIndex": 0,
+      "origin": "https://www.yourgirlknows.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yourclassical.org_d65c.json",
+      "host": "www.yourclassical.org",
+      "frameIndex": 0,
+      "origin": "https://www.yourclassical.org",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "YourClassical Radio"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yourcarehome.co.uk_1f2d.json",
+      "host": "www.yourcarehome.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yourcarehome.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.youngla.com_2b88.json",
+      "host": "www.youngla.com",
+      "frameIndex": 0,
+      "origin": "https://www.youngla.com",
+      "isTop": true,
+      "potentialPopupCount": 3,
+      "popupTextPreview": "YoungLA QUESTIONS? (818) 206-8764 FOR HIM ▼ FOR HER ▼ NEW DROP ▼ COLLABS ▼ LOOKBOOK ▼ PHONE Open account page Open search Open cart US"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yorkhospitals.nhs.uk_bf74.json",
+      "host": "www.yorkhospitals.nhs.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yorkhospitals.nhs.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yorkie-owners.co.uk_79e5.json",
+      "host": "www.yorkie-owners.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yorkie-owners.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yomiuri.co.jp_a33f.json",
+      "host": "www.yomiuri.co.jp",
+      "frameIndex": 0,
+      "origin": "https://www.yomiuri.co.jp",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "朝刊記事 紙面ビューアー 社説 English さがす ヘルプ 5日 東京 17℃ / ---℃ 購読申込 新規登録 ログイン すべて トップ 速報 社会 政治 経済 スポーツ 国際 地域 科学・IT エンタメ・文化 ライフ 受験・就活 ヘルス 数独 ヨミドクター 大手小町 発言小町 よみぽランド"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yogabasics.com_5c22.json",
+      "host": "www.yogabasics.com",
+      "frameIndex": 0,
+      "origin": "https://www.yogabasics.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.ynet.co.il_5393.json",
+      "host": "www.ynet.co.il",
+      "frameIndex": 0,
+      "origin": "https://www.ynet.co.il",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.ynetnews.com_fc2c.json",
+      "host": "www.ynetnews.com",
+      "frameIndex": 0,
+      "origin": "https://www.ynetnews.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yiv.com_26ae.json",
+      "host": "www.yiv.com",
+      "frameIndex": 0,
+      "origin": "https://www.yiv.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yescalculator.com_ac41.json",
+      "host": "www.yescalculator.com",
+      "frameIndex": 0,
+      "origin": "https://www.yescalculator.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Yes! Calculator Feedback"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yellowbridge.com_c677.json",
+      "host": "www.yellowbridge.com",
+      "frameIndex": 0,
+      "origin": "https://www.yellowbridge.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Menu About Subscribe Sign In"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.year-planner-calendar.co.uk_690d.json",
+      "host": "www.year-planner-calendar.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.year-planner-calendar.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yas.nhs.uk_1031.json",
+      "host": "www.yas.nhs.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yas.nhs.uk",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Page top"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yamllint.com_7661.json",
+      "host": "www.yamllint.com",
+      "frameIndex": 0,
+      "origin": "https://www.yamllint.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yamaha-keyboard-guide.com_a722.json",
+      "host": "www.yamaha-keyboard-guide.com",
+      "frameIndex": 0,
+      "origin": "https://www.yamaha-keyboard-guide.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.yachtsnet.co.uk_cb8f.json",
+      "host": "www.yachtsnet.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.yachtsnet.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xvideos.tube_fd33.json",
+      "host": "www.xvideos.tube",
+      "frameIndex": 0,
+      "origin": "https://www.xvideos.tube",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xvideos.com_dafb.json",
+      "host": "www.xvideos.com",
+      "frameIndex": 0,
+      "origin": "https://www.xvideos.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xnxx20.com_1b3c.json",
+      "host": "www.xnxx20.com",
+      "frameIndex": 0,
+      "origin": "https://www.xnxx20.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xnxx.com_c073.json",
+      "host": "www.xnxx.com",
+      "frameIndex": 0,
+      "origin": "https://www.xnxx.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xnxx-ru.com_9595.json",
+      "host": "www.xnxx-ru.com",
+      "frameIndex": 0,
+      "origin": "https://www.xnxx-ru.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xnxx-india.com_dd49.json",
+      "host": "www.xnxx-india.com",
+      "frameIndex": 0,
+      "origin": "https://www.xnxx-india.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xnview.com_bec9.json",
+      "host": "www.xnview.com",
+      "frameIndex": 0,
+      "origin": "https://www.xnview.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Product Mobile Forum Misc Contact English"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xjavascript.com_288b.json",
+      "host": "www.xjavascript.com",
+      "frameIndex": 0,
+      "origin": "https://www.xjavascript.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "XJavascript.com Home Online Javascript Compiler Tutorials Blog"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xing.com_3094.json",
+      "host": "www.xing.com",
+      "frameIndex": 0,
+      "origin": "https://www.xing.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Skip navigation Find jobs Companies Network Insights Search Log in Create a job ad Products"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xgaytube.tv_faa7.json",
+      "host": "www.xgaytube.tv",
+      "frameIndex": 0,
+      "origin": "https://www.xgaytube.tv",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xcweather.net_18f8.json",
+      "host": "www.xcweather.net",
+      "frameIndex": 0,
+      "origin": "https://www.xcweather.net",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xcweather.co.uk_0f60.json",
+      "host": "www.xcweather.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.xcweather.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xc40forums.co.uk_c50b.json",
+      "host": "www.xc40forums.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.xc40forums.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.xbox.com_bfe2.json",
+      "host": "www.xbox.com",
+      "frameIndex": 0,
+      "origin": "https://www.xbox.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wyre.gov.uk_9214.json",
+      "host": "www.wyre.gov.uk",
+      "frameIndex": 0,
+      "origin": "https://www.wyre.gov.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wur.nl_e0f4.json",
+      "host": "www.wur.nl",
+      "frameIndex": 0,
+      "origin": "https://www.wur.nl",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wundertech.net_f5af.json",
+      "host": "www.wundertech.net",
+      "frameIndex": 0,
+      "origin": "https://www.wundertech.net",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wslfootball.com_fbcc.json",
+      "host": "www.wslfootball.com",
+      "frameIndex": 0,
+      "origin": "https://www.wslfootball.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Fixtures Tables January Transfer Window News Subway Women's League Cup Clubs Players Stats Latest News Latest Video WSL Football App Beta About Us JOIN THIS TICKETS WATCH Fixtures Tables News Clubs JO..."
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wsgaragedoorspares.com_07ac.json",
+      "host": "www.wsgaragedoorspares.com",
+      "frameIndex": 0,
+      "origin": "https://www.wsgaragedoorspares.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Customer Service: 01704 331 705 Lines open from 09:00 - 22:00 (Mon-Fri) Search Store... Garage Door Spares Manufacturers Information Cones & Cables Locks & Handles Spindles & Rollers Springs Remote Co..."
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.writingbeginner.com_96e1.json",
+      "host": "www.writingbeginner.com",
+      "frameIndex": 0,
+      "origin": "https://www.writingbeginner.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.writerswrite.co.za_8200.json",
+      "host": "www.writerswrite.co.za",
+      "frameIndex": 0,
+      "origin": "https://www.writerswrite.co.za",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.writersdigest.com_3db9.json",
+      "host": "www.writersdigest.com",
+      "frameIndex": 0,
+      "origin": "https://www.writersdigest.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "Close"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.write-out-loud.com_4727.json",
+      "host": "www.write-out-loud.com",
+      "frameIndex": 0,
+      "origin": "https://www.write-out-loud.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wrike.com_67b3.json",
+      "host": "www.wrike.com",
+      "frameIndex": 0,
+      "origin": "https://www.wrike.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Solutions Try Wrike for free Contact Sales Product Try Wrike for free Contact Sales Why Wrike? Resources Enterprise Pricing Contact Sales EN English Dansk Deutsch Español Français Bahasa Indonesia Ita..."
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wristenthusiast.com_833f.json",
+      "host": "www.wristenthusiast.com",
+      "frameIndex": 0,
+      "origin": "https://www.wristenthusiast.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "Wren Diver 38 Mad — Available Now 38mm Swiss-made diver. Fully lumed sapphire bezel. Swiss ETA 2892 with display caseback. Micro-adjust clasp. Available now. Limited quantities. Ships immediately. GET..."
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wrigleys.co.uk_58b6.json",
+      "host": "www.wrigleys.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.wrigleys.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "SEND US AN ENQUIRY"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wrexham.gov.uk_f0fb.json",
+      "host": "www.wrexham.gov.uk",
+      "frameIndex": 0,
+      "origin": "https://www.wrexham.gov.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wrestlinginc.com_a529.json",
+      "host": "www.wrestlinginc.com",
+      "frameIndex": 0,
+      "origin": "https://www.wrestlinginc.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "NEWS EXCLUSIVES WWE AEW FEATURES NEWSLETTER ABOUT EDITORIAL POLICIES PRIVACY POLICY TERMS OF USE © 2026 Static Media. All Rights Reserved NEWS EXCLUSIVES WWE AEW FEATURES NEWSLETTER"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wrenkitchens.com_5a3d.json",
+      "host": "www.wrenkitchens.com",
+      "frameIndex": 0,
+      "origin": "https://www.wrenkitchens.com",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "Book appointment Close"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wrathofthebarclay.co.uk_b4c2.json",
+      "host": "www.wrathofthebarclay.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.wrathofthebarclay.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wptv.com_c2c7.json",
+      "host": "www.wptv.com",
+      "frameIndex": 0,
+      "origin": "https://www.wptv.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wowtools.co.uk_d0fd.json",
+      "host": "www.wowtools.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.wowtools.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wowsaga.com_eda6.json",
+      "host": "www.wowsaga.com",
+      "frameIndex": 0,
+      "origin": "https://www.wowsaga.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wowhaus.co.uk_368d.json",
+      "host": "www.wowhaus.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.wowhaus.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wow-petopia.com_0dce.json",
+      "host": "www.wow-petopia.com",
+      "frameIndex": 0,
+      "origin": "https://www.wow-petopia.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wow-petopia.com_0dce.json",
+      "host": "www.wow-petopia.com",
+      "frameIndex": 1,
+      "origin": "https://www.wow-petopia.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.wortbedeutung.info_7981.json",
+      "host": "www.wortbedeutung.info",
+      "frameIndex": 0,
+      "origin": "https://www.wortbedeutung.info",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worsthouseonthestreet.com_538e.json",
+      "host": "www.worsthouseonthestreet.com",
+      "frameIndex": 0,
+      "origin": "https://www.worsthouseonthestreet.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldwidedx.com_0b5e.json",
+      "host": "www.worldwidedx.com",
+      "frameIndex": 0,
+      "origin": "https://www.worldwidedx.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "This forum does not allow a single user to have more than one username. If anyone wants to change their username contact an admin and it will be done. Multiple accounts belonging to the same member wi..."
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldwide-parcelservices.co.uk_f38f.json",
+      "host": "www.worldwide-parcelservices.co.uk",
+      "frameIndex": 0,
+      "origin": "https://www.worldwide-parcelservices.co.uk",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldthroughthelens.com_a0cd.json",
+      "host": "www.worldthroughthelens.com",
+      "frameIndex": 0,
+      "origin": "https://www.worldthroughthelens.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldtimeserver.com_925b.json",
+      "host": "www.worldtimeserver.com",
+      "frameIndex": 0,
+      "origin": "https://www.worldtimeserver.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldstandards.eu_b6e2.json",
+      "host": "www.worldstandards.eu",
+      "frameIndex": 0,
+      "origin": "https://www.worldstandards.eu",
+      "isTop": true,
+      "potentialPopupCount": 2,
+      "popupTextPreview": "Close Menu"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldtimebuddy.com_d68d.json",
+      "host": "www.worldtimebuddy.com",
+      "frameIndex": 0,
+      "origin": "https://www.worldtimebuddy.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldpostalcodes.org_19de.json",
+      "host": "www.worldpostalcodes.org",
+      "frameIndex": 0,
+      "origin": "https://www.worldpostalcodes.org",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Worldpostalcodes.org"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldometers.info_7696.json",
+      "host": "www.worldometers.info",
+      "frameIndex": 0,
+      "origin": "https://www.worldometers.info",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldofvegan.com_af87.json",
+      "host": "www.worldofvegan.com",
+      "frameIndex": 0,
+      "origin": "https://www.worldofvegan.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Discover fun finds in our new Vegan Coupon Hub! Cook Learn Live Shop"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldofreel.com_769f.json",
+      "host": "www.worldofreel.com",
+      "frameIndex": 0,
+      "origin": "https://www.worldofreel.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Subscribe to our weekly newsletter! Get all the week’s news along with exclusive new content delivered to your inbox every week. Subscribe We respect your privacy."
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldoftablet.com_0725.json",
+      "host": "www.worldoftablet.com",
+      "frameIndex": 0,
+      "origin": "https://www.worldoftablet.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "We'd like to show you notifications for the latest news and updates. Allow Cancel"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldmeteo.info_8f16.json",
+      "host": "www.worldmeteo.info",
+      "frameIndex": 0,
+      "origin": "https://www.worldmeteo.info",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "World My favorites"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldmap1.com_97b5.json",
+      "host": "www.worldmap1.com",
+      "frameIndex": 0,
+      "origin": "https://www.worldmap1.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "×"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldlivecamera.com_3aee.json",
+      "host": "www.worldlivecamera.com",
+      "frameIndex": 0,
+      "origin": "https://www.worldlivecamera.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "172 Shares Share Post Share Share Pin Share Share"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldhistory.org_7992.json",
+      "host": "www.worldhistory.org",
+      "frameIndex": 0,
+      "origin": "https://www.worldhistory.org",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "REMOVE ADS"
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldflags.net_b187.json",
+      "host": "www.worldflags.net",
+      "frameIndex": 0,
+      "origin": "https://www.worldflags.net",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldcollectorsnet.com_d13a.json",
+      "host": "www.worldcollectorsnet.com",
+      "frameIndex": 0,
+      "origin": "https://www.worldcollectorsnet.com",
+      "isTop": true,
+      "potentialPopupCount": 0,
+      "popupTextPreview": ""
+    },
+    {
+      "filePath": "/mnt/efs/shared/crawler-data/autoconsent-coverage-crawls/2026-03-04/GB/3p-crawl/www.worldcoinscatalog.com_eb1d.json",
+      "host": "www.worldcoinscatalog.com",
+      "frameIndex": 0,
+      "origin": "https://www.worldcoinscatalog.com",
+      "isTop": true,
+      "potentialPopupCount": 1,
+      "popupTextPreview": "Menu Countries"
+    }
+  ],
+  "errors": []
+}
