@@ -1,4 +1,5 @@
 # DuckDuckGo Tracker Radar Collector
+
 🕸 Modular, multithreaded, [puppeteer](https://github.com/GoogleChrome/puppeteer)-based crawler used to generate third party request data for the [Tracker Radar](https://github.com/duckduckgo/tracker-radar).
 
 ## How do I use it?
@@ -128,6 +129,7 @@ Additionally, each collector can override following methods:
 There are couple of built-in collectors in the `collectors/` folder. `CookieCollector` is the simplest one and can be used as a template.
 
 Each new collector has to be added in two places to be discoverable:
+
 - `crawlerConductor.js` - so that `crawlerConductor` knows about it (and it can be used in the CLI tool)
 - `main.js` - so that the new collector can be imported by other projects
 

@@ -834,16 +834,19 @@ describe('CookiePopupsCollector', () => {
 
             const data = await collector.getData();
 
-            assert.deepStrictEqual(
-                profileCommands.slice(0, 3),
-                [
-                    ['Profiler.enable', undefined],
-                    ['Profiler.setSamplingInterval', { interval: 1000 }],
-                    ['Profiler.start', undefined],
-                ],
+            assert.deepStrictEqual(profileCommands.slice(0, 3), [
+                ['Profiler.enable', undefined],
+                ['Profiler.setSamplingInterval', { interval: 1000 }],
+                ['Profiler.start', undefined],
+            ]);
+            assert(
+                profileCommands.some(([command]) => command === 'Profiler.stop'),
+                'profile should be stopped',
             );
-            assert(profileCommands.some(([command]) => command === 'Profiler.stop'), 'profile should be stopped');
-            assert(profileCommands.some(([command]) => command === 'Profiler.disable'), 'profiler should be disabled');
+            assert(
+                profileCommands.some(([command]) => command === 'Profiler.disable'),
+                'profiler should be disabled',
+            );
             assert.strictEqual(data.autoconsentScriptTimeMs, 12);
             assert.deepStrictEqual(data.autoconsentProfile, {
                 enabled: true,

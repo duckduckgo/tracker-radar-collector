@@ -55,12 +55,7 @@ function roundMs(value) {
  */
 function getProfileNodeKey(node) {
     const callFrame = node.callFrame;
-    return [
-        callFrame.functionName || '(anonymous)',
-        callFrame.url || '',
-        callFrame.lineNumber,
-        callFrame.columnNumber,
-    ].join(':');
+    return [callFrame.functionName || '(anonymous)', callFrame.url || '', callFrame.lineNumber, callFrame.columnNumber].join(':');
 }
 
 /**
@@ -202,12 +197,9 @@ function combineProfileSummaries(summaries, errors) {
         autoconsentSampleCount += summary.autoconsentSampleCount;
 
         for (const functionSummary of summary.topFunctions) {
-            const key = [
-                functionSummary.functionName,
-                functionSummary.url,
-                functionSummary.lineNumber,
-                functionSummary.columnNumber,
-            ].join(':');
+            const key = [functionSummary.functionName, functionSummary.url, functionSummary.lineNumber, functionSummary.columnNumber].join(
+                ':',
+            );
             if (!functionsByKey.has(key)) {
                 functionsByKey.set(key, {
                     ...functionSummary,
