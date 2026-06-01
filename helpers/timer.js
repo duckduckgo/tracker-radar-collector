@@ -11,6 +11,10 @@ function createTimer() {
 
     return {
         getElapsedTime: () => parseHrtimeToSeconds(process.hrtime(startTime)),
+        getElapsedTimeMs: () => {
+            const hrtime = process.hrtime(startTime);
+            return hrtime[0] * 1000 + hrtime[1] / 1e6;
+        },
     };
 }
 

@@ -15,10 +15,13 @@ const baseContentScript = fs.readFileSync(
 );
 
 const BINDING_NAME_PREFIX = 'cdpAutoconsentSendMessage_';
+const AUTOCONSENT_SOURCE_URL = 'duckduckgo-autoconsent.js';
 const SCRAPE_TIMEOUT = 20000;
 const OPTOUT_TIMEOUT = 30000;
 const DETECT_TIMEOUT = 5000;
 const FOUND_TIMEOUT = 5000;
+const PROFILER_SAMPLING_INTERVAL_US = 1000;
+const PROFILE_TOP_FUNCTIONS_LIMIT = 10;
 
 /**
  * @param {string} bindingName
@@ -30,11 +33,217 @@ function getAutoconsentContentScript(bindingName) {
 window.autoconsentSendMessage = (msg) => {
     window.${bindingName}(JSON.stringify(msg));
 };
-` + baseContentScript
+` +
+        baseContentScript +
+        `\n//# sourceURL=${AUTOCONSENT_SOURCE_URL}`
     );
 }
 
 const cookiePopupScrapeScript = fs.readFileSync(require.resolve('./CookiePopups/scrapeScript.js'), 'utf8');
+
+/**
+ * @param {number} value
+ * @returns {number}
+ */
+function roundMs(value) {
+    return Number(value.toFixed(3));
+}
+
+/**
+ * @param {import('devtools-protocol/types/protocol').Protocol.Profiler.ProfileNode} node
+ * @returns {string}
+ */
+function getProfileNodeKey(node) {
+    const callFrame = node.callFrame;
+    return [
+        callFrame.functionName || '(anonymous)',
+        callFrame.url || '',
+        callFrame.lineNumber,
+        callFrame.columnNumber,
+    ].join(':');
+}
+
+/**
+ * @param {import('devtools-protocol/types/protocol').Protocol.Profiler.ProfileNode} node
+ * @returns {boolean}
+ */
+function isAutoconsentProfileNode(node) {
+    const url = node.callFrame.url || '';
+    return url === AUTOCONSENT_SOURCE_URL || url.endsWith(`/${AUTOCONSENT_SOURCE_URL}`);
+}
+
+/**
+ * @param {import('devtools-protocol/types/protocol').Protocol.Profiler.Profile} profile
+ * @returns {AutoconsentProfileSummary}
+ */
+function summarizeProfile(profile) {
+    /** @type {Map<number, import('devtools-protocol/types/protocol').Protocol.Profiler.ProfileNode>} */
+    const nodeById = new Map();
+    /** @type {Map<number, number>} */
+    const parentById = new Map();
+    /** @type {Map<string, AutoconsentProfileFunctionSummary>} */
+    const functionsByKey = new Map();
+
+    for (const node of profile.nodes || []) {
+        nodeById.set(node.id, node);
+        for (const childId of node.children || []) {
+            parentById.set(childId, node.id);
+        }
+    }
+
+    const samples = profile.samples || [];
+    const timeDeltas = profile.timeDeltas || [];
+    const fallbackDeltaUs =
+        !timeDeltas.length && profile.endTime && profile.startTime && samples.length
+            ? (profile.endTime - profile.startTime) / samples.length
+            : 0;
+
+    let totalProfiledTimeMs = 0;
+    let autoconsentScriptTimeMs = 0;
+    let autoconsentSelfTimeMs = 0;
+    let autoconsentSampleCount = 0;
+
+    for (const [index, nodeId] of samples.entries()) {
+        const deltaMs = (timeDeltas[index] || fallbackDeltaUs) / 1000;
+        totalProfiledTimeMs += deltaMs;
+
+        /** @type {import('devtools-protocol/types/protocol').Protocol.Profiler.ProfileNode[]} */
+        const stack = [];
+        let currentNode = nodeById.get(nodeId);
+        while (currentNode) {
+            stack.push(currentNode);
+            const parentId = parentById.get(currentNode.id);
+            currentNode = parentId ? nodeById.get(parentId) : null;
+        }
+
+        const autoconsentNodes = stack.filter(isAutoconsentProfileNode);
+        if (autoconsentNodes.length === 0) {
+            continue;
+        }
+
+        autoconsentScriptTimeMs += deltaMs;
+        autoconsentSampleCount++;
+
+        const leafNode = nodeById.get(nodeId);
+        if (leafNode && isAutoconsentProfileNode(leafNode)) {
+            const key = getProfileNodeKey(leafNode);
+            if (!functionsByKey.has(key)) {
+                functionsByKey.set(key, {
+                    functionName: leafNode.callFrame.functionName || '(anonymous)',
+                    url: leafNode.callFrame.url || '',
+                    lineNumber: leafNode.callFrame.lineNumber,
+                    columnNumber: leafNode.callFrame.columnNumber,
+                    selfTimeMs: 0,
+                    totalTimeMs: 0,
+                    hitCount: 0,
+                });
+            }
+            const functionSummary = functionsByKey.get(key);
+            functionSummary.selfTimeMs += deltaMs;
+            functionSummary.hitCount++;
+            autoconsentSelfTimeMs += deltaMs;
+        }
+
+        for (const node of autoconsentNodes) {
+            const key = getProfileNodeKey(node);
+            if (!functionsByKey.has(key)) {
+                functionsByKey.set(key, {
+                    functionName: node.callFrame.functionName || '(anonymous)',
+                    url: node.callFrame.url || '',
+                    lineNumber: node.callFrame.lineNumber,
+                    columnNumber: node.callFrame.columnNumber,
+                    selfTimeMs: 0,
+                    totalTimeMs: 0,
+                    hitCount: 0,
+                });
+            }
+            functionsByKey.get(key).totalTimeMs += deltaMs;
+        }
+    }
+
+    const topFunctions = Array.from(functionsByKey.values())
+        .map((functionSummary) => ({
+            ...functionSummary,
+            selfTimeMs: roundMs(functionSummary.selfTimeMs),
+            totalTimeMs: roundMs(functionSummary.totalTimeMs),
+        }))
+        .sort((a, b) => b.selfTimeMs - a.selfTimeMs || b.totalTimeMs - a.totalTimeMs)
+        .slice(0, PROFILE_TOP_FUNCTIONS_LIMIT);
+
+    return {
+        totalProfiledTimeMs: roundMs(totalProfiledTimeMs),
+        autoconsentScriptTimeMs: roundMs(autoconsentScriptTimeMs),
+        autoconsentSelfTimeMs: roundMs(autoconsentSelfTimeMs),
+        totalSampleCount: samples.length,
+        autoconsentSampleCount,
+        topFunctions,
+    };
+}
+
+/**
+ * @param {AutoconsentProfileSummary[]} summaries
+ * @param {string[]} errors
+ * @returns {AutoconsentProfileSummary}
+ */
+function combineProfileSummaries(summaries, errors) {
+    /** @type {Map<string, AutoconsentProfileFunctionSummary>} */
+    const functionsByKey = new Map();
+    let totalProfiledTimeMs = 0;
+    let autoconsentScriptTimeMs = 0;
+    let autoconsentSelfTimeMs = 0;
+    let totalSampleCount = 0;
+    let autoconsentSampleCount = 0;
+
+    for (const summary of summaries) {
+        totalProfiledTimeMs += summary.totalProfiledTimeMs;
+        autoconsentScriptTimeMs += summary.autoconsentScriptTimeMs;
+        autoconsentSelfTimeMs += summary.autoconsentSelfTimeMs;
+        totalSampleCount += summary.totalSampleCount;
+        autoconsentSampleCount += summary.autoconsentSampleCount;
+
+        for (const functionSummary of summary.topFunctions) {
+            const key = [
+                functionSummary.functionName,
+                functionSummary.url,
+                functionSummary.lineNumber,
+                functionSummary.columnNumber,
+            ].join(':');
+            if (!functionsByKey.has(key)) {
+                functionsByKey.set(key, {
+                    ...functionSummary,
+                    selfTimeMs: 0,
+                    totalTimeMs: 0,
+                    hitCount: 0,
+                });
+            }
+            const combinedFunctionSummary = functionsByKey.get(key);
+            combinedFunctionSummary.selfTimeMs += functionSummary.selfTimeMs;
+            combinedFunctionSummary.totalTimeMs += functionSummary.totalTimeMs;
+            combinedFunctionSummary.hitCount += functionSummary.hitCount;
+        }
+    }
+
+    const topFunctions = Array.from(functionsByKey.values())
+        .map((functionSummary) => ({
+            ...functionSummary,
+            selfTimeMs: roundMs(functionSummary.selfTimeMs),
+            totalTimeMs: roundMs(functionSummary.totalTimeMs),
+        }))
+        .sort((a, b) => b.selfTimeMs - a.selfTimeMs || b.totalTimeMs - a.totalTimeMs)
+        .slice(0, PROFILE_TOP_FUNCTIONS_LIMIT);
+
+    return {
+        enabled: true,
+        profileCount: summaries.length,
+        errors,
+        totalProfiledTimeMs: roundMs(totalProfiledTimeMs),
+        autoconsentScriptTimeMs: roundMs(autoconsentScriptTimeMs),
+        autoconsentSelfTimeMs: roundMs(autoconsentSelfTimeMs),
+        totalSampleCount,
+        autoconsentSampleCount,
+        topFunctions,
+    };
+}
 
 class CookiePopupsCollector extends ContentScriptCollector {
     collectorExtraTimeMs = SCRAPE_TIMEOUT + DETECT_TIMEOUT + FOUND_TIMEOUT + OPTOUT_TIMEOUT; // Autoconsent opt-out/opt-in and scraping can take a while
@@ -68,17 +277,89 @@ class CookiePopupsCollector extends ContentScriptCollector {
         this.mainFrameIds = new Set();
         /** @type {Map<string, { frameId: string, isMainFrame: boolean }>} */
         this.contextFrameInfo = new Map();
+        this.profileAutoconsent = Boolean(options.collectorFlags.autoconsentProfile);
+        /** @type {Map<import('devtools-protocol/types/protocol').Protocol.Target.TargetID, AutoconsentProfileState>} */
+        this.autoconsentProfiles = new Map();
     }
 
     /**
      * @param {import('puppeteer-core').CDPSession} session
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
-    addTarget(session, targetInfo) {
+    async addTarget(session, targetInfo) {
         if (targetInfo.type === 'page') {
             this.mainFrameIds.add(targetInfo.targetId);
         }
         super.addTarget(session, targetInfo);
+        if (this.profileAutoconsent && (targetInfo.type === 'page' || targetInfo.type === 'iframe')) {
+            await this.startAutoconsentProfile(session, targetInfo);
+        }
+    }
+
+    /**
+     * @param {import('puppeteer-core').CDPSession} session
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
+     * @returns {Promise<void>}
+     */
+    async startAutoconsentProfile(session, targetInfo) {
+        /** @type {AutoconsentProfileState} */
+        const profileState = {
+            targetId: targetInfo.targetId,
+            targetType: targetInfo.type,
+            url: targetInfo.url,
+            session,
+            started: false,
+            errors: [],
+        };
+        this.autoconsentProfiles.set(targetInfo.targetId, profileState);
+
+        try {
+            await session.send('Profiler.enable');
+            await session.send('Profiler.setSamplingInterval', { interval: PROFILER_SAMPLING_INTERVAL_US });
+            await session.send('Profiler.start');
+            profileState.started = true;
+        } catch (e) {
+            const error = `Could not start Autoconsent CPU profile for ${targetInfo.targetId}: ${e.message || e}`;
+            profileState.errors.push(error);
+            this.log(error);
+        }
+    }
+
+    /**
+     * @returns {Promise<AutoconsentProfileSummary | null>}
+     */
+    async stopAutoconsentProfiles() {
+        if (!this.profileAutoconsent) {
+            return null;
+        }
+
+        /** @type {AutoconsentProfileSummary[]} */
+        const summaries = [];
+        /** @type {string[]} */
+        const errors = [];
+
+        for (const profileState of this.autoconsentProfiles.values()) {
+            errors.push(...profileState.errors);
+            if (!profileState.started) {
+                continue;
+            }
+            try {
+                const { profile } = await profileState.session.send('Profiler.stop');
+                summaries.push(summarizeProfile(profile));
+            } catch (e) {
+                const error = `Could not stop Autoconsent CPU profile for ${profileState.targetId}: ${e.message || e}`;
+                errors.push(error);
+                this.log(error);
+            } finally {
+                try {
+                    await profileState.session.send('Profiler.disable');
+                } catch {
+                    // ignore profiler cleanup errors
+                }
+            }
+        }
+
+        return combineProfileSummaries(summaries, errors);
     }
 
     /**
@@ -535,10 +816,16 @@ class CookiePopupsCollector extends ContentScriptCollector {
         }
 
         const scrapedFrames = await timeboxedScrapeJob;
-        return {
+        const autoconsentProfile = await this.stopAutoconsentProfiles();
+        const result = {
             cmps,
             scrapedFrames,
         };
+        if (autoconsentProfile) {
+            result.autoconsentScriptTimeMs = autoconsentProfile.autoconsentScriptTimeMs;
+            result.autoconsentProfile = autoconsentProfile;
+        }
+        return result;
     }
 }
 
@@ -546,6 +833,8 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @typedef CookiePopupsCollectorResult
  * @property {AutoconsentResult[]} cmps
  * @property {ScrapeScriptResult[]} scrapedFrames
+ * @property {number=} autoconsentScriptTimeMs
+ * @property {AutoconsentProfileSummary=} autoconsentProfile
  */
 
 /**
@@ -605,6 +894,31 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @typedef { import('../node_modules/@duckduckgo/autoconsent/lib/messages').OptInResultMessage } OptInResultMessage
  * @typedef { import('../node_modules/@duckduckgo/autoconsent/lib/messages').DoneMessage } DoneMessage
  * @typedef { { snippets: Set<string>, patterns: Set<string>, filterListMatched: boolean } } ScanResult
+ * @typedef AutoconsentProfileState
+ * @property {import('devtools-protocol/types/protocol').Protocol.Target.TargetID} targetId
+ * @property {string} targetType
+ * @property {string} url
+ * @property {import('puppeteer-core').CDPSession} session
+ * @property {boolean} started
+ * @property {string[]} errors
+ * @typedef AutoconsentProfileSummary
+ * @property {boolean=} enabled
+ * @property {number=} profileCount
+ * @property {string[]=} errors
+ * @property {number} totalProfiledTimeMs
+ * @property {number} autoconsentScriptTimeMs
+ * @property {number} autoconsentSelfTimeMs
+ * @property {number} totalSampleCount
+ * @property {number} autoconsentSampleCount
+ * @property {AutoconsentProfileFunctionSummary[]} topFunctions
+ * @typedef AutoconsentProfileFunctionSummary
+ * @property {string} functionName
+ * @property {string} url
+ * @property {number} lineNumber
+ * @property {number} columnNumber
+ * @property {number} selfTimeMs
+ * @property {number} totalTimeMs
+ * @property {number} hitCount
  */
 
 module.exports = CookiePopupsCollector;

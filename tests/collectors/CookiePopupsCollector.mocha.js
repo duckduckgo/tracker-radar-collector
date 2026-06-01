@@ -751,4 +751,121 @@ describe('CookiePopupsCollector', () => {
             assert.strictEqual(data.scrapedFrames.flatMap((frame) => frame.potentialPopups).length, 0);
         });
     });
+
+    describe('autoconsent CDP profile', () => {
+        it('should summarize time spent in the autoconsent script', async () => {
+            const profileCommands = [];
+            const mockSession = {
+                send: sinon.stub().callsFake(async (command, payload) => {
+                    profileCommands.push([command, payload]);
+                    if (command === 'Profiler.stop') {
+                        return {
+                            profile: {
+                                startTime: 0,
+                                endTime: 23000,
+                                nodes: [
+                                    {
+                                        id: 1,
+                                        callFrame: {
+                                            functionName: '(root)',
+                                            scriptId: '0',
+                                            url: '',
+                                            lineNumber: 0,
+                                            columnNumber: 0,
+                                        },
+                                        children: [2, 4],
+                                    },
+                                    {
+                                        id: 2,
+                                        callFrame: {
+                                            functionName: 'detectCMP',
+                                            scriptId: '1',
+                                            url: 'duckduckgo-autoconsent.js',
+                                            lineNumber: 10,
+                                            columnNumber: 2,
+                                        },
+                                        children: [3],
+                                    },
+                                    {
+                                        id: 3,
+                                        callFrame: {
+                                            functionName: 'querySelectorAll',
+                                            scriptId: '2',
+                                            url: '',
+                                            lineNumber: 0,
+                                            columnNumber: 0,
+                                        },
+                                    },
+                                    {
+                                        id: 4,
+                                        callFrame: {
+                                            functionName: 'siteScript',
+                                            scriptId: '3',
+                                            url: 'https://example.com/site.js',
+                                            lineNumber: 1,
+                                            columnNumber: 1,
+                                        },
+                                    },
+                                ],
+                                samples: [2, 3, 4],
+                                timeDeltas: [5000, 7000, 11000],
+                            },
+                        };
+                    }
+                    if (command === 'Runtime.evaluate') {
+                        return { result: { value: null } };
+                    }
+                    return {};
+                }),
+                on: sinon.stub(),
+            };
+
+            collector = new CookiePopupsCollector();
+            // @ts-ignore no need to provide all params
+            collector.init({
+                log: () => {},
+                collectorFlags: {
+                    shortTimeouts: true,
+                    autoconsentProfile: true,
+                },
+            });
+            // @ts-expect-error passing mock objects
+            await collector.addTarget(mockSession, { type: 'page', url: 'https://example.com', targetId: 'profile-target' });
+
+            const data = await collector.getData();
+
+            assert.deepStrictEqual(
+                profileCommands.slice(0, 3),
+                [
+                    ['Profiler.enable', undefined],
+                    ['Profiler.setSamplingInterval', { interval: 1000 }],
+                    ['Profiler.start', undefined],
+                ],
+            );
+            assert(profileCommands.some(([command]) => command === 'Profiler.stop'), 'profile should be stopped');
+            assert(profileCommands.some(([command]) => command === 'Profiler.disable'), 'profiler should be disabled');
+            assert.strictEqual(data.autoconsentScriptTimeMs, 12);
+            assert.deepStrictEqual(data.autoconsentProfile, {
+                enabled: true,
+                profileCount: 1,
+                errors: [],
+                totalProfiledTimeMs: 23,
+                autoconsentScriptTimeMs: 12,
+                autoconsentSelfTimeMs: 5,
+                totalSampleCount: 3,
+                autoconsentSampleCount: 2,
+                topFunctions: [
+                    {
+                        functionName: 'detectCMP',
+                        url: 'duckduckgo-autoconsent.js',
+                        lineNumber: 10,
+                        columnNumber: 2,
+                        selfTimeMs: 5,
+                        totalTimeMs: 12,
+                        hitCount: 1,
+                    },
+                ],
+            });
+        });
+    });
 });

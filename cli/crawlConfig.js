@@ -14,7 +14,7 @@ function addProtocolIfNeeded(url) {
 /**
  * Looks at CLI flags, JSON config etc. to figure out the final crawl config
  *
- * @param {{config?: string, verbose?: boolean, forceOverwrite?: boolean, only3p?: boolean, mobile?: boolean, disableAntiBot?: boolean, output?: string, logPath?: string, crawlers?: string, proxyConfig?: string, regionCode?: string, chromiumVersion?: string, seleniumHub?: string, dataCollectors?: string, reporters?: string, url?: string, inputList?: string}} flags
+ * @param {{config?: string, verbose?: boolean, forceOverwrite?: boolean, only3p?: boolean, mobile?: boolean, disableAntiBot?: boolean, autoconsentProfile?: boolean, output?: string, logPath?: string, crawlers?: string, proxyConfig?: string, regionCode?: string, chromiumVersion?: string, seleniumHub?: string, autoconsentAction?: string, dataCollectors?: string, reporters?: string, url?: string, inputList?: string}} flags
  * @returns {CrawlConfig}
  */
 function figureOut(flags) {
@@ -45,6 +45,9 @@ function figureOut(flags) {
     if (crawlConfig.disableAntiBot === undefined || flags.disableAntiBot !== undefined) {
         crawlConfig.disableAntiBot = Boolean(flags.disableAntiBot);
     }
+    if (crawlConfig.autoconsentProfile === undefined || flags.autoconsentProfile !== undefined) {
+        crawlConfig.autoconsentProfile = Boolean(flags.autoconsentProfile);
+    }
 
     // string/number settings
     if (flags.output) {
@@ -67,6 +70,9 @@ function figureOut(flags) {
     }
     if (flags.seleniumHub) {
         crawlConfig.seleniumHub = flags.seleniumHub;
+    }
+    if (flags.autoconsentAction) {
+        crawlConfig.autoconsentAction = flags.autoconsentAction;
     }
 
     // array settings
@@ -151,4 +157,6 @@ module.exports = {
  * @property {number} maxLoadTimeMs
  * @property {number} extraExecutionTimeMs
  * @property {string} seleniumHub
+ * @property {string} autoconsentAction
+ * @property {boolean} autoconsentProfile
  */

@@ -12,6 +12,8 @@
     "proxyConfig": "bla:bla:123",
     "regionCode": "PL",
     "chromiumVersion": "123456",
+    "autoconsentAction": "optOut",
+    "autoconsentProfile": true,
     "dataCollectors": ["requests", "apis", "screenshots"],
     "reporters": ["cli"],
     "urls": ["https://five.test", "six.test", { "url": "seven.test" }, { "url": "one.test", "dataCollectors": ["targets"] }]

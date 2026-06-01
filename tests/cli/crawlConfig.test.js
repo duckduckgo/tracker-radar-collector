@@ -40,6 +40,8 @@ assert(result1.disableAntiBot === mockConfigFile.disableAntiBot, "Correct value 
 assert(result1.proxyConfig === mockConfigFile.proxyConfig, "Correct value for 'proxyConfig'");
 assert(result1.regionCode === mockConfigFile.regionCode, "Correct value for 'regionCode'");
 assert(result1.chromiumVersion === mockConfigFile.chromiumVersion, "Correct value for 'chromiumVersion'");
+assert(result1.autoconsentAction === mockConfigFile.autoconsentAction, "Correct value for 'autoconsentAction'");
+assert(result1.autoconsentProfile === mockConfigFile.autoconsentProfile, "Correct value for 'autoconsentProfile'");
 assert(result1.maxLoadTimeMs === mockConfigFile.maxLoadTimeMs, "Correct value for 'maxLoadTimeMs'");
 assert(result1.extraExecutionTimeMs === mockConfigFile.extraExecutionTimeMs, "Correct value for 'extraExecutionTimeMs'");
 assert.deepStrictEqual(result1.dataCollectors, mockConfigFile.dataCollectors, "Correct value for 'dataCollectors'");
@@ -67,6 +69,8 @@ const flags = {
     proxyConfig: 'something:else:13',
     regionCode: 'KA',
     chromiumVersion: '987654',
+    autoconsentAction: 'optIn',
+    autoconsentProfile: false,
     dataCollectors: 'targets,cookies',
     reporters: 'html,file',
 };
@@ -84,6 +88,8 @@ assert(result2.disableAntiBot === flags.disableAntiBot, "Correct value for 'disa
 assert(result2.proxyConfig === flags.proxyConfig, "Correct value for 'proxyConfig'");
 assert(result2.regionCode === flags.regionCode, "Correct value for 'regionCode'");
 assert(result2.chromiumVersion === flags.chromiumVersion, "Correct value for 'chromiumVersion'");
+assert(result2.autoconsentAction === flags.autoconsentAction, "Correct value for 'autoconsentAction'");
+assert(result2.autoconsentProfile === flags.autoconsentProfile, "Correct value for 'autoconsentProfile'");
 assert(result2.maxLoadTimeMs === mockConfigFile.maxLoadTimeMs, "Correct value for 'maxLoadTimeMs'");
 assert(result2.extraExecutionTimeMs === mockConfigFile.extraExecutionTimeMs, "Correct value for 'extraExecutionTimeMs'");
 assert.deepStrictEqual(result2.dataCollectors, ['targets', 'cookies'], "Correct value for 'dataCollectors'");

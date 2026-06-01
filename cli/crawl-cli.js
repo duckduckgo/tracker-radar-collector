@@ -33,6 +33,10 @@ program
         '--autoconsent-action <action>',
         'dismiss cookie popups. Possible values: optOut, optIn. Works only when cookiepopups collector is enabled.',
     )
+    .option(
+        '--autoconsent-profile',
+        'collect a CDP CPU profile summary for the autoconsent script. Works only when cookiepopups collector is enabled.',
+    )
     .option('--chromium-version <version_number>', 'use custom version of chromium')
     .option('--selenium-hub <url>', 'selenium hub endpoint to request browsers from')
     .parse(process.argv);
@@ -230,7 +234,8 @@ async function run({
 
 const config = crawlConfig.figureOut(program.opts());
 const collectorFlags = {
-    autoconsentAction: program.opts().autoconsentAction,
+    autoconsentAction: config.autoconsentAction,
+    autoconsentProfile: config.autoconsentProfile,
     enableAsyncStacktraces: true, // this flag is disabled during retries
     shortTimeouts: false,
 };

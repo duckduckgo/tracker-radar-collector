@@ -33,6 +33,7 @@ Available options:
 - `--selenium-hub <url>` - If provided, browsers will be requested from selenium hub instead of spawning local processes (e.g. `--selenium-hub http://my-selenium-hub-host:4444`).
 - `--config <path>` - path to a config file that allows to set all the above settings (and more). Note that CLI flags have a higher priority than settings passed via config. You can find a sample config file in `tests/cli/sampleConfig.json`.
 - `--autoconsent-action <action>` - automatic autoconsent action (requires the `cookiepopups` collector). Possible values: optIn, optOut
+- `--autoconsent-profile` - collect a CDP CPU profile summary for the autoconsent script (requires the `cookiepopups` collector)
 
 ### Use it as a module
 
