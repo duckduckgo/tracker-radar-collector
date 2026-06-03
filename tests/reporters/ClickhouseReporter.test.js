@@ -77,9 +77,7 @@ async function main() {
     );
 
     const performanceInsert = inserts.find((insert) => insert.table === 'autoconsentPerformance');
-    assert.deepStrictEqual(performanceInsert.values, [
-        ['test-crawl-id', pageId, true, 1, ['profiler error'], 23, 12, 5, 3, 2],
-    ]);
+    assert.deepStrictEqual(performanceInsert.values, [['test-crawl-id', pageId, true, 1, ['profiler error'], 23, 12, 5, 3, 2]]);
 
     const functionInsert = inserts.find((insert) => insert.table === 'autoconsentProfileFunctions');
     assert.deepStrictEqual(functionInsert.values, [
