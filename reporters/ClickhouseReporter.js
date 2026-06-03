@@ -69,6 +69,32 @@ const TABLE_DEFINITIONS = [
         regexPopupDetected Bool DEFAULT false
     ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, name)`,
+    `CREATE TABLE IF NOT EXISTS autoconsentPerformance ON CLUSTER 'ch-prod-cluster' (
+        crawlId String,
+        pageId String,
+        enabled Bool,
+        profileCount UInt32,
+        errors Array(String),
+        totalProfiledTimeMs Float64,
+        autoconsentScriptTimeMs Float64,
+        autoconsentSelfTimeMs Float64,
+        totalSampleCount UInt32,
+        autoconsentSampleCount UInt32
+    ) ENGINE = ReplicatedMergeTree
+    PRIMARY KEY(crawlId, pageId)`,
+    `CREATE TABLE IF NOT EXISTS autoconsentProfileFunctions ON CLUSTER 'ch-prod-cluster' (
+        crawlId String,
+        pageId String,
+        functionId UInt32,
+        functionName String,
+        url String,
+        lineNumber Int32,
+        columnNumber Int32,
+        selfTimeMs Float64,
+        totalTimeMs Float64,
+        hitCount UInt32
+    ) ENGINE = ReplicatedMergeTree
+    PRIMARY KEY(crawlId, pageId, functionId)`,
     `CREATE TABLE IF NOT EXISTS apiSavedCalls ON CLUSTER 'ch-prod-cluster' (
         crawlId String,
         pageId String,
@@ -133,6 +159,8 @@ class ClickhouseReporter extends BaseReporter {
             elements: [],
             apiSavedCalls: [],
             cmps: [],
+            autoconsentPerformance: [],
+            autoconsentProfileFunctions: [],
             apiCallStats: [],
             cookies: [],
             targets: [],
@@ -250,6 +278,35 @@ class ClickhouseReporter extends BaseReporter {
                     regexPopupDetected,
                 ]);
                 this.queue.cmps = this.queue.cmps.concat(cmpRows);
+                if (data.data.cookiepopups.autoconsentProfile) {
+                    const { autoconsentProfile } = data.data.cookiepopups;
+                    this.queue.autoconsentPerformance.push([
+                        this.crawlId,
+                        pageId,
+                        autoconsentProfile.enabled || false,
+                        autoconsentProfile.profileCount || 0,
+                        autoconsentProfile.errors || [],
+                        autoconsentProfile.totalProfiledTimeMs,
+                        autoconsentProfile.autoconsentScriptTimeMs,
+                        autoconsentProfile.autoconsentSelfTimeMs,
+                        autoconsentProfile.totalSampleCount,
+                        autoconsentProfile.autoconsentSampleCount,
+                    ]);
+                    this.queue.autoconsentProfileFunctions = this.queue.autoconsentProfileFunctions.concat(
+                        (autoconsentProfile.topFunctions || []).map((profileFunction, functionId) => [
+                            this.crawlId,
+                            pageId,
+                            functionId,
+                            profileFunction.functionName,
+                            profileFunction.url,
+                            profileFunction.lineNumber,
+                            profileFunction.columnNumber,
+                            profileFunction.selfTimeMs,
+                            profileFunction.totalTimeMs,
+                            profileFunction.hitCount,
+                        ]),
+                    );
+                }
             }
             if (data.data.apis) {
                 const { callStats, savedCalls } = data.data.apis;
