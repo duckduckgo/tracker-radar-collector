@@ -101,6 +101,7 @@ describe('CookiePopupsCollector', () => {
                     enableHeuristicAction: true,
                     detectRetries: 20,
                     isMainWorld: false,
+                    performanceLoggingEnabled: true,
                 };
                 const expectedRules = {
                     autoconsent: [],
@@ -139,6 +140,7 @@ describe('CookiePopupsCollector', () => {
                     enableHeuristicAction: true,
                     detectRetries: 20,
                     isMainWorld: false,
+                    performanceLoggingEnabled: true,
                 };
                 const expectedRules = {
                     autoconsent: [],
