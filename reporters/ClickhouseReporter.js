@@ -100,7 +100,41 @@ const TABLE_DEFINITIONS = [
         type String
     ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, targetId)`,
+    `CREATE TABLE IF NOT EXISTS autoconsentPerformance ON CLUSTER 'ch-prod-cluster' (
+        crawlId String,
+        pageId String,
+        frameUrl String,
+        isMainFrame UInt8,
+        measurement String,
+        sum Float64,
+        count UInt32
+    ) ENGINE = ReplicatedMergeTree
+    PRIMARY KEY(crawlId, pageId, frameUrl, measurement)`,
 ];
+
+/** @type {readonly string[]} */
+const PERFORMANCE_MEASUREMENTS = [
+    'filterCMPs',
+    'detectHeuristics',
+    'heuristicDetector',
+    'findCmpSiteSpecific',
+    'findCmpGeneric',
+    'findCmpHeuristic',
+];
+
+/**
+ * @param {number[] | undefined} values
+ * @returns {{ sum: number, count: number }}
+ */
+function summarizeMeasurementArray(values) {
+    if (!Array.isArray(values) || values.length === 0) {
+        return { sum: 0, count: 0 };
+    }
+    return {
+        sum: values.reduce((total, value) => total + value, 0),
+        count: values.length,
+    };
+}
 
 /**
  * @param {string | string[]} args
@@ -136,6 +170,7 @@ class ClickhouseReporter extends BaseReporter {
             apiCallStats: [],
             cookies: [],
             targets: [],
+            autoconsentPerformance: [],
         };
     }
 
@@ -250,6 +285,22 @@ class ClickhouseReporter extends BaseReporter {
                     regexPopupDetected,
                 ]);
                 this.queue.cmps = this.queue.cmps.concat(cmpRows);
+
+                const performanceRows = (data.data.cookiepopups.performance || []).flatMap((entry) =>
+                    PERFORMANCE_MEASUREMENTS.map((measurement) => {
+                        const { sum, count } = summarizeMeasurementArray(entry[measurement]);
+                        return [
+                            this.crawlId,
+                            pageId,
+                            entry.url || data.finalUrl || data.initialUrl,
+                            entry.isMainFrame ? 1 : 0,
+                            measurement,
+                            sum,
+                            count,
+                        ];
+                    }),
+                );
+                this.queue.autoconsentPerformance = this.queue.autoconsentPerformance.concat(performanceRows);
             }
             if (data.data.apis) {
                 const { callStats, savedCalls } = data.data.apis;
