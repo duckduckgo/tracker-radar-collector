@@ -178,7 +178,7 @@ Examples of NON-cookie popup text:
 
     try {
         const completion = await openai.beta.chat.completions.parse({
-            model: 'gpt-4.1-nano-2025-04-14',
+            model: 'gpt-4o-mini',
             messages: [
                 {
                     role: 'system',
@@ -237,14 +237,16 @@ into exactly one of the following categories:
   all", "I agree", "Allow all cookies"). The language must reference agreement or
   acceptance, not just dismissal.
 - reject: rejects cookies or opts out, including accepting only minimal/essential
-  cookies (e.g. "Reject all", "Essential only", "Do not sell my data").
+  cookies (e.g. "Reject all", "Essential only", "Do not sell my data"). 
 - acknowledge: dismisses the notice with neutral language that does not explicitly
   reference accepting or rejecting (e.g. "OK", "Got it", "Close", "Continue",
   "I understand", "×").
 - other: none of the above (e.g. links to Privacy Policy, Impressum, or other
-  informational content).
+  informational content). Additionally, anything including payments or subscriptions, age checks, or
+  language that suggests that the user would not be able to continue if they click this button, should be classified as other.
 
 Rules:
+- Only classify buttons that fit unabiguously into one of the categories, otherwise classify as other.
 - If the text contains a negation indicating refusal (e.g. "continue without
   accepting"), classify as reject.
 - If a button could fit multiple categories, prefer in this order:
@@ -262,7 +264,7 @@ Examples:
 
     try {
         const completion = await openai.beta.chat.completions.parse({
-            model: 'gpt-4.1-nano-2025-04-14',
+            model: 'gpt-4o-mini',
             messages: [
                 { role: 'system', content: systemPrompt },
                 { role: 'user', content: `"${cleaned}"` },
@@ -282,6 +284,17 @@ Examples:
 }
 
 /**
+ * @param {string} buttonText 
+ * @returns {ButtonClassification}
+ */
+function classifyButtonTextRegex(buttonText) {
+    if (isRejectButton(buttonText)) {
+        return 'reject';
+    }
+    return 'other';
+}
+
+/**
  * @param {import('./types').ButtonData[]} buttons
  * @param {import('openai').OpenAI} openai
  * @returns {Promise<{rejectButtons: import('./types').ButtonData[], otherButtons: import('./types').ButtonData[]}>}
@@ -291,9 +304,10 @@ async function classifyButtons(buttons, openai) {
     const otherButtons = [];
     for (const button of buttons) {
         const llmClassification = await classifyButtonTextLLM(openai, button.text);
-        const classifiedButton = { ...button, llmClassification };
+        const regexClassification = classifyButtonTextRegex(button.text);
+        const classifiedButton = { ...button, llmClassification, regexClassification };
 
-        if (isRejectButton(button.text)) {
+        if (regexClassification === 'reject') {
             rejectButtons.push(classifiedButton);
         } else {
             otherButtons.push(classifiedButton);
@@ -346,4 +360,8 @@ module.exports = {
     classifyButtons,
     classifyPopup,
     checkHeuristicPatterns,
+    classifyButtonTextRegex,
+    classifyButtonTextLLM,
+    cleanButtonText,
+    isRejectButton,
 };
