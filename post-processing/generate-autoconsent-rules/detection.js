@@ -202,18 +202,101 @@ Examples of NON-cookie popup text:
     return false;
 }
 
+/** @type {Map<string, ButtonClassification>} */
+const buttonClassificationCache = new Map();
+
+const ButtonTextClassificationSchema = z.object({
+    classification: z.enum(['settings', 'accept', 'reject', 'acknowledge', 'other']),
+});
+
+/**
+ * @param {import('openai').OpenAI} openai
+ * @param {string} buttonText
+ * @returns {Promise<ButtonClassification>}
+ */
+async function classifyButtonTextLLM(openai, buttonText) {
+    const cleaned = cleanButtonText(buttonText);
+    if (cleaned.length > 200) {
+        return 'other';
+    }
+
+    const cached = buttonClassificationCache.get(cleaned);
+    if (cached) {
+        return cached;
+    }
+
+    const systemPrompt = `
+You are an expert in web application user interfaces.
+
+You will be given the text of a button found on a cookie consent popup. Classify it
+into exactly one of the following categories:
+
+- settings: opens further customization of cookie preferences (e.g. "Cookie Settings",
+  "Manage preferences").
+- accept: explicitly accepts cookies or signals agreement to something (e.g. "Accept
+  all", "I agree", "Allow all cookies"). The language must reference agreement or
+  acceptance, not just dismissal.
+- reject: rejects cookies or opts out, including accepting only minimal/essential
+  cookies (e.g. "Reject all", "Essential only", "Do not sell my data").
+- acknowledge: dismisses the notice with neutral language that does not explicitly
+  reference accepting or rejecting (e.g. "OK", "Got it", "Close", "Continue",
+  "I understand", "×").
+- other: none of the above (e.g. links to Privacy Policy, Impressum, or other
+  informational content).
+
+Rules:
+- If the text contains a negation indicating refusal (e.g. "continue without
+  accepting"), classify as reject.
+- If a button could fit multiple categories, prefer in this order:
+  settings > reject > accept > acknowledge > other.
+- The button text may be in any language — apply the same rules regardless.
+- Respond with exactly one word: the category label. No explanation, no punctuation.
+
+Examples:
+"Cookie Settings", "Manage preferences", "Customize" → settings
+"Accept all", "I agree", "Allow cookies", "Akzeptieren" → accept
+"Reject all", "Essential only", "Ablehnen", "Do not sell my personal information" → reject
+"OK", "Got it", "I understand", "×", "Close cookie notice", "Continue" → acknowledge
+"Privacy Policy", "Cookie-Richtlinie", "Impressum", "Learn more" → other
+    `;
+
+    try {
+        const completion = await openai.beta.chat.completions.parse({
+            model: 'gpt-4.1-nano-2025-04-14',
+            messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: `"${cleaned}"` },
+            ],
+            response_format: zodResponseFormat(ButtonTextClassificationSchema, 'ButtonTextClassification'),
+        });
+
+        const classification = completion.choices[0].message.parsed?.classification ?? 'other';
+        buttonClassificationCache.set(cleaned, classification);
+        return classification;
+    } catch (error) {
+        console.error('Error classifying button text:', error);
+    }
+
+    buttonClassificationCache.set(cleaned, 'other');
+    return 'other';
+}
+
 /**
  * @param {import('./types').ButtonData[]} buttons
- * @returns {{rejectButtons: import('./types').ButtonData[], otherButtons: import('./types').ButtonData[]}}
+ * @param {import('openai').OpenAI} openai
+ * @returns {Promise<{rejectButtons: import('./types').ButtonData[], otherButtons: import('./types').ButtonData[]}>}
  */
-function classifyButtons(buttons) {
+async function classifyButtons(buttons, openai) {
     const rejectButtons = [];
     const otherButtons = [];
     for (const button of buttons) {
+        const llmClassification = await classifyButtonTextLLM(openai, button.text);
+        const classifiedButton = { ...button, llmClassification };
+
         if (isRejectButton(button.text)) {
-            rejectButtons.push(button);
+            rejectButtons.push(classifiedButton);
         } else {
-            otherButtons.push(button);
+            otherButtons.push(classifiedButton);
         }
     }
     return {
@@ -237,7 +320,7 @@ async function classifyPopup(popup, openai) {
         llmMatch = await checkLLM(openai, popupText);
     }
 
-    const { rejectButtons, otherButtons } = classifyButtons(popup.buttons);
+    const { rejectButtons, otherButtons } = await classifyButtons(popup.buttons, openai);
 
     return {
         llmMatch,
@@ -246,6 +329,10 @@ async function classifyPopup(popup, openai) {
         otherButtons,
     };
 }
+
+/**
+ * @typedef {'settings'|'accept'|'reject'|'acknowledge'|'other'} ButtonClassification
+ */
 
 /**
  * @typedef {Object} PopupClassificationResult
