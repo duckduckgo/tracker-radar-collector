@@ -307,7 +307,7 @@ function getButtonData(el) {
         (b) =>
             isVisible(b) &&
             !isDisabled(b) &&
-            (b.innerText.trim() ||
+            (b.innerText?.trim() ||
                 // <input> values do not appear in innerText
                 (b instanceof HTMLInputElement && ['submit', 'button'].includes(b.type) && b.value?.trim())),
     );
