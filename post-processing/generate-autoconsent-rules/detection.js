@@ -231,8 +231,8 @@ You are an expert in web application user interfaces.
 You will be given the text of a button found on a cookie consent popup. Classify it
 into exactly one of the following categories:
 
-- settings: opens further customization of cookie preferences (e.g. "Cookie Settings",
-  "Manage preferences").
+- settings: opens further customization of COOKIE or CONSENT preferences specifically (e.g. "Cookie Settings",
+  "Manage preferences", "Preferences", "Customize", "More options", "Manage cookies", "Show details"). Buttons that open other site settings (accessibility, language, etc.) are "other".
 - accept: explicitly accepts cookies or signals agreement to something (e.g. "Accept
   all", "I agree", "Allow all cookies"). The language must reference agreement or
   acceptance, not just dismissal.
@@ -246,6 +246,10 @@ into exactly one of the following categories:
   language that suggests that the user would not be able to continue if they click this button, should be classified as other.
 
 Rules:
+- IMPORTANT: If a button accepts ONLY necessary, essential, required, or strictly
+    necessary cookies (even if the word "accept" appears), classify as reject.
+    Examples: "Strictly necessary", "Essentials", "Required", "Accept necessary cookies",
+    "Accept essential only", "Notwendige Cookies akzeptieren" → reject
 - Only classify buttons that fit unabiguously into one of the categories, otherwise classify as other.
 - If the text contains a negation indicating refusal (e.g. "continue without
   accepting"), classify as reject.
@@ -253,6 +257,12 @@ Rules:
   settings > reject > accept > acknowledge > other.
 - The button text may be in any language — apply the same rules regardless.
 - Respond with exactly one word: the category label. No explanation, no punctuation.
+- Short affirmatives that imply agreement ("yes", "yeah") → accept, not acknowledge.
+  "acknowledge" is for neutral dismissals that make no reference to agreement.
+- If the button text contains a qualifier that makes it clearly unrelated to cookies
+  or consent (e.g. "ad", "advertisement", "video", "newsletter"), classify as other,
+  regardless of the action word.
+- "Cancel" → other. It cancels an action within a dialog, not a consent decision.
 
 Examples:
 "Cookie Settings", "Manage preferences", "Customize" → settings
