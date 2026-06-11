@@ -135,13 +135,17 @@ function collectButtonTextsFromNode(node) {
     if (typeof node !== 'object' || node === null) {
         return [];
     }
-    const potentialPopups = /** @type {{ potentialPopups?: unknown }} */ (node).potentialPopups;
+    const potentialPopups = /** @type {{ potentialPopups?: import('./generate-autoconsent-rules/types').ProcessedCookiePopup[] }} */ (node).potentialPopups;
     if (!Array.isArray(potentialPopups)) {
         return [];
     }
     /** @type {string[]} */
     const texts = [];
     for (const popup of potentialPopups) {
+        // skip not matching popups
+        if (!popup.regexMatch) {
+            continue;
+        }
         texts.push(...readPopupButtonTexts(popup));
     }
     return texts;
@@ -154,7 +158,9 @@ function collectButtonTextsFromNode(node) {
 function collectButtonTextsFromCrawl(crawlData) {
     /** @type {string[]} */
     const texts = [];
-    const scrapedFrames = crawlData?.data?.cookiepopups?.scrapedFrames;
+    const scrapedFrames =
+        /** @type {import('./generate-autoconsent-rules/types').CrawlData} */ (crawlData)?.data?.cookiepopups
+            ?.scrapedFrames;
     if (!Array.isArray(scrapedFrames)) {
         return texts;
     }
