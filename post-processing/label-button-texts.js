@@ -5,6 +5,7 @@ const ProgressBar = require('progress');
 const asyncLib = require('async');
 const { OpenAI } = require('openai');
 const { classifyButtonTextLLM } = require('./generate-autoconsent-rules/detection');
+const { readButtonTextCsv, buttonTextRowsToCsv } = require('./button-text-csv');
 
 const DEFAULT_CSV_PATH = path.join(__dirname, 'generate-autoconsent-rules/labelled-button-texts.csv');
 
@@ -16,92 +17,6 @@ program
     .parse(process.argv);
 
 const opts = program.opts();
-
-/**
- * @param {string} value
- * @returns {string}
- */
-function csvEscape(value) {
-    if (/[",\n\r]/.test(value)) {
-        return `"${value.replace(/"/g, '""')}"`;
-    }
-    return value;
-}
-
-/**
- * @param {string} line
- * @returns {string[]}
- */
-function parseCsvLine(line) {
-    /** @type {string[]} */
-    const fields = [];
-    let current = '';
-    let inQuotes = false;
-
-    for (let i = 0; i < line.length; i++) {
-        const char = line[i];
-        if (inQuotes) {
-            if (char === '"') {
-                if (line[i + 1] === '"') {
-                    current += '"';
-                    i++;
-                } else {
-                    inQuotes = false;
-                }
-            } else {
-                current += char;
-            }
-        } else if (char === '"') {
-            inQuotes = true;
-        } else if (char === ',') {
-            fields.push(current);
-            current = '';
-        } else {
-            current += char;
-        }
-    }
-    fields.push(current);
-    return fields;
-}
-
-/**
- * @param {string} filePath
- * @returns {Array<{ buttonText: string, occurances: number, label: string }>}
- */
-function readCsvRows(filePath) {
-    const content = fs.readFileSync(filePath, 'utf8');
-    const lines = content.split(/\r?\n/).filter((line) => line.length > 0);
-    /** @type {Array<{ buttonText: string, occurances: number, label: string }>} */
-    const rows = [];
-
-    for (let i = 1; i < lines.length; i++) {
-        const fields = parseCsvLine(lines[i]);
-        if (fields.length < 2) {
-            continue;
-        }
-        const buttonText = fields[0];
-        const occurances = Number.parseInt(fields[1], 10);
-        if (!buttonText || Number.isNaN(occurances)) {
-            continue;
-        }
-        const label = fields.length >= 3 ? fields[2].trim() : '';
-        rows.push({ buttonText, occurances, label });
-    }
-
-    return rows;
-}
-
-/**
- * @param {Array<{ buttonText: string, occurances: number, label: string }>} rows
- * @returns {string}
- */
-function rowsToCsv(rows) {
-    const lines = ['button_text,occurances,label'];
-    for (const row of rows) {
-        lines.push(`${csvEscape(row.buttonText)},${row.occurances},${csvEscape(row.label)}`);
-    }
-    return `${lines.join('\n')}\n`;
-}
 
 async function main() {
     const inputPath = path.resolve(opts.input);
@@ -115,7 +30,7 @@ async function main() {
         process.exit(1);
     }
 
-    const rows = readCsvRows(inputPath);
+    const rows = readButtonTextCsv(inputPath);
     if (rows.length === 0) {
         console.error('no rows found in CSV');
         process.exit(1);
@@ -158,7 +73,7 @@ async function main() {
         },
     );
 
-    const csv = rowsToCsv(rows);
+    const csv = buttonTextRowsToCsv(rows);
     const tempPath = `${inputPath}.tmp`;
     fs.writeFileSync(tempPath, csv);
     fs.renameSync(tempPath, inputPath);

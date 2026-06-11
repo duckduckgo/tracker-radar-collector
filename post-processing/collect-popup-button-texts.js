@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { program } = require('commander');
 const { cleanButtonText } = require('./generate-autoconsent-rules/detection');
+const { readButtonTextCsv, buttonTextRowsToCsv } = require('./button-text-csv');
 
 const METADATA_FILE_NAME = 'metadata.json';
 
@@ -15,77 +16,14 @@ const opts = program.opts();
 const inputDir = opts.input;
 
 /**
- * @param {string} value
- * @returns {string}
- */
-function csvEscape(value) {
-    if (/[",\n\r]/.test(value)) {
-        return `"${value.replace(/"/g, '""')}"`;
-    }
-    return value;
-}
-
-/**
- * @param {string} line
- * @returns {string[]}
- */
-function parseCsvLine(line) {
-    /** @type {string[]} */
-    const fields = [];
-    let current = '';
-    let inQuotes = false;
-
-    for (let i = 0; i < line.length; i++) {
-        const char = line[i];
-        if (inQuotes) {
-            if (char === '"') {
-                if (line[i + 1] === '"') {
-                    current += '"';
-                    i++;
-                } else {
-                    inQuotes = false;
-                }
-            } else {
-                current += char;
-            }
-        } else if (char === '"') {
-            inQuotes = true;
-        } else if (char === ',') {
-            fields.push(current);
-            current = '';
-        } else {
-            current += char;
-        }
-    }
-    fields.push(current);
-    return fields;
-}
-
-/**
  * @param {string} filePath
  * @returns {Map<string, { occurances: number, label: string }>}
  */
 function readExistingData(filePath) {
     /** @type {Map<string, { occurances: number, label: string }>} */
     const data = new Map();
-    const content = fs.readFileSync(filePath, 'utf8');
-    const lines = content.split(/\r?\n/).filter((line) => line.length > 0);
-    if (lines.length <= 1) {
-        return data;
-    }
-
-    for (let i = 1; i < lines.length; i++) {
-        const fields = parseCsvLine(lines[i]);
-        if (fields.length < 2) {
-            continue;
-        }
-        const buttonText = fields[0];
-        const occurances = Number.parseInt(fields[1], 10);
-        if (!buttonText || Number.isNaN(occurances)) {
-            continue;
-        }
-        const label = fields.length >= 3 ? fields[2] : '';
-        data.set(buttonText, { occurances, label });
+    for (const row of readButtonTextCsv(filePath)) {
+        data.set(row.buttonText, { occurances: row.occurances, label: row.label });
     }
     return data;
 }
@@ -186,18 +124,6 @@ function buildRows(data) {
         }));
 }
 
-/**
- * @param {Array<{ buttonText: string, occurances: number, label: string }>} rows
- * @returns {string}
- */
-function rowsToCsv(rows) {
-    const lines = ['button_text,occurances,label'];
-    for (const row of rows) {
-        lines.push(`${csvEscape(row.buttonText)},${row.occurances},${csvEscape(row.label)}`);
-    }
-    return `${lines.join('\n')}\n`;
-}
-
 function main() {
     if (!fs.existsSync(inputDir)) {
         console.error('input directory does not exist:', inputDir);
@@ -237,7 +163,7 @@ function main() {
     }
 
     const rows = buildRows(data);
-    const csv = rowsToCsv(rows);
+    const csv = buttonTextRowsToCsv(rows);
 
     if (opts.output) {
         fs.writeFileSync(opts.output, csv);
