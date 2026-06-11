@@ -1,8 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { program } = require('commander');
-const { cleanButtonText, isRejectButton } = require('./generate-autoconsent-rules/detection');
-const { NEVER_MATCH_PATTERNS } = require('./generate-autoconsent-rules/button-patterns');
+const { cleanButtonText } = require('./generate-autoconsent-rules/detection');
 
 const METADATA_FILE_NAME = 'metadata.json';
 
@@ -64,15 +63,15 @@ function parseCsvLine(line) {
 
 /**
  * @param {string} filePath
- * @returns {Map<string, number>}
+ * @returns {Map<string, { occurances: number, label: string }>}
  */
-function readExistingCounts(filePath) {
-    /** @type {Map<string, number>} */
-    const counts = new Map();
+function readExistingData(filePath) {
+    /** @type {Map<string, { occurances: number, label: string }>} */
+    const data = new Map();
     const content = fs.readFileSync(filePath, 'utf8');
     const lines = content.split(/\r?\n/).filter((line) => line.length > 0);
     if (lines.length <= 1) {
-        return counts;
+        return data;
     }
 
     for (let i = 1; i < lines.length; i++) {
@@ -85,24 +84,10 @@ function readExistingCounts(filePath) {
         if (!buttonText || Number.isNaN(occurances)) {
             continue;
         }
-        counts.set(buttonText, occurances);
+        const label = fields.length >= 3 ? fields[2] : '';
+        data.set(buttonText, { occurances, label });
     }
-    return counts;
-}
-
-/**
- * @param {string} buttonText
- * @returns {string}
- */
-function labelButtonText(buttonText) {
-    if (isRejectButton(buttonText)) {
-        return 'reject';
-    }
-    const cleaned = cleanButtonText(buttonText);
-    if (NEVER_MATCH_PATTERNS.some((pattern) => pattern.test(cleaned))) {
-        return 'other';
-    }
-    return '';
+    return data;
 }
 
 /**
@@ -187,16 +172,17 @@ function collectDistinctButtonTextsFromCrawl(crawlData) {
 }
 
 /**
- * @param {Map<string, number>} counts
+ * @param {Map<string, { occurances: number, label: string }>} data
  * @returns {Array<{ buttonText: string, occurances: number, label: string }>}
  */
-function buildRows(counts) {
-    return [...counts.entries()]
-        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-        .map(([buttonText, occurances]) => ({
+function buildRows(data) {
+    return [...data.entries()]
+        .filter(([, { occurances }]) => occurances > 1)
+        .sort((a, b) => b[1].occurances - a[1].occurances || a[0].localeCompare(b[0]))
+        .map(([buttonText, { occurances, label }]) => ({
             buttonText,
             occurances,
-            label: labelButtonText(buttonText),
+            label,
         }));
 }
 
@@ -223,12 +209,12 @@ function main() {
         .filter((file) => file.endsWith('.json') && file !== METADATA_FILE_NAME)
         .map((file) => path.join(inputDir, file));
 
-    /** @type {Map<string, number>} */
-    const counts =
-        opts.output && fs.existsSync(opts.output) ? readExistingCounts(opts.output) : new Map();
+    /** @type {Map<string, { occurances: number, label: string }>} */
+    const data =
+        opts.output && fs.existsSync(opts.output) ? readExistingData(opts.output) : new Map();
 
-    if (opts.output && counts.size > 0) {
-        console.error(`Loaded ${counts.size} existing button texts from ${opts.output}`);
+    if (opts.output && data.size > 0) {
+        console.error(`Loaded ${data.size} existing button texts from ${opts.output}`);
     }
 
     for (const filePath of dataFiles) {
@@ -241,15 +227,21 @@ function main() {
         }
 
         for (const normalized of collectDistinctButtonTextsFromCrawl(crawlData)) {
-            counts.set(normalized, (counts.get(normalized) ?? 0) + 1);
+            const existing = data.get(normalized);
+            if (existing) {
+                existing.occurances += 1;
+            } else {
+                data.set(normalized, { occurances: 1, label: '' });
+            }
         }
     }
 
-    const csv = rowsToCsv(buildRows(counts));
+    const rows = buildRows(data);
+    const csv = rowsToCsv(rows);
 
     if (opts.output) {
         fs.writeFileSync(opts.output, csv);
-        console.error(`Wrote ${counts.size} button texts to ${opts.output}`);
+        console.error(`Wrote ${rows.length} button texts to ${opts.output}`);
     } else {
         process.stdout.write(csv);
     }
