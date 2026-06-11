@@ -626,7 +626,70 @@ const NEVER_MATCH_PATTERNS = [
     /suscribir/is,
 ];
 
+const SETTINGS_PATTERNS = [
+    'settings',
+    'preferences',
+    /customi(s|z)e/is,
+    'show details',
+    'more options',
+    /(manage|configure) (my|your) (preferences|choices|cookies)/is,
+    'manage choices',
+    /(cookie )?preference center/is,
+    'change settings',
+    'configure',
+    'change my preferences',
+    'cookie manager',
+    'cookie preference',
+    'let me choose',
+    'cookieconsent preferences',
+    /privacy choices/is,
+    /(privacy|cookie|custom) settings/is,
+    /cookies? (settings|preferences|setting)/is,
+    /(manage|customize|customise|opt-out).*(cookies|preferences|settings|options)/is,
+    'cookie consent options',
+    'privacy controls',
+    'show purposes',
+    // German
+    'einstellungen',
+];
+
+const ACCEPT_PATTERNS = [
+    /^(accept|allow)( all)?( cookies)?$/is,
+    /i (accept|allow)( all)?/is,
+    'yes',
+    /^(i )?agree$/is,
+    'continue with all',
+    'accept and continue',
+    'confirm my choices',
+    /accept all above/is,
+    /^(accept|agree) and close/is,
+    'accept continue',
+    'agree proceed',
+    'allow and continue',
+    'close and accept',
+    /accept all$/is,
+
+    /^alle (cookies )?akzeptieren$/is,
+];
+
+const ACKNOWLEDGE_PATTERNS = [
+    'ok',
+    'close',
+    'continue',
+    'x',
+    /^got it!?$/,
+    'i understand',
+    'dismiss',
+    'okay',
+    'acknowledge',
+    /^close (banner|cookie notification)$/is,
+    /understood$/is,
+];
+
 module.exports = {
     REJECT_PATTERNS,
     NEVER_MATCH_PATTERNS,
+    SETTINGS_PATTERNS,
+    ACCEPT_PATTERNS,
+    ACKNOWLEDGE_PATTERNS,
 };

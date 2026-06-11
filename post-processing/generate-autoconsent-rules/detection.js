@@ -1,6 +1,6 @@
 const { zodResponseFormat } = require('openai/helpers/zod');
 const { z } = require('zod');
-const { REJECT_PATTERNS, NEVER_MATCH_PATTERNS } = require('./button-patterns');
+const { REJECT_PATTERNS, NEVER_MATCH_PATTERNS, SETTINGS_PATTERNS, ACCEPT_PATTERNS, ACKNOWLEDGE_PATTERNS } = require('./button-patterns');
 
 // FIXME: the detection patterns are defined both in autoconsent codebase and here. We should consolidate them in one place.
 /**
@@ -135,13 +135,23 @@ function cleanButtonText(buttonText) {
  * @returns {boolean}
  */
 function isRejectButton(buttonText) {
+    return testButtonMatches(buttonText, REJECT_PATTERNS, NEVER_MATCH_PATTERNS);
+}
+
+/**
+ * @param {string} buttonText
+ * @param {Array<string|RegExp>} matchPatterns
+ * @param {Array<string|RegExp>} neverMatchPatterns
+ * @returns {boolean}
+ */
+function testButtonMatches(buttonText, matchPatterns, neverMatchPatterns) {
     if (!buttonText) {
         return false;
     }
     const cleanedButtonText = cleanButtonText(buttonText);
     return (
-        !NEVER_MATCH_PATTERNS.some((p) => p.test(cleanedButtonText)) &&
-        REJECT_PATTERNS.some((p) => (p instanceof RegExp && p.test(cleanedButtonText)) || p === cleanedButtonText)
+        !neverMatchPatterns.some((p) => (p instanceof RegExp && p.test(cleanedButtonText)) || p === cleanedButtonText) &&
+        matchPatterns.some((p) => (p instanceof RegExp && p.test(cleanedButtonText)) || p === cleanedButtonText)
     );
 }
 
@@ -300,6 +310,15 @@ Examples:
 function classifyButtonTextRegex(buttonText) {
     if (isRejectButton(buttonText)) {
         return 'reject';
+    }
+    if (testButtonMatches(buttonText, SETTINGS_PATTERNS, NEVER_MATCH_PATTERNS)) {
+        return 'settings';
+    }
+    if (testButtonMatches(buttonText, ACCEPT_PATTERNS, NEVER_MATCH_PATTERNS)) {
+        return 'accept';
+    }
+    if (testButtonMatches(buttonText, ACKNOWLEDGE_PATTERNS, NEVER_MATCH_PATTERNS)) {
+        return 'acknowledge';
     }
     return 'other';
 }

@@ -656,6 +656,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {string} text
  * @property {string} selector
  * @property {'settings'|'accept'|'reject'|'acknowledge'|'other'} [llmClassification]
+ * @property {'settings'|'accept'|'reject'|'acknowledge'|'other'} [regexClassification]
  */
 
 /**
