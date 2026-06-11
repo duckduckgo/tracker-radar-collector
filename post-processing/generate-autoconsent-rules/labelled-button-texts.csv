@@ -332,7 +332,7 @@ online privacy policy,7,other
 opt out,7,reject
 preference center,7,settings
 reject all non-essential cookies,7,reject
-agree and close,6,acknowledge
+agree and close,6,accept
 allow selection,6,other
 analytics,6,other
 essential only,6,reject
@@ -471,7 +471,7 @@ learn more in our privacy policy.,2,other
 let me choose,2,settings
 manage cookie tracking settings,2,settings
 manage options,2,settings
-manage or reject cookies,2,reject
+manage or reject cookies,2,settings
 manage specific collection and sharing preferences,2,settings
 manage your cookies,2,settings
 mlb privacy policy,2,other
