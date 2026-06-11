@@ -307,26 +307,38 @@ function classifyButtonTextRegex(buttonText) {
 /**
  * @param {import('./types').ButtonData[]} buttons
  * @param {import('openai').OpenAI} openai
- * @returns {Promise<{rejectButtons: import('./types').ButtonData[], otherButtons: import('./types').ButtonData[]}>}
+ * @returns {{rejectButtons: import('./types').ButtonData[], otherButtons: import('./types').ButtonData[]}}
  */
-async function classifyButtons(buttons, openai) {
+function classifyButtons(buttons) {
     const rejectButtons = [];
     const otherButtons = [];
     for (const button of buttons) {
-        const llmClassification = await classifyButtonTextLLM(openai, button.text);
-        const regexClassification = classifyButtonTextRegex(button.text);
-        const classifiedButton = { ...button, llmClassification, regexClassification };
-
-        if (regexClassification === 'reject') {
-            rejectButtons.push(classifiedButton);
+        if (isRejectButton(button.text)) {
+            rejectButtons.push(button);
         } else {
-            otherButtons.push(classifiedButton);
+            otherButtons.push(button);
         }
     }
     return {
         rejectButtons,
         otherButtons,
     };
+}
+
+/**
+ * @param {import('./types').ButtonData[]} buttons
+ * @param {import('openai').OpenAI} openai
+ * @returns {Promise<import('./types').ButtonData[]>}
+ */
+async function labelButtons(buttons, openai) {
+    /** @type {import('./types').ButtonData[]} */
+    const labelledButtons = [];
+    for (const button of buttons) {
+        const llmClassification = await classifyButtonTextLLM(openai, button.text);
+        const regexClassification = classifyButtonTextRegex(button.text);
+        labelledButtons.push({ ...button, llmClassification, regexClassification });
+    }
+    return labelledButtons;
 }
 
 /**
@@ -343,8 +355,9 @@ async function classifyPopup(popup, openai) {
         regexMatch = checkHeuristicPatterns(popupText);
         llmMatch = await checkLLM(openai, popupText);
     }
-
-    const { rejectButtons, otherButtons } = await classifyButtons(popup.buttons, openai);
+    // only label buttons if the popup is considered a cookie popup by regex
+    const buttons = regexMatch ? await labelButtons(popup.buttons, openai) : popup.buttons;
+    const { rejectButtons, otherButtons } = classifyButtons(buttons);
 
     return {
         llmMatch,
