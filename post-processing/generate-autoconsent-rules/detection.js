@@ -306,7 +306,6 @@ function classifyButtonTextRegex(buttonText) {
 
 /**
  * @param {import('./types').ButtonData[]} buttons
- * @param {import('openai').OpenAI} openai
  * @returns {{rejectButtons: import('./types').ButtonData[], otherButtons: import('./types').ButtonData[]}}
  */
 function classifyButtons(buttons) {
