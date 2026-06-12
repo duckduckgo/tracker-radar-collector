@@ -1,224 +1,237 @@
 button_text,occurances,label
-privacy policy,1541,other
-sign in,599,other
-accept all,498,accept
+privacy policy,2151,other
+accept all,742,accept
+accept,624,accept
+accept all cookies,615,accept
+reject all,604,reject
+sign in,602,other
+accept cookies,584,accept
+cookie policy,531,other
+terms of use,492,other
 log in,474,other
 home,473,other
-accept,440,accept
-accept cookies,420,accept
-accept all cookies,409,accept
-reject all,403,reject
-terms of use,362,other
-cookie policy,355,other
+ok,420,acknowledge
+cookie settings,415,settings
+learn more,392,other
 search,351,other
 news,339,other
-learn more,326,other
-ok,294,acknowledge
-cookie settings,283,settings
-sign up,278,other
+cookies settings,330,settings
+sign up,279,other
 login,264,other
-more,253,other
-about,226,other
-cookies settings,219,settings
-subscribe,208,other
+manage preferences,261,settings
+more,254,other
+privacy notice,245,other
+about,234,other
+do not sell my personal information,216,reject
+subscribe,210,other
+customize,208,settings
 resources,186,other
 about us,185,other
-manage preferences,181,settings
+decline,184,reject
 explore,178,other
-do not sell my personal information,176,reject
 pricing,175,other
+close,168,acknowledge
 blog,167,other
-privacy notice,167,other
+terms of service,167,other
 shop,162,other
+cookie preferences,161,settings
+manage cookies,158,settings
 watch on,156,other
-contact us,151,other
+contact us,152,other
 sports,151,other
 support,149,other
-customize,141,settings
-decline,130,reject
-close,126,acknowledge
+continue,141,acknowledge
+reject,141,reject
+cookie notice,131,other
+privacy statement,129,other
 categories,125,other
 community,124,other
-terms of service,124,other
 videos,121,other
 help,119,other
+privacy policy.,117,other
 feedback,116,other
-continue,114,acknowledge
+your privacy choices,116,other
+english,115,other
 press hold human challenge requires verification. please press and hold the button until verified,112,other
 business,111,other
-cookie preferences,111,settings
 products,111,other
-manage cookies,110,settings
+allow all,110,accept
 history,105,other
-english,104,other
-reject,100,reject
+settings,105,settings
+got it!,102,acknowledge
+terms,102,other
+terms and conditions,102,other
+register,98,other
 forums,97,other
-register,97,other
-contact,90,other
-cookie notice,89,other
+do not sell or share my personal information,95,reject
+contact,91,other
+x,90,acknowledge
 saved,89,other
 create a free account,88,other
 en,88,other
-privacy statement,88,other
+customize settings,87,settings
 progress,87,other
+agree,86,accept
 features,86,other
 submit feedback.,85,other
-terms,84,other
-your privacy choices,83,other
-privacy policy.,81,other
 events,80,other
 menu,79,other
 new,79,other
-allow all,78,accept
 deals,78,other
+preferences,78,settings
 services,78,other
-terms and conditions,78,other
-x,78,acknowledge
 donate,77,other
 games,76,other
-settings,76,settings
+show details,75,settings
+here,74,other
+i accept,73,accept
+enter,71,other
 newsletter,71,other
 tools,71,other
 careers,70,other
-got it!,69,acknowledge
-do not sell or share my personal information,68,reject
+i agree,70,accept
+cookies policy,66,other
 newsletters,66,other
+got it,64,acknowledge
 learn,64,other
 0,63,other
-preferences,63,settings
 reviews,63,other
-customize settings,62,settings
+decline all,62,reject
 solutions,62,other
-agree,60,accept
+reject cookies,60,reject
+reject optional cookies,60,reject
 store,60,other
 cart,59,other
+cookies,59,other
+no thanks,59,reject
+partners,59,other
 sale,59,other
 take action.,58,other
-enter,57,other
+more info,57,other
 accessories,56,other
 entertainment,56,other
-no thanks,56,reject
+privacy,56,other
+terms conditions,56,other
+more options,54,settings
 get started,53,other
 guides,53,other
+i understand,53,acknowledge
 faq,52,other
-privacy,52,other
-here,51,other
-show details,51,settings
 trending,51,other
-i agree,50,accept
 weather,50,other
 account,49,other
 datenschutzerklärung,49,other
+join now,49,other
 obituaries,49,other
-partners,49,other
-cookies policy,48,other
-i accept,48,accept
 impressum,48,other
+dismiss,47,acknowledge
 gift cards,47,other
-join now,47,other
 shopping,47,other
 movies,46,other
 recipes,46,other
-cookies,45,other
-got it,45,acknowledge
+details,45,other
 forum,44,other
-terms conditions,44,other
 whats new,43,other
-decline all,42,reject
 download,42,other
-reject cookies,42,reject
 discover,41,other
 kids,41,other
-reject optional cookies,41,reject
+learn more in our privacy notice,41,other
 upload,41,other
 video,41,other
 women,41,other
-more info,40,other
 pornstars,40,other
+reject non-essential cookies,40,reject
 education,39,other
-i understand,39,acknowledge
-learn more in our privacy notice,39,other
 my account,39,other
 opinion,39,other
+reject non-essential,39,reject
 tags,39,other
 locations,38,other
-more options,38,settings
+no,38,reject
 español,37,other
 ad,36,other
-details,36,other
+create account,36,other
 men,36,other
 models,36,other
+yes,36,accept
 advertise,35,other
-create account,35,other
 enterprise,35,other
+necessary only,35,reject
 podcasts,35,other
+read more,35,other
 research,35,other
 skip to main content,35,other
 articles,34,other
 company,34,other
 culture,34,other
-dismiss,34,acknowledge
 latest,34,other
 lifestyle,34,other
 politics,34,other
+submit,33,other
 watch,33,other
-yes,33,accept
+alle akzeptieren,32,accept
+health,32,other
+manage settings,32,settings
 media,32,other
-no,32,reject
 shop now,32,other
 youtube,32,other
-alle akzeptieren,31,accept
 api,31,other
-health,31,other
 jobs,31,other
 join,31,other
 live,31,other
 live sex,31,other
-submit,31,other
 chat,30,other
 collections,30,other
 real estate,30,other
 enable accessibility,29,other
 faqs,29,other
 login join,29,other
+more information,29,other
 premium,29,other
 product,29,other
 us,29,other
 create thread,28,other
 photos,28,other
-read more,28,other
 world,28,other
+allow,27,accept
 brands,27,other
 finance,27,other
 members,27,other
 popular,27,other
-reject non-essential cookies,27,reject
 travel,27,other
+customise,26,settings
 downloads,26,other
 how it works,26,other
 random,26,other
-reject non-essential,26,reject
-allow,25,accept
 contact sales,25,other
 facebook,25,other
+featured,25,other
+"no, thanks",25,reject
 personal,25,other
+reject all cookies,25,reject
+sign up now,25,other
 translate,25,other
 ai,24,other
 anmelden,24,other
 channels,24,other
-featured,24,other
 food,24,other
 i am 18+ enter,24,other
 instagram,24,other
-necessary only,24,reject
+manage cookie preferences,24,settings
+reject optional,24,reject
 shows,24,other
 skip to content,24,other
+versant,24,other
+your rights,24,other
 ablehnen,23,reject
+confirm,23,other
 help center,23,other
 our terms of use,23,other
 advertise with us,22,other
 browse,22,other
 cancel,22,other
+cookie policy.,22,other
+customize cookies,22,settings
 docs,22,other
 einstellungen,22,settings
 enewspaper,22,other
@@ -226,24 +239,28 @@ favorites,22,other
 life,22,other
 more information about the rta label and compatible services can be found here,22,other
 music,22,other
+necessary cookies only,22,reject
 podcast,22,other
 restaurants,22,other
 rewards,22,other
 schedule,22,other
 security,22,other
 subscribe now,22,other
+your privacy rights,22,other
+allow all cookies,21,accept
 beauty,21,other
-confirm,21,other
+click here,21,other
 follow,21,other
 gear,21,other
+i am 18 or older - enter,21,other
+leave,21,other
 legals,21,other
-"no, thanks",21,reject
 plans,21,other
-sign up now,21,other
 teams,21,other
 tech,21,other
 all,20,other
 classifieds,20,other
+deny,20,reject
 documentation,20,other
 for business,20,other
 magazine,20,other
@@ -251,14 +268,15 @@ style,20,other
 the dispute resolution procedures,20,other
 apps,19,other
 developers,19,other
-i am 18 or older - enter,19,other
-leave,19,other
+learn more...,19,other
 lists,19,other
 open search,19,other
 people,19,other
 play,19,other
 things to do,19,other
+accept optional cookies,18,reject
 action,18,other
+alle ablehnen,18,reject
 best sellers,18,other
 calendar,18,other
 close ad,18,other
@@ -269,6 +287,8 @@ find a store,18,other
 kontakt,18,other
 membership,18,other
 new arrivals,18,other
+okay,18,acknowledge
+privacy notice.,18,other
 safety,18,other
 science,18,other
 shoes,18,other
@@ -277,7 +297,6 @@ tickets,18,other
 twitter,18,other
 1,17,other
 add your event,17,other
-alle ablehnen,17,reject
 alle cookies akzeptieren,17,accept
 best videos!,17,other
 books,17,other
@@ -289,9 +308,7 @@ government,17,other
 mon 15,17,other
 mon 22,17,other
 mon 8,17,other
-necessary cookies only,17,reject
 recaptcha enterprise free quota,17,other
-reject optional,17,reject
 sat 13,17,other
 sat 20,17,other
 software for customer management,17,other
@@ -301,240 +318,244 @@ sun 14,17,other
 sun 21,17,other
 theporndude,17,other
 thu 11,17,other
-manage settings,15,settings
-more information,15,other
-accept optional cookies,13,reject
-reject all cookies,13,reject
-customise,12,settings
-versant,12,other
-your rights,12,other
-customize cookies,11,settings
-deny,11,reject
-manage cookie preferences,11,settings
-your privacy rights,11,other
-allow all cookies,10,accept
-cookie policy.,10,other
-learn more...,10,other
-click here,9,other
+us state supplement,17,other
+vrm by admiral,16,other
+consent,15,other
+list of partners (vendors),15,other
+opt out,15,reject
+accept close,14,other
+manage my preferences,14,settings
+preference center,14,settings
+reject all non-essential cookies,14,reject
+cookie statement,13,other
+legal notice,13,other
+online privacy policy,13,other
+privacy settings,13,settings
+agree and close,12,accept
+allow selection,12,other
+manage,12,other
+manage choices,12,settings
+our privacy policy,12,other
+accept only essential cookies,11,reject
+analytics,11,other
+change settings,11,settings
+accept and continue,10,accept
+advertising,10,other
+configure,10,settings
+continue with all,10,accept
+essential only,10,reject
+learn more…,10,other
+"personalised advertising and content, advertising and content measurement, audience research and services development",10,other
+store andor access information on a device,10,other
+use of cookies,10,other
+website privacy policy,10,other
 construction payroll software,9,other
-okay,9,acknowledge
-us state supplement,9,other
+deny all,9,reject
+essential cookies only,9,reject
+opt-out,9,reject
+privacy choices,9,other
+website terms of use,9,other
 allow essential cookies,8,reject
-privacy notice.,8,other
-vrm by admiral,8,other
-accept close,7,other
-consent,7,other
-legal notice,7,other
-list of partners (vendors),7,other
-manage,7,other
-manage my preferences,7,settings
-online privacy policy,7,other
-opt out,7,reject
-preference center,7,settings
-reject all non-essential cookies,7,reject
-agree and close,6,accept
-allow selection,6,other
-analytics,6,other
-essential only,6,reject
-manage choices,6,settings
-our privacy policy,6,other
-privacy settings,6,settings
-advertising,5,other
-change settings,5,settings
-configure,5,settings
-continue with all,5,accept
-cookie statement,5,other
-deny all,5,reject
-essential cookies only,5,reject
-learn more…,5,other
-"personalised advertising and content, advertising and content measurement, audience research and services development",5,other
-privacy choices,5,other
-store andor access information on a device,5,other
-use of cookies,5,other
-website privacy policy,5,other
-accept and continue,4,accept
-accept only essential cookies,4,reject
-change my preferences,4,settings
-confirm my choices,4,accept
-cookie consent tool,4,other
-cookie manager,4,settings
-cookie privacy policy.,4,other
-cookies notice,4,other
-customize my experience,4,settings
-decline optional cookies,4,reject
-do not sell or share my personal info,4,reject
-exit here,4,other
-im over 18,4,other
-learn more.,4,other
-online services user agreement,4,other
-opt-out,4,reject
-required,4,reject
-save cookie settings,4,settings
-"terms and conditions,",4,other
-terms of use.,4,other
-use necessary cookies only,4,reject
-view our privacy policy,4,other
-website terms of use,4,other
-.,3,other
-1618 technology partners,3,other
-accept all above and enter the site,3,accept
-accept settings close,3,other
-allow cookies,3,accept
-continue to site,3,other
-cookie preference center,3,settings
-cookieconsent preferences,3,settings
-customise cookies,3,settings
-deny all cookies,3,reject
-disagree and close,3,reject
-functional,3,other
-here.,3,other
-i decline,3,reject
-i disagree,3,reject
-imprint,3,other
-manage cookie settings,3,settings
-manage cookies and learn more,3,settings
-manage my choices,3,settings
-manage my cookies,3,settings
-manage your preferences,3,settings
-manage your privacy choices,3,settings
-"no, manage settings",3,settings
-"no, thank you",3,reject
-notice of financial incentive,3,other
-online privacy notice,3,other
-online privacy notice.,3,other
-only necessary,3,reject
-options,3,other
-protecting minors,3,other
-read our privacy policy,3,other
-reject non-necessary cookies,3,reject
-reject unnecessary cookies,3,reject
-required only,3,reject
-see further information and configure your preferences,3,settings
-strictly necessary,3,reject
-upmc websiteemail terms of use,3,other
-view more info,3,other
-*discount terms,2,other
-18 u.s.c. 2257 record-keeping requirements compliance statement.,2,other
-accept and close,2,accept
-accept continue,2,accept
-accept necessary,2,reject
-accept only necessary cookies,2,reject
-acceptable use policy,2,other
-acknowledge,2,acknowledge
-ad settings,2,other
-adjust your cookie settings,2,settings
-advertising partners,2,other
-agree proceed,2,accept
-allow and continue,2,accept
-allow necessary,2,reject
-allow only necessary,2,reject
-asacp,2,other
-categories of personal information,2,other
-clicking here,2,other
-close and accept,2,accept
-close banner,2,acknowledge
-close cookie notification,2,acknowledge
-close dialog,2,other
-content removal,2,other
-continue to website,2,other
-continue without accepting,2,reject
-continue without changes,2,reject
-cookie consent options,2,settings
-cookie notice.,2,other
-cookie policy (opens in a new tab),2,other
-cookie preferences do not share,2,other
-cookie setting,2,settings
-cookies and similar technologies,2,other
-custom settings,2,settings
-customize cookie settings,2,settings
-cybersitter™,2,other
-data protection portal,2,other
-decline cookies,2,reject
-deny cookies,2,reject
-deny non-essential cookies,2,reject
-deny optional,2,reject
-details section,2,other
-disagree,2,reject
-dispute resolution and arbitration,2,other
-do not sellcookie settings,2,other
-epoch.com,2,other
-essential only cookies,2,reject
-exit,2,other
-find out more,2,other
-gay,2,other
-global online tracking policy,2,other
-"if youre not 18+, exit the website",2,other
-im ok with that,2,accept
-internet privacy policy,2,other
-internet privacy statement,2,other
-learn more in our privacy policy.,2,other
-let me choose,2,settings
-manage cookie tracking settings,2,settings
-manage options,2,settings
-manage or reject cookies,2,settings
-manage specific collection and sharing preferences,2,settings
-manage your cookies,2,settings
-mlb privacy policy,2,other
-net nanny®,2,other
-"no thanks, just let me shop",2,reject
-notice of financial incentives.,2,other
-"ok, accept all",2,accept
-"ok, understood",2,acknowledge
-on group privacy notice,2,other
-online privacy and cookies policy,2,other
-online privacy statement,2,other
-opt out of sale of personal data and targeted advertising,2,reject
-opt-out preferences,2,settings
-our 15 partners,2,other
-our cookie policy,2,other
-our partners,2,other
-parental control guide,2,other
-performance,2,other
-portal terms and conditions,2,other
-privacy and cookie policy,2,other
-privacy and cookies policy,2,other
-privacy center,2,other
-privacy controls,2,settings
-privacy cookie policy,2,other
-privacy notices.,2,other
-privacy policies,2,other
-privacy policy faqs,2,other
-"privacy policy,",2,other
-privacy security.,2,other
-privacy statement.,2,other
-read our privacy policy.,2,other
-refuse all cookies,2,reject
-reject advertising cookies,2,reject
-reject all but necessary,2,reject
-reject all non-essential,2,reject
-reject and manage,2,reject
-reject non essential,2,reject
+change my preferences,8,settings
+confirm my choices,8,accept
+cookie consent tool,8,other
+cookie privacy policy.,8,other
+cookies notice,8,other
+customize my experience,8,settings
+exit here,8,other
+im over 18,8,other
+online services user agreement,8,other
+required,8,reject
+save cookie settings,8,settings
+"terms and conditions,",8,other
+terms of use.,8,other
+use necessary cookies only,8,reject
+view our privacy policy,8,other
+accept all above and enter the site,7,accept
+cookie manager,7,settings
+decline optional cookies,7,reject
+do not sell or share my personal info,7,reject
+learn more.,7,other
+online privacy notice,7,other
+options,7,other
+protecting minors,7,other
+.,6,other
+accept settings close,6,other
+cookie preference center,6,settings
+cookieconsent preferences,6,settings
+customise cookies,6,settings
+disagree and close,6,reject
+functional,6,other
+i decline,6,reject
+i disagree,6,reject
+manage cookie settings,6,settings
+manage your preferences,6,settings
+manage your privacy choices,6,settings
+"no, manage settings",6,settings
+"no, thank you",6,reject
+notice of financial incentive,6,other
+only necessary,6,reject
+privacy and cookie policy,6,other
+read our privacy policy,6,other
+reject all but necessary,6,reject
+reject unnecessary cookies,6,reject
+required only,6,reject
+see further information and configure your preferences,6,settings
+strictly necessary,6,reject
+upmc websiteemail terms of use,6,other
+view more info,6,other
+1618 technology partners,5,other
+accept necessary,5,reject
+allow cookies,5,accept
+allow only necessary,5,reject
+clicking here,5,other
+continue to site,5,other
+cookie consent options,5,settings
+cookie notice.,5,other
+custom settings,5,settings
+deny all cookies,5,reject
+here.,5,other
+imprint,5,other
+internet privacy policy,5,other
+manage cookies and learn more,5,settings
+manage my choices,5,settings
+manage my cookies,5,settings
+online privacy notice.,5,other
+privacy notices.,5,other
+reject non-necessary cookies,5,reject
+show purposes,5,settings
+website privacy statement.,5,other
+website user agreement,5,other
+*discount terms,4,other
+18 u.s.c. 2257 record-keeping requirements compliance statement.,4,other
+accept and close,4,accept
+accept continue,4,accept
+accept only necessary cookies,4,reject
+acceptable use policy,4,other
+ad settings,4,other
+advertising partners,4,other
+allow and continue,4,accept
+allow necessary,4,reject
+asacp,4,other
+categories of personal information,4,other
+close cookie notification,4,acknowledge
+close dialog,4,other
+content removal,4,other
+continue to website,4,other
+continue without accepting,4,reject
+continue without changes,4,reject
+cookie policy (opens in a new tab),4,other
+cookie preferences do not share,4,other
+cookie setting,4,settings
+cookies and similar technologies,4,other
+customize cookie settings,4,settings
+cybersitter™,4,other
+data protection portal,4,other
+decline cookies,4,reject
+deny cookies,4,reject
+deny non-essential cookies,4,reject
+deny optional,4,reject
+details section,4,other
+disagree,4,reject
+dispute resolution and arbitration,4,other
+epoch.com,4,other
+essential only cookies,4,reject
+exit,4,other
+find out more,4,other
+gay,4,other
+global online tracking policy,4,other
+"if youre not 18+, exit the website",4,other
+im ok with that,4,accept
+internet privacy statement,4,other
+learn more in our privacy policy.,4,other
+let me choose,4,settings
+manage cookie tracking settings,4,settings
+manage options,4,settings
+manage or reject cookies,4,settings
+manage specific collection and sharing preferences,4,settings
+manage your cookies,4,settings
+mlb privacy policy,4,other
+net nanny®,4,other
+"no thanks, just let me shop",4,reject
+notice of financial incentives.,4,other
+"ok, understood",4,acknowledge
+on group privacy notice,4,other
+online privacy and cookies policy,4,other
+online privacy statement,4,other
+opt out of sale of personal data and targeted advertising,4,reject
+opt-out preferences,4,settings
+our 15 partners,4,other
+our cookie policy,4,other
+our partners,4,other
+parental control guide,4,other
+performance,4,other
+portal terms and conditions,4,other
+privacy and cookies policy,4,other
+privacy controls,4,settings
+privacy policies,4,other
+privacy policy faqs,4,other
+"privacy policy,",4,other
+privacy security.,4,other
+privacy statement.,4,other
+read our privacy policy.,4,other
+refuse all cookies,4,reject
+reject advertising cookies,4,reject
+reject and manage,4,reject
+reject non essential,4,reject
+roadpass digital privacycookie policy,4,other
+safetonet,4,other
+see our cookie policy.,4,other
+segpay.com,4,other
+straight,4,other
+strictly necessary only,4,reject
+targeting,4,other
+terms of usage,4,other
+terms of use agreement,4,other
+third parties,4,other
+trans,4,other
+us privacy notice,4,other
+video consent and viewing policy,4,other
+view cookie policy,4,other
+view cookie settings,4,settings
+view our global privacy statement,4,other
+view privacy terms,4,other
+visitor agreement,4,other
+"yes, i agree",4,accept
+your privacy choices.,4,other
+your state-specific privacy choices,4,other
+acknowledge,3,acknowledge
+adjust your cookie settings,3,settings
+agree proceed,3,accept
+close and accept,3,accept
+close banner,3,acknowledge
+do not sellcookie settings,3,other
+my privacy choices,3,settings
+"ok, accept all",3,accept
+privacy center,3,other
+privacy cookie policy,3,other
+reject all non-essential,3,reject
+strictly necessary cookies,3,reject
+technology partners,3,other
+use of cookies.,3,other
+accept selection,2,accept
+close cookie bar,2,acknowledge
+customize your choice,2,settings
+decline (non-essential cookies),2,reject
+dispute resolution procedures,2,other
+essential,2,reject
+global privacy notice,2,other
+learn more and customize,2,settings
+leave website,2,other
+manage cookies settings,2,settings
+manage my settings,2,settings
+notice,2,other
+only essential cookies,2,reject
+only necessary cookies,2,reject
+only the cookies that are necessary,2,reject
 reject non-strictly necessary cookies,2,reject
-roadpass digital privacycookie policy,2,other
-safetonet,2,other
-see our cookie policy.,2,other
-segpay.com,2,other
+save close,2,other
 show all partners (1678),2,other
-show purposes,2,settings
-straight,2,other
-strictly necessary cookies,2,reject
-strictly necessary only,2,reject
-targeting,2,other
-technology partners,2,other
-terms of usage,2,other
-terms of use agreement,2,other
-third parties,2,other
-trans,2,other
-us privacy notice,2,other
-use of cookies.,2,other
-video consent and viewing policy,2,other
-view cookie policy,2,other
-view cookie settings,2,settings
-view our global privacy statement,2,other
-view privacy terms,2,other
-visitor agreement,2,other
-website privacy statement.,2,other
-website user agreement,2,other
-"yes, i agree",2,accept
-your privacy choices.,2,other
-your state-specific privacy choices,2,other
+strictly necessary cookies only,2,reject
+view our cookie policy,2,other
+visit our privacy policy,2,other
+edit preferences,1,settings
