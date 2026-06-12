@@ -199,12 +199,10 @@ function printBenchmark(byLabel) {
     const weightedTotal = benchmarks.reduce((sum, benchmark) => sum + benchmark.weightedSupport, 0);
     const rowCorrect = benchmarks.reduce((sum, benchmark) => sum + benchmark.rowCorrect, 0);
     const weightedCorrect = benchmarks.reduce((sum, benchmark) => sum + benchmark.weightedCorrect, 0);
-    const rowFalsePositives = benchmarks.reduce((sum, benchmark) => sum + benchmark.rowFalsePositives, 0);
     const weightedFalsePositives = benchmarks.reduce(
         (sum, benchmark) => sum + benchmark.weightedFalsePositives,
         0,
     );
-    const rowMissed = benchmarks.reduce((sum, benchmark) => sum + benchmark.rowMissed, 0);
     const weightedMissed = benchmarks.reduce((sum, benchmark) => sum + benchmark.weightedMissed, 0);
 
     console.log(chalk.bold('\nclassifyButtonTextRegex benchmark (excluding other)\n'));
