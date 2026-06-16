@@ -314,11 +314,11 @@ function classifyButtonTextRegex(buttonText) {
     if (testButtonMatches(buttonText, SETTINGS_PATTERNS, NEVER_MATCH_PATTERNS)) {
         return 'settings';
     }
-    if (testButtonMatches(buttonText, ACCEPT_PATTERNS, NEVER_MATCH_PATTERNS)) {
-        return 'accept';
-    }
     if (testButtonMatches(buttonText, ACKNOWLEDGE_PATTERNS, NEVER_MATCH_PATTERNS)) {
         return 'acknowledge';
+    }
+    if (testButtonMatches(buttonText, ACCEPT_PATTERNS, NEVER_MATCH_PATTERNS)) {
+        return 'accept';
     }
     return 'other';
 }
