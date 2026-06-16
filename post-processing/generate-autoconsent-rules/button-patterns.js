@@ -28,9 +28,14 @@ const REJECT_PATTERNS_ENGLISH = [
 
     // These are impactful, but look error-prone
     // // e.g. "disagree"
-    // /^\s*(i)?\s*disagree\s*(and\s+close)?\s*$/i,
+    /^(i)?\s*disagree\s*(and\s+close)?$/i,
     // // e.g. "i do not agree"
     // /^\s*(i\s+)?do\s+not\s+agree\s*$/i,
+    'no',
+    /^no,? thanks$/is,
+    /^opt[ -]out$/is,
+    'accept optional cookies',
+    'do not sell or share my personal info',
 ];
 
 const REJECT_PATTERNS_DUTCH = [
@@ -668,6 +673,7 @@ const ACCEPT_PATTERNS = [
     'allow and continue',
     'close and accept',
     /accept all$/is,
+    'im ok with that',
 
     /^alle (cookies )?akzeptieren$/is,
 ];
