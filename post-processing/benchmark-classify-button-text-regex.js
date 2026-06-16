@@ -15,9 +15,7 @@ const VALID_LABELS = ['settings', 'accept', 'reject', 'acknowledge', 'other'];
 const BENCHMARK_LABELS = ['settings', 'accept', 'reject', 'acknowledge'];
 
 program
-    .description(
-        'Benchmark classifyButtonTextRegex against labelled button texts (exact label match, occurrence-weighted)',
-    )
+    .description('Benchmark classifyButtonTextRegex against labelled button texts (exact label match, occurrence-weighted)')
     .option('-i, --input <path>', 'path to labelled button text CSV', DEFAULT_CSV_PATH)
     .option('-o, --output <path>', 'path to write benchmark results JSON')
     .option('--limit <n>', 'limit number of labelled rows to evaluate', parseInt)
@@ -75,14 +73,11 @@ function buildLabelBenchmark(allResults, targetLabel, rowTotal, weightedTotal) {
     const rowMissed = missed.length;
     const weightedMissed = missed.reduce((sum, result) => sum + result.occurances, 0);
 
-    const falsePositives = allResults.filter(
-        (result) => result.predicted === targetLabel && result.label !== targetLabel,
-    );
+    const falsePositives = allResults.filter((result) => result.predicted === targetLabel && result.label !== targetLabel);
     const rowFalsePositives = falsePositives.length;
     const weightedFalsePositives = falsePositives.reduce((sum, result) => sum + result.occurances, 0);
 
-    const sortByOccurrence = (a, b) =>
-        b.occurances - a.occurances || a.buttonText.localeCompare(b.buttonText);
+    const sortByOccurrence = (a, b) => b.occurances - a.occurances || a.buttonText.localeCompare(b.buttonText);
 
     /** @type {Array<{ buttonText: string, label: string, predicted: string, occurances: number }>} */
     const falsePositiveExamples = falsePositives
@@ -166,9 +161,7 @@ function printLabelBenchmark(benchmark) {
     } else {
         console.log(`    top false positives (up to ${TOP_FAILURES}, by occurrence):`);
         for (const example of topFalsePositives) {
-            console.log(
-                `      [${example.label} -> ${example.predicted}] ${JSON.stringify(example.buttonText)} (x${example.occurances})`,
-            );
+            console.log(`      [${example.label} -> ${example.predicted}] ${JSON.stringify(example.buttonText)} (x${example.occurances})`);
         }
     }
 
@@ -180,9 +173,7 @@ function printLabelBenchmark(benchmark) {
             `    missed (should be ${benchmark.label}, not labelled as ${benchmark.label}) (up to ${TOP_FAILURES}, by occurrence):`,
         );
         for (const example of topMissed) {
-            console.log(
-                `      [${example.label} -> ${example.predicted}] ${JSON.stringify(example.buttonText)} (x${example.occurances})`,
-            );
+            console.log(`      [${example.label} -> ${example.predicted}] ${JSON.stringify(example.buttonText)} (x${example.occurances})`);
         }
     }
 }
@@ -191,18 +182,13 @@ function printLabelBenchmark(benchmark) {
  * @param {Record<string, LabelBenchmark>} byLabel
  */
 function printBenchmark(byLabel) {
-    const benchmarks = BENCHMARK_LABELS.map((label) => byLabel[label]).filter(
-        (benchmark) => benchmark.rowSupport > 0,
-    );
+    const benchmarks = BENCHMARK_LABELS.map((label) => byLabel[label]).filter((benchmark) => benchmark.rowSupport > 0);
 
     const rowTotal = benchmarks.reduce((sum, benchmark) => sum + benchmark.rowSupport, 0);
     const weightedTotal = benchmarks.reduce((sum, benchmark) => sum + benchmark.weightedSupport, 0);
     const rowCorrect = benchmarks.reduce((sum, benchmark) => sum + benchmark.rowCorrect, 0);
     const weightedCorrect = benchmarks.reduce((sum, benchmark) => sum + benchmark.weightedCorrect, 0);
-    const weightedFalsePositives = benchmarks.reduce(
-        (sum, benchmark) => sum + benchmark.weightedFalsePositives,
-        0,
-    );
+    const weightedFalsePositives = benchmarks.reduce((sum, benchmark) => sum + benchmark.weightedFalsePositives, 0);
     const weightedMissed = benchmarks.reduce((sum, benchmark) => sum + benchmark.weightedMissed, 0);
 
     console.log(chalk.bold('\nclassifyButtonTextRegex benchmark (excluding other)\n'));
@@ -211,11 +197,7 @@ function printBenchmark(byLabel) {
     console.log(
         `  correctly labelled: ${rowCorrect}/${rowTotal} rows (${pct(rowTotal === 0 ? null : rowCorrect / rowTotal)}), ${weightedCorrect}/${weightedTotal} weighted (${pct(weightedTotal === 0 ? null : weightedCorrect / weightedTotal)})`,
     );
-    console.log(
-        chalk.red(
-            `  false positives (weighted total across labels): ${weightedFalsePositives}`,
-        ),
-    );
+    console.log(chalk.red(`  false positives (weighted total across labels): ${weightedFalsePositives}`));
     console.log(`  missed (weighted total across labels): ${weightedMissed}`);
 
     console.log(chalk.bold('\n  by label:'));
@@ -234,9 +216,7 @@ function main() {
         process.exit(1);
     }
 
-    let rows = readButtonTextCsv(inputPath).filter(
-        (row) => row.label && VALID_LABELS.includes(row.label.trim().toLowerCase()),
-    );
+    let rows = readButtonTextCsv(inputPath).filter((row) => row.label && VALID_LABELS.includes(row.label.trim().toLowerCase()));
     rows = rows.map((row) => ({ ...row, label: row.label.trim().toLowerCase() }));
 
     if (opts.limit && rows.length > opts.limit) {

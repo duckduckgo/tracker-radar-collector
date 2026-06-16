@@ -41,7 +41,7 @@ Requires `OPENAI_API_KEY`. By default this updates `generate-autoconsent-rules/l
 Options:
 
 - `-i, --input <path>` — CSV to label (default: `generate-autoconsent-rules/labelled-button-texts.csv`)
-- `--limit <n>` — process at most *n* unlabelled rows
+- `--limit <n>` — process at most _n_ unlabelled rows
 - `--parallel <n>` — concurrent LLM requests (default: 10)
 
 Labels are one of: `settings`, `accept`, `reject`, `acknowledge`, `other`.
@@ -60,7 +60,7 @@ Options:
 
 - `-i, --input <path>` — labelled CSV path
 - `-o, --output <path>` — write detailed results as JSON
-- `--limit <n>` — evaluate at most *n* rows
+- `--limit <n>` — evaluate at most _n_ rows
 
 For each label the report shows:
 
