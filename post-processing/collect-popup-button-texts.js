@@ -43,7 +43,7 @@ function readPopupButtonTexts(popup) {
     /** @type {string[]} */
     const texts = [];
     for (const button of buttons) {
-        if (typeof button === 'object' && button !== null && typeof /** @type {{ text?: unknown }} */ (button).text === 'string') {
+        if (typeof button === 'object' && button !== null && typeof (/** @type {{ text?: unknown }} */ (button).text) === 'string') {
             texts.push(/** @type {{ text: string }} */ (button).text);
         }
     }
@@ -58,7 +58,8 @@ function collectButtonTextsFromNode(node) {
     if (typeof node !== 'object' || node === null) {
         return [];
     }
-    const potentialPopups = /** @type {{ potentialPopups?: import('./generate-autoconsent-rules/types').ProcessedCookiePopup[] }} */ (node).potentialPopups;
+    const potentialPopups = /** @type {{ potentialPopups?: import('./generate-autoconsent-rules/types').ProcessedCookiePopup[] }} */ (node)
+        .potentialPopups;
     if (!Array.isArray(potentialPopups)) {
         return [];
     }
@@ -81,9 +82,8 @@ function collectButtonTextsFromNode(node) {
 function collectButtonTextsFromCrawl(crawlData) {
     /** @type {string[]} */
     const texts = [];
-    const scrapedFrames =
-        /** @type {import('./generate-autoconsent-rules/types').CrawlData} */ (crawlData)?.data?.cookiepopups
-            ?.scrapedFrames;
+    const scrapedFrames = /** @type {import('./generate-autoconsent-rules/types').CrawlData} */ (crawlData)?.data?.cookiepopups
+        ?.scrapedFrames;
     if (!Array.isArray(scrapedFrames)) {
         return texts;
     }
@@ -136,8 +136,7 @@ function main() {
         .map((file) => path.join(inputDir, file));
 
     /** @type {Map<string, { occurances: number, label: string }>} */
-    const data =
-        opts.output && fs.existsSync(opts.output) ? readExistingData(opts.output) : new Map();
+    const data = opts.output && fs.existsSync(opts.output) ? readExistingData(opts.output) : new Map();
 
     if (opts.output && data.size > 0) {
         console.error(`Loaded ${data.size} existing button texts from ${opts.output}`);

@@ -37,9 +37,7 @@ async function main() {
     }
 
     /** @type {number[]} */
-    let unlabelledIndices = rows
-        .map((row, index) => (row.label ? null : index))
-        .filter((index) => index !== null);
+    let unlabelledIndices = rows.map((row, index) => (row.label ? null : index)).filter((index) => index !== null);
 
     if (unlabelledIndices.length === 0) {
         console.error('no unlabelled rows found');
@@ -63,15 +61,11 @@ async function main() {
         width: 40,
     });
 
-    await asyncLib.eachOfLimit(
-        unlabelledIndices,
-        parallel,
-        async (rowIndex) => {
-            const row = rows[rowIndex];
-            row.label = await classifyButtonTextLLM(openai, row.buttonText);
-            progress.tick();
-        },
-    );
+    await asyncLib.eachOfLimit(unlabelledIndices, parallel, async (rowIndex) => {
+        const row = rows[rowIndex];
+        row.label = await classifyButtonTextLLM(openai, row.buttonText);
+        progress.tick();
+    });
 
     const csv = buttonTextRowsToCsv(rows);
     const tempPath = `${inputPath}.tmp`;

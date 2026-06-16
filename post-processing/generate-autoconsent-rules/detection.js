@@ -304,7 +304,7 @@ Examples:
 }
 
 /**
- * @param {string} buttonText 
+ * @param {string} buttonText
  * @returns {ButtonClassification}
  */
 function classifyButtonTextRegex(buttonText) {
