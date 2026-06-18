@@ -24,7 +24,7 @@ program
 const opts = program.opts();
 
 /**
- * @param {Array<{ buttonText: string, occurances: number, label: string }>} rows
+ * @param {Array<{ buttonText: string, occurences: number, label: string }>} rows
  * @returns {Array<ButtonTextBenchmark>}
  */
 function classifyRows(rows) {
@@ -56,7 +56,7 @@ function classifyRows(rows) {
 /**
  * @typedef {Object} ButtonTextBenchmark
  * @property {string} buttonText
- * @property {number} occurances
+ * @property {number} occurences
  * @property {string} label
  * @property {string} predicted
  */
@@ -71,39 +71,39 @@ function classifyRows(rows) {
 function buildLabelBenchmark(allResults, targetLabel, rowTotal, weightedTotal) {
     const support = allResults.filter((result) => result.label === targetLabel);
     const rowSupport = support.length;
-    const weightedSupport = support.reduce((sum, result) => sum + result.occurances, 0);
+    const weightedSupport = support.reduce((sum, result) => sum + result.occurences, 0);
 
     const correct = support.filter((result) => result.predicted === targetLabel);
     const rowCorrect = correct.length;
-    const weightedCorrect = correct.reduce((sum, result) => sum + result.occurances, 0);
+    const weightedCorrect = correct.reduce((sum, result) => sum + result.occurences, 0);
 
     const missed = support.filter((result) => result.predicted !== targetLabel);
     const rowMissed = missed.length;
-    const weightedMissed = missed.reduce((sum, result) => sum + result.occurances, 0);
+    const weightedMissed = missed.reduce((sum, result) => sum + result.occurences, 0);
 
     const falsePositives = allResults.filter((result) => result.predicted === targetLabel && result.label !== targetLabel);
     const rowFalsePositives = falsePositives.length;
-    const weightedFalsePositives = falsePositives.reduce((sum, result) => sum + result.occurances, 0);
+    const weightedFalsePositives = falsePositives.reduce((sum, result) => sum + result.occurences, 0);
 
-    const sortByOccurrence = (a, b) => b.occurances - a.occurances || a.buttonText.localeCompare(b.buttonText);
+    const sortByOccurrence = (a, b) => b.occurences - a.occurences || a.buttonText.localeCompare(b.buttonText);
 
-    /** @type {Array<{ buttonText: string, label: string, predicted: string, occurances: number }>} */
+    /** @type {Array<{ buttonText: string, label: string, predicted: string, occurences: number }>} */
     const falsePositiveExamples = falsePositives
         .map((result) => ({
             buttonText: result.buttonText,
             label: result.label,
             predicted: result.predicted,
-            occurances: result.occurances,
+            occurences: result.occurences,
         }))
         .sort(sortByOccurrence);
 
-    /** @type {Array<{ buttonText: string, label: string, predicted: string, occurances: number }>} */
+    /** @type {Array<{ buttonText: string, label: string, predicted: string, occurences: number }>} */
     const missedExamples = missed
         .map((result) => ({
             buttonText: result.buttonText,
             label: result.label,
             predicted: result.predicted,
-            occurances: result.occurances,
+            occurences: result.occurences,
         }))
         .sort(sortByOccurrence);
 
@@ -169,7 +169,7 @@ function printLabelBenchmark(benchmark) {
     } else {
         console.log(`    top false positives (up to ${TOP_FAILURES}, by occurrence):`);
         for (const example of topFalsePositives) {
-            console.log(`      [${example.label} -> ${example.predicted}] ${JSON.stringify(example.buttonText)} (x${example.occurances})`);
+            console.log(`      [${example.label} -> ${example.predicted}] ${JSON.stringify(example.buttonText)} (x${example.occurences})`);
         }
     }
 
@@ -181,7 +181,7 @@ function printLabelBenchmark(benchmark) {
             `    missed (should be ${benchmark.label}, not labelled as ${benchmark.label}) (up to ${TOP_FAILURES}, by occurrence):`,
         );
         for (const example of topMissed) {
-            console.log(`      [${example.label} -> ${example.predicted}] ${JSON.stringify(example.buttonText)} (x${example.occurances})`);
+            console.log(`      [${example.label} -> ${example.predicted}] ${JSON.stringify(example.buttonText)} (x${example.occurences})`);
         }
     }
 }
@@ -237,14 +237,14 @@ function main() {
         process.exit(1);
     }
 
-    rows.sort((a, b) => b.occurances - a.occurances || a.buttonText.localeCompare(b.buttonText));
+    rows.sort((a, b) => b.occurences - a.occurences || a.buttonText.localeCompare(b.buttonText));
 
     console.error(`Loaded ${rows.length} labelled rows from ${inputPath}`);
 
     const results = classifyRows(rows);
     const benchmarkResults = results.filter((result) => result.label !== 'other');
     const rowTotal = benchmarkResults.length;
-    const weightedTotal = benchmarkResults.reduce((sum, result) => sum + result.occurances, 0);
+    const weightedTotal = benchmarkResults.reduce((sum, result) => sum + result.occurences, 0);
     const byLabel = buildBenchmarkByLabel(benchmarkResults, rowTotal, weightedTotal);
 
     console.log(`Input: ${inputPath}`);
