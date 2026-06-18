@@ -68,6 +68,6 @@ For each label the report shows:
 2. **False positives** — predicted as this label but ground truth is a different label
 3. **Top examples** — highest-occurrence false positives and missed strings (ground truth is this label but prediction differs)
 
-Occurrence weighting uses the `occurances` column from the CSV so common button texts count more than rare ones.
+Occurrence weighting uses the `occurences` column from the CSV so common button texts count more than rare ones.
 
 When the benchmark shows misses or false positives, update the patterns in `generate-autoconsent-rules/button-patterns.js` and re-run the benchmark until coverage is acceptable.
