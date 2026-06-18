@@ -2,9 +2,9 @@ const fs = require('fs');
 const { parse } = require('csv-parse/sync');
 const { stringify } = require('csv-stringify/sync');
 
-/** @typedef {{ buttonText: string, occurances: number, label: string }} ButtonTextRow */
+/** @typedef {{ buttonText: string, occurences: number, label: string }} ButtonTextRow */
 
-const CSV_COLUMNS = ['button_text', 'occurances', 'label'];
+const CSV_COLUMNS = ['button_text', 'occurences', 'label'];
 
 /**
  * @param {string} content
@@ -26,12 +26,12 @@ function parseButtonTextCsv(content) {
     const rows = [];
     for (const record of records) {
         const buttonText = record.button_text;
-        const occurances = Number.parseInt(record.occurances, 10);
-        if (!buttonText || Number.isNaN(occurances)) {
+        const occurences = Number.parseInt(record.occurences, 10);
+        if (!buttonText || Number.isNaN(occurences)) {
             continue;
         }
         const label = record.label ?? '';
-        rows.push({ buttonText, occurances, label });
+        rows.push({ buttonText, occurences, label });
     }
     return rows;
 }
@@ -52,7 +52,7 @@ function buttonTextRowsToCsv(rows) {
     return stringify(
         rows.map((row) => ({
             button_text: row.buttonText,
-            occurances: row.occurances,
+            occurences: row.occurences,
             label: row.label,
         })),
         {
