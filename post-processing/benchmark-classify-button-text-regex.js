@@ -25,7 +25,7 @@ const opts = program.opts();
 
 /**
  * @param {Array<{ buttonText: string, occurances: number, label: string }>} rows
- * @returns {Array<{ buttonText: string, occurances: number, label: string, predicted: string }>}
+ * @returns {Array<ButtonTextBenchmark>}
  */
 function classifyRows(rows) {
     return rows.map((row) => ({
@@ -49,12 +49,20 @@ function classifyRows(rows) {
  * @property {number|null} weightedFalsePositiveRate
  * @property {number} rowMissed
  * @property {number} weightedMissed
- * @property {Array<{ buttonText: string, label: string, predicted: string, occurances: number }>} falsePositiveExamples
- * @property {Array<{ buttonText: string, label: string, predicted: string, occurances: number }>} missedExamples
+ * @property {Array<ButtonTextBenchmark>} falsePositiveExamples
+ * @property {Array<ButtonTextBenchmark>} missedExamples
  */
 
 /**
- * @param {Array<{ buttonText: string, occurances: number, label: string, predicted: string }>} allResults
+ * @typedef {Object} ButtonTextBenchmark
+ * @property {string} buttonText
+ * @property {number} occurances
+ * @property {string} label
+ * @property {string} predicted
+ */
+
+/**
+ * @param {Array<ButtonTextBenchmark>} allResults
  * @param {string} targetLabel
  * @param {number} rowTotal
  * @param {number} weightedTotal
@@ -119,7 +127,7 @@ function buildLabelBenchmark(allResults, targetLabel, rowTotal, weightedTotal) {
 }
 
 /**
- * @param {Array<{ buttonText: string, occurances: number, label: string, predicted: string }>} results
+ * @param {Array<ButtonTextBenchmark>} results
  * @param {number} rowTotal
  * @param {number} weightedTotal
  * @returns {Record<string, LabelBenchmark>}
