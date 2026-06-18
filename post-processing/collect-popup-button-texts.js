@@ -67,7 +67,7 @@ function collectButtonTextsFromNode(node) {
     const texts = [];
     for (const popup of potentialPopups) {
         // skip not matching popups
-        if (!popup.regexMatch) {
+        if (!popup.regexMatch && !popup.llmMatch) {
             continue;
         }
         texts.push(...readPopupButtonTexts(popup));

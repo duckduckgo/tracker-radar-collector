@@ -19,7 +19,7 @@ node post-processing/collect-popup-button-texts.js \
 The script:
 
 - Reads JSON crawl files from the input directory (excluding `metadata.json`)
-- Collects button text from `potentialPopups` where `regexMatch` is true
+- Collects button text from `potentialPopups` where `regexMatch` or `llmMatch` is true
 - Normalizes text with `cleanButtonText` (same normalization used at classification time)
 - Counts one occurrence per site per distinct button text
 - Merges with existing CSV data when `-o` points at an existing file (preserving labels and incrementing counts)
