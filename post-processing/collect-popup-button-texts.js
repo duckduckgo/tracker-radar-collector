@@ -17,13 +17,13 @@ const inputDir = opts.input;
 
 /**
  * @param {string} filePath
- * @returns {Map<string, { occurances: number, label: string }>}
+ * @returns {Map<string, { occurences: number, label: string }>}
  */
 function readExistingData(filePath) {
-    /** @type {Map<string, { occurances: number, label: string }>} */
+    /** @type {Map<string, { occurences: number, label: string }>} */
     const data = new Map();
     for (const row of readButtonTextCsv(filePath)) {
-        data.set(row.buttonText, { occurances: row.occurances, label: row.label });
+        data.set(row.buttonText, { occurences: row.occurences, label: row.label });
     }
     return data;
 }
@@ -110,16 +110,16 @@ function collectDistinctButtonTextsFromCrawl(crawlData) {
 }
 
 /**
- * @param {Map<string, { occurances: number, label: string }>} data
- * @returns {Array<{ buttonText: string, occurances: number, label: string }>}
+ * @param {Map<string, { occurences: number, label: string }>} data
+ * @returns {Array<{ buttonText: string, occurences: number, label: string }>}
  */
 function buildRows(data) {
     return [...data.entries()]
-        .filter(([, { occurances }]) => occurances > 1)
-        .sort((a, b) => b[1].occurances - a[1].occurances || a[0].localeCompare(b[0]))
-        .map(([buttonText, { occurances, label }]) => ({
+        .filter(([, { occurences }]) => occurences > 1)
+        .sort((a, b) => b[1].occurences - a[1].occurences || a[0].localeCompare(b[0]))
+        .map(([buttonText, { occurences, label }]) => ({
             buttonText,
-            occurances,
+            occurences,
             label,
         }));
 }
@@ -135,7 +135,7 @@ function main() {
         .filter((file) => file.endsWith('.json') && file !== METADATA_FILE_NAME)
         .map((file) => path.join(inputDir, file));
 
-    /** @type {Map<string, { occurances: number, label: string }>} */
+    /** @type {Map<string, { occurences: number, label: string }>} */
     const data = opts.output && fs.existsSync(opts.output) ? readExistingData(opts.output) : new Map();
 
     if (opts.output && data.size > 0) {
@@ -154,9 +154,9 @@ function main() {
         for (const normalized of collectDistinctButtonTextsFromCrawl(crawlData)) {
             const existing = data.get(normalized);
             if (existing) {
-                existing.occurances += 1;
+                existing.occurences += 1;
             } else {
-                data.set(normalized, { occurances: 1, label: '' });
+                data.set(normalized, { occurences: 1, label: '' });
             }
         }
     }
