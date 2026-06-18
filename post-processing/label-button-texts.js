@@ -68,9 +68,7 @@ async function main() {
     });
 
     const csv = buttonTextRowsToCsv(rows);
-    const tempPath = `${inputPath}.tmp`;
-    fs.writeFileSync(tempPath, csv);
-    fs.renameSync(tempPath, inputPath);
+    fs.writeFileSync(inputPath, csv);
 
     console.error(`Updated ${unlabelledIndices.length} labels in ${inputPath}`);
 }
