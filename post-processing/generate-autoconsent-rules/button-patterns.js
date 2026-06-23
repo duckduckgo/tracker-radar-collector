@@ -961,7 +961,6 @@ const ACCEPT_PATTERNS = [
     'akzeptieren weiter',
     'akceptuję!',
     'akceptuję wszystkie cookies',
-    'potwierdzam',
     'accepteren',
     'akceptuję wszystko',
     'akceptuję wszystkie i korzystam z usług',
@@ -1055,6 +1054,7 @@ const ACKNOWLEDGE_PATTERNS = [
     'zezwól na wybrane',
     'zgoda na wybrane',
     'kontynuuj',
+    'potwierdzam',
     'zamknij okno',
     'zapisz i zamknij',
 ];
