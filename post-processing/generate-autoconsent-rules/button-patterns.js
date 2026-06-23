@@ -495,7 +495,6 @@ const REJECT_PATTERNS_SPANISH = [
     'declinar',
     'aceptar solo las cookies esenciales',
     'necesarias',
-    'aceptar cookies opcionales',
     'aceptar solo lo necesario',
     'solo funcionales',
     'declinar y cerrar',
@@ -1018,7 +1017,6 @@ const ACKNOWLEDGE_PATTERNS = [
     // Spanish (ES)
     'entendido',
     'dacord',
-    'cerca',
     'cerrar',
     'continuar',
     'siguiente',
