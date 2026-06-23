@@ -1,6 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const { program } = require('commander');
+const ProgressBar = require('progress');
+const chalk = require('chalk');
+const asyncLib = require('async');
 const { cleanButtonText } = require('./generate-autoconsent-rules/detection');
 const { readButtonTextCsv, buttonTextRowsToCsv } = require('./button-text-csv');
 
@@ -10,6 +13,7 @@ program
     .description('Collect normalized button texts from potentialPopups in crawl output (one count per site per button text)')
     .requiredOption('-i, --input <path>', 'path to folder with crawl JSON output')
     .option('-o, --output <path>', 'path to write CSV output (defaults to stdout)')
+    .option('-p, --parallel <n>', 'Number of pages to process in parallel', '50')
     .parse(process.argv);
 
 const opts = program.opts();
@@ -124,16 +128,23 @@ function buildRows(data) {
         }));
 }
 
-function main() {
+async function main() {
+    const parallel = parseInt(opts.parallel, 10);
+
     if (!fs.existsSync(inputDir)) {
         console.error('input directory does not exist:', inputDir);
         process.exit(1);
     }
 
-    const dataFiles = fs
-        .readdirSync(inputDir)
-        .filter((file) => file.endsWith('.json') && file !== METADATA_FILE_NAME)
-        .map((file) => path.join(inputDir, file));
+    const pages = fs.readdirSync(inputDir).filter((name) => name.endsWith('.json') && name !== METADATA_FILE_NAME);
+    const progressBar = process.env.IS_CI
+        ? null
+        : new ProgressBar('[:bar] :current/:total :percent ETA :etas rate :rate/s :page', {
+              complete: chalk.green('='),
+              incomplete: ' ',
+              total: pages.length,
+              width: 30,
+          });
 
     /** @type {Map<string, { occurences: number, label: string }>} */
     const data = opts.output && fs.existsSync(opts.output) ? readExistingData(opts.output) : new Map();
@@ -142,13 +153,20 @@ function main() {
         console.error(`Loaded ${data.size} existing button texts from ${opts.output}`);
     }
 
-    for (const filePath of dataFiles) {
+    await asyncLib.eachOfLimit(pages, parallel, async (page, /** @type {number} */ index) => {
+        if (!progressBar) {
+            console.error(`${index + 1}/${pages.length} : ${page}`);
+        }
+        const filePath = path.join(inputDir, page);
+
         let crawlData;
         try {
-            crawlData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            const contents = await fs.promises.readFile(filePath, 'utf-8');
+            crawlData = JSON.parse(contents);
         } catch (error) {
             console.error(`failed to parse ${filePath}:`, error);
-            continue;
+            progressBar?.tick({ page });
+            return;
         }
 
         for (const normalized of collectDistinctButtonTextsFromCrawl(crawlData)) {
@@ -159,7 +177,8 @@ function main() {
                 data.set(normalized, { occurences: 1, label: '' });
             }
         }
-    }
+        progressBar?.tick({ page });
+    });
 
     const rows = buildRows(data);
     const csv = buttonTextRowsToCsv(rows);
