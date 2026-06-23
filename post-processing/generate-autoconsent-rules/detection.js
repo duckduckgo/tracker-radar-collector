@@ -373,7 +373,7 @@ async function classifyPopup(popup, openai) {
         regexMatch = checkHeuristicPatterns(popupText);
         llmMatch = await checkLLM(openai, popupText);
     }
-    // only label buttons if the popup is considered a cookie popup by regex
+    // only label buttons if the popup is considered a cookie popup by regex or LLM
     const buttons = regexMatch || llmMatch ? await labelButtons(popup.buttons, openai) : popup.buttons;
     const { rejectButtons, otherButtons } = classifyButtons(buttons);
 
