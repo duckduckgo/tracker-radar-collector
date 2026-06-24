@@ -247,7 +247,7 @@ into exactly one of the following categories:
   all", "I agree", "Allow all cookies"). The language must reference agreement or
   acceptance, not just dismissal.
 - reject: rejects cookies or opts out, including accepting only minimal/essential
-  cookies (e.g. "Reject all", "Essential only", "Do not sell my data"). 
+  cookies (e.g. "Reject all", "Essential only", "Do not sell my data").
 - acknowledge: dismisses the notice with neutral language that does not explicitly
   reference accepting or rejecting (e.g. "OK", "Got it", "Close", "Continue",
   "I understand", "×").
