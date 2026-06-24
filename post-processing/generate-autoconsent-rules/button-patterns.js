@@ -515,7 +515,6 @@ const REJECT_PATTERNS_SPANISH = [
     'permitir solo cookies técnicas',
     'usar solo cookies técnicas',
     'aceptar solo las esenciales',
-    'continuar sin aceptar',
     'no aceptar',
     'rexeitar todas',
     'no consentir',
