@@ -606,8 +606,8 @@ const REJECT_PATTERNS_SWEDISH = [
 // Extra patterns for this run, provided via environment variable, comma-separated
 const REJECT_PATTERNS_EXTRA = process.env.REJECT_PATTERNS_EXTRA
     ? process.env.REJECT_PATTERNS_EXTRA.split(',')
-        .map((s) => s.trim())
-        .filter(Boolean)
+          .map((s) => s.trim())
+          .filter(Boolean)
     : [];
 
 /**
