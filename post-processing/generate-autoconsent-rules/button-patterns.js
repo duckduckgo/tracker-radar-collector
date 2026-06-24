@@ -1,8 +1,8 @@
 // FIXME: these are duplicated in Autoconsent
 const REJECT_PATTERNS_ENGLISH = [
-    // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject all non-essential cookies and continue", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close"
+    // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject all non-essential cookies and continue", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close", "i reject all (except strictly necessary)"
     // note that "reject and subscribe" and "reject and pay" are excluded
-    /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*$/is,
+    /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*(\(?\s*except\s+(strictly\s+)?(necessary|essential)\s*\)?)?\s*$/is,
 
     // e.g. "i do not accept", "i do not accept cookies", "do not accept", "do not accept cookies"
     /^\s*(i)?\s*do\s+not\s+accept\s*(cookies)?\s*$/is,
@@ -26,6 +26,9 @@ const REJECT_PATTERNS_ENGLISH = [
     // often used in CCPA
     /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*info(rmation)?\s*$/is,
 
+    'allow selection',
+    'disagree and close',
+
     // These are impactful, but look error-prone
     // // e.g. "disagree"
     /^(i)?\s*disagree\s*(and\s+close)?$/i,
@@ -34,7 +37,6 @@ const REJECT_PATTERNS_ENGLISH = [
     'no',
     /^no,? thanks$/is,
     /^opt[ -]out$/is,
-    'accept optional cookies',
 ];
 
 const REJECT_PATTERNS_DUTCH = [
@@ -47,6 +49,7 @@ const REJECT_PATTERNS_DUTCH = [
     'alleen noodzakelijk',
     'weiger',
     'weiger cookies',
+    'selectie toestaan',
     'doorgaan zonder te accepteren',
     'alleen functionele cookies',
     'alleen functioneel',
@@ -150,6 +153,8 @@ const REJECT_PATTERNS_FRENCH = [
     'tout refuser',
     'refuser',
     'refuser tous les cookies',
+    'non merci',
+    'interdire tous les cookies',
     'je refuse',
     'refuser tout',
     'tout rejeter',
@@ -238,6 +243,8 @@ const REJECT_PATTERNS_GERMAN = [
     'nur notwendige cookies',
     'nur essenzielle cookies akzeptieren',
     'nur notwendige cookies verwenden',
+    'nur technisch notwendige',
+    'nur essentielle cookies akzeptieren',
     'alles ablehnen',
     'nur notwendige',
     'alle cookies ablehnen',
@@ -462,6 +469,7 @@ const REJECT_PATTERNS_SPANISH = [
     'rechazar opcionales',
     'cookies estrictamente necesarias',
     'aceptar sólo necesarias',
+    'continuar sin aceptar',
     'denegar todo',
     'clear rechazar cookies',
     'configurar rechazar cookies',
