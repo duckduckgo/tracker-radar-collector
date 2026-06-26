@@ -108,14 +108,12 @@ function checkHeuristicPatterns(allText) {
         /almacenar la información en un dispositivo y\/?o acceder a ella/i,
         /cookie.{0,30} utiliza/i,
         /cookies propias y de/gi,
-        /cookies pròpies i de tercers/gi,
         /cookies.{0,80}son necesarias/i,
         /est[ea] (sitio|página|web)( web)?( también)? (usa|utiliza|requiere del uso de|se sirven|emplea) cookies?/i,
         /navegando.{0,100}cookie/i,
         /nosotros y nuestros( \d+)? (socios|proveedores).{0,180} cookies/gi,
         /recopilamos y almacenamos datos de usted y de su dispositivo/gi,
         /si haces? clic.{0,20}acept/i,
-        /utilitzem galetes/gi,
         /utilizamos tecnolog[ií]as como las cookies/i,
 
         // Polish (PL)
@@ -143,6 +141,32 @@ function checkHeuristicPatterns(allText) {
         /wykorzystują .{0,100}cookie/gi,
         /za pomocą plików cookies.{0,100} my lub nasi partnerzy/gi,
         /zgodą my i nasi partnerzy możemy wykorzystywać precyzyjne dane geolokalizacyjne i identyfikację/gi,
+
+        // Catalan (CA)
+        /cookies pròpies i de tercers/gi,
+        /utilitzem galetes/gi,
+        /\búnicament utilitza galetes pròpies amb finalitat tècnica\b/i,
+        /este lloc web utilitza només cookies tècniques necessàries per al seu funcionament/i,
+        /utilitza cookies tècniques,\s*de personalització i anàlisi/i,
+        /utilitzem cookies i altres tecnologies/i,
+
+        // Basque (EU)
+        /cookie propio eta hirugarrenenak helburu teknikoarekin erabiltzen ditu/i,
+        /cookie propioak eta hirugarrenen cookieak erabiltzen ditugu/i,
+        /cookie propioak eta hirugarrenenak helburu teknikoarekin erabiltzen ditu/i,
+        /cookie[-\s]*ak erabiltzen ditu/i,
+        /cookieak erabiltzen ditu/i,
+        /guk eta gure \d+ bazkideek cookieak eta identifikadoreak erabiltzen ditugu/i,
+        /norberaren eta hirugarrenen cookie-?ak baino ez ditu erabiltzen/i,
+        /web orri honek cookieak erabiltzen ditu/i,
+        /webgune honek cookie propioak eta hirugarrenen cookie-fitxategiak erabiltzen ditu/i,
+
+        // Galician (GL)
+        /^\s*empregamos cookies propias\b/i,
+        /este portal emprega cookies propias ou de terceiros con fins analíticos/i,
+
+        // Russian (RU)
+        /мы используем файлы cookie и аналогичные технологии/i,
     ];
 
     for (const p of DETECT_PATTERNS) {
