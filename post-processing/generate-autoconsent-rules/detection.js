@@ -96,6 +96,80 @@ function checkHeuristicPatterns(allText) {
         /doorgaan zonder (?:te accepteren|akkoord te gaan)/gi,
         /alleen.{0,100}(?:optionele|functionele|functioneel|noodzakelijke|essentiële).{0,100}cookies/gi,
         /wijs alles af/gi,
+
+        // Spanish (ES)
+        /(si|al) contin[úu]a[sr]?( navegando)?.{0,100} cookie/i,
+        /(usamos|utilizar?|utilizamos)( (tanto|las))?.{0,20}cookie/gi,
+        /\b(hacemos|hace) uso de cookies\b/i,
+        /\busa cookies de google\b/i,
+        /acepta.{0,80} uso de cookies/i,
+        /al hacer clic.{0,80}aceptar/i,
+        /al utilizar nuestro sitio web.{0,80}cookie/i,
+        /almacenar la información en un dispositivo y\/?o acceder a ella/i,
+        /cookie.{0,30} utiliza/i,
+        /cookies propias y de/gi,
+        /cookies.{0,80}son necesarias/i,
+        /est[ea] (sitio|página|web)( web)?( también)? (usa|utiliza|requiere del uso de|se sirven|emplea) cookies?/i,
+        /navegando.{0,100}cookie/i,
+        /nosotros y nuestros( \d+)? (socios|proveedores).{0,180} cookies/gi,
+        /recopilamos y almacenamos datos de usted y de su dispositivo/gi,
+        /si haces? clic.{0,20}acept/i,
+        /utilizamos tecnolog[ií]as como las cookies/i,
+
+        // Polish (PL)
+        // examples:
+        //  wykorzystuje pliki cookie (uses cookies)
+        //  Wykorzystujemy informacje w plikach cookie (We use information in cookies)
+        /(używamy|stosujemy|stosuje|wykorzystujemy|wykorzyst(uje|ywane))( są)?.{0,20} plik(i|ów|ach) cookie/i,
+        /(używać|używamy).{0,80} (ciasteczek|cookie)/i,
+        /cele przetwarzania twoich danych przez zaufanych partnerów iab/i,
+        /dzięki (plikom cookie|ciasteczkom|cookie)/i,
+        /korzysta.{0,80} plików cookie/i,
+        /korzystamy z technologii, takich jak pliki cookie/gi,
+        /korzystamy.{0,50} cookies/i,
+        /niektóre pliki cookies/i,
+        /pliki cookies i pokrewne im technologie umożliwiają poprawne działanie strony i pomagają nam dostosować ofertę do twoich potrzeb/i,
+        /przechowywanie informacji na urządzeniu lub dostęp do nich/i,
+        /przechowywanie plików cookie na swoim urządzeniu/i,
+        /przechowywać i uzyskiwać dostęp do informacji na twoich urządzeniach/gi,
+        /przetwarzamy.{0,80} cookie/i,
+        /strona.{0,50} używa (ciasteczek|cookie)/gi,
+        /ta strona korzysta z ciasteczek/i,
+        /uzyskujemy dostęp i przechowujemy informacje na urządzeniu/gi,
+        /używa plik[ió]w? cookie/gi,
+        /używamy plików.{0,20}cookie/i,
+        /wykorzystują .{0,100}cookie/gi,
+        /za pomocą plików cookies.{0,100} my lub nasi partnerzy/gi,
+        /zgodą my i nasi partnerzy możemy wykorzystywać precyzyjne dane geolokalizacyjne i identyfikację/gi,
+
+        // Catalan (CA)
+        /cookies pròpies i de tercers/gi,
+        /utilitzem galetes/gi,
+        /\búnicament utilitza galetes pròpies amb finalitat tècnica\b/i,
+        /este lloc web utilitza només cookies tècniques necessàries per al seu funcionament/i,
+        /utilitza cookies tècniques,\s*de personalització i anàlisi/i,
+        /utilitzem cookies i altres tecnologies/i,
+
+        // Basque (EU)
+        /cookie propio eta hirugarrenenak helburu teknikoarekin erabiltzen ditu/i,
+        /cookie propioak eta hirugarrenen cookieak erabiltzen ditugu/i,
+        /cookie propioak eta hirugarrenenak helburu teknikoarekin erabiltzen ditu/i,
+        /cookie[-\s]*ak erabiltzen ditu/i,
+        /cookieak erabiltzen ditu/i,
+        /guk eta gure \d+ bazkideek cookieak eta identifikadoreak erabiltzen ditugu/i,
+        /norberaren eta hirugarrenen cookie-?ak baino ez ditu erabiltzen/i,
+        /web orri honek cookieak erabiltzen ditu/i,
+        /webgune honek cookie propioak eta hirugarrenen cookie-fitxategiak erabiltzen ditu/i,
+
+        // Galician (GL)
+        /^\s*empregamos cookies propias\b/i,
+        /este portal emprega cookies propias ou de terceiros con fins analíticos/i,
+
+        // Russian (RU)
+        /мы используем файлы cookie и аналогичные технологии/i,
+
+        // Italian (IT)
+        /usiamo.{0,20}cookie/gi,
     ];
 
     for (const p of DETECT_PATTERNS) {
