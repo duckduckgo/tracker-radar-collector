@@ -167,6 +167,9 @@ function checkHeuristicPatterns(allText) {
 
         // Russian (RU)
         /мы используем файлы cookie и аналогичные технологии/i,
+
+        // Italian (IT)
+        /usiamo.{0,20}cookie/gi,
     ];
 
     for (const p of DETECT_PATTERNS) {

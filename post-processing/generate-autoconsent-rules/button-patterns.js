@@ -979,6 +979,9 @@ const SETTINGS_PATTERNS = [
     // Russian (RU)
     'настроить файлы cookie',
     'настройки',
+
+    // Italian (IT)
+    'personalizza cookie',
 ];
 
 const ACCEPT_PATTERNS = [
@@ -1121,6 +1124,10 @@ const ACCEPT_PATTERNS = [
 
     // Turkish (TR)
     'kabul et',
+
+    // Italian (IT)
+    'accetta',
+    'accetta tutti i cookie',
 ];
 
 const ACKNOWLEDGE_PATTERNS = [
