@@ -99,7 +99,7 @@ function checkHeuristicPatterns(allText) {
 
         // Spanish (ES)
         /(si|al) contin[úu]a[sr]?( navegando)?.{0,100} cookie/i,
-        /(usamos|utilizar?|utilizamos|usiamo)( (tanto|las))?.{0,20}cookie/gi,
+        /(usamos|utilizar?|utilizamos)( (tanto|las))?.{0,20}cookie/gi,
         /\b(hacemos|hace) uso de cookies\b/i,
         /\busa cookies de google\b/i,
         /acepta.{0,80} uso de cookies/i,
