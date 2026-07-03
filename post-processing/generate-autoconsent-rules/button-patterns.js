@@ -26,7 +26,6 @@ const REJECT_PATTERNS_ENGLISH = [
     // often used in CCPA
     /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*info(rmation)?\s*$/is,
 
-    'allow selection',
     'disagree and close',
 
     // These are impactful, but look error-prone
@@ -37,6 +36,8 @@ const REJECT_PATTERNS_ENGLISH = [
     'no',
     /^no,? thanks$/is,
     /^opt[ -]out$/is,
+
+    'i accept only necessary cookies',
 ];
 
 const REJECT_PATTERNS_DUTCH = [
@@ -811,8 +812,8 @@ const SETTINGS_PATTERNS = [
     'let me choose',
     'cookieconsent preferences',
     /privacy choices/is,
-    /(privacy|cookie|custom) settings/is,
-    /cookies? (settings|preferences|setting)/is,
+    /^(privacy|cookie|custom) settings$/is,
+    /^cookies? (settings|preferences|setting)$/is,
     /(manage|customize|customise|opt-out|edit).*(cookies|preferences|settings|options)/is,
     'cookie consent options',
     'privacy controls',
@@ -983,6 +984,7 @@ const ACCEPT_PATTERNS = [
     /accept all$/is,
     'im ok with that',
     'accept optional cookies',
+    'allow selection',
 
     /^alle (cookies )?akzeptieren$/is,
 
@@ -1008,15 +1010,18 @@ const ACCEPT_PATTERNS = [
     'de acuerdo y cerrar',
     'de acuerdo',
     'estoy de acuerdo',
+    'guardar preferencias',
     'ok, las acepto',
     'permitir cookies',
     'permitir todas las cookies',
     'permitir',
     'permitirlas todas',
+    'permitir la selección',
     /^s[íi], acepto todas las cookies$/,
     /^s[íi], acepto$/,
     /^s[íi], estoy de acuerdo$/,
     'x aceptar y cerrar',
+    'aceptar selección',
 
     // Catalan (CA)
     /^accept(ar|o)( cookies)?$/,
@@ -1030,6 +1035,7 @@ const ACCEPT_PATTERNS = [
     'acepta-les totes',
     'permet-les totes',
     'permetre totes les cookies',
+    'permetre la selecció',
 
     // Basque (EU)
     /^denak? onartu$/,
@@ -1067,6 +1073,7 @@ const ACCEPT_PATTERNS = [
     //  akceptuj wszystkie pliki cookie (Accept all cookies)
     /^(zaakceptuj|akceptuj[eę]|akceptuj) ?(wszystkie|wszystko)?( pliki)? ?(zgody|ciasteczka|cookies?)?$/,
     'akceptowanie plików cookie',
+    'akceptuj wybrane',
     'akceptuj i zamknij',
     'akceptuj wszystkie i przejdź do serwisu',
     'akceptuję i przechodzę do serwisu',
@@ -1089,17 +1096,23 @@ const ACCEPT_PATTERNS = [
     'zaakceptuj wszystkie i przejdź do serwisu',
     'zaakceptuj wszystkie zgody i wejdź do serwisu',
     'zaakceptuj wszystkie zgody i zapisz',
+    'zapisz ustawienia i zamknij',
+    'zapisz ustawienia',
     'zatwierdź',
     'zezwolenie na wszystkie',
     'zezwól na wszystkie ciasteczka',
     'zezwól na wszystkie cookies',
     'zezwól na wszystkie pliki cookies',
     'zezwól na wszystkie',
+    'zezwól na wybór',
     'zezwól',
     'zgadzam się na wszystkie',
     'zgadzam się',
     'zgoda na wszystkie',
     'zgoda',
+    'zaakceptuj wybrane',
+    'zezwól na wybrane',
+    'zgoda na wybrane',
 
     // Russian (RU)
     'принять все файлы cookie',
@@ -1130,49 +1143,37 @@ const ACKNOWLEDGE_PATTERNS = [
     // Spanish (ES)
     /^.?( lo)?(entendido|entiendo).?$/s,
     'aceptar seleccionadas',
-    'aceptar selección',
     'cerrar',
     'confirmar',
     'continuar',
     'guardar configuración',
-    'guardar preferencias',
     'guardar selección',
     'guardar y cerrar',
     'ir al contenido principal',
     'ok, gracias',
-    'permitir la selección',
     'seguir',
     'vale',
     '¡vamos!',
 
     // Catalan (CA)
     'dacord',
-    'permetre la selecció',
 
     // Polish (PL)
-    'akceptuj wybrane',
     'kontynuuj',
     'ok, zrozumiałem',
     /^ok.? rozumiem.?$/s,
-    'potwierdzam wybrane',
-    'potwierdzam',
+
     'potwierdź',
     'rozumiem!',
     'rozumiem',
     'rozumiem, nie pokazuj więcej',
     'w porządku!',
     'w porządku',
-    'zaakceptuj wybrane',
     /^zamknij informację o( plikach)? cookies$/,
     'zamknij okno',
     'zamknij x',
     'zamknij',
     'zapisz i zamknij',
-    'zapisz ustawienia i zamknij',
-    'zapisz ustawienia',
-    'zezwól na wybrane',
-    'zezwól na wybór',
-    'zgoda na wybrane',
 
     // Russian (RU)
     'понятно',
