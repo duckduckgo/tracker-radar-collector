@@ -317,14 +317,14 @@ into exactly one of the following categories:
 
 - settings: opens further customization of COOKIE or CONSENT preferences specifically (e.g. "Cookie Settings",
   "Manage preferences", "Preferences", "Customize", "More options", "Manage cookies", "Show details"). Buttons that open other site settings (accessibility, language, etc.) are "other".
-- accept: explicitly accepts cookies or signals agreement to something (e.g. "Accept
-  all", "I agree", "Allow all cookies"). The language must reference agreement or
-  acceptance, not just dismissal.
+- accept: explicitly accepts cookies, permits/allows consent, or signals agreement to something (e.g. "Accept
+  all", "I agree", "Allow all cookies", "Allow selection"). The language must reference agreement,
+  acceptance, or permitting — not just dismissal.
 - reject: rejects cookies or opts out, including accepting only minimal/essential
-  cookies (e.g. "Reject all", "Essential only", "Do not sell my data").
+  cookies and data-sale opt-outs (e.g. "Reject all", "Essential only", "Do not sell my personal information", "opt out").
 - acknowledge: dismisses the notice with neutral language that does not explicitly
-  reference accepting or rejecting (e.g. "OK", "Got it", "Close", "Continue",
-  "I understand", "×").
+  reference accepting or rejecting (e.g. "OK", "Got it", "Close", "Dismiss", "Continue",
+  "I understand", "×", "confirm my choices").
 - other: none of the above (e.g. links to Privacy Policy, Impressum, or other
   informational content). Additionally, anything including payments or subscriptions, age checks, or
   language that suggests that the user would not be able to continue if they click this button, should be classified as other.
@@ -334,11 +334,22 @@ Rules:
     necessary cookies (even if the word "accept" appears), classify as reject.
     Examples: "Strictly necessary", "Essentials", "Required", "Accept necessary cookies",
     "Accept essential only", "Notwendige Cookies akzeptieren" → reject
+- IMPORTANT: "Do not sell", opt-out, decline, or disagree refusing consent → reject.
+- IMPORTANT: Distinguish "confirm/apply a selection" from "open customization":
+    - accept: confirms, saves, or applies the user's current or pre-selected consent choices
+      (e.g. "Allow selection", "Accept selected", "zezwól na wybór", "zezwól na wybrane",
+      "permitir la selección", "akceptuj wybrane").
+    - settings: opens a UI to review, change, or make choices (e.g. "Customize", "Manage preferences",
+      "Let me choose", "dostosuj wybór", "pozwól mi wybrać", "Show details").
+    Verbs like allow/permit/accept + selection/selected → accept.
+    Verbs like customize/manage/adjust/let me choose/show → settings.
+    Apply these rules regardless of language.
 - Only classify buttons that fit unabiguously into one of the categories, otherwise classify as other.
 - If the text contains a negation indicating refusal (e.g. "continue without
   accepting"), classify as reject.
+- Standalone Close, Dismiss, ×, or x, and close/dismiss of cookie banners or notices in any language → acknowledge, not other.
 - If a button could fit multiple categories, prefer in this order:
-  settings > reject > accept > acknowledge > other.
+  reject > accept > settings > acknowledge > other.
 - The button text may be in any language — apply the same rules regardless.
 - Respond with exactly one word: the category label. No explanation, no punctuation.
 - Short affirmatives that imply agreement ("yes", "yeah") → accept, not acknowledge.
@@ -349,11 +360,11 @@ Rules:
 - "Cancel" → other. It cancels an action within a dialog, not a consent decision.
 
 Examples:
-"Cookie Settings", "Manage preferences", "Customize" → settings
-"Accept all", "I agree", "Allow cookies", "Akzeptieren" → accept
-"Reject all", "Essential only", "Ablehnen", "Do not sell my personal information" → reject
-"OK", "Got it", "I understand", "×", "Close cookie notice", "Continue" → acknowledge
-"Privacy Policy", "Cookie-Richtlinie", "Impressum", "Learn more" → other
+"Cookie Settings", "Manage preferences", "Customize", "dostosuj wybór", "pozwól mi wybrać" → settings
+"Accept all", "I agree", "Allow cookies", "Allow selection", "Akzeptieren", "zezwól na wybór", "permitir la selección" → accept
+"Reject all", "Essential only", "Ablehnen", "Do not sell my personal information", "opt out", "disagree and close" → reject
+"OK", "Got it", "I understand", "×", "Close", "Dismiss", "cerrar", "zamknij", "confirm my choices", "Close cookie notice", "Continue" → acknowledge
+"Privacy Policy", "Cookie-Richtlinie", "Impressum", "Learn more", "close ad", "Cancel" → other
     `;
 
     try {
