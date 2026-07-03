@@ -664,13 +664,7 @@ const REJECT_PATTERNS_CATALAN = [
     'refusar i tancar',
 ];
 
-const REJECT_PATTERNS_GALICIAN = [
-    'rexeitar cookies',
-    'rexeitar opcionais',
-    'rexeitar optativas',
-    'rexeitar todas',
-    'rexeitar',
-];
+const REJECT_PATTERNS_GALICIAN = ['rexeitar cookies', 'rexeitar opcionais', 'rexeitar optativas', 'rexeitar todas', 'rexeitar'];
 
 const REJECT_PATTERNS_BASQUE = [
     /^(denak? baztertu|ukatu guztiak)$/,
@@ -682,13 +676,9 @@ const REJECT_PATTERNS_BASQUE = [
     'ukatu',
 ];
 
-const REJECT_PATTERNS_PORTUGUESE = [
-    /^aceitar apenas cookies essenciais\.$/,
-];
+const REJECT_PATTERNS_PORTUGUESE = [/^aceitar apenas cookies essenciais\.$/];
 
-const REJECT_PATTERNS_CZECH = [
-    'povolit pouze nezbytné cookie',
-];
+const REJECT_PATTERNS_CZECH = ['povolit pouze nezbytné cookie'];
 
 const REJECT_PATTERNS_POLISH = [
     // examples:
@@ -750,18 +740,11 @@ const REJECT_PATTERNS_POLISH = [
     'zezwól tylko na niezbędne',
 ];
 
-const REJECT_PATTERNS_RUSSIAN = [
-    'принимать только необходимые файлы cookie',
-];
+const REJECT_PATTERNS_RUSSIAN = ['принимать только необходимые файлы cookie'];
 
-const REJECT_PATTERNS_TURKISH = [
-    'reddet',
-    'çerezleri reddet',
-];
+const REJECT_PATTERNS_TURKISH = ['reddet', 'çerezleri reddet'];
 
-const REJECT_PATTERNS_INDONESIAN = [
-    'tolak cookie',
-];
+const REJECT_PATTERNS_INDONESIAN = ['tolak cookie'];
 
 /**
  * @type {Array<string|RegExp>}
