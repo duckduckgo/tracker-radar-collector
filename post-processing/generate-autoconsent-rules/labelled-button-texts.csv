@@ -62,7 +62,7 @@ akceptuj wszystkie,142,accept
 aceptar cookies,141,accept
 continue,141,acknowledge
 reject,141,reject
-más opciones,140,other
+más opciones,140,settings
 rechazar todo,139,reject
 rechazar todas,134,reject
 personalizar,133,settings
@@ -141,7 +141,7 @@ akceptuj,74,accept
 here,74,other
 socios,74,other
 i accept,73,accept
-rechazar y suscribirse,73,reject
+rechazar y suscribirse,73,other
 consentimiento,71,other
 enter,71,other
 newsletter,71,other
@@ -234,7 +234,7 @@ upload,41,other
 video,41,other
 women,41,other
 pornstars,40,other
-przejdź do serwisu,40,other
+przejdź do serwisu,40,accept
 reject non-essential cookies,40,reject
 ajustes,39,settings
 education,39,other
@@ -260,7 +260,7 @@ men,36,other
 models,36,other
 odrzuć wszystko,36,reject
 yes,36,accept
-zezwól na wybór,36,settings
+zezwól na wybór,36,acknowledge
 advertise,35,other
 configurar tus preferencias aquí,35,settings
 enterprise,35,other
@@ -282,7 +282,7 @@ politics,34,other
 use precise geolocation data,34,other
 contentpass faq,33,other
 lista zaufanych partnerów,33,other
-permitir la selección,33,accept
+permitir la selección,33,acknowledge
 polityka cookies,33,other
 submit,33,other
 tylko niezbędne,33,reject
@@ -521,7 +521,7 @@ datos personales,14,other
 es,14,other
 gestionar los servicios,14,other
 gratuita.,14,other
-guardar preferencias,14,settings
+guardar preferencias,14,acknowledge
 manage my preferences,14,settings
 odrzucam i chcę dowiedzieć się więcej,14,reject
 polityka cookie,14,other
@@ -577,7 +577,7 @@ cookie,11,other
 iniciar sesión con contentpass,11,other
 odmawiam,11,reject
 our 1035 partners,11,other
-pokaż cele,11,other
+pokaż cele,11,settings
 saber más,11,other
 speichern von oder zugriff auf informationen auf einem endgerät,11,other
 third-party cookies,11,other
@@ -668,7 +668,7 @@ polityce prywatności wyborcza.pl,8,other
 política de privacitat,8,other
 pozwól mi wybrać,8,settings
 rebutjar,8,reject
-rechazar y suscribirte,8,reject
+rechazar y suscribirte,8,other
 regulamin,8,other
 reject and pay,8,other
 report,8,other
@@ -749,7 +749,7 @@ accepteren,6,accept
 aceptar las cookies,6,accept
 administrar preferencias,6,settings
 ajustes de cookies,6,settings
-akceptuj wybrane,6,accept
+akceptuj wybrane,6,acknowledge
 akceptuje wszystkie,6,accept
 configuració,6,other
 configuración de anuncios,6,other
@@ -810,7 +810,7 @@ ver nuestros socios,6,other
 ver socios,6,other
 view more info,6,other
 zaakceptuj wszystkie pliki cookie,6,accept
-zapisz ustawienia,6,settings
+zapisz ustawienia,6,acknowledge
 zarządzaj moimi ustawieniami,6,settings
 zmieniam ustawienia,6,settings
 1618 technology partners,5,other
@@ -865,7 +865,7 @@ ok!,5,acknowledge
 online privacy notice.,5,other
 our 1010 partners,5,other
 our 1013 partners,5,other
-permetre la selecció,5,settings
+permetre la selecció,5,acknowledge
 permitir todo,5,accept
 pliki cookie,5,other
 plików cookies,5,other
@@ -882,7 +882,7 @@ reach and across our entities,5,other
 rebutja-ho tot,5,reject
 rechazar cookies no esenciales,5,reject
 rechazar las cookies,5,reject
-"rechazar y suscribirme 3,00 € por mes",5,reject
+"rechazar y suscribirme 3,00 € por mes",5,other
 red de wordpress.com,5,other
 refuse,5,reject
 reject non-necessary cookies,5,reject
@@ -923,7 +923,7 @@ acceptable use policy,4,other
 acceptar cookies,4,accept
 acceptar i tancar,4,accept
 accepter et continuer,4,accept
-aceptar selección,4,accept
+aceptar selección,4,acknowledge
 aceptar y leer gratis,4,other
 aceptar y seguir leyendo,4,accept
 ad partners,4,other
@@ -1063,7 +1063,7 @@ politique de cookies,4,other
 polityką prywatności.,4,other
 políticas de cookies.,4,other
 portal terms and conditions,4,other
-potwierdzam wybrane,4,accept
+potwierdzam wybrane,4,acknowledge
 privacy and cookies policy,4,other
 privacy controls,4,settings
 privacy policies,4,other
@@ -1080,7 +1080,7 @@ purpose of processing,4,other
 read more about cookies,4,other
 read our privacy policy.,4,other
 rechazar y continuar,4,reject
-rechazar y suscribirme,4,reject
+rechazar y suscribirme,4,other
 refuse all cookies,4,reject
 refuser,4,reject
 refuser et sabonner,4,reject
@@ -1104,7 +1104,7 @@ soy mayor de 18 años,4,other
 straight,4,other
 strictly necessary only,4,reject
 subscribe and decline,4,reject
-suscribirme y rechazar,4,reject
+suscribirme y rechazar,4,other
 "sí, estoy de acuerdo",4,accept
 targeting,4,other
 tcf vendors,4,other
@@ -1137,7 +1137,7 @@ wykorzystanie profili do wyboru spersonalizowanych reklam,4,other
 your privacy choices.,4,other
 your state-specific privacy choices,4,other
 zaakceptuj wszystkie zgody i wejdź do serwisu,4,accept
-zaakceptuj wybrane,4,accept
+zaakceptuj wybrane,4,acknowledge
 zarządzaj,4,settings
 zaufanymi partnerami iab (1010),4,other
 zobacz politykę cookies.,4,other
@@ -1385,10 +1385,10 @@ zarządzaj indywidualnymi preferencjami,3,settings
 zarządzaj plikami cookies,3,settings
 zarządzaj preferencjami plików cookie,3,settings
 zezwól,3,accept
-zezwól na wybrane,3,accept
+zezwól na wybrane,3,acknowledge
 zezwól tylko na niezbędne,3,reject
 zgadzam się na wszystkie,3,accept
-zgoda na wybrane,3,accept
+zgoda na wybrane,3,acknowledge
 zmień zgody,3,settings
 zobacz politykę prywatności,3,other
 ¿ya utilizas contentpass ? iniciar sesión,3,other
