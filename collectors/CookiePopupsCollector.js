@@ -6,7 +6,6 @@ const { wait, TimeoutError } = require('../helpers/wait');
 const createDeferred = require('../helpers/deferred');
 const { filterCompactRules } = require('@duckduckgo/autoconsent');
 const compactRules = require('@duckduckgo/autoconsent/rules/compact-rules.json');
-const { consentomatic } = require('@duckduckgo/autoconsent/rules/consentomatic.json');
 
 // @ts-ignore
 const baseContentScript = fs.readFileSync(
@@ -199,9 +198,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
                     disabledCmps: [],
                     enablePrehide: false,
                     enableCosmeticRules: true,
-                    enableFilterList: false,
-                    enableHeuristicDetection: true,
-                    enableHeuristicAction: true,
+                    heuristicMode: 'tier2',
                     detectRetries: 20,
                     isMainWorld: false,
                     performanceLoggingEnabled: true,
@@ -212,7 +209,6 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 /** @type {import('../node_modules/@duckduckgo/autoconsent/lib/types').RuleBundle} */
                 const filteredRules = {
                     autoconsent: [],
-                    consentomatic,
                 };
                 if (compactRules.index) {
                     filteredRules.compact = filterCompactRules(
@@ -230,9 +226,6 @@ class CookiePopupsCollector extends ContentScriptCollector {
                 break;
             }
             case 'popupFound':
-                if (msg.cmp === 'filterList') {
-                    this.scanResult.filterListMatched = true;
-                }
                 if (this.autoAction) {
                     // wait for the scrape job to finish first
                     await this.scrapeJobDeferred.promise;
@@ -655,6 +648,8 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @typedef ButtonData
  * @property {string} text
  * @property {string} selector
+ * @property {'settings'|'accept'|'reject'|'acknowledge'|'other'} [llmClassification]
+ * @property {'settings'|'accept'|'reject'|'acknowledge'|'other'} [regexClassification]
  */
 
 /**
