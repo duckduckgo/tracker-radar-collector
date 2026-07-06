@@ -19,6 +19,12 @@ const REJECT_PATTERNS_ENGLISH = [
     // e.g. "do not sell or share my personal information", "opt out of sale ..." (CCPA)
     /do\s+not\s+sell|opt\s+out\s+of\s+sale/is,
 
+    // e.g. "opt-out of sale/share or targeted advertising", "opt-out of advertising/social media cookies"
+    /^opt[ -]?out of /is,
+
+    // e.g. "reject all except strictly necessary", "reject all (except necessary cookies)"
+    /except\s+(strictly\s+)?necessary/is,
+
     // e.g. "disagree", "i disagree", "disagree and close"
     /^(i\s+)?disagree\s*(and\s+close)?$/i,
 
@@ -71,13 +77,11 @@ const REJECT_PATTERNS_FRENCH = [
 
     // "non" / "non, merci"
     /^non(,?\s+merci\.?)?$/is,
-
-    'allow anonymous analytics',
 ];
 
 const REJECT_PATTERNS_GERMAN = [
-    // "... ablehnen" / "ablehnen ..." (reject/decline). Exclude the settings-list phrase "einstellungen oder ablehnen".
-    /^(?!einstellungen oder ablehnen$).*ablehnen/is,
+    // "... ablehnen" / "ablehnen ..." (reject/decline). Exclude the settings-list phrase "einstell(ungen|en) oder ablehnen".
+    /^(?!einstell(ungen|en) oder ablehnen$).*ablehnen/is,
 
     // verweigern / verweigere / verweigert (refuse)
     /verweiger/is,
@@ -353,7 +357,8 @@ const SETTINGS_PATTERNS = [
     'cookie-details',
     /^datenschutz-?einstellungen$/,
     'cookie-einstellungen',
-    'einstellungen oder ablehnen',
+    /^einstell(ungen|en) oder ablehnen$/,
+    'auswählen',
     /^einstellungen (anpassen|ansehen|verwalten|ändern)$/,
     'erweiterte einstellungen',
     'individuelle datenschutz-präferenzen',
