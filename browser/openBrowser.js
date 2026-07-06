@@ -2,6 +2,7 @@ const {VISUAL_DEBUG} = require('../constants');
 const {downloadChrome} = require('../helpers/chromiumDownload');
 const LocalChrome = require('./LocalChrome');
 const RemoteChrome = require('./RemoteChrome');
+const {getBrowserLocale} = require('./locale');
 
 /**
  * @param {function(...any):void} log
@@ -11,6 +12,7 @@ const RemoteChrome = require('./RemoteChrome');
  * @returns {Promise<import('./BaseBrowser')>}
  */
 async function openBrowser(log, proxyHost, executablePath, seleniumHub) {
+    const browserLocale = getBrowserLocale();
     const extraArgs = [
         // enable FLoC
         // '--enable-blink-features=InterestCohortAPI',
@@ -37,9 +39,14 @@ async function openBrowser(log, proxyHost, executablePath, seleniumHub) {
         extraArgs.push('--disable-dev-shm-usage');
     }
 
+    if (browserLocale) {
+        extraArgs.push(`--lang=${browserLocale}`);
+    }
+
     if (seleniumHub) {
         const seleniumBrowser = new RemoteChrome({
             extraArgs,
+            browserLocale,
             seleniumHub,
         });
         await seleniumBrowser.start();
@@ -48,6 +55,7 @@ async function openBrowser(log, proxyHost, executablePath, seleniumHub) {
 
     const browser = new LocalChrome({
         extraArgs,
+        browserLocale,
         headless: !VISUAL_DEBUG,
         executablePath: executablePath || await downloadChrome(log),
     });

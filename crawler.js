@@ -5,6 +5,7 @@ const { wait, TimeoutError } = require('./helpers/wait');
 const tldts = require('tldts');
 const { DEFAULT_USER_AGENT, MOBILE_USER_AGENT, DEFAULT_VIEWPORT, MOBILE_VIEWPORT, VISUAL_DEBUG } = require('./constants');
 const openBrowser = require('./browser/openBrowser');
+const { getBrowserLocale } = require('./browser/locale');
 
 const targetFilter = [
     // see list of types in https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
@@ -98,9 +99,13 @@ class Crawler {
         });
 
         if (this.options.emulateUserAgent) {
-            await session.send('Network.setUserAgentOverride', {
+            const userAgentOverride = {
                 userAgent: this.options.emulateMobile ? MOBILE_USER_AGENT : DEFAULT_USER_AGENT,
-            });
+            };
+            if (this.options.browserLocale) {
+                userAgentOverride.acceptLanguage = this.options.browserLocale;
+            }
+            await session.send('Network.setUserAgentOverride', userAgentOverride);
         }
 
         if (targetInfo.type === 'page') {
@@ -401,6 +406,7 @@ async function crawl(url, options) {
         ? null
         : await openBrowser(log, options.proxyHost, options.executablePath, options.seleniumHub);
     const browserConnection = options.browserConnection || (await browser.getConnection());
+    const browserLocale = options.browserLocale || getBrowserLocale();
 
     let data = null;
 
@@ -423,6 +429,7 @@ async function crawl(url, options) {
             emulateUserAgent,
             emulateMobile: options.emulateMobile,
             runInEveryFrame: options.runInEveryFrame,
+            browserLocale,
             maxLoadTimeMs,
             extraExecutionTimeMs,
             collectorFlags: options.collectorFlags,
@@ -462,6 +469,7 @@ async function crawl(url, options) {
  * @property {boolean=} filterOutFirstParty
  * @property {boolean=} emulateMobile
  * @property {boolean=} emulateUserAgent
+ * @property {string=} browserLocale
  * @property {string=} proxyHost
  * @property {import('./browser/LocalChrome').BrowserConnection=} browserConnection
  * @property {function():void=} runInEveryFrame
@@ -480,6 +488,7 @@ async function crawl(url, options) {
  * @property {function(string, string):boolean} urlFilter,
  * @property {boolean} emulateMobile,
  * @property {boolean} emulateUserAgent,
+ * @property {string} browserLocale,
  * @property {function():void} runInEveryFrame,
  * @property {number} maxLoadTimeMs,
  * @property {number} extraExecutionTimeMs,

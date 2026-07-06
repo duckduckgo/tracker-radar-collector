@@ -185,6 +185,7 @@ module.exports = LocalChrome;
  * @property {any=} viewport
  * @property {string=} executablePath
  * @property {string[]=} extraArgs
+ * @property {string=} browserLocale
  * @property {boolean=} headless
  */
 
