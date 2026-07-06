@@ -1,8 +1,8 @@
 // FIXME: these are duplicated in Autoconsent
 const REJECT_PATTERNS_ENGLISH = [
-    // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject all non-essential cookies and continue", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close"
+    // e.g. "i reject cookies", "reject all", "reject all cookies", "reject cookies", "deny all", "deny all cookies", "refuse", "refuse all", "refuse cookies", "refuse all cookies", "deny", "reject all and close", "deny all and close", "reject non-essential cookies", "reject all non-essential cookies and continue", "reject optional cookies", "reject additional cookies", "reject targeting cookies", "reject marketing cookies", "reject analytics cookies", "reject tracking cookies", "reject advertising cookies", "reject all and close", "deny all and close", "i reject all (except strictly necessary)"
     // note that "reject and subscribe" and "reject and pay" are excluded
-    /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*$/is,
+    /^\s*(i)?\s*(reject|deny|refuse|decline|disable)\s*(all)?\s*(non-essential|optional|additional|targeting|analytics|marketing|unrequired|non-necessary|extra|tracking|advertising)?\s*(cookies)?\s*(\(?\s*except\s+(strictly\s+)?(necessary|essential)\s*\)?)?\s*$/is,
 
     // e.g. "i do not accept", "i do not accept cookies", "do not accept", "do not accept cookies"
     /^\s*(i)?\s*do\s+not\s+accept\s*(cookies)?\s*$/is,
@@ -24,13 +24,19 @@ const REJECT_PATTERNS_ENGLISH = [
 
     // e.g. "do not sell or share my personal information", "do not sell my personal information"
     // often used in CCPA
-    /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*information\s*$/is,
+    /^\s*do\s+not\s+sell(\s+or\s+share)?\s*my\s*personal\s*info(rmation)?\s*$/is,
+
+    'allow selection',
+    'disagree and close',
 
     // These are impactful, but look error-prone
     // // e.g. "disagree"
-    // /^\s*(i)?\s*disagree\s*(and\s+close)?\s*$/i,
+    /^(i)?\s*disagree\s*(and\s+close)?$/i,
     // // e.g. "i do not agree"
     // /^\s*(i\s+)?do\s+not\s+agree\s*$/i,
+    'no',
+    /^no,? thanks$/is,
+    /^opt[ -]out$/is,
 ];
 
 const REJECT_PATTERNS_DUTCH = [
@@ -43,6 +49,7 @@ const REJECT_PATTERNS_DUTCH = [
     'alleen noodzakelijk',
     'weiger',
     'weiger cookies',
+    'selectie toestaan',
     'doorgaan zonder te accepteren',
     'alleen functionele cookies',
     'alleen functioneel',
@@ -146,6 +153,8 @@ const REJECT_PATTERNS_FRENCH = [
     'tout refuser',
     'refuser',
     'refuser tous les cookies',
+    'non merci',
+    'interdire tous les cookies',
     'je refuse',
     'refuser tout',
     'tout rejeter',
@@ -226,6 +235,7 @@ const REJECT_PATTERNS_FRENCH = [
     'naccepter que les cookies nécessaires',
     'naccepter que les cookies techniques',
     'nécessaires seulement',
+    'je naccepte rien',
 ];
 
 const REJECT_PATTERNS_GERMAN = [
@@ -234,6 +244,8 @@ const REJECT_PATTERNS_GERMAN = [
     'nur notwendige cookies',
     'nur essenzielle cookies akzeptieren',
     'nur notwendige cookies verwenden',
+    'nur technisch notwendige',
+    'nur essentielle cookies akzeptieren',
     'alles ablehnen',
     'nur notwendige',
     'alle cookies ablehnen',
@@ -343,6 +355,8 @@ const REJECT_PATTERNS_GERMAN = [
     'weiter ohne statistische cookies',
     'wesentliche cookies',
     'fortfahren ohne zustimmung',
+    'ich lehne ab',
+    'nicht technische cookies ablehnen',
 ];
 
 const REJECT_PATTERNS_ITALIAN = [
@@ -458,6 +472,7 @@ const REJECT_PATTERNS_SPANISH = [
     'rechazar opcionales',
     'cookies estrictamente necesarias',
     'aceptar sólo necesarias',
+    'continuar sin aceptar',
     'denegar todo',
     'clear rechazar cookies',
     'configurar rechazar cookies',
@@ -483,7 +498,6 @@ const REJECT_PATTERNS_SPANISH = [
     'declinar',
     'aceptar solo las cookies esenciales',
     'necesarias',
-    'aceptar cookies opcionales',
     'aceptar solo lo necesario',
     'solo funcionales',
     'declinar y cerrar',
@@ -504,6 +518,42 @@ const REJECT_PATTERNS_SPANISH = [
     'permitir solo cookies técnicas',
     'usar solo cookies técnicas',
     'aceptar solo las esenciales',
+    'aceptar cookies esenciales',
+    'aceptar esenciales',
+    'aceptar necesarias',
+    'aceptar necesario',
+    'aceptar solo cookies necesarias',
+    'aceptar solo funcionales',
+    'aceptar sólo las necesarias',
+    'descartar todas',
+    'negar todas',
+    'no aceptar',
+    'no consentir',
+    'no estoy de acuerdo',
+    'no gracias',
+    'no permitir',
+    'no, gracias',
+    'prefiero rechazarlas',
+    'pulsa aquí para desactivar las cookies opcionales',
+    /^rechazar cookies \(menos las necesarias\)$/,
+    'rechazar innecesarias',
+    'rechazar la política de cookies',
+    'rechazar todas cookies',
+    'rechazar todos',
+    'rechazarlas todas las cookies',
+    'rechazo las cookies',
+    'rechazo',
+    'recházalo',
+    'revocar consentimiento',
+    'sin consentimiento',
+    'solo cookies esenciales',
+    'solo las cookies esenciales',
+    'solo lo esencial',
+    'sólo cookies propias',
+    'sólo funcionales',
+    'sólo las cookies necesarias',
+    'usar solo las cookies esenciales',
+    'usar solo las necesarias',
 ];
 
 const REJECT_PATTERNS_SWEDISH = [
@@ -598,6 +648,104 @@ const REJECT_PATTERNS_EXTRA = process.env.REJECT_PATTERNS_EXTRA
           .filter(Boolean)
     : [];
 
+const REJECT_PATTERNS_CATALAN = [
+    'denega',
+    'denega-les',
+    'no accepto',
+    'no, gràcies',
+    'rebutja-ho tot',
+    'rebutja-les totes',
+    'rebutja-les',
+    'rebutjar cookies',
+    'rebutjar tot',
+    'rebutjar totes',
+    'rebutjar',
+    'rebutjar-les totes',
+    'refusar i tancar',
+];
+
+const REJECT_PATTERNS_GALICIAN = ['rexeitar cookies', 'rexeitar opcionais', 'rexeitar optativas', 'rexeitar todas', 'rexeitar'];
+
+const REJECT_PATTERNS_BASQUE = [
+    /^(denak? baztertu|ukatu guztiak)$/,
+    'baztertu cookie-ak',
+    'guztiak ukatu',
+    'ukatu cookieak',
+    'ukatu dena',
+    /^ukatu guztiak \(cookie\)$/,
+    'ukatu',
+];
+
+const REJECT_PATTERNS_PORTUGUESE = [/^aceitar apenas cookies essenciais\.$/];
+
+const REJECT_PATTERNS_CZECH = ['povolit pouze nezbytné cookie'];
+
+const REJECT_PATTERNS_POLISH = [
+    // examples:
+    //  odrzuć (Reject)
+    //  odrzuć wszystkie (Reject all)
+    //  odrzuć wszystkie pliki cookie (Reject all cookies)
+    /^(odrzuć|odrzucenie|odrzucam) ?(wszystkie|wszystko|wszystkich)?( pliki)?( cookies?)?.?$/s,
+    /^(zaakceptuj )?tylko niezbędne$/,
+    'akceptuj niezbędne',
+    'akceptuj tylko niezbędne pliki cookie',
+    'akceptuj tylko niezbędne',
+    'akceptuj tylko wymagane',
+    'akceptuj wymagane',
+    'akceptuję niezbędne zgody',
+    'akceptuję wymagane',
+    'blokuj wszystkie',
+    /^funkcjonalne pliki cookie \(wymagane\)$/,
+    'kontynuuj bez akceptacji plików cookie',
+    'kontynuuj bez akceptacji',
+    'kontynuuj bez akceptowania opcjonalnych cookie',
+    'kontynuuj bez akceptowania',
+    'kontynuuj bez wyrażania zgody',
+    'korzystaj wyłącznie z niezbędnych plików cookie',
+    'nie akceptuję',
+    'nie potwierdzam',
+    'nie wyrażaj zgody i zamknij',
+    'nie wyrażam zgody',
+    'nie zezwalaj',
+    'nie zgadzam się',
+    'nie',
+    'nie, dziękuję',
+    'nie, nie zgadzam się na pliki cookie',
+    'niezbędne pliki cookie',
+    'niezbędne',
+    'odmawiam',
+    'odmowa',
+    'odmów',
+    'odmówić',
+    'odrzucam i chcę dowiedzieć się więcej',
+    /^odrzucam wszystkie \*$/,
+    'odrzucanie niepotrzebnych plików cookie',
+    'odrzucać',
+    'odrzuć nieistotne',
+    'odrzuć niewymagane',
+    'odrzuć opcjonalne pliki cookie',
+    'odrzuć opcjonalne',
+    'odrzuć wszystkie zgody',
+    'potwierdzam wymagane',
+    'rezygnuję',
+    'tylko bezwzględnie konieczne',
+    'tylko konieczne',
+    'tylko niezbędne pliki cookie',
+    'tylko wymagane pliki cookie',
+    'tylko wymagane',
+    'zaakceptuj niezbędne',
+    'zaakceptuj wymagane',
+    'zatwierdź tylko wymagane',
+    'zezwól na niezbędne',
+    'zezwól tylko na niezbędne',
+];
+
+const REJECT_PATTERNS_RUSSIAN = ['принимать только необходимые файлы cookie'];
+
+const REJECT_PATTERNS_TURKISH = ['reddet', 'çerezleri reddet'];
+
+const REJECT_PATTERNS_INDONESIAN = ['tolak cookie'];
+
 /**
  * @type {Array<string|RegExp>}
  */
@@ -611,6 +759,15 @@ const REJECT_PATTERNS = [
     ...REJECT_PATTERNS_SPANISH,
     ...REJECT_PATTERNS_SWEDISH,
     ...REJECT_PATTERNS_EXTRA,
+    ...REJECT_PATTERNS_CATALAN,
+    ...REJECT_PATTERNS_GALICIAN,
+    ...REJECT_PATTERNS_BASQUE,
+    ...REJECT_PATTERNS_PORTUGUESE,
+    ...REJECT_PATTERNS_CZECH,
+    ...REJECT_PATTERNS_POLISH,
+    ...REJECT_PATTERNS_RUSSIAN,
+    ...REJECT_PATTERNS_TURKISH,
+    ...REJECT_PATTERNS_INDONESIAN,
 ];
 
 const NEVER_MATCH_PATTERNS = [
@@ -624,9 +781,407 @@ const NEVER_MATCH_PATTERNS = [
     /iscrivere/is,
     /sostienici/is,
     /suscribir/is,
+
+    // Spanish (ES)
+    /^abandonar este sitio$/,
+    /suscribo/,
+    /^accede gratis con cookies publicitarias$/,
+    /pagar/,
+    /suscríbete/,
+    /sin cookies .{0,10}euro/s,
+
+    // Polish (PL)
+    /subskrybuj/,
+];
+
+const SETTINGS_PATTERNS = [
+    'settings',
+    'preferences',
+    /customi(s|z)e/is,
+    'show details',
+    'more options',
+    /(manage|configure) (my|your) (preferences|choices|cookies)/is,
+    'manage choices',
+    /(cookie )?preference center/is,
+    'change settings',
+    'configure',
+    'change my preferences',
+    'cookie manager',
+    'cookie preference',
+    'let me choose',
+    'cookieconsent preferences',
+    /privacy choices/is,
+    /(privacy|cookie|custom) settings/is,
+    /cookies? (settings|preferences|setting)/is,
+    /(manage|customize|customise|opt-out|edit).*(cookies|preferences|settings|options)/is,
+    'cookie consent options',
+    'privacy controls',
+    'show purposes',
+    // German
+    'einstellungen',
+
+    // Spanish (ES)
+    /^(configurar|configuración|administrar)$/,
+    /^(gestionar|ver|establecer) preferencias$/,
+    'administrar cookies',
+    'administrar las cookies',
+    'administrar mis preferencias de cookies',
+    'administrar opciones',
+    'administrar preferencias',
+    'ajustar cookies',
+    'ajustes de cookies',
+    'ajustes',
+    'centro de preferencias',
+    'configura',
+    /^configuración( de( las)?)? cookies?( y servicios)?$/,
+    'configurar cookies',
+    'configurar las cookies',
+    'configurar mis preferencias',
+    'configurar preferencias',
+    'configurar tus preferencias aquí',
+    /^configurar\.\.\.$/,
+    'configurarlas',
+    'detalles',
+    'editar la configuración de cookies',
+    'gestiona tus preferencias',
+    'gestionar configuración de privacidad',
+    /^gestionar ?(las?|mis)? ?(configuración|preferencias)?(( de)? cookies?)?$/,
+    'gestionar opciones',
+    'gestión cookies',
+    'gestión de cookies',
+    'mis preferencias',
+    'mostrar detalles',
+    'mostrar los propósitos',
+    'más opciones',
+    'no, ajustar',
+    'obtener más información y configuración',
+    'opciones de cookies',
+    'opciones de gestión',
+    'panel de configuración de cookies',
+    'personalice',
+    'personalizar cookies',
+    'personalizar elección',
+    'personalizar mis preferencias',
+    'personalizar',
+    'preferencias de cookies',
+    'preferencias de privacidad',
+    'preferencias',
+    'quiero configurarlas',
+    'saber más y personalizar',
+    'seleccionar fines individuales',
+
+    // Catalan (CA)
+    'configura-les',
+    'personalitza',
+    'veure preferències',
+
+    // Galician (GL)
+    'xestionar preferencias',
+
+    // Basque (EU)
+    /^(konfigurazioa|konfiguratu)$/,
+
+    // Portuguese (PT)
+    'gerenciar cookies',
+
+    // French (FR)
+    'paramétrage des cookies',
+    'paramétrer les cookies',
+    'paramétrer vos choix',
+    'personnaliser',
+    'réglages',
+
+    // German (DE)
+    'datenschutzeinstellungen',
+    'individuelle einstellungen',
+    'privatsphäre einstellungen',
+
+    // Dutch (NL)
+    'cookiestatement instellingen',
+    'instellingen',
+    'voorkeuren beheren',
+
+    // Czech (CS)
+    'podrobné nastavení',
+
+    // Polish (PL)
+    // examples:
+    //  dostosuj pliki cookie (adjust cookies)
+    //  zarządzaj plikami cookie (manage cookies)
+    /^(dostosuj|s?personalizuj|chcę dostosować|zarządzaj) ?(moje|moimi)? ?(ustawieniami|preferencjami)? ?(zgody|wybory|(plik(i|ami|ów))? cookies?)?$/,
+    /^(preferencje|zarządzaj preferencjami)$/,
+    /^(ustawienia|zmień ustawienia|zmiana ustawień|zarządzaj opcjami)$/,
+    'centrum preferencji',
+    /^chcę dokonać ustawień cookies\.$/,
+    'dostosuj ustawienia',
+    'dostosuj wybór',
+    'edytuj ustawienia',
+    'konfiguracja zgód',
+    'otwórz ustawienia',
+    'personalizacja',
+    'pokaż cele',
+    'pokaż szczegóły',
+    'pozwól mi wybrać',
+    'preferencje cookies',
+    /^przejdź do ustawień plików cookies\.$/,
+    'przejdź do ustawień prywatności',
+    'przejdź do ustawień',
+    'skonfiguruj',
+    'ustaw preferencje',
+    'ustaw swoje wybory',
+    'ustawienia ciasteczek',
+    'ustawienia dotyczące plików cookie i usług',
+    'ustawienia preferencji',
+    'ustawienia prywatności',
+    'ustawienia szczegółowe',
+    'ustawienia zaawansowane',
+    'ustawienia zgody',
+    /^ustawienia(ch)?( plików)? cookies?$/,
+    'ustawieniach',
+    'ustawień zaawansowanych',
+    'więcej opcji',
+    'więcej ustawień',
+    'wybierz poszczególne cele',
+    /^wybierz, jakie pliki cookies chcesz zaakceptować\.$/,
+    'zaawansowane',
+    'zarządzaj indywidualnymi preferencjami',
+    'zarządzaj plikami cookie i dowiedz się więcej',
+    'zarządzaj zgodami dotyczącymi plików cookies',
+    'zarządzaj zgodami',
+    'zarządzania zgodami',
+    'zarządzanie opcjami',
+    'zarządzanie preferencjami',
+    'zarządzanie ustawieniami plików cookie',
+    'zmieniam ustawienia',
+    'zmieniam zgody',
+    'zmień swoje preferencje',
+    /^zmień ustawienia( plików)? cookies?$/,
+    'zmień zgody',
+    'zobacz preferencje',
+
+    // Russian (RU)
+    'настроить файлы cookie',
+    'настройки',
+
+    // Italian (IT)
+    'personalizza cookie',
+];
+
+const ACCEPT_PATTERNS = [
+    /^(accept|allow)( all)?( cookies)?$/is,
+    /i (accept|allow)( all)?/is,
+    'yes',
+    /^(i )?agree$/is,
+    'continue with all',
+    'accept and continue',
+    /accept all above/is,
+    /^(accept|agree) and close/is,
+    'accept continue',
+    'agree proceed',
+    'allow and continue',
+    'close and accept',
+    /accept all$/is,
+    'im ok with that',
+    'accept optional cookies',
+
+    /^alle (cookies )?akzeptieren$/is,
+
+    // Spanish (ES)
+    /^(aceptar?|permitir) tod(o|as)$/,
+    /^acept(ar|o)( cookies)?$/,
+    /^acept(o|ar) todas las cookies$/,
+    'acepta cookies',
+    'acepta',
+    'aceptar cookies opcionales',
+    'aceptar gratis',
+    'aceptar las cookies',
+    'aceptar todas cookies',
+    'aceptar todas y cerrar',
+    'aceptar todas y continuar',
+    'aceptar todo y cerrar',
+    /^aceptar y (continuar|seguir|navegar)( gratis)?$/,
+    'aceptar y cerrar',
+    'aceptar y seguir navegando',
+    'aceptarlas todas',
+    'consentir todo',
+    'consentir',
+    'de acuerdo y cerrar',
+    'de acuerdo',
+    'estoy de acuerdo',
+    'ok, las acepto',
+    'permitir cookies',
+    'permitir todas las cookies',
+    'permitir',
+    'permitirlas todas',
+    /^s[íi], acepto todas las cookies$/,
+    /^s[íi], acepto$/,
+    /^s[íi], estoy de acuerdo$/,
+    'x aceptar y cerrar',
+
+    // Catalan (CA)
+    /^accept(ar|o)( cookies)?$/,
+    'accepta',
+    'accepta totes les cookies',
+    'accepta-ho tot',
+    'accepta-les totes',
+    'acceptar galetes',
+    'acceptar i tancar',
+    'acceptar tot',
+    'acepta-les totes',
+    'permet-les totes',
+    'permetre totes les cookies',
+
+    // Basque (EU)
+    /^denak? onartu$/,
+    /^onartu \(cookie\)$/,
+    'onartu cookieak',
+    'onartu',
+
+    // Portuguese (PT)
+    'aceitar cookies',
+    'aceitar',
+    'de acordo',
+
+    // French (FR)
+    'accepter et continuer',
+    'accepter',
+    'tout accepter',
+
+    // German (DE)
+    'akzeptieren schließen',
+    'akzeptieren und weiter',
+    'akzeptieren weiter',
+    'akzeptieren',
+    'annehmen',
+    'ich stimme zu',
+
+    // Dutch (NL)
+    'accepteren',
+
+    // Czech (CS)
+    'souhlasím',
+
+    // Polish (PL)
+    // examples:
+    //  akceptuj cookies (Accept cookies)
+    //  akceptuj wszystkie pliki cookie (Accept all cookies)
+    /^(zaakceptuj|akceptuj[eę]|akceptuj) ?(wszystkie|wszystko)?( pliki)? ?(zgody|ciasteczka|cookies?)?$/,
+    'akceptowanie plików cookie',
+    'akceptuj i zamknij',
+    'akceptuj wszystkie i przejdź do serwisu',
+    'akceptuję i przechodzę do serwisu',
+    'akceptuję politykę plików cookies i przechodzę do strony',
+    'akceptuję ustawienia cookies',
+    'akceptuję wszystkie i korzystam z usług',
+    'akceptuję!',
+    'ok, zgadzam się',
+    'potwierdzam wszystkie',
+    'przejdź do serwisu',
+    'tak',
+    'tak, zgadzam się na wszystkie pliki cookie',
+    'tak, zgadzam się',
+    'wyraź zgodę na wszystko',
+    'wyrażam zgodę na wszystkie',
+    'wyrażam zgodę',
+    'włącz wszystkie ciasteczka',
+    'zaakceptuj i kontynuuj',
+    'zaakceptuj i zamknij',
+    'zaakceptuj wszystkie i przejdź do serwisu',
+    'zaakceptuj wszystkie zgody i wejdź do serwisu',
+    'zaakceptuj wszystkie zgody i zapisz',
+    'zatwierdź',
+    'zezwolenie na wszystkie',
+    'zezwól na wszystkie ciasteczka',
+    'zezwól na wszystkie cookies',
+    'zezwól na wszystkie pliki cookies',
+    'zezwól na wszystkie',
+    'zezwól',
+    'zgadzam się na wszystkie',
+    'zgadzam się',
+    'zgoda na wszystkie',
+    'zgoda',
+
+    // Russian (RU)
+    'принять все файлы cookie',
+    'принять',
+
+    // Turkish (TR)
+    'kabul et',
+
+    // Italian (IT)
+    'accetta',
+    'accetta tutti i cookie',
+];
+
+const ACKNOWLEDGE_PATTERNS = [
+    'ok',
+    'close',
+    'continue',
+    'x',
+    /^got it!?$/,
+    'i understand',
+    'dismiss',
+    'okay',
+    'acknowledge',
+    /^close (banner|cookie notification)$/is,
+    /understood$/is,
+    'confirm my choices',
+
+    // Spanish (ES)
+    /^.?( lo)?(entendido|entiendo).?$/s,
+    'aceptar seleccionadas',
+    'aceptar selección',
+    'cerrar',
+    'confirmar',
+    'continuar',
+    'guardar configuración',
+    'guardar preferencias',
+    'guardar selección',
+    'guardar y cerrar',
+    'ir al contenido principal',
+    'ok, gracias',
+    'permitir la selección',
+    'seguir',
+    'vale',
+    '¡vamos!',
+
+    // Catalan (CA)
+    'dacord',
+    'permetre la selecció',
+
+    // Polish (PL)
+    'akceptuj wybrane',
+    'kontynuuj',
+    'ok, zrozumiałem',
+    /^ok.? rozumiem.?$/s,
+    'potwierdzam wybrane',
+    'potwierdzam',
+    'potwierdź',
+    'rozumiem!',
+    'rozumiem',
+    'rozumiem, nie pokazuj więcej',
+    'w porządku!',
+    'w porządku',
+    'zaakceptuj wybrane',
+    /^zamknij informację o( plikach)? cookies$/,
+    'zamknij okno',
+    'zamknij x',
+    'zamknij',
+    'zapisz i zamknij',
+    'zapisz ustawienia i zamknij',
+    'zapisz ustawienia',
+    'zezwól na wybrane',
+    'zezwól na wybór',
+    'zgoda na wybrane',
+
+    // Russian (RU)
+    'понятно',
 ];
 
 module.exports = {
     REJECT_PATTERNS,
     NEVER_MATCH_PATTERNS,
+    SETTINGS_PATTERNS,
+    ACCEPT_PATTERNS,
+    ACKNOWLEDGE_PATTERNS,
 };

@@ -1,6 +1,6 @@
 const { zodResponseFormat } = require('openai/helpers/zod');
 const { z } = require('zod');
-const { REJECT_PATTERNS, NEVER_MATCH_PATTERNS } = require('./button-patterns');
+const { REJECT_PATTERNS, NEVER_MATCH_PATTERNS, SETTINGS_PATTERNS, ACCEPT_PATTERNS, ACKNOWLEDGE_PATTERNS } = require('./button-patterns');
 
 // FIXME: the detection patterns are defined both in autoconsent codebase and here. We should consolidate them in one place.
 /**
@@ -96,6 +96,80 @@ function checkHeuristicPatterns(allText) {
         /doorgaan zonder (?:te accepteren|akkoord te gaan)/gi,
         /alleen.{0,100}(?:optionele|functionele|functioneel|noodzakelijke|essentiële).{0,100}cookies/gi,
         /wijs alles af/gi,
+
+        // Spanish (ES)
+        /(si|al) contin[úu]a[sr]?( navegando)?.{0,100} cookie/i,
+        /(usamos|utilizar?|utilizamos)( (tanto|las))?.{0,20}cookie/gi,
+        /\b(hacemos|hace) uso de cookies\b/i,
+        /\busa cookies de google\b/i,
+        /acepta.{0,80} uso de cookies/i,
+        /al hacer clic.{0,80}aceptar/i,
+        /al utilizar nuestro sitio web.{0,80}cookie/i,
+        /almacenar la información en un dispositivo y\/?o acceder a ella/i,
+        /cookie.{0,30} utiliza/i,
+        /cookies propias y de/gi,
+        /cookies.{0,80}son necesarias/i,
+        /est[ea] (sitio|página|web)( web)?( también)? (usa|utiliza|requiere del uso de|se sirven|emplea) cookies?/i,
+        /navegando.{0,100}cookie/i,
+        /nosotros y nuestros( \d+)? (socios|proveedores).{0,180} cookies/gi,
+        /recopilamos y almacenamos datos de usted y de su dispositivo/gi,
+        /si haces? clic.{0,20}acept/i,
+        /utilizamos tecnolog[ií]as como las cookies/i,
+
+        // Polish (PL)
+        // examples:
+        //  wykorzystuje pliki cookie (uses cookies)
+        //  Wykorzystujemy informacje w plikach cookie (We use information in cookies)
+        /(używamy|stosujemy|stosuje|wykorzystujemy|wykorzyst(uje|ywane))( są)?.{0,20} plik(i|ów|ach) cookie/i,
+        /(używać|używamy).{0,80} (ciasteczek|cookie)/i,
+        /cele przetwarzania twoich danych przez zaufanych partnerów iab/i,
+        /dzięki (plikom cookie|ciasteczkom|cookie)/i,
+        /korzysta.{0,80} plików cookie/i,
+        /korzystamy z technologii, takich jak pliki cookie/gi,
+        /korzystamy.{0,50} cookies/i,
+        /niektóre pliki cookies/i,
+        /pliki cookies i pokrewne im technologie umożliwiają poprawne działanie strony i pomagają nam dostosować ofertę do twoich potrzeb/i,
+        /przechowywanie informacji na urządzeniu lub dostęp do nich/i,
+        /przechowywanie plików cookie na swoim urządzeniu/i,
+        /przechowywać i uzyskiwać dostęp do informacji na twoich urządzeniach/gi,
+        /przetwarzamy.{0,80} cookie/i,
+        /strona.{0,50} używa (ciasteczek|cookie)/gi,
+        /ta strona korzysta z ciasteczek/i,
+        /uzyskujemy dostęp i przechowujemy informacje na urządzeniu/gi,
+        /używa plik[ió]w? cookie/gi,
+        /używamy plików.{0,20}cookie/i,
+        /wykorzystują .{0,100}cookie/gi,
+        /za pomocą plików cookies.{0,100} my lub nasi partnerzy/gi,
+        /zgodą my i nasi partnerzy możemy wykorzystywać precyzyjne dane geolokalizacyjne i identyfikację/gi,
+
+        // Catalan (CA)
+        /cookies pròpies i de tercers/gi,
+        /utilitzem galetes/gi,
+        /\búnicament utilitza galetes pròpies amb finalitat tècnica\b/i,
+        /este lloc web utilitza només cookies tècniques necessàries per al seu funcionament/i,
+        /utilitza cookies tècniques,\s*de personalització i anàlisi/i,
+        /utilitzem cookies i altres tecnologies/i,
+
+        // Basque (EU)
+        /cookie propio eta hirugarrenenak helburu teknikoarekin erabiltzen ditu/i,
+        /cookie propioak eta hirugarrenen cookieak erabiltzen ditugu/i,
+        /cookie propioak eta hirugarrenenak helburu teknikoarekin erabiltzen ditu/i,
+        /cookie[-\s]*ak erabiltzen ditu/i,
+        /cookieak erabiltzen ditu/i,
+        /guk eta gure \d+ bazkideek cookieak eta identifikadoreak erabiltzen ditugu/i,
+        /norberaren eta hirugarrenen cookie-?ak baino ez ditu erabiltzen/i,
+        /web orri honek cookieak erabiltzen ditu/i,
+        /webgune honek cookie propioak eta hirugarrenen cookie-fitxategiak erabiltzen ditu/i,
+
+        // Galician (GL)
+        /^\s*empregamos cookies propias\b/i,
+        /este portal emprega cookies propias ou de terceiros con fins analíticos/i,
+
+        // Russian (RU)
+        /мы используем файлы cookie и аналогичные технологии/i,
+
+        // Italian (IT)
+        /usiamo.{0,20}cookie/gi,
     ];
 
     for (const p of DETECT_PATTERNS) {
@@ -135,13 +209,23 @@ function cleanButtonText(buttonText) {
  * @returns {boolean}
  */
 function isRejectButton(buttonText) {
+    return testButtonMatches(buttonText, REJECT_PATTERNS, NEVER_MATCH_PATTERNS);
+}
+
+/**
+ * @param {string} buttonText
+ * @param {Array<string|RegExp>} matchPatterns
+ * @param {Array<string|RegExp>} neverMatchPatterns
+ * @returns {boolean}
+ */
+function testButtonMatches(buttonText, matchPatterns, neverMatchPatterns) {
     if (!buttonText) {
         return false;
     }
     const cleanedButtonText = cleanButtonText(buttonText);
     return (
-        !NEVER_MATCH_PATTERNS.some((p) => p.test(cleanedButtonText)) &&
-        REJECT_PATTERNS.some((p) => (p instanceof RegExp && p.test(cleanedButtonText)) || p === cleanedButtonText)
+        !neverMatchPatterns.some((p) => (p instanceof RegExp && p.test(cleanedButtonText)) || p === cleanedButtonText) &&
+        matchPatterns.some((p) => (p instanceof RegExp && p.test(cleanedButtonText)) || p === cleanedButtonText)
     );
 }
 
@@ -178,7 +262,7 @@ Examples of NON-cookie popup text:
 
     try {
         const completion = await openai.beta.chat.completions.parse({
-            model: 'gpt-4.1-nano-2025-04-14',
+            model: 'gpt-4o-mini',
             messages: [
                 {
                     role: 'system',
@@ -202,6 +286,117 @@ Examples of NON-cookie popup text:
     return false;
 }
 
+/** @type {Map<string, ButtonClassification>} */
+const buttonClassificationCache = new Map();
+
+const ButtonTextClassificationSchema = z.object({
+    classification: z.enum(['settings', 'accept', 'reject', 'acknowledge', 'other']),
+});
+
+/**
+ * @param {import('openai').OpenAI} openai
+ * @param {string} buttonText
+ * @returns {Promise<ButtonClassification>}
+ */
+async function classifyButtonTextLLM(openai, buttonText) {
+    const cleaned = cleanButtonText(buttonText);
+    if (cleaned.length > 200) {
+        return 'other';
+    }
+
+    const cached = buttonClassificationCache.get(cleaned);
+    if (cached) {
+        return cached;
+    }
+
+    const systemPrompt = `
+You are an expert in web application user interfaces.
+
+You will be given the text of a button found on a cookie consent popup. Classify it
+into exactly one of the following categories:
+
+- settings: opens further customization of COOKIE or CONSENT preferences specifically (e.g. "Cookie Settings",
+  "Manage preferences", "Preferences", "Customize", "More options", "Manage cookies", "Show details"). Buttons that open other site settings (accessibility, language, etc.) are "other".
+- accept: explicitly accepts cookies or signals agreement to something (e.g. "Accept
+  all", "I agree", "Allow all cookies"). The language must reference agreement or
+  acceptance, not just dismissal.
+- reject: rejects cookies or opts out, including accepting only minimal/essential
+  cookies (e.g. "Reject all", "Essential only", "Do not sell my data").
+- acknowledge: dismisses the notice with neutral language that does not explicitly
+  reference accepting or rejecting (e.g. "OK", "Got it", "Close", "Continue",
+  "I understand", "×").
+- other: none of the above (e.g. links to Privacy Policy, Impressum, or other
+  informational content). Additionally, anything including payments or subscriptions, age checks, or
+  language that suggests that the user would not be able to continue if they click this button, should be classified as other.
+
+Rules:
+- IMPORTANT: If a button accepts ONLY necessary, essential, required, or strictly
+    necessary cookies (even if the word "accept" appears), classify as reject.
+    Examples: "Strictly necessary", "Essentials", "Required", "Accept necessary cookies",
+    "Accept essential only", "Notwendige Cookies akzeptieren" → reject
+- Only classify buttons that fit unabiguously into one of the categories, otherwise classify as other.
+- If the text contains a negation indicating refusal (e.g. "continue without
+  accepting"), classify as reject.
+- If a button could fit multiple categories, prefer in this order:
+  settings > reject > accept > acknowledge > other.
+- The button text may be in any language — apply the same rules regardless.
+- Respond with exactly one word: the category label. No explanation, no punctuation.
+- Short affirmatives that imply agreement ("yes", "yeah") → accept, not acknowledge.
+  "acknowledge" is for neutral dismissals that make no reference to agreement.
+- If the button text contains a qualifier that makes it clearly unrelated to cookies
+  or consent (e.g. "ad", "advertisement", "video", "newsletter"), classify as other,
+  regardless of the action word.
+- "Cancel" → other. It cancels an action within a dialog, not a consent decision.
+
+Examples:
+"Cookie Settings", "Manage preferences", "Customize" → settings
+"Accept all", "I agree", "Allow cookies", "Akzeptieren" → accept
+"Reject all", "Essential only", "Ablehnen", "Do not sell my personal information" → reject
+"OK", "Got it", "I understand", "×", "Close cookie notice", "Continue" → acknowledge
+"Privacy Policy", "Cookie-Richtlinie", "Impressum", "Learn more" → other
+    `;
+
+    try {
+        const completion = await openai.beta.chat.completions.parse({
+            model: 'gpt-4o-mini',
+            messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: `"${cleaned}"` },
+            ],
+            response_format: zodResponseFormat(ButtonTextClassificationSchema, 'ButtonTextClassification'),
+        });
+
+        const classification = completion.choices[0].message.parsed?.classification ?? 'other';
+        buttonClassificationCache.set(cleaned, classification);
+        return classification;
+    } catch (error) {
+        console.error('Error classifying button text:', error);
+    }
+
+    buttonClassificationCache.set(cleaned, 'other');
+    return 'other';
+}
+
+/**
+ * @param {string} buttonText
+ * @returns {ButtonClassification}
+ */
+function classifyButtonTextRegex(buttonText) {
+    if (isRejectButton(buttonText)) {
+        return 'reject';
+    }
+    if (testButtonMatches(buttonText, SETTINGS_PATTERNS, NEVER_MATCH_PATTERNS)) {
+        return 'settings';
+    }
+    if (testButtonMatches(buttonText, ACKNOWLEDGE_PATTERNS, NEVER_MATCH_PATTERNS)) {
+        return 'acknowledge';
+    }
+    if (testButtonMatches(buttonText, ACCEPT_PATTERNS, NEVER_MATCH_PATTERNS)) {
+        return 'accept';
+    }
+    return 'other';
+}
+
 /**
  * @param {import('./types').ButtonData[]} buttons
  * @returns {{rejectButtons: import('./types').ButtonData[], otherButtons: import('./types').ButtonData[]}}
@@ -223,6 +418,22 @@ function classifyButtons(buttons) {
 }
 
 /**
+ * @param {import('./types').ButtonData[]} buttons
+ * @param {import('openai').OpenAI} openai
+ * @returns {Promise<import('./types').ButtonData[]>}
+ */
+async function labelButtons(buttons, openai) {
+    /** @type {import('./types').ButtonData[]} */
+    const labelledButtons = [];
+    for (const button of buttons) {
+        const llmClassification = await classifyButtonTextLLM(openai, button.text);
+        const regexClassification = classifyButtonTextRegex(button.text);
+        labelledButtons.push({ ...button, llmClassification, regexClassification });
+    }
+    return labelledButtons;
+}
+
+/**
  * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
  * @param {import('./types').PopupData} popup
  * @param {import('openai').OpenAI} openai
@@ -236,8 +447,9 @@ async function classifyPopup(popup, openai) {
         regexMatch = checkHeuristicPatterns(popupText);
         llmMatch = await checkLLM(openai, popupText);
     }
-
-    const { rejectButtons, otherButtons } = classifyButtons(popup.buttons);
+    // only label buttons if the popup is considered a cookie popup by regex or LLM
+    const buttons = regexMatch || llmMatch ? await labelButtons(popup.buttons, openai) : popup.buttons;
+    const { rejectButtons, otherButtons } = classifyButtons(buttons);
 
     return {
         llmMatch,
@@ -246,6 +458,10 @@ async function classifyPopup(popup, openai) {
         otherButtons,
     };
 }
+
+/**
+ * @typedef {'settings'|'accept'|'reject'|'acknowledge'|'other'} ButtonClassification
+ */
 
 /**
  * @typedef {Object} PopupClassificationResult
@@ -259,4 +475,8 @@ module.exports = {
     classifyButtons,
     classifyPopup,
     checkHeuristicPatterns,
+    classifyButtonTextRegex,
+    classifyButtonTextLLM,
+    cleanButtonText,
+    isRejectButton,
 };

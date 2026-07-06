@@ -30,6 +30,7 @@ const targetFilter = [
     { type: 'other', exclude: true },
     { type: 'auction_worklet', exclude: true },
     { type: 'assistive_technology', exclude: true },
+    { type: 'browser_ui', exclude: true },
 
     // allow all other unknown types
     {},
