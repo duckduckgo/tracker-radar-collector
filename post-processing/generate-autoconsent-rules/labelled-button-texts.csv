@@ -1,812 +1,898 @@
 button_text,occurences,label
-privacy policy,3865,other
-accept all,2729,accept
-reject all,2344,reject
-accept,1778,accept
-accept all cookies,1716,accept
-cookie policy,1703,other
-learn more,1044,other
-impressum,1041,other
-datenschutzerklärung,907,other
-cookies settings,858,settings
-accept cookies,834,accept
-cookie settings,828,settings
-ok,798,acknowledge
-partners,742,other
-política de cookies,688,other
-tout accepter,682,accept
-alle akzeptieren,661,accept
-i accept,645,accept
-sign in,633,other
-manage cookies,623,settings
-more options,605,settings
-list of partners (vendors),604,other
-customize,590,settings
-allow all,588,accept
-aceptar,573,accept
-terms of use,558,other
-agree,544,accept
-tout refuser,538,reject
-manage preferences,537,settings
-about,526,other
-ablehnen,517,reject
-decline,500,reject
-continuer sans accepter,499,reject
-privacy notice,490,other
-show purposes,490,settings
-einstellungen,488,settings
-log in,488,other
+privacy policy,4284,other
+accept all,3169,accept
+reject all,2770,reject
+accept,2046,accept
+cookie policy,1949,other
+accept all cookies,1935,accept
+learn more,1161,other
+impressum,1077,other
+cookies settings,967,settings
+ok,955,acknowledge
+partners,932,other
+datenschutzerklärung,929,other
+cookie settings,914,settings
+accept cookies,889,accept
+details,879,other
+allow all,844,accept
+i accept,803,accept
+list of partners (vendors),793,other
+customize,777,settings
+more options,735,settings
+manage cookies,698,settings
+about,694,other
+tout accepter,693,accept
+política de cookies,692,other
+alle akzeptieren,676,accept
+agree,654,accept
+show purposes,645,settings
+sign in,637,other
+manage preferences,601,settings
+decline,595,reject
+settings,578,settings
+aceptar,574,accept
+terms of use,573,other
+tout refuser,542,reject
+privacy notice,540,other
+ablehnen,522,reject
+weigeren,516,reject
+continuer sans accepter,508,reject
+reject,506,reject
+einstellungen,502,settings
+log in,490,other
+consent,488,other
+personnaliser,476,settings
 home,475,other
-personnaliser,473,settings
-details,467,other
-settings,461,settings
-reject,438,reject
-show details,370,settings
-rechazar,362,reject
-cookies,355,other
-search,355,other
-manage settings,346,settings
-agree and close,342,accept
+show details,468,settings
+cookies,441,other
+deny,432,reject
+manage settings,419,settings
+store andor access information on a device,405,other
+agree and close,399,accept
+"personalised advertising and content, advertising and content measurement, audience research and services development",380,other
+rechazar,363,reject
+search,356,other
+accepteren,353,accept
 news,340,other
-store andor access information on a device,338,other
-accepter,329,accept
-datenschutz,328,other
-politique de confidentialité,325,other
-en savoir plus,321,other
-"personalised advertising and content, advertising and content measurement, audience research and services development",319,other
-consent,311,other
-login,311,other
-akzeptieren,304,accept
-cookie notice,292,other
-sign up,282,other
-deny,279,reject
-powered by,277,other
-allow all cookies,273,accept
-continue without agreeing,272,reject
+accepter,335,accept
+cookie notice,335,other
+datenschutz,335,other
+allow all cookies,331,accept
+politique de confidentialité,331,other
+en savoir plus,323,other
+privacy statement,318,other
+login,315,other
+allow selection,314,accept
+akzeptieren,310,accept
+english,308,other
+continue without agreeing,298,reject
+aanpassen,292,settings
+powered by,289,other
+sign up,283,other
+vendor list,283,other
+customise,281,settings
+continue with recommended cookies,273,accept
+alle ablehnen,271,reject
 configurar,270,settings
-alle ablehnen,269,reject
-english,262,other
-more,258,other
-política de privacidad,257,other
-refuser,257,reject
-customise,250,settings
-speichern von oder zugriff auf informationen auf einem endgerät,249,other
-cookie preferences,248,settings
-vendor list,242,other
+cookie preferences,269,settings
+alles accepteren,262,accept
+speichern von oder zugriff auf informationen auf einem endgerät,261,other
+terms of service,260,other
+alles toestaan,259,accept
+more,259,other
+refuser,259,reject
+política de privacidad,258,other
+decline all,255,reject
+preferences,252,settings
+reject all cookies,249,reject
+cookiebeleid,247,other
+here,243,other
+zustimmen,239,accept
 akceptuję,237,accept
-terms of service,235,other
-alle cookies akzeptieren,234,accept
-continue with recommended cookies,233,accept
-zustimmen,233,accept
-polityce prywatności,231,other
-privacy statement,231,other
-cookie-einstellungen,229,settings
-preferences,227,settings
+alle cookies akzeptieren,236,accept
+cookie-einstellungen,232,settings
+polityce prywatności,232,other
+set your choices,230,settings
+cookies policy,229,other
+deutsch,228,other
+do not accept,228,reject
+toestemming,228,other
+français,225,other
+italiano,224,other
+"personalisierte werbung und inhalte, messung von werbeleistung und der performance von inhalten, zielgruppenforschung sowie entwicklung und verbesserung von angeboten",224,other
+over,223,other
 do not sell my personal information,220,reject
-set your choices,219,settings
-decline all,217,reject
-do not accept,215,reject
-"personalisierte werbung und inhalte, messung von werbeleistung und der performance von inhalten, zielgruppenforschung sowie entwicklung und verbesserung von angeboten",214,other
-subscribe,214,other
-here,213,other
+subscribe,215,other
 aceptar todas,209,accept
-reject all cookies,209,reject
 más información,208,other
-cookies policy,204,other
-deutsch,201,other
-aceptar todo,200,accept
-français,198,other
-italiano,197,other
-allow selection,196,accept
-close,196,acknowledge
-about us,188,other
+close,206,acknowledge
+aceptar todo,201,accept
+hier,199,other
+polski,197,other
+advanced settings,195,settings
+nederlands,194,other
+analytics storage,191,other
+limba română,191,other
+português,191,other
+partner,190,other
+about us,189,other
+got it!,187,acknowledge
 resources,186,other
+continue,185,acknowledge
+terms and conditions,182,other
+"precise geolocation data, and identification through device scanning",181,other
+reject non-essential,180,reject
+i agree,179,accept
 explore,178,other
-partner,178,other
+1175 vendors,177,other
 configurar cookies,177,settings
-continue,176,acknowledge
+disagree,176,reject
 polityka prywatności,176,other
 pricing,175,other
-polski,173,other
-advanced settings,171,settings
-analytics storage,170,other
-blog,170,other
-nederlands,168,other
-terms and conditions,168,other
-limba română,167,other
-português,167,other
-got it!,166,acknowledge
-shop,164,other
-"precise geolocation data, and identification through device scanning",161,other
-privacy policy.,161,other
-paramétrer,160,settings
-contact us,158,other
-datenschutzhinweisen,158,other
-aceptar todas las cookies,157,accept
+blog,171,other
+privacybeleid,171,other
+alles afwijzen,170,reject
+privacy policy.,170,other
+español,169,other
+datenschutzhinweisen,168,other
+paramétrer,166,settings
+shop,165,other
+details tonen,163,settings
+contact us,161,other
+aceptar todas las cookies,160,accept
+your privacy choices,160,other
+use necessary cookies only,159,reject
+configuración de cookies,157,settings
 acepto,156,accept
 ustawienia,156,settings
 watch on,156,other
-your privacy choices,156,other
-1175 vendors,155,other
-configuración de cookies,155,settings
+akkoord,155,accept
+legal notice,155,other
 zgoda,153,accept
 sports,151,other
 dostosuj,150,settings
-i agree,150,accept
 support,150,other
-reject non-essential,148,reject
-legal notice,146,other
+privacy,148,other
+imprint,147,other
+en,144,other
 jaccepte,143,accept
+actively scan device characteristics for identification,142,other
 akceptuj wszystkie,142,accept
+use precise geolocation data,142,other
+accepter fermer,141,acknowledge
 aceptar cookies,141,accept
-disagree,141,reject
-español,140,other
+privacy policy page,141,other
+rechazar todo,141,reject
+selectie toestaan,141,accept
 más opciones,140,settings
-rechazar todo,140,reject
-accepter fermer,138,acknowledge
-en,136,other
+reject cookies,138,reject
+enter,137,other
+reject optional cookies,137,reject
+terms,137,other
+cookie-instellingen,135,settings
 rechazar todas,134,reject
 personalizar,133,settings
+reject non-essential cookies,133,reject
 zgadzam się,133,accept
-hier,131,other
-terms,131,other
+accepteer alles,131,accept
 zezwól na wszystkie,131,accept
 ustawienia zaawansowane,130,settings
+x,130,acknowledge
+customize settings,128,settings
+eu law,128,other
+faq,128,other
+manage my choices,128,settings
 szczegóły,128,settings
-reject cookies,127,reject
-actively scan device characteristics for identification,126,other
-use precise geolocation data,126,other
+cookieverklaring,127,other
+help,127,other
 categories,125,other
-help,125,other
-use necessary cookies only,125,reject
 community,124,other
-imprint,123,other
-reject non-essential cookies,122,reject
-reject optional cookies,122,reject
+privacyverklaring,122,other
 videos,121,other
-x,120,acknowledge
-enter,119,other
-accepter et fermer,116,accept
-faq,116,other
+alle cookies toestaan,118,accept
+contentpass faq,118,other
+accepter et fermer,117,accept
+cookie-richtlinie,116,other
 feedback,116,other
-customize settings,115,settings
 o plikach cookies,115,other
-privacy policy page,114,other
-cookie-richtlinie,113,other
 akceptuj wszystko,112,accept
+more information,112,other
 press hold human challenge requires verification. please press and hold the button until verified,112,other
 business,111,other
-contentpass faq,111,other
 denegar,111,reject
 odrzuć wszystkie,111,reject
 products,111,other
+anpassen,110,settings
+datenschutzeinstellungen,110,settings
+got it,110,acknowledge
+politique de cookies,110,other
+read more,110,other
+disagree and close,109,reject
 accepter tout,108,accept
-anpassen,108,settings
 alles akzeptieren,107,accept
+instellingen,107,settings
+über cookies,107,other
+zustimmung,107,accept
 odrzuć,106,reject
-politique de cookies,106,other
 register,106,other
-über cookies,106,other
-zustimmung,106,accept
-datenschutzeinstellungen,105,settings
 history,105,other
-eu law,104,other
-got it,103,acknowledge
+our 1022 partners,105,other
+contact,104,other
+cookie policy.,104,other
+essential cookies only,104,reject
+more info,104,other
+accept only essential cookies,103,reject
+continue without accepting,103,reject
 paramètres des cookies,101,settings
-contact,100,other
 dowiedz się więcej,100,other
-more information,100,other
-disagree and close,99,reject
+1618 technology partners,99,other
 aviso legal,98,other
-privacy,98,other
+drittanbieter,98,other
 forums,97,other
-manage my choices,97,settings
-read more,97,other
-continue without accepting,96,reject
 do not sell or share my personal information,96,reject
-essential cookies only,96,reject
-more info,95,other
-drittanbieter,93,other
-cookie policy.,92,other
-features,90,other
-i accept cookies,90,accept
+our partners,96,other
+manage,95,other
+i accept cookies,94,accept
+allow essential cookies,91,reject
+details section,91,settings
+features,91,other
 no thanks,90,reject
+our privacy policy,90,other
 więcej opcji,90,settings
+alle cookies accepteren,89,accept
 saved,89,other
+akceptuję i przechodzę do serwisu,88,accept
 create a free account,88,other
-our 1022 partners,88,other
-akceptuję i przechodzę do serwisu,87,accept
 progress,87,other
 rechazar cookies,87,reject
+mit contentpass einloggen,86,other
 spersonalizuj,86,settings
+nuestros socios,85,other
 submit feedback.,85,other
 autoriser tous les cookies,84,accept
-manage,84,other
-nuestros socios,84,other
+events,84,other
 zaakceptuj wszystkie,84,accept
+alleen noodzakelijke cookies,83,reject
 datenschutzhinweis,83,other
-events,83,other
-accept only essential cookies,82,reject
+agb,82,other
 alle zulassen,82,accept
-mit contentpass einloggen,82,other
+datenschutzhinweise,80,other
 einstellungen anpassen,80,settings
-agb,79,other
+options,80,other
+let me choose,79,settings
 menu,79,other
 new,79,other
+"ok, got it",79,acknowledge
+verwendung genauer standortdaten,79,other
+alles weigeren,78,reject
 deals,78,other
+endgeräteeigenschaften zur identifikation aktiv abfragen,78,other
+i do not accept cookies,78,reject
+necessary only,78,reject
 services,78,other
 donate,77,other
-endgeräteeigenschaften zur identifikation aktiv abfragen,77,other
-verwendung genauer standortdaten,77,other
 aceptar y continuar,76,accept
 auswahl erlauben,76,accept
-datenschutzhinweise,76,other
+essential only,76,reject
 games,76,other
-i do not accept cookies,76,reject
 ustawienia plików cookie,76,settings
-1618 technology partners,74,other
+nur notwendige cookies,75,reject
 akceptuj,74,accept
-our partners,74,other
+cookie statement,74,other
+partenaires,74,other
 socios,74,other
-let me choose,73,settings
-partenaires,73,other
 rechazar y suscribirse,73,reject
-nur notwendige cookies,72,reject
-our privacy policy,72,other
+save,73,other
+meer informatie,72,other
+paramétrer les cookies,72,settings
 consentimiento,71,other
-necessary only,71,reject
 newsletter,71,other
-paramétrer les cookies,71,settings
 tools,71,other
+aquí,70,other
 careers,70,other
-details section,70,settings
-aquí,69,other
-personnaliser mes choix,69,settings
-política de cookies.,69,other
-essential only,68,reject
-kontakt,67,other
-learn,67,other
-"ok, got it",67,acknowledge
-terms conditions,67,other
+dismiss,70,acknowledge
+personnaliser mes choix,70,settings
+política de cookies.,70,other
+akzeptieren und weiter,69,accept
+manage options,69,settings
+terms conditions,69,other
+kontakt,68,other
+learn,68,other
+privacy manager,68,settings
+afwijzen,67,reject
+manage cookie settings,67,settings
+necessary cookies only,67,reject
+zelf instellen,67,settings
+1713 partners,66,other
 konfigurieren,66,settings
 newsletters,66,other
-akzeptieren und weiter,65,accept
-dismiss,65,acknowledge
+accepter tous les cookies,65,accept
+"ok, accept all",65,accept
 0,64,other
-allow essential cookies,64,reject
-"ok, accept all",64,accept
+accepter et continuer,64,accept
 rechazarlas todas,64,reject
-accepter et continuer,63,accept
-accepter tous les cookies,63,accept
+tc,64,other
+view our partners,64,other
+no,63,reject
 reviews,63,other
-options,62,other
+"werbefrei für 3,99€ monat",63,other
+deny all cookies,62,reject
 solutions,62,other
-deny all cookies,61,reject
-privacy manager,61,settings
+i understand,61,acknowledge
+personalize,61,settings
 alles ablehnen,60,reject
 erklärung zum datenschutz,60,other
-personalize,60,settings
+meer opties,60,settings
 plus doptions,60,settings
 store,60,other
+accepteer alle cookies,59,accept
+ad settings,59,other
 cart,59,other
 configuración,59,settings
 detalles,59,settings
-i understand,59,acknowledge
-manage cookie settings,59,settings
 sale,59,other
-save,59,other
-"werbefrei für 3,99€ monat",59,other
+customize your choice,58,settings
+list of iab vendors,58,other
 pokaż szczegóły,58,settings
 take action.,58,other
-tc,58,other
-view our partners,58,other
 acerca de las cookies,57,other
 akceptuję wszystkie,57,accept
-1713 partners,56,other
+click here,57,other
+nur notwendige,57,reject
 accessories,56,other
 entertainment,56,other
 mostrar detalles,56,settings
-nur notwendige,56,reject
 permitir todas,56,accept
 details zeigen,55,settings
-necessary cookies only,55,reject
 odmowa,55,reject
 weitere informationen,55,other
-customize your choice,54,settings
-manage options,54,settings
+akceptuj wszystkie pliki cookie,54,accept
 polityki prywatności,54,other
 speichern,54,accept
 accepter les cookies,53,accept
-akceptuj wszystkie pliki cookie,53,accept
+account,53,other
+customize cookies,53,settings
 get started,53,other
 guides,53,other
+learn more...,53,other
 nie zgadzam się,53,reject
-no,53,reject
-account,52,other
-click here,52,other
+deny all,52,reject
+nos partenaires,51,other
 polityce cookies,51,other
 trending,51,other
+accept continue,50,accept
+agree close,50,acknowledge
+hier anmelden,50,other
 join now,50,other
 no acepto,50,reject
 weather,50,other
 aceptar y cerrar,49,accept
-nos partenaires,49,other
 obituaries,49,other
+privacy settings,49,settings
 rechazar y pagar,49,other
-hier anmelden,48,other
+okay,48,acknowledge
+rechazar todas las cookies,48,reject
+recipes,48,other
 rozumiem,48,acknowledge
 ver preferencias,48,settings
+accept close,47,other
+bekijk voorkeuren,47,settings
+cookies zulassen,47,accept
 details anzeigen,47,settings
+einwilligung,47,accept
 gift cards,47,other
-rechazar todas las cookies,47,reject
-recipes,47,other
+reject and pay,47,other
+ses partenaires,47,other
 shopping,47,other
-ad settings,46,other
-cookies zulassen,46,accept
-list of iab vendors,46,other
+cookies accepteren,46,accept
+datenschutzbestimmungen,46,other
+details weergeven,46,settings
+download,46,other
+einverstanden,46,accept
+login here,46,other
 mentions légales,46,other
 movies,46,other
-ses partenaires,46,other
-agree close,45,acknowledge
-customize cookies,45,settings
-datenschutzbestimmungen,45,other
-download,45,other
+personenbezogenen daten,46,other
+privacy center,46,other
+yes,46,accept
+zaufanych partnerów,46,other
+ajustes,45,settings
+einstellungen oder ablehnen,45,reject
 einstellungen verwalten,45,settings
+inicia sesión,45,other
+jetzt abonnieren,45,other
+paramétrer vos choix,45,settings
 polityką prywatności,45,other
 refuser tout,45,reject
-zaufanych partnerów,45,other
-accept close,44,other
-ajustes,44,settings
+zaufanych partnerów iab,45,other
+717 weitere websites,44,other
+"akkoord, ik ben 24+",44,other
+"akkoord, ik ben onder 24",44,other
+alleen noodzakelijk,44,reject
 auswahl bestätigen,44,accept
-einverstanden,44,accept
-einwilligung,44,accept
 faqs,44,other
 forum,44,other
-inicia sesión,44,other
-learn more...,44,other
-okay,44,acknowledge
-paramétrer vos choix,44,settings
-personenbezogenen daten,44,other
-zaufanych partnerów iab,44,other
-deny all,43,reject
-reject and pay,43,other
+ik ga akkoord,44,accept
+manage cookie preferences,44,settings
+required only,44,reject
+view privacy policy,44,other
+accept optional cookies,43,accept
+allow,43,accept
+entgeltfrei.,43,other
 video,43,other
 whats new,43,other
-yes,43,accept
-717 weitere websites,42,other
+wirtualna polska,43,other
+wirtualną polskę,43,other
+zaufani partnerzy,43,other
+121 technology partners,42,other
+ablehnen abonnieren,42,other
+accept and continue,42,accept
 alle annehmen,42,accept
-einstellungen oder ablehnen,42,reject
-jetzt abonnieren,42,other
-login here,42,other
-wirtualna polska,42,other
-wirtualną polskę,42,other
-zaufani partnerzy,42,other
-accept optional cookies,41,accept
+cookie,42,other
+einwilligen weiter,42,accept
+mehr erfahren,42,other
+nur notwendige cookies verwenden,42,reject
+politique cookies,42,other
+reject optional,42,reject
+se connecter,42,other
+anmelden,41,other
+cookie instellingen,41,settings
 discover,41,other
-entgeltfrei.,41,other
+données personnelles,41,other
+genaue standortdaten und identifikation durch scannen von endgeräten,41,other
 je refuse,41,reject
 kids,41,other
 learn more in our privacy notice,41,other
-mehr erfahren,41,other
+made hosted in germany by ccm19,41,other
 my account,41,other
-nur notwendige cookies verwenden,41,reject
+nutzungsbedingungen,41,other
 odmów,41,reject
 paramètres,41,settings
-politique cookies,41,other
 politique en matière de cookies,41,other
-privacy center,41,other
+purposes,41,other
+unterstützte internetverbindung,41,other
 upload,41,other
 women,41,other
-ablehnen abonnieren,40,other
-accept continue,40,accept
-anmelden,40,other
-cookie statement,40,other
-données personnelles,40,other
-einwilligen weiter,40,accept
+akzeptieren schließen,40,acknowledge
+cookie notice.,40,other
+our cookie policy,40,other
 pornstars,40,other
-privacy settings,40,settings
 przejdź do serwisu,40,other
-se connecter,40,other
-view privacy policy,40,other
+reach and across our entities,40,other
+zaufani partnerzy iab,40,other
 228,39,other
+accepteer,39,accept
 afficher les détails,39,settings
-akzeptieren schließen,39,acknowledge
-allow,39,accept
 education,39,other
 entendido,39,acknowledge
-genaue standortdaten und identifikation durch scannen von endgeräten,39,other
-manage cookie preferences,39,settings
+find out more,39,other
+"no, thanks",39,reject
 nuestra política de cookies,39,other
 nur essenzielle cookies akzeptieren,39,reject
 opinion,39,other
-reject optional,39,reject
 tags,39,other
+versant,39,other
 voir les préférences,39,settings
 zamknij,39,acknowledge
-zaufani partnerzy iab,39,other
+alle auswählen,38,accept
+datenschutzrichtlinie,38,other
+jetzt anmelden,38,other
 locations,38,other
-made hosted in germany by ccm19,38,other
-nutzungsbedingungen,38,other
-alle auswählen,37,accept
 cookies akzeptieren,37,accept
-datenschutzrichtlinie,37,other
+cookies weigeren,37,reject
 gérer les cookies,37,settings
 mehr optionen,37,settings
 nasi partnerzy (1088),37,other
-"no, thanks",37,reject
 "polska press, pro media",37,other
-reach and across our entities,37,other
 refuser tous les cookies,37,reject
+summary,37,other
 tout autoriser,37,accept
 voir nos partenaires,37,other
 zaakceptuj wszystko,37,accept
-121 technology partners,36,other
 ad,36,other
+auswahl speichern,36,accept
 click aquí,36,other
 conexión a internet habilitada,36,other
 create account,36,other
+leave,36,other
+manage choices,36,settings
+mehr informationen,36,other
 men,36,other
 models,36,other
+"no, adjust",36,settings
 odrzuć wszystko,36,reject
-purposes,36,other
-required only,36,reject
+only necessary,36,reject
+politique relative aux cookies,36,other
 submit,36,other
-unterstützte internetverbindung,36,other
 zezwól na wybór,36,accept
-accept and continue,35,accept
 advertise,35,other
-auswahl speichern,35,accept
 configurar tus preferencias aquí,35,settings
-cookie notice.,35,other
+consent to all,35,accept
 enterprise,35,other
-find out more,35,other
+list of partners,35,other
 liste der partner (lieferanten),35,other
 més informació,35,other
 podcasts,35,other
 polityka cookies,35,other
+reject pay,35,other
 research,35,other
 skip to main content,35,other
-versant,35,other
+voorkeuren aanpassen,35,settings
+youtube,35,other
 actividades de marketing digital o análisis,34,other
 articles,34,other
 berechtigten interesses,34,other
 company,34,other
 culture,34,other
-jetzt anmelden,34,other
 latest,34,other
+lees verder,34,other
 lifestyle,34,other
-mehr informationen,34,other
 politics,34,other
-youtube,34,other
+view preferences,34,settings
+accept all continue,33,accept
+datenschutz-einstellungen,33,settings
+hier einloggen,33,other
+i decline,33,reject
+ici,33,other
+legitimate interest,33,other
 lista zaufanych partnerów,33,other
-our cookie policy,33,other
+"nee, pas aan",33,reject
 permitir la selección,33,accept
-politique relative aux cookies,33,other
 shop now,33,other
-summary,33,other
 tylko niezbędne,33,reject
 watch,33,other
+1736 partners,32,other
 aceptar y continuar gratis,32,accept
 cookie-details,32,settings
 dacord,32,other
+dont enable,32,reject
+enable all,32,accept
 health,32,other
-ici,32,other
 join,32,other
-leave,32,other
-list of partners,32,other
 media,32,other
 partnerzy,32,other
+refuser et sabonner,32,reject
+reject all non-essential cookies,32,reject
+report,32,other
+third-party cookies,32,other
 ustawienia prywatności,32,settings
-view preferences,32,settings
 api,31,other
-cookie,31,other
+atlassian cookies and tracking notice,31,other
+cookiescript,31,other
 datenschu tzerklärung,31,other
-datenschutz-einstellungen,31,settings
 jobs,31,other
+lees meer,31,other
+lista de asociados (proveedores),31,other
 live,31,other
 live sex,31,other
 odrzucenie wszystkich,31,reject
-refuser et sabonner,31,reject
-reject all non-essential cookies,31,reject
 tutaj,31,other
 à propos des cookies,30,other
+analytics,30,other
+change settings,30,settings
 chat,30,other
 collections,30,other
-consent to all,30,accept
+data protection,30,other
 datenschutzerklärung.,30,other
-hier einloggen,30,other
 individuelle datenschutzeinstellungen,30,settings
-lista de asociados (proveedores),30,other
-manage choices,30,settings
+manage my preferences,30,settings
+personalizar cookies,30,settings
 präferenzen,30,settings
 real estate,30,other
-reject pay,30,other
 więcej informacji,30,other
-1736 partners,29,other
 alle cookies ablehnen,29,reject
 almacenar la información en un dispositivo yo acceder a ella,29,other
-analytics,29,other
+confirm,29,acknowledge
 détails,29,settings
-dont enable,29,reject
 enable accessibility,29,other
-enable all,29,accept
-i decline,29,reject
-legitimate interest,29,other
 login join,29,other
-manage my preferences,29,settings
-"no, adjust",29,settings
 premium,29,other
 product,29,other
+refuse,29,reject
+réglages,29,settings
 technisch notwendige annehmen,29,reject
 us,29,other
-accept all continue,28,accept
+alle cookies zulassen,28,accept
+change my preferences,28,settings
 consentements certifiés par,28,other
 create thread,28,other
+decline cookies,28,reject
+déjà abonné ? se connecter,28,other
 finance,28,other
 instagram,28,other
 más info,28,other
-only necessary,28,reject
 permitir todas las cookies,28,accept
-personalizar cookies,28,settings
+personnaliser les cookies,28,settings
 photos,28,other
 "publicidad y contenido personalizados, medición de publicidad y contenido, investigación de audiencia y desarrollo de servicios",28,other
-réglages,28,settings
+save preferences,28,accept
+social media,28,other
+subscribe now,28,other
+thats ok,28,acknowledge
+voorkeuren beheren,28,settings
 world,28,other
+日本語,28,other
 ablehnen oder einstellungen,27,reject
-alle cookies zulassen,27,accept
 brands,27,other
-confirm,27,acknowledge
 consentement,27,other
-data protection,27,other
-déjà abonné ? se connecter,27,other
+i am 18 or older - enter,27,other
 je choisis,27,settings
+learn more.,27,other
 members,27,other
 popular,27,other
-subscribe now,27,other
-thats ok,27,acknowledge
+reject additional cookies,27,reject
+translate,27,other
 travel,27,other
+weiger,27,reject
 allen zustimmen,26,accept
-atlassian cookies and tracking notice,26,other
+allow cookies,26,accept
+consenthub,26,other
+cookies verwalten,26,settings
+cookiestatement,26,other
+docs,26,other
 dostosuj zgody,26,settings
 downloads,26,other
+einwilligen und weiter,26,accept
 facebook,26,other
+gérer mes choix,26,settings
 how it works,26,other
-personnaliser les cookies,26,settings
+marketing,26,other
+only necessary cookies,26,reject
+our 1035 partners,26,other
 random,26,other
-reject additional cookies,26,reject
-third-party cookies,26,other
+read our cookie policy,26,other
+use of cookies,26,other
 ustawień zaawansowanych,26,settings
 zmień ustawienia,26,settings
 zobacz preferencje,26,settings
-change my preferences,25,settings
+accept additional cookies,25,accept
 contact sales,25,other
-docs,25,other
+cookie consent tool,25,other
+cookies policy page,25,other
+customise my choices,25,settings
 featured,25,other
-gérer mes choix,25,settings
-i am 18 or older - enter,25,other
+identifiants partagés,25,other
 personal,25,other
-read our cookie policy,25,other
 sign up now,25,other
-translate,25,other
 understood,25,acknowledge
 weiter ohne einwilligung,25,reject
-日本語,25,other
+your privacy rights,25,other
 about this tool (opens in a new window),24,other
-accept additional cookies,24,accept
+accept and close,24,accept
+accetta,24,accept
+agree continue,24,accept
 ai,24,other
-allow cookies,24,accept
-change settings,24,settings
 channels,24,other
 continuar sin aceptar,24,reject
-cookie consent tool,24,other
-cookies verwalten,24,settings
-decline cookies,24,reject
-einwilligen und weiter,24,accept
+datenschutzhinweisen (pur),24,other
+exit,24,other
 food,24,other
 gestionar opciones,24,settings
 help center,24,other
 i am 18+ enter,24,other
 lista partnerów (dostawców),24,other
-refuse,24,reject
-report,24,other
+restaurants,24,other
 shows,24,other
 skip to content,24,other
-use of cookies,24,other
 your rights,24,other
 abschnitt einzelheiten,23,settings
 accept essential cookies only,23,reject
-consenthub,23,other
-cookies policy page,23,other
-cookiescript,23,other
+accept necessary,23,reject
+accepteer cookies,23,accept
+annehmen,23,accept
+conditions dutilisation,23,other
+consent settings,23,settings
+cookies policy.,23,other
 datenschutzcenter,23,other
 decline optional cookies,23,reject
-identifiants partagés,23,other
+gestion des cookies,23,settings
+here.,23,other
 individuelle datenschutz-präferenzen,23,settings
-learn more.,23,other
-marketing,23,other
+niet akkoord,23,reject
 nur technisch notwendige,23,reject
-our 1035 partners,23,other
 our terms of use,23,other
 polityka plików cookies,23,other
 polityka prywatności agora s.a.,23,other
-restaurants,23,other
-save preferences,23,accept
-social media,23,other
+privacy cookie policy,23,other
+read our privacy policy,23,other
+set preferences,23,settings
 tout rejeter,23,reject
-your privacy rights,23,other
+view our cookie policy,23,other
 zaakceptuj,23,accept
-accept and close,22,accept
+.,22,other
 advertise with us,22,other
-agree continue,22,accept
-annehmen,22,accept
 browse,22,other
 cancel,22,other
-conditions dutilisation,22,other
 cookies ablehnen,22,reject
+cookies and similar technologies,22,other
 enewspaper,22,other
 erweiterte einstellungen,22,settings
 favorites,22,other
+ich stimme zu,22,accept
 life,22,other
+log in here,22,other
 more information about the rta label and compatible services can be found here,22,other
 music,22,other
+oké,22,acknowledge
 plus dinformations,22,other
 podcast,22,other
 politique des cookies,22,other
+privacy beleid,22,other
 privatsphäre-einstellungen individuell festlegen,22,settings
+protecting minors,22,other
 reject subscribe,22,other
 rewards,22,other
 schedule,22,other
 security,22,other
+voorkeuren,22,settings
+229,21,other
 accepta-les totes,21,accept
+agree and proceed,21,accept
 all,21,other
 beauty,21,other
-datenschutzhinweisen (pur),21,other
+cookies page,21,other
 données personnelles et cookies,21,other
 einstellungen speichern,21,accept
 follow,21,other
 gear,21,other
-gestion des cookies,21,settings
-here.,21,other
-ich stimme zu,21,accept
+gestionar preferencias,21,settings
+guce,21,other
 legals,21,other
+manage my cookies,21,settings
+manage my settings,21,settings
 mehr informationen ...,21,other
 naszych partnerów reklamowych (1164),21,other
 "no, gracias",21,reject
+"nutzung der utiq-technologie, unterstützt durch ihren telekommunikationsanbieter",21,other
 ok pour moi,21,acknowledge
+opt out,21,reject
+our 1014 partners,21,other
 performance,21,other
 plans,21,other
 powered by ccm19,21,other
+préférences,21,settings
 privacy notice.,21,other
 teams,21,other
 tech,21,other
+third parties,21,other
+utiq,21,other
+vendors (925),21,other
+"yes, i agree",21,accept
 zaakceptuj tylko niezbędne,21,reject
 zwecke anzeigen,21,settings
-accept necessary,20,reject
 acceptar,20,accept
+auf allen unseren angeboten,20,other
 classifieds,20,other
-consent settings,20,settings
-cookies policy.,20,other
+configure,20,settings
+cookie beleid,20,other
+customize cookie settings,20,settings
 customize your choices,20,settings
 datos de localización geográfica precisa e identificación mediante análisis de dispositivos,20,other
 de acuerdo y cerrar,20,accept
 declaración de privacidad,20,other
 documentation,20,other
-exit,20,other
+espace de confidentialité,20,other
 fermer,20,acknowledge
 for business,20,other
 fr,20,other
-gestionar preferencias,20,settings
+für werbe- und analysezwecke,20,other
+https:business.safety.googleprivacy,20,other
+iab and google vendors,20,other
+instellingen aanpassen,20,settings
 leer más,20,other
 liste de nos partenaires (fournisseurs),20,other
 magazine,20,other
-manage my settings,20,settings
-opt out,20,reject
+our 1010 partners,20,other
 paramétrer mes choix,20,settings
 politique de gestion des cookies,20,other
 preference center,20,settings
-préférences,20,settings
-privacy cookie policy,20,other
-read our privacy policy,20,other
+privacy- en cookieverklaring,20,other
 rechazar y cerrar,20,reject
 style,20,other
 the dispute resolution procedures,20,other
 un opérateur télécom participant,20,other
-view our cookie policy,20,other
-.,19,other
 1,19,other
+alle cookies,19,accept
 apps,19,other
-cookies page,19,other
+cookies beheren,19,settings
+datenschutzerklärung von utiq,19,other
+decline non-essential cookies,19,reject
 desa els canvis,19,other
 developers,19,other
-espace de confidentialité,19,other
-guce,19,other
+didentifiants partagés,19,other
+drittanbietern,19,other
+i disagree,19,reject
 ich akzeptiere alle,19,accept
+learn more…,19,other
 lists,19,other
-log in here,19,other
-manage my cookies,19,settings
 més informació sobre lús de les galetes en aquest web.,19,other
-only necessary cookies,19,reject
 open search,19,other
+partnerlijst (derden),19,other
+partnern,19,other
 people,19,other
 play,19,other
+politique de protection des données personnelles,19,other
+prisma media,19,other
+privacy and cookies policy,19,other
+privacy-,19,other
 rebutja-les,19,reject
-set preferences,19,settings
+supported internet connection,19,other
+targeting,19,other
 things to do,19,other
+third-party companies,19,other
 twitter,19,other
-229,18,other
-accepteren,18,accept
-accetta,18,accept
+utiq jetzt ablehnen,19,reject
 action,18,other
+affiliates,18,other
+alleen functionele cookies,18,reject
 anzeigeneinstellungen,18,other
-auf allen unseren angeboten,18,other
 best sellers,18,other
 calendar,18,other
 close ad,18,other
 continue using cookies,18,accept
-cookies and similar technologies,18,other
 customer service,18,other
-customise my choices,18,settings
-didentifiants partagés,18,other
+datenschutz-manager,18,other
 discord,18,other
 einstellungen ansehen,18,settings
+exit here,18,other
 find a dealer,18,other
 find a store,18,other
+i do not accept,18,reject
+individuell anpassen,18,settings
 iniciar sesión,18,other
-learn more…,18,other
 mehr infos,18,other
 membership,18,other
 new arrivals,18,other
-"nutzung der utiq-technologie, unterstützt durch ihren telekommunikationsanbieter",18,other
 "ok, tout accepter",18,accept
-our 1010 partners,18,other
-our 1014 partners,18,other
-partnern,18,other
+only required,18,reject
 polityce prywatności.,18,other
 politykę prywatności,18,other
 preferencias,18,settings
-prisma media,18,other
 privacidad,18,other
-protecting minors,18,other
+privatsphäre einstellungen,18,settings
 safety,18,other
 science,18,other
+see further information and configure your preferences,18,settings
 shoes,18,other
 startseite,18,other
 technology,18,other
 tickets,18,other
-utiq,18,other
-vendors (925),18,other
 verwendung reduzierter daten zur auswahl von inhalten,18,other
 x masquer le bandeau des cookies,18,acknowledge
-"yes, i agree",18,accept
+about cookies,17,other
 acceder,17,other
 accept only necessary,17,reject
 add your event,17,other
 best videos!,17,other
 books,17,other
+cliquant ici,17,other
 commercial,17,other
 condiciones de uso,17,other
-configure,17,settings
 contests,17,other
 cookie-erklärung,17,other
+cookie-policy,17,other
 customise cookies,17,settings
-datenschutzerklärung von utiq,17,other
-drittanbietern,17,other
+datenschutzrichtlinien,17,other
+doeleinden,17,other
 elección de cookies,17,settings
 fri 12,17,other
 fri 19,17,other
-für werbe- und analysezwecke,17,other
 government,17,other
-iab and google vendors,17,other
+i accept all cookies,17,accept
+im over 18,17,other
 jai compris,17,acknowledge
+jetzt einloggen!,17,other
 la politique dinformation sur les données personnelles dutiq,17,other
 le portail dutiq,17,other
+liste complète,17,other
 mon 15,17,other
 mon 22,17,other
 mon 8,17,other
 mostrar los propósitos,17,settings
 "nein, anpassen",17,reject
 nuestros 701 socios,17,other
-politique de protection des données personnelles,17,other
+opt-out,17,reject
+overzicht,17,other
 polityką cookies,17,other
 privacy and cookie policy,17,other
 privacy and cookie statement.,17,other
@@ -814,502 +900,581 @@ recaptcha enterprise free quota,17,other
 sat 13,17,other
 sat 20,17,other
 software for customer management,17,other
+stel voorkeuren in,17,settings
 stories,17,other
 sun 14,17,other
 sun 21,17,other
 theporndude,17,other
-third parties,17,other
 thu 11,17,other
 unsere 1022 partner,17,other
 us state supplement,17,other
-utiq jetzt ablehnen,17,reject
 zaakceptuj i zamknij,17,accept
 zarządzaj preferencjami,17,settings
 zustimmen und weiter,17,accept
-affiliates,16,other
-agree and proceed,16,accept
+760 third parties,16,other
+766 third parties,16,other
+accept non-essential,16,reject
+accepteer selectie,16,accept
 alle cookies erlauben,16,accept
 anbieter,16,other
+bekijk onze 160 partners,16,other
+cookie einstellungen,16,settings
 cookies page (opens in a new window),16,other
-customize cookie settings,16,settings
-datenschutz-manager,16,other
-datenschutzrichtlinien,16,other
+datennutzungen,16,other
 de acuerdo,16,accept
-decline non-essential cookies,16,reject
-https:business.safety.googleprivacy,16,other
-i do not accept,16,reject
-individuell anpassen,16,settings
+einstellungen ändern,16,settings
+erstellung von profilen für personalisierte werbung,16,other
+google analytics storage,16,other
+häufig gestellten fragen (faq),16,other
 individuelle einstellungen,16,settings
-jetzt einloggen!,16,other
-only required,16,reject
-opt-out,16,reject
-privacy and cookies policy,16,other
-privatsphäre einstellungen,16,settings
+its partners,16,other
+learn more and customize,16,settings
+manage privacy settings,16,settings
+my options,16,settings
+our 1711 partners,16,other
+our 4 partners,16,other
 privatsphäre-einstellungen,16,settings
+sluiten,16,acknowledge
 solo necesarias,16,reject
 solo usar cookies necesarias,16,reject
 speichern schließen,16,acknowledge
-supported internet connection,16,other
+strictly necessary only,16,reject
+view cookie policy,16,other
 vrm by admiral,16,other
+weiger alles,16,reject
 więcej o plikach cookies przeczytasz w naszej polityce prywatności.,16,other
+accept essential only,15,reject
 accept recommended settings,15,accept
 administrar opciones,15,settings
-cliquant ici,15,other
-cookie einstellungen,15,settings
+barrierefreiheit,15,other
+borlabs cookie - tcf-cmp id: 323,15,other
+conditions,15,other
 cookies notice,15,other
 czytaj więcej,15,other
-datennutzungen,15,other
 datenschutzinformation,15,other
-einstellungen ändern,15,settings
-erstellung von profilen für personalisierte werbung,15,other
-exit here,15,other
-i accept all cookies,15,accept
-i disagree,15,reject
-im over 18,15,other
-its partners,15,other
+doorgaan zonder te accepteren,15,reject
+gérer mes cookies,15,settings
+i do not agree,15,reject
+liever niet,15,reject
 listado completo de finalidades,15,other
-manage privacy settings,15,settings
+meer info,15,other
 mit diesem button wird der dialog geschlossen. seine funktionalität ist identisch mit der des buttons nur essenzielle cookies akzeptieren.,15,reject
 nur erforderliche cookies,15,reject
-our 1711 partners,15,other
+odrzucam i chcę dowiedzieć się więcej,15,reject
 personal data,15,other
 plików cookie,15,other
 refuser les cookies,15,reject
-see further information and configure your preferences,15,settings
 sus 1017 socios,15,other
+tcf partners and other partners,15,other
+technical necessary information,15,other
+technology partners,15,other
 ustawienia cookies,15,settings
 ustawieniach,15,settings
 ver 924 socios,15,other
+verwendung reduzierter daten zur auswahl von werbeanzeigen,15,other
+view a list of partners,15,other
+view options,15,settings
+voorkeuren instellen,15,settings
 ya tengo mi id de perfil para navegar sin cookies,15,other
+zaloguj,15,other
+accept only necessary cookies,14,reject
+accept selection,14,accept
+advertising settings,14,other
+"angebotsübergreifende verarbeitung von daten durch bertelsmann-unternehmen für analyse, produktentwicklung, messung, werbung und risikomanagement",14,other
 auswahl akzeptieren,14,accept
-barrierefreiheit,14,other
-borlabs cookie - tcf-cmp id: 323,14,other
+aviso de privacidad,14,other
 confidentialité,14,other
 configurar preferencias,14,settings
 configurer,14,settings
 consultez notre politique en matière de protection des données.,14,other
-cookie-policy,14,other
+continue and accept,14,accept
 custom settings,14,settings
 datos personales,14,other
 de,14,other
+doeleinden weergeven,14,settings
 dritte,14,other
 es,14,other
-gérer mes cookies,14,settings
 gestionar los servicios,14,settings
-google analytics storage,14,other
 gratuita.,14,other
 guardar preferencias,14,accept
-häufig gestellten fragen (faq),14,other
-liste complète,14,other
-my options,14,settings
+häufig gestellten fragen (faqs),14,other
+instellen,14,settings
+minimale cookies,14,reject
+"no, manage settings",14,settings
+"no, thank you",14,reject
 nos site(s) et ces sites de presse quotidienne régionale,14,other
-odrzucam i chcę dowiedzieć się więcej,14,reject
+nur notwendige technologien,14,reject
 optionale cookies ablehnen,14,reject
 our 10 partners,14,other
+our 15 partners,14,other
 our 9 partners,14,other
 personnaliser vos choix,14,settings
 polityka cookie,14,other
 polityka prywatności gazeta.pl,14,other
 potwierdzam wszystkie,14,accept
-strictly necessary only,14,reject
+purpose of processing,14,other
+reject and manage,14,reject
+reject unnecessary cookies,14,reject
+third-party services,14,other
+über 600 andere websites,14,other
+uniconsent,14,other
 ustawieniach plików cookie,14,settings
-verwendung reduzierter daten zur auswahl von werbeanzeigen,14,other
-view cookie policy,14,other
+view our privacy policy,14,other
 w porządku,14,acknowledge
-zaloguj,14,other
-accept essential only,13,reject
-accept non-essential,13,reject
+widerrufen,14,reject
+18 u.s.c. 2257 record-keeping requirements compliance statement.,13,other
+advertising,13,other
 afficher toutes les finalités,13,settings
-aviso de privacidad,13,other
+agree and continue,13,accept
+asacp,13,other
+aviso de cookies,13,other
 cliquez ici,13,other
 confirm my choices,13,acknowledge
+continue with apple,13,other
+cookie consent manager,13,settings
+cookie declaration,13,other
+data protection policy,13,other
+datenschutzhinweise (pur),13,other
+fremdinhalte anzeigen (soziale netzwerke und chat-systeme),13,other
 gestionar cookies,13,settings
-häufig gestellten fragen (faqs),13,other
+i reject,13,reject
 manage your preferences,13,settings
+"nee, liever niet",13,reject
 non merci,13,reject
 nur notwendige akzeptieren,13,reject
 odrzuć opcjonalne,13,reject
 odrzucam,13,reject
+ok!,13,acknowledge
 online privacy policy,13,other
-our 4 partners,13,other
+only essential cookies,13,reject
+our 3 partners,13,other
+parental control guide,13,other
 pay to reject,13,other
+personalisierte werbung,13,other
 preferencje,13,settings
+privacy policy and terms,13,other
 privacy-manager,13,other
-privacyverklaring,13,other
 prywatność,13,other
+reject and subscribe,13,other
 rejeter,13,reject
-targeting,13,other
-technical necessary information,13,other
-third-party companies,13,other
-third-party services,13,other
-view options,13,settings
-view our privacy policy,13,other
-accept selection,12,accept
-advertising,12,other
-advertising settings,12,other
+strictly necessary,13,reject
+telecom operator,13,other
+verstanden,13,acknowledge
+accept all reject all,12,reject
+ad partners,12,other
+adjust preferences,12,settings
 akceptuj pliki cookie,12,accept
+allow necessary cookies continue,12,reject
+already a contentpass user? log in here,12,other
 ausgewählte cookies akzeptieren,12,accept
-aviso de cookies,12,other
-conditions,12,other
 contacto,12,other
 contentpass,12,other
-continue and accept,12,accept
-cookie declaration,12,other
-data protection policy,12,other
+continue with google,12,other
+cookie settings page,12,settings
+cookie-hinweis,12,other
+cookiebeleid.,12,other
+customize choices,12,settings
+cybersitter™,12,other
+deliver and present advertising and content,12,other
 einwilligung speichern,12,accept
+"ensure security, prevent and detect fraud, and fix errors",12,other
+essential only cookies,12,reject
 free of charge.,12,other
 gérer les préférences,12,settings
+ich lehne ab,12,reject
+informativa sulla privacy,12,other
+jaccepte tout,12,accept
 lire la politique de confidentialité,12,other
 log in with contentpass,12,other
-"no, manage settings",12,settings
-"no, thank you",12,reject
+manage cookie tracking settings,12,settings
+meer informatie…,12,other
+net nanny®,12,other
 nuestros 1022 socios,12,other
 nur erforderliche,12,reject
-our 15 partners,12,other
-our 3 partners,12,other
-personalisierte werbung,12,other
+our 296 partners,12,other
 pl,12,other
+please refer to our cookie notice for more information about the way we use cookies.,12,other
 plus dinfos,12,other
 política de privacidad y cookies,12,other
+politique de gestion des traceurs,12,other
 politische werbung,12,other
 polityce plików cookies,12,other
 poszczególnych serwisów,12,other
-purpose of processing,12,other
+privatsphäre,12,other
+refuse all,12,reject
 refuser et continuer,12,reject
-reject unnecessary cookies,12,reject
+reject all non-essential,12,reject
+safetonet,12,other
 sección de datos,12,other
+set my preferences,12,settings
 show vendors within this category,12,other
-strictly necessary,12,reject
-technology partners,12,other
-über 600 andere websites,12,other
+start playing,12,other
+tcf vendors,12,other
 ustawienia plików cookies,12,settings
-verstanden,12,acknowledge
+view our 283 partners,12,other
 warunki,12,other
-widerrufen,12,reject
+weiger cookies,12,reject
 zaloguj się,12,other
 zarządzaj opcjami,12,settings
 zaufanych partnerów tvp,12,other
 zaufanych partnerów tvp (93 firm),12,other
 zaufanych partnerów z iab,12,other
 zaufanych partnerów z iab* (1177 firm),12,other
-18 u.s.c. 2257 record-keeping requirements compliance statement.,11,other
+16 partners,11,other
 197 socios,11,other
 717 sitios web,11,other
-766 third parties,11,other
-accept only necessary cookies,11,reject
-agree and continue,11,accept
+alle toestaan,11,accept
 alles erlauben,11,accept
-allow necessary cookies continue,11,reject
-"angebotsübergreifende verarbeitung von daten durch bertelsmann-unternehmen für analyse, produktentwicklung, messung, werbung und risikomanagement",11,other
-cookie consent manager,11,settings
+allow only necessary,11,reject
+configuration,11,settings
 cookie manager,11,settings
-cookie-hinweis,11,other
-cookiebeleid,11,other
-datenschutzhinweise (pur),11,other
+cookie setting,11,settings
+cookie-richtlinien,11,other
+cookies anpassen,11,settings
+data protection notice,11,other
 déclaration de confidentialité,11,other
+einwilligung ablehnen,11,reject
+einwilligungs-einstellungen,11,settings
 erstellung von profilen zur personalisierung von inhalten,11,other
 gérer les paramètres,11,settings
 gérer mes préférences,11,settings
 googles privacy terms,11,other
 hide,11,other
-i do not agree,11,reject
-i reject,11,reject
-ich lehne ab,11,reject
+informativa sui cookie,11,other
 iniciar sesión con contentpass,11,other
 je refuse et je mabonne,11,reject
-learn more and customize,11,settings
-nur notwendige technologien,11,reject
+learn more about our cookie policy,11,other
+manage or reject cookies,11,settings
+more information about your privacy,11,other
+nee,11,reject
+"no, leave",11,other
 odmawiam,11,reject
+only required cookies,11,reject
 optionen verwalten,11,settings
-our 296 partners,11,other
+our 1013 partners,11,other
+our 35 partners,11,other
 our 5 partners,11,other
-parental control guide,11,other
+our 6 partners,11,other
 pokaż cele,11,other
 politique de protection des données,11,other
-privacy policy and terms,11,other
-privatsphäre,11,other
-reject and manage,11,reject
+privacy policies,11,other
+privacy statement.,11,other
+privacy verklaring,11,other
+read more about cookies,11,other
+reject all and subscribe,11,other
 saber más,11,other
-tcf partners and other partners,11,other
+see our privacy policy,11,other
+set cookies,11,other
 ver 1103 socios,11,other
 verwendung von profilen zur auswahl personalisierter werbung,11,other
-view a list of partners,11,other
 website privacy policy,11,other
-weigeren,11,reject
+"werbefrei für 3,99 € monat",11,other
+zur datenschutzerklärung,11,other
+128 technology partners,10,other
 701 socios,10,other
 717 other websites,10,other
-about cookies,10,other
-accept all reject all,10,reject
+accept all close,10,accept
+accept necessary cookies,10,reject
 accept non-essential cookies,10,accept
-ad partners,10,other
-already a contentpass user? log in here,10,other
-configuration,10,settings
+ad-free for 3.99 € month,10,other
+akkoord en sluiten,10,accept
+alleen essentiële cookies,10,reject
+cerise media,10,other
+charte cookies,10,other
+compte prisma connect,10,other
 continue with all,10,accept
-continue with apple,10,other
-cookie settings page,10,settings
-cookie-richtlinien,10,other
+cookie-instellingen aanpassen,10,settings
 cookies für marketingzwecke,10,reject
 cookies nécessaires uniquement,10,reject
-customize choices,10,settings
-deliver and present advertising and content,10,other
+cookies toestaan,10,accept
+cookiestatement instellingen,10,settings
+datenschutzmanager aufrufen,10,settings
 deny surf ad-free,10,other
+detailgedeelte,10,settings
 dostosuj ustawienia,10,settings
-einwilligung ablehnen,10,reject
 empfangen und verwenden automatisch gesendeter geräteinformationen zum zweck der identifikation,10,other
-"ensure security, prevent and detect fraud, and fix errors",10,other
-essential only cookies,10,reject
-fremdinhalte anzeigen (soziale netzwerke und chat-systeme),10,other
+"erstreckung von einwilligungen auf geräte, apps inhalte ohne grafische benutzerschnittstelle",10,other
 funktionelle cookies,10,reject
 generierung einer user-id auf basis ihrer e-mail-adresse,10,other
+i accept only necessary cookies,10,reject
 individuelle cookie-einstellungen,10,settings
+inloggen,10,other
+instellingen beheren,10,settings
 interdire tous les cookies,10,reject
-jaccepte tout,10,accept
 jetzt details ansehen,10,settings
+"learn how we and our ad partner google, collect and use data",10,other
 leer más sobre estos propósitos,10,other
 leistungs-cookies,10,other
 log in here!,10,other
-manage cookie tracking settings,10,settings
-more information about your privacy,10,other
+manage individual preferences,10,settings
+nl,10,other
+"no, take me to settings",10,settings
 nur essentielle cookies akzeptieren,10,reject
 nur notwendige cookies akzeptieren,10,reject
 odrzucać,10,reject
 "ok, zgadzam się",10,accept
-ok!,10,acknowledge
 "oui, je suis daccord",10,accept
-please refer to our cookie notice for more information about the way we use cookies.,10,other
-politique de gestion des traceurs,10,other
+our 972 partners,10,other
+"personalised advertising, advertising and content measurement, audience research and services development",10,other
+personalize my choices,10,settings
 politique dutilisation des cookies,10,other
 polityce plików cookie,10,other
 polityka plików cookie,10,other
 potwierdzam wymagane,10,reject
 prywatność i warunki google,10,other
+read our privacy policy.,10,other
 rechazar cookies opcionales,10,reject
 rechazar opcionales,10,reject
-refuse all,10,reject
+"refuser et sabonner (1,99€) pour une expérience sans pub",10,other
 refuser les cookies optionnels,10,reject
 refuser sabonner,10,other
-reject all and subscribe,10,other
-reject all non-essential,10,reject
-reject and subscribe,10,other
+reject all but necessary,10,reject
 salir,10,other
 save and close,10,other
+save settings,10,accept
 schließen,10,acknowledge
 see our cookie policy,10,other
+see our cookie policy.,10,other
 sharing data and profiles for analysis and personalised advertising for advertisers and advertising companies on the internet.,10,other
 sharing data and profiles for analysis and personalised advertising from advertisers for our advertising campaigns,10,other
-start playing,10,other
+strictly necessary cookies,10,reject
 "subscribe for 3,99 € month",10,other
-tcf vendors,10,other
 technisch notwendig,10,reject
-telecom operator,10,other
 términos,10,other
 unbedingt erforderliche cookies,10,reject
-uniconsent,10,other
 unsere partner,10,other
 ver política de cookies,10,other
+verwendung und weitergabe von identifiern,10,other
+voir les conditions de loffre,10,other
+voorkeuren wijzigen,10,settings
+voorwaarden,10,other
 website terms of use,10,other
-"werbefrei für 3,99 € monat",10,other
 zarządzaj ustawieniami,10,settings
 zgoda na wszystkie,10,accept
-zur datenschutzerklärung,10,other
 ?,9,other
-128 technology partners,9,other
+(what data we collect),9,other
 1709 socios,9,other
+2214 third parties,9,other
 236 partenaires,9,other
 353 partenaires,9,other
-accept necessary cookies,9,reject
-ad-free for 3.99 € month,9,other
+adjust settings,9,settings
 administrar cookies,9,settings
+akzeptieren weiter,9,accept
+algemene voorwaarden,9,other
 allow necessary only,9,reject
-allow only necessary,9,reject
 alright!,9,acknowledge
 analityczne pliki cookie,9,other
-asacp,9,other
+anbieterliste,9,other
 autoriser la sélection,9,accept
-cerise media,9,other
-charte cookies,9,other
-compte prisma connect,9,other
+aviso sobre cookies,9,other
+click here.,9,other
 consents certified by,9,other
 construction payroll software,9,other
 consulter notre politique de cookies,9,other
-continue with google,9,other
 cookie policy page,9,other
-cookie setting,9,settings
 cookie-informationen anzeigen,9,settings
-cookies anpassen,9,settings
+cookies aanpassen,9,settings
 cookies page.,9,other
-cookiestatement,9,other
-cybersitter™,9,other
-data protection notice,9,other
+cookieverklaring.,9,other
+customize preferences,9,settings
 datenschutzinformationen,9,other
-datenschutzmanager aufrufen,9,settings
 denegar todas,9,reject
+deny cookies,9,reject
 des tiers,9,other
 digital prisma players,9,other
+disclaimer,9,other
 einstellungen anzeigen,9,settings
-einwilligungs-einstellungen,9,settings
 establecer preferencias,9,settings
 functional,9,other
 funkcjonalne pliki cookie (wymagane),9,reject
 further info,9,other
-i accept only necessary cookies,9,reject
+google,9,other
+ich bin einverstanden,9,accept
+ik ga niet akkoord,9,reject
 informacji o plikach cookie,9,other
-informativa sui cookie,9,other
-informativa sulla privacy,9,other
+know more,9,other
 learn more and customise,9,settings
-manage individual preferences,9,settings
-manage or reject cookies,9,settings
-net nanny®,9,other
+lees hier onze cookieverklaring,9,other
+meer informatie over cookies,9,other
+necessary cookies,9,reject
 nie akceptuję,9,reject
-"no, leave",9,other
 "non, merci",9,reject
 nos 1123 partenaires,9,other
 nos 233 partenaires,9,other
 notwendige cookies,9,reject
 nur notwendige cookies zulassen,9,reject
 ohne werbetracking für 3.99 € monat,9,other
-only essential cookies,9,reject
-our 1013 partners,9,other
-personalize my choices,9,settings
+our 1019 partners,9,other
+our 13 partners,9,other
+our 8 partners,9,other
 personalizuj pliki cookie,9,settings
 política de privacidad.,9,other
 politique de cookies.,9,other
 privacy choices,9,other
+privacy cookie notice,9,other
+privacy page.,9,other
+privacy policy faqs,9,other
 protection des données,9,other
-read more about cookies,9,other
-read our privacy policy.,9,other
-"refuser et sabonner (1,99€) pour une expérience sans pub",9,other
-reject all but necessary,9,reject
 reklamowe pliki cookie,9,other
+required cookies only,9,reject
 revocar consentimiento,9,reject
-safetonet,9,other
 save + exit,9,other
-save settings,9,accept
-see our privacy policy,9,other
+select preferences,9,settings
 social-media-cookies,9,other
-strictly necessary cookies,9,reject
 ustawienia reklam,9,other
 verwendung von profilen zur auswahl personalisierter inhalte,9,other
+weitere einstellungen,9,settings
 weitere informationen anzeigen,9,other
 wie beschrieben,9,other
 więcej,9,other
 withdraw consent,9,reject
-(what data we collect),8,other
+понятно,9,acknowledge
 1181 vendors,8,other
-16 partners,8,other
+2193 third parties,8,other
 220 partner,8,other
-accept all close,8,accept
+600 other websites,8,other
+600+ other websites,8,other
+accept essential,8,reject
+accept essential cookies,8,reject
+accept necessary only,8,reject
+accept only essential,8,reject
+accepteren en doorgaan,8,accept
+aceptar solo las cookies esenciales,8,reject
 ad-free for £3.49 3.99€,8,other
+adjust cookies,8,settings
 advertising partners,8,other
+agree to all,8,accept
 analyse statistiken,8,other
-anbieterliste,8,other
 anzeigen ads,8,other
 auswahl anpassen,8,settings
-aviso sobre cookies,8,other
 changer mes préférences,8,settings
+close cookie bar,8,acknowledge
 condiciones de contratación,8,other
+consent details,8,settings
+cookie consent,8,other
+cookie consent plugin for the eu cookie law,8,other
+cookie policy (opens in a new window),8,other
 cookie privacy policy.,8,other
 customize my experience,8,settings
-deny cookies,8,reject
+einbindung externer inhalte,8,other
 erlauben,8,accept
-"erstreckung von einwilligungen auf geräte, apps inhalte ohne grafische benutzerschnittstelle",8,other
+"für 2,99 €monat abonnieren",8,other
 gérer mes paramètres,8,settings
-ich bin einverstanden,8,accept
-know more,8,other
-"learn how we and our ad partner google, collect and use data",8,other
-learn more about our cookie policy,8,other
+how data is used,8,other
+im ok with that,8,accept
+ja,8,accept
+jetzt sichern,8,accept
 leer más sobre cookies,8,other
+legal warning,8,other
+manage your cookie preferences,8,settings
 naszymi 1022 partnerami,8,other
 "no, ajustar",8,settings
-"no, take me to settings",8,settings
 non,8,reject
+nutzungsanalyse,8,other
 o plikach cookie,8,other
 odrzuć wszystkie pliki cookie,8,reject
 online services user agreement,8,other
-only required cookies,8,reject
-our 1019 partners,8,other
+opslaan,8,other
+"oui, jaccepte",8,accept
 our 26 partners,8,other
-our 35 partners,8,other
-our 6 partners,8,other
-our 8 partners,8,other
-our 972 partners,8,other
+our 409 partners,8,other
 over 600 other websites,8,other
 paramétrer mes préférences,8,settings
-"personalised advertising, advertising and content measurement, audience research and services development",8,other
 "personalisierte anzeigen und inhalte, anzeigen- und inhaltsmessungen, erkenntnisse über zielgruppen und produktentwicklungen",8,other
+"personalisierte anzeigen und inhalte, werbetracking, prüfung utiq-technologie und zugriff auf ihr endgerät",8,other
+personalisierte inhalte,8,other
 política de privacitat,8,other
 politique de confidentialité.,8,other
 polityce prywatności agora s.a.,8,other
 polityce prywatności i cookies,8,other
 polityce prywatności wyborcza.pl,8,other
 pozwól mi wybrać,8,settings
-privacy cookie notice,8,other
-privacy policy faqs,8,other
-privacy statement.,8,other
+privacy information,8,other
+push-benachrichtigungen kommunikation,8,other
+read privacy policy,8,other
 rebutjar,8,reject
 rechazar y suscribirte,8,reject
+refuse all cookies,8,reject
 "refuser et sabonner (0,99€) pour une expérience sans pub",8,other
 regulamin,8,other
 required,8,reject
-required cookies only,8,reject
 save cookie settings,8,accept
-see our cookie policy.,8,other
-select preferences,8,settings
-set cookies,8,other
+save exit,8,other
+see our 234 partners,8,other
+selectie accepteren,8,accept
+set cookie options,8,settings
+subscribe ad-free,8,other
+subscribe and decline,8,reject
 "terms and conditions,",8,other
 terms of use.,8,other
-voir les conditions de loffre,8,other
-weitere einstellungen,8,settings
+third party vendors,8,other
+toestaan,8,accept
+vertragsbedingungen,8,other
+widerrufsbelehrung,8,other
 wyrażam zgodę,8,accept
+куки,8,other
+настроить файлы cookie,8,settings
+принимать только необходимые файлы cookie,8,reject
+принять все файлы cookie,8,accept
 105 technology vendors,7,other
-600 other websites,7,other
-600+ other websites,7,other
+à quoi servent les cookies ?,7,other
 accedi,7,other
 accept all above and enter the site,7,accept
-accept necessary only,7,reject
-accept only essential,7,reject
-aceptar solo las cookies esenciales,7,reject
-adjust settings,7,settings
+acceptable use policy,7,other
+accepteer alle,7,accept
 adjust your cookie settings,7,settings
 akceptuj niezbędne,7,reject
-akzeptieren weiter,7,accept
+alle cookies annehmen,7,accept
+alleen functioneel,7,reject
 aquí.,7,other
+arenanet privacy notice,7,other
 autoriser les cookies,7,accept
 avis sur les cookies,7,other
 bestätigen,7,acknowledge
 borlabs cookie,7,other
-click here.,7,other
 clicking here,7,other
+close and accept,7,accept
 configuración de las cookies,7,settings
 configurar las cookies,7,settings
 connectez-vous,7,other
-cookie consent,7,other
-cookie consent plugin for the eu cookie law,7,other
-cookie policy (opens in a new window),7,other
+cookie consent options,7,settings
+cookie statement.,7,other
+cookiepagina,7,other
+cookies and services settings,7,settings
 cookies estrictamente necesarias,7,reject
-cookiestatement instellingen,7,settings
+cookievoorkeuren,7,settings
+cookievoorkeuren beheren,7,settings
+data privacy statement,7,other
 déclaration relative aux cookies,7,other
+déclin,7,reject
+decline all cookies,7,reject
 do not sell or share my personal info,7,reject
 documentación de cookies,7,other
 drittunternehmen,7,other
-einbindung externer inhalte,7,other
 einstellungen bearbeiten,7,settings
+essential technology,7,other
 estoy de acuerdo,7,accept
-"für 2,99 €monat abonnieren",7,other
+functional technology,7,other
+functioneel,7,other
+geographically relevant advertising,7,other
 gérer les options,7,settings
 go to end,7,other
 googles privacy and terms page,7,other
 hier anmelden.,7,other
 ich akzeptiere,7,accept
-im ok with that,7,accept
-jetzt sichern,7,accept
+kom meer te weten,7,other
 kontynuuj bez akceptacji,7,reject
 kontynuuj bez wyrażania zgody,7,reject
-legal warning,7,other
+learn more about how we use cookies,7,other
+lees hier meer over cookies,7,other
+legitiem belang,7,other
 liste de nos partenaires,7,other
 manually manage cookies,7,settings
+meer informatie.,7,other
 mehr,7,other
-necessary cookies,7,reject
+"messung von werbeleistung und der performance von inhalten, zielgruppenforschung sowie entwicklung und verbesserung der angebote",7,other
+mijn instellingen beheren,7,settings
+mlb privacy policy,7,other
 nicht zustimmen,7,reject
 nie,7,reject
 niezbędne,7,reject
@@ -1317,122 +1482,150 @@ no aceptar,7,reject
 "non, ajuster",7,settings
 nos site(s),7,other
 nur funktionale cookies,7,reject
-nutzungsanalyse,7,other
 online privacy notice,7,other
-"oui, jaccepte",7,accept
-"personalisierte anzeigen und inhalte, werbetracking, prüfung utiq-technologie und zugriff auf ihr endgerät",7,other
-personalisierte inhalte,7,other
+only essential,7,reject
+ons cookiebeleid,7,other
+onze 1022 partners,7,other
+our 1 partners,7,other
+our 1024 partners,7,other
+partenaires (309),7,other
+personal data protection policy.,7,other
+personalise,7,settings
 politica de cookies,7,other
 politique cookies et autres traceurs,7,other
 politykę plików cookie,7,other
 polska (poland),7,other
-privacy information,7,other
-privacy page.,7,other
-privacy policies,7,other
+privacystatement,7,other
 prüfung der anwendbarkeit der utiq-technologie,7,other
 przeczytaj więcej o tych celach,7,other
-push-benachrichtigungen kommunikation,7,other
-read privacy policy,7,other
+quitter,7,other
+read cookie policy,7,other
+read our cookie policy.,7,other
 rechazar y registrarse,7,reject
-refuse all cookies,7,reject
 reject all and close,7,reject
 reject non-necessary cookies,7,reject
 rejeter tout,7,reject
 rifiuta e abbonati,7,reject
-see our 234 partners,7,other
+sabonner,7,other
+see our list of partners,7,other
 sekcji szczegółów,7,settings
 set cookie preferences,7,settings
 strictement nécessaires,7,reject
-subscribe ad-free,7,other
-subscribe and decline,7,reject
+strictly necessary cookies only,7,reject
 términos de uso,7,other
+terms of use agreement,7,other
+use essential cookies only,7,reject
 ustawienia preferencji,7,settings
-vertragsbedingungen,7,other
-verwendung und weitergabe von identifiern,7,other
 view cookies,7,settings
-voorkeuren beheren,7,settings
-widerrufsbelehrung,7,other
+view our cookies policy,7,other
+voorkeuren opslaan,7,accept
 zarządzaj cookies,7,settings
 zarządzaj plikami cookie,7,settings
 zarządzanie preferencjami,7,settings
 zezwól na wszystkie ciasteczka,7,accept
 zurück,7,other
+ок,7,acknowledge
 +info,6,other
 1012 socios,6,other
-2193 third parties,6,other
+1172 vendors,6,other
+18 u.s.c. 2257 déclaration de conformité relative aux exigences en matière de conservation des documents,6,other
+243 partenaires,6,other
 286 partenaires,6,other
 323 partenaires,6,other
-à quoi servent les cookies ?,6,other
+338,6,other
+500+ other websites,6,other
 accept all and continue,6,accept
-accept essential,6,reject
+accept necessary cookies only,6,reject
+accept selected,6,accept
 accept settings close,6,other
 accepta-ho tot,6,accept
-acceptable use policy,6,other
+accepteer noodzakelijke cookies,6,reject
 aceptar las cookies,6,accept
-adjust cookies,6,settings
 administrar preferencias,6,settings
-agree to all,6,accept
+advertising purposes,6,other
+agree proceed,6,accept
 ajustes de cookies,6,settings
 akceptuj wybrane,6,accept
 akceptuje wszystkie,6,accept
+akzeptieren wie ausgewählt,6,accept
 alle erlauben,6,accept
+alleen noodzakelijke,6,reject
+allegro user agreement,6,other
+alles aanvaarden,6,accept
+allow essential only,6,reject
 "analyse cookies, analyse speicherung",6,other
 analyse von zielgruppen durch statistiken oder kombinationen von daten aus verschiedenen quellen,6,other
 annehmen und schließen,6,accept
-arenanet privacy notice,6,other
+beheer cookies,6,settings
 choisir,6,settings
-close and accept,6,accept
-close cookie bar,6,acknowledge
 conditions générales,6,other
 configuració,6,settings
 configuración de anuncios,6,other
+connexion internet compatible,6,other
 continue to site,6,other
-cookie consent options,6,settings
+continue with facebook,6,other
+continue with necessary cookies only,6,reject
+cookie and digital advertising policy.,6,other
+cookie information,6,other
 cookie preference center,6,settings
 cookie richtlinie,6,other
 cookie-einstellungen anpassen,6,settings
 cookieconsent preferences,6,settings
 cookies erlauben,6,accept
 customise settings,6,settings
-customize preferences,6,settings
-data privacy statement,6,other
+data privacy policy,6,other
+datenschutzseite,6,other
 declinar,6,reject
-decline all cookies,6,reject
 denegar todo,6,reject
 dienste verwalten,6,settings
+dostosuj pliki cookie,6,settings
+edit preferences,6,settings
 einstellen,6,settings
 en savoir plus.,6,other
 entwicklung und verbesserung der angebote,6,other
-essential technology,6,other
 fermer et accepter,6,accept
+"fonctionnement du site, pour personnaliser son contenu et ses publicités et pour analyser son trafic",6,other
+"for more information, please see our cookie policy.",6,other
 france,6,other
-functional technology,6,other
 functionality,6,other
 funktion,6,other
-geographically relevant advertising,6,other
+further information can be found in our privacy policy,6,other
+gebruiksvoorwaarden,6,other
 gérer les paramètres de confidentialité,6,settings
 gérer vos préférences,6,settings
 gestión cookies,6,settings
 groupe m6,6,other
-how data is used,6,other
+guide sur le contrôle parental,6,other
+häufig gestellten fragen (faqs).,6,other
+hier.,6,other
+how we use cookies,6,other
+https:developers.google.comanalyticsdevguidescollectionanalyticsjscookie-usage?hl=degtagjs_google_analytics_4_-_cookie_usage,6,other
+i am under 18 - exit,6,other
 i confirm all,6,accept
+ik accepteer cookies,6,accept
 informationen zu cookies,6,other
+its 156 iab partners and its 17 other partners,6,other
+"ja, dat is prima",6,accept
+jai plus de 18 ans,6,other
+jetzt testen,6,other
 kontynuuj bez akceptowania,6,reject
 korzystaj wyłącznie z niezbędnych plików cookie,6,reject
+leave site,6,other
+lees meer over deze doeleinden,6,other
+list of vendors,6,other
 lista de proveedores,6,other
 liste unserer partner,6,other
 manage cookies and learn more,6,other
-manage your cookie preferences,6,settings
 manage your cookies,6,settings
 manage your privacy choices,6,settings
 messung,6,other
 messung der performance von inhalten,6,other
-"messung von werbeleistung und der performance von inhalten, zielgruppenforschung sowie entwicklung und verbesserung der angebote",6,other
-mlb privacy policy,6,other
 more details,6,settings
+"nee, dank je",6,reject
 nie wyrażam zgody,6,reject
 "nie, dziękuję",6,reject
 "no thanks, only necessary cookies",6,reject
+"no, let me choose",6,reject
 nos 1017 partenaires,6,other
 notice of financial incentive,6,other
 notre politique de confidentialité,6,other
@@ -1440,141 +1633,152 @@ notre politique de cookies,6,other
 nuestros 1711 socios,6,other
 ochrona danych osobowych,6,other
 odrzucam wszystkie,6,reject
-only essential,6,reject
 optionale ablehnen,6,reject
-our 1 partners,6,other
 our 1011 partners,6,other
-our 1024 partners,6,other
-our 13 partners,6,other
+our 2 partners,6,other
+our partners:,6,other
 paramétrer mes cookies,6,settings
-partenaires (309),6,other
-personal data protection policy.,6,other
-personalise,6,settings
 personalisieren,6,settings
+please let us know.,6,other
 política de protección de datos,6,other
 politique des cookies.,6,other
 polityce cookies.,6,other
 polityka prywatności eurozet sp. z o.o. i,6,other
+prestatie,6,other
+privacy and cookie policy.,6,other
+privacy policy (opens in a new window),6,other
+"privacy policy,",6,other
+privacy preferences,6,settings
 przechowywanie informacji na urządzeniu lub dostęp do nich,6,other
-quitter,6,other
-read cookie policy,6,other
-read our cookie policy.,6,other
 read our full privacy policy cookie information here,6,other
-sabonner,6,other
-set cookie options,6,settings
+sabonner et refuser les cookies,6,reject
+save my preferences,6,accept
+see our cookies notice,6,other
 speichern und schließen,6,other
-strictly necessary cookies only,6,reject
-terms of use agreement,6,other
-third party vendors,6,other
+storage preferences,6,settings
+strikt noodzakelijk,6,reject
+submit preferences,6,accept
 third-party vendors (1849),6,other
+tomtom.comcookies,6,other
 unserer datenschutzerklärung,6,other
 upmc websiteemail terms of use,6,other
-use essential cookies only,6,reject
+use of cookies on our websites,6,other
 ustaw preferencje,6,settings
+utiqs privacy portal (consenthub),6,other
+utiqs privacy statement,6,other
+vendors (932),6,other
 ver nuestros socios,6,other
 ver socios,6,other
 view cookie settings,6,settings
 view more info,6,other
 view our 163 partners,6,other
-view our cookies policy,6,other
+view our partners to find out more.,6,other
+weiger alle cookies,6,reject
 weiter ohne zustimmung,6,reject
 weitere optionen,6,settings
 zaakceptuj wszystkie pliki cookie,6,accept
 zapisz ustawienia,6,accept
 zarządzaj moimi ustawieniami,6,settings
+zelf cookies beheren,6,settings
 zmieniam ustawienia,6,settings
+zum abonnement,6,other
 zum angebot,6,other
 zustimmen weiter,6,accept
-настроить файлы cookie,6,settings
-принимать только необходимые файлы cookie,6,reject
-принять все файлы cookie,6,accept
-18 u.s.c. 2257 déclaration de conformité relative aux exigences en matière de conservation des documents,5,other
+принять,6,accept
+1724 advertising partners,5,other
 197 partner(s),5,other
-243 partenaires,5,other
+47 u.s.c. § 230(d),5,other
 472 partner,5,other
-500+ other websites,5,other
+9 third parties,5,other
 968 socios,5,other
-accept essential cookies,5,reject
-accept selected,5,accept
+advertentie-instellingen,5,other
 advertising cookies,5,other
-advertising purposes,5,other
-agree proceed,5,accept
-akzeptieren wie ausgewählt,5,accept
-alle cookies annehmen,5,accept
-allegro user agreement,5,other
+alle accepteren,5,accept
+alle bestätigen,5,accept
+alle cookies weigeren,5,reject
+alle weigeren,5,reject
 aller à la fin,5,other
 allow required cookies only,5,reject
 analytics cookies,5,other
 avis de confidentialité,5,other
+beheer opties,5,settings
+beheer voorkeuren,5,settings
 cerrar,5,acknowledge
+choose essential,5,reject
 ciblage,5,other
 configuración de publicidad,5,other
 configuraciones,5,settings
-connexion internet compatible,5,other
 consentiment,5,other
-continue with necessary cookies only,5,reject
-cookie and digital advertising policy.,5,other
+content removal,5,other
 cookie policy (opens in a new tab),5,other
+cookie verklaring,5,other
+cookie- en privacyverklaring,5,other
 cookie-einstellungen verwalten,5,settings
 cookie-infos,5,other
-cookies and services settings,5,settings
 cookies auswählen,5,settings
+cookies instellen,5,settings
 cookies konfigurieren,5,settings
+cookies pagina,5,other
+cookievoorkeuren aanpassen,5,settings
 data,5,other
 data protection declaration,5,other
 datenschutzeinstellungen anpassen,5,settings
 datenschutzeinstellungen verwalten,5,settings
 datenschutzhinweisen.,5,other
 datenschutzinformationszentrum,5,other
-datenschutzseite,5,other
 declaración de cookies,5,other
-déclin,5,reject
+decline advertising cookies,5,reject
+decline and subscribe,5,other
 deny non-essential cookies,5,reject
 deny optional,5,reject
 detalls,5,settings
-dostosuj pliki cookie,5,settings
+develop and improve services,5,other
 dowiedz się więcej.,5,other
-edit preferences,5,settings
 edytuj ustawienia,5,settings
 en savoir plus sur notre politique de cookies,5,other
+enkel noodzakelijke cookies,5,reject
+epoch.com,5,other
+existing zeit.de ad-free subscription,5,other
 fonctionnalité,5,other
-"fonctionnement du site, pour personnaliser son contenu et ses publicités et pour analyser son trafic",5,other
-"for more information, please see our cookie policy.",5,other
 forgot password?,5,other
 fortfahren ohne akzeptieren,5,reject
 function,5,other
 functional cookies (required),5,reject
 funkcjonalność,5,other
 funktional,5,other
-further information can be found in our privacy policy,5,other
 gérer les services,5,settings
-guide sur le contrôle parental,5,other
-häufig gestellten fragen (faqs).,5,other
-how we use cookies,5,other
-https:developers.google.comanalyticsdevguidescollectionanalyticsjscookie-usage?hl=degtagjs_google_analytics_4_-_cookie_usage,5,other
+https:www.ebay.co.ukgdpr,5,other
 https:www.ebay.degdpr,5,other
-i am under 18 - exit,5,other
+"i agree, dismiss this banner",5,acknowledge
+iab transparency and consent framework (tcf). (opens in a new window),5,other
 informació,5,other
+informatie,5,other
 informations sur les cookies,5,other
 inicia sesión aquí,5,other
+instellingen opslaan,5,accept
 internet privacy policy,5,other
-its 156 iab partners and its 17 other partners,5,other
-jai plus de 18 ans,5,other
-jetzt testen,5,other
+je me connecte,5,other
+klik hier,5,other
 konfiguracja zgód,5,settings
 konfiguratu,5,settings
-learn more about how we use cookies,5,other
-leave site,5,other
+learn more about our cookies.,5,other
+learn more and manage,5,settings
+lees meer over cookies,5,other
+legal information,5,other
 lese mehr über diese zwecke,5,other
+lijst van onze partners,5,other
 list of partners.,5,other
-list of vendors,5,other
+login zeit.de ad-free,5,other
 manage cookies settings,5,settings
+manage...,5,settings
+manage…,5,settings
 mehr dazu in unserer datenschutzerklärung.,5,other
 messung der werbeleistung,5,other
+more settings,5,settings
 nasi partnerzy,5,other
 naszymi 1711 partnerami,5,other
 ne pas accepter et fermer,5,reject
-"no, let me choose",5,reject
+niet-geclassificeerd,5,other
 "non, merci.",5,reject
 nos 12 partenaires,5,other
 nos 151 partenaires,5,other
@@ -1583,16 +1787,23 @@ notre politique de protection des données.,5,other
 nuestra(s) propiedad(es) digital(es),5,other
 nuestros 474 socios,5,other
 nur funktionale cookies akzeptieren,5,reject
+nur notwendige cookies annehmen,5,reject
 nur technisch notwendige cookies,5,reject
 ok !,5,acknowledge
 "ok, verstanden",5,acknowledge
 online privacy notice.,5,other
-our partners:,5,other
+only use essential cookies,5,reject
+onze partners,5,other
+opérateur télécom,5,other
+our 16 partners,5,other
+our policy,5,other
 partner anzeigen,5,other
+partner list (21),5,other
 permetre la selecció,5,accept
+permitir solo cookies técnicas,5,reject
 permitir todo,5,accept
+"personalised advertising, advertising measurement, audience research and services development",5,other
 personnaliser mes cookies,5,settings
-please let us know.,5,other
 pliki cookie,5,other
 plików cookies,5,other
 pokaż więcej,5,settings
@@ -1600,15 +1811,16 @@ política de galetes,5,other
 politique concernant les cookies,5,other
 polityką plików cookie,5,other
 polityka prywatności.,5,other
+powered by cookiescript,5,other
 préférences de cookies,5,settings
 preferencias de cookies,5,settings
 privacy cookies policy,5,other
 privacy notices.,5,other
-privacy policy (opens in a new window),5,other
-"privacy policy,",5,other
-privacy preferences,5,settings
+privacyverklaring.,5,other
 przejdź do strony,5,other
 przejdź do ustawień,5,settings
+read more here,5,other
+read our full privacy and cookie policy here.,5,other
 rebutja-ho tot,5,reject
 rechazar cookies no esenciales,5,reject
 rechazar las cookies,5,reject
@@ -1617,64 +1829,67 @@ red de wordpress.com,5,other
 refuser les cookies non nécessaires,5,reject
 reject advertising cookies,5,reject
 reject all optional cookies,5,reject
+reject and purchase daily mail essential,5,reject
 reject non essential,5,reject
 rexeitar cookies,5,reject
 saber más y personalizar,5,settings
-sabonner et refuser les cookies,5,reject
-save exit,5,other
-save my preferences,5,accept
 see more,5,other
 see our cookie notice.,5,other
-see our list of partners,5,other
+segpay.com,5,other
+select all,5,accept
 select cookies,5,settings
 select individual purposes,5,settings
 sólo cookies propias,5,reject
 sonstiges,5,other
 stocker etou accéder à des informations sur un appareil,5,other
-storage preferences,5,settings
-submit preferences,5,accept
+subscribe to zeit.de ad-free,5,other
+sur nos sites,5,other
 tak,5,accept
 targetowanie,5,other
+technology providers,5,other
 términos y condiciones,5,other
-use of cookies on our websites,5,other
+toon details,5,settings
+unserem cookie-hinweis,5,other
 ustaw swoje wybory,5,settings
 utiliser uniquement les cookies nécessaires,5,reject
+vendors,5,other
 vendors (918),5,other
+verwendung und weitergabe von nutzerkennungen zu werbezwecken,5,other
+view our 1104 partners,5,other
 view our 161 partners,5,other
-view our partners to find out more.,5,other
+view our policy,5,other
 voir nos 237 partenaires,5,other
 wchodzę,5,other
 website privacy statement.,5,other
 website user agreement,5,other
 "werbefrei für 0,50 € woche",5,other
 werbefrei lesen,5,other
+wijzig mijn voorkeuren,5,settings
 wydajność,5,other
 wykorzystywanie ograniczonych danych do wyboru reklam,5,other
 "yes, accept cookies",5,accept
+"yes, enter",5,accept
 zamknij informację o plikach cookies,5,acknowledge
 zarządzaj zgodami,5,settings
+zeit.de ad-free faq,5,other
 zmieniam zgody,5,settings
-zum abonnement,5,other
-куки,5,other
-понятно,5,acknowledge
-принять,5,accept
+подробнее,5,settings
 *discount terms,4,other
 1018 partners,4,other
-1172 vendors,4,other
+1048 third parties,4,other
+12 partners,4,other
+127 partenaires,4,other
 141 socios podemos,4,other
-1724 advertising partners,4,other
 300 otros sitios web,4,other
-338,4,other
-47 u.s.c. § 230(d),4,other
-9 third parties,4,other
+aanvaard alle cookies,4,accept
 ablehnen und einstellungen,4,reject
 "abonnieren für 3,99 € monat",4,other
 abonnieren und weiter,4,other
-accept necessary cookies only,4,reject
 accept recommended cookies,4,accept
 accepta totes les cookies,4,accept
 acceptar cookies,4,accept
 acceptar i tancar,4,accept
+accepter uniquement les cookies essentiels,4,reject
 aceptar selección,4,accept
 aceptar y leer gratis,4,accept
 aceptar y seguir leyendo,4,accept
@@ -1683,23 +1898,24 @@ akceptuj tylko niezbędne,4,reject
 akceptuj wszystkie pliki cookies,4,accept
 akceptuję wszystkie cookies,4,accept
 akzeptieren und schließen,4,accept
-alle bestätigen,4,accept
+alle cookies verwerpen,4,reject
 alle einstellungen anzeigen.,4,settings
+alleen vereiste cookies,4,reject
 allem zustimmen,4,accept
 alles klar,4,acknowledge
 allow and continue,4,accept
-allow essential only,4,reject
 allow necessary,4,reject
 als separat,4,other
 analizar activamente las características del dispositivo para su identificación,4,other
 avis relatif aux cookies,4,other
+beatport group privacy and cookie policy,4,other
+beheer instellingen,4,settings
 betreiber der lidl-webseiten und lidl-apps,4,other
 categories of personal information,4,other
 ce lien,4,other
 cgu,4,other
 charte dutilisation des cookies,4,other
 charte vie privée,4,other
-choose essential,4,reject
 ciasteczek,4,other
 clic aquí,4,other
 close cookie notification,4,acknowledge
@@ -1708,91 +1924,115 @@ compris,4,acknowledge
 conditions générales dutilisation,4,other
 confirm enter,4,other
 connexió a internet habilitada,4,other
+consent and continue,4,accept
 consulta cómo trata google la información personal.,4,other
 consulter notre politique cookies,4,other
 consulter notre politique de confidentialité,4,other
-content removal,4,other
+continua senza accettare,4,reject
 continuar,4,acknowledge
 continue to website,4,other
-continue with facebook,4,other
 continue without changes,4,reject
-cookie information,4,other
+cookie documentatie,4,other
 cookie policy and privacy policy,4,other
+cookie policy. (opens in a new window),4,other
 cookie preferences do not share,4,other
+cookie voorkeuren,4,settings
 cookie-informationen,4,other
+cookie-instelling,4,settings
 cookie-übersicht,4,settings
+cookiebeleid pagina,4,other
+cookiereglement,4,other
+cookies personaliseren,4,settings
 cookies statement (opens in a new window),4,other
+cookiestatement.,4,other
 customise my cookies,4,settings
 dans notre centre de préférences,4,settings
-data privacy policy,4,other
 data protection portal,4,other
 datenschutz-optionen,4,settings
 datenschutz-richtlinien,4,other
 daten­schutz­erklärung,4,other
-decline advertising cookies,4,reject
-decline and subscribe,4,other
+datenschutzhinweisen (contentpass-abo),4,other
 dena onartu,4,accept
 denega,4,reject
-develop and improve services,4,other
+derde partijen,4,other
 dispute resolution and arbitration,4,other
+doorgaan zonder akkoord te gaan,4,reject
+doorgaan zonder toestemming,4,reject
 dowiedz się w jaki sposób chronimy twoje dane,4,other
 edit settings,4,settings
 eigenständig verantwortlicher,4,other
 einbindung von externen inhalten für journalistische zwecke,4,other
+einbindung von externen multimedia-inhalten,4,other
 einstellungen öffnen,4,settings
 einverstanden und weiterlesen,4,accept
 en cliquant ici,4,other
 en savoir +,4,other
 en savoir plus et personnaliser,4,settings
+en savoir plus sur la politique de protection des données personnelles,4,other
 en savoir plus...,4,other
-epoch.com,4,other
-existing zeit.de ad-free subscription,4,other
 externe inhalte und erweiterte interaktion,4,other
+functional only,4,reject
 gay,4,other
+general terms and conditions,4,other
 gestión de cookies,4,settings
 gestionar configuración,4,settings
 gestionar la configuración de cookies,4,settings
 gestionar mis preferencias,4,settings
 global online tracking policy,4,other
-google,4,other
 google analytics,4,other
 google iab tcf 2 purposes of processing,4,other
 guardar,4,accept
 guía de control parental,4,other
-hier.,4,other
-"i agree, dismiss this banner",4,acknowledge
+i am 18+ and i accept cookies,4,accept
+i am under 18 exit,4,other
 i confirm necessary,4,reject
 iab transparency and consent framework (tcf) (opens in a new window),4,other
 "if youre not 18+, exit the website",4,other
+individual privacy preferences,4,other
 informationen,4,other
 innymi zaufanymi partnerami (489),4,other
-instellingen,4,settings
+instellingen wijzigen,4,settings
 internet privacy statement,4,other
+is goed,4,accept
+"ja, alles toestaan",4,accept
 "ja, ich stimme zu",4,accept
+"ja, ik accepteer cookies",4,accept
+"ja, ik ga akkoord",4,accept
 je désactive les finalités non essentielles,4,reject
-je me connecte,4,other
-learn more about our cookies.,4,other
-learn more and manage,4,settings
+je naccepte rien,4,reject
+jetzt bild pur abonnieren,4,other
+jetzt einloggen,4,other
+jetzt welt pur abonnieren,4,other
+keuzes opslaan,4,accept
+kies je cookies,4,settings
 learn more in our privacy policy.,4,other
 leave here,4,other
-legal information,4,other
+lees meer hierover in onze cookieverklaring.,4,other
+lees meer over ons cookiebeleid.,4,other
+lees onze privacyverklaring,4,other
+legal disclosure,4,other
+link naar iab leveranciers,4,other
 lista partnerów cookies,4,other
-login zeit.de ad-free,4,other
+manage consent,4,settings
 manage specific collection and sharing preferences,4,settings
-manage...,4,settings
-manage…,4,settings
+manage your cookie settings,4,settings
+manage your settings,4,settings
 más información aquí,4,other
 más información.,4,other
+meer lezen,4,other
+"mehr informationen, auch zum jederzeit möglichen widerruf, finden sie hier.",4,other
 mes choix,4,other
 mit diesem button wird der dialog geschlossen. seine funktionalität ist identisch mit der des buttons ablehnen.,4,reject
-more settings,4,settings
+more about cookies,4,other
 mostrar-ne els detalls,4,settings
 nasi partnerzy (1037),4,other
 naszych partnerów,4,other
 nécessaires uniquement,4,reject
 nicht einverstanden,4,reject
+niet accepteren,4,reject
 "no thanks, just let me shop",4,reject
 "no, reject all",4,reject
+noodzakelijke cookies,4,reject
 nos 1011 partenaires,4,other
 nos 1022 partenaires,4,other
 nos 1124 partenaires,4,other
@@ -1809,31 +2049,32 @@ odrzuć wszystkie zgody,4,reject
 ok fermer,4,acknowledge
 "ok, rozumiem",4,acknowledge
 "ok, understood",4,acknowledge
+okay.,4,acknowledge
 on group privacy notice,4,other
 onartu,4,accept
 online privacy and cookies policy,4,other
 online privacy statement,4,other
-only use essential cookies,4,reject
 opt out of sale of personal data and targeted advertising,4,reject
 opt-out preferences,4,settings
+optionele cookies weigeren,4,reject
 optionen,4,settings
 oświadczenie o plikach cookie,4,other
 our 1012 partners,4,other
-our 16 partners,4,other
-our 2 partners,4,other
+our 11 partners,4,other
+our 12 partners,4,other
 our 74 partners,4,other
-our policy,4,other
+our 77 partners,4,other
+our websites,4,other
+over cookies,4,other
 paramétrage des cookies,4,settings
 paramètres de confidentialité,4,settings
 paramètres de cookies,4,settings
-partner list (21),4,other
 partnerami,4,other
 partnerliste anzeigen (1 iab-anbieter),4,other
 partnerów,4,other
+pas uw keuze aan,4,settings
 per a activitats publicitàries o danalítica,4,other
 permetre totes les cookies,4,accept
-permitir solo cookies técnicas,4,reject
-"personalised advertising, advertising measurement, audience research and services development",4,other
 personalisierung,4,settings
 pliki cookies,4,other
 podmioty stowarzyszone,4,other
@@ -1845,34 +2086,33 @@ polityką prywatności.,4,other
 portal terms and conditions,4,other
 potwierdzam wybrane,4,accept
 poursuivre sans accepter,4,reject
-powered by cookiescript,4,other
-privacy and cookie policy.,4,other
 privacy controls,4,settings
+privacy instellingen,4,settings
+privacy manager.,4,other
 privacy notice (opens in a new window),4,other
+privacy policy cookie details,4,other
+privacy policy page.,4,other
 privacy security.,4,other
-privacy-,4,other
+privacyreglement,4,other
 protección de datos,4,other
 protection des données personnelles,4,other
 przeczytaj o polityce prywatności,4,other
 puedes rechazar utiq ahora,4,reject
-read more here,4,other
 read our cookies policy,4,other
-read our full privacy and cookie policy here.,4,other
 rechazar y continuar,4,reject
 rechazar y suscribirme,4,reject
 regulaminu,4,other
 reject analytics cookies,4,reject
-reject and purchase daily mail essential,4,reject
 rejeter tous les cookies,4,reject
 requisitos de registro de declaración de cumplimiento 18 u.s.c 2257.,4,other
 rezygnuję,4,reject
 roadpass digital privacycookie policy,4,other
+save choices,4,accept
 see details,4,settings
-see our cookies notice,4,other
-segpay.com,4,other
 selbst einstellen,4,settings
-select all,4,accept
 ses 1016 partenaires (dont 1010 partenaires iab),4,other
+show all partners (847),4,other
+show more,4,other
 "sí, estoy de acuerdo",4,accept
 "sin anuncios por 3,99 € al mes",4,other
 solo esenciales,4,reject
@@ -1881,13 +2121,14 @@ soy mayor de 18 años,4,other
 speichern schliessen,4,acknowledge
 statistiken,4,other
 straight,4,other
-subscribe to zeit.de ad-free,4,other
 suscribirme y rechazar,4,reject
 take me to settings,4,settings
-technology providers,4,other
 terceros,4,other
+terms and conditions.,4,other
 terms of usage,4,other
 thats fine,4,acknowledge
+third party providers,4,other
+third-party providers,4,other
 tiers,4,other
 tout accepter et fermer,4,accept
 tout interdire,4,reject
@@ -1899,23 +2140,21 @@ unbedingt erforderlich,4,reject
 uniquement les cookies nécessaires,4,reject
 united states,4,other
 us privacy notice,4,other
+use limited data to select content,4,reject
+user account,4,other
 uso de cookies,4,other
 ustawienia cookie,4,settings
 ustawieniach reklam,4,other
 utilizar datos de localización geográfica precisa,4,other
-utiqs privacy portal (consenthub),4,other
-utiqs privacy statement,4,other
 używamy plików cookie (tzw. ciasteczek),4,other
-vendors,4,other
-vendors (932),4,other
 ver nuestros 757 socios,4,other
 ver política de privacidad,4,other
 verweigern,4,reject
-verwendung und weitergabe von nutzerkennungen zu werbezwecken,4,other
 video consent and viewing policy,4,other
-view our 1104 partners,4,other
 view our global privacy statement,4,other
 view privacy terms,4,other
+viki functional cookies,4,other
+viki marketing cookies,4,other
 visitor agreement,4,other
 voir nos 302 partenaires,4,other
 vos données,4,other
@@ -1924,9 +2163,9 @@ webanalyse ablehnen,4,reject
 webanalyse akzeptieren,4,accept
 werbeeinstellungen,4,other
 werbefrei für 3.99 € monat,4,other
+wijzig voorkeur,4,settings
 wir und unsere 11 partner,4,other
 wykorzystanie profili do wyboru spersonalizowanych reklam,4,other
-"yes, enter",4,accept
 "yes, i accept",4,accept
 your privacy choices.,4,other
 your state-specific privacy choices,4,other
@@ -1934,33 +2173,45 @@ zaakceptuj wszystkie zgody i wejdź do serwisu,4,accept
 zaakceptuj wybrane,4,accept
 zarządzaj,4,settings
 zaufanymi partnerami iab (1010),4,other
-zeit.de ad-free faq,4,other
 zobacz politykę cookies.,4,other
 zum ende,4,other
-ок,4,acknowledge
+zur deutschen seite wechseln,4,other
+условия,4,other
 - impressum,3,other
 ¿ya utilizas contentpass ? iniciar sesión,3,other
 „polityką dotyczącą plików cookie,3,other
 (les données que nous recueillons),3,other
 (los datos que recopilamos),3,other
 *z wyjątkiem niezbędnych,3,reject
+1041 derden,3,other
+1041 third parties,3,other
+1215 third parties,3,other
 1257 partners,3,other
-127 partenaires,3,other
 140 socios,3,other
+15 partners,3,other
 15 third parties,3,other
+176 partner,3,other
+18 u.s.c. 2257 konformitätserklärung zu den aufbewahrungspflichten.,3,other
 196 socios,3,other
 21 advertising partners,3,other
+21 partner,3,other
+3 partners,3,other
 355 drittanbieter,3,other
 397 partner,3,other
 41 partner,3,other
 464 socios,3,other
 500 andere websites,3,other
 56 partenaires,3,other
+6 partners,3,other
 7 partenaires,3,other
+766 derden,3,other
 783 partner,3,other
+aangepast,3,settings
 abandonar el sitio,3,other
+abonnementsvoorwaarden,3,other
 accept all and close,3,accept
 accept analytics cookies,3,accept
+accept everything,3,accept
 accepta,3,accept
 accepter continuer,3,accept
 accepter et poursuivre,3,accept
@@ -1972,7 +2223,10 @@ acepto cookies,3,accept
 acknowledge,3,acknowledge
 activités numériques,3,other
 adjust my preferences,3,settings
+advanced,3,other
+"advertentievrij premium (€3,49 per jaar)",3,other
 advertising vendor list,3,other
+afdruk,3,other
 ajustar cookies,3,settings
 akceptuj informacje o polityce prywatności,3,other
 akceptuj wszystkie i przejdź do serwisu,3,accept
@@ -1980,28 +2234,39 @@ akceptuję wszystkie i korzystam z usług,3,accept
 akceptuję wszystkie pliki cookies,3,accept
 akceptuję wszystko,3,accept
 akceptuję!,3,accept
+akkoord en verdergaan,3,accept
+aktivieren,3,accept
 alle akzeptieren!,3,accept
+alle cookies aanvaarden,3,accept
+alle cookies afwijzen,3,reject
 alle optionalen cookies ablehnen,3,reject
 alles auswählen,3,accept
+allow essential cookies only,3,reject
 allow selected cookies,3,accept
 already a subscriber? log in,3,other
 analítica,3,other
 analytik,3,other
+analytische cookies,3,other
 anmeldung für abonnenten,3,other
 ausgewählte akzeptieren,3,accept
 auswahl speichern schließen,3,acknowledge
 autoriser,3,accept
-beatport group privacy and cookie policy,3,other
+bedrijfsgegevens,3,other
+begrepen,3,acknowledge
+bekijk ons cookiebeleid.,3,other
+bevestigen,3,acknowledge
 blackrock cookie notice,3,other
 català,3,other
 cerrar el banner de cookies rgpd,3,acknowledge
 cgv,3,other
 change cookie preferences,3,settings
+change your preferences,3,settings
 choose,3,settings
 choose a video,3,other
 choose your cookie mix,3,settings
 clause de confidentialité,3,other
 close banner,3,acknowledge
+colofon,3,other
 cómo modificar la configuración de las cookies,3,settings
 cómo utilizamos las cookies.,3,other
 compatible internet connection,3,other
@@ -2012,8 +2277,6 @@ configurer mes préférences,3,settings
 connaître notre politique cookies et la liste de nos partenaires,3,other
 connectez-vous​,3,other
 connectez-vous ici,3,other
-consent and continue,3,accept
-consent details,3,settings
 consentir todo,3,accept
 consulta las condiciones de la oferta,3,other
 consulta nuestra política de cookies,3,other
@@ -2021,8 +2284,10 @@ consulta nuestra política de cookies.,3,other
 consulte la política de privacidad,3,other
 consulter la politique cookies,3,other
 consulteu la nostra política de privacitat,3,other
+continue with only necessary cookies,3,reject
 continuer,3,acknowledge
 continuer et accepter,3,accept
+cookie and digital advertising policy,3,other
 cookie informationen,3,other
 cookie management,3,settings
 cookie optin by olli machts,3,other
@@ -2030,11 +2295,14 @@ cookie policy here,3,other
 cookie policy here.,3,other
 cookie preferences.,3,settings
 cookie statement. (opens in a new window),3,other
+cookie- en privacybeleid,3,other
 cookie-einstellungen ändern,3,settings
 cookie-hinweis.,3,other
 cookie-präferenzen,3,settings
 cookie-richtlinien.,3,other
+cookie-verklaring,3,other
 cookie‑richtlinie,3,other
+cookiepolicy,3,other
 cookies de análisis (proveedores no adheridos a iab),3,other
 cookies de marketing y segmentacion (proveedores no adheridos a iab),3,other
 cookies de preferencias (proveedores no adheridos a iab),3,other
@@ -2045,14 +2313,17 @@ cookies policy (opens in a new window),3,other
 cookies tracking,3,other
 cookies und einstellungen für dienste,3,settings
 cookies usage policy,3,other
-cookieverklaring,3,other
+cookiesbeleid,3,other
+cookiespagina,3,other
+customise options,3,settings
+customize my choices,3,settings
 dane firmy,3,other
 data protection information,3,other
 datenaustausch,3,other
 datens chutz,3,other
 datenschutz-,3,other
+datenschutz-hinweis,3,other
 datenschutz-hinweisen.,3,other
-datenschutzhinweisen (contentpass-abo),3,other
 de lensemble des cookies ou traceurs,3,other
 declaración sobre cookies,3,other
 déclaration de protection des données,3,other
@@ -2066,22 +2337,25 @@ descartar todas,3,reject
 detaillierte einstellungen,3,settings
 details einblenden,3,settings
 details einblenden für essenziell,3,settings
+deze link,3,other
+disallow cookies,3,reject
 do not sellcookie settings,3,other
 dont use analytics cookies,3,reject
+doorgaan zonder cookies,3,reject
 dostosuj wybory,3,settings
 dowiedz się więcej o naszej polityce prywatności. 🡭,3,other
-einbindung von externen multimedia-inhalten,3,other
 einstellungen individuell festlegen,3,settings
 einwilligen,3,accept
 els nostres socis,3,other
 en savoir plus dans notre politique cookies et confidentialité,3,other
-en savoir plus sur la politique de protection des données personnelles,3,other
 en savoir plus sur notre politique cookies,3,other
 en savoir plus sur notre politique de confidentialité,3,other
 en savoir plus sur notre politique dutilisation des cookies,3,other
+english (us),3,other
 entendido!,3,acknowledge
 erfahre mehr...,3,other
 erfahre mehr…,3,other
+erforderliches,3,reject
 estic dacord,3,accept
 facebook lite,3,other
 faq von contentpass,3,other
@@ -2089,67 +2363,86 @@ fermer ce message,3,acknowledge
 find out more about cookies,3,other
 find out more.,3,other
 functional and other cookies,3,other
-functional only,3,reject
 "funktional, analytik, werbung (nicht iab-anbieter), soziale medien und unbedingt erforderliche cookies",3,reject
 funktionale,3,reject
 funktionalität,3,other
+ga verder,3,acknowledge
+gebruik van uw gegevens,3,other
+gebruikers-,3,other
 genaue standortdaten und abfragen von geräteeigenschaften zur identifikation,3,other
-general terms and conditions,3,other
 gestiona tus preferencias,3,settings
 gestionar,3,settings
 gestionar configuración de privacidad,3,settings
 gestionar las cookies,3,settings
+google privacy policy,3,other
+gratis met persoonlijke advertenties,3,other
 haciendo clic aquí,3,other
-https:www.ebay.co.ukgdpr,3,other
-i am 18+ and i accept cookies,3,accept
-i am under 18 exit,3,other
+heb je al premium? hier inloggen,3,other
+hier verlassen,3,other
+i accept all,3,accept
 i confirm selected,3,accept
+ich bin über 18,3,other
+"if you prefer not to accept cookies with the exception of technically necessary cookies, please click here",3,reject
+ik weiger,3,reject
 im fine with this,3,accept
 im ok with this,3,accept
 impressum.,3,other
+imprint – contact us,3,other
 in unseren faq,3,other
-individual privacy preferences,3,other
 individuelle zwecke auswählen,3,settings
+info,3,other
 información legal,3,other
 información sobre cookies,3,other
 informacja prawna,3,other
+informatie op een apparaat opslaan enof openen,3,other
 informationen auf einem gerät speichern undoder abrufen,3,other
 inicia sessió,3,other
+instellingen en meer informatie,3,settings
+instellingen voor cookies en diensten,3,settings
 ir al final,3,other
+"ja, accepteren",3,accept
 "ja, alle erlauben",3,accept
+"ja, prima",3,accept
 jaccepte​,3,accept
 jaccepte les cookies,3,accept
 jaccepte lutilisation de cookies,3,accept
 je comprends,3,acknowledge
-je naccepte rien,3,reject
 je paramètre,3,settings
 je personnalise,3,settings
 je refuse lutilisation de cookies,3,reject
-jetzt bild pur abonnieren,3,other
-jetzt einloggen,3,other
-jetzt welt pur abonnieren,3,other
+jetzt computer bild pur abonnieren,3,other
 konfigurazioa,3,settings
 la politique de cookies,3,other
 lassen sie mich wählen,3,settings
+learn more about cookies,3,other
 leave website,3,other
 leer más...,3,other
-legal disclosure,3,other
+lees hier ons cookiebeleid,3,other
+lees meer over het gebruik van persoonlijke gegevens,3,other
+lees meer over ons cookiebeleid,3,other
+leitfaden zum jugendschutz,3,other
+lijst met advertentiepartners,3,other
+lijst met providers,3,other
 lire notre politique,3,other
 lire notre politique de vie privée.,3,other
+list of our partners,3,other
 lista dostawców,3,other
 listado completo,3,other
 liste de fournisseurs,3,other
 liste de nos partenaires iab,3,other
+liste der iab framework teilnehmer,3,other
 liste der partner (anbieter),3,other
 liste des fournisseurs,3,other
-manage consent,3,settings
-manage your cookie settings,3,settings
+marketing cookies,3,other
+marketingpartners,3,other
 mas información,3,other
 más información sobre nuestras cookies,3,other
 matomo,3,other
+meer informatie en aanpassen,3,settings
+meer over cookies,3,other
+meer over ons cookiebeleid,3,other
 mehr anzeigen,3,settings
 mehr dazu,3,other
-"mehr informationen, auch zum jederzeit möglichen widerruf, finden sie hier.",3,other
 mehr über die genutzten cookies erfahren,3,other
 mehr zum pur-abo,3,other
 meine auswahl bestätigen,3,accept
@@ -2159,9 +2452,13 @@ messenger,3,other
 meta ai,3,other
 meta pay,3,other
 meta quest,3,other
-more about cookies,3,other
+microsoft corporation,3,other
+more about how we use cookies (opens in a new window),3,other
 more choices,3,settings
+more information.,3,other
 my privacy choices,3,other
+naar de website,3,other
+nähere infos,3,other
 necesarias,3,reject
 nein,3,reject
 "nein, danke",3,reject
@@ -2170,9 +2467,11 @@ nicht erlauben,3,reject
 nicht essenzielle cookies daten ablehnen,3,reject
 nie pokazuj więcej tego komunikatu,3,acknowledge
 nie zezwalaj,3,reject
+"no, give me more info",3,other
 només sutilitzen cookies quan és necessari,3,reject
 normas de uso,3,other
 nos 11 partenaires,3,other
+nos 114 partenaires,3,other
 nos 200 partenaires,3,other
 nos 24 partenaires,3,other
 nos 25 partenaires,3,other
@@ -2183,7 +2482,6 @@ nos 8 partenaires,3,other
 nos contenu(s) numérique(s),3,other
 notwendig,3,reject
 nuestros 1011 socios,3,other
-nur notwendige cookies annehmen,3,reject
 "nutzungsanalyse, marketing personalisierung",3,other
 ochrona danych,3,other
 odrzuć pliki cookie,3,reject
@@ -2191,33 +2489,38 @@ odrzucam wszystkie *,3,reject
 ok to use analytics cookies,3,accept
 "ok, las acepto",3,accept
 "ok, zrozumiałem",3,acknowledge
-okay.,3,acknowledge
 only accept necessary cookies,3,reject
 opciones de cookies,3,settings
-opérateur télécom,3,other
-our 11 partners,3,other
+our 1071 partners,3,other
+our 1139 partners,3,other
 our 1381 partners,3,other
 our 160 partners,3,other
 our 22 partners,3,other
+our 23 partners,3,other
+our 235 partners,3,other
 our 276 partners,3,other
 our 277 partners,3,other
 our 430 partners,3,other
 our 66 partners,3,other
 our 7 partners,3,other
-our 77 partners,3,other
-our websites,3,other
 panel de configuración de cookies,3,settings
 paramètres des annonces,3,other
 paramètres les cookies,3,settings
 parametrizar,3,settings
 partage de données avec google,3,other
 partnerów reklamowych iab (778) oraz google i pozostałych partnerów (1529),3,other
+pas aan,3,settings
 permet-les totes,3,accept
 permitirlas todas,3,accept
 personalise my choices,3,settings
+personaliseer,3,settings
+personaliseren,3,settings
 personalisierte werbung inhalte inkl. profilbildung,3,other
 personalize cookies,3,settings
+personalizza,3,settings
 personnalisez votre choix,3,settings
+please read our privacy notice,3,other
+podrobné nastavení,3,settings
 politica de cookies.,3,other
 politica de privacidad,3,other
 política de privacidad de google,3,other
@@ -2239,9 +2542,10 @@ powered by borlabs cookie - tcf-cmp id: 323,3,other
 powered by komm.one,3,other
 prefiero rechazarlas,3,reject
 privacy and cookie notice,3,other
-privacy manager.,3,other
-privacy policy cookie details,3,other
-privacy policy page.,3,other
+privacy en cookies,3,other
+privacy policy ↗,3,other
+privacy- en cookiebeleid,3,other
+privacy-en cookiebeleid,3,other
 proveedores (925),3,other
 proveedores de terceros (1725),3,other
 przypomnij później,3,other
@@ -2261,15 +2565,16 @@ rechtliche hinweise,3,other
 refuser et sabonner (2€mois) pour une expérience sans pub,3,other
 réglages des cookies,3,settings
 regulaminem,3,other
+reichelt elektronik,3,other
 reject all optional,3,reject
 rexeitar,3,reject
 rexeitar todas,3,reject
 rgpd,3,other
 richtlinie zur verwendung von cookies,3,other
+rifiuta,3,reject
 saber más acerca de las cookies,3,other
 saber-ne més,3,other
 sauvegarder mes choix,3,accept
-save choices,3,accept
 save close,3,other
 save selection,3,accept
 schliessen,3,acknowledge
@@ -2277,12 +2582,11 @@ schon registriert?,3,other
 section détails,3,settings
 see our cookies policy,3,other
 seleccionar fines individuales,3,settings
+selectie opslaan,3,accept
 sélectionner les cookies,3,settings
 sélectionner les objectifs individuels,3,settings
 ses 1019 partenaires (dont 1010 partenaires iab),3,other
-show all partners (847),3,other
 show all partners (9),3,other
-show more,3,other
 sobre las cookies,3,other
 solo cookies esenciales,3,reject
 solo cookies necesarias,3,reject
@@ -2291,26 +2595,21 @@ soziale netzwerke und embeds,3,other
 "soziale netzwerke, videos und personalisierung",3,other
 statistics,3,other
 strony trzecie,3,other
-sur nos sites,3,other
 sus 1016 socios,3,other
 suscribirme desde 1.67 al mes,3,other
+switch to english,3,other
 "tak, zgadzam się",3,accept
 tanca,3,acknowledge
 targeting (3rd party),3,other
-third party providers,3,other
-third-party providers,3,other
+terze parti,3,other
 this link,3,other
 threads,3,other
-tomtom.comcookies,3,other
 tylko wymagane,3,reject
 ukatu cookieak,3,other
-unserem cookie-hinweis,3,other
 update cookie preferences,3,settings
 use essential only,3,reject
-use limited data to select content,3,reject
 use of cookies.,3,other
 use only necessary cookies,3,reject
-user account,3,other
 ustawienia szczegółowe,3,settings
 vale,3,acknowledge
 ver 1011 socios,3,other
@@ -2318,18 +2617,21 @@ ver nuestra política de cookies.,3,other
 verstanden!,3,acknowledge
 veure preferències,3,settings
 view our 20 partners,3,other
-view our policy,3,other
-viki functional cookies,3,other
-viki marketing cookies,3,other
 voir la politique cookies,3,other
+voir nos 1010 partenaires,3,other
+voorkeuren centrum,3,settings
 vos préférences,3,settings
 w porządku!,3,acknowledge
+weiger alle,3,reject
 weiterlesen,3,other
 werbefrei lesen ohne premium,3,other
 werbung,3,other
+wickes cookie policy,3,other
+wij en onze partners,3,other
 wykorzystywanie profili w celu doboru spersonalizowanych treści,3,other
 wyświetl listę partnerów (1 dostawców iab),3,other
 wyświetl naszych 39 partnerów,3,other
+yes i accept,3,accept
 "yes, i accept cookies",3,accept
 "yes, i accept!",3,accept
 zaakceptuj i kontynuuj,3,accept
@@ -2339,6 +2641,7 @@ zapisz i zamknij,3,acknowledge
 zarządzaj indywidualnymi preferencjami,3,settings
 zarządzaj plikami cookies,3,settings
 zarządzaj preferencjami plików cookie,3,settings
+zelf cookies instellen,3,settings
 zezwól,3,accept
 zezwól na wybrane,3,accept
 zezwól tylko na niezbędne,3,reject
@@ -2350,42 +2653,48 @@ zum abo,3,other
 zum login,3,other
 zum pur-abo,3,other
 zum pur-abo login,3,other
-zur deutschen seite wechseln,3,other
-подробнее,3,settings
-условия,3,other
+zustimmen schließen,3,accept
 - datenschutz,2,other
 . sie können die verwendung von cookies auch,2,other
 „cookies und ähnliche technologien,2,other
 "(die daten, die wir sammeln)",2,other
+(meer info),2,other
 (preise mit mwst.),2,other
 (preise ohne mwst.),2,other
+| cookie policy,2,other
 1014 partenaires,2,other
-1041 third parties,2,other
+1047 third parties,2,other
+11 partners,2,other
 1117 partenaires,2,other
 12 third parties,2,other
-1215 third parties,2,other
 126 partenaires,2,other
+14 derden,2,other
 14 partner,2,other
+14 partners,2,other
 159 partner,2,other
 159 partners,2,other
+17 partners,2,other
 1711 partners,2,other
-176 partner,2,other
 178 partner,2,other
-18 u.s.c. 2257 konformitätserklärung zu den aufbewahrungspflichten.,2,other
+18 derden,2,other
+18 partners,2,other
+18 u.s.c. 2257 nalevingsverklaring inzake vereisten voor het bijhouden en bewaren van gegevens,2,other
 18+ alle akzeptieren,2,accept
 18+ anpassen,2,other
 18+ nur notwendige cookies,2,reject
 197 partenaires,2,other
 2,2,other
-21 partner,2,other
+2 partners,2,other
+211,2,other
 22,2,other
 242 partenaires,2,other
+25 third parties,2,other
 255,2,other
 26 third parties,2,other
 27 third parties,2,other
 283 third parties,2,other
 3,2,other
-3 partners,2,other
+30 derden,2,other
 335 third parties,2,other
 336 third parties,2,other
 341 third parties,2,other
@@ -2393,17 +2702,21 @@ zur deutschen seite wechseln,3,other
 4 partenaires,2,other
 416 partner,2,other
 450 weitere websites,2,other
+46 partners,2,other
+5 derden,2,other
 500 other websites,2,other
 500 weitere websites,2,other
 518 partners,2,other
 551 partners,2,other
+7 partners,2,other
 7 third parties,2,other
-760 third parties,2,other
 787 partner,2,other
 81 partenaires,2,other
+9 derden,2,other
 ablehnen und bezahlen,2,reject
 ablehnen und nur essenzielle cookies akzeptieren,2,reject
 "ablehnen, ändern oder widerrufen",2,reject
+abonneren weigeren,2,reject
 abonnieren,2,other
 aboutcookies.org,2,other
 abzulehnen,2,reject
@@ -2412,20 +2725,23 @@ accept all non-essential cookies,2,accept
 accept continue to site,2,accept
 accept cookies policy,2,accept
 accept only required cookies,2,reject
+accepteer alleen noodzakelijke cookies,2,reject
 accepter la sélection,2,accept
 accepter les cookies strictement nécessaires,2,reject
 accepter tous,2,accept
-accepter uniquement les cookies essentiels,2,reject
+accepteren accepteren,2,accept
+accepteren cookies aanpassen,2,settings
+accepteren sluiten,2,acknowledge
 accessibility: fully compliant,2,other
 accetta e continua,2,accept
 ad storage,2,other
-advanced,2,other
 "advertising and content measurement, audience research, and services development",2,other
 afficher les options,2,settings
 afficher tous les partenaires (718),2,other
 affiner mes choix,2,settings
+afsluiten hier,2,acknowledge
 ajuster,2,settings
-aktivieren,2,accept
+akkoord en doorgaan,2,accept
 aliexpress free membership agreement,2,other
 alle abwählen,2,reject
 alle auswählen bestätigen,2,accept
@@ -2433,19 +2749,24 @@ alle cookies auswählen,2,accept
 alle nicht essenziellen cookies ablehnen,2,reject
 alle nicht notwendigen cookies ablehnen,2,reject
 alle optionalen ablehnen,2,reject
+alleen functionele cookies accepteren,2,reject
+alleen vereiste cookies accepteren,2,reject
+alleen verplichte cookies,2,reject
 allen cookies zustimmen,2,accept
 allen tools zustimmen,2,accept
-alles accepteren,2,accept
+alles accepteren en doorgaan,2,accept
+alles ontkennen,2,reject
+alles selecteren,2,accept
 allgemeinen geschäftsbedingungen,2,other
 allow all (incl. us-provider cookies),2,accept
 allow essential,2,reject
-allow essential cookies only,2,reject
 already a subscriber? sign in to your account,2,other
 already registered? login here,2,other
 analyse cookies,2,other
 "analytics cookies, analytics storage",2,other
 analytische speicherung,2,other
 anbieter (925),2,other
+andere partijen,2,other
 apprendre encore plus,2,other
 are you subscribe? log in,2,other
 ausführliche informationen,2,other
@@ -2460,6 +2781,19 @@ avis juridique,2,other
 avis sur les cookies.,2,other
 back,2,other
 beenden,2,acknowledge
+"begrepen, bedankt",2,acknowledge
+begrepen!,2,acknowledge
+beheer,2,other
+beheer 1387 leveranciers,2,other
+beheer cookie-instellingen en details,2,settings
+bekijk hier het beleid van onze leveranciers.,2,other
+bekijk ons beleid,2,other
+bekijk onze 417 partners,2,other
+bekijk onze cookiepagina,2,other
+bekijk onze partners,2,other
+beperkt toestaan,2,reject
+beperkte gegevens gebruiken om advertenties te selecteren,2,other
+bik+,2,other
 c,2,other
 centre de préférences,2,settings
 centre dinformation sur la protection des données,2,other
@@ -2467,7 +2801,7 @@ centre dinformation sur la protection des données,2,other
 ces finalités,2,other
 cest ok pour moi,2,acknowledge
 cgus,2,other
-change your preferences,2,settings
+change preferences,2,settings
 change your settings at any time,2,settings
 charte de confidentialité,2,other
 charte de protection des données,2,other
@@ -2480,50 +2814,61 @@ click here for more details,2,other
 "cloudflare, inc.",2,other
 conditions de confidentialité de google,2,other
 confidentialité sécurité,2,other
+configuratie,2,settings
 configuration des cookies,2,settings
 configurer mes choix,2,settings
 confirm selection,2,accept
+consent powered by ethyca,2,other
 consulter la politique de cookies,2,other
 consulter notre page dédiée,2,other
 consulter notre politique de gestion des cookies,2,other
 consultez notre politique de confidentialité,2,other
 consultez notre politique en matière de cookies pour en savoir plus.,2,other
-continua senza accettare,2,reject
-continue with only necessary cookies,2,reject
 continue with recommended settings,2,accept
+continue without consent,2,reject
 continuer à naviguer sans accepter,2,reject
-cookie and digital advertising policy,2,other
 cookie and privacy statement (opens in a new window),2,other
 cookie declaration page,2,other
 cookie details,2,settings
 cookie einstellungen verwalten,2,settings
+cookie instellingen beheren,2,settings
 cookie management policy,2,other
-cookie policy. (opens in a new window),2,other
 cookie statement for more information.,2,other
+cookie statement pagina,2,other
 cookie-einstellungen anzeigen,2,settings
 cookie-einstellungen vornehmen,2,settings
 cookie-hinweisen,2,other
 cookie-informationsseite,2,other
+cookie-instellingen beheren,2,settings
 cookie-nutzung,2,other
 cookie-richtlinie.,2,other
+cookie-voorkeuren,2,settings
 cookie‑einstellungen,2,settings
+cookiebeleid bekijken,2,other
 cookieeinstellungen,2,settings
+cookielijst,2,other
+cookies and privacy policy,2,other
 cookies and tracking.,2,other
 cookies bearbeiten,2,settings
 "cookies danalyse, stockage danalyse",2,other
 cookies gerne zulassen,2,accept
 cookies management,2,settings
 cookies nécessaires,2,reject
+cookies privacy,2,other
+cookies selecteren,2,settings
 cookies strictement nécessaires,2,reject
 cookies techniques uniquement,2,reject
 cookies und ähnliche technologien,2,other
 cookies verwalten und mehr erfahren,2,settings
+cookies zelf instellen,2,settings
 cookies-erklärungsseite,2,other
+cookies-pagina,2,other
 cookiestraceurs techniques,2,other
+cookievoorkeuren instellen,2,settings
 create new account,2,other
-customise options,2,settings
+create profiles for personalised advertising,2,other
+create profiles to personalise content,2,other
 customise your preferences,2,settings
-customize my choices,2,settings
 daccord,2,accept
 daccord fermer,2,acknowledge
 data protection information center,2,other
@@ -2533,7 +2878,6 @@ datenschutz einstellungen,2,settings
 datenschutz- sicherheitshinweise,2,other
 datenschutz-bestimmungen,2,other
 datenschutz-bestimmungen.,2,other
-datenschutz-hinweis,2,other
 datenschutz-seite,2,other
 datenschutz­erklärung,2,other
 datenschutzoptionen,2,settings
@@ -2544,12 +2888,12 @@ decline close,2,reject
 décliner,2,reject
 définir mes paramètres,2,settings
 deny non-essential,2,reject
+details bekijken,2,settings
 direct marketing,2,other
 direktes marketing,2,other
 disagree close,2,reject
-disallow cookies,2,reject
-disclaimer,2,other
 dispute resolution procedures,2,other
+doorgaan,2,acknowledge
 dp wired,2,other
 drittanbieter (1211),2,other
 dritten und unseren partnern,2,other
@@ -2566,15 +2910,15 @@ en savoir plus sur la conformité au rgpd,2,other
 en savoir plus sur la gestion des cookies,2,other
 en savoir plus sur les cookies et sur nos partenaires.,2,other
 en savoir plus sur notre politique de protection des données personnelles,2,other
-english (us),2,other
 enregistrer,2,other
 enregistrer et fermer,2,acknowledge
 enter and accept cookies,2,accept
 enter without accepting cookies,2,reject
 entrer,2,other
-erforderliches,2,reject
 essential,2,reject
 essential cookies,2,reject
+essentiële cookies,2,reject
+european union law,2,other
 exploitant des sites web lidl et de lapplication lidl,2,other
 externe inhalte,2,other
 "externe inhalte anzeigen (z. b. soziale medien, videos, quiz)",2,other
@@ -2588,45 +2932,62 @@ fortfahren ohne zu akzeptieren,2,reject
 fournisseurs de données,2,other
 français (france),2,other
 "fremdinhalte darstellen (soziale netzwerke, videos und andere einbindungen)",2,other
+functionele cookies,2,reject
 funktionelle,2,other
 "für 3,99 €monat abonnieren",2,other
+geavanceerd,2,other
+gegevensbescherming,2,other
+gegevensgebruik om informatie,2,other
 geht klar,2,accept
 geht klar!,2,accept
 gérer,2,settings
 gérer les paramètres des cookies,2,settings
+gids voor ouderlijk toezicht,2,other
 gizlilik politikamıza,2,other
 global privacy notice,2,other
 go ad-lite and subscribe,2,other
+google privacy beleid,2,other
 google privacy site.,2,other
+google privacy terms,2,other
+google safety center,2,other
 google werbeanzeigen,2,other
 hier einlogge n,2,other
-hier verlassen,2,other
+hier meer over de cookies,2,other
+hier onze privacy policy,2,other
 hinweis zu cookies,2,other
 hinweisen zu cookies,2,other
 https:grv.mediaprivacy,2,other
-i accept all,2,accept
+https:www.ebay.comgdpr,2,other
 i choose,2,accept
 i decide,2,other
-iab transparency and consent framework (tcf). (opens in a new window),2,other
 ich bin 18+ eintreten,2,other
-ich bin über 18,2,other
 ici.,2,other
-"if you prefer not to accept cookies with the exception of technically necessary cookies, please click here",2,reject
+ik accepteer alle cookies,2,accept
+ik begrijp het!,2,acknowledge
+ik ben 18 jaar of ouder,2,other
+ik ben 18+ en akkoord!,2,accept
+ik snap het,2,acknowledge
+ik wil alleen minimale cookies,2,reject
 im benutzerkonto,2,other
 im okay with this,2,accept
 impressum |,2,other
 impressum und datenschutz,2,other
-imprint – contact us,2,other
 improve accessibility,2,other
 in ordnung,2,acknowledge
 in questa lista,2,other
+"indien je enkel technisch noodzakelijke cookies wenst te accepteren, klik dan hier",2,reject
+individuele instellingen,2,settings
+individuele voorkeuren beheren,2,settings
 individuelle cookie einstellungen,2,settings
 info-seite,2,other
+informatie over cookies,2,other
 information about cookies and similar technologies,2,other
 information page,2,other
 informations sur la protection des données,2,other
 inscrivez-vous,2,other
 its 18 partners,2,other
+"ja, accepteer",2,accept
+"ja, akkoord",2,accept
 "ja, ich willige ein.",2,accept
 "ja, verstanden",2,accept
 jaccepte les cookies et je continue,2,accept
@@ -2636,11 +2997,13 @@ je paramètre les cookies,2,settings
 je préfère minscrire gratuitement,2,other
 je veux choisir,2,settings
 jetzt an me lden,2,other
-jetzt computer bild pur abonnieren,2,other
 jetzt werbefrei lesen,2,other
+jouw privacy,2,other
+juridische kennisgeving,2,other
 kabul et,2,accept
 kebijakan cookie,2,other
 kebijakan privasi,2,other
+keuze opslaan,2,accept
 kleinanzeigen pur,2,other
 komfortfunktionen,2,other
 kostenlos.,2,other
@@ -2648,58 +3011,86 @@ kurier ad free,2,other
 la page cookies et autres traceurs,2,other
 lass mich wählen,2,settings
 le groupe tf1,2,other
-learn more about cookies,2,other
 learn more about parental controls,2,other
+lees hier ons privacy statement,2,other
+lees meer in ons cookiebeleid.,2,other
+lees meer in ons privacy- en cookiebeleid.,2,other
+lees meer over het cookiebeleid,2,other
+lees meer over het gebruik van cookies en het intrekken van uw toestemming.,2,other
+lees meer over ons cookie policy.,2,other
+lees meer over onze cookies.,2,other
+lees ons cookiebeleid,2,other
+lees ons privacy statement,2,other
+lees ons privacybeleid,2,other
+lees onze cookieverklaring,2,other
 legal,2,other
-leitfaden zum jugendschutz,2,other
 les informations que nous collectons,2,other
 les mentions légales,2,other
 let me choose my cookies,2,settings
 lien,2,other
 lien vers les partenaires,2,other
 lietuvių,2,other
+lijst met leveranciers.,2,other
+link,2,other
 linkedin,2,other
 lire la suite,2,other
 lire notre politique de cookies,2,other
-list of our partners,2,other
 liste de partenaires,2,other
-liste der iab framework teilnehmer,2,other
 liste des partenaires,2,other
 manage all cookies,2,settings
 manage consents,2,settings
+manage or reject,2,reject
 manage preferences.,2,settings
-manage your settings,2,settings
+manage services,2,other
 measurement,2,other
+meer informatie over cookies of je keuze aanpassen?,2,settings
+meer informatie over cookies op deze website,2,other
+meer informatie over uw privacy,2,other
+meer informatie vind je in ons privacybeleid.,2,other
+meer instellingen,2,settings
+meer keuzes,2,settings
+meer over cookies.,2,other
+meer over de cookies die wij gebruiken,2,other
+meer weten over cookies?,2,other
 mehr darüber erfahren,2,other
 mehr erfahren und anpassen,2,settings
 mehr informationen über die cookie-richtlinie,2,other
 mehr informationen.,2,other
 meine optionen,2,settings
+melding sluiten,2,acknowledge
+melding verbergen,2,other
 mesure daudience analytics,2,other
 meta store,2,other
-microsoft corporation,2,other
+microsoft advertising,2,other
+mijn keuzes bevestigen,2,accept
+mijn voorkeuren opslaan,2,accept
 mit erforderlichen einstellungen fortfahren,2,reject
 modifier mes préférences,2,settings
-more about how we use cookies (opens in a new window),2,other
+more information about cookies,2,other
 more information on cookies,2,other
 more languages…,2,other
 motor1,2,other
 my cookie preferences,2,settings
 my preferences,2,settings
-nähere infos,2,other
+naar einde gaan,2,other
 narayana verlag gmbh,2,other
 nécessaires,2,reject
+"nee, bedankt",2,reject
+"nee, geen youtube cookie",2,reject
+"nee, sluiten",2,acknowledge
+"nee, zet mijn cookies uit",2,reject
+negen partners,2,other
 "nein, einstellungen öffnen",2,settings
+netnanny,2,other
 nicht 18+ — seite verlassen,2,other
 nicht notwendige ablehnen,2,reject
 nicht notwendige cookies ablehnen,2,reject
 "no, customize settings",2,settings
-"no, give me more info",2,other
 "no, manage cookies",2,settings
 "no, take me to cookie settings",2,settings
 "no, thanks, only necessary cookies",2,reject
 non-essential cookies,2,reject
-nos 114 partenaires,2,other
+noodzakelijke,2,reject
 nos 16 partenaires,2,other
 nos 19 partenaires,2,other
 nos 21 partenaires,2,other
@@ -2709,6 +3100,7 @@ nos 5 partenaires,2,other
 nos 56 partenaires,2,other
 nos 82 partenaires,2,other
 nos conditions dutilisation,2,other
+nostri partner,2,other
 notice,2,other
 notre politique cookies.,2,other
 notre politique de données personnelles.,2,other
@@ -2733,29 +3125,37 @@ nutzungsbestimmungen,2,other
 object,2,other
 ohne einverständnis fortfahren,2,reject
 ohne einwilligung weiter,2,reject
+ok ik begrijp dat,2,acknowledge
 "ok, compris !",2,acknowledge
 "ok, continue to website",2,acknowledge
 "okay, got it",2,acknowledge
 okay!,2,acknowledge
 only allow essential cookies,2,reject
 only allow necessary cookies,2,reject
+only functional cookies,2,reject
 only the cookies that are necessary,2,reject
+onze 1010 partners,2,other
+onze 1017 partners,2,other
+onze 113 partners,2,other
+onze 5 partners,2,other
+onze cookieverklaring.,2,other
+onze externe partners,2,other
 open the cookie jar,2,other
 operator of the lidl websites and lidl app,2,other
+opslaan en sluiten,2,other
+opties,2,other
 optionen anzeigen,2,settings
 options...,2,other
 oui,2,accept
 our 1017 partners,2,other
 our 1018 partners,2,other
-our 1071 partners,2,other
-our 1139 partners,2,other
 our 118 partners,2,other
-our 12 partners,2,other
 our 14 partners,2,other
 our 17 partners,2,other
+our 180 partners,2,other
 our 208 partners,2,other
+our 210 partners,2,other
 our 217 partners,2,other
-our 23 partners,2,other
 our 25 partners,2,other
 our 279 partners,2,other
 our 28 partners,2,other
@@ -2764,6 +3164,7 @@ our 55 partners,2,other
 our 553 partners,2,other
 our 965 partners,2,other
 page cookies et autres traceurs,2,other
+pagina,2,other
 paramètrage des cookies,2,settings
 paramétrer vos préférences,2,settings
 paramètres de protection des données,2,settings
@@ -2772,6 +3173,8 @@ partenaires​,2,other
 partenaires publicitaires,2,other
 partnerliste (21),2,other
 partnerliste anzeigen (3 iab-anbieter),2,other
+pas cookies aan,2,settings
+pas je voorkeuren aan,2,settings
 pay £0.49m to reject – view offer,2,other
 personalised advertising,2,other
 "personalised advertising and content, ad and content performance measurement, audience research, and the development and improvement of services.",2,other
@@ -2783,10 +3186,9 @@ personnaliser vos publicités,2,other
 personnaliser...,2,settings
 personnalisez vos choix,2,settings
 php.net,2,other
-please read our privacy notice,2,other
 please review our cookie policy to learn more.,2,other
 plus tard,2,other
-podrobné nastavení,2,settings
+policy,2,other
 political advertising,2,other
 politique de confidentialité des cookies,2,other
 politique de confidentialité et de cookies,2,other
@@ -2802,14 +3204,25 @@ powered by tracking garden,2,other
 präferenzen verwalten,2,settings
 préférences et politique sur les cookies,2,other
 preferenze,2,settings
+privacy and cookie statement,2,other
 privacy and cookies,2,other
+privacy beveiliging te bekijken,2,other
+privacy disclaimer,2,other
+privacy en cookiebeleid,2,other
 privacy options,2,settings
-privacy policy ↗,2,other
 privacy section,2,other
 privacy statement (opens in a new window),2,other
+privacy- cookie verklaring,2,other
+privacy- en cookiestatement.,2,other
+privacyinstellingen beheren,2,settings
+privacypagina,2,other
 privatkunde,2,other
+proceed with functional cookies only,2,reject
+profielen aanmaken ten behoeve van gepersonaliseerde advertenties,2,other
+profielen gebruiken voor de selectie van gepersonaliseerde advertenties,2,other
 publicité politique,2,other
 read more about our cookies (opens in a new window),2,other
+read more about these purposes,2,other
 read our cookie notice,2,other
 read our privacy and cookie policy,2,other
 reddet,2,reject
@@ -2820,7 +3233,6 @@ refuser tous,2,reject
 refuser tous les cookies non nécessaires,2,reject
 réglage des cookies,2,settings
 règles de confidentialité,2,other
-reichelt elektronik,2,other
 reject additional,2,reject
 reject all except strictly necessary,2,reject
 reject all non-functional,2,reject
@@ -2834,8 +3246,8 @@ rejeter les cookies non essentiels,2,reject
 revenir sur mon choix et accepter les cookies,2,accept
 review cookie settings,2,settings
 review your privacy settings,2,settings
-rifiuta,2,reject
 română,2,other
+rta,2,other
 sabonner maintenant,2,other
 "sans publicité pour 0,50 € semaine",2,other
 "sans publicité pour 3,99 € mois",2,other
@@ -2843,6 +3255,8 @@ sauvegarder,2,other
 save selections,2,accept
 select cookie preferences,2,settings
 select your cookie preferences,2,settings
+selecteer afzonderlijke doeleinden,2,settings
+selecteer cookies,2,settings
 service,2,other
 servizio di base,2,other
 set choices,2,settings
@@ -2858,19 +3272,20 @@ sinscrire,2,other
 sites tiers succeptibles dutiliser des cookies ou autres méthodes de tracking,2,other
 soziale medien,2,other
 speichern.,2,accept
+sta cookies toe,2,accept
 steady,2,other
 stimme zu und fortfahren,2,accept
 subscribe for a small fee,2,other
 swisscom directories ag cookie policy,2,other
-switch to english,2,other
 tableau des cookies,2,other
 targeting (1st party),2,other
 telegraph commercial cookies,2,other
 termes et conditions,2,other
-terms and conditions.,2,other
-terze parti,2,other
+the cookie policy,2,other
 third-party vendors (1725),2,other
+toestemming weigeren,2,reject
 tool-einstellungen,2,settings
+toon alle partners (2),2,other
 tout accepter fermer,2,accept
 tout décliner,2,reject
 tout décocher,2,reject
@@ -2889,50 +3304,68 @@ unsere 40 partner,2,other
 unseren nutzungsbedingungen,2,other
 update preferences,2,settings
 use essential cookies,2,reject
+use limited data to select advertising,2,other
+use profiles to select personalised advertising,2,other
+use profiles to select personalised content,2,other
 use recommended settings,2,accept
 utilisation de vos données personnelles,2,other
+uw cookie-instellingen,2,settings
+vendors (1010),2,other
+verbergen,2,other
+verder zonder accepteren,2,reject
+verklaring gegevensbescherming,2,other
 vertrag kündigen,2,other
 verwendung von cookies,2,other
+via cookie-instellingen kun je op ieder moment je keuze wijzigen of je toestemming intrekken,2,settings
 video auswählen,2,other
+vier externe partners,2,other
 view our 11 partners,2,other
 view our 13 partners,2,other
 view our 258 partners,2,other
 view our 289 partners,2,other
 view our cookie policy here,2,other
+view our list of partners,2,other
+view partner list (1 iab vendors),2,other
 view settings,2,settings
+visit our cookie page,2,other
 visit our privacy policy,2,other
 voir la politique de confidentialité,2,other
 voir les détails,2,settings
 voir nos 1 partenaires,2,other
-voir nos 1010 partenaires,2,other
 voir nos 11 partenaires,2,other
 voir nos 15 partenaires,2,other
 voir nos 234 partenaires,2,other
 voir nos 323 partenaires,2,other
 voir notre politique de confidentialité,2,other
+voorkeur opslaan,2,accept
 voreinstellungen verwalten,2,settings
 vous pouvez également consulter notre politique de confidentialité afin dobtenir plus dinformations sur le traitement de vos données.,2,other
 webanalyse,2,other
 website privacy and cookie policy,2,other
+weiger niet-essentiële cookies,2,reject
+weiger niet-noodzakelijke cookies,2,reject
+weiger optionele cookies,2,reject
 weitere informationen über das rta-label und kompatible dienste findest du hier,2,other
 weitere informationen.,2,other
 "wenn du keine cookies mit ausnahme der technisch notwendigen cookie akzeptieren möchtest, dann klicke bitte hier",2,reject
 "werbefrei lesen für 3,99 € monat",2,other
 "werbung basierend auf einer reduzierten menge von daten, personalisierte inhalte und messung von werbeleistung",2,other
 why choose a location?,2,other
-wickes cookie policy,2,other
 widerruf und datenschutz,2,other
 widerrufbar,2,other
+wijs alles af,2,reject
+wijzig cookie-instellingen,2,settings
+wijzigen,2,settings
 wir und unsere partner,2,other
-yes i accept,2,accept
 "yes, accept all",2,accept
 "yes, thats fine",2,accept
 your cookie settings,2,settings
-zelf instellen,2,settings
+zie onze cookie policy,2,other
 zu den einstellungen,2,settings
 zu ihrem kundenkonto,2,other
 zum impressum,2,other
 zurück zur übersicht,2,other
-zustimmen schließen,2,accept
 zustimmen und fortfahren,2,accept
 zustimmen und weiter mit werbung,2,accept
+пользовательское соглашение,2,other
+что это значит?,2,other
