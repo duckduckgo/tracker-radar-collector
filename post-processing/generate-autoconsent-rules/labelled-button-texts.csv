@@ -290,7 +290,7 @@ akceptuj,74,accept
 personnaliser mes choix,74,settings
 save,74,other
 paramétrer les cookies,73,settings
-rechazar y suscribirse,73,reject
+rechazar y suscribirse,73,other
 meer informatie,72,other
 aquí,71,other
 consentimiento,71,other
@@ -360,7 +360,7 @@ polityki prywatności,54,other
 speichern,54,accept
 accept and continue,53,accept
 accepter les cookies,53,accept
-agree close,53,acknowledge
+agree close,53,accept
 get started,53,other
 guides,53,other
 nie zgadzam się,53,reject
@@ -406,7 +406,7 @@ reject optional,46,reject
 zaufanych partnerów,46,other
 ajustes,45,settings
 allow,45,accept
-einstellungen oder ablehnen,45,reject
+einstellungen oder ablehnen,45,settings
 einstellungen verwalten,45,settings
 find out more,45,other
 jetzt abonnieren,45,other
