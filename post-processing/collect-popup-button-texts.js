@@ -119,7 +119,7 @@ function collectDistinctButtonTextsFromCrawl(crawlData) {
  */
 function buildRows(data) {
     return [...data.entries()]
-        .filter(([, { occurences }]) => occurences > 1)
+        .filter(([, { occurences }]) => occurences >= 1)
         .sort((a, b) => b[1].occurences - a[1].occurences || a[0].localeCompare(b[0]))
         .map(([buttonText, { occurences, label }]) => ({
             buttonText,
