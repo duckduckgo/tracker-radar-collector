@@ -50,7 +50,6 @@ const REJECT_PATTERNS_DUTCH = [
     'alleen noodzakelijk',
     'weiger',
     'weiger cookies',
-    'selectie toestaan',
     'doorgaan zonder te accepteren',
     'alleen functionele cookies',
     'alleen functioneel',
@@ -887,20 +886,52 @@ const SETTINGS_PATTERNS = [
 
     // French (FR)
     'paramétrage des cookies',
+    'paramétrer',
     'paramétrer les cookies',
     'paramétrer vos choix',
     'personnaliser',
+    'personnaliser les cookies',
+    'personnaliser mes choix',
+    'paramètres',
+    'paramètres des cookies',
+    'préférences',
     'réglages',
+    'afficher les détails',
+    'détails',
+    'gestion des cookies',
+    /^gérer (les |mes )?cookies$/,
+    'gérer mes choix',
+    'je choisis',
+    'voir les préférences',
 
     // German (DE)
-    'datenschutzeinstellungen',
+    'abschnitt einzelheiten',
+    'cookie-details',
+    /^datenschutz-?einstellungen$/,
+    'cookie-einstellungen',
+    'cookies verwalten',
+    'einstellungen oder ablehnen',
+    /^einstellungen (anpassen|ansehen|verwalten|ändern)$/,
+    'erweiterte einstellungen',
+    'individuelle datenschutz-präferenzen',
+    'individuelle datenschutzeinstellungen',
+    'konfigurieren',
+    'mehr optionen',
+    'präferenzen',
     'individuelle einstellungen',
     'privatsphäre einstellungen',
 
     // Dutch (NL)
+    /^(aan|an)passen$/,
+    'bekijk voorkeuren',
+    /^cookie[- ]instellingen$/,
     'cookiestatement instellingen',
+    /^details (tonen|weergeven)$/,
     'instellingen',
+    'meer opties',
+    'voorkeuren aanpassen',
     'voorkeuren beheren',
+    'zelf instellen',
 
     // Czech (CS)
     'podrobné nastavení',
@@ -922,6 +953,7 @@ const SETTINGS_PATTERNS = [
     'personalizacja',
     'pokaż cele',
     'pokaż szczegóły',
+    'szczegóły',
     'pozwól mi wybrać',
     'preferencje cookies',
     /^przejdź do ustawień plików cookies\.$/,
@@ -966,6 +998,18 @@ const SETTINGS_PATTERNS = [
 
     // Italian (IT)
     'personalizza cookie',
+
+    // English (EN)
+    'advanced settings',
+    'consent settings',
+    /^details (anzeigen|zeigen|section)$/,
+    'no, adjust',
+    'personalize',
+    'plus doptions',
+    'privacy manager',
+    'set preferences',
+    'set your choices',
+    'view preferences',
 ];
 
 const ACCEPT_PATTERNS = [
@@ -985,6 +1029,7 @@ const ACCEPT_PATTERNS = [
     'im ok with that',
     'accept optional cookies',
     'allow selection',
+    'continue with recommended cookies',
 
     /^alle (cookies )?akzeptieren$/is,
 
@@ -1050,19 +1095,28 @@ const ACCEPT_PATTERNS = [
 
     // French (FR)
     'accepter et continuer',
+    'accepter et fermer',
+    'accepter les cookies',
+    /^accepter (tout|tous les cookies)$/,
     'accepter',
+    'autoriser tous les cookies',
+    'jaccepte',
     'tout accepter',
 
     // German (DE)
-    'akzeptieren schließen',
     'akzeptieren und weiter',
     'akzeptieren weiter',
     'akzeptieren',
     'annehmen',
     'ich stimme zu',
+    /^(alles akzeptieren|alle zulassen|auswahl erlauben|cookies zulassen|einverstanden|einwilligung|zustimmen|zustimmung)$/,
 
     // Dutch (NL)
+    /^(accepteer (alles|alle cookies)|alles (accepteren|toestaan)|alle cookies (accepteren|toestaan))$/,
     'accepteren',
+    'akkoord',
+    'cookies accepteren',
+    'selectie toestaan',
 
     // Czech (CS)
     'souhlasím',
@@ -1128,6 +1182,8 @@ const ACCEPT_PATTERNS = [
 
 const ACKNOWLEDGE_PATTERNS = [
     'ok',
+    'ok, got it',
+    'ok!',
     'close',
     'continue',
     'x',
@@ -1139,6 +1195,17 @@ const ACKNOWLEDGE_PATTERNS = [
     /^close (banner|cookie notification)$/is,
     /understood$/is,
     'confirm my choices',
+
+    // French (FR)
+    'accepter fermer',
+    'fermer',
+    'ok pour moi',
+
+    // German (DE)
+    'akzeptieren schließen',
+    'schließen',
+    'speichern schließen',
+    'verstanden',
 
     // Spanish (ES)
     /^.?( lo)?(entendido|entiendo).?$/s,
