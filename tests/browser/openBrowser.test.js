@@ -2,7 +2,9 @@ const assert = require('assert');
 const mockery = require('mockery');
 
 async function main() {
+    /** @type {{browserLocale?: string, extraArgs: string[]} | null} */
     let localChromeOptions = null;
+    /** @type {{browserLocale?: string, extraArgs: string[]} | null} */
     let remoteChromeOptions = null;
 
     class MockLocalChrome {
@@ -38,11 +40,17 @@ async function main() {
     try {
         const openBrowser = require('../../browser/openBrowser');
 
-        await openBrowser(() => {}, null, null, 'http://selenium.example', 'fr-FR');
+        await openBrowser(() => {}, null, null, 'http://selenium.example', 'fr_FR.UTF-8');
+        if (!remoteChromeOptions) {
+            throw new Error('RemoteChrome was not created');
+        }
         assert.strictEqual(remoteChromeOptions.browserLocale, 'fr-FR');
         assert(remoteChromeOptions.extraArgs.includes('--lang=fr-FR'));
 
         await openBrowser(() => {}, null, null, null);
+        if (!localChromeOptions) {
+            throw new Error('LocalChrome was not created');
+        }
         assert.strictEqual(localChromeOptions.browserLocale, 'de-DE');
         assert(localChromeOptions.extraArgs.includes('--lang=de-DE'));
     } finally {
