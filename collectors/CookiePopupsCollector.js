@@ -198,7 +198,6 @@ class CookiePopupsCollector extends ContentScriptCollector {
                     disabledCmps: [],
                     enablePrehide: false,
                     enableCosmeticRules: true,
-                    enableHeuristicDetection: true,
                     heuristicMode: 'tier2',
                     detectRetries: 20,
                     isMainWorld: false,
