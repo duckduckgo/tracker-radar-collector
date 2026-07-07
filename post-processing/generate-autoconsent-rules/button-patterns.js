@@ -525,7 +525,7 @@ const ACCEPT_PATTERNS = [
     'de acordo',
 
     // French (FR)
-    /^accepter (tout|tous les cookies)$/,
+    /^accepter (tout|tous les cookies|fermer)$/,
 
     // German (DE)
     /^(alles akzeptieren|alle zulassen|auswahl erlauben|cookies zulassen|einverstanden|einwilligung|zustimmen|zustimmung)$/,
@@ -617,9 +617,6 @@ const ACKNOWLEDGE_PATTERNS = [
     /^close (banner|cookie notification)$/is,
     /understood$/is,
     'confirm my choices',
-
-    // French (FR)
-    'accepter fermer',
 
     // German (DE)
     'akzeptieren schließen',
