@@ -15,7 +15,6 @@ function checkHeuristicPatterns(allText) {
         /only necessary cookies/gi, // "only necessary" is probably too broad
         /(?:by continuing.{0,100}cookie)|(?:cookie.{0,100}by continuing)/gi,
         /(?:by continuing.{0,100}privacy)|(?:privacy.{0,100}by continuing)/gi,
-        /by clicking.{0,100}(?:accept|agree|allow)/gi,
         /we (?:use|serve)(?: optional)? cookies/gi,
         /we are using cookies/gi,
         /use of cookies/gi,
@@ -35,12 +34,8 @@ function checkHeuristicPatterns(allText) {
 
         // FR
         /utilisons.{0,100}des.{0,100}cookies/gi,
-        /nous.{0,100}utilisons.{0,100}des/gi,
         /des.{0,100}cookies.{0,100}pour/gi,
-        /des.{0,100}informations.{0,100}sur/gi,
         /retirer.{0,100}votre.{0,100}consentement/gi,
-        /accéder.{0,100}à.{0,100}des/gi,
-        /à.{0,100}des.{0,100}informations/gi,
         /et.{0,100}nos.{0,100}partenaires/gi,
         /publicités.{0,100}et.{0,100}du.{0,100}contenu/gi,
         /utilise.{0,100}des.{0,100}cookies/gi,
@@ -103,7 +98,6 @@ function checkHeuristicPatterns(allText) {
         /\b(hacemos|hace) uso de cookies\b/i,
         /\busa cookies de google\b/i,
         /acepta.{0,80} uso de cookies/i,
-        /al hacer clic.{0,80}aceptar/i,
         /al utilizar nuestro sitio web.{0,80}cookie/i,
         /almacenar la información en un dispositivo y\/?o acceder a ella/i,
         /cookie.{0,30} utiliza/i,
@@ -113,7 +107,6 @@ function checkHeuristicPatterns(allText) {
         /navegando.{0,100}cookie/i,
         /nosotros y nuestros( \d+)? (socios|proveedores).{0,180} cookies/gi,
         /recopilamos y almacenamos datos de usted y de su dispositivo/gi,
-        /si haces? clic.{0,20}acept/i,
         /utilizamos tecnolog[ií]as como las cookies/i,
 
         // Polish (PL)
