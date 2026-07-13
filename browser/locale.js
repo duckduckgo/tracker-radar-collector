@@ -14,9 +14,18 @@ function validateBrowserLocale(locale) {
 }
 
 function resolveBrowserLocale(locale, env = process.env) {
-    const resolvedLocale = locale === undefined ? env.LANGUAGE : locale;
-    validateBrowserLocale(resolvedLocale);
-    return resolvedLocale;
+    if (locale !== undefined) {
+        validateBrowserLocale(locale);
+        return locale;
+    }
+
+    try {
+        validateBrowserLocale(env.LANGUAGE);
+        return env.LANGUAGE;
+    } catch {
+        // LANGUAGE is inherited from the host and may not contain a BCP 47 locale.
+        return undefined;
+    }
 }
 
 module.exports = {
