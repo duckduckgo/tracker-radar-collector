@@ -34,18 +34,16 @@ async function main() {
     mockery.registerMock('./LocalChrome', MockLocalChrome);
     mockery.registerMock('./RemoteChrome', MockRemoteChrome);
 
-    const previousBrowserLocale = process.env.BROWSER_LOCALE;
-    process.env.BROWSER_LOCALE = 'de-DE';
-
     try {
         const openBrowser = require('../../browser/openBrowser');
 
-        await openBrowser(() => {}, null, null, 'http://selenium.example', 'fr-fr');
+        await openBrowser(() => {}, null, null, 'http://selenium.example', 'fr');
         if (!remoteChromeOptions) {
             throw new Error('RemoteChrome was not created');
         }
-        assert.strictEqual(remoteChromeOptions.browserLocale, 'fr-fr');
-        assert(remoteChromeOptions.extraArgs.includes('--lang=fr-fr'));
+        assert.strictEqual(remoteChromeOptions.browserLocale, 'fr');
+        assert(remoteChromeOptions.extraArgs.includes('--lang=fr'));
+        assert(remoteChromeOptions.extraArgs.includes('--accept-lang=fr'));
 
         await openBrowser(() => {}, null, null, null);
         if (!localChromeOptions) {
@@ -53,17 +51,13 @@ async function main() {
         }
         assert.strictEqual(localChromeOptions.browserLocale, undefined);
         assert(!localChromeOptions.extraArgs.some((arg) => arg.startsWith('--lang=')));
+        assert(!localChromeOptions.extraArgs.some((arg) => arg.startsWith('--accept-lang=')));
 
         await assert.rejects(
             openBrowser(() => {}, null, null, null, 'de_DE.UTF-8'),
             /Invalid browser locale/,
         );
     } finally {
-        if (previousBrowserLocale === undefined) {
-            delete process.env.BROWSER_LOCALE;
-        } else {
-            process.env.BROWSER_LOCALE = previousBrowserLocale;
-        }
         mockery.deregisterAll();
         mockery.disable();
     }

@@ -42,6 +42,7 @@ async function openBrowser(log, proxyHost, executablePath, seleniumHub, browserL
 
     if (browserLocale) {
         extraArgs.push(`--lang=${browserLocale}`);
+        extraArgs.push(`--accept-lang=${browserLocale}`);
     }
 
     if (seleniumHub) {

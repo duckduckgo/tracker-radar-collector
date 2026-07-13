@@ -13,6 +13,13 @@ function validateBrowserLocale(locale) {
     }
 }
 
+function resolveBrowserLocale(locale, env = process.env) {
+    const resolvedLocale = locale === undefined ? env.LANGUAGE : locale;
+    validateBrowserLocale(resolvedLocale);
+    return resolvedLocale;
+}
+
 module.exports = {
+    resolveBrowserLocale,
     validateBrowserLocale,
 };
