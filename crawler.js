@@ -5,7 +5,7 @@ const { wait, TimeoutError } = require('./helpers/wait');
 const tldts = require('tldts');
 const { DEFAULT_USER_AGENT, MOBILE_USER_AGENT, DEFAULT_VIEWPORT, MOBILE_VIEWPORT, VISUAL_DEBUG } = require('./constants');
 const openBrowser = require('./browser/openBrowser');
-const { getBrowserLocale, normalizeBrowserLocale } = require('./browser/locale');
+const { validateBrowserLocale } = require('./browser/locale');
 
 const targetFilter = [
     // see list of types in https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
@@ -403,7 +403,10 @@ function isThirdPartyRequest(documentUrl, requestUrl) {
  */
 async function crawl(url, options) {
     const log = options.log || (() => {});
-    const browserLocale = normalizeBrowserLocale(options.browserLocale) || getBrowserLocale();
+    const browserLocale = options.browserLocale;
+    if (options.browserConnection) {
+        validateBrowserLocale(browserLocale);
+    }
     const browser = options.browserConnection
         ? null
         : await openBrowser(log, options.proxyHost, options.executablePath, options.seleniumHub, browserLocale);

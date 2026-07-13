@@ -1,26 +1,18 @@
-function normalizeBrowserLocale(locale) {
-    if (!locale) {
-        return null;
+function validateBrowserLocale(locale) {
+    if (locale === undefined) {
+        return;
+    }
+    if (typeof locale !== 'string') {
+        throw new TypeError(`Invalid browser locale: ${JSON.stringify(locale)}`);
     }
 
-    const normalized = locale
-        .split(':')[0]
-        .split('.')[0]
-        .trim()
-        .replace('_', '-');
-
-    if (/^[a-z]{2,3}(-[a-z0-9]{2,8})*$/i.test(normalized)) {
-        return normalized;
+    try {
+        Intl.getCanonicalLocales(locale);
+    } catch {
+        throw new TypeError(`Invalid browser locale: ${JSON.stringify(locale)}`);
     }
-
-    return null;
-}
-
-function getBrowserLocale(env = process.env) {
-    return normalizeBrowserLocale(env.BROWSER_LOCALE || env.LANGUAGE);
 }
 
 module.exports = {
-    getBrowserLocale,
-    normalizeBrowserLocale,
+    validateBrowserLocale,
 };

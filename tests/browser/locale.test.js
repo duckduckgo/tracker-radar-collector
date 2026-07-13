@@ -1,12 +1,9 @@
 const assert = require('assert');
-const { getBrowserLocale, normalizeBrowserLocale } = require('../../browser/locale');
+const { validateBrowserLocale } = require('../../browser/locale');
 
-assert.strictEqual(normalizeBrowserLocale('de-DE'), 'de-DE');
-assert.strictEqual(normalizeBrowserLocale('de_DE.UTF-8'), 'de-DE');
-assert.strictEqual(normalizeBrowserLocale('fr-FR:en'), 'fr-FR');
-assert.strictEqual(normalizeBrowserLocale('C.UTF-8'), null);
-assert.strictEqual(normalizeBrowserLocale(''), null);
-
-assert.strictEqual(getBrowserLocale({ BROWSER_LOCALE: 'en-GB', LANGUAGE: 'de-DE' }), 'en-GB');
-assert.strictEqual(getBrowserLocale({ LANGUAGE: 'ja-JP' }), 'ja-JP');
-assert.strictEqual(getBrowserLocale({}), null);
+assert.doesNotThrow(() => validateBrowserLocale('de-DE'));
+assert.doesNotThrow(() => validateBrowserLocale('EN-us'));
+assert.doesNotThrow(() => validateBrowserLocale());
+assert.throws(() => validateBrowserLocale('de_DE.UTF-8'), /Invalid browser locale/);
+assert.throws(() => validateBrowserLocale('fr-FR:en'), /Invalid browser locale/);
+assert.throws(() => validateBrowserLocale(''), /Invalid browser locale/);
