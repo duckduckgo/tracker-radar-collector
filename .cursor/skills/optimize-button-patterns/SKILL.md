@@ -16,7 +16,7 @@ Improve regex patterns in `post-processing/generate-autoconsent-rules/button-pat
 ## Prerequisites
 
 1. Confirm `post-processing/generate-autoconsent-rules/labelled-button-texts.csv` has up-to-date labels. If the user added unlabelled rows, suggest running `label-button-texts.js` first.
-2. Read [reference.md](reference.md) for classification semantics, file map, and known pitfalls.
+2. For label semantics, read `classifyButtonTextLLM` in `post-processing/generate-autoconsent-rules/detection.js` — that prompt is the source of truth; do not duplicate it here.
 
 ## Success criteria
 
@@ -97,6 +97,17 @@ Use the output template at the end of this file.
 - Preserve language section comments (`// German`, `// Dutch`, etc.).
 - Do not sync patterns to the autoconsent codebase (out of scope).
 
+## Known pitfalls
+
+Patterns misplaced across lists cause false positives:
+
+| Text | Correct label | Common mistake |
+|------|---------------|----------------|
+| `selectie toestaan` | accept | Listed in `REJECT_PATTERNS_DUTCH` |
+| `akzeptieren schließen` | acknowledge | Listed in `ACCEPT_PATTERNS` |
+
+When fixing FPs, search `button-patterns.js` for the literal or a regex that matches the cleaned text, then move/remove/narrow.
+
 ## Collision check
 
 Before adding pattern `P` for label `L`:
@@ -131,7 +142,4 @@ End with:
   - [label → predicted] "text" (xN)
 ```
 
-## Additional reference
-
-- Label definitions, file map, normalization rules: [reference.md](reference.md)
-- Collect → label → benchmark workflow: [post-processing/README.md](../../post-processing/README.md)
+Collect → label → benchmark workflow: [post-processing/README.md](../../post-processing/README.md)

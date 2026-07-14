@@ -23,7 +23,7 @@ The script:
 - Normalizes text with `cleanButtonText` (same normalization used at classification time)
 - Counts one occurrence per site per distinct button text
 - Merges with existing CSV data when `-o` points at an existing file (preserving labels and incrementing counts)
-- Writes only rows with more than one occurrence
+- Writes all rows with at least one occurrence (including newly seen single-site strings)
 
 New strings are added with an empty `label` column.
 
@@ -45,6 +45,8 @@ Options:
 - `--parallel <n>` — concurrent LLM requests (default: 10)
 
 Labels are one of: `settings`, `accept`, `reject`, `acknowledge`, `other`.
+
+After LLM labelling, manually review and correct labels in the CSV before optimizing patterns.
 
 ### 3. Benchmark regex classification
 
