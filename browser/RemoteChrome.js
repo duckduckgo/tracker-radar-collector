@@ -74,9 +74,13 @@ class RemoteChrome extends BaseBrowser {
         const opts = new chrome.Options();
         opts.addArguments(...chromeArguments);
 
-        opts.setUserPreferences({
+        const userPreferences = {
             "download.default_directory": "/dev/null",
-        });
+        };
+        if (this.options.browserLocale) {
+            userPreferences["intl.accept_languages"] = this.options.browserLocale;
+        }
+        opts.setUserPreferences(userPreferences);
 
         this.driver = await (new Builder()
             .usingServer(this.options.seleniumHub)
@@ -145,6 +149,7 @@ module.exports = RemoteChrome;
 /**
  * @typedef SeleniumOptions
  * @property {string[]=} extraArgs
+ * @property {string=} browserLocale
  * @property {string} seleniumHub
  */
 
