@@ -1,22 +1,25 @@
-const {VISUAL_DEBUG} = require('../constants');
-const {downloadChrome} = require('../helpers/chromiumDownload');
+const { VISUAL_DEBUG } = require('../constants');
+const { downloadChrome } = require('../helpers/chromiumDownload');
 const LocalChrome = require('./LocalChrome');
 const RemoteChrome = require('./RemoteChrome');
+const { validateBrowserLocale } = require('./locale');
 
 /**
  * @param {function(...any):void} log
  * @param {string} proxyHost
  * @param {string} executablePath path to chromium executable to use
  * @param {string} [seleniumHub] selenium hub url
+ * @param {string} [browserLocale] browser locale to pass to Chrome
  * @returns {Promise<import('./BaseBrowser')>}
  */
-async function openBrowser(log, proxyHost, executablePath, seleniumHub) {
+async function openBrowser(log, proxyHost, executablePath, seleniumHub, browserLocale) {
+    validateBrowserLocale(browserLocale);
     const extraArgs = [
         // enable FLoC
         // '--enable-blink-features=InterestCohortAPI',
         // '--enable-features=FederatedLearningOfCohorts:update_interval/10s/minimum_history_domain_size_required/1,FlocIdSortingLshBasedComputation,InterestCohortFeaturePolicy',
         // '--disable-auto-reload', // is it needed?
-        '--js-flags=--async-stack-traces --stack-trace-limit 32' // no quotes around the CLI flags needed
+        '--js-flags=--async-stack-traces --stack-trace-limit 32', // no quotes around the CLI flags needed
     ];
     if (proxyHost) {
         let url;
@@ -37,9 +40,15 @@ async function openBrowser(log, proxyHost, executablePath, seleniumHub) {
         extraArgs.push('--disable-dev-shm-usage');
     }
 
+    if (browserLocale) {
+        extraArgs.push(`--lang=${browserLocale}`);
+        extraArgs.push(`--accept-lang=${browserLocale}`);
+    }
+
     if (seleniumHub) {
         const seleniumBrowser = new RemoteChrome({
             extraArgs,
+            browserLocale,
             seleniumHub,
         });
         await seleniumBrowser.start();
@@ -48,8 +57,9 @@ async function openBrowser(log, proxyHost, executablePath, seleniumHub) {
 
     const browser = new LocalChrome({
         extraArgs,
+        browserLocale,
         headless: !VISUAL_DEBUG,
-        executablePath: executablePath || await downloadChrome(log),
+        executablePath: executablePath || (await downloadChrome(log)),
     });
     await browser.start();
 
