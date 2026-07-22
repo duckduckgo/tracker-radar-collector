@@ -23,7 +23,7 @@ The script:
 - Normalizes text with `cleanButtonText` (same normalization used at classification time)
 - Counts one occurrence per site per distinct button text
 - Merges with existing CSV data when `-o` points at an existing file (preserving labels and incrementing counts)
-- Writes only rows with more than one occurrence
+- Writes all rows with at least one occurrence (including newly seen single-site strings)
 
 New strings are added with an empty `label` column.
 
@@ -45,6 +45,8 @@ Options:
 - `--parallel <n>` — concurrent LLM requests (default: 10)
 
 Labels are one of: `settings`, `accept`, `reject`, `acknowledge`, `other`.
+
+After LLM labelling, manually review and correct labels in the CSV before optimizing patterns.
 
 ### 3. Benchmark regex classification
 
@@ -71,3 +73,7 @@ For each label the report shows:
 Occurrence weighting uses the `occurences` column from the CSV so common button texts count more than rare ones.
 
 When the benchmark shows misses or false positives, update the patterns in `generate-autoconsent-rules/button-patterns.js` and re-run the benchmark until coverage is acceptable.
+
+### 4. Optimize patterns (optional)
+
+After updating labels, invoke the `optimize-button-patterns` Cursor skill to iteratively improve `button-patterns.js` against the benchmark. Targets: zero false positives, ≥90% weighted coverage for each of `settings`, `accept`, `reject`, and `acknowledge`.
