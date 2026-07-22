@@ -94,7 +94,7 @@ async function main() {
         `there should be no third party requests on duckduckgo.com (found: ${thirdPartyRequsts.map((/** @type {{url:string}} **/ r) => r.url).join(',')}).`,
     );
 
-    assert(duckCom.data.cookies.length === 0, 'duck.com does not set any cookies by default');
+    assert(duckCom.data.cookies.length === 0, `duck.com does not set any cookies by default ${JSON.stringify(duckCom.data.cookies)}`);
 
     assert(duckCom.data.targets.length === 1, 'duck.com does have only one target - main frame');
 
