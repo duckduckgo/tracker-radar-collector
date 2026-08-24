@@ -1,0 +1,25 @@
+name: 'Asana Sync'
+on:
+    pull_request_review:
+    pull_request_target:
+        types:
+            - opened
+            - edited
+            - closed
+            - reopened
+            - synchronize
+            - review_requested
+
+jobs:
+    sync:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: duckduckgo/action-asana-sync@v11
+              with:
+                  ASANA_ACCESS_TOKEN: ${{ secrets.ASANA_ACCESS_TOKEN }}
+                  ASANA_WORKSPACE_ID: ${{ secrets.ASANA_WORKSPACE_ID }}
+                  ASANA_PROJECT_ID: '1118485203673454' # Crawler (Tracker Radar Collector)
+                  move_to_section_id: '1216749987397777' # "Pull requests" section
+                  GITHUB_PAT: ${{ secrets.GH_RO_PAT }}
+                  ASSIGN_PR_AUTHOR: 'true'
