@@ -233,7 +233,7 @@ function testButtonMatches(buttonText, matchPatterns, neverMatchPatterns) {
  * @param {string} text
  * @returns {Promise<boolean>}
  */
-async function checkLLM(client, text) {
+async function checkPopupLLM(client, text) {
     const instructions = `
 You are an expert in web application user interfaces. You are given a text extracted from an HTML element. Your task is to determine whether this element is a cookie popup.
 
@@ -275,43 +275,61 @@ Examples of NON-cookie popup text:
     return false;
 }
 
+/**
+ * @param {import('@typesafe-ai/sdk').TypeSafeClient} client
+ * @param {string} text
+ * @returns {Promise<boolean>}
+ */
+async function checkPageLLM(client, text) {
+    const instructions = `
+You are an expert in web application user interfaces. You are given a text extracted from an HTML page. Your task is to determine whether this page contains a cookie popup.
+
+A "cookie popup", also known as "consent management dialog", is a notification that informs users about the use of cookies (or other storage technologies), and seeks their consent. It typically includes information about cookies, consent options, privacy policy links, and action buttons.
+
+While cookie popups are primarily focused on obtaining consent for the use of cookies, they often encompass broader data privacy and tracking practices. Therefore, cookie popups may also include information about:
+- other tracking technologies: popups may address other tracking technologies such as web beacons, pixels, and local storage that websites use to collect data about user behavior.
+- data collection and usage: the popups may provide information about what types of data are collected, how it is used, and with whom it is shared, extending beyond just cookies.
+- consent for other technologies: some popups may also seek consent for other technologies that involve data processing, such as analytics tools, advertising networks, and social media plugins.
+- user preferences: they often allow users to manage their preferences regarding different types of data collection and processing activities.
+
+Note: If the provided text contains only code, it indicates the problem with data collection. Do not classify such cases as cookie popups.
+    `;
+
+    const yesCriteria = `
+Examples of cookie popup text:
+- "This site uses cookies to improve your experience. By continuing to use our site, you agree to our cookie policy."
+- "We and our partners process data to provide and improve our services, including advertising and personalized content. This may include data from other companies and the public. [Accept All] [Reject All] [Show Purposes]"
+    `;
+
+    const noCriteria = `
+Examples of NON-cookie popup text:
+- "This site is for adults only. By pressing continue, you confirm that you are at least 18 years old."
+- "Help Contact Pricing Company Jobs Research Program Sitemap Privacy Settings Legal Notice Cookie Policy"
+- "Would you like to enable notifications to stay up to date?"
+- "function rn(){return"EU"===tn()}var on={};return{require:o,getLookUpTable:c,getListOfCookiesForDeletion:a,getGDPRFlag:g,getGDPRConsent:f,getGDPRConsentString:l,isCouplingMode:s"
+    `;
+
+    try {
+        const result = await client.systemOne({
+            state: { pageText: text },
+            questions: {
+                isCookieConsentNotice: noul(instructions, { true: yesCriteria, false: noCriteria }),
+            },
+        });
+
+        return result.answers.isCookieConsentNotice.noul >= POPUP_PROBABILITY_THRESHOLD;
+    } catch (error) {
+        console.error('Error classifying candidate:', error);
+    }
+
+    return false;
+}
+
 /** @type {Map<string, ButtonClassification>} */
 const buttonClassificationCache = new Map();
 
-/** Descriptions of each button category, used as the choice criteria. */
-const BUTTON_CATEGORY_CRITERIA = {
-    settings: `opens further customization of COOKIE or CONSENT preferences specifically (e.g. "Cookie Settings",
-"Manage preferences", "Preferences", "Customize", "More options", "Manage cookies", "Show details"). Buttons that open other site settings (accessibility, language, etc.) are "other".`,
-    accept: `explicitly accepts cookies, permits/allows consent, or signals agreement to something (e.g. "Accept
-all", "I agree", "Allow all cookies", "Allow selection"). The language must reference agreement,
-acceptance, or permitting — not just dismissal.`,
-    reject: `rejects cookies or opts out, including accepting only minimal/essential
-cookies and data-sale opt-outs (e.g. "Reject all", "Essential only", "Do not sell my personal information", "opt out").`,
-    acknowledge: `dismisses the notice with neutral language that does not explicitly
-reference accepting or rejecting (e.g. "OK", "Got it", "Close", "Dismiss", "Continue",
-"I understand", "×", "confirm my choices").`,
-    other: `none of the above (e.g. links to Privacy Policy, Impressum, or other
-informational content). Additionally, anything including payments or subscriptions, age checks, or
-language that suggests that the user would not be able to continue if they click this button, should be classified as other.`,
-};
-
-/**
- * @param {import('@typesafe-ai/sdk').TypeSafeClient} client
- * @param {string} buttonText
- * @returns {Promise<ButtonClassification>}
- */
-async function classifyButtonTextLLM(client, buttonText) {
-    const cleaned = cleanButtonText(buttonText);
-    if (cleaned.length > 200) {
-        return 'other';
-    }
-
-    const cached = buttonClassificationCache.get(cleaned);
-    if (cached) {
-        return cached;
-    }
-
-    const instructions = `
+/** Classification rules shared by the LLM button classifier and its benchmarks. */
+const BUTTON_CLASSIFICATION_INSTRUCTIONS = `
 You are an expert in web application user interfaces.
 
 You will be given the text of a button found on a cookie consent popup. Classify it
@@ -352,13 +370,46 @@ Examples:
 "Reject all", "Essential only", "Ablehnen", "Do not sell my personal information", "opt out", "disagree and close" → reject
 "OK", "Got it", "I understand", "×", "Close", "Dismiss", "cerrar", "zamknij", "confirm my choices", "Close cookie notice", "Continue" → acknowledge
 "Privacy Policy", "Cookie-Richtlinie", "Impressum", "Learn more", "close ad", "Cancel" → other
-    `;
+`;
+
+/** Descriptions of each button category, used as the choice criteria. */
+const BUTTON_CATEGORY_CRITERIA = {
+    settings: `opens further customization of COOKIE or CONSENT preferences specifically (e.g. "Cookie Settings",
+"Manage preferences", "Preferences", "Customize", "More options", "Manage cookies", "Show details"). Buttons that open other site settings (accessibility, language, etc.) are "other".`,
+    accept: `explicitly accepts cookies, permits/allows consent, or signals agreement to something (e.g. "Accept
+all", "I agree", "Allow all cookies", "Allow selection"). The language must reference agreement,
+acceptance, or permitting — not just dismissal.`,
+    reject: `rejects cookies or opts out, including accepting only minimal/essential
+cookies and data-sale opt-outs (e.g. "Reject all", "Essential only", "Do not sell my personal information", "opt out").`,
+    acknowledge: `dismisses the notice with neutral language that does not explicitly
+reference accepting or rejecting (e.g. "OK", "Got it", "Close", "Dismiss", "Continue",
+"I understand", "×", "confirm my choices").`,
+    other: `none of the above (e.g. links to Privacy Policy, Impressum, or other
+informational content). Additionally, anything including payments or subscriptions, age checks, or
+language that suggests that the user would not be able to continue if they click this button, should be classified as other.`,
+};
+
+/**
+ * @param {import('@typesafe-ai/sdk').TypeSafeClient} client
+ * @param {string} buttonText
+ * @returns {Promise<ButtonClassification>}
+ */
+async function classifyButtonTextLLM(client, buttonText) {
+    const cleaned = cleanButtonText(buttonText);
+    if (cleaned.length > 200) {
+        return 'other';
+    }
+
+    const cached = buttonClassificationCache.get(cleaned);
+    if (cached) {
+        return cached;
+    }
 
     try {
         const result = await client.systemOne({
             state: { buttonText: cleaned },
             questions: {
-                classification: choice(instructions, BUTTON_CATEGORY_CRITERIA),
+                classification: choice(BUTTON_CLASSIFICATION_INSTRUCTIONS, BUTTON_CATEGORY_CRITERIA),
             },
         });
 
@@ -441,7 +492,7 @@ async function classifyPopup(popup, client) {
     let llmMatch = false;
     if (popupText) {
         regexMatch = checkHeuristicPatterns(popupText);
-        llmMatch = await checkLLM(client, popupText);
+        llmMatch = await checkPopupLLM(client, popupText);
     }
     // only label buttons if the popup is considered a cookie popup by regex or LLM
     const buttons = regexMatch || llmMatch ? await labelButtons(popup.buttons, client) : popup.buttons;
@@ -468,7 +519,11 @@ async function classifyPopup(popup, client) {
  */
 
 module.exports = {
+    BUTTON_CATEGORY_CRITERIA,
+    BUTTON_CLASSIFICATION_INSTRUCTIONS,
     POPUP_PROBABILITY_THRESHOLD,
+    checkPageLLM,
+    checkPopupLLM,
     classifyButtons,
     classifyPopup,
     checkHeuristicPatterns,

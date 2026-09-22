@@ -4,65 +4,10 @@ const { Command } = require('commander');
 const ProgressBar = require('progress');
 const chalk = require('chalk');
 const { OpenAI } = require('openai');
-const { TypeSafeClient, noul } = require('@typesafe-ai/sdk');
+const { TypeSafeClient } = require('@typesafe-ai/sdk');
 const asyncLib = require('async');
-const {
-    checkHeuristicPatterns,
-    classifyPopup,
-    classifyButtons,
-    POPUP_PROBABILITY_THRESHOLD,
-} = require('./generate-autoconsent-rules/detection');
+const { checkHeuristicPatterns, classifyPopup, classifyButtons, checkPageLLM } = require('./generate-autoconsent-rules/detection');
 const { verifyButtonTexts } = require('./generate-autoconsent-rules/verification');
-
-/**
- * @param {import('@typesafe-ai/sdk').TypeSafeClient} client
- * @param {string} text
- * @returns {Promise<boolean>}
- */
-async function checkLLM(client, text) {
-    const instructions = `
-You are an expert in web application user interfaces. You are given a text extracted from an HTML page. Your task is to determine whether this page contains a cookie popup.
-
-A "cookie popup", also known as "consent management dialog", is a notification that informs users about the use of cookies (or other storage technologies), and seeks their consent. It typically includes information about cookies, consent options, privacy policy links, and action buttons.
-
-While cookie popups are primarily focused on obtaining consent for the use of cookies, they often encompass broader data privacy and tracking practices. Therefore, cookie popups may also include information about:
-- other tracking technologies: popups may address other tracking technologies such as web beacons, pixels, and local storage that websites use to collect data about user behavior.
-- data collection and usage: the popups may provide information about what types of data are collected, how it is used, and with whom it is shared, extending beyond just cookies.
-- consent for other technologies: some popups may also seek consent for other technologies that involve data processing, such as analytics tools, advertising networks, and social media plugins.
-- user preferences: they often allow users to manage their preferences regarding different types of data collection and processing activities.
-
-Note: If the provided text contains only code, it indicates the problem with data collection. Do not classify such cases as cookie popups.
-    `;
-
-    const yesCriteria = `
-Examples of cookie popup text:
-- "This site uses cookies to improve your experience. By continuing to use our site, you agree to our cookie policy."
-- "We and our partners process data to provide and improve our services, including advertising and personalized content. This may include data from other companies and the public. [Accept All] [Reject All] [Show Purposes]"
-    `;
-
-    const noCriteria = `
-Examples of NON-cookie popup text:
-- "This site is for adults only. By pressing continue, you confirm that you are at least 18 years old."
-- "Help Contact Pricing Company Jobs Research Program Sitemap Privacy Settings Legal Notice Cookie Policy"
-- "Would you like to enable notifications to stay up to date?"
-- "function rn(){return"EU"===tn()}var on={};return{require:o,getLookUpTable:c,getListOfCookiesForDeletion:a,getGDPRFlag:g,getGDPRConsent:f,getGDPRConsentString:l,isCouplingMode:s"
-    `;
-
-    try {
-        const result = await client.systemOne({
-            state: { pageText: text },
-            questions: {
-                isCookieConsentNotice: noul(instructions, { true: yesCriteria, false: noCriteria }),
-            },
-        });
-
-        return result.answers.isCookieConsentNotice.noul >= POPUP_PROBABILITY_THRESHOLD;
-    } catch (error) {
-        console.error('Error classifying candidate:', error);
-    }
-
-    return false;
-}
 
 /**
  * @param {import('../collectors/CookiePopupsCollector.js').ScrapeScriptResult} frameContext
@@ -121,7 +66,7 @@ async function classifyDocument(frameContext, client) {
         if (frameContext.potentialPopups?.some((p) => p.llmMatch)) {
             llmPopupDetected = true;
         } else {
-            llmPopupDetected = await checkLLM(client, frameContext.cleanedText);
+            llmPopupDetected = await checkPageLLM(client, frameContext.cleanedText);
         }
         regexPopupDetected = checkHeuristicPatterns(frameContext.cleanedText);
         const { rejectButtons, otherButtons } = classifyButtons(frameContext.buttons);
