@@ -3,7 +3,7 @@ const path = require('path');
 const { program } = require('commander');
 const ProgressBar = require('progress');
 const asyncLib = require('async');
-const { OpenAI } = require('openai');
+const { TypeSafeClient } = require('@typesafe-ai/sdk');
 const { classifyButtonTextLLM } = require('./generate-autoconsent-rules/detection');
 const { readButtonTextCsv, buttonTextRowsToCsv } = require('./button-text-csv');
 
@@ -53,8 +53,8 @@ async function main() {
         process.exit(1);
     }
 
-    if (!process.env.OPENAI_API_KEY) {
-        console.error('env variable OPENAI_API_KEY is not set');
+    if (!process.env.TYPESAFE_API_KEY) {
+        console.error('env variable TYPESAFE_API_KEY is not set');
         process.exit(1);
     }
 
@@ -84,8 +84,8 @@ async function main() {
 
     console.error(`${opts.force ? 'Re-labelling' : 'Labelling'} ${indicesToProcess.length} rows in ${inputPath}`);
 
-    const openai = new OpenAI({
-        apiKey: process.env.OPENAI_API_KEY,
+    const client = new TypeSafeClient({
+        apiKey: process.env.TYPESAFE_API_KEY,
     });
     const parallel = Number.parseInt(opts.parallel, 10);
 
@@ -96,7 +96,7 @@ async function main() {
 
     await asyncLib.eachOfLimit(indicesToProcess, parallel, async (rowIndex) => {
         const row = rows[rowIndex];
-        row.label = await classifyButtonTextLLM(openai, row.buttonText);
+        row.label = await classifyButtonTextLLM(client, row.buttonText);
         progress.tick();
     });
 

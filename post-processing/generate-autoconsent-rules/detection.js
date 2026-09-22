@@ -1,6 +1,12 @@
-const { zodResponseFormat } = require('openai/helpers/zod');
-const { z } = require('zod');
+const { choice, noul } = require('@typesafe-ai/sdk');
 const { REJECT_PATTERNS, NEVER_MATCH_PATTERNS, SETTINGS_PATTERNS, ACCEPT_PATTERNS, ACKNOWLEDGE_PATTERNS } = require('./button-patterns');
+
+/**
+ * `noul` questions return the probability of a "yes" answer rather than a boolean, so popup
+ * detection needs a cut-off. 0.5 keeps the same "more likely than not" semantics the previous
+ * boolean schema had.
+ */
+const POPUP_PROBABILITY_THRESHOLD = 0.5;
 
 // FIXME: the detection patterns are defined both in autoconsent codebase and here. We should consolidate them in one place.
 /**
@@ -223,12 +229,12 @@ function testButtonMatches(buttonText, matchPatterns, neverMatchPatterns) {
 }
 
 /**
- * @param {import('openai').OpenAI} openai
+ * @param {import('@typesafe-ai/sdk').TypeSafeClient} client
  * @param {string} text
  * @returns {Promise<boolean>}
  */
-async function checkLLM(openai, text) {
-    const systemPrompt = `
+async function checkLLM(client, text) {
+    const instructions = `
 You are an expert in web application user interfaces. You are given a text extracted from an HTML element. Your task is to determine whether this element is a cookie popup.
 
 A "cookie popup", also known as "consent management dialog", is a notification that informs users about the use of cookies (or other storage technologies), and seeks their consent. It typically includes information about cookies, consent options, privacy policy links, and action buttons.
@@ -238,40 +244,30 @@ While cookie popups are primarily focused on obtaining consent for the use of co
 - data collection and usage: the popups may provide information about what types of data are collected, how it is used, and with whom it is shared, extending beyond just cookies.
 - consent for other technologies: some popups may also seek consent for other technologies that involve data processing, such as analytics tools, advertising networks, and social media plugins.
 - user preferences: they often allow users to manage their preferences regarding different types of data collection and processing activities.
+    `;
 
+    const yesCriteria = `
 Examples of cookie popup text:
 - "This site uses cookies to improve your experience. By continuing to use our site, you agree to our cookie policy."
 - "We and our partners process data to provide and improve our services, including advertising and personalized content. This may include data from other companies and the public. [Accept All] [Reject All] [Show Purposes]"
+    `;
 
+    const noCriteria = `
 Examples of NON-cookie popup text:
 - "This site is for adults only. By pressing continue, you confirm that you are at least 18 years old."
 - "Help Contact Pricing Company Jobs Research Program Sitemap Privacy Settings Legal Notice Cookie Policy"
 - "Would you like to enable notifications to stay up to date?"
     `;
 
-    const CookieConsentNoticeClassification = z.object({
-        isCookieConsentNotice: z.boolean(),
-    });
-
     try {
-        const completion = await openai.beta.chat.completions.parse({
-            model: 'gpt-4o-mini',
-            messages: [
-                {
-                    role: 'system',
-                    content: systemPrompt,
-                },
-                {
-                    role: 'user',
-                    content: text,
-                },
-            ],
-
-            response_format: zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
+        const result = await client.systemOne({
+            state: { elementText: text },
+            questions: {
+                isCookieConsentNotice: noul(instructions, { true: yesCriteria, false: noCriteria }),
+            },
         });
 
-        const result = completion.choices[0].message.parsed;
-        return result?.isCookieConsentNotice ?? false;
+        return result.answers.isCookieConsentNotice.noul >= POPUP_PROBABILITY_THRESHOLD;
     } catch (error) {
         console.error('Error classifying candidate:', error);
     }
@@ -282,16 +278,29 @@ Examples of NON-cookie popup text:
 /** @type {Map<string, ButtonClassification>} */
 const buttonClassificationCache = new Map();
 
-const ButtonTextClassificationSchema = z.object({
-    classification: z.enum(['settings', 'accept', 'reject', 'acknowledge', 'other']),
-});
+/** Descriptions of each button category, used as the choice criteria. */
+const BUTTON_CATEGORY_CRITERIA = {
+    settings: `opens further customization of COOKIE or CONSENT preferences specifically (e.g. "Cookie Settings",
+"Manage preferences", "Preferences", "Customize", "More options", "Manage cookies", "Show details"). Buttons that open other site settings (accessibility, language, etc.) are "other".`,
+    accept: `explicitly accepts cookies, permits/allows consent, or signals agreement to something (e.g. "Accept
+all", "I agree", "Allow all cookies", "Allow selection"). The language must reference agreement,
+acceptance, or permitting — not just dismissal.`,
+    reject: `rejects cookies or opts out, including accepting only minimal/essential
+cookies and data-sale opt-outs (e.g. "Reject all", "Essential only", "Do not sell my personal information", "opt out").`,
+    acknowledge: `dismisses the notice with neutral language that does not explicitly
+reference accepting or rejecting (e.g. "OK", "Got it", "Close", "Dismiss", "Continue",
+"I understand", "×", "confirm my choices").`,
+    other: `none of the above (e.g. links to Privacy Policy, Impressum, or other
+informational content). Additionally, anything including payments or subscriptions, age checks, or
+language that suggests that the user would not be able to continue if they click this button, should be classified as other.`,
+};
 
 /**
- * @param {import('openai').OpenAI} openai
+ * @param {import('@typesafe-ai/sdk').TypeSafeClient} client
  * @param {string} buttonText
  * @returns {Promise<ButtonClassification>}
  */
-async function classifyButtonTextLLM(openai, buttonText) {
+async function classifyButtonTextLLM(client, buttonText) {
     const cleaned = cleanButtonText(buttonText);
     if (cleaned.length > 200) {
         return 'other';
@@ -302,25 +311,11 @@ async function classifyButtonTextLLM(openai, buttonText) {
         return cached;
     }
 
-    const systemPrompt = `
+    const instructions = `
 You are an expert in web application user interfaces.
 
 You will be given the text of a button found on a cookie consent popup. Classify it
-into exactly one of the following categories:
-
-- settings: opens further customization of COOKIE or CONSENT preferences specifically (e.g. "Cookie Settings",
-  "Manage preferences", "Preferences", "Customize", "More options", "Manage cookies", "Show details"). Buttons that open other site settings (accessibility, language, etc.) are "other".
-- accept: explicitly accepts cookies, permits/allows consent, or signals agreement to something (e.g. "Accept
-  all", "I agree", "Allow all cookies", "Allow selection"). The language must reference agreement,
-  acceptance, or permitting — not just dismissal.
-- reject: rejects cookies or opts out, including accepting only minimal/essential
-  cookies and data-sale opt-outs (e.g. "Reject all", "Essential only", "Do not sell my personal information", "opt out").
-- acknowledge: dismisses the notice with neutral language that does not explicitly
-  reference accepting or rejecting (e.g. "OK", "Got it", "Close", "Dismiss", "Continue",
-  "I understand", "×", "confirm my choices").
-- other: none of the above (e.g. links to Privacy Policy, Impressum, or other
-  informational content). Additionally, anything including payments or subscriptions, age checks, or
-  language that suggests that the user would not be able to continue if they click this button, should be classified as other.
+into exactly one of the given categories.
 
 Rules:
 - IMPORTANT: If a button accepts ONLY necessary, essential, required, or strictly
@@ -344,7 +339,6 @@ Rules:
 - If a button could fit multiple categories, prefer in this order:
   reject > accept > settings > acknowledge > other.
 - The button text may be in any language — apply the same rules regardless.
-- Respond with exactly one word: the category label. No explanation, no punctuation.
 - Short affirmatives that imply agreement ("yes", "yeah") → accept, not acknowledge.
   "acknowledge" is for neutral dismissals that make no reference to agreement.
 - If the button text contains a qualifier that makes it clearly unrelated to cookies
@@ -361,16 +355,14 @@ Examples:
     `;
 
     try {
-        const completion = await openai.beta.chat.completions.parse({
-            model: 'gpt-4o-mini',
-            messages: [
-                { role: 'system', content: systemPrompt },
-                { role: 'user', content: `"${cleaned}"` },
-            ],
-            response_format: zodResponseFormat(ButtonTextClassificationSchema, 'ButtonTextClassification'),
+        const result = await client.systemOne({
+            state: { buttonText: cleaned },
+            questions: {
+                classification: choice(instructions, BUTTON_CATEGORY_CRITERIA),
+            },
         });
 
-        const classification = completion.choices[0].message.parsed?.classification ?? 'other';
+        const classification = result.answers.classification.choice;
         buttonClassificationCache.set(cleaned, classification);
         return classification;
     } catch (error) {
@@ -423,14 +415,14 @@ function classifyButtons(buttons) {
 
 /**
  * @param {import('./types').ButtonData[]} buttons
- * @param {import('openai').OpenAI} openai
+ * @param {import('@typesafe-ai/sdk').TypeSafeClient} client
  * @returns {Promise<import('./types').ButtonData[]>}
  */
-async function labelButtons(buttons, openai) {
+async function labelButtons(buttons, client) {
     /** @type {import('./types').ButtonData[]} */
     const labelledButtons = [];
     for (const button of buttons) {
-        const llmClassification = await classifyButtonTextLLM(openai, button.text);
+        const llmClassification = await classifyButtonTextLLM(client, button.text);
         const regexClassification = classifyButtonTextRegex(button.text);
         labelledButtons.push({ ...button, llmClassification, regexClassification });
     }
@@ -440,19 +432,19 @@ async function labelButtons(buttons, openai) {
 /**
  * Run popup through LLM and regex to determine if it's a cookie popup and identify reject buttons.
  * @param {import('./types').PopupData} popup
- * @param {import('openai').OpenAI} openai
+ * @param {import('@typesafe-ai/sdk').TypeSafeClient} client
  * @returns {Promise<PopupClassificationResult>}
  */
-async function classifyPopup(popup, openai) {
+async function classifyPopup(popup, client) {
     const popupText = popup.text?.trim();
     let regexMatch = false;
     let llmMatch = false;
     if (popupText) {
         regexMatch = checkHeuristicPatterns(popupText);
-        llmMatch = await checkLLM(openai, popupText);
+        llmMatch = await checkLLM(client, popupText);
     }
     // only label buttons if the popup is considered a cookie popup by regex or LLM
-    const buttons = regexMatch || llmMatch ? await labelButtons(popup.buttons, openai) : popup.buttons;
+    const buttons = regexMatch || llmMatch ? await labelButtons(popup.buttons, client) : popup.buttons;
     const { rejectButtons, otherButtons } = classifyButtons(buttons);
 
     return {
@@ -476,6 +468,7 @@ async function classifyPopup(popup, openai) {
  */
 
 module.exports = {
+    POPUP_PROBABILITY_THRESHOLD,
     classifyButtons,
     classifyPopup,
     checkHeuristicPatterns,

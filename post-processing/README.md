@@ -32,11 +32,11 @@ New strings are added with an empty `label` column.
 Use `label-button-texts.js` to fill in labels for any rows that do not yet have one.
 
 ```bash
-export OPENAI_API_KEY=...
+export TYPESAFE_API_KEY=...
 node post-processing/label-button-texts.js
 ```
 
-Requires `OPENAI_API_KEY`. By default this updates `generate-autoconsent-rules/labelled-button-texts.csv`.
+Requires `TYPESAFE_API_KEY`. By default this updates `generate-autoconsent-rules/labelled-button-texts.csv`.
 
 Options:
 
@@ -77,3 +77,29 @@ When the benchmark shows misses or false positives, update the patterns in `gene
 ### 4. Optimize patterns (optional)
 
 After updating labels, invoke the `optimize-button-patterns` Cursor skill to iteratively improve `button-patterns.js` against the benchmark. Targets: zero false positives, ≥90% weighted coverage for each of `settings`, `accept`, `reject`, and `acknowledge`.
+
+## LLM provider
+
+Cookie popup detection and button text classification run on the [TypeSafe AI](https://docs.typesafe.ai/sdk/javascript)
+`systemOne` API via `@typesafe-ai/sdk`, using the account's default model (`jev-latest` unless
+`TYPESAFE_DEFAULT_MODEL` is set). Questions are declared with the SDK's `noul` (yes/no) and `choice`
+builders, so answer types are inferred from the question definitions and checked by `tsc` — the
+button categories in `BUTTON_CATEGORY_CRITERIA` are the single source of truth for the
+`ButtonClassification` union.
+
+`noul` questions return the probability of a "yes" answer rather than a boolean, so
+`detection.js` exports `POPUP_PROBABILITY_THRESHOLD` (0.5) as the shared cut-off used to turn that
+probability into the `llmMatch` / `llmPopupDetected` booleans stored in crawl output.
+
+Relevant environment variables (see the SDK's `ENV`):
+
+- `TYPESAFE_API_KEY` — required
+- `TYPESAFE_BASE_URL` — API root, defaults to `https://api.typesafe.ai`
+- `TYPESAFE_DEFAULT_MODEL` — default model, defaults to `jev-latest`
+
+One step has **not** been migrated: the button text verification pass in
+`generate-autoconsent-rules/verification.js` (run at the end of `detect-cookie-popups.js`) asks the
+model to return an arbitrary list of suspicious button strings. `systemOne` only answers yes/no,
+choice, and score questions, so it cannot express a free-form string array. That step still uses
+OpenAI, which is why `detect-cookie-popups.js` requires both `TYPESAFE_API_KEY` and
+`OPENAI_API_KEY`.

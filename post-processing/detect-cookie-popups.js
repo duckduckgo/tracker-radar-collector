@@ -4,19 +4,23 @@ const { Command } = require('commander');
 const ProgressBar = require('progress');
 const chalk = require('chalk');
 const { OpenAI } = require('openai');
-const { z } = require('zod');
-const { zodResponseFormat } = require('openai/helpers/zod');
+const { TypeSafeClient, noul } = require('@typesafe-ai/sdk');
 const asyncLib = require('async');
-const { checkHeuristicPatterns, classifyPopup, classifyButtons } = require('./generate-autoconsent-rules/detection');
+const {
+    checkHeuristicPatterns,
+    classifyPopup,
+    classifyButtons,
+    POPUP_PROBABILITY_THRESHOLD,
+} = require('./generate-autoconsent-rules/detection');
 const { verifyButtonTexts } = require('./generate-autoconsent-rules/verification');
 
 /**
- * @param {import('openai').OpenAI} openai
+ * @param {import('@typesafe-ai/sdk').TypeSafeClient} client
  * @param {string} text
  * @returns {Promise<boolean>}
  */
-async function checkLLM(openai, text) {
-    const systemPrompt = `
+async function checkLLM(client, text) {
+    const instructions = `
 You are an expert in web application user interfaces. You are given a text extracted from an HTML page. Your task is to determine whether this page contains a cookie popup.
 
 A "cookie popup", also known as "consent management dialog", is a notification that informs users about the use of cookies (or other storage technologies), and seeks their consent. It typically includes information about cookies, consent options, privacy policy links, and action buttons.
@@ -28,11 +32,15 @@ While cookie popups are primarily focused on obtaining consent for the use of co
 - user preferences: they often allow users to manage their preferences regarding different types of data collection and processing activities.
 
 Note: If the provided text contains only code, it indicates the problem with data collection. Do not classify such cases as cookie popups.
+    `;
 
+    const yesCriteria = `
 Examples of cookie popup text:
 - "This site uses cookies to improve your experience. By continuing to use our site, you agree to our cookie policy."
 - "We and our partners process data to provide and improve our services, including advertising and personalized content. This may include data from other companies and the public. [Accept All] [Reject All] [Show Purposes]"
+    `;
 
+    const noCriteria = `
 Examples of NON-cookie popup text:
 - "This site is for adults only. By pressing continue, you confirm that you are at least 18 years old."
 - "Help Contact Pricing Company Jobs Research Program Sitemap Privacy Settings Legal Notice Cookie Policy"
@@ -40,29 +48,15 @@ Examples of NON-cookie popup text:
 - "function rn(){return"EU"===tn()}var on={};return{require:o,getLookUpTable:c,getListOfCookiesForDeletion:a,getGDPRFlag:g,getGDPRConsent:f,getGDPRConsentString:l,isCouplingMode:s"
     `;
 
-    const CookieConsentNoticeClassification = z.object({
-        isCookieConsentNotice: z.boolean(),
-    });
-
     try {
-        const completion = await openai.beta.chat.completions.parse({
-            model: 'gpt-4.1-nano-2025-04-14',
-            messages: [
-                {
-                    role: 'system',
-                    content: systemPrompt,
-                },
-                {
-                    role: 'user',
-                    content: text,
-                },
-            ],
-
-            response_format: zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
+        const result = await client.systemOne({
+            state: { pageText: text },
+            questions: {
+                isCookieConsentNotice: noul(instructions, { true: yesCriteria, false: noCriteria }),
+            },
         });
 
-        const result = completion.choices[0].message.parsed;
-        return result?.isCookieConsentNotice ?? false;
+        return result.answers.isCookieConsentNotice.noul >= POPUP_PROBABILITY_THRESHOLD;
     } catch (error) {
         console.error('Error classifying candidate:', error);
     }
@@ -72,10 +66,10 @@ Examples of NON-cookie popup text:
 
 /**
  * @param {import('../collectors/CookiePopupsCollector.js').ScrapeScriptResult} frameContext
- * @param {import('openai').OpenAI} openai
+ * @param {import('@typesafe-ai/sdk').TypeSafeClient} client
  * @returns {Promise<{hasDetectedPopupLlm: boolean, hasDetectedPopupRegex: boolean, rejectButtonTexts: Set<string>, otherButtonTexts: Set<string>}>}
  */
-async function classifyPotentialPopups(frameContext, openai) {
+async function classifyPotentialPopups(frameContext, client) {
     let hasDetectedPopupLlm = false;
     let hasDetectedPopupRegex = false;
     const rejectButtonTexts = new Set();
@@ -83,7 +77,7 @@ async function classifyPotentialPopups(frameContext, openai) {
     for (let i = 0; i < frameContext.potentialPopups.length; i++) {
         const popup = frameContext.potentialPopups[i];
 
-        const popupClassificationResult = await classifyPopup(popup, openai);
+        const popupClassificationResult = await classifyPopup(popup, client);
         // Replace the popup data in place
 
         frameContext.potentialPopups[i] = {
@@ -112,10 +106,10 @@ async function classifyPotentialPopups(frameContext, openai) {
 
 /**
  * @param {import('../collectors/CookiePopupsCollector.js').ScrapeScriptResult} frameContext
- * @param {import('openai').OpenAI} openai
+ * @param {import('@typesafe-ai/sdk').TypeSafeClient} client
  * @returns {Promise<{llmPopupDetected: boolean, regexPopupDetected: boolean}>}
  */
-async function classifyDocument(frameContext, openai) {
+async function classifyDocument(frameContext, client) {
     let llmPopupDetected = false;
     let regexPopupDetected = false;
     // ask LLM to detect cookie popups in the page text
@@ -123,11 +117,11 @@ async function classifyDocument(frameContext, openai) {
         frameContext.cleanedText &&
         (frameContext.isTop || frameContext.buttons.length > 0) // simple heuristic to filter out utility iframes that often cause false positives
     ) {
-        // Skip LLM check if we already have an LLM detected popup in the popup elements. This saves some OpenAI calls.
+        // Skip LLM check if we already have an LLM detected popup in the popup elements. This saves some API calls.
         if (frameContext.potentialPopups?.some((p) => p.llmMatch)) {
             llmPopupDetected = true;
         } else {
-            llmPopupDetected = await checkLLM(openai, frameContext.cleanedText);
+            llmPopupDetected = await checkLLM(client, frameContext.cleanedText);
         }
         regexPopupDetected = checkHeuristicPatterns(frameContext.cleanedText);
         const { rejectButtons, otherButtons } = classifyButtons(frameContext.buttons);
@@ -157,6 +151,12 @@ async function main() {
     const crawlDir = opts.crawldir;
     const parallel = parseInt(opts.parallel, 10);
 
+    if (!process.env.TYPESAFE_API_KEY) {
+        console.error('env variable TYPESAFE_API_KEY is not set');
+        process.exit(1);
+    }
+
+    // The button text verification step still runs on OpenAI, see verifyButtonTexts().
     if (!process.env.OPENAI_API_KEY) {
         console.error('env variable OPENAI_API_KEY is not set');
         process.exit(1);
@@ -166,6 +166,10 @@ async function main() {
         console.error('crawl directory does not exist:', crawlDir);
         process.exit(1);
     }
+
+    const client = new TypeSafeClient({
+        apiKey: process.env.TYPESAFE_API_KEY,
+    });
 
     const openai = new OpenAI({
         apiKey: process.env.OPENAI_API_KEY,
@@ -222,7 +226,7 @@ async function main() {
         for (const frameContext of collectorResult.scrapedFrames) {
             // First, go over potential popups and classify them individually
 
-            const popupClassificationResult = await classifyPotentialPopups(frameContext, openai);
+            const popupClassificationResult = await classifyPotentialPopups(frameContext, client);
             hasDetectedPopupLlm = hasDetectedPopupLlm || popupClassificationResult.hasDetectedPopupLlm;
             hasDetectedPopupRegex = hasDetectedPopupRegex || popupClassificationResult.hasDetectedPopupRegex;
             popupClassificationResult.rejectButtonTexts.forEach((b) => rejectButtonTexts.add(b));
@@ -230,7 +234,7 @@ async function main() {
 
             // Then, classify based on the full document text
 
-            const documentClassificationResult = await classifyDocument(frameContext, openai);
+            const documentClassificationResult = await classifyDocument(frameContext, client);
             cookiePopupDetectedLlm = cookiePopupDetectedLlm || documentClassificationResult.llmPopupDetected;
             cookiePopupDetectedRegex = cookiePopupDetectedRegex || documentClassificationResult.regexPopupDetected;
         }
