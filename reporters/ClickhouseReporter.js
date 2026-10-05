@@ -110,7 +110,48 @@ const TABLE_DEFINITIONS = [
         count UInt32
     ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, frameUrl, measurement)`,
+    `CREATE TABLE IF NOT EXISTS cookiePopupFrames ON CLUSTER 'ch-prod-cluster' (
+        crawlId String,
+        pageId String,
+        frameId UInt16,
+        isTop Bool,
+        origin String,
+        cleanedText String CODEC(ZSTD(3)),
+        llmPopupDetected Nullable(Bool),
+        regexPopupDetected Nullable(Bool),
+        buttonCount UInt32,
+        potentialPopupCount UInt16
+    ) ENGINE = ReplicatedMergeTree
+    PRIMARY KEY(crawlId, pageId, frameId)`,
+    `CREATE TABLE IF NOT EXISTS cookiePopupPopups ON CLUSTER 'ch-prod-cluster' (
+        crawlId String,
+        pageId String,
+        frameId UInt16,
+        popupId UInt16,
+        selector String,
+        text String CODEC(ZSTD(3)),
+        llmMatch Nullable(Bool),
+        regexMatch Nullable(Bool),
+        buttonCount UInt16
+    ) ENGINE = ReplicatedMergeTree
+    PRIMARY KEY(crawlId, pageId, frameId, popupId)`,
+    `CREATE TABLE IF NOT EXISTS cookiePopupButtons ON CLUSTER 'ch-prod-cluster' (
+        crawlId String,
+        pageId String,
+        frameId UInt16,
+        popupId UInt16,
+        buttonId UInt16,
+        text String,
+        selector String,
+        isReject Nullable(Bool),
+        llmClassification LowCardinality(Nullable(String)),
+        regexClassification LowCardinality(Nullable(String))
+    ) ENGINE = ReplicatedMergeTree
+    PRIMARY KEY(crawlId, pageId, frameId, popupId, buttonId)`,
 ];
+
+/** @type {string[]} */
+const SCRAPED_FRAMES_TABLES = ['cookiePopupFrames', 'cookiePopupPopups', 'cookiePopupButtons'];
 
 /** @type {readonly string[]} */
 const PERFORMANCE_MEASUREMENTS = [
@@ -145,13 +186,88 @@ function santizeCallArgs(args) {
     return argsArray.map((/** @type {string} */ s) => s.replace(/'/g, ''));
 }
 
+/**
+ * Popup buttons only carry classification labels on the copies stored in rejectButtons/otherButtons
+ * (added by post-processing), so look them up by selector while keeping the original scrape order.
+ * @param {import('../collectors/CookiePopupsCollector').PopupData} popup
+ * @returns {{button: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean | null}[]}
+ */
+function mergeButtonLabels(popup) {
+    const buttons = popup.buttons || [];
+    if (!popup.rejectButtons && !popup.otherButtons) {
+        return buttons.map((button) => ({ button, isReject: null }));
+    }
+    /** @type {Map<string, {button: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean}>} */
+    const labelled = new Map();
+    (popup.otherButtons || []).forEach((button) => labelled.set(button.selector, { button, isReject: false }));
+    (popup.rejectButtons || []).forEach((button) => labelled.set(button.selector, { button, isReject: true }));
+    return buttons.map((button) => labelled.get(button.selector) || { button, isReject: null });
+}
+
+/**
+ * @param {string} crawlId
+ * @param {string} pageId
+ * @param {import('../collectors/CookiePopupsCollector').ScrapeScriptResult[] | undefined} scrapedFrames
+ */
+function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
+    /** @type {any[][]} */
+    const frames = [];
+    /** @type {any[][]} */
+    const popups = [];
+    /** @type {any[][]} */
+    const buttons = [];
+    (scrapedFrames || []).forEach((frame, frameId) => {
+        const potentialPopups = frame.potentialPopups || [];
+        frames.push([
+            crawlId,
+            pageId,
+            frameId,
+            frame.isTop,
+            frame.origin,
+            frame.cleanedText || '',
+            frame.llmPopupDetected ?? null,
+            frame.regexPopupDetected ?? null,
+            (frame.buttons || []).length,
+            potentialPopups.length,
+        ]);
+        potentialPopups.forEach((popup, popupId) => {
+            popups.push([
+                crawlId,
+                pageId,
+                frameId,
+                popupId,
+                popup.selector,
+                popup.text || '',
+                popup.llmMatch ?? null,
+                popup.regexMatch ?? null,
+                (popup.buttons || []).length,
+            ]);
+            mergeButtonLabels(popup).forEach(({ button, isReject }, buttonId) => {
+                buttons.push([
+                    crawlId,
+                    pageId,
+                    frameId,
+                    popupId,
+                    buttonId,
+                    button.text || '',
+                    button.selector,
+                    isReject,
+                    button.llmClassification ?? null,
+                    button.regexClassification ?? null,
+                ]);
+            });
+        });
+    });
+    return { frames, popups, buttons };
+}
+
 class ClickhouseReporter extends BaseReporter {
     id() {
         return 'clickhouse';
     }
 
     /**
-     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options
+     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string, tables?: string[]}} options
      */
     init(options) {
         this.verbose = options.verbose;
@@ -171,7 +287,12 @@ class ClickhouseReporter extends BaseReporter {
             cookies: [],
             targets: [],
             autoconsentPerformance: [],
+            cookiePopupFrames: [],
+            cookiePopupPopups: [],
+            cookiePopupButtons: [],
         };
+        // tables that will be written to on commit (defaults to all)
+        this.tables = options.tables || Object.keys(this.queue);
     }
 
     /**
@@ -301,6 +422,11 @@ class ClickhouseReporter extends BaseReporter {
                     }),
                 );
                 this.queue.autoconsentPerformance = this.queue.autoconsentPerformance.concat(performanceRows);
+
+                const { frames, popups, buttons } = scrapedFramesToRows(this.crawlId, pageId, data.data.cookiepopups.scrapedFrames);
+                this.queue.cookiePopupFrames = this.queue.cookiePopupFrames.concat(frames);
+                this.queue.cookiePopupPopups = this.queue.cookiePopupPopups.concat(popups);
+                this.queue.cookiePopupButtons = this.queue.cookiePopupButtons.concat(buttons);
             }
             if (data.data.apis) {
                 const { callStats, savedCalls } = data.data.apis;
@@ -339,12 +465,14 @@ class ClickhouseReporter extends BaseReporter {
 
     async commitQueue() {
         const inserts = Object.keys(this.queue).map(async (table) => {
-            // @ts-ignore
-            await this.client.insert({
-                table,
+            if (this.tables.includes(table)) {
                 // @ts-ignore
-                values: this.queue[table],
-            });
+                await this.client.insert({
+                    table,
+                    // @ts-ignore
+                    values: this.queue[table],
+                });
+            }
             // @ts-ignore
             this.queue[table] = [];
         });
@@ -361,3 +489,5 @@ class ClickhouseReporter extends BaseReporter {
 }
 
 module.exports = ClickhouseReporter;
+module.exports.scrapedFramesToRows = scrapedFramesToRows;
+module.exports.SCRAPED_FRAMES_TABLES = SCRAPED_FRAMES_TABLES;
