@@ -193,21 +193,17 @@ function santizeCallArgs(args) {
  * @returns {{button: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean | null}[]}
  */
 function mergeButtonLabels(popup) {
-    const buttons = popup.buttons || [];
-    if (!popup.rejectButtons && !popup.otherButtons) {
-        return buttons.map((button) => ({ button, isReject: null }));
-    }
     /** @type {Map<string, {button: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean}>} */
     const labelled = new Map();
-    (popup.otherButtons || []).forEach((button) => labelled.set(button.selector, { button, isReject: false }));
-    (popup.rejectButtons || []).forEach((button) => labelled.set(button.selector, { button, isReject: true }));
-    return buttons.map((button) => labelled.get(button.selector) || { button, isReject: null });
+    (popup.otherButtons ?? []).forEach((button) => labelled.set(button.selector, { button, isReject: false }));
+    (popup.rejectButtons ?? []).forEach((button) => labelled.set(button.selector, { button, isReject: true }));
+    return popup.buttons.map((button) => labelled.get(button.selector) || { button, isReject: null });
 }
 
 /**
  * @param {string} crawlId
  * @param {string} pageId
- * @param {import('../collectors/CookiePopupsCollector').ScrapeScriptResult[] | undefined} scrapedFrames
+ * @param {import('../collectors/CookiePopupsCollector').ScrapeScriptResult[]} scrapedFrames
  */
 function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
     /** @type {any[][]} */
@@ -216,31 +212,30 @@ function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
     const popups = [];
     /** @type {any[][]} */
     const buttons = [];
-    (scrapedFrames || []).forEach((frame, frameId) => {
-        const potentialPopups = frame.potentialPopups || [];
+    scrapedFrames.forEach((frame, frameId) => {
         frames.push([
             crawlId,
             pageId,
             frameId,
             frame.isTop,
             frame.origin,
-            frame.cleanedText || '',
+            frame.cleanedText,
             frame.llmPopupDetected ?? null,
             frame.regexPopupDetected ?? null,
-            (frame.buttons || []).length,
-            potentialPopups.length,
+            frame.buttons.length,
+            frame.potentialPopups.length,
         ]);
-        potentialPopups.forEach((popup, popupId) => {
+        frame.potentialPopups.forEach((popup, popupId) => {
             popups.push([
                 crawlId,
                 pageId,
                 frameId,
                 popupId,
                 popup.selector,
-                popup.text || '',
+                popup.text,
                 popup.llmMatch ?? null,
                 popup.regexMatch ?? null,
-                (popup.buttons || []).length,
+                popup.buttons.length,
             ]);
             mergeButtonLabels(popup).forEach(({ button, isReject }, buttonId) => {
                 buttons.push([
@@ -249,7 +244,7 @@ function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
                     frameId,
                     popupId,
                     buttonId,
-                    button.text || '',
+                    button.text,
                     button.selector,
                     isReject,
                     button.llmClassification ?? null,
@@ -320,18 +315,39 @@ class ClickhouseReporter extends BaseReporter {
         return this.ready;
     }
 
+    /**
+     * Delete this crawl's data from the selected tables. The crawls entry is only removed when all tables are selected.
+     */
     async deleteCrawlData() {
         await this.ready;
-        console.log(`Deleting all data for crawl ${this.crawlId}`);
-        const deletes = Object.keys(this.queue).map((table) =>
-            this.client.query({
-                query: `ALTER TABLE ${table} DELETE WHERE crawlId = '${this.crawlId}'`,
-            }),
-        );
-        await Promise.all(deletes);
-        await this.client.query({
-            query: `ALTER TABLE crawls DELETE WHERE crawlId = '${this.crawlId}'`,
+        const fullDelete = this.tables.length === Object.keys(this.queue).length;
+        console.log(`Deleting ${fullDelete ? 'all' : this.tables.join(', ')} data for crawl ${this.crawlId}`);
+        const deleteFrom = (/** @type {string} */ table) =>
+            this.client.command({
+                query: `ALTER TABLE ${table} DELETE WHERE crawlId = {crawlId:String}`,
+                query_params: { crawlId: this.crawlId },
+                // wait for the delete to complete on all replicas, so data can be safely re-imported afterwards
+                clickhouse_settings: { mutations_sync: '2' },
+            });
+        await Promise.all(this.tables.map(deleteFrom));
+        if (fullDelete) {
+            await deleteFrom('crawls');
+        }
+    }
+
+    /**
+     * @param {string} table
+     * @returns {Promise<number>} number of rows for this crawl in the table
+     */
+    async countCrawlRows(table) {
+        await this.ready;
+        const result = await this.client.query({
+            query: `SELECT count() AS n FROM ${table} WHERE crawlId = {crawlId:String}`,
+            query_params: { crawlId: this.crawlId },
+            format: 'JSONEachRow',
         });
+        const rows = /** @type {{n: string}[]} */ (await result.json());
+        return Number(rows[0].n);
     }
 
     /**
@@ -423,7 +439,12 @@ class ClickhouseReporter extends BaseReporter {
                 );
                 this.queue.autoconsentPerformance = this.queue.autoconsentPerformance.concat(performanceRows);
 
-                const { frames, popups, buttons } = scrapedFramesToRows(this.crawlId, pageId, data.data.cookiepopups.scrapedFrames);
+                const { frames, popups, buttons } = scrapedFramesToRows(
+                    this.crawlId,
+                    pageId,
+                    // older crawls predate scrapedFrames
+                    data.data.cookiepopups.scrapedFrames || [],
+                );
                 this.queue.cookiePopupFrames = this.queue.cookiePopupFrames.concat(frames);
                 this.queue.cookiePopupPopups = this.queue.cookiePopupPopups.concat(popups);
                 this.queue.cookiePopupButtons = this.queue.cookiePopupButtons.concat(buttons);
@@ -464,19 +485,19 @@ class ClickhouseReporter extends BaseReporter {
     }
 
     async commitQueue() {
-        const inserts = Object.keys(this.queue).map(async (table) => {
-            if (this.tables.includes(table)) {
+        const inserts = this.tables.map((table) =>
+            // @ts-ignore
+            this.client.insert({
+                table,
                 // @ts-ignore
-                await this.client.insert({
-                    table,
-                    // @ts-ignore
-                    values: this.queue[table],
-                });
-            }
+                values: this.queue[table],
+            }),
+        );
+        await Promise.all(inserts);
+        Object.keys(this.queue).forEach((table) => {
             // @ts-ignore
             this.queue[table] = [];
         });
-        await Promise.all(inserts);
     }
 
     /**

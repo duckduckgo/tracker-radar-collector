@@ -3,8 +3,7 @@ const ClickhouseReporter = require('../../reporters/ClickhouseReporter');
 const { scrapedFramesToRows, SCRAPED_FRAMES_TABLES } = ClickhouseReporter;
 
 describe('ClickhouseReporter scrapedFramesToRows', () => {
-    it('handles missing or empty scrapedFrames', () => {
-        assert.deepStrictEqual(scrapedFramesToRows('c', 'p', undefined), { frames: [], popups: [], buttons: [] });
+    it('handles empty scrapedFrames', () => {
         assert.deepStrictEqual(scrapedFramesToRows('c', 'p', []), { frames: [], popups: [], buttons: [] });
     });
 
