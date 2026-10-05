@@ -103,6 +103,26 @@ describe('ClickhouseReporter scrapedFramesToRows', () => {
     });
 });
 
+describe('ClickhouseReporter text sanitization', () => {
+    it('replaces lone surrogates so clickhouse can parse the JSON', () => {
+        const truncated = 'cookies \u{1F36A}'.slice(0, -1); // ends in a lone high surrogate
+        const { frames, popups, buttons } = scrapedFramesToRows('c', 'p', [
+            {
+                isTop: true,
+                origin: 'https://example.com',
+                cleanedText: truncated,
+                buttons: [],
+                potentialPopups: [{ text: '\uDC00 low first', selector: '#b', buttons: [{ text: 'OK \u{1F44D}', selector: '#ok' }] }],
+            },
+        ]);
+        assert.strictEqual(frames[0][5], 'cookies \uFFFD');
+        assert.strictEqual(popups[0][5], '\uFFFD low first');
+        // valid surrogate pairs are kept
+        assert.strictEqual(buttons[0][5], 'OK \u{1F44D}');
+        assert.doesNotMatch(JSON.stringify([frames, popups, buttons]), /\\ud[89a-f]/i);
+    });
+});
+
 describe('ClickhouseReporter tables option', () => {
     it('only inserts into the selected tables', async () => {
         const ch = new ClickhouseReporter();

@@ -187,6 +187,15 @@ function santizeCallArgs(args) {
 }
 
 /**
+ * Replace lone UTF-16 surrogates (e.g. from text truncated mid-emoji) with U+FFFD, as clickhouse rejects them in JSON input.
+ * @param {string} str
+ * @returns {string}
+ */
+function toWellFormed(str) {
+    return str.replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g, '\uFFFD');
+}
+
+/**
  * Popup buttons only carry classification labels on the copies stored in rejectButtons/otherButtons
  * (added by post-processing), so look them up by selector while keeping the original scrape order.
  * @param {import('../collectors/CookiePopupsCollector').PopupData} popup
@@ -219,7 +228,7 @@ function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
             frameId,
             frame.isTop,
             frame.origin,
-            frame.cleanedText,
+            toWellFormed(frame.cleanedText),
             frame.llmPopupDetected ?? null,
             frame.regexPopupDetected ?? null,
             frame.buttons.length,
@@ -231,8 +240,8 @@ function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
                 pageId,
                 frameId,
                 popupId,
-                popup.selector,
-                popup.text,
+                toWellFormed(popup.selector),
+                toWellFormed(popup.text),
                 popup.llmMatch ?? null,
                 popup.regexMatch ?? null,
                 popup.buttons.length,
@@ -244,8 +253,8 @@ function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
                     frameId,
                     popupId,
                     buttonId,
-                    button.text,
-                    button.selector,
+                    toWellFormed(button.text),
+                    toWellFormed(button.selector),
                     isReject,
                     button.llmClassification ?? null,
                     button.regexClassification ?? null,
