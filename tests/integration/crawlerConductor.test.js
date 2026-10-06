@@ -3,7 +3,7 @@ const assert = require('assert');
 const { createCollector } = require('../../helpers/collectorsList');
 
 const testURLs = [
-    'https://example.com/',
+    'https://privacy-test-pages.site/',
     'https://duck.com/',
     'https://privacy-test-pages.site/tracker-reporting/1major-via-script.html',
     'https://fingerprintjs.com/demo/',
@@ -51,26 +51,29 @@ async function main() {
         assert(false, `${errors.length} page(s) failed to be crawled`);
     }
 
-    /// example.com tests
-    const exampleCom = data.find((d) => d.initialUrl === 'https://example.com/');
-    commonTests(exampleCom, 'example.com');
+    /// privacy-test-pages.site homepage tests (static page, no subresources, cookies or JS)
+    const privacyTestPagesHome = data.find((d) => d.initialUrl === 'https://privacy-test-pages.site/');
+    commonTests(privacyTestPagesHome, 'privacy-test-pages.site');
 
     assert(
-        exampleCom.finalUrl === exampleCom.initialUrl,
-        `example.com does not redirect, final and initial urls should be the same ${exampleCom.finalUrl} !== ${exampleCom.initialUrl}`,
+        privacyTestPagesHome.finalUrl === privacyTestPagesHome.initialUrl,
+        `privacy-test-pages.site does not redirect, final and initial urls should be the same ${privacyTestPagesHome.finalUrl} !== ${privacyTestPagesHome.initialUrl}`,
     );
-    const exampleNonFaviconRequests = exampleCom.data.requests.filter((r) => !r.url.endsWith('/favicon.ico'));
-    assert(exampleNonFaviconRequests.length === 1, 'example.com does not load any subresources, should only have one request');
-    assert(exampleNonFaviconRequests[0].url === 'https://example.com/', 'example.com should have only one request to https://example.com/');
+    const homepageNonFaviconRequests = privacyTestPagesHome.data.requests.filter((r) => !r.url.endsWith('/favicon.ico'));
+    assert(homepageNonFaviconRequests.length === 1, 'privacy-test-pages.site does not load any subresources, should only have one request');
+    assert(
+        homepageNonFaviconRequests[0].url === 'https://privacy-test-pages.site/',
+        'privacy-test-pages.site should have only one request to https://privacy-test-pages.site/',
+    );
 
-    assert(exampleCom.data.cookies.length === 0, 'example.com does not set any cookies');
+    assert(privacyTestPagesHome.data.cookies.length === 0, 'privacy-test-pages.site does not set any cookies');
 
-    assert(exampleCom.data.targets.length === 1, 'example.com does have only one target - main frame');
-    assert(exampleCom.data.targets[0].type === 'page', 'example.com does have only one target - main frame');
+    assert(privacyTestPagesHome.data.targets.length === 1, 'privacy-test-pages.site does have only one target - main frame');
+    assert(privacyTestPagesHome.data.targets[0].type === 'page', 'privacy-test-pages.site does have only one target - main frame');
 
     assert(
-        Object.keys(exampleCom.data.apis.callStats).length === 0,
-        'example.com does not execute any JavaScript, API call stats should be empty',
+        Object.keys(privacyTestPagesHome.data.apis.callStats).length === 0,
+        'privacy-test-pages.site does not execute any JavaScript, API call stats should be empty',
     );
 
     /// duck.com tests
