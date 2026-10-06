@@ -628,6 +628,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {string} cleanedText
  * @property {ButtonData[]} buttons
  * @property {PopupData[]} potentialPopups
+ * @property {number} [scrapeVersion] 2 = popup and button discovery from autoconsent; absent in older crawls
  * @property {boolean} [llmPopupDetected]
  * @property {boolean} [regexPopupDetected]
  * @property {ButtonData[]} [rejectButtons]
