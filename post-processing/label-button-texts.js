@@ -7,11 +7,12 @@ const { OpenAI } = require('openai');
 const { classifyButtonTextLLM } = require('./generate-autoconsent-rules/detection');
 const { readButtonTextCsv, buttonTextRowsToCsv } = require('./button-text-csv');
 
-const DEFAULT_CSV_PATH = path.join(__dirname, 'generate-autoconsent-rules/labelled-button-texts.csv');
-
 program
-    .description('Label unlabelled button texts in labelled-button-texts.csv using LLM classification')
-    .option('-i, --input <path>', 'path to button text CSV', DEFAULT_CSV_PATH)
+    .description('Label unlabelled button texts in a labelled-button-texts.csv using LLM classification')
+    .requiredOption(
+        '-i, --input <path>',
+        'path to button text CSV (usually tests-wtr/heuristics/fixtures/labelled-button-texts.csv in an autoconsent checkout)',
+    )
     .option('--limit <n>', 'limit number of rows to process', parseInt)
     .option('--parallel <n>', 'parallel LLM requests', '10')
     .option('--force', 're-label all rows, including those that already have a label')

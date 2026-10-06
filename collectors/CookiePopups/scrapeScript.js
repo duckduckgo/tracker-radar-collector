@@ -1,7 +1,21 @@
 /* global window, document, HTMLElement, Node, NodeFilter, location, NamedNodeMap, DOMTokenList, DOMException, CSS */
 
-const BUTTON_LIKE_ELEMENT_SELECTOR = 'button, input[type="button"], input[type="submit"], a, [role="button"], [class*="button"]';
+// Popup and button discovery comes from autoconsent (window.autoconsentHeuristics), which CookiePopupsCollector
+// injects into the same isolated world before this script runs.
+
 const LIMIT_TEXT_LENGTH = 150000;
+// autoconsent stops walking the DOM after this many ms; it uses 100ms in browsers, the crawler can afford more
+const POPUP_SEARCH_TIMEOUT = 2000;
+// bump when the shape or semantics of the scraped data change
+const SCRAPE_VERSION = 2;
+
+/**
+ * @typedef {import('../../node_modules/@duckduckgo/autoconsent/lib/types').ButtonData} HeuristicButton
+ * @typedef {{
+ *  getPotentialPopups(timeout?: number): import('../../node_modules/@duckduckgo/autoconsent/lib/types').PopupData[],
+ *  getButtonData(el: HTMLElement): HeuristicButton[],
+ * }} AutoconsentHeuristics
+ */
 const ELEMENT_TAGS_TO_SKIP = [
     'SCRIPT',
     'STYLE',
@@ -26,10 +40,11 @@ const ELEMENT_TAGS_TO_SKIP = [
 ];
 
 /**
+ * Page-level buttons are limited to the viewport, so that footer links are not mistaken for popup buttons.
  * @param {HTMLElement} node
  * @returns {boolean}
  */
-function isVisible(node) {
+function isInViewport(node) {
     if (!node.isConnected) {
         return false;
     }
@@ -46,72 +61,6 @@ function isVisible(node) {
         rect.bottom > 0 &&
         rect.right > 0
     );
-}
-
-/**
- * @param {HTMLElement} el
- * @returns {boolean}
- */
-function isDisabled(el) {
-    // we want to be lenient here: if a non-input element has a disabled attribute, we want to consider it too
-    return ('disabled' in el && Boolean(el.disabled)) || el.hasAttribute('disabled');
-}
-
-/**
- * Leave only elements that do not contain any other elements
- * @param {HTMLElement[]} elements
- * @returns {HTMLElement[]}
- */
-function excludeContainers(elements) {
-    const results = [];
-    if (elements.length > 0) {
-        for (let i = elements.length - 1; i >= 0; i--) {
-            let container = false;
-            for (let j = 0; j < elements.length; j++) {
-                if (i !== j && elements[i].contains(elements[j])) {
-                    container = true;
-                    break;
-                }
-            }
-            if (!container) {
-                results.push(elements[i]);
-            }
-        }
-    }
-    return results;
-}
-
-/**
- * Heuristic to get all elements that look like "popups"
- * TODO: this heuristic is too strict, not all popups are actually sticky/fixed
- * @returns {HTMLElement[]}
- */
-function getPopupLikeElements() {
-    const walker = document.createTreeWalker(
-        document.documentElement,
-        NodeFilter.SHOW_ELEMENT, // visit only element nodes
-        {
-            /**
-             * @param {HTMLElement} node
-             */
-            acceptNode(node) {
-                if (node.tagName === 'BODY') {
-                    return NodeFilter.FILTER_SKIP;
-                }
-                const cssPosition = window.getComputedStyle(node).position;
-                if ((cssPosition === 'fixed' || cssPosition === 'sticky') && isVisible(node)) {
-                    return NodeFilter.FILTER_ACCEPT;
-                }
-                return NodeFilter.FILTER_SKIP;
-            },
-        },
-    );
-
-    const found = [];
-    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
-        found.push(/** @type {HTMLElement} */ (node));
-    }
-    return excludeContainers(found);
 }
 
 function getDocumentText() {
@@ -158,14 +107,6 @@ function getDocumentText() {
     const visibleText = (document.body ?? document.documentElement).innerText;
     const shadowText = collectShadowDOMText(document.documentElement);
     return `${visibleText} ${shadowText}`.trim();
-}
-
-/**
- * @param {HTMLElement} el
- * @returns {HTMLElement[]}
- */
-function getButtonLikeElements(el) {
-    return Array.from(el.querySelectorAll(BUTTON_LIKE_ELEMENT_SELECTOR));
 }
 
 /**
@@ -246,6 +187,24 @@ function getSelector(el, specificity) {
  * @returns {string} The unique selector for the element
  */
 function getUniqueSelector(el) {
+    const cached = selectorCache.get(el);
+    if (cached) {
+        return cached;
+    }
+    const selector = computeUniqueSelector(el);
+    selectorCache.set(el, selector);
+    return selector;
+}
+
+// buttons often appear both in a popup and in the page-level list
+/** @type {Map<HTMLElement, string>} */
+const selectorCache = new Map();
+
+/**
+ * @param {HTMLElement} el
+ * @returns {string}
+ */
+function computeUniqueSelector(el) {
     // We need to strike a balance here. Selector has to be unique, but we want to avoid auto-generated (randomized) identifiers to make the it resilient. Assumptions:
     // - Classes are the most common thing to randomize, so we use them as the last resort.
     // - The general shape of the DOM doesn't change that much, so order is always preferred
@@ -298,83 +257,45 @@ function getUniqueSelector(el) {
 }
 
 /**
- * Serialize all actionable buttons on the page
- * @param {HTMLElement} el
- * @returns {import('../CookiePopupsCollector').ButtonData[]}
+ * @param {HeuristicButton} button
+ * @returns {import('../CookiePopupsCollector').ButtonData}
  */
-function getButtonData(el) {
-    const actionableButtons = excludeContainers(getButtonLikeElements(el)).filter(
-        (b) =>
-            isVisible(b) &&
-            !isDisabled(b) &&
-            (b.innerText?.trim() ||
-                // <input> values do not appear in innerText
-                (b instanceof HTMLInputElement && ['submit', 'button'].includes(b.type) && b.value?.trim())),
-    );
-
-    return actionableButtons.map((b) => ({
-        text: b.innerText ?? b.textContent ?? '',
-        selector: getUniqueSelector(b),
-    }));
-}
-
-/**
- * @param {boolean} isFramed
- * @returns {import('../CookiePopupsCollector').PopupData[]}
- */
-function collectPotentialPopups(isFramed) {
-    let elements = [];
-    if (!isFramed) {
-        elements = getPopupLikeElements();
-    } else {
-        // for iframes, just take the whole document
-        const doc = document.body || document.documentElement;
-        if (doc && isVisible(doc) && doc.innerText) {
-            elements.push(doc);
-        }
-    }
-
-    /**
-     * @type {import('../CookiePopupsCollector').PopupData[]}
-     */
-    const potentialPopups = [];
-
-    // for each potential popup, get the buttons
-    for (const el of elements) {
-        if (el.innerText) {
-            potentialPopups.push({
-                text: el.innerText,
-                selector: getUniqueSelector(el),
-                buttons: getButtonData(el),
-            });
-        }
-    }
-
-    return potentialPopups;
+function serializeButton(button) {
+    return {
+        text: button.text,
+        selector: getUniqueSelector(button.element),
+    };
 }
 
 /**
  * @returns {import('../CookiePopupsCollector').ScrapeScriptResult}
  */
 function scrapePage() {
+    /** @type {AutoconsentHeuristics | undefined} */
+    // @ts-expect-error set by autoconsent.playwright.js
+    const heuristics = window.autoconsentHeuristics;
+    if (!heuristics) {
+        throw new Error('autoconsent content script is not loaded in this context');
+    }
     const isFramed = window.top !== window || location.ancestorOrigins?.length > 0;
+    const base = { isTop: !isFramed, origin: window.location.origin, scrapeVersion: SCRAPE_VERSION };
     // do not inspect frames that are more than one level deep
     if (isFramed && window.parent && window.parent !== window.top) {
-        return {
-            isTop: !isFramed,
-            origin: window.location.origin,
-            buttons: [],
-            cleanedText: '',
-            potentialPopups: [],
-        };
+        return { ...base, buttons: [], cleanedText: '', potentialPopups: [] };
     }
 
     return {
-        isTop: !isFramed,
-        origin: window.location.origin,
-        buttons: getButtonData(document.documentElement),
+        ...base,
+        buttons: heuristics
+            .getButtonData(document.documentElement)
+            .filter((b) => isInViewport(b.element))
+            .map(serializeButton),
         cleanedText: getDocumentText().slice(0, LIMIT_TEXT_LENGTH),
-        potentialPopups: collectPotentialPopups(isFramed),
+        potentialPopups: heuristics.getPotentialPopups(POPUP_SEARCH_TIMEOUT).map((popup) => ({
+            text: popup.text,
+            selector: getUniqueSelector(popup.element),
+            buttons: popup.buttons.map(serializeButton),
+        })),
     };
 }
 

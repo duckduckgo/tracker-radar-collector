@@ -1,200 +1,18 @@
 const { zodResponseFormat } = require('openai/helpers/zod');
 const { z } = require('zod');
-const { REJECT_PATTERNS, NEVER_MATCH_PATTERNS, SETTINGS_PATTERNS, ACCEPT_PATTERNS, ACKNOWLEDGE_PATTERNS } = require('./button-patterns');
+const {
+    checkHeuristicPatterns: matchHeuristicPatterns,
+    classifyButtonTextRegex,
+    cleanButtonText,
+    isExcludedPopup,
+} = require('@duckduckgo/autoconsent/heuristics');
 
-// FIXME: the detection patterns are defined both in autoconsent codebase and here. We should consolidate them in one place.
 /**
  * @param {string} allText
  * @returns {boolean}
  */
 function checkHeuristicPatterns(allText) {
-    const DETECT_PATTERNS = [
-        /accept cookies/gi,
-        /accept all/gi,
-        /reject all/gi,
-        /only necessary cookies/gi, // "only necessary" is probably too broad
-        /(?:by continuing.{0,100}cookie)|(?:cookie.{0,100}by continuing)/gi,
-        /(?:by continuing.{0,100}privacy)|(?:privacy.{0,100}by continuing)/gi,
-        /we (?:use|serve)(?: optional)? cookies/gi,
-        /we are using cookies/gi,
-        /use of cookies/gi,
-        /(?:this|our) (?:web)?site.{0,100}cookies/gi,
-        /cookies (?:and|or) .{0,100} technologies/gi,
-        /such as cookies/gi,
-        /read more about.{0,100}cookies/gi,
-        /consent to.{0,100}cookies/gi,
-        /we and our partners.{0,100}cookies/gi,
-        /we.{0,100}store.{0,100}information.{0,100}such as.{0,100}cookies/gi,
-        /store and\/or access information.{0,100}on a device/gi,
-        /personalised ads and content, ad and content measurement/gi,
-
-        // it might be tempting to add the patterns below, but they cause too many false positives. Don't do it :)
-        // /cookies? settings/i,
-        // /cookies? preferences/i,
-
-        // FR
-        /utilisons.{0,100}des.{0,100}cookies/gi,
-        /des.{0,100}cookies.{0,100}pour/gi,
-        /retirer.{0,100}votre.{0,100}consentement/gi,
-        /et.{0,100}nos.{0,100}partenaires/gi,
-        /publicités.{0,100}et.{0,100}du.{0,100}contenu/gi,
-        /utilise.{0,100}des.{0,100}cookies/gi,
-        /utilisent.{0,100}des.{0,100}cookies/gi,
-        /stocker.{0,100}et.{0,100}ou.{0,100}accéder/gi,
-        /consentement.{0,100}à.{0,100}tout.{0,100}moment/gi,
-        /votre.{0,100}consentement/gi,
-        /accepter.{0,100}tout/gi,
-        /utilisation.{0,100}des.{0,100}cookies/gi,
-        /cookies.{0,100}ou.{0,100}technologies/gi,
-        /acceptez.{0,100}l.{0,100}utilisation/gi,
-        /continuer sans accepter/gi,
-        /tout refuser/gi,
-        /(?:refuser|rejeter) tous les cookies/gi,
-        /je refuse/gi,
-        /refuser et continuer/gi,
-        /refuser les cookies/gi,
-        /seulement nécessaires/gi,
-        /je désactive les finalités non essentielles/gi,
-        /cookies essentiels uniquement/gi,
-        /nécessaires uniquement/gi,
-
-        // DE
-        /wir.{0,100}verwenden.{0,100}cookies/gi,
-        /wir.{0,100}und.{0,100}unsere.{0,100}partner/gi,
-        /zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi,
-        /inhalte.{0,100}messung.{0,100}von.{0,100}werbeleistung.{0,100}und/gi,
-        /cookies.{0,100}und.{0,100}andere/gi,
-        /verwendung.{0,100}von.{0,100}cookies/gi,
-        /wir.{0,100}nutzen.{0,100}cookies/gi,
-        /verwendet.{0,100}cookies/gi,
-        /sie.{0,100}können.{0,100}ihre.{0,100}auswahl/gi,
-        /und.{0,100}ähnliche.{0,100}technologien/gi,
-        /cookies.{0,100}wir.{0,100}verwenden/gi,
-
-        /alles?.{0,100}ablehnen/gi,
-        /(?:nur|nicht).{0,100}(?:zusätzliche|essenzielle|funktionale|notwendige|erforderliche).{0,100}(?:cookies|akzeptieren|erlauben|ablehnen)/gi,
-        /weiter.{0,100}(?:ohne|mit).{0,100}(?:einwilligung|zustimmung|cookies)/gi,
-        /(?:cookies|einwilligung).{0,100}ablehnen/gi,
-        /nur funktionale cookies akzeptieren/gi,
-        /optionale ablehnen/gi,
-        /zustimmung verweigern/gi,
-
-        // NL
-        /gebruik.{0,100}van.{0,100}cookies/gi,
-        /(?:we|wij).{0,100}gebruiken.{0,100}cookies.{0,100}om/gi,
-        /cookies.{0,100}en.{0,100}vergelijkbare/gi,
-
-        /(?:alles|cookies).{0,100}(?:afwijzen|weigeren|verwerpen)/gi,
-        /alleen.{0,100}noodzakelijke?\b/gi,
-        /cookies weigeren/gi,
-        /weiger.{0,100}(?:cookies|alles)/gi,
-        /doorgaan zonder (?:te accepteren|akkoord te gaan)/gi,
-        /alleen.{0,100}(?:optionele|functionele|functioneel|noodzakelijke|essentiële).{0,100}cookies/gi,
-        /wijs alles af/gi,
-
-        // Spanish (ES)
-        /(si|al) contin[úu]a[sr]?( navegando)?.{0,100} cookie/i,
-        /(usamos|utilizar?|utilizamos)( (tanto|las))?.{0,20}cookie/gi,
-        /\b(hacemos|hace) uso de cookies\b/i,
-        /\busa cookies de google\b/i,
-        /acepta.{0,80} uso de cookies/i,
-        /al utilizar nuestro sitio web.{0,80}cookie/i,
-        /almacenar la información en un dispositivo y\/?o acceder a ella/i,
-        /cookie.{0,30} utiliza/i,
-        /cookies propias y de/gi,
-        /cookies.{0,80}son necesarias/i,
-        /est[ea] (sitio|página|web)( web)?( también)? (usa|utiliza|requiere del uso de|se sirven|emplea) cookies?/i,
-        /navegando.{0,100}cookie/i,
-        /nosotros y nuestros( \d+)? (socios|proveedores).{0,180} cookies/gi,
-        /recopilamos y almacenamos datos de usted y de su dispositivo/gi,
-        /utilizamos tecnolog[ií]as como las cookies/i,
-
-        // Polish (PL)
-        // examples:
-        //  wykorzystuje pliki cookie (uses cookies)
-        //  Wykorzystujemy informacje w plikach cookie (We use information in cookies)
-        /(używamy|stosujemy|stosuje|wykorzystujemy|wykorzyst(uje|ywane))( są)?.{0,20} plik(i|ów|ach) cookie/i,
-        /(używać|używamy).{0,80} (ciasteczek|cookie)/i,
-        /cele przetwarzania twoich danych przez zaufanych partnerów iab/i,
-        /dzięki (plikom cookie|ciasteczkom|cookie)/i,
-        /korzysta.{0,80} plików cookie/i,
-        /korzystamy z technologii, takich jak pliki cookie/gi,
-        /korzystamy.{0,50} cookies/i,
-        /niektóre pliki cookies/i,
-        /pliki cookies i pokrewne im technologie umożliwiają poprawne działanie strony i pomagają nam dostosować ofertę do twoich potrzeb/i,
-        /przechowywanie informacji na urządzeniu lub dostęp do nich/i,
-        /przechowywanie plików cookie na swoim urządzeniu/i,
-        /przechowywać i uzyskiwać dostęp do informacji na twoich urządzeniach/gi,
-        /przetwarzamy.{0,80} cookie/i,
-        /strona.{0,50} używa (ciasteczek|cookie)/gi,
-        /ta strona korzysta z ciasteczek/i,
-        /uzyskujemy dostęp i przechowujemy informacje na urządzeniu/gi,
-        /używa plik[ió]w? cookie/gi,
-        /używamy plików.{0,20}cookie/i,
-        /wykorzystują .{0,100}cookie/gi,
-        /za pomocą plików cookies.{0,100} my lub nasi partnerzy/gi,
-        /zgodą my i nasi partnerzy możemy wykorzystywać precyzyjne dane geolokalizacyjne i identyfikację/gi,
-
-        // Catalan (CA)
-        /cookies pròpies i de tercers/gi,
-        /utilitzem galetes/gi,
-        /\búnicament utilitza galetes pròpies amb finalitat tècnica\b/i,
-        /este lloc web utilitza només cookies tècniques necessàries per al seu funcionament/i,
-        /utilitza cookies tècniques,\s*de personalització i anàlisi/i,
-        /utilitzem cookies i altres tecnologies/i,
-
-        // Basque (EU)
-        /cookie propio eta hirugarrenenak helburu teknikoarekin erabiltzen ditu/i,
-        /cookie propioak eta hirugarrenen cookieak erabiltzen ditugu/i,
-        /cookie propioak eta hirugarrenenak helburu teknikoarekin erabiltzen ditu/i,
-        /cookie[-\s]*ak erabiltzen ditu/i,
-        /cookieak erabiltzen ditu/i,
-        /guk eta gure \d+ bazkideek cookieak eta identifikadoreak erabiltzen ditugu/i,
-        /norberaren eta hirugarrenen cookie-?ak baino ez ditu erabiltzen/i,
-        /web orri honek cookieak erabiltzen ditu/i,
-        /webgune honek cookie propioak eta hirugarrenen cookie-fitxategiak erabiltzen ditu/i,
-
-        // Galician (GL)
-        /^\s*empregamos cookies propias\b/i,
-        /este portal emprega cookies propias ou de terceiros con fins analíticos/i,
-
-        // Russian (RU)
-        /мы используем файлы cookie и аналогичные технологии/i,
-
-        // Italian (IT)
-        /usiamo.{0,20}cookie/gi,
-    ];
-
-    for (const p of DETECT_PATTERNS) {
-        const matches = allText.match(p);
-        if (matches) {
-            return true;
-        }
-    }
-    return false;
-}
-
-/**
- * @param {string} buttonText
- * @returns {string}
- */
-function cleanButtonText(buttonText) {
-    // lowercase
-    let result = buttonText.toLowerCase();
-    // remove special characters
-    result = result.replace(/[“”"'/#&[\]→✕×⟩❯><✗×‘’›«»]+/g, '');
-    // remove emojis
-    result = result.replace(
-        /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u2600-\u26FF\u2700-\u27BF\u{1F900}-\u{1F9FF}\u{1FA70}-\u{1FAFF}]/gu,
-        '',
-    );
-    // remove newlines
-    result = result.replace(/\n+/g, ' ');
-    // remove multiple spaces
-    result = result.replace(/\s+/g, ' ');
-    // strip whitespace around the text
-    result = result.trim();
-    return result;
+    return matchHeuristicPatterns(allText).patterns.length > 0;
 }
 
 /**
@@ -202,24 +20,7 @@ function cleanButtonText(buttonText) {
  * @returns {boolean}
  */
 function isRejectButton(buttonText) {
-    return testButtonMatches(buttonText, REJECT_PATTERNS, NEVER_MATCH_PATTERNS);
-}
-
-/**
- * @param {string} buttonText
- * @param {Array<string|RegExp>} matchPatterns
- * @param {Array<string|RegExp>} neverMatchPatterns
- * @returns {boolean}
- */
-function testButtonMatches(buttonText, matchPatterns, neverMatchPatterns) {
-    if (!buttonText) {
-        return false;
-    }
-    const cleanedButtonText = cleanButtonText(buttonText);
-    return (
-        !neverMatchPatterns.some((p) => (p instanceof RegExp && p.test(cleanedButtonText)) || p === cleanedButtonText) &&
-        matchPatterns.some((p) => (p instanceof RegExp && p.test(cleanedButtonText)) || p === cleanedButtonText)
-    );
+    return classifyButtonTextRegex(buttonText) === 'reject';
 }
 
 /**
@@ -382,26 +183,6 @@ Examples:
 }
 
 /**
- * @param {string} buttonText
- * @returns {ButtonClassification}
- */
-function classifyButtonTextRegex(buttonText) {
-    if (isRejectButton(buttonText)) {
-        return 'reject';
-    }
-    if (testButtonMatches(buttonText, SETTINGS_PATTERNS, NEVER_MATCH_PATTERNS)) {
-        return 'settings';
-    }
-    if (testButtonMatches(buttonText, ACKNOWLEDGE_PATTERNS, NEVER_MATCH_PATTERNS)) {
-        return 'acknowledge';
-    }
-    if (testButtonMatches(buttonText, ACCEPT_PATTERNS, NEVER_MATCH_PATTERNS)) {
-        return 'accept';
-    }
-    return 'other';
-}
-
-/**
  * @param {import('./types').ButtonData[]} buttons
  * @returns {{rejectButtons: import('./types').ButtonData[], otherButtons: import('./types').ButtonData[]}}
  */
@@ -448,7 +229,7 @@ async function classifyPopup(popup, openai) {
     let regexMatch = false;
     let llmMatch = false;
     if (popupText) {
-        regexMatch = checkHeuristicPatterns(popupText);
+        regexMatch = !isExcludedPopup(popupText) && checkHeuristicPatterns(popupText);
         llmMatch = await checkLLM(openai, popupText);
     }
     // only label buttons if the popup is considered a cookie popup by regex or LLM
@@ -464,7 +245,7 @@ async function classifyPopup(popup, openai) {
 }
 
 /**
- * @typedef {'settings'|'accept'|'reject'|'acknowledge'|'other'} ButtonClassification
+ * @typedef {import('@duckduckgo/autoconsent/heuristics').ButtonRegexClassification} ButtonClassification
  */
 
 /**
