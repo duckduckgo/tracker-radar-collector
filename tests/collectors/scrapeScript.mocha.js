@@ -1,12 +1,6 @@
-const fs = require('fs');
 const assert = require('assert');
 const puppeteer = require('puppeteer');
-
-const autoconsentScript = fs.readFileSync(
-    require.resolve('../../node_modules/@duckduckgo/autoconsent/dist/autoconsent.playwright.js'),
-    'utf8',
-);
-const scrapeScript = fs.readFileSync(require.resolve('../../collectors/CookiePopups/scrapeScript.js'), 'utf8');
+const { getAutoconsentContentScript, cookiePopupScrapeScript } = require('../../collectors/CookiePopupsCollector');
 
 const PAGE = `
 <html><body style="margin: 0">
@@ -25,15 +19,17 @@ const PAGE = `
 
 /**
  * @param {import('puppeteer').Page} page
- * @param {boolean} withAutoconsent
+ * @param {boolean} [withAutoconsent] inject autoconsent first, as CookiePopupsCollector does
  * @returns {Promise<import('../../collectors/CookiePopupsCollector').ScrapeScriptResult>}
  */
-async function scrape(page, withAutoconsent) {
+async function scrape(page, withAutoconsent = true) {
     await page.setContent(PAGE);
     if (withAutoconsent) {
-        await page.evaluate(`window.autoconsentSendMessage = () => Promise.resolve();\n${autoconsentScript}`);
+        await page.evaluate(`window.testBinding = () => {};\n${getAutoconsentContentScript('testBinding')}`);
     }
-    return /** @type {Promise<import('../../collectors/CookiePopupsCollector').ScrapeScriptResult>} */ (page.evaluate(scrapeScript));
+    return /** @type {Promise<import('../../collectors/CookiePopupsCollector').ScrapeScriptResult>} */ (
+        page.evaluate(cookiePopupScrapeScript)
+    );
 }
 
 describe('scrapeScript', function () {
@@ -63,7 +59,7 @@ describe('scrapeScript', function () {
     });
 
     it('uses autoconsent popup and button discovery', async () => {
-        const result = await scrape(page, true);
+        const result = await scrape(page);
         assert.strictEqual(result.isTop, true);
         assert.strictEqual(result.scrapeVersion, 2);
         assert.ok(result.cleanedText.includes('We use cookies'));
@@ -85,7 +81,7 @@ describe('scrapeScript', function () {
     });
 
     it('limits page-level buttons to the viewport', async () => {
-        const result = await scrape(page, true);
+        const result = await scrape(page);
         const texts = result.buttons.map((b) => b.text);
         assert.ok(texts.includes('Reject all'));
         assert.ok(!texts.includes('Do not sell my personal information'), 'footer link below the fold is excluded');

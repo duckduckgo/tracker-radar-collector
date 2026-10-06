@@ -10,9 +10,9 @@ const POPUP_SEARCH_TIMEOUT = 2000;
 const SCRAPE_VERSION = 2;
 
 /**
- * @typedef {{ text: string, element: HTMLElement }} HeuristicButton
+ * @typedef {import('../../node_modules/@duckduckgo/autoconsent/lib/types').ButtonData} HeuristicButton
  * @typedef {{
- *  getPotentialPopups(timeout?: number): Array<{ text: string, element: HTMLElement, buttons: HeuristicButton[] }>,
+ *  getPotentialPopups(timeout?: number): import('../../node_modules/@duckduckgo/autoconsent/lib/types').PopupData[],
  *  getButtonData(el: HTMLElement): HeuristicButton[],
  * }} AutoconsentHeuristics
  */
@@ -187,6 +187,24 @@ function getSelector(el, specificity) {
  * @returns {string} The unique selector for the element
  */
 function getUniqueSelector(el) {
+    const cached = selectorCache.get(el);
+    if (cached) {
+        return cached;
+    }
+    const selector = computeUniqueSelector(el);
+    selectorCache.set(el, selector);
+    return selector;
+}
+
+// buttons often appear both in a popup and in the page-level list
+/** @type {Map<HTMLElement, string>} */
+const selectorCache = new Map();
+
+/**
+ * @param {HTMLElement} el
+ * @returns {string}
+ */
+function computeUniqueSelector(el) {
     // We need to strike a balance here. Selector has to be unique, but we want to avoid auto-generated (randomized) identifiers to make the it resilient. Assumptions:
     // - Classes are the most common thing to randomize, so we use them as the last resort.
     // - The general shape of the DOM doesn't change that much, so order is always preferred
@@ -260,21 +278,14 @@ function scrapePage() {
         throw new Error('autoconsent content script is not loaded in this context');
     }
     const isFramed = window.top !== window || location.ancestorOrigins?.length > 0;
+    const base = { isTop: !isFramed, origin: window.location.origin, scrapeVersion: SCRAPE_VERSION };
     // do not inspect frames that are more than one level deep
     if (isFramed && window.parent && window.parent !== window.top) {
-        return {
-            isTop: !isFramed,
-            origin: window.location.origin,
-            buttons: [],
-            cleanedText: '',
-            potentialPopups: [],
-            scrapeVersion: SCRAPE_VERSION,
-        };
+        return { ...base, buttons: [], cleanedText: '', potentialPopups: [] };
     }
 
     return {
-        isTop: !isFramed,
-        origin: window.location.origin,
+        ...base,
         buttons: heuristics
             .getButtonData(document.documentElement)
             .filter((b) => isInViewport(b.element))
@@ -285,7 +296,6 @@ function scrapePage() {
             selector: getUniqueSelector(popup.element),
             buttons: popup.buttons.map(serializeButton),
         })),
-        scrapeVersion: SCRAPE_VERSION,
     };
 }
 

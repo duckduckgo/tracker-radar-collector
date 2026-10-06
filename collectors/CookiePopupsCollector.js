@@ -628,7 +628,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @property {string} cleanedText
  * @property {ButtonData[]} buttons
  * @property {PopupData[]} potentialPopups
- * @property {number} [scrapeVersion] 2 = popup and button discovery from autoconsent; absent in older crawls
+ * @property {number} [scrapeVersion] see SCRAPE_VERSION in CookiePopups/scrapeScript.js; absent in older crawls
  * @property {boolean} [llmPopupDetected]
  * @property {boolean} [regexPopupDetected]
  * @property {ButtonData[]} [rejectButtons]
@@ -670,3 +670,6 @@ class CookiePopupsCollector extends ContentScriptCollector {
  */
 
 module.exports = CookiePopupsCollector;
+// exposed for tests that run the injected scripts in a real browser
+module.exports.getAutoconsentContentScript = getAutoconsentContentScript;
+module.exports.cookiePopupScrapeScript = cookiePopupScrapeScript;
