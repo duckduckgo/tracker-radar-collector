@@ -196,17 +196,25 @@ function toWellFormed(str) {
 }
 
 /**
+ * @param {import('../collectors/CookiePopupsCollector').ButtonData} button
+ */
+function buttonKey(button) {
+    // selectors are not always unique (e.g. 'cookiepopups-collector-selector-error'), so include the text
+    return `${button.selector}\0${button.text}`;
+}
+
+/**
  * Popup buttons only carry classification labels on the copies stored in rejectButtons/otherButtons
- * (added by post-processing), so look them up by selector while keeping the original scrape order.
+ * (added by post-processing), so look them up while keeping the original scrape order.
  * @param {import('../collectors/CookiePopupsCollector').PopupData} popup
- * @returns {{button: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean | null}[]}
+ * @returns {{button: import('../collectors/CookiePopupsCollector').ButtonData, labelled?: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean | null}[]}
  */
 function mergeButtonLabels(popup) {
-    /** @type {Map<string, {button: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean}>} */
-    const labelled = new Map();
-    (popup.otherButtons ?? []).forEach((button) => labelled.set(button.selector, { button, isReject: false }));
-    (popup.rejectButtons ?? []).forEach((button) => labelled.set(button.selector, { button, isReject: true }));
-    return popup.buttons.map((button) => labelled.get(button.selector) || { button, isReject: null });
+    /** @type {Map<string, {labelled: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean}>} */
+    const labels = new Map();
+    (popup.otherButtons ?? []).forEach((labelled) => labels.set(buttonKey(labelled), { labelled, isReject: false }));
+    (popup.rejectButtons ?? []).forEach((labelled) => labels.set(buttonKey(labelled), { labelled, isReject: true }));
+    return popup.buttons.map((button) => ({ button, isReject: null, ...labels.get(buttonKey(button)) }));
 }
 
 /**
@@ -246,7 +254,7 @@ function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
                 popup.regexMatch ?? null,
                 popup.buttons.length,
             ]);
-            mergeButtonLabels(popup).forEach(({ button, isReject }, buttonId) => {
+            mergeButtonLabels(popup).forEach(({ button, labelled, isReject }, buttonId) => {
                 buttons.push([
                     crawlId,
                     pageId,
@@ -256,8 +264,8 @@ function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
                     toWellFormed(button.text),
                     toWellFormed(button.selector),
                     isReject,
-                    button.llmClassification ?? null,
-                    button.regexClassification ?? null,
+                    labelled?.llmClassification ?? null,
+                    labelled?.regexClassification ?? null,
                 ]);
             });
         });
@@ -412,8 +420,10 @@ class ClickhouseReporter extends BaseReporter {
                 this.queue.elements.push([this.crawlId, pageId, data.data.elements.present, data.data.elements.visible]);
             }
             if (data.data.cookiepopups) {
-                const llmPopupDetected = data.data.cookiepopups.scrapedFrames.some((f) => f.llmPopupDetected);
-                const regexPopupDetected = data.data.cookiepopups.scrapedFrames.some((f) => f.regexPopupDetected);
+                // older crawls predate scrapedFrames
+                const scrapedFrames = data.data.cookiepopups.scrapedFrames || [];
+                const llmPopupDetected = scrapedFrames.some((f) => f.llmPopupDetected);
+                const regexPopupDetected = scrapedFrames.some((f) => f.regexPopupDetected);
                 const cmpRows = data.data.cookiepopups.cmps.map((c) => [
                     this.crawlId,
                     pageId,
@@ -448,12 +458,7 @@ class ClickhouseReporter extends BaseReporter {
                 );
                 this.queue.autoconsentPerformance = this.queue.autoconsentPerformance.concat(performanceRows);
 
-                const { frames, popups, buttons } = scrapedFramesToRows(
-                    this.crawlId,
-                    pageId,
-                    // older crawls predate scrapedFrames
-                    data.data.cookiepopups.scrapedFrames || [],
-                );
+                const { frames, popups, buttons } = scrapedFramesToRows(this.crawlId, pageId, scrapedFrames);
                 this.queue.cookiePopupFrames = this.queue.cookiePopupFrames.concat(frames);
                 this.queue.cookiePopupPopups = this.queue.cookiePopupPopups.concat(popups);
                 this.queue.cookiePopupButtons = this.queue.cookiePopupButtons.concat(buttons);

@@ -103,6 +103,36 @@ describe('ClickhouseReporter scrapedFramesToRows', () => {
     });
 });
 
+describe('ClickhouseReporter button label merging', () => {
+    it('does not mix up labels of buttons sharing a selector', () => {
+        const selector = 'cookiepopups-collector-selector-error';
+        const { buttons } = scrapedFramesToRows('c', 'p', [
+            {
+                isTop: true,
+                origin: 'https://example.com',
+                cleanedText: '',
+                buttons: [],
+                potentialPopups: [
+                    {
+                        text: 'We use cookies',
+                        selector: '#banner',
+                        buttons: [
+                            { text: 'Reject', selector },
+                            { text: 'Accept', selector },
+                        ],
+                        rejectButtons: [{ text: 'Reject', selector, llmClassification: 'reject', regexClassification: 'reject' }],
+                        otherButtons: [{ text: 'Accept', selector, llmClassification: 'accept', regexClassification: 'accept' }],
+                    },
+                ],
+            },
+        ]);
+        assert.deepStrictEqual(buttons, [
+            ['c', 'p', 0, 0, 0, 'Reject', selector, true, 'reject', 'reject'],
+            ['c', 'p', 0, 0, 1, 'Accept', selector, false, 'accept', 'accept'],
+        ]);
+    });
+});
+
 describe('ClickhouseReporter text sanitization', () => {
     it('replaces lone surrogates so clickhouse can parse the JSON', () => {
         const truncated = 'cookies \u{1F36A}'.slice(0, -1); // ends in a lone high surrogate
@@ -123,17 +153,54 @@ describe('ClickhouseReporter text sanitization', () => {
     });
 });
 
+/**
+ * Create a reporter with a stubbed client, since there's no clickhouse server in tests.
+ * @param {string[]} [tables]
+ */
+function createStubbedReporter(tables) {
+    const ch = new ClickhouseReporter();
+    ch.init({ verbose: false, startTime: new Date(), urls: 1, logPath: '', tables });
+    // swallow table creation errors
+    ch.ready.catch(() => {});
+    ch.ready = Promise.resolve();
+    /** @type {{table: string, values: any[]}[]} */
+    const inserts = [];
+    // @ts-ignore
+    ch.client = { insert: async (/** @type {{table: string, values: any[]}} */ i) => inserts.push(i) };
+    return { ch, inserts };
+}
+
+describe('ClickhouseReporter processSite', () => {
+    it('imports older crawls without scrapedFrames', async () => {
+        const { ch, inserts } = createStubbedReporter();
+        await ch.processSite(
+            /** @type {any} */ ({
+                initialUrl: 'https://example.com/',
+                finalUrl: 'https://example.com/',
+                testStarted: 0,
+                testFinished: 1,
+                timeout: false,
+                data: {
+                    cookiepopups: {
+                        cmps: [{ name: 'cmp', final: true, open: true, started: true, succeeded: true, selfTestFail: false, errors: [] }],
+                        performance: [],
+                    },
+                },
+            }),
+        );
+        await ch.cleanup();
+
+        const rowsByTable = Object.fromEntries(inserts.map((i) => [i.table, i.values]));
+        assert.strictEqual(rowsByTable.cmps.length, 1);
+        // llmPopupDetected and regexPopupDetected
+        assert.deepStrictEqual(rowsByTable.cmps[0].slice(-2), [false, false]);
+        SCRAPED_FRAMES_TABLES.forEach((table) => assert.strictEqual(rowsByTable[table].length, 0));
+    });
+});
+
 describe('ClickhouseReporter tables option', () => {
     it('only inserts into the selected tables', async () => {
-        const ch = new ClickhouseReporter();
-        ch.init({ verbose: false, startTime: new Date(), urls: 1, logPath: '', tables: SCRAPED_FRAMES_TABLES });
-        // no clickhouse server in tests: swallow table creation and stub out inserts
-        ch.ready.catch(() => {});
-        ch.ready = Promise.resolve();
-        /** @type {{table: string, values: any[]}[]} */
-        const inserts = [];
-        // @ts-ignore
-        ch.client = { insert: async (/** @type {{table: string, values: any[]}} */ i) => inserts.push(i) };
+        const { ch, inserts } = createStubbedReporter(SCRAPED_FRAMES_TABLES);
 
         await ch.processSite(
             /** @type {any} */ ({
