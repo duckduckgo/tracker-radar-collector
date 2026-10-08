@@ -207,14 +207,14 @@ function buttonKey(button) {
  * Popup buttons only carry classification labels on the copies stored in rejectButtons/otherButtons
  * (added by post-processing), so look them up while keeping the original scrape order.
  * @param {import('../collectors/CookiePopupsCollector').PopupData} popup
- * @returns {{button: import('../collectors/CookiePopupsCollector').ButtonData, labelled?: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean | null}[]}
+ * @returns {{button: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean | null}[]}
  */
 function mergeButtonLabels(popup) {
-    /** @type {Map<string, {labelled: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean}>} */
-    const labels = new Map();
-    (popup.otherButtons ?? []).forEach((labelled) => labels.set(buttonKey(labelled), { labelled, isReject: false }));
-    (popup.rejectButtons ?? []).forEach((labelled) => labels.set(buttonKey(labelled), { labelled, isReject: true }));
-    return popup.buttons.map((button) => ({ button, isReject: null, ...labels.get(buttonKey(button)) }));
+    /** @type {Map<string, {button: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean}>} */
+    const labelled = new Map();
+    (popup.otherButtons ?? []).forEach((button) => labelled.set(buttonKey(button), { button, isReject: false }));
+    (popup.rejectButtons ?? []).forEach((button) => labelled.set(buttonKey(button), { button, isReject: true }));
+    return popup.buttons.map((button) => labelled.get(buttonKey(button)) ?? { button, isReject: null });
 }
 
 /**
@@ -254,7 +254,7 @@ function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
                 popup.regexMatch ?? null,
                 popup.buttons.length,
             ]);
-            mergeButtonLabels(popup).forEach(({ button, labelled, isReject }, buttonId) => {
+            mergeButtonLabels(popup).forEach(({ button, isReject }, buttonId) => {
                 buttons.push([
                     crawlId,
                     pageId,
@@ -264,8 +264,8 @@ function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
                     toWellFormed(button.text),
                     toWellFormed(button.selector),
                     isReject,
-                    labelled?.llmClassification ?? null,
-                    labelled?.regexClassification ?? null,
+                    button.llmClassification ?? null,
+                    button.regexClassification ?? null,
                 ]);
             });
         });

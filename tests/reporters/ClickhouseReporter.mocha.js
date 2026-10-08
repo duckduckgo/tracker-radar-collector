@@ -101,9 +101,7 @@ describe('ClickhouseReporter scrapedFramesToRows', () => {
             ['c', 'p', 0, 1, 2, 'Settings', '#settings', false, 'settings', 'other'],
         ]);
     });
-});
 
-describe('ClickhouseReporter button label merging', () => {
     it('does not mix up labels of buttons sharing a selector', () => {
         const selector = 'cookiepopups-collector-selector-error';
         const { buttons } = scrapedFramesToRows('c', 'p', [
@@ -170,23 +168,26 @@ function createStubbedReporter(tables) {
     return { ch, inserts };
 }
 
+/**
+ * @param {object} cookiepopups
+ * @returns {any}
+ */
+function siteData(cookiepopups) {
+    return {
+        initialUrl: 'https://example.com/',
+        finalUrl: 'https://example.com/',
+        testStarted: 0,
+        testFinished: 1,
+        timeout: false,
+        data: { cookiepopups: { cmps: [], performance: [], ...cookiepopups } },
+    };
+}
+
 describe('ClickhouseReporter processSite', () => {
     it('imports older crawls without scrapedFrames', async () => {
         const { ch, inserts } = createStubbedReporter();
         await ch.processSite(
-            /** @type {any} */ ({
-                initialUrl: 'https://example.com/',
-                finalUrl: 'https://example.com/',
-                testStarted: 0,
-                testFinished: 1,
-                timeout: false,
-                data: {
-                    cookiepopups: {
-                        cmps: [{ name: 'cmp', final: true, open: true, started: true, succeeded: true, selfTestFail: false, errors: [] }],
-                        performance: [],
-                    },
-                },
-            }),
+            siteData({ cmps: [{ name: 'cmp', final: true, open: true, started: true, succeeded: true, selfTestFail: false, errors: [] }] }),
         );
         await ch.cleanup();
 
@@ -196,34 +197,20 @@ describe('ClickhouseReporter processSite', () => {
         assert.deepStrictEqual(rowsByTable.cmps[0].slice(-2), [false, false]);
         SCRAPED_FRAMES_TABLES.forEach((table) => assert.strictEqual(rowsByTable[table].length, 0));
     });
-});
 
-describe('ClickhouseReporter tables option', () => {
     it('only inserts into the selected tables', async () => {
         const { ch, inserts } = createStubbedReporter(SCRAPED_FRAMES_TABLES);
-
         await ch.processSite(
-            /** @type {any} */ ({
-                initialUrl: 'https://example.com/',
-                finalUrl: 'https://example.com/',
-                testStarted: 0,
-                testFinished: 1,
-                timeout: false,
-                data: {
-                    cookiepopups: {
-                        cmps: [],
-                        performance: [],
-                        scrapedFrames: [
-                            {
-                                isTop: true,
-                                origin: 'https://example.com',
-                                cleanedText: 'text',
-                                buttons: [],
-                                potentialPopups: [{ text: 'cookies', selector: '#b', buttons: [{ text: 'OK', selector: '#ok' }] }],
-                            },
-                        ],
+            siteData({
+                scrapedFrames: [
+                    {
+                        isTop: true,
+                        origin: 'https://example.com',
+                        cleanedText: 'text',
+                        buttons: [],
+                        potentialPopups: [{ text: 'cookies', selector: '#b', buttons: [{ text: 'OK', selector: '#ok' }] }],
                     },
-                },
+                ],
             }),
         );
         await ch.cleanup();
