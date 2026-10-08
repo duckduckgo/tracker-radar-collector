@@ -110,7 +110,48 @@ const TABLE_DEFINITIONS = [
         count UInt32
     ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, frameUrl, measurement)`,
+    `CREATE TABLE IF NOT EXISTS cookiePopupFrames ON CLUSTER 'ch-prod-cluster' (
+        crawlId String,
+        pageId String,
+        frameId UInt16,
+        isTop Bool,
+        origin String,
+        cleanedText String CODEC(ZSTD(3)),
+        llmPopupDetected Nullable(Bool),
+        regexPopupDetected Nullable(Bool),
+        buttonCount UInt32,
+        potentialPopupCount UInt16
+    ) ENGINE = ReplicatedMergeTree
+    PRIMARY KEY(crawlId, pageId, frameId)`,
+    `CREATE TABLE IF NOT EXISTS cookiePopupPopups ON CLUSTER 'ch-prod-cluster' (
+        crawlId String,
+        pageId String,
+        frameId UInt16,
+        popupId UInt16,
+        selector String,
+        text String CODEC(ZSTD(3)),
+        llmMatch Nullable(Bool),
+        regexMatch Nullable(Bool),
+        buttonCount UInt16
+    ) ENGINE = ReplicatedMergeTree
+    PRIMARY KEY(crawlId, pageId, frameId, popupId)`,
+    `CREATE TABLE IF NOT EXISTS cookiePopupButtons ON CLUSTER 'ch-prod-cluster' (
+        crawlId String,
+        pageId String,
+        frameId UInt16,
+        popupId UInt16,
+        buttonId UInt16,
+        text String,
+        selector String,
+        isReject Nullable(Bool),
+        llmClassification LowCardinality(Nullable(String)),
+        regexClassification LowCardinality(Nullable(String))
+    ) ENGINE = ReplicatedMergeTree
+    PRIMARY KEY(crawlId, pageId, frameId, popupId, buttonId)`,
 ];
+
+/** @type {string[]} */
+const SCRAPED_FRAMES_TABLES = ['cookiePopupFrames', 'cookiePopupPopups', 'cookiePopupButtons'];
 
 /** @type {readonly string[]} */
 const PERFORMANCE_MEASUREMENTS = [
@@ -145,13 +186,100 @@ function santizeCallArgs(args) {
     return argsArray.map((/** @type {string} */ s) => s.replace(/'/g, ''));
 }
 
+/**
+ * Replace lone UTF-16 surrogates (e.g. from text truncated mid-emoji) with U+FFFD, as clickhouse rejects them in JSON input.
+ * @param {string} str
+ * @returns {string}
+ */
+function toWellFormed(str) {
+    return str.replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g, '\uFFFD');
+}
+
+/**
+ * @param {import('../collectors/CookiePopupsCollector').ButtonData} button
+ */
+function buttonKey(button) {
+    // selectors are not always unique (e.g. 'cookiepopups-collector-selector-error'), so include the text
+    return `${button.selector}\0${button.text}`;
+}
+
+/**
+ * Popup buttons only carry classification labels on the copies stored in rejectButtons/otherButtons
+ * (added by post-processing), so look them up while keeping the original scrape order.
+ * @param {import('../collectors/CookiePopupsCollector').PopupData} popup
+ * @returns {{button: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean | null}[]}
+ */
+function mergeButtonLabels(popup) {
+    /** @type {Map<string, {button: import('../collectors/CookiePopupsCollector').ButtonData, isReject: boolean}>} */
+    const labelled = new Map();
+    (popup.otherButtons ?? []).forEach((button) => labelled.set(buttonKey(button), { button, isReject: false }));
+    (popup.rejectButtons ?? []).forEach((button) => labelled.set(buttonKey(button), { button, isReject: true }));
+    return popup.buttons.map((button) => labelled.get(buttonKey(button)) ?? { button, isReject: null });
+}
+
+/**
+ * @param {string} crawlId
+ * @param {string} pageId
+ * @param {import('../collectors/CookiePopupsCollector').ScrapeScriptResult[]} scrapedFrames
+ */
+function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
+    /** @type {any[][]} */
+    const frames = [];
+    /** @type {any[][]} */
+    const popups = [];
+    /** @type {any[][]} */
+    const buttons = [];
+    scrapedFrames.forEach((frame, frameId) => {
+        frames.push([
+            crawlId,
+            pageId,
+            frameId,
+            frame.isTop,
+            frame.origin,
+            toWellFormed(frame.cleanedText),
+            frame.llmPopupDetected ?? null,
+            frame.regexPopupDetected ?? null,
+            frame.buttons.length,
+            frame.potentialPopups.length,
+        ]);
+        frame.potentialPopups.forEach((popup, popupId) => {
+            popups.push([
+                crawlId,
+                pageId,
+                frameId,
+                popupId,
+                toWellFormed(popup.selector),
+                toWellFormed(popup.text),
+                popup.llmMatch ?? null,
+                popup.regexMatch ?? null,
+                popup.buttons.length,
+            ]);
+            mergeButtonLabels(popup).forEach(({ button, isReject }, buttonId) => {
+                buttons.push([
+                    crawlId,
+                    pageId,
+                    frameId,
+                    popupId,
+                    buttonId,
+                    toWellFormed(button.text),
+                    toWellFormed(button.selector),
+                    isReject,
+                    button.llmClassification ?? null,
+                    button.regexClassification ?? null,
+                ]);
+            });
+        });
+    });
+    return { frames, popups, buttons };
+}
+
 class ClickhouseReporter extends BaseReporter {
     id() {
         return 'clickhouse';
     }
 
     /**
-     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string}} options
+     * @param {{verbose: boolean, startTime: Date, urls: number, logPath: string, tables?: string[]}} options
      */
     init(options) {
         this.verbose = options.verbose;
@@ -171,7 +299,12 @@ class ClickhouseReporter extends BaseReporter {
             cookies: [],
             targets: [],
             autoconsentPerformance: [],
+            cookiePopupFrames: [],
+            cookiePopupPopups: [],
+            cookiePopupButtons: [],
         };
+        // tables that will be written to on commit (defaults to all)
+        this.tables = options.tables || Object.keys(this.queue);
     }
 
     /**
@@ -199,18 +332,39 @@ class ClickhouseReporter extends BaseReporter {
         return this.ready;
     }
 
+    /**
+     * Delete this crawl's data from the selected tables. The crawls entry is only removed when all tables are selected.
+     */
     async deleteCrawlData() {
         await this.ready;
-        console.log(`Deleting all data for crawl ${this.crawlId}`);
-        const deletes = Object.keys(this.queue).map((table) =>
-            this.client.query({
-                query: `ALTER TABLE ${table} DELETE WHERE crawlId = '${this.crawlId}'`,
-            }),
-        );
-        await Promise.all(deletes);
-        await this.client.query({
-            query: `ALTER TABLE crawls DELETE WHERE crawlId = '${this.crawlId}'`,
+        const fullDelete = this.tables.length === Object.keys(this.queue).length;
+        console.log(`Deleting ${fullDelete ? 'all' : this.tables.join(', ')} data for crawl ${this.crawlId}`);
+        const deleteFrom = (/** @type {string} */ table) =>
+            this.client.command({
+                query: `ALTER TABLE ${table} DELETE WHERE crawlId = {crawlId:String}`,
+                query_params: { crawlId: this.crawlId },
+                // wait for the delete to complete on all replicas, so data can be safely re-imported afterwards
+                clickhouse_settings: { mutations_sync: '2' },
+            });
+        await Promise.all(this.tables.map(deleteFrom));
+        if (fullDelete) {
+            await deleteFrom('crawls');
+        }
+    }
+
+    /**
+     * @param {string} table
+     * @returns {Promise<number>} number of rows for this crawl in the table
+     */
+    async countCrawlRows(table) {
+        await this.ready;
+        const result = await this.client.query({
+            query: `SELECT count() AS n FROM ${table} WHERE crawlId = {crawlId:String}`,
+            query_params: { crawlId: this.crawlId },
+            format: 'JSONEachRow',
         });
+        const rows = /** @type {{n: string}[]} */ (await result.json());
+        return Number(rows[0].n);
     }
 
     /**
@@ -266,8 +420,10 @@ class ClickhouseReporter extends BaseReporter {
                 this.queue.elements.push([this.crawlId, pageId, data.data.elements.present, data.data.elements.visible]);
             }
             if (data.data.cookiepopups) {
-                const llmPopupDetected = data.data.cookiepopups.scrapedFrames.some((f) => f.llmPopupDetected);
-                const regexPopupDetected = data.data.cookiepopups.scrapedFrames.some((f) => f.regexPopupDetected);
+                // older crawls predate scrapedFrames
+                const scrapedFrames = data.data.cookiepopups.scrapedFrames || [];
+                const llmPopupDetected = scrapedFrames.some((f) => f.llmPopupDetected);
+                const regexPopupDetected = scrapedFrames.some((f) => f.regexPopupDetected);
                 const cmpRows = data.data.cookiepopups.cmps.map((c) => [
                     this.crawlId,
                     pageId,
@@ -301,6 +457,11 @@ class ClickhouseReporter extends BaseReporter {
                     }),
                 );
                 this.queue.autoconsentPerformance = this.queue.autoconsentPerformance.concat(performanceRows);
+
+                const { frames, popups, buttons } = scrapedFramesToRows(this.crawlId, pageId, scrapedFrames);
+                this.queue.cookiePopupFrames = this.queue.cookiePopupFrames.concat(frames);
+                this.queue.cookiePopupPopups = this.queue.cookiePopupPopups.concat(popups);
+                this.queue.cookiePopupButtons = this.queue.cookiePopupButtons.concat(buttons);
             }
             if (data.data.apis) {
                 const { callStats, savedCalls } = data.data.apis;
@@ -338,17 +499,19 @@ class ClickhouseReporter extends BaseReporter {
     }
 
     async commitQueue() {
-        const inserts = Object.keys(this.queue).map(async (table) => {
+        const inserts = this.tables.map((table) =>
             // @ts-ignore
-            await this.client.insert({
+            this.client.insert({
                 table,
                 // @ts-ignore
                 values: this.queue[table],
-            });
+            }),
+        );
+        await Promise.all(inserts);
+        Object.keys(this.queue).forEach((table) => {
             // @ts-ignore
             this.queue[table] = [];
         });
-        await Promise.all(inserts);
     }
 
     /**
@@ -361,3 +524,5 @@ class ClickhouseReporter extends BaseReporter {
 }
 
 module.exports = ClickhouseReporter;
+module.exports.scrapedFramesToRows = scrapedFramesToRows;
+module.exports.SCRAPED_FRAMES_TABLES = SCRAPED_FRAMES_TABLES;
