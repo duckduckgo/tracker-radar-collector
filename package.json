@@ -20,7 +20,8 @@
     "url": "git@github.com:duckduckgo/tracker-radar-crawler.git"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=24.14.1",
+    "npm": ">=11.10.0"
   },
   "devDependencies": {
     "@duckduckgo/eslint-config": "github:duckduckgo/eslint-config#v0.1.0",
