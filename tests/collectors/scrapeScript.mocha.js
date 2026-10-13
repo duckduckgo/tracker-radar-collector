@@ -87,25 +87,6 @@ describe('scrapeScript', function () {
         assert.ok(!texts.includes('Do not sell my personal information'), 'footer link below the fold is excluded');
     });
 
-    it('treats a first-level iframe document as a single popup candidate', async () => {
-        // CMPs often render their dialog as the whole document of an iframe, without fixed positioning
-        const frameDoc = '<p>We use cookies to improve your experience.</p><button id="reject">Reject all</button>';
-        await page.setContent(`<iframe srcdoc='${frameDoc}' style="width: 600px; height: 300px"></iframe>`);
-        const frame = await (await page.$('iframe'))?.contentFrame();
-        assert.ok(frame, 'expected the iframe to load');
-        await frame.evaluate(`window.testBinding = () => {};\n${getAutoconsentContentScript('testBinding')}`);
-        const result = /** @type {import('../../collectors/CookiePopupsCollector').ScrapeScriptResult} */ (
-            await frame.evaluate(cookiePopupScrapeScript)
-        );
-        assert.strictEqual(result.isTop, false);
-        assert.strictEqual(result.potentialPopups.length, 1);
-        assert.ok(result.potentialPopups[0].text.includes('We use cookies'));
-        assert.deepStrictEqual(
-            result.potentialPopups[0].buttons.map((b) => b.text),
-            ['Reject all'],
-        );
-    });
-
     it('fails clearly when autoconsent is not loaded', async () => {
         await assert.rejects(scrape(page, false), /autoconsent content script is not loaded/);
     });

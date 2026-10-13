@@ -40,7 +40,7 @@ const ELEMENT_TAGS_TO_SKIP = [
 ];
 
 /**
- * In-viewport check, used for page-level buttons (so footer links are not mistaken for popup buttons) and for iframe documents.
+ * Page-level buttons are limited to the viewport, so that footer links are not mistaken for popup buttons.
  * @param {HTMLElement} node
  * @returns {boolean}
  */
@@ -268,20 +268,6 @@ function serializeButton(button) {
 }
 
 /**
- * In a first-level iframe the whole document is the popup candidate. autoconsent's own check for this uses
- * offsetParent, which is always null for <body>, so the frame's visibility is checked here instead.
- * @param {AutoconsentHeuristics} heuristics
- * @returns {import('../../node_modules/@duckduckgo/autoconsent/lib/types').PopupData[]}
- */
-function getFramePopups(heuristics) {
-    const doc = document.body || document.documentElement;
-    if (!doc || !isInViewport(doc) || !doc.innerText) {
-        return [];
-    }
-    return [{ text: doc.innerText, element: doc, buttons: heuristics.getButtonData(doc) }];
-}
-
-/**
  * @returns {import('../CookiePopupsCollector').ScrapeScriptResult}
  */
 function scrapePage() {
@@ -305,7 +291,7 @@ function scrapePage() {
             .filter((b) => isInViewport(b.element))
             .map(serializeButton),
         cleanedText: getDocumentText().slice(0, LIMIT_TEXT_LENGTH),
-        potentialPopups: (isFramed ? getFramePopups(heuristics) : heuristics.getPotentialPopups(POPUP_SEARCH_TIMEOUT)).map((popup) => ({
+        potentialPopups: heuristics.getPotentialPopups(POPUP_SEARCH_TIMEOUT).map((popup) => ({
             text: popup.text,
             selector: getUniqueSelector(popup.element),
             buttons: popup.buttons.map(serializeButton),
