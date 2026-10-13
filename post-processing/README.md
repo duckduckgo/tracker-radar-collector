@@ -1,8 +1,8 @@
 # Button classification
 
-This folder contains scripts for building and maintaining labelled button text data from cookie popup crawls, and for benchmarking regex-based button classification.
+This folder contains scripts for building labelled button text data from cookie popup crawls.
 
-The labelled dataset lives at `generate-autoconsent-rules/labelled-button-texts.csv`. Regex patterns used by `classifyButtonTextRegex` are defined in `generate-autoconsent-rules/button-patterns.js`.
+Popup and button classification (`checkHeuristicPatterns`, `classifyButtonTextRegex`, `cleanButtonText` and the regex patterns) comes from [autoconsent](https://github.com/duckduckgo/autoconsent) via `@duckduckgo/autoconsent/heuristics`. Pattern changes, the labelled dataset (`data/labelled-button-texts.csv`) and the accuracy benchmark all live in autoconsent. The scripts below produce the data that goes into that CSV. In the examples, `$AUTOCONSENT` is the path to an autoconsent checkout.
 
 ## Workflow
 
@@ -13,7 +13,7 @@ Use `collect-popup-button-texts.js` to extract normalized button strings from cr
 ```bash
 node post-processing/collect-popup-button-texts.js \
   -i /path/to/crawl/output \
-  -o post-processing/generate-autoconsent-rules/labelled-button-texts.csv
+  -o $AUTOCONSENT/data/labelled-button-texts.csv
 ```
 
 The script:
@@ -33,47 +33,23 @@ Use `label-button-texts.js` to fill in labels for any rows that do not yet have 
 
 ```bash
 export OPENAI_API_KEY=...
-node post-processing/label-button-texts.js
+node post-processing/label-button-texts.js -i $AUTOCONSENT/data/labelled-button-texts.csv
 ```
 
-Requires `OPENAI_API_KEY`. By default this updates `generate-autoconsent-rules/labelled-button-texts.csv`.
+Requires `OPENAI_API_KEY`.
 
 Options:
 
-- `-i, --input <path>` — CSV to label (default: `generate-autoconsent-rules/labelled-button-texts.csv`)
+- `-i, --input <path>` — CSV to label (required)
 - `--limit <n>` — process at most _n_ unlabelled rows
 - `--parallel <n>` — concurrent LLM requests (default: 10)
 
 Labels are one of: `settings`, `accept`, `reject`, `acknowledge`, `other`.
 
-After LLM labelling, manually review and correct labels in the CSV before optimizing patterns.
+After LLM labelling, manually review and correct labels in the CSV.
 
-### 3. Benchmark regex classification
+### 3. Benchmark and update patterns in autoconsent
 
-Use `benchmark-classify-button-text-regex.js` to compare `classifyButtonTextRegex` against the labelled data and find gaps in the regex patterns.
+In the autoconsent checkout, run `npm run benchmark-buttons` to see how `classifyButtonTextRegex` scores against the updated labels, and update `lib/heuristic-patterns.ts` there (the `optimize-button-patterns` agent skill in autoconsent automates this loop). `npm run test:lib` fails if any label gets a false positive or drops below 90% occurrence-weighted accuracy.
 
-```bash
-node post-processing/benchmark-classify-button-text-regex.js
-```
-
-By default this reads `generate-autoconsent-rules/labelled-button-texts.csv` and benchmarks against `settings`, `accept`, `reject`, and `acknowledge` (excluding `other`).
-
-Options:
-
-- `-i, --input <path>` — labelled CSV path
-- `-o, --output <path>` — write detailed results as JSON
-- `--limit <n>` — evaluate at most _n_ rows
-
-For each label the report shows:
-
-1. **Correctly labelled** — exact label match, row count and occurrence-weighted count with percentages
-2. **False positives** — predicted as this label but ground truth is a different label
-3. **Top examples** — highest-occurrence false positives and missed strings (ground truth is this label but prediction differs)
-
-Occurrence weighting uses the `occurences` column from the CSV so common button texts count more than rare ones.
-
-When the benchmark shows misses or false positives, update the patterns in `generate-autoconsent-rules/button-patterns.js` and re-run the benchmark until coverage is acceptable.
-
-### 4. Optimize patterns (optional)
-
-After updating labels, invoke the `optimize-button-patterns` Cursor skill to iteratively improve `button-patterns.js` against the benchmark. Targets: zero false positives, ≥90% weighted coverage for each of `settings`, `accept`, `reject`, and `acknowledge`.
+To try unreleased autoconsent changes here, link the checkout: run `npm run prepublish` in autoconsent, then `npm link $AUTOCONSENT --no-save` in this repo.

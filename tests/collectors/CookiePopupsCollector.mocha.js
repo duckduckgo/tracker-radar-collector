@@ -225,6 +225,8 @@ describe('CookiePopupsCollector', () => {
                     cmp: 'some cmp',
                     url: 'some url',
                     isCosmetic: false,
+                    duration: 0,
+                    totalClicks: 0,
                 };
                 collector.selfTestFrame = null;
                 commands.splice(0, commands.length);
@@ -241,6 +243,8 @@ describe('CookiePopupsCollector', () => {
                     cmp: 'some cmp',
                     url: 'some url',
                     isCosmetic: false,
+                    duration: 0,
+                    totalClicks: 0,
                 };
                 collector.selfTestFrame = '1111';
                 commands.splice(0, commands.length);
