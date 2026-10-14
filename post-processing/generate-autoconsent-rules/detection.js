@@ -16,6 +16,33 @@ function checkHeuristicPatterns(allText) {
 }
 
 /**
+ * Regex detector for popup candidate text (popup level).
+ * @param {string} text
+ * @returns {boolean}
+ */
+function classifyPopupTextRegex(text) {
+    return !isExcludedPopup(text) && checkHeuristicPatterns(text);
+}
+
+/**
+ * Regex detector for full frame text (frame level).
+ * @param {string} text
+ * @returns {boolean}
+ */
+function classifyFrameTextRegex(text) {
+    return checkHeuristicPatterns(text);
+}
+
+/**
+ * Frames that are not classified at all: iframes without buttons are usually utility frames that cause false positives.
+ * @param {{cleanedText?: string, isTop: boolean, buttons: unknown[]}} frameContext
+ * @returns {boolean}
+ */
+function shouldClassifyFrame(frameContext) {
+    return Boolean(frameContext.cleanedText) && (frameContext.isTop || frameContext.buttons.length > 0);
+}
+
+/**
  * @param {string} buttonText
  * @returns {boolean}
  */
@@ -23,13 +50,7 @@ function isRejectButton(buttonText) {
     return classifyButtonTextRegex(buttonText) === 'reject';
 }
 
-/**
- * @param {import('openai').OpenAI} openai
- * @param {string} text
- * @returns {Promise<boolean>}
- */
-async function checkLLM(openai, text) {
-    const systemPrompt = `
+const POPUP_LLM_PROMPT = `
 You are an expert in web application user interfaces. You are given a text extracted from an HTML element. Your task is to determine whether this element is a cookie popup.
 
 A "cookie popup", also known as "consent management dialog", is a notification that informs users about the use of cookies (or other storage technologies), and seeks their consent. It typically includes information about cookies, consent options, privacy policy links, and action buttons.
@@ -50,13 +71,53 @@ Examples of NON-cookie popup text:
 - "Would you like to enable notifications to stay up to date?"
     `;
 
-    const CookieConsentNoticeClassification = z.object({
-        isCookieConsentNotice: z.boolean(),
-    });
+const FRAME_LLM_PROMPT = `
+You are an expert in web application user interfaces. You are given a text extracted from an HTML page. Your task is to determine whether this page contains a cookie popup.
 
+A "cookie popup", also known as "consent management dialog", is a notification that informs users about the use of cookies (or other storage technologies), and seeks their consent. It typically includes information about cookies, consent options, privacy policy links, and action buttons.
+
+While cookie popups are primarily focused on obtaining consent for the use of cookies, they often encompass broader data privacy and tracking practices. Therefore, cookie popups may also include information about:
+- other tracking technologies: popups may address other tracking technologies such as web beacons, pixels, and local storage that websites use to collect data about user behavior.
+- data collection and usage: the popups may provide information about what types of data are collected, how it is used, and with whom it is shared, extending beyond just cookies.
+- consent for other technologies: some popups may also seek consent for other technologies that involve data processing, such as analytics tools, advertising networks, and social media plugins.
+- user preferences: they often allow users to manage their preferences regarding different types of data collection and processing activities.
+
+Note: If the provided text contains only code, it indicates the problem with data collection. Do not classify such cases as cookie popups.
+
+Examples of cookie popup text:
+- "This site uses cookies to improve your experience. By continuing to use our site, you agree to our cookie policy."
+- "We and our partners process data to provide and improve our services, including advertising and personalized content. This may include data from other companies and the public. [Accept All] [Reject All] [Show Purposes]"
+
+Examples of NON-cookie popup text:
+- "This site is for adults only. By pressing continue, you confirm that you are at least 18 years old."
+- "Help Contact Pricing Company Jobs Research Program Sitemap Privacy Settings Legal Notice Cookie Policy"
+- "Would you like to enable notifications to stay up to date?"
+- "function rn(){return"EU"===tn()}var on={};return{require:o,getLookUpTable:c,getListOfCookiesForDeletion:a,getGDPRFlag:g,getGDPRConsent:f,getGDPRConsentString:l,isCouplingMode:s"
+    `;
+
+const CookieConsentNoticeClassification = z.object({
+    isCookieConsentNotice: z.boolean(),
+});
+
+/**
+ * @typedef {Object} LLMClassifierOptions
+ * @property {string} [model] OpenAI model name
+ * @property {string} [systemPrompt]
+ * @property {number} [temperature] omitted from the request when undefined (API default)
+ * @property {boolean} [throwOnError] rethrow API errors instead of returning false
+ */
+
+/**
+ * @param {import('openai').OpenAI} openai
+ * @param {string} text
+ * @param {Required<Pick<LLMClassifierOptions, 'model' | 'systemPrompt'>> & LLMClassifierOptions} options
+ * @returns {Promise<boolean>}
+ */
+async function checkLLM(openai, text, { model, systemPrompt, temperature, throwOnError = false }) {
     try {
         const completion = await openai.beta.chat.completions.parse({
-            model: 'gpt-4o-mini',
+            model,
+            ...(temperature === undefined ? {} : { temperature }),
             messages: [
                 {
                     role: 'system',
@@ -74,10 +135,35 @@ Examples of NON-cookie popup text:
         const result = completion.choices[0].message.parsed;
         return result?.isCookieConsentNotice ?? false;
     } catch (error) {
+        if (throwOnError) {
+            throw error;
+        }
         console.error('Error classifying candidate:', error);
     }
 
     return false;
+}
+
+/**
+ * LLM detector for popup candidate text (popup level).
+ * @param {import('openai').OpenAI} openai
+ * @param {string} text
+ * @param {LLMClassifierOptions} [options]
+ * @returns {Promise<boolean>}
+ */
+function classifyPopupTextLLM(openai, text, options = {}) {
+    return checkLLM(openai, text, { model: 'gpt-4o-mini', systemPrompt: POPUP_LLM_PROMPT, ...options });
+}
+
+/**
+ * LLM detector for full frame text (frame level).
+ * @param {import('openai').OpenAI} openai
+ * @param {string} text
+ * @param {LLMClassifierOptions} [options]
+ * @returns {Promise<boolean>}
+ */
+function classifyFrameTextLLM(openai, text, options = {}) {
+    return checkLLM(openai, text, { model: 'gpt-4.1-nano-2025-04-14', systemPrompt: FRAME_LLM_PROMPT, ...options });
 }
 
 /** @type {Map<string, ButtonClassification>} */
@@ -229,8 +315,8 @@ async function classifyPopup(popup, openai) {
     let regexMatch = false;
     let llmMatch = false;
     if (popupText) {
-        regexMatch = !isExcludedPopup(popupText) && checkHeuristicPatterns(popupText);
-        llmMatch = await checkLLM(openai, popupText);
+        regexMatch = classifyPopupTextRegex(popupText);
+        llmMatch = await classifyPopupTextLLM(openai, popupText);
     }
     // only label buttons if the popup is considered a cookie popup by regex or LLM
     const buttons = regexMatch || llmMatch ? await labelButtons(popup.buttons, openai) : popup.buttons;
@@ -257,8 +343,15 @@ async function classifyPopup(popup, openai) {
  */
 
 module.exports = {
+    FRAME_LLM_PROMPT,
+    POPUP_LLM_PROMPT,
     classifyButtons,
     classifyPopup,
+    classifyFrameTextLLM,
+    classifyFrameTextRegex,
+    classifyPopupTextLLM,
+    classifyPopupTextRegex,
+    shouldClassifyFrame,
     checkHeuristicPatterns,
     classifyButtonTextRegex,
     classifyButtonTextLLM,
