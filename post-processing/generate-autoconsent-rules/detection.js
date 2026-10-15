@@ -16,12 +16,13 @@ function checkHeuristicPatterns(allText) {
 }
 
 /**
- * Regex detector for popup candidate text (popup level).
+ * Regex detector for popup candidate text (popup level). The text is trimmed, as in classifyPopup.
  * @param {string} text
  * @returns {boolean}
  */
 function classifyPopupTextRegex(text) {
-    return !isExcludedPopup(text) && checkHeuristicPatterns(text);
+    const trimmed = text.trim();
+    return !isExcludedPopup(trimmed) && checkHeuristicPatterns(trimmed);
 }
 
 /**
@@ -95,6 +96,9 @@ Examples of NON-cookie popup text:
 - "function rn(){return"EU"===tn()}var on={};return{require:o,getLookUpTable:c,getListOfCookiesForDeletion:a,getGDPRFlag:g,getGDPRConsent:f,getGDPRConsentString:l,isCouplingMode:s"
     `;
 
+const POPUP_LLM_MODEL = 'gpt-4o-mini';
+const FRAME_LLM_MODEL = 'gpt-4.1-nano-2025-04-14';
+
 const CookieConsentNoticeClassification = z.object({
     isCookieConsentNotice: z.boolean(),
 });
@@ -145,14 +149,14 @@ async function checkLLM(openai, text, { model, systemPrompt, temperature, throwO
 }
 
 /**
- * LLM detector for popup candidate text (popup level).
+ * LLM detector for popup candidate text (popup level). The text is trimmed, as in classifyPopup.
  * @param {import('openai').OpenAI} openai
  * @param {string} text
  * @param {LLMClassifierOptions} [options]
  * @returns {Promise<boolean>}
  */
 function classifyPopupTextLLM(openai, text, options = {}) {
-    return checkLLM(openai, text, { model: 'gpt-4o-mini', systemPrompt: POPUP_LLM_PROMPT, ...options });
+    return checkLLM(openai, text.trim(), { model: POPUP_LLM_MODEL, systemPrompt: POPUP_LLM_PROMPT, ...options });
 }
 
 /**
@@ -163,7 +167,7 @@ function classifyPopupTextLLM(openai, text, options = {}) {
  * @returns {Promise<boolean>}
  */
 function classifyFrameTextLLM(openai, text, options = {}) {
-    return checkLLM(openai, text, { model: 'gpt-4.1-nano-2025-04-14', systemPrompt: FRAME_LLM_PROMPT, ...options });
+    return checkLLM(openai, text, { model: FRAME_LLM_MODEL, systemPrompt: FRAME_LLM_PROMPT, ...options });
 }
 
 /** @type {Map<string, ButtonClassification>} */
@@ -343,7 +347,9 @@ async function classifyPopup(popup, openai) {
  */
 
 module.exports = {
+    FRAME_LLM_MODEL,
     FRAME_LLM_PROMPT,
+    POPUP_LLM_MODEL,
     POPUP_LLM_PROMPT,
     classifyButtons,
     classifyPopup,

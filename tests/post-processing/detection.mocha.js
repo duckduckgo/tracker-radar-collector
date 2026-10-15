@@ -1,6 +1,8 @@
 const assert = require('assert');
 const {
+    FRAME_LLM_MODEL,
     FRAME_LLM_PROMPT,
+    POPUP_LLM_MODEL,
     POPUP_LLM_PROMPT,
     checkHeuristicPatterns,
     classifyButtonTextRegex,
@@ -78,13 +80,17 @@ describe('detection', () => {
         it('uses the production model and prompt by default', async () => {
             const popup = fakeOpenAI(true);
             assert.strictEqual(await classifyPopupTextLLM(popup.openai, 'popup text'), true);
-            assert.strictEqual(popup.requests[0].model, 'gpt-4o-mini');
+            assert.strictEqual(await classifyPopupTextLLM(popup.openai, '  popup text \n'), true);
+            assert.strictEqual(popup.requests[1].messages[1].content, 'popup text');
+            assert.strictEqual(popup.requests[0].model, POPUP_LLM_MODEL);
+            assert.strictEqual(POPUP_LLM_MODEL, 'gpt-4o-mini');
             assert.strictEqual(popup.requests[0].messages[0].content, POPUP_LLM_PROMPT);
             assert.strictEqual('temperature' in popup.requests[0], false);
 
             const frame = fakeOpenAI(false);
             assert.strictEqual(await classifyFrameTextLLM(frame.openai, 'frame text'), false);
-            assert.strictEqual(frame.requests[0].model, 'gpt-4.1-nano-2025-04-14');
+            assert.strictEqual(frame.requests[0].model, FRAME_LLM_MODEL);
+            assert.strictEqual(FRAME_LLM_MODEL, 'gpt-4.1-nano-2025-04-14');
             assert.strictEqual(frame.requests[0].messages[0].content, FRAME_LLM_PROMPT);
             assert.strictEqual(frame.requests[0].messages[1].content, 'frame text');
         });
