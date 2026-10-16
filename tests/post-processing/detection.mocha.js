@@ -96,6 +96,22 @@ describe('detection', () => {
             assert.strictEqual(frame.requests[0].messages[1].content, 'frame text');
         });
 
+        it('asks for a category with withCategory and reports the parsed answer', async () => {
+            const { openai, requests } = fakeOpenAI(true);
+            /** @type {any[]} */
+            const results = [];
+            assert.strictEqual(await classifyFrameTextLLM(openai, 'text', { withCategory: true, onResult: (r) => results.push(r) }), true);
+            assert.strictEqual(requests[0].response_format.json_schema.name, 'CookieConsentNoticeCategory');
+            assert.deepStrictEqual(Object.keys(requests[0].response_format.json_schema.schema.properties), [
+                'category',
+                'isCookieConsentNotice',
+            ]);
+            assert.ok(requests[0].response_format.json_schema.schema.properties.category.enum.includes('age_gate'));
+            assert.deepStrictEqual(results, [{ isCookieConsentNotice: true }]);
+            await classifyPopupTextLLM(openai, 'text');
+            assert.strictEqual(requests[1].response_format.json_schema.name, 'CookieConsentNoticeClassification');
+        });
+
         it('appends the popup button texts when given', async () => {
             const { openai, requests } = fakeOpenAI(true);
             await classifyPopupTextLLM(openai, ' We use cookies. ', {
