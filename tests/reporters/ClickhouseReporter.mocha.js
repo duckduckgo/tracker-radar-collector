@@ -38,10 +38,12 @@ describe('ClickhouseReporter scrapedFramesToRows', () => {
         ]);
 
         assert.deepStrictEqual(frames, [
-            ['c', 'p', 0, true, 'https://example.com', 'page text', null, null, 2, 1],
-            ['c', 'p', 1, false, 'https://nested.example', '', null, null, 0, 0],
+            ['c', 'p', 0, true, 'https://example.com', 'page text', null, null, 2, 1, null, null, null, null],
+            ['c', 'p', 1, false, 'https://nested.example', '', null, null, 0, 0, null, null, null, null],
         ]);
-        assert.deepStrictEqual(popups, [['c', 'p', 0, 0, '#banner', 'We use cookies', null, null, 2]]);
+        assert.deepStrictEqual(popups, [
+            ['c', 'p', 0, 0, '#banner', 'We use cookies', null, null, 2, null, null, null, null, null, null, []],
+        ]);
         // frame-level buttons are not stored
         assert.deepStrictEqual(buttons, [
             ['c', 'p', 0, 0, 0, 'Accept', '#accept', null, null, null],
@@ -90,15 +92,56 @@ describe('ClickhouseReporter scrapedFramesToRows', () => {
             },
         ]);
 
-        assert.deepStrictEqual(frames, [['c', 'p', 0, true, 'https://example.com', 'page text', true, false, 0, 2]]);
+        assert.deepStrictEqual(frames, [
+            ['c', 'p', 0, true, 'https://example.com', 'page text', true, false, 0, 2, null, null, null, null],
+        ]);
         assert.deepStrictEqual(popups, [
-            ['c', 'p', 0, 0, '#news', 'Newsletter', false, false, 0],
-            ['c', 'p', 0, 1, '#banner', 'We use cookies', true, true, 3],
+            ['c', 'p', 0, 0, '#news', 'Newsletter', false, false, 0, null, null, null, null, null, null, []],
+            ['c', 'p', 0, 1, '#banner', 'We use cookies', true, true, 3, null, null, null, null, null, null, []],
         ]);
         assert.deepStrictEqual(buttons, [
             ['c', 'p', 0, 1, 0, 'Accept', '#accept', false, 'accept', 'accept'],
             ['c', 'p', 0, 1, 1, 'Reject', '#reject', true, 'reject', 'reject'],
             ['c', 'p', 0, 1, 2, 'Settings', '#settings', false, 'settings', 'other'],
+        ]);
+    });
+
+    it('stores the viewport and popup positions', () => {
+        const { frames, popups } = scrapedFramesToRows('c', 'p', [
+            {
+                isTop: true,
+                origin: 'https://example.com',
+                viewport: { width: 1440, height: 812, scrollX: 0, scrollY: 100 },
+                cleanedText: '',
+                buttons: [],
+                potentialPopups: [
+                    {
+                        text: 'We use cookies',
+                        selector: '#banner',
+                        buttons: [],
+                        source: 'hitTest',
+                        rect: { x: 0, y: 812, width: 1440, height: 100 },
+                        cssPosition: 'fixed',
+                        hitPoints: [
+                            [144, 782],
+                            [720, 782],
+                        ],
+                    },
+                ],
+            },
+        ]);
+        assert.deepStrictEqual(frames[0].slice(-4), [1440, 812, 0, 100]);
+        assert.deepStrictEqual(popups[0].slice(-7), [
+            'hitTest',
+            0,
+            812,
+            1440,
+            100,
+            'fixed',
+            [
+                [144, 782],
+                [720, 782],
+            ],
         ]);
     });
 

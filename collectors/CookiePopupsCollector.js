@@ -199,6 +199,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
                     enablePrehide: false,
                     enableCosmeticRules: true,
                     enableHeuristicDetection: true,
+                    enableHeuristicHitTest: true,
                     heuristicMode: 'tier2',
                     detectRetries: 20,
                     isMainWorld: false,
@@ -625,6 +626,7 @@ class CookiePopupsCollector extends ContentScriptCollector {
  * @typedef ScrapeScriptResult
  * @property {boolean} isTop
  * @property {string} origin
+ * @property {Viewport} [viewport] absent in older crawls, and in frames that are not inspected
  * @property {string} cleanedText
  * @property {ButtonData[]} buttons
  * @property {PopupData[]} potentialPopups
@@ -636,10 +638,30 @@ class CookiePopupsCollector extends ContentScriptCollector {
  */
 
 /**
+ * @typedef Viewport
+ * @property {number} width
+ * @property {number} height
+ * @property {number} scrollX
+ * @property {number} scrollY
+ */
+
+/**
+ * @typedef PopupRect position on the page (viewport position plus scroll), in CSS px; for popups in a frame, on the frame's page
+ * @property {number} x
+ * @property {number} y
+ * @property {number} width
+ * @property {number} height
+ */
+
+/**
  * @typedef PopupData
  * @property {string} text
  * @property {string} selector
  * @property {ButtonData[]} buttons
+ * @property {'walk'|'hitTest'|'frame'} [source] which autoconsent search found the popup
+ * @property {PopupRect} [rect]
+ * @property {string} [cssPosition] 'fixed' or 'sticky' when the popup or an ancestor is, otherwise the popup's own position
+ * @property {[number, number][]} [hitPoints] viewport points ([x, y] in CSS px) whose hit test reached the popup
  * @property {boolean} [llmMatch]
  * @property {boolean} [regexMatch]
  * @property {ButtonData[]} [rejectButtons]
