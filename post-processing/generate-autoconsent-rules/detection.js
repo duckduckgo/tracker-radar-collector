@@ -6,6 +6,7 @@ const {
     cleanButtonText,
     isExcludedPopup,
 } = require('@duckduckgo/autoconsent/heuristics');
+const { frameExcerpt } = require('./frame-excerpt');
 
 /**
  * @param {string} allText
@@ -219,11 +220,14 @@ function classifyPopupTextLLM(openai, text, options = {}) {
  * LLM detector for full frame text (frame level).
  * @param {import('openai').OpenAI} openai
  * @param {string} text
- * @param {LLMClassifierOptions} [options]
+ * @param {LLMClassifierOptions & {excerpt?: number}} [options] `excerpt` sends long texts as an excerpt of about that many
+ *   characters (frameExcerpt)
  * @returns {Promise<boolean>}
  */
 function classifyFrameTextLLM(openai, text, options = {}) {
-    return checkLLM(openai, text, { model: FRAME_LLM_MODEL, systemPrompt: FRAME_LLM_PROMPT, ...options });
+    const { excerpt, ...llmOptions } = options;
+    const input = excerpt ? frameExcerpt(text, excerpt) : text;
+    return checkLLM(openai, input, { model: FRAME_LLM_MODEL, systemPrompt: FRAME_LLM_PROMPT, ...llmOptions });
 }
 
 /** @type {Map<string, ButtonClassification>} */
@@ -414,6 +418,7 @@ module.exports = {
     classifyFrameTextRegex,
     classifyPopupTextLLM,
     classifyPopupTextRegex,
+    frameExcerpt,
     popupLLMInput,
     shouldClassifyFrame,
     checkHeuristicPatterns,
