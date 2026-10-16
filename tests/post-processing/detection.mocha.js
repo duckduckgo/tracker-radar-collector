@@ -10,6 +10,7 @@ const {
     classifyFrameTextLLM,
     classifyFrameTextRegex,
     classifyPopupTextLLM,
+    popupLLMInput,
     classifyPopupTextRegex,
     cleanButtonText,
     isRejectButton,
@@ -93,6 +94,18 @@ describe('detection', () => {
             assert.strictEqual(FRAME_LLM_MODEL, 'gpt-4.1-nano-2025-04-14');
             assert.strictEqual(frame.requests[0].messages[0].content, FRAME_LLM_PROMPT);
             assert.strictEqual(frame.requests[0].messages[1].content, 'frame text');
+        });
+
+        it('appends the popup button texts when given', async () => {
+            const { openai, requests } = fakeOpenAI(true);
+            await classifyPopupTextLLM(openai, ' We use cookies. ', {
+                buttons: [{ text: 'Accept\n all' }, { text: 'Accept all' }, { text: ' ' }, { text: 'Reject' }],
+                temperature: 0,
+            });
+            assert.strictEqual(requests[0].messages[1].content, 'We use cookies.\n\nButtons: [Accept all] [Reject]');
+            assert.strictEqual(requests[0].temperature, 0);
+            assert.strictEqual('buttons' in requests[0], false);
+            assert.strictEqual(popupLLMInput('text', []), 'text');
         });
 
         it('accepts model, prompt and temperature overrides', async () => {
