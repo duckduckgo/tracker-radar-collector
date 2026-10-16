@@ -87,7 +87,7 @@ describe('detection', () => {
             assert.strictEqual(popup.requests[0].model, POPUP_LLM_MODEL);
             assert.strictEqual(POPUP_LLM_MODEL, 'gpt-4o-mini');
             assert.strictEqual(popup.requests[0].messages[0].content, POPUP_LLM_PROMPT);
-            assert.strictEqual('temperature' in popup.requests[0], false);
+            assert.strictEqual(popup.requests[0].temperature, 0);
 
             const frame = fakeOpenAI(false);
             assert.strictEqual(await classifyFrameTextLLM(frame.openai, 'frame text'), false);
@@ -95,14 +95,15 @@ describe('detection', () => {
             assert.strictEqual(FRAME_LLM_MODEL, 'gpt-4.1-nano-2025-04-14');
             assert.strictEqual(frame.requests[0].messages[0].content, FRAME_LLM_PROMPT);
             assert.strictEqual(frame.requests[0].messages[1].content, 'frame text');
+            assert.strictEqual(frame.requests[0].temperature, 0);
         });
 
-        it('sends long frame texts as an excerpt with the excerpt option', async () => {
+        it('sends long frame texts as an excerpt by default', async () => {
             const { openai, requests } = fakeOpenAI(true);
             const text = `${'menu '.repeat(2000)} Wij en onze partners gebruiken cookies. Alles accepteren ${'article '.repeat(2000)}`;
-            await classifyFrameTextLLM(openai, text, { excerpt: 4500 });
-            await classifyFrameTextLLM(openai, 'short page', { excerpt: 4500 });
             await classifyFrameTextLLM(openai, text);
+            await classifyFrameTextLLM(openai, 'short page');
+            await classifyFrameTextLLM(openai, text, { excerpt: 0 });
             const sent = requests[0].messages[1].content;
             assert.ok(sent.length <= 4600, `excerpt length ${sent.length}`);
             assert.ok(sent.includes('Wij en onze partners gebruiken cookies'));
@@ -142,10 +143,10 @@ describe('detection', () => {
 
         it('accepts model, prompt and temperature overrides', async () => {
             const { openai, requests } = fakeOpenAI(true);
-            await classifyFrameTextLLM(openai, 'text', { model: 'other-model', systemPrompt: 'prompt', temperature: 0 });
+            await classifyFrameTextLLM(openai, 'text', { model: 'other-model', systemPrompt: 'prompt', temperature: 0.5 });
             assert.strictEqual(requests[0].model, 'other-model');
             assert.strictEqual(requests[0].messages[0].content, 'prompt');
-            assert.strictEqual(requests[0].temperature, 0);
+            assert.strictEqual(requests[0].temperature, 0.5);
         });
 
         it('returns false on API errors unless throwOnError is set', async () => {
