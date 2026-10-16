@@ -104,11 +104,43 @@ const CookieConsentNoticeClassification = z.object({
 });
 
 /**
+ * Element categories for `withCategory`: what kind of element (or, for a page, the most consent-like thing showing) the
+ * model saw. The first group are consent notices, the second aren't.
+ */
+const CONSENT_CATEGORIES = {
+    notice: ['cmp_banner', 'tcf_dialog', 'pay_or_consent', 'notice_only', 'preferences_panel', 'us_privacy_notice', 'ad_choices_notice'],
+    other: [
+        'no_notice',
+        'age_gate',
+        'tos_login',
+        'footer_copy',
+        'hidden_panel',
+        'consent_revisit_button',
+        'newsletter_or_promo',
+        'notification_prompt',
+        'site_header_or_nav',
+        'chat_or_support_widget',
+        'media_or_ad',
+        'bot_check_or_error',
+        'code_or_garbage',
+        'other',
+    ],
+};
+
+// the category comes first, so the model names the element before it decides
+const CookieConsentNoticeCategory = z.object({
+    category: z.enum(/** @type {[string, ...string[]]} */ ([...CONSENT_CATEGORIES.notice, ...CONSENT_CATEGORIES.other])),
+    isCookieConsentNotice: z.boolean(),
+});
+
+/**
  * @typedef {Object} LLMClassifierOptions
  * @property {string} [model] OpenAI model name
  * @property {string} [systemPrompt]
  * @property {number} [temperature] omitted from the request when undefined (API default)
  * @property {boolean} [throwOnError] rethrow API errors instead of returning false
+ * @property {boolean} [withCategory] ask the model for a CONSENT_CATEGORIES category before the answer
+ * @property {(result: {isCookieConsentNotice: boolean, category?: string}) => void} [onResult] receives the parsed answer
  */
 
 /**
@@ -117,7 +149,7 @@ const CookieConsentNoticeClassification = z.object({
  * @param {Required<Pick<LLMClassifierOptions, 'model' | 'systemPrompt'>> & LLMClassifierOptions} options
  * @returns {Promise<boolean>}
  */
-async function checkLLM(openai, text, { model, systemPrompt, temperature, throwOnError = false }) {
+async function checkLLM(openai, text, { model, systemPrompt, temperature, throwOnError = false, withCategory = false, onResult }) {
     try {
         const completion = await openai.beta.chat.completions.parse({
             model,
@@ -133,10 +165,15 @@ async function checkLLM(openai, text, { model, systemPrompt, temperature, throwO
                 },
             ],
 
-            response_format: zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
+            response_format: withCategory
+                ? zodResponseFormat(CookieConsentNoticeCategory, 'CookieConsentNoticeCategory')
+                : zodResponseFormat(CookieConsentNoticeClassification, 'CookieConsentNoticeClassification'),
         });
 
         const result = completion.choices[0].message.parsed;
+        if (result) {
+            onResult?.(/** @type {{isCookieConsentNotice: boolean, category?: string}} */ (result));
+        }
         return result?.isCookieConsentNotice ?? false;
     } catch (error) {
         if (throwOnError) {
@@ -160,10 +197,9 @@ const MAX_LLM_BUTTON_CHARS = 80;
  */
 function popupLLMInput(text, buttons) {
     const trimmed = text.trim();
-    const labels = [...new Set((buttons || []).map((b) => b.text.replace(/\s+/g, ' ').trim().slice(0, MAX_LLM_BUTTON_CHARS)).filter(Boolean))].slice(
-        0,
-        MAX_LLM_BUTTONS,
-    );
+    const labels = [
+        ...new Set((buttons || []).map((b) => b.text.replace(/\s+/g, ' ').trim().slice(0, MAX_LLM_BUTTON_CHARS)).filter(Boolean)),
+    ].slice(0, MAX_LLM_BUTTONS);
     return labels.length ? `${trimmed}\n\nButtons: ${labels.map((l) => `[${l}]`).join(' ')}` : trimmed;
 }
 
@@ -367,6 +403,7 @@ async function classifyPopup(popup, openai) {
  */
 
 module.exports = {
+    CONSENT_CATEGORIES,
     FRAME_LLM_MODEL,
     FRAME_LLM_PROMPT,
     POPUP_LLM_MODEL,
