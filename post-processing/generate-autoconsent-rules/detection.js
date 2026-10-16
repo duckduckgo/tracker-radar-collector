@@ -148,15 +148,35 @@ async function checkLLM(openai, text, { model, systemPrompt, temperature, throwO
     return false;
 }
 
+const MAX_LLM_BUTTONS = 10;
+const MAX_LLM_BUTTON_CHARS = 80;
+
+/**
+ * Popup LLM input: the trimmed popup text, followed by the popup's button texts when given, so the model can see which
+ * actions the element offers (an age confirmation, a lone settings button, consent choices).
+ * @param {string} text
+ * @param {{text: string}[]} [buttons]
+ * @returns {string}
+ */
+function popupLLMInput(text, buttons) {
+    const trimmed = text.trim();
+    const labels = [...new Set((buttons || []).map((b) => b.text.replace(/\s+/g, ' ').trim().slice(0, MAX_LLM_BUTTON_CHARS)).filter(Boolean))].slice(
+        0,
+        MAX_LLM_BUTTONS,
+    );
+    return labels.length ? `${trimmed}\n\nButtons: ${labels.map((l) => `[${l}]`).join(' ')}` : trimmed;
+}
+
 /**
  * LLM detector for popup candidate text (popup level). The text is trimmed, as in classifyPopup.
  * @param {import('openai').OpenAI} openai
  * @param {string} text
- * @param {LLMClassifierOptions} [options]
+ * @param {LLMClassifierOptions & {buttons?: {text: string}[]}} [options] `buttons` appends the popup's button texts to the input
  * @returns {Promise<boolean>}
  */
 function classifyPopupTextLLM(openai, text, options = {}) {
-    return checkLLM(openai, text.trim(), { model: POPUP_LLM_MODEL, systemPrompt: POPUP_LLM_PROMPT, ...options });
+    const { buttons, ...llmOptions } = options;
+    return checkLLM(openai, popupLLMInput(text, buttons), { model: POPUP_LLM_MODEL, systemPrompt: POPUP_LLM_PROMPT, ...llmOptions });
 }
 
 /**
@@ -357,6 +377,7 @@ module.exports = {
     classifyFrameTextRegex,
     classifyPopupTextLLM,
     classifyPopupTextRegex,
+    popupLLMInput,
     shouldClassifyFrame,
     checkHeuristicPatterns,
     classifyButtonTextRegex,
