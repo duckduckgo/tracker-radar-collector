@@ -10,6 +10,7 @@ const {
     classifyFrameTextLLM,
     classifyFrameTextRegex,
     classifyPopupTextLLM,
+    frameExcerpt,
     popupLLMInput,
     classifyPopupTextRegex,
     cleanButtonText,
@@ -94,6 +95,21 @@ describe('detection', () => {
             assert.strictEqual(FRAME_LLM_MODEL, 'gpt-4.1-nano-2025-04-14');
             assert.strictEqual(frame.requests[0].messages[0].content, FRAME_LLM_PROMPT);
             assert.strictEqual(frame.requests[0].messages[1].content, 'frame text');
+        });
+
+        it('sends long frame texts as an excerpt with the excerpt option', async () => {
+            const { openai, requests } = fakeOpenAI(true);
+            const text = `${'menu '.repeat(2000)} Wij en onze partners gebruiken cookies. Alles accepteren ${'article '.repeat(2000)}`;
+            await classifyFrameTextLLM(openai, text, { excerpt: 4500 });
+            await classifyFrameTextLLM(openai, 'short page', { excerpt: 4500 });
+            await classifyFrameTextLLM(openai, text);
+            const sent = requests[0].messages[1].content;
+            assert.ok(sent.length <= 4600, `excerpt length ${sent.length}`);
+            assert.ok(sent.includes('Wij en onze partners gebruiken cookies'));
+            assert.ok(sent.includes('[...]'));
+            assert.strictEqual(requests[1].messages[1].content, 'short page');
+            assert.strictEqual(requests[2].messages[1].content, text);
+            assert.strictEqual(frameExcerpt('short page'), 'short page');
         });
 
         it('asks for a category with withCategory and reports the parsed answer', async () => {
