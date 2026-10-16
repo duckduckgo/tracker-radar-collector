@@ -139,8 +139,8 @@ describe('ClickhouseReporter scrapedFramesToRows', () => {
             100,
             'fixed',
             [
-                [144, 782],
-                [720, 782],
+                { x: 144, y: 782 },
+                { x: 720, y: 782 },
             ],
         ]);
     });

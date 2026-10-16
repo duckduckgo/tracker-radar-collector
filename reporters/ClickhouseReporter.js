@@ -274,7 +274,8 @@ function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
                 popup.rect?.width ?? null,
                 popup.rect?.height ?? null,
                 popup.cssPosition ?? null,
-                popup.hitPoints ?? [],
+                // JSON input reads named tuples from objects, not arrays
+                (popup.hitPoints ?? []).map(([x, y]) => ({ x, y })),
             ]);
             mergeButtonLabels(popup).forEach(({ button, isReject }, buttonId) => {
                 buttons.push([
