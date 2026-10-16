@@ -52,26 +52,34 @@ function isRejectButton(buttonText) {
     return classifyButtonTextRegex(buttonText) === 'reject';
 }
 
-const POPUP_LLM_PROMPT = `
-You are an expert in web application user interfaces. You are given a text extracted from an HTML element. Your task is to determine whether this element is a cookie popup.
+const POPUP_LLM_PROMPT = `You classify the text of one on-screen web page element (a fixed or sticky overlay, banner or dialog). Decide whether it is a cookie or tracking consent notice: an element that tells the user about cookies, tracking or personal data processing and lets them accept, refuse, manage or acknowledge it.
 
-A "cookie popup", also known as "consent management dialog", is a notification that informs users about the use of cookies (or other storage technologies), and seeks their consent. It typically includes information about cookies, consent options, privacy policy links, and action buttons.
+Answer true for, in any language and even without the word "cookie":
+- cookie banners and consent dialogs, including short or purely informational notices ("This site uses cookies. OK", "we only use necessary cookies", "no consent is needed") with only an OK, Close, ✕, "Learn more" or no button;
+- notices that combine cookies or tracking with terms of use ("We use cookies and similar technologies. By continuing you accept our terms and cookie policy. Accept | Decline");
+- IAB TCF and similar dialogs ("we and our N partners", "vendors", "legitimate interest", "store and/or access information on a device");
+- consent-or-subscribe walls, and open consent preference or opt-out panels;
+- the consent buttons of a dialog captured without its text ("Accept all | Reject all | Manage cookies", "Agree and continue", "Zustimmen und weiter");
+- US privacy notices: "Do Not Sell or Share My Personal Information" or opt-out notices, and "By continuing you agree to our Privacy Policy" with an agree button or a privacy options link.
 
-While cookie popups are primarily focused on obtaining consent for the use of cookies, they often encompass broader data privacy and tracking practices. Therefore, cookie popups may also include information about:
-- other tracking technologies: popups may address other tracking technologies such as web beacons, pixels, and local storage that websites use to collect data about user behavior.
-- data collection and usage: the popups may provide information about what types of data are collected, how it is used, and with whom it is shared, extending beyond just cookies.
-- consent for other technologies: some popups may also seek consent for other technologies that involve data processing, such as analytics tools, advertising networks, and social media plugins.
-- user preferences: they often allow users to manage their preferences regarding different types of data collection and processing activities.
+Answer false for:
+- age gates: the element asks the user to confirm their age (Enter/Leave, "I am 18+", Yes/No), even if it also mentions or accepts cookies;
+- a single cookie settings button, link, icon or heading with no notice text ("Cookie settings", "Manage consent", "Your Privacy Choices", "Paramètres cookies", "Impostazioni dei cookie");
+- a lone generic button or word that isn't about consent ("Close", "OK", "Search");
+- agreements to terms of use or service that don't mention cookies or tracking ("Please accept our updated terms of service to continue");
+- placeholders for blocked embedded content (video, map, chatbot, captcha) that ask to accept cookies to load it, and chat widgets;
+- newsletter, signup and login forms, error and bot-check pages, notification or location prompts, headers, menus, footers and lists of legal links.
 
-Examples of cookie popup text:
-- "This site uses cookies to improve your experience. By continuing to use our site, you agree to our cookie policy."
-- "We and our partners process data to provide and improve our services, including advertising and personalized content. This may include data from other companies and the public. [Accept All] [Reject All] [Show Purposes]"
-
-Examples of NON-cookie popup text:
-- "This site is for adults only. By pressing continue, you confirm that you are at least 18 years old."
-- "Help Contact Pricing Company Jobs Research Program Sitemap Privacy Settings Legal Notice Cookie Policy"
-- "Would you like to enable notifications to stay up to date?"
-    `;
+Examples:
+- "We use cookies to improve your experience. Accept | Settings" → true
+- "Wir setzen nur technisch notwendige Cookies ein, eine Einwilligung ist nicht erforderlich. Schließen" → true
+- "Este sitio utiliza cookies de análisis. Vale" → true
+- "Als u verder gaat, gaat u akkoord met ons privacybeleid. Akkoord" → true
+- "We respect your privacy. See our privacy policy, or manage your privacy options here." → true
+- "This site is for adults only and uses cookies. I am 18+ – Enter | Leave" → false
+- "Gérer les cookies" → false
+- "Read and accept our terms of service to create your account. Accept" → false
+`;
 
 const FRAME_LLM_PROMPT = `
 You are an expert in web application user interfaces. You are given a text extracted from an HTML page. Your task is to determine whether this page contains a cookie popup.
@@ -86,6 +94,10 @@ While cookie popups are primarily focused on obtaining consent for the use of co
 
 Note: If the provided text contains only code, it indicates the problem with data collection. Do not classify such cases as cookie popups.
 
+The text is the whole visible text of a page or iframe, so the notice may appear anywhere, often as a separate block at the very end, after the footer. Consent dialogs that never say "cookie" count too, for example "[site] asks for your consent to use your personal data to: personalised advertising and content... Consent | Do not consent | Manage options" or "We and our partners store and/or access information on a device".
+
+A single cookie sentence inside the page footer, next to the copyright and legal links and without its own button, is not a cookie popup.
+
 Examples of cookie popup text:
 - "This site uses cookies to improve your experience. By continuing to use our site, you agree to our cookie policy."
 - "We and our partners process data to provide and improve our services, including advertising and personalized content. This may include data from other companies and the public. [Accept All] [Reject All] [Show Purposes]"
@@ -99,6 +111,11 @@ Examples of NON-cookie popup text:
 
 const POPUP_LLM_MODEL = 'gpt-4o-mini';
 const FRAME_LLM_MODEL = 'gpt-4.1-nano-2025-04-14';
+// temperature 0 makes repeated classifications of the same text more consistent
+const LLM_TEMPERATURE = 0;
+// frame texts longer than this go to the frame LLM as an excerpt (frameExcerpt), which keeps consent notices and drops
+// the rest of a long page
+const FRAME_LLM_EXCERPT = 4500;
 
 const CookieConsentNoticeClassification = z.object({
     isCookieConsentNotice: z.boolean(),
@@ -138,7 +155,7 @@ const CookieConsentNoticeCategory = z.object({
  * @typedef {Object} LLMClassifierOptions
  * @property {string} [model] OpenAI model name
  * @property {string} [systemPrompt]
- * @property {number} [temperature] omitted from the request when undefined (API default)
+ * @property {number} [temperature] defaults to LLM_TEMPERATURE in the classifiers; omitted from the request when undefined (API default)
  * @property {boolean} [throwOnError] rethrow API errors instead of returning false
  * @property {boolean} [withCategory] ask the model for a CONSENT_CATEGORIES category before the answer
  * @property {(result: {isCookieConsentNotice: boolean, category?: string}) => void} [onResult] receives the parsed answer
@@ -213,21 +230,26 @@ function popupLLMInput(text, buttons) {
  */
 function classifyPopupTextLLM(openai, text, options = {}) {
     const { buttons, ...llmOptions } = options;
-    return checkLLM(openai, popupLLMInput(text, buttons), { model: POPUP_LLM_MODEL, systemPrompt: POPUP_LLM_PROMPT, ...llmOptions });
+    return checkLLM(openai, popupLLMInput(text, buttons), {
+        model: POPUP_LLM_MODEL,
+        systemPrompt: POPUP_LLM_PROMPT,
+        temperature: LLM_TEMPERATURE,
+        ...llmOptions,
+    });
 }
 
 /**
  * LLM detector for full frame text (frame level).
  * @param {import('openai').OpenAI} openai
  * @param {string} text
- * @param {LLMClassifierOptions & {excerpt?: number}} [options] `excerpt` sends long texts as an excerpt of about that many
- *   characters (frameExcerpt)
+ * @param {LLMClassifierOptions & {excerpt?: number}} [options] `excerpt` sends texts longer than that many characters as
+ *   an excerpt (frameExcerpt); defaults to FRAME_LLM_EXCERPT, 0 sends the whole text
  * @returns {Promise<boolean>}
  */
 function classifyFrameTextLLM(openai, text, options = {}) {
-    const { excerpt, ...llmOptions } = options;
+    const { excerpt = FRAME_LLM_EXCERPT, ...llmOptions } = options;
     const input = excerpt ? frameExcerpt(text, excerpt) : text;
-    return checkLLM(openai, input, { model: FRAME_LLM_MODEL, systemPrompt: FRAME_LLM_PROMPT, ...llmOptions });
+    return checkLLM(openai, input, { model: FRAME_LLM_MODEL, systemPrompt: FRAME_LLM_PROMPT, temperature: LLM_TEMPERATURE, ...llmOptions });
 }
 
 /** @type {Map<string, ButtonClassification>} */
@@ -408,8 +430,10 @@ async function classifyPopup(popup, openai) {
 
 module.exports = {
     CONSENT_CATEGORIES,
+    FRAME_LLM_EXCERPT,
     FRAME_LLM_MODEL,
     FRAME_LLM_PROMPT,
+    LLM_TEMPERATURE,
     POPUP_LLM_MODEL,
     POPUP_LLM_PROMPT,
     classifyButtons,
