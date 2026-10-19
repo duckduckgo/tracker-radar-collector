@@ -40,10 +40,13 @@ describe('detection', () => {
         assert.deepStrictEqual(classifyButtons([reject, accept]), { rejectButtons: [reject], otherButtons: [accept] });
     });
 
-    it('applies the popup exclusions only at popup level', () => {
+    it('drops age gates at popup level and next to them at page level', () => {
         const ageGate = 'You must be 18 or older to enter. We use cookies to improve your experience.';
         assert.strictEqual(classifyPopupTextRegex(ageGate), false);
-        assert.strictEqual(classifyFrameTextRegex(ageGate), true);
+        assert.strictEqual(classifyFrameTextRegex(ageGate), false);
+        // a consent notice with its own controls still counts on the page
+        const withBanner = `${ageGate}\nAccept all\nReject all`;
+        assert.strictEqual(classifyFrameTextRegex(withBanner), true);
     });
 
     it('skips iframes without buttons', () => {
