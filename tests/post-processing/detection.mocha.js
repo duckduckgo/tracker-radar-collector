@@ -28,4 +28,12 @@ describe('detection', () => {
         const accept = { text: 'Accept all', selector: '#accept' };
         assert.deepStrictEqual(classifyButtons([reject, accept]), { rejectButtons: [reject], otherButtons: [accept] });
     });
+
+    it('drops page text next to an age gate', () => {
+        const ageGate = 'You must be 18 or older to enter. We use cookies to improve your experience.';
+        assert.strictEqual(checkHeuristicPatterns(ageGate, 'page'), false);
+        // a consent notice with its own controls still counts on the page
+        const withBanner = `${ageGate}\nAccept all\nReject all`;
+        assert.strictEqual(checkHeuristicPatterns(withBanner, 'page'), true);
+    });
 });

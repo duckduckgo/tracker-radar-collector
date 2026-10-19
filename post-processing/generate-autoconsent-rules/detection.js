@@ -9,10 +9,11 @@ const {
 
 /**
  * @param {string} allText
+ * @param {'popup' | 'page'} [input] popup element text or whole page text: some patterns and context negatives apply to one only
  * @returns {boolean}
  */
-function checkHeuristicPatterns(allText) {
-    return matchHeuristicPatterns(allText).patterns.length > 0;
+function checkHeuristicPatterns(allText, input) {
+    return matchHeuristicPatterns(allText, undefined, { input }).patterns.length > 0;
 }
 
 /**
@@ -229,7 +230,7 @@ async function classifyPopup(popup, openai) {
     let regexMatch = false;
     let llmMatch = false;
     if (popupText) {
-        regexMatch = !isExcludedPopup(popupText) && checkHeuristicPatterns(popupText);
+        regexMatch = !isExcludedPopup(popupText) && checkHeuristicPatterns(popupText, 'popup');
         llmMatch = await checkLLM(openai, popupText);
     }
     // only label buttons if the popup is considered a cookie popup by regex or LLM

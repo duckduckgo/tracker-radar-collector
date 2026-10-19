@@ -129,7 +129,7 @@ async function classifyDocument(frameContext, openai) {
         } else {
             llmPopupDetected = await checkLLM(openai, frameContext.cleanedText);
         }
-        regexPopupDetected = checkHeuristicPatterns(frameContext.cleanedText);
+        regexPopupDetected = checkHeuristicPatterns(frameContext.cleanedText, 'page');
         const { rejectButtons, otherButtons } = classifyButtons(frameContext.buttons);
         frameContext.rejectButtons = rejectButtons;
         frameContext.otherButtons = otherButtons;
