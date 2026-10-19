@@ -10,10 +10,11 @@ const { DEFAULT_MAX_CHARS, frameExcerpt } = require('./frame-excerpt');
 
 /**
  * @param {string} allText
+ * @param {'popup' | 'page'} [input] popup element text or whole page text: some patterns and context negatives apply to one only
  * @returns {boolean}
  */
-function checkHeuristicPatterns(allText) {
-    return matchHeuristicPatterns(allText).patterns.length > 0;
+function checkHeuristicPatterns(allText, input) {
+    return matchHeuristicPatterns(allText, undefined, { input }).patterns.length > 0;
 }
 
 /**
@@ -23,7 +24,7 @@ function checkHeuristicPatterns(allText) {
  */
 function classifyPopupTextRegex(text) {
     const trimmed = text.trim();
-    return !isExcludedPopup(trimmed) && checkHeuristicPatterns(trimmed);
+    return !isExcludedPopup(trimmed) && checkHeuristicPatterns(trimmed, 'popup');
 }
 
 /**
@@ -32,7 +33,7 @@ function classifyPopupTextRegex(text) {
  * @returns {boolean}
  */
 function classifyFrameTextRegex(text) {
-    return checkHeuristicPatterns(text);
+    return checkHeuristicPatterns(text, 'page');
 }
 
 /**
