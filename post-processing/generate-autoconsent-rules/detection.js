@@ -6,7 +6,7 @@ const {
     cleanButtonText,
     isExcludedPopup,
 } = require('@duckduckgo/autoconsent/heuristics');
-const { frameExcerpt } = require('./frame-excerpt');
+const { DEFAULT_MAX_CHARS, frameExcerpt } = require('./frame-excerpt');
 
 /**
  * @param {string} allText
@@ -115,7 +115,7 @@ const FRAME_LLM_MODEL = 'gpt-4.1-nano-2025-04-14';
 const LLM_TEMPERATURE = 0;
 // frame texts longer than this go to the frame LLM as an excerpt (frameExcerpt), which keeps consent notices and drops
 // the rest of a long page
-const FRAME_LLM_EXCERPT = 4500;
+const FRAME_LLM_EXCERPT = DEFAULT_MAX_CHARS;
 
 const CookieConsentNoticeClassification = z.object({
     isCookieConsentNotice: z.boolean(),
