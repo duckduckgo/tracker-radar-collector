@@ -114,16 +114,18 @@ function figureOut(flags) {
         }
     }
 
-    crawlConfig.urls = crawlConfig.urls.map((item) => {
-        if (typeof item === 'string') {
-            return addProtocolIfNeeded(item);
-        } else if (item.url) {
-            item.url = addProtocolIfNeeded(item.url);
-            return item;
-        }
+    if (crawlConfig.urls) {
+        crawlConfig.urls = crawlConfig.urls.map((item) => {
+            if (typeof item === 'string') {
+                return addProtocolIfNeeded(item);
+            } else if (item.url) {
+                item.url = addProtocolIfNeeded(item.url);
+                return item;
+            }
 
-        throw new Error('Unknown url item: ' + item);
-    });
+            throw new Error('Unknown url item: ' + item);
+        });
+    }
 
     return crawlConfig;
 }
