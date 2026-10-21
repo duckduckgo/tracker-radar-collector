@@ -7,20 +7,13 @@ const LIMIT_TEXT_LENGTH = 150000;
 // autoconsent stops walking the DOM after this many ms; it uses 100ms in browsers, the crawler can afford more
 const POPUP_SEARCH_TIMEOUT = 2000;
 // bump when the shape or semantics of the scraped data change
-const SCRAPE_VERSION = 3;
-// A denser hit-test grid than autoconsent's default, to find out where popups are hit. It includes every point of the
-// default grid (columns at 10%, 50% and 90%; rows 30, 90 and 150px from each edge, and the middle).
-const HIT_TEST_COLUMNS = [0.02, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.98];
-const HIT_TEST_ROW_SPACING = 30;
+// 4: hit points come from autoconsent's default hit-test grid; version 3 used a dense grid (11 columns, rows every 30px)
+const SCRAPE_VERSION = 4;
 
 /**
  * @typedef {import('../../node_modules/@duckduckgo/autoconsent/lib/types').ButtonData} HeuristicButton
  * @typedef {{
- *  getPotentialPopups(
- *      timeout?: number,
- *      hitTest?: boolean,
- *      hitTestGrid?: import('../../node_modules/@duckduckgo/autoconsent/lib/types').HitTestGrid,
- *  ): import('../../node_modules/@duckduckgo/autoconsent/lib/types').PopupData[],
+ *  getPotentialPopups(timeout?: number, hitTest?: boolean): import('../../node_modules/@duckduckgo/autoconsent/lib/types').PopupData[],
  *  getButtonData(el: HTMLElement): HeuristicButton[],
  * }} AutoconsentHeuristics
  */
@@ -276,18 +269,6 @@ function serializeButton(button) {
 }
 
 /**
- * Rows every HIT_TEST_ROW_SPACING px from the top and bottom edges up to the middle of the viewport.
- * @returns {import('../../node_modules/@duckduckgo/autoconsent/lib/types').HitTestGrid}
- */
-function getHitTestGrid() {
-    const edgeRows = [];
-    for (let y = HIT_TEST_ROW_SPACING; y < window.innerHeight / 2; y += HIT_TEST_ROW_SPACING) {
-        edgeRows.push(y);
-    }
-    return { columns: HIT_TEST_COLUMNS, edgeRows };
-}
-
-/**
  * @param {HTMLElement} el
  * @returns {string}
  */
@@ -367,7 +348,7 @@ function scrapePage() {
             .filter((b) => isInViewport(b.element))
             .map(serializeButton),
         cleanedText: getDocumentText().slice(0, LIMIT_TEXT_LENGTH),
-        potentialPopups: heuristics.getPotentialPopups(POPUP_SEARCH_TIMEOUT, true, getHitTestGrid()).map(serializePopup),
+        potentialPopups: heuristics.getPotentialPopups(POPUP_SEARCH_TIMEOUT, true).map(serializePopup),
     };
 }
 

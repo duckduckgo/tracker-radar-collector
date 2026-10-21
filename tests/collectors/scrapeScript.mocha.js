@@ -75,7 +75,7 @@ describe('scrapeScript', function () {
     it('uses autoconsent popup and button discovery', async () => {
         const result = await scrape(page);
         assert.strictEqual(result.isTop, true);
-        assert.strictEqual(result.scrapeVersion, 3);
+        assert.strictEqual(result.scrapeVersion, 4);
         assert.ok(result.cleanedText.includes('We use cookies'));
 
         const banner = result.potentialPopups.find((p) => p.selector.includes('#banner'));
@@ -105,8 +105,8 @@ describe('scrapeScript', function () {
         assert.strictEqual(banner.cssPosition, 'fixed');
         assert.deepStrictEqual([banner.rect.x, banner.rect.width], [0, width]);
         assert.strictEqual(banner.rect.y + banner.rect.height, height);
-        // the dense grid hits the fixed banner along the bottom edge
-        assert.ok(banner.hitPoints && banner.hitPoints.length >= 11);
+        // autoconsent's default grid hits the fixed banner along the bottom edge, in each of its 3 columns
+        assert.ok(banner.hitPoints && banner.hitPoints.length >= 3);
         assert.ok(banner.hitPoints.every(([, y]) => y >= banner.rect.y && y < height));
     });
 
@@ -124,9 +124,12 @@ describe('scrapeScript', function () {
         assert.strictEqual(banner.source, 'hitTest');
         assert.strictEqual(banner.cssPosition, 'static');
         assert.deepStrictEqual(banner.rect, { x: 0, y: 0, width: result.viewport?.width, height: 100 });
-        // 11 columns at the rows 30, 60 and 90px from the top
-        assert.deepStrictEqual([...new Set(banner.hitPoints?.map(([, y]) => y))], [30, 60, 90]);
-        assert.strictEqual(banner.hitPoints?.length, 33);
+        // autoconsent's default grid: columns at 10%, 50% and 90%, rows 30 and 90px from the top
+        const xs = [0.1, 0.5, 0.9].map((c) => Math.round(c * (result.viewport?.width ?? 0)));
+        assert.deepStrictEqual(
+            banner.hitPoints,
+            [30, 90].flatMap((y) => xs.map((x) => [x, y])),
+        );
     });
 
     it('limits page-level buttons to the viewport', async () => {
