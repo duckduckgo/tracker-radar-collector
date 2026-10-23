@@ -120,7 +120,11 @@ const TABLE_DEFINITIONS = [
         llmPopupDetected Nullable(Bool),
         regexPopupDetected Nullable(Bool),
         buttonCount UInt32,
-        potentialPopupCount UInt16
+        potentialPopupCount UInt16,
+        viewportWidth Nullable(UInt16),
+        viewportHeight Nullable(UInt16),
+        scrollX Nullable(Int32),
+        scrollY Nullable(Int32)
     ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, frameId)`,
     `CREATE TABLE IF NOT EXISTS cookiePopupPopups ON CLUSTER 'ch-prod-cluster' (
@@ -132,7 +136,14 @@ const TABLE_DEFINITIONS = [
         text String CODEC(ZSTD(3)),
         llmMatch Nullable(Bool),
         regexMatch Nullable(Bool),
-        buttonCount UInt16
+        buttonCount UInt16,
+        source LowCardinality(Nullable(String)),
+        x Nullable(Int32),
+        y Nullable(Int32),
+        width Nullable(UInt32),
+        height Nullable(UInt32),
+        cssPosition LowCardinality(Nullable(String)),
+        hitPoints Array(Tuple(x UInt16, y UInt16))
     ) ENGINE = ReplicatedMergeTree
     PRIMARY KEY(crawlId, pageId, frameId, popupId)`,
     `CREATE TABLE IF NOT EXISTS cookiePopupButtons ON CLUSTER 'ch-prod-cluster' (
@@ -253,6 +264,10 @@ function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
             frame.regexPopupDetected ?? null,
             frame.buttons.length,
             frame.potentialPopups.length,
+            frame.viewport?.width ?? null,
+            frame.viewport?.height ?? null,
+            frame.viewport?.scrollX ?? null,
+            frame.viewport?.scrollY ?? null,
         ]);
         frame.potentialPopups.forEach((popup, popupId) => {
             popups.push([
@@ -265,6 +280,14 @@ function scrapedFramesToRows(crawlId, pageId, scrapedFrames) {
                 popup.llmMatch ?? null,
                 popup.regexMatch ?? null,
                 popup.buttons.length,
+                popup.source ?? null,
+                popup.rect?.x ?? null,
+                popup.rect?.y ?? null,
+                popup.rect?.width ?? null,
+                popup.rect?.height ?? null,
+                popup.cssPosition ?? null,
+                // JSON input reads named tuples from objects, not arrays
+                (popup.hitPoints ?? []).map(([x, y]) => ({ x, y })),
             ]);
             mergeButtonLabels(popup).forEach(({ button, isReject }, buttonId) => {
                 buttons.push([
