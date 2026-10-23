@@ -14,7 +14,7 @@ const { frameExcerpt } = require('./frame-excerpt');
  * @returns {boolean}
  */
 function checkHeuristicPatterns(allText, input) {
-    return matchHeuristicPatterns(allText, undefined, { input }).patterns.length > 0;
+    return matchHeuristicPatterns(allText, input).patterns.length > 0;
 }
 
 /**
