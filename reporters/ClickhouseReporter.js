@@ -198,6 +198,18 @@ function santizeCallArgs(args) {
 }
 
 /**
+ * Read ClickHouse credentials from the variables clickhouse-client uses. Without both, the client connects as the server's default user.
+ * @param {NodeJS.ProcessEnv} env
+ * @returns {{username?: string, password?: string}}
+ */
+function clickhouseCredentials(env) {
+    if (!env.CLICKHOUSE_USER || !env.CLICKHOUSE_PASSWORD) {
+        return {};
+    }
+    return { username: env.CLICKHOUSE_USER, password: env.CLICKHOUSE_PASSWORD };
+}
+
+/**
  * Replace lone UTF-16 surrogates (e.g. from text truncated mid-emoji) with U+FFFD, as clickhouse rejects them in JSON input.
  * @param {string} str
  * @returns {string}
@@ -309,6 +321,7 @@ class ClickhouseReporter extends BaseReporter {
         this.client = createClient({
             url: `http://${CLICKHOUSE_SERVER}:8123`,
             database: DB,
+            ...clickhouseCredentials(process.env),
         });
         this.crawlId = `${new Date().toISOString()}-${os.hostname()}`;
         this.ready = Promise.all(TABLE_DEFINITIONS.map((stmt) => this.client.query({ query: stmt })));
@@ -548,4 +561,5 @@ class ClickhouseReporter extends BaseReporter {
 
 module.exports = ClickhouseReporter;
 module.exports.scrapedFramesToRows = scrapedFramesToRows;
+module.exports.clickhouseCredentials = clickhouseCredentials;
 module.exports.SCRAPED_FRAMES_TABLES = SCRAPED_FRAMES_TABLES;

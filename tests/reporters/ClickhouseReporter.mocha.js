@@ -1,6 +1,6 @@
 const assert = require('assert');
 const ClickhouseReporter = require('../../reporters/ClickhouseReporter');
-const { scrapedFramesToRows, SCRAPED_FRAMES_TABLES } = ClickhouseReporter;
+const { scrapedFramesToRows, clickhouseCredentials, SCRAPED_FRAMES_TABLES } = ClickhouseReporter;
 
 describe('ClickhouseReporter scrapedFramesToRows', () => {
     it('handles empty scrapedFrames', () => {
@@ -171,6 +171,21 @@ describe('ClickhouseReporter scrapedFramesToRows', () => {
             ['c', 'p', 0, 0, 0, 'Reject', selector, true, 'reject', 'reject'],
             ['c', 'p', 0, 0, 1, 'Accept', selector, false, 'accept', 'accept'],
         ]);
+    });
+});
+
+describe('ClickhouseReporter clickhouseCredentials', () => {
+    it('passes the user and password when both are set', () => {
+        assert.deepStrictEqual(clickhouseCredentials({ CLICKHOUSE_USER: 'crawler', CLICKHOUSE_PASSWORD: 'secret' }), {
+            username: 'crawler',
+            password: 'secret',
+        });
+    });
+
+    it('passes nothing when either is missing', () => {
+        assert.deepStrictEqual(clickhouseCredentials({}), {});
+        assert.deepStrictEqual(clickhouseCredentials({ CLICKHOUSE_USER: 'crawler' }), {});
+        assert.deepStrictEqual(clickhouseCredentials({ CLICKHOUSE_PASSWORD: 'secret' }), {});
     });
 });
 
