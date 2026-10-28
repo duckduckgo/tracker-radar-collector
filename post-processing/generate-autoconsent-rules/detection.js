@@ -4,7 +4,6 @@ const {
     checkHeuristicPatterns: matchHeuristicPatterns,
     classifyButtonTextRegex,
     cleanButtonText,
-    isExcludedPopup,
 } = require('@duckduckgo/autoconsent/heuristics');
 const { DEFAULT_MAX_CHARS, frameExcerpt } = require('./frame-excerpt');
 
@@ -24,7 +23,7 @@ function checkHeuristicPatterns(allText, input) {
  */
 function classifyPopupTextRegex(text) {
     const trimmed = text.trim();
-    return !isExcludedPopup(trimmed) && checkHeuristicPatterns(trimmed, 'popup');
+    return checkHeuristicPatterns(trimmed, 'popup');
 }
 
 /**
