@@ -1,4 +1,4 @@
-/* global window, document, HTMLElement, Node, NodeFilter, location, NamedNodeMap, DOMTokenList, DOMException, CSS */
+/* global window, document, HTMLElement, ShadowRoot, Node, NodeFilter, location, NamedNodeMap, DOMTokenList, DOMException, CSS */
 
 // Popup and button discovery comes from autoconsent (window.autoconsentHeuristics), which CookiePopupsCollector
 // injects into the same isolated world before this script runs.
@@ -7,12 +7,13 @@ const LIMIT_TEXT_LENGTH = 150000;
 // autoconsent stops walking the DOM after this many ms; it uses 100ms in browsers, the crawler can afford more
 const POPUP_SEARCH_TIMEOUT = 2000;
 // bump when the shape or semantics of the scraped data change
-const SCRAPE_VERSION = 2;
+// 4: hit points come from autoconsent's default hit-test grid; version 3 used a dense grid (11 columns, rows every 30px)
+const SCRAPE_VERSION = 4;
 
 /**
  * @typedef {import('../../node_modules/@duckduckgo/autoconsent/lib/types').ButtonData} HeuristicButton
  * @typedef {{
- *  getPotentialPopups(timeout?: number): import('../../node_modules/@duckduckgo/autoconsent/lib/types').PopupData[],
+ *  getPotentialPopups(timeout?: number, hitTest?: boolean): import('../../node_modules/@duckduckgo/autoconsent/lib/types').PopupData[],
  *  getButtonData(el: HTMLElement): HeuristicButton[],
  * }} AutoconsentHeuristics
  */
@@ -268,6 +269,55 @@ function serializeButton(button) {
 }
 
 /**
+ * @param {HTMLElement} el
+ * @returns {string}
+ */
+function getCssPosition(el) {
+    /** @type {Node | null} */
+    let node = el;
+    while (node) {
+        if (node instanceof HTMLElement) {
+            const position = window.getComputedStyle(node).position;
+            if (position === 'fixed' || position === 'sticky') {
+                return position;
+            }
+        }
+        node = node.parentNode instanceof ShadowRoot ? node.parentNode.host : node.parentNode;
+    }
+    return window.getComputedStyle(el).position;
+}
+
+/**
+ * @param {HTMLElement} el
+ * @returns {import('../CookiePopupsCollector').PopupRect}
+ */
+function getPageRect(el) {
+    const rect = el.getBoundingClientRect();
+    return {
+        x: Math.round(rect.left + window.scrollX),
+        y: Math.round(rect.top + window.scrollY),
+        width: Math.round(rect.width),
+        height: Math.round(rect.height),
+    };
+}
+
+/**
+ * @param {import('../../node_modules/@duckduckgo/autoconsent/lib/types').PopupData} popup
+ * @returns {import('../CookiePopupsCollector').PopupData}
+ */
+function serializePopup(popup) {
+    return {
+        text: popup.text,
+        selector: getUniqueSelector(popup.element),
+        buttons: popup.buttons.map(serializeButton),
+        source: popup.source,
+        rect: getPageRect(popup.element),
+        cssPosition: getCssPosition(popup.element),
+        hitPoints: popup.hitPoints ?? [],
+    };
+}
+
+/**
  * @returns {import('../CookiePopupsCollector').ScrapeScriptResult}
  */
 function scrapePage() {
@@ -284,18 +334,21 @@ function scrapePage() {
         return { ...base, buttons: [], cleanedText: '', potentialPopups: [] };
     }
 
+    const viewport = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        scrollX: Math.round(window.scrollX),
+        scrollY: Math.round(window.scrollY),
+    };
     return {
         ...base,
+        viewport,
         buttons: heuristics
             .getButtonData(document.documentElement)
             .filter((b) => isInViewport(b.element))
             .map(serializeButton),
         cleanedText: getDocumentText().slice(0, LIMIT_TEXT_LENGTH),
-        potentialPopups: heuristics.getPotentialPopups(POPUP_SEARCH_TIMEOUT).map((popup) => ({
-            text: popup.text,
-            selector: getUniqueSelector(popup.element),
-            buttons: popup.buttons.map(serializeButton),
-        })),
+        potentialPopups: heuristics.getPotentialPopups(POPUP_SEARCH_TIMEOUT, true).map(serializePopup),
     };
 }
 
