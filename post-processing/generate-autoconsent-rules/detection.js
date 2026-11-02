@@ -110,7 +110,7 @@ Examples of NON-cookie popup text:
     `;
 
 const POPUP_LLM_MODEL = 'gpt-4o-mini';
-const FRAME_LLM_MODEL = 'gpt-4.1-nano-2025-04-14';
+const FRAME_LLM_MODEL = 'gpt-5.4-nano-2026-03-17';
 // temperature 0 makes repeated classifications of the same text more consistent
 const LLM_TEMPERATURE = 0;
 // frame texts longer than this go to the frame LLM as an excerpt (frameExcerpt), which keeps consent notices and drops

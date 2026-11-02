@@ -39,7 +39,7 @@ async function verifyButtonTexts({ openai, rejectButtonTextsFile, otherButtonTex
 
     try {
         const completionFalsePositive = await openai.beta.chat.completions.parse({
-            model: 'gpt-4.1-nano-2025-04-14',
+            model: 'gpt-5.4-nano-2026-03-17',
             messages: [
                 { role: 'system', content: systemPromptFalsePositive },
                 {
@@ -59,7 +59,7 @@ async function verifyButtonTexts({ openai, rejectButtonTextsFile, otherButtonTex
 
     try {
         const completionFalseNegative = await openai.beta.chat.completions.parse({
-            model: 'gpt-4.1-nano-2025-04-14',
+            model: 'gpt-5.4-nano-2026-03-17',
             messages: [
                 { role: 'system', content: systemPromptFalseNegative },
                 {
