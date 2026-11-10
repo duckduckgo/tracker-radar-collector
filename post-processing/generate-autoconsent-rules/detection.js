@@ -26,12 +26,13 @@ function classifyPopupTextRegex(text) {
 }
 
 /**
- * Regex detector for full frame text (frame level).
+ * Regex detector for full frame text (frame level). Frame text is a whole document's innerText,
+ * so it uses the 'page' input, as autoconsent's own page-level detection does.
  * @param {string} text
  * @returns {boolean}
  */
 function classifyFrameTextRegex(text) {
-    return checkHeuristicPatterns(text);
+    return checkHeuristicPatterns(text, 'page');
 }
 
 /**
