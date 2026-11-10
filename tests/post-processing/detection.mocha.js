@@ -92,7 +92,7 @@ describe('detection', () => {
             const frame = fakeOpenAI(false);
             assert.strictEqual(await classifyFrameTextLLM(frame.openai, 'frame text'), false);
             assert.strictEqual(frame.requests[0].model, FRAME_LLM_MODEL);
-            assert.strictEqual(FRAME_LLM_MODEL, 'gpt-4.1-nano-2025-04-14');
+            assert.strictEqual(FRAME_LLM_MODEL, 'gpt-5.4-nano-2026-03-17');
             assert.strictEqual(frame.requests[0].messages[0].content, FRAME_LLM_PROMPT);
             assert.strictEqual(frame.requests[0].messages[1].content, 'frame text');
             assert.strictEqual(frame.requests[0].temperature, 0);
