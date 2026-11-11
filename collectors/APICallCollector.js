@@ -36,13 +36,16 @@ class APICallCollector extends BaseCollector {
         session.on('Debugger.paused', this.onDebuggerPaused.bind(this, trackerTracker));
         session.on('Runtime.executionContextCreated', this.onExecutionContextCreated.bind(this, trackerTracker, session));
         session.on('Runtime.bindingCalled', this.onBindingCalled.bind(this, trackerTracker));
-        await session.send('Runtime.addBinding', { name: 'registerAPICall' });
+        const bindingAdded = session.send('Runtime.addBinding', { name: 'registerAPICall' });
 
         try {
-            await trackerTracker.init({
-                log: this._log,
-                enableAsyncStacktraces: this._collectorFlags?.enableAsyncStacktraces,
-            });
+            await Promise.all([
+                bindingAdded,
+                trackerTracker.init({
+                    log: this._log,
+                    enableAsyncStacktraces: this._collectorFlags?.enableAsyncStacktraces,
+                }),
+            ]);
         } catch (e) {
             this._log('TrackerTracker init failed.');
             throw e;

@@ -98,11 +98,14 @@ class TrackerTracker {
         this._log = log;
         this._enableAsyncStacktraces = enableAsyncStacktraces;
 
-        await this._send('Debugger.enable');
-        await this._send('Runtime.enable');
-        await this._send('Runtime.setAsyncCallStackDepth', {
-            maxDepth: MAX_ASYNC_CALL_STACK_DEPTH,
-        });
+        // DevTools runs the commands in order, so there is no need to wait for each response before sending the next command
+        await Promise.all([
+            this._send('Debugger.enable'),
+            this._send('Runtime.enable'),
+            this._send('Runtime.setAsyncCallStackDepth', {
+                maxDepth: MAX_ASYNC_CALL_STACK_DEPTH,
+            }),
+        ]);
     }
 
     /**
@@ -188,15 +191,13 @@ class TrackerTracker {
                 await this._addBreakpoint(contextId, expression, description, prop);
             });
 
-            await Promise.all(propPromises);
-
             const methodPromises = methods.map(async (method) => {
                 const expression = `Reflect.getOwnPropertyDescriptor(${obj}, '${method.name}').value`;
                 const description = method.description || `${obj}.${method.name}`;
                 await this._addBreakpoint(contextId, expression, description, method);
             });
 
-            await Promise.all(methodPromises);
+            await Promise.all([...propPromises, ...methodPromises]);
         });
 
         await Promise.all(allBreakpointsSet);

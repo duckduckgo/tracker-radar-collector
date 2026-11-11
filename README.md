@@ -31,6 +31,7 @@ Available options:
 - `-a, --disable-anti-bot` - disable simple build-in anti bot detection script injected to every frame
 - `--chromium-version <version_number>` - use custom version of Chromium (e.g. "843427") instead of using the default
 - `--selenium-hub <url>` - If provided, browsers will be requested from selenium hub instead of spawning local processes (e.g. `--selenium-hub http://my-selenium-hub-host:4444`).
+- `--wait-for-all-frames` - wait until there are no network requests in all frames and workers for 500ms (similar to puppeteer's `networkidle0`). By default, the crawler waits only for the main frame. Third-party content (ads, cookie syncing) often loads in iframes, so use this for tracker crawls.
 - `--config <path>` - path to a config file that allows to set all the above settings (and more). Note that CLI flags have a higher priority than settings passed via config. You can find a sample config file in `tests/cli/sampleConfig.json`.
 - `--autoconsent-action <action>` - automatic autoconsent action (requires the `cookiepopups` collector). Possible values: optIn, optOut
 
@@ -67,8 +68,9 @@ crawlerConductor({
     proxyHost: 'socks5://myproxy:8080',// SOCKS proxy host (none by default)
     antiBotDetection: true,// if anti bot detection script should be injected (true by default)
     chromiumVersion: '843427',// Chromium version that should be downloaded and used instead of the default one
-    maxLoadTimeMs: 30000,// how long should crawlers wait for the page to load, defaults to 30s
+    maxLoadTimeMs: 30000,// how long should crawlers wait for the page to load, defaults to 60s
     extraExecutionTimeMs: 2500,// how long should crawlers wait after page loads before collecting data, defaults to 2.5s
+    waitForAllFrames: true,// wait for network idle in all frames and workers, not only in the main frame (false by default)
 });
 ```
 
@@ -87,8 +89,9 @@ const data = await crawler(new URL('https://example.com'), {
     browserContext: context,// if you prefer to create the browser context yourself (to e.g. use other browser or non-incognito context) you can pass it here (by default crawler will create an incognito context using standard chromium for you)
     runInEveryFrame: () => {window.alert('injected')},// function that should be executed in every frame (main + all subframes)
     executablePath: '/some/path/Chromium.app/Contents/MacOS/Chromium',// path to a custom Chromium installation that should be used instead of the default one
-    maxLoadTimeMs: 30000,// how long should the crawler wait for the page to load, defaults to 30s
+    maxLoadTimeMs: 30000,// how long should the crawler wait for the page to load, defaults to 60s
     extraExecutionTimeMs: 2500,// how long should crawler wait after page loads before collecting data, defaults to 2.5s
+    waitForAllFrames: true,// wait for network idle in all frames and workers, not only in the main frame (false by default)
 });
 ```
 

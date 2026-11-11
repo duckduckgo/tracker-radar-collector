@@ -6,6 +6,7 @@ const tldts = require('tldts');
 const { DEFAULT_USER_AGENT, MOBILE_USER_AGENT, DEFAULT_VIEWPORT, MOBILE_VIEWPORT, VISUAL_DEBUG } = require('./constants');
 const openBrowser = require('./browser/openBrowser');
 const { resolveBrowserLocale } = require('./browser/locale');
+const NetworkIdleTracker = require('./helpers/networkIdle');
 
 const targetFilter = [
     // see list of types in https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
@@ -52,6 +53,7 @@ class Crawler {
         /** @type {import('devtools-protocol/types/protocol').Protocol.Page.Frame} */
         this.mainPageFrame = null;
         this._navigationDeferred = createDeferred();
+        this.networkIdle = new NetworkIdleTracker();
         this.log = options.log;
         this.browserConnection = options.browserConnection;
         this.collectors = options.collectors;
@@ -90,9 +92,23 @@ class Crawler {
      * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetInfo} targetInfo
      */
     async _onTargetAttached(session, targetInfo) {
+        // The target is paused until we send Runtime.runIfWaitingForDebugger. While it is paused, the page cannot load.
+        // DevTools runs the commands of a session in order, so we send all setup commands at once and wait only once.
+        // With a remote browser (e.g. Selenium Grid) each wait is a network round trip, and it adds up quickly.
+        /** @type {Promise<unknown>[]} */
+        const setupCommands = [];
+        /**
+         * @param {string} method
+         * @param {object} [params]
+         */
+        const send = (method, params) => {
+            // @ts-expect-error oversimplified .send signature
+            setupCommands.push(session.send(method, params));
+        };
+
         // Auto-attach works only on related targets, so if we want to attach to everything, we have to set it up for each target
         session.on('Target.attachedToTarget', this.onTargetAttached.bind(this));
-        await session.send('Target.setAutoAttach', {
+        send('Target.setAutoAttach', {
             autoAttach: true,
             waitForDebuggerOnStart: true, // pause execution until we attach all event handlers
             flatten: true,
@@ -106,7 +122,7 @@ class Crawler {
             if (this.options.browserLocale) {
                 userAgentOverride.acceptLanguage = this.options.browserLocale;
             }
-            await session.send('Network.setUserAgentOverride', userAgentOverride);
+            send('Network.setUserAgentOverride', userAgentOverride);
         }
 
         if (targetInfo.type === 'page') {
@@ -127,20 +143,37 @@ class Crawler {
                     }
                 }
             });
-            await session.send('Page.enable');
-            await session.send('Inspector.enable');
-            await session.send('Page.setLifecycleEventsEnabled', { enabled: true });
-            await session.send('Emulation.setDeviceMetricsOverride', this.options.emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT);
+            send('Page.enable');
+            send('Inspector.enable');
+            send('Page.setLifecycleEventsEnabled', { enabled: true });
+            send('Emulation.setDeviceMetricsOverride', this.options.emulateMobile ? MOBILE_VIEWPORT : DEFAULT_VIEWPORT);
             if (this.options.runInEveryFrame) {
-                await session.send('Page.addScriptToEvaluateOnNewDocument', {
+                send('Page.addScriptToEvaluateOnNewDocument', {
                     source: `(${this.options.runInEveryFrame})()`,
                 });
             }
         }
 
-        await session.send('Runtime.enable');
+        send('Runtime.enable');
 
-        for (const collector of this.collectors) {
+        /** @type {Promise<void>[]} */
+        const optionalCommands = [];
+        if (this.options.waitForAllFrames) {
+            this.networkIdle.addSession(session);
+            optionalCommands.push(
+                session.send('Network.enable').then(
+                    () => {},
+                    (e) => {
+                        this.log(
+                            chalk.yellow(`Could not enable network tracking in tId ${targetInfo.targetId} type ${targetInfo.type}: ${e}`),
+                        );
+                    },
+                ),
+            );
+        }
+
+        // Collectors send their own commands. Start them all together, so that their commands are sent in the same batch.
+        const collectorsReady = this.collectors.map(async (collector) => {
             try {
                 await collector.addTarget(session, targetInfo);
             } catch (e) {
@@ -150,7 +183,9 @@ class Crawler {
                     chalk.gray(e.stack),
                 );
             }
-        }
+        });
+
+        await Promise.all([...setupCommands, ...optionalCommands, ...collectorsReady]);
 
         await session.send('Runtime.runIfWaitingForDebugger');
         if (this.mainPageTargetId === targetInfo.targetId) {
@@ -176,6 +211,7 @@ class Crawler {
      */
     onDetachedFromTarget(event) {
         this.log(`detached from: tId ${event.targetId}; session: ${event.sessionId}`);
+        this.networkIdle.removeSession(event.sessionId);
         this.targets.delete(event.targetId);
     }
 
@@ -184,7 +220,7 @@ class Crawler {
      */
     onTargetDestroyed(event) {
         this.log(`target tId ${event.targetId} destroyed`);
-        this.targets.delete(event.targetId);
+        this._forgetTarget(event.targetId);
     }
 
     /**
@@ -195,7 +231,18 @@ class Crawler {
         if (this.mainPageTargetId === event.targetId) {
             this._navigationDeferred.reject(new Error(`Main target ${event.targetId} crashed`));
         }
-        this.targets.delete(event.targetId);
+        this._forgetTarget(event.targetId);
+    }
+
+    /**
+     * @param {import('devtools-protocol/types/protocol').Protocol.Target.TargetID} targetId
+     */
+    _forgetTarget(targetId) {
+        const target = this.targets.get(targetId);
+        if (target) {
+            this.networkIdle.removeSession(target.session.id());
+        }
+        this.targets.delete(targetId);
     }
 
     /**
@@ -233,6 +280,11 @@ class Crawler {
                 if (e.frameId === this.mainPageFrame.id) {
                     this.log(chalk.green(`network idle in the main frame ${this.mainPageFrame.url}`));
                     session.off('Page.lifecycleEvent', lifecycleHandler);
+                    if (this.options.waitForAllFrames) {
+                        this.log(`waiting for ${this.networkIdle.inflightCount} requests in other frames and workers`);
+                        await this.networkIdle.waitForIdle();
+                        this.log(chalk.green(`network idle in all frames and workers`));
+                    }
                     this._navigationDeferred.resolve();
                 }
             }
@@ -365,6 +417,8 @@ class Crawler {
         const data = await this.getCollectorData();
         this.log(`get collector data took ${getCollectorDataTimer.getElapsedTime()}s`);
 
+        this.networkIdle.dispose();
+
         for (const target of this.targets.values()) {
             target.session.detach().catch(() => {
                 /* ignore */
@@ -434,6 +488,7 @@ async function crawl(url, options) {
             maxLoadTimeMs,
             extraExecutionTimeMs,
             collectorFlags: options.collectorFlags,
+            waitForAllFrames: options.waitForAllFrames === true,
         });
         data = await wait(crawler.getSiteData(url), maxTotalTimeMs, `${url} timed out`);
     } catch (e) {
@@ -479,6 +534,7 @@ async function crawl(url, options) {
  * @property {number=} extraExecutionTimeMs
  * @property {import('./collectors/BaseCollector').CollectorFlags=} collectorFlags
  * @property {string=} seleniumHub
+ * @property {boolean=} waitForAllFrames wait until the network is idle in all frames and workers, not only in the main frame
  */
 
 /**
@@ -494,6 +550,7 @@ async function crawl(url, options) {
  * @property {number} maxLoadTimeMs,
  * @property {number} extraExecutionTimeMs,
  * @property {import('./collectors/BaseCollector').CollectorFlags} collectorFlags,
+ * @property {boolean=} waitForAllFrames,
  */
 
 module.exports = crawl;

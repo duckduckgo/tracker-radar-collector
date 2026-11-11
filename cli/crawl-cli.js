@@ -35,6 +35,7 @@ program
     )
     .option('--chromium-version <version_number>', 'use custom version of chromium')
     .option('--selenium-hub <url>', 'selenium hub endpoint to request browsers from')
+    .option('--wait-for-all-frames', 'wait until the network is idle in all frames and workers, not only in the main frame')
     .parse(process.argv);
 
 /**
@@ -112,6 +113,7 @@ async function run({
     extraExecutionTimeMs,
     collectorFlags,
     seleniumHub,
+    waitForAllFrames,
 }) {
     const startTime = new Date();
 
@@ -200,6 +202,7 @@ async function run({
             extraExecutionTimeMs,
             collectorFlags,
             seleniumHub,
+            waitForAllFrames,
         });
         log(chalk.green('\n✅ Finished successfully.'));
     } catch (e) {
@@ -302,6 +305,7 @@ if (!config.urls || !config.output) {
         extraExecutionTimeMs: config.extraExecutionTimeMs,
         collectorFlags,
         seleniumHub: config.seleniumHub,
+        waitForAllFrames: config.waitForAllFrames,
     });
 }
 
@@ -333,4 +337,5 @@ if (!config.urls || !config.output) {
  * @property {number} extraExecutionTimeMs
  * @property {import('../collectors/BaseCollector').CollectorFlags} collectorFlags
  * @property {string} seleniumHub
+ * @property {boolean} waitForAllFrames
  */

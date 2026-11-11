@@ -28,6 +28,7 @@ async function crawlAndSaveData({
     extraExecutionTimeMs,
     collectorFlags,
     seleniumHub,
+    waitForAllFrames,
 }) {
     const url = new URL(urlString);
     /**
@@ -56,6 +57,7 @@ async function crawlAndSaveData({
         extraExecutionTimeMs,
         collectorFlags,
         seleniumHub,
+        waitForAllFrames,
     });
 
     dataCallback(url, data);
@@ -114,6 +116,7 @@ module.exports = async (options) => {
             extraExecutionTimeMs: options.extraExecutionTimeMs,
             collectorFlags: JSON.parse(JSON.stringify(options.collectorFlags || {})), // clone so that we can modify it for each call
             seleniumHub: options.seleniumHub,
+            waitForAllFrames: options.waitForAllFrames,
         };
 
         const task = crawlAndSaveData.bind(null, crawlAndSaveDataOptions);
@@ -163,6 +166,7 @@ module.exports = async (options) => {
  * @property {number} extraExecutionTimeMs
  * @property {import('./collectors/BaseCollector').CollectorFlags} collectorFlags
  * @property {string} seleniumHub
+ * @property {boolean=} waitForAllFrames
  */
 
 /**
@@ -182,4 +186,5 @@ module.exports = async (options) => {
  * @property {number=} extraExecutionTimeMs
  * @property {import('./collectors/BaseCollector').CollectorFlags=} collectorFlags
  * @property {string=} seleniumHub
+ * @property {boolean=} waitForAllFrames
  */

@@ -57,18 +57,18 @@ class RequestCollector extends BaseCollector {
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async addTarget(session, targetInfo) {
-        await session.send('Runtime.enable');
-        await session.send('Runtime.setAsyncCallStackDepth', { maxDepth: 32 });
+        session.on('Network.requestWillBeSent', (r) => this.handleRequest(r, session));
+        session.on('Network.webSocketCreated', (r) => this.handleWebSocket(r));
+        session.on('Network.responseReceived', (r) => this.handleResponse(r));
+        session.on('Network.responseReceivedExtraInfo', (r) => this.handleResponseExtraInfo(r));
+        session.on('Network.loadingFailed', (r) => this.handleFailedRequest(r, session));
+        session.on('Network.loadingFinished', (r) => this.handleFinishedRequest(r, session));
 
-        await session.send('Network.enable');
-
+        // DevTools runs the commands in order, so there is no need to wait for each response before sending the next command
         await Promise.all([
-            session.on('Network.requestWillBeSent', (r) => this.handleRequest(r, session)),
-            session.on('Network.webSocketCreated', (r) => this.handleWebSocket(r)),
-            session.on('Network.responseReceived', (r) => this.handleResponse(r)),
-            session.on('Network.responseReceivedExtraInfo', (r) => this.handleResponseExtraInfo(r)),
-            session.on('Network.loadingFailed', (r) => this.handleFailedRequest(r, session)),
-            session.on('Network.loadingFinished', (r) => this.handleFinishedRequest(r, session)),
+            session.send('Runtime.enable'),
+            session.send('Runtime.setAsyncCallStackDepth', { maxDepth: 32 }),
+            session.send('Network.enable'),
         ]);
     }
 
