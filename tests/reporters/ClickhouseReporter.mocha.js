@@ -1,6 +1,6 @@
 const assert = require('assert');
 const ClickhouseReporter = require('../../reporters/ClickhouseReporter');
-const { scrapedFramesToRows, clickhouseCredentials, SCRAPED_FRAMES_TABLES } = ClickhouseReporter;
+const { scrapedFramesToRows, performanceToRows, clickhouseCredentials, SCRAPED_FRAMES_TABLES } = ClickhouseReporter;
 
 describe('ClickhouseReporter scrapedFramesToRows', () => {
     it('handles empty scrapedFrames', () => {
@@ -209,6 +209,41 @@ describe('ClickhouseReporter text sanitization', () => {
     });
 });
 
+describe('ClickhouseReporter performanceToRows', () => {
+    it('stores the total and call count of every measurement in the entry', () => {
+        const rows = performanceToRows(
+            'c',
+            'p',
+            [
+                {
+                    url: 'https://example.com/',
+                    isMainFrame: true,
+                    detectHeuristics: [1.5, 2.5],
+                    heuristicDetector: [],
+                    findCmpSiteSpecific: [0.25],
+                    findCmpGeneric: [10, 20, 30],
+                    findCmpHeuristic: [4],
+                    parseDeclarativeRules: [1.75],
+                },
+                // entries from older autoconsent versions have a different set of measurements
+                // @ts-expect-error missing parseDeclarativeRules and findCmp* measurements
+                { url: '', isMainFrame: false, filterCMPs: [3], detectHeuristics: [1] },
+            ],
+            'https://fallback.example/',
+        );
+        assert.deepStrictEqual(rows, [
+            ['c', 'p', 'https://example.com/', 1, 'detectHeuristics', 4, 2],
+            ['c', 'p', 'https://example.com/', 1, 'heuristicDetector', 0, 0],
+            ['c', 'p', 'https://example.com/', 1, 'findCmpSiteSpecific', 0.25, 1],
+            ['c', 'p', 'https://example.com/', 1, 'findCmpGeneric', 60, 3],
+            ['c', 'p', 'https://example.com/', 1, 'findCmpHeuristic', 4, 1],
+            ['c', 'p', 'https://example.com/', 1, 'parseDeclarativeRules', 1.75, 1],
+            ['c', 'p', 'https://fallback.example/', 0, 'filterCMPs', 3, 1],
+            ['c', 'p', 'https://fallback.example/', 0, 'detectHeuristics', 1, 1],
+        ]);
+    });
+});
+
 /**
  * Create a reporter with a stubbed client, since there's no clickhouse server in tests.
  * @param {string[]} [tables]
@@ -254,6 +289,18 @@ describe('ClickhouseReporter processSite', () => {
         // llmPopupDetected and regexPopupDetected
         assert.deepStrictEqual(rowsByTable.cmps[0].slice(-2), [false, false]);
         SCRAPED_FRAMES_TABLES.forEach((table) => assert.strictEqual(rowsByTable[table].length, 0));
+    });
+
+    it('imports older crawls without performance data', async () => {
+        const { ch, inserts } = createStubbedReporter();
+        const data = siteData({});
+        delete data.data.cookiepopups.performance;
+        await ch.processSite(data);
+        await ch.cleanup();
+
+        const rowsByTable = Object.fromEntries(inserts.map((i) => [i.table, i.values]));
+        assert.strictEqual(rowsByTable.pages.length, 1);
+        assert.strictEqual(rowsByTable.autoconsentPerformance.length, 0);
     });
 
     it('only inserts into the selected tables', async () => {
