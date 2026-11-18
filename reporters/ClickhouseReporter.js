@@ -164,28 +164,28 @@ const TABLE_DEFINITIONS = [
 /** @type {string[]} */
 const SCRAPED_FRAMES_TABLES = ['cookiePopupFrames', 'cookiePopupPopups', 'cookiePopupButtons'];
 
-/** @type {readonly string[]} */
-const PERFORMANCE_MEASUREMENTS = [
-    'filterCMPs',
-    'detectHeuristics',
-    'heuristicDetector',
-    'findCmpSiteSpecific',
-    'findCmpGeneric',
-    'findCmpHeuristic',
-];
-
 /**
- * @param {number[] | undefined} values
- * @returns {{ sum: number, count: number }}
+ * One row per (frame, measurement) with the total and number of calls. Measurement names are taken from the
+ * entry itself (every array-valued key), since they change between autoconsent versions.
+ * @param {string} crawlId
+ * @param {string} pageId
+ * @param {import('../collectors/CookiePopupsCollector').AutoconsentPerformanceResult[]} performance
+ * @param {string} fallbackUrl used for entries without a frame url
  */
-function summarizeMeasurementArray(values) {
-    if (!Array.isArray(values) || values.length === 0) {
-        return { sum: 0, count: 0 };
-    }
-    return {
-        sum: values.reduce((total, value) => total + value, 0),
-        count: values.length,
-    };
+function performanceToRows(crawlId, pageId, performance, fallbackUrl) {
+    return performance.flatMap((entry) =>
+        Object.entries(entry)
+            .filter((/** @type {[string, unknown]} */ e) => Array.isArray(e[1]))
+            .map(([measurement, values]) => [
+                crawlId,
+                pageId,
+                entry.url || fallbackUrl,
+                entry.isMainFrame ? 1 : 0,
+                measurement,
+                /** @type {number[]} */ (values).reduce((total, value) => total + value, 0),
+                /** @type {number[]} */ (values).length,
+            ]),
+    );
 }
 
 /**
@@ -478,19 +478,12 @@ class ClickhouseReporter extends BaseReporter {
                 ]);
                 this.queue.cmps = this.queue.cmps.concat(cmpRows);
 
-                const performanceRows = (data.data.cookiepopups.performance || []).flatMap((entry) =>
-                    PERFORMANCE_MEASUREMENTS.map((measurement) => {
-                        const { sum, count } = summarizeMeasurementArray(entry[measurement]);
-                        return [
-                            this.crawlId,
-                            pageId,
-                            entry.url || data.finalUrl || data.initialUrl,
-                            entry.isMainFrame ? 1 : 0,
-                            measurement,
-                            sum,
-                            count,
-                        ];
-                    }),
+                // older crawls predate performance logging
+                const performanceRows = performanceToRows(
+                    this.crawlId,
+                    pageId,
+                    data.data.cookiepopups.performance || [],
+                    data.finalUrl || data.initialUrl,
                 );
                 this.queue.autoconsentPerformance = this.queue.autoconsentPerformance.concat(performanceRows);
 
@@ -561,5 +554,6 @@ class ClickhouseReporter extends BaseReporter {
 
 module.exports = ClickhouseReporter;
 module.exports.scrapedFramesToRows = scrapedFramesToRows;
+module.exports.performanceToRows = performanceToRows;
 module.exports.clickhouseCredentials = clickhouseCredentials;
 module.exports.SCRAPED_FRAMES_TABLES = SCRAPED_FRAMES_TABLES;

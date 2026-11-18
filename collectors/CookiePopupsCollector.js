@@ -597,15 +597,17 @@ class CookiePopupsCollector extends ContentScriptCollector {
  */
 
 /**
+ * Durations in ms, one per call. The set of measurements depends on the autoconsent version.
  * @typedef AutoconsentPerformanceResult
  * @property {string} url
  * @property {boolean} isMainFrame
- * @property {number[]} filterCMPs
+ * @property {number[]} [filterCMPs] only in older autoconsent versions
  * @property {number[]} detectHeuristics
  * @property {number[]} heuristicDetector
  * @property {number[]} findCmpSiteSpecific
  * @property {number[]} findCmpGeneric
  * @property {number[]} findCmpHeuristic
+ * @property {number[]} [parseDeclarativeRules]
  */
 
 /**
