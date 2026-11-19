@@ -100,4 +100,12 @@ assert.deepStrictEqual(
     "Unexpected value for 'urls'",
 );
 
+// no URLs passed: config should still be returned so that the CLI can print usage help
+const result3 = crawlConfig.figureOut({
+    output: '/something/else',
+});
+
+assert(result3.output === '/something/else', "Correct value for 'output'");
+assert(result3.urls === undefined, "'urls' should stay unset");
+
 mockery.disable();
